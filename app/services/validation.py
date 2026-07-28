@@ -30,6 +30,11 @@ DOCUMENT_BINDINGS: tuple[tuple[str, str], ...] = (
     ("locations/working/*/location.yaml", "location"),
     ("props/approved/*/prop.yaml", "prop"),
     ("props/working/*/prop.yaml", "prop"),
+    # One file per panel actually put through the generator. Bound here rather
+    # than validated ad hoc so an unrunnable job - a model that is not
+    # installed, a LoRA that does not exist, a missing seed - fails at `validate`
+    # instead of at submission time on a shared GPU.
+    ("issues/*/03_script/panel-jobs/*.yaml", "panel_job"),
 )
 
 #: Files above this size are flagged before they can be committed by accident.

@@ -1,0 +1,446 @@
+# NeonBlue - generation profile
+#
+# What this file is: the record of how NeonBlue was actually produced in the
+# 2026-07-28 panel production run, and what the evidence supports.
+#
+# What this file is NOT: an approval. No panel featuring NeonBlue is approved.
+# `ISSUE001-P16-02` is a candidate. Nothing here authorises anything.
+#
+# This is a `generation-profile.yaml`, not a `character.yaml`. It is therefore
+# NOT bound by `app/services/validation.py::DOCUMENT_BINDINGS`, which only
+# validates `characters/approved/*/character.yaml`. The field names below
+# deliberately borrow the vocabulary of `config/schemas/character.schema.yaml`
+# so that a future `character.yaml` can be derived from it, but this document
+# has not been schema-validated.
+#
+# Every value carries a `provenance` marker:
+#   verified   - read directly from a file in this repository
+#   measured   - computed from the pixel data of files in this repository
+#                during the 2026-07-28 audit
+#   derived    - arithmetic on verified/measured values, shown with its working
+#   unverified - supplied to the author but not found in any repository file
+
+schema: generation-profile
+schema_version: 0.1.0
+status: draft
+written: 2026-07-28
+written_by: phase-5 identity packaging pass
+owner_approval_record: none exists
+
+# ---------------------------------------------------------------------------
+identification:
+  character_id: MZ-CHAR-005
+  display_name: NeonBlue
+  slug: neonblue
+  series_name: Emo Monkey / Fusion Squad lead
+  canon_status: core_canon
+  development_level: 5
+  team_role: rescuer/believer
+  provenance: verified
+  sources:
+    - source_material/imported_bibles/character-bibles/MZ-CHAR-005/bible.md
+    - source_material/imported_bibles/character-bibles/MZ-CHAR-005/bible.yaml
+    - source_material/imported_canon/approved_characters/CHARACTER_IMAGE_INDEX.md
+
+# ---------------------------------------------------------------------------
+# Approved reference images
+#
+# Only paths confirmed to exist on disk are listed. See `dangling_references`
+# for the paths the character bible points at that do NOT exist here.
+# ---------------------------------------------------------------------------
+approved_reference_images:
+  provenance: verified
+  primary_reference:
+    path: source_material/imported_canon/approved_characters/neonblue/neonblue_00_clean_base.png
+    size_px: [880, 1184]
+    mode: RGB
+    note: >-
+      Named as primary production reference by CHARACTER_IMAGE_INDEX.md. This
+      copy is flattened RGB - it has no alpha. The composable copy is in
+      character_layers (below).
+
+  reference_card:
+    path: source_material/imported_canon/approved_characters/neonblue/neonblue.webp
+    size_px: [381, 512]
+    mode: RGBA
+    md5: 3558175667b40dc8274d517a709643a2
+
+  flat_reference_set:
+    directory: source_material/imported_canon/approved_characters/neonblue/
+    file_count: 31 PNG + 1 WEBP
+    all_png_mode: RGB (no alpha channel on any of the 31)
+    sizes_px:
+      - {size: [880, 1184], count: 17, note: same 17 filenames as the alpha layer set}
+      - {size: [912, 1216], count: 14, note: "views 01-14 only - no alpha equivalent exists"}
+    contains_camera_views_absent_from_layer_set:
+      - neonblue_01_neutral.png
+      - neonblue_02_threeqtr.png
+      - neonblue_03_profile.png
+      - neonblue_04_overshoulder.png
+      - neonblue_05_portrait.png
+    note: >-
+      These five are the only three-quarter / profile / over-shoulder / portrait
+      references that exist for NeonBlue anywhere in the repository, and none of
+      them is cut out. They cannot be composited without a matte pass.
+
+  composable_layer_set:
+    directory: source_material/imported_canon/character_layers/neonblue/
+    file_count: 17
+    all_unique: true          # md5-checked, 17 distinct files
+    canvas_px: [880, 1184]
+    mode: RGBA
+    alpha: true               # background pixels measured at alpha == 0
+    note: >-
+      This is the set the compositor consumes. It is the only true-alpha art
+      that exists for this character.
+
+dangling_references:
+  provenance: verified
+  problem: >-
+    `bible.yaml` declares a primary reference and nine supporting references
+    under a `references/` tree. No `references/` directory exists under any
+    character bible in this repository - MZ-CHAR-005 contains only bible.md,
+    bible.yaml, continuity-log.md and development-notes.md.
+  declared_but_absent:
+    - references/primary/primary-reference.webp
+    - references/alternate/alternate-pose-01.png
+    - references/alternate/alternate-pose-02.png
+    - references/alternate/alternate-pose-03.png
+    - references/alternate/alternate-pose-04.png
+    - references/alternate/expression-portrait-05.png
+    - references/alternate/alternate-pose-06.png
+    - references/alternate/alternate-pose-07.png
+    - references/alternate/alternate-pose-08.png
+    - references/group/group-fusion-squad-01.png
+  consequence: >-
+    Any tool that resolves reference art from bible.yaml will fail. Resolve
+    from imported_canon paths above instead.
+
+# ---------------------------------------------------------------------------
+colour_palette:
+  # Names come from the bible. Hex values were measured from the approved alpha
+  # layers - the bible records no hex values at all.
+  bible_swatch_names:
+    provenance: verified
+    source: source_material/imported_bibles/character-bibles/MZ-CHAR-005/bible.yaml (visual_canon.color_palette)
+    values: [white, electric cyan, chocolate brown, jet black, white studs, green card background]
+
+  measured_hex:
+    provenance: measured
+    method: >-
+      Modal RGB of fully-opaque pixels (alpha == 255) across
+      neonblue_00_clean_base.png, neonblue_16_worried.png,
+      neonblue_19_determined.png and neonblue_30_backview.png.
+    swatches:
+      - {name: pale grey, hex: "#E0E0E0", use: face, muzzle, belly panel, hair body fill}
+      - {name: near white, hex: "#F5F5F5", use: hair highlight, eye whites}
+      - {name: jet black, hex: "#000000", use: outlines, vest, punk pants}
+      - {name: chocolate brown, hex: "#534739", use: fur, ears, arms, tail}
+      - {name: electric cyan, hex: "#29D6DD", use: hair streaks and root glow}
+      - {name: mid grey, hex: "#909090", use: studs, sneaker panels, under-eye bags}
+
+  card_background_colour:
+    provenance: measured
+    hex: "#61DE8E"
+    note: >-
+      The "green card background" the bible lists as a palette entry. In the
+      alpha layers it survives in the RGB channels underneath alpha == 0. It is
+      not part of the character. Any operation that discards or ignores alpha
+      will reintroduce it. See known-failures.md.
+
+# ---------------------------------------------------------------------------
+required_identifying_features:
+  provenance: verified
+  source: bible.md "Visual Rules" / bible.yaml features_that_must_never_change
+  features:
+    - white/cyan spike crown
+    - cyan root glow
+    - heavy grey under-eye bags
+    - left-ear silver plug earring
+
+forbidden_changes:
+  provenance: verified
+  changes:
+    - Do not add glasses. Clever is the only confirmed glasses-wearing monkey.
+    - Do not mirror the character. See `no_flip` below.
+    - Do not alter any entry in required_identifying_features.
+  glasses_status: confirmed_no_glasses
+
+wardrobe:
+  provenance: verified
+  source: bible.yaml visual_canon.clothing
+  garments:
+    - black vest/tank
+    - white-studded black punk pants
+    - black studded cuffs
+    - grey-and-black skate sneakers
+  observed_divergence:
+    provenance: measured
+    note: >-
+      In the alpha layers inspected (00_clean_base, 16_worried, 27_defeated,
+      30_backview) the upper garment reads as a chocolate-brown jacket over a
+      pale grey stitched chest panel, not as a black vest over bare chest. The
+      bible text and the approved art do not agree on this point. Not
+      adjudicated - flagged for the owner. Do not "correct" the art to the text.
+
+accessories:
+  provenance: verified
+  items:
+    - name: silver gauge/plug earring in left ear
+      bible_status_conflict: >-
+        bible.yaml lists this under `accessories` with status `optional`, and
+        under `features_that_must_never_change` with strength `defining`. The
+        two entries contradict each other. Treat as REQUIRED until the owner
+        rules, because the stricter reading is the safe one and because the
+        compositor's NO_FLIP guard already depends on it.
+      observed:
+        provenance: measured
+        note: >-
+          Visible in neonblue_16_worried.png on the viewer-right ear. The
+          character faces the viewer, so viewer-right is the character's left -
+          consistent with the bible. Occluded by hair in 27_defeated and not
+          visible in 30_backview.
+
+# ---------------------------------------------------------------------------
+height_relationship:
+  provenance: measured
+  method: >-
+    Alpha bounding-box height of the standing layers on the shared 880x1184
+    canvas. Ten NeonBlue standing layers measured; the majority share a common
+    foot line at y=1038, so the canvases are comparable.
+  neonblue_standing_silhouette_px:
+    median: 941.5
+    range: [925, 978]
+    n: 10
+  moodz_standing_silhouette_px:
+    median: 827
+    note: fringe-variant layers; the beanie-variant layers measure 892-940
+  statement: >-
+    NeonBlue's full silhouette is taller than Moodz's - roughly 1.14x on the
+    fringe-variant Moodz layers (941/827). The difference is dominated by
+    NeonBlue's starburst spike crown, which reads as hair, not stature.
+  not_measured:
+    - >-
+      Stature excluding hair. There is no head-top or shoulder landmark
+      annotation, so crown height cannot be separated from body height. Do not
+      state a head-to-head height ratio from this file.
+  do_not_use:
+    - >-
+      The exp005 rendered heights (NeonBlue 314 px, Moodz 245 px) are NOT a
+      height relationship. Both characters used scale_multiplier 0.78; the
+      difference is ground-plane depth (foot_y 930 vs 820).
+
+body_proportions:
+  provenance: verified
+  source: canon/style/HOUSE_STYLE.md section 1
+  value: >-
+    Chibi. Oversized round head, small body, roughly 1:2 head-to-body. Huge
+    white oval eyes with small dark pupils. Mitten hands, simplified feet.
+
+# ---------------------------------------------------------------------------
+generation_method:
+  preferred:
+    - approved_layer_composite
+  rationale:
+    provenance: verified
+    source: docs/audits/COMFYUI_PREVIOUS_WORKFLOW_FORENSICS.md, docs/audits/PANEL_PRODUCTION_LOOP_REPORT.md
+    text: >-
+      Text-to-image is not an option for this character and never was. The
+      forensic audit of the 337 retained ComfyUI history jobs found every single
+      one of them to be a bare text2img graph of six node classes
+      (CheckpointLoaderSimple, CLIPTextEncode x2, EmptyLatentImage, KSampler,
+      VAEDecode, SaveImage). Across all 337 jobs the counts for
+      ControlNetLoader, IPAdapterModelLoader, LoadImage, LoraLoader, VAEEncode
+      and ImageCompositeMasked are all zero. The approved character art was
+      never connected to the generator; every panel was one roll from a written
+      description. The recovered graph for
+      MZ-2026-08-01_P01_PANEL02_seed100102 produced a pink alien creature with a
+      detached floating eyeball from a prompt describing NeonBlue. Identity
+      preservation was never built, so it cannot be "fixed" - it has to be
+      replaced by compositing approved art.
+  not_permitted_as_first_choice:
+    - text2img_new_pose
+  untested_here:
+    - ipadapter_reference   # ip-adapter-plus_sdxl_vit-h is installed but was not used for this character
+    - controlnet_pose       # controlnet-union-sdxl-1.0-promax is installed but was not used for this character
+    - inpaint_repair        # workflow builder exists; never executed against a real defect
+  house_style_agreement:
+    provenance: verified
+    source: canon/style/HOUSE_STYLE.md section 8
+    text: 'Character identity and finish: Approved character art and true-alpha layers. Never text-to-image.'
+
+# ---------------------------------------------------------------------------
+tested_resolution_range:
+  provenance: verified
+  source_layer_native_px: [880, 1184]
+  composite_working_space_px: [960, 1024]
+  neonblue_rendered_in_working_space_px: [209, 314]
+  delivered_panel_px: [1534, 1642]
+  derived_note:
+    provenance: derived
+    text: >-
+      1534/960 = 1.598 and 1642/1024 = 1.604. The delivery resize is therefore
+      not exactly aspect-preserving - about 0.35% anisotropic. Small, but it is
+      a stretch, not a scale. Flagged, not fixed.
+  untested:
+    - Any composite working space other than 960x1024.
+    - Any delivered panel size other than 1534x1642.
+    - Any use of the 912x1216 flat references (they have no alpha).
+
+tested_camera_angles:
+  provenance: verified
+  tested:
+    - name: eye-level, front, midground
+      evidence: workflows/comfyui/experiments/exp005-composite-v2/exp005_report.json
+      plate: exp003_seed760201.png, horizon_y 430, calib_foot_y 1000, calib_height_px 460
+  not_tested:
+    - low angle
+    - high angle
+    - three-quarter camera
+    - profile camera
+    - over-shoulder
+    - close-up generated independently (the close-up in the review package is a
+      crop of the same eye-level frame, not a separate render)
+    - foreground occlusion
+  hard_limit:
+    provenance: measured
+    text: >-
+      The alpha layer set contains 16 front-facing layers and 1 true back view
+      (neonblue_30_backview.png, verified by inspection - no face). There is no
+      three-quarter, profile or over-shoulder layer with alpha. Camera angle is
+      therefore limited to what a front-facing flat cut-out can survive.
+
+# ---------------------------------------------------------------------------
+expression_and_pose_coverage:
+  provenance: verified
+  source: >-
+    Directory listing of source_material/imported_canon/character_layers/neonblue/
+    cross-checked against source_material/imported_canon/character_layers/layer_menu.json,
+    which lists 17 entries for neonblue. Counts agree.
+  total_layers: 17
+  layers:
+    - {file: neonblue_00_clean_base.png, pose: clean_base,  ground_contact: standing}
+    - {file: neonblue_15_laughing.png,   pose: laughing,    ground_contact: standing}
+    - {file: neonblue_16_worried.png,    pose: worried,     ground_contact: standing}
+    - {file: neonblue_17_disgusted.png,  pose: disgusted,   ground_contact: standing}
+    - {file: neonblue_18_sleepy.png,     pose: sleepy,      ground_contact: standing}
+    - {file: neonblue_19_determined.png, pose: determined,  ground_contact: standing}
+    - {file: neonblue_20_confused.png,   pose: confused,    ground_contact: standing}
+    - {file: neonblue_21_running.png,    pose: running,     ground_contact: NON-STANDING (one foot, mid-stride)}
+    - {file: neonblue_22_jumping.png,    pose: jumping,     ground_contact: NON-STANDING (airborne)}
+    - {file: neonblue_23_waving.png,     pose: waving,      ground_contact: standing}
+    - {file: neonblue_24_thinking.png,   pose: thinking,    ground_contact: standing}
+    - {file: neonblue_25_crouching.png,  pose: crouching,   ground_contact: NON-STANDING (declared; not visually verified)}
+    - {file: neonblue_26_reaching.png,   pose: reaching,    ground_contact: standing (declared; not visually verified)}
+    - {file: neonblue_27_defeated.png,   pose: defeated,    ground_contact: NON-STANDING (seated - VERIFIED by inspection)}
+    - {file: neonblue_28_celebrating.png, pose: celebrating, ground_contact: standing (declared; not visually verified)}
+    - {file: neonblue_29_lookingup.png,  pose: lookingup,   ground_contact: standing (declared; not visually verified)}
+    - {file: neonblue_30_backview.png,   pose: backview,    ground_contact: standing (VERIFIED by inspection - true back view)}
+  missing_relative_to_the_flat_reference_set:
+    - neutral, threeqtr, profile, overshoulder, portrait, angry, sad, shocked,
+      smile, walking, armscrossed, sitting, pointing, shout
+    - note: >-
+        Fourteen poses/expressions exist as flat RGB references but have no
+        alpha layer. NeonBlue has no `walking` layer, and no `sitting` layer -
+        `defeated` is the only seated art available.
+  layer_used_in_the_one_validated_panel: neonblue_16_worried.png
+
+# ---------------------------------------------------------------------------
+compositor_settings:
+  # Values used for the ISSUE001-P16-02 candidate (exp005).
+  # NOTE the provenance split. Three of these are recorded in the repository.
+  # Three were supplied to the author of this file and could not be found in
+  # any repository file. They are marked and must be confirmed before reuse.
+  code: app/services/compositor.py
+  plate_calibration:
+    provenance: verified
+    source: workflows/comfyui/experiments/exp003-weighted-style/exp003_seed760201.calibration.yaml
+    horizon_y: 430.0
+    calib_foot_y: 1000.0
+    calib_height_px: 460.0
+    calib_height_in_characters: 1.0
+    ground_surface: metal floor grating, hard reflective
+    caveat: >-
+      The calibration file states plainly that these are art-directed estimates
+      read off the plate by eye, checked against a scale-ladder preview, and are
+      not camera calibration.
+
+  light_and_scale:
+    key_strength:
+      value: 0.22
+      provenance: verified
+      source: docs/audits/PANEL_PRODUCTION_LOOP_REPORT.md EXP-005 ("key strength 0.50 -> 0.22")
+      note: compositor default is 0.55
+    fill_strength:
+      value: 0.10
+      provenance: verified
+      source: docs/audits/PANEL_PRODUCTION_LOOP_REPORT.md EXP-005 ("fill 0.20 -> 0.10")
+      note: compositor default is 0.18
+    scale_multiplier:
+      value: 0.78
+      provenance: verified
+      source: workflows/comfyui/experiments/exp005-composite-v2/exp005_report.json
+    rim_strength:
+      value: 0.10
+      provenance: unverified
+      note: >-
+        NOT FOUND in any repository file. The compositor's LightContract default
+        for rim_strength is 0.0 and no experiment record sets it. Confirm before
+        relying on this value.
+    contact_opacity:
+      value: 0.85
+      provenance: unverified
+      note: >-
+        NOT FOUND in any repository file. Compositor default is 0.72.
+    cast_opacity:
+      value: 0.50
+      provenance: unverified
+      note: >-
+        NOT FOUND in any repository file. Compositor default is 0.42.
+    key_colour:
+      provenance: verified
+      source: docs/audits/PANEL_PRODUCTION_LOOP_REPORT.md EXP-005
+      note: >-
+        Matched to the plate's actual cyan light, not the panel script's ideal
+        red. The calibration file records key_color [200, 80, 58] (red) and
+        fill_color [30, 74, 85]; the report states the key colour was changed
+        for exp005. The exact substituted RGB triple is not recorded anywhere.
+
+  placement_used:
+    provenance: verified
+    source: workflows/comfyui/experiments/exp005-composite-v2/exp005_report.json
+    layer: neonblue_16_worried.png
+    centre_x: 330
+    foot_y: 930
+    depth_plane: midground
+    scale_multiplier: 0.78
+    rendered_px: [209, 314]
+    top_left: [226, 616]
+
+  guards_that_apply_to_this_character:
+    no_flip:
+      provenance: verified
+      source: app/services/compositor.py NO_FLIP
+      entry: 'MZ-CHAR-005: "left-ear silver plug earring"'
+      behaviour: >-
+        The compositor refuses the flip and emits a CANON warning. It does not
+        silently mirror.
+    non_standing_poses:
+      provenance: verified
+      source: app/services/compositor.py NON_STANDING_POSES
+      applies_to_layers: [running, jumping, crouching, defeated]
+      behaviour: >-
+        Warns when the pose slug is in the set and contact_offset is 0.0.
+        It warns; it does not refuse.
+
+# ---------------------------------------------------------------------------
+validation_status:
+  provenance: verified
+  source: docs/audits/PANEL_PRODUCTION_LOOP_REPORT.md
+  panels_produced: 1
+  panel_id: ISSUE001-P16-02
+  panel_status: candidate - NOT approved
+  panel_types_validated: 1 of 10 required
+  runs_per_panel_type_required: 3
+  runs_achieved: 1
+  overall: PANEL PIPELINE PARTIALLY WORKING

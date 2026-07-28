@@ -1,0 +1,525 @@
+# Moodz - generation profile
+#
+# What this file is: the record of how Moodz was actually produced in the
+# 2026-07-28 panel production run, and what the evidence supports.
+#
+# What this file is NOT: an approval. No panel featuring Moodz is approved.
+# `ISSUE001-P16-02` is a candidate. Nothing here authorises anything.
+#
+# This is a `generation-profile.yaml`, not a `character.yaml`. It is therefore
+# NOT bound by `app/services/validation.py::DOCUMENT_BINDINGS`, which only
+# validates `characters/approved/*/character.yaml`. The field names below
+# deliberately borrow the vocabulary of `config/schemas/character.schema.yaml`
+# so that a future `character.yaml` can be derived from it, but this document
+# has not been schema-validated.
+#
+# Every value carries a `provenance` marker:
+#   verified   - read directly from a file in this repository
+#   measured   - computed from the pixel data of files in this repository
+#                during the 2026-07-28 audit
+#   derived    - arithmetic on verified/measured values, shown with its working
+#   unverified - supplied to the author but not found in any repository file
+
+schema: generation-profile
+schema_version: 0.1.0
+status: draft
+written: 2026-07-28
+written_by: phase-5 identity packaging pass
+owner_approval_record: none exists
+
+# ---------------------------------------------------------------------------
+identification:
+  character_id: MZ-CHAR-001
+  display_name: Moodz
+  slug: moodz
+  series_name: Emo Monkey / Fusion Squad lead
+  canon_status: core_canon
+  development_level: 5
+  team_role: emotional anchor
+  provenance: verified
+  sources:
+    - source_material/imported_bibles/character-bibles/MZ-CHAR-001/bible.md
+    - source_material/imported_bibles/character-bibles/MZ-CHAR-001/bible.yaml
+    - source_material/imported_canon/approved_characters/CHARACTER_IMAGE_INDEX.md
+
+# ---------------------------------------------------------------------------
+# Approved reference images
+#
+# Only paths confirmed to exist on disk are listed. See `dangling_references`
+# for the paths the character bible points at that do NOT exist here.
+# ---------------------------------------------------------------------------
+approved_reference_images:
+  provenance: verified
+  primary_reference:
+    path: source_material/imported_canon/approved_characters/moodz/moodz_00_clean_base.png
+    size_px: [880, 1184]
+    mode: RGB
+    note: >-
+      Named as primary production reference by CHARACTER_IMAGE_INDEX.md. This
+      copy is flattened RGB - it has no alpha. The composable copy is in
+      character_layers (below). See `wardrobe.observed_divergence` - this
+      particular reference is the one that disagrees with the bible on jacket
+      colour.
+
+  reference_cards:
+    provenance: verified
+    files:
+      - path: source_material/imported_canon/approved_characters/moodz/moodz.webp
+        size_px: [381, 512]
+        mode: RGB
+        md5: b5703f780af7ff81a2e04b6e54d256a1
+      - path: source_material/imported_canon/approved_characters/moodz/4cc8de245f2f6e1e777cdd9ea1d650a893d7c4d7ba27d8e78cc327551cfc62bc_512.webp
+        size_px: [381, 512]
+        mode: RGB
+        md5: b5703f780af7ff81a2e04b6e54d256a1
+    note: >-
+      The two files are byte-identical (same md5). Redundant, not conflicting.
+      Cite `moodz.webp`.
+
+  flat_reference_set:
+    directory: source_material/imported_canon/approved_characters/moodz/
+    file_count: 31 PNG + 2 WEBP
+    all_png_mode: RGB (no alpha channel on any of the 31)
+    sizes_px:
+      - {size: [880, 1184], count: 18, note: same 18 filenames as the alpha layer set}
+      - {size: [912, 1216], count: 13, note: "views 01-09 and 11-14 only - no alpha equivalent exists"}
+    contains_camera_views_absent_from_layer_set:
+      - moodz_01_neutral.png
+      - moodz_02_threeqtr.png
+      - moodz_03_profile.png
+      - moodz_04_overshoulder.png
+      - moodz_05_portrait.png
+    note: >-
+      These five are the only three-quarter / profile / over-shoulder / portrait
+      references that exist for Moodz anywhere in the repository, and none of
+      them is cut out. They cannot be composited without a matte pass.
+      `moodz_12_sitting.png` is also in this set and also has no alpha.
+
+  composable_layer_set:
+    directory: source_material/imported_canon/character_layers/moodz/
+    file_count: 18
+    all_unique: true          # md5-checked, 18 distinct files
+    canvas_px: [880, 1184]
+    mode: RGBA
+    alpha: true               # background pixels measured at alpha == 0
+    note: >-
+      This is the set the compositor consumes. It is the only true-alpha art
+      that exists for this character. It is one file larger than NeonBlue's
+      because Moodz has a `walking` layer.
+
+dangling_references:
+  provenance: verified
+  problem: >-
+    `bible.yaml` declares a primary reference and nine supporting references
+    under a `references/` tree. No `references/` directory exists under any
+    character bible in this repository - MZ-CHAR-001 contains only bible.md,
+    bible.yaml, continuity-log.md and development-notes.md.
+  declared_but_absent:
+    - references/primary/primary-reference.webp
+    - references/alternate/alternate-pose-01.png
+    - references/alternate/alternate-pose-02.png
+    - references/alternate/alternate-pose-03.png
+    - references/alternate/alternate-pose-04.png
+    - references/alternate/expression-portrait-05.png
+    - references/alternate/alternate-pose-06.png
+    - references/alternate/alternate-pose-07.png
+    - references/alternate/alternate-pose-08.png
+    - references/group/group-fusion-squad-01.png
+  consequence: >-
+    Any tool that resolves reference art from bible.yaml will fail. Resolve
+    from imported_canon paths above instead.
+
+# ---------------------------------------------------------------------------
+colour_palette:
+  bible_swatch_names:
+    provenance: verified
+    source: source_material/imported_bibles/character-bibles/MZ-CHAR-001/bible.yaml (visual_canon.color_palette)
+    values: [black, pale white/grey, brown, blue accent]
+
+  measured_hex:
+    provenance: measured
+    method: >-
+      Modal RGB of fully-opaque pixels (alpha == 255) across
+      moodz_00_clean_base.png, moodz_10_walking.png and moodz_19_determined.png.
+    swatches:
+      - {name: black, hex: "#000000", use: outlines, jacket, pants, hair/fringe - 44% of opaque pixels}
+      - {name: pale grey, hex: "#E0E0E0", use: face, muzzle, stitched chest panel}
+      - {name: chocolate brown, hex: "#534739", use: fur, ears, tail (and the jacket on some layers - see wardrobe)}
+      - {name: blue accent, hex: "#224B9B", use: hair streak / headband / beanie}
+      - {name: mid grey, hex: "#8F8F8F", use: eye rings, studs, platform boot soles}
+
+  card_background_colour:
+    provenance: measured
+    hex: "#EB8E4F"
+    note: >-
+      Orange. It survives in the RGB channels underneath alpha == 0 in every
+      layer file, and Moodz shows measurably more of it bleeding into opaque
+      edge pixels than NeonBlue does. See known-failures.md KF-MZ-04.
+
+# ---------------------------------------------------------------------------
+required_identifying_features:
+  provenance: verified
+  source: bible.md "Visual Rules" / bible.yaml features_that_must_never_change
+  features:
+    - black emo fringe over one eye
+    - blue hair accent/headband/beanie variation
+    - grey eye rings
+    - stitched pale chest
+  side_convention:
+    provenance: measured
+    method: >-
+      Horizontal centroid of blue-accent pixels, expressed as a fraction of the
+      silhouette bounding-box width (0.0 = viewer-left edge, 1.0 = viewer-right).
+      All 18 alpha layers measured.
+    result: >-
+      0.25-0.45 in all 17 front-facing layers; 0.54 (centred) only in
+      moodz_30_backview.png. The blue accent sits left of centre from the
+      viewer's side in every front-facing layer without exception.
+    consequence: >-
+      This is the measurement that makes mirroring a canon violation rather
+      than an art-direction choice.
+
+forbidden_changes:
+  provenance: verified
+  changes:
+    - Do not add glasses. Clever is the only confirmed glasses-wearing monkey.
+    - Do not mirror the character. See `no_flip` below. This is the one canon
+      violation the compositor has actually committed and now refuses.
+    - Do not alter any entry in required_identifying_features.
+  glasses_status: confirmed_no_glasses
+
+wardrobe:
+  provenance: verified
+  source: bible.yaml visual_canon.clothing
+  garments:
+    - open black studded leather jacket
+    - black studded pants
+    - black studded wrist cuffs
+    - grey platform boots
+  observed_divergence:
+    provenance: measured
+    method: >-
+      Count of brown pixels (R 60-160, R-B > 15) inside the torso region
+      (central 40% of silhouette width, 55-75% of silhouette height) per layer.
+    result:
+      brown_jacket_layers:   # torso brown 5 200 - 8 600 px
+        - moodz_00_clean_base.png   # 6744
+        - moodz_10_walking.png      # 8384
+        - moodz_16_worried.png      # 5372
+        - moodz_18_sleepy.png       # 8550
+        - moodz_19_determined.png   # 6873
+        - moodz_24_thinking.png     # 5249
+      black_jacket_layers:   # torso brown 0 - 1 400 px
+        - moodz_15_laughing.png     # 786
+        - moodz_17_disgusted.png    # 1131
+        - moodz_20_confused.png     # 520
+        - moodz_21_running.png      # 349
+        - moodz_22_jumping.png      # 559
+        - moodz_23_waving.png       # 639
+        - moodz_25_crouching.png    # 506
+        - moodz_26_reaching.png     # 0
+        - moodz_28_celebrating.png  # 471
+        - moodz_29_lookingup.png    # 1307
+        - moodz_30_backview.png     # 303
+      intermediate:
+        - moodz_27_defeated.png     # 2175
+    visual_spot_checks: >-
+      moodz_00_clean_base.png inspected - brown jacket, brown mitten hands.
+      moodz_25_crouching.png and moodz_15_laughing.png inspected - black jacket
+      with grey lapel detail, black hands. The measurement agrees with the eye.
+    consequence: >-
+      The bible specifies a BLACK jacket. Six of the eighteen layers show a
+      brown one - including moodz_00_clean_base.png, which is both the named
+      primary production reference AND the layer used in the one panel produced
+      this run. Cutting between a brown-jacket layer and a black-jacket layer
+      inside a scene is a continuity break. Not adjudicated - flagged for the
+      owner. Do not repaint approved art to match the bible sentence.
+
+  hair_variants:
+    provenance: measured
+    method: Silhouette bounding-box top edge and blue-pixel count per layer.
+    result: >-
+      Two groups. A low-crown group (bbox top ~211, ~16 000 blue px) and a
+      raised-crown group (bbox top 98-192, 8 000-83 000 blue px).
+    visual_spot_checks: >-
+      moodz_00_clean_base.png - black fringe sweeping across the viewer-left
+      eye, blue streak down the viewer-left side. moodz_15_laughing.png -
+      blue BEANIE over black hair, with a straight symmetric fringe that does
+      NOT cover either eye.
+    consequence: >-
+      The bible permits "blue hair accent/headband/beanie variation", so the
+      beanie itself is in canon. But "black emo fringe over one eye" is listed
+      as a feature that must never change, and moodz_15_laughing.png does not
+      have it. See known-failures.md KF-MZ-06.
+
+accessories:
+  provenance: verified
+  note: bible.yaml visual_canon.accessories is empty for this character.
+
+# ---------------------------------------------------------------------------
+height_relationship:
+  provenance: measured
+  method: >-
+    Alpha bounding-box height of the standing layers on the shared 880x1184
+    canvas. Eleven Moodz standing layers measured; the majority share a common
+    foot line at y=1038, so the canvases are comparable.
+  moodz_standing_silhouette_px:
+    median: 827
+    low_crown_group: 807-827
+    raised_crown_group: 892-940
+    n: 11
+  neonblue_standing_silhouette_px:
+    median: 941.5
+    range: [925, 978]
+    n: 10
+  statement: >-
+    Moodz's full silhouette is shorter than NeonBlue's - roughly 0.88x on the
+    low-crown Moodz layers (827/941). Most of that gap is NeonBlue's starburst
+    spike crown, which is hair, not stature. Moodz's own silhouette height
+    varies by up to 133 px (16%) between his low-crown and beanie layers, which
+    is a larger swing than the difference between the two characters. Do not
+    stage relative height off the raw silhouette.
+  not_measured:
+    - >-
+      Stature excluding hair. There is no head-top or shoulder landmark
+      annotation, so crown height cannot be separated from body height. Do not
+      state a head-to-head height ratio from this file.
+  do_not_use:
+    - >-
+      The exp005 rendered heights (Moodz 245 px, NeonBlue 314 px) are NOT a
+      height relationship. Both characters used scale_multiplier 0.78; the
+      difference is ground-plane depth (foot_y 820 vs 930).
+
+body_proportions:
+  provenance: verified
+  source: canon/style/HOUSE_STYLE.md section 1
+  value: >-
+    Chibi. Oversized round head, small body, roughly 1:2 head-to-body. Huge
+    white oval eyes with small dark pupils. Mitten hands, simplified feet,
+    visible stitch seams.
+
+# ---------------------------------------------------------------------------
+generation_method:
+  preferred:
+    - approved_layer_composite
+  rationale:
+    provenance: verified
+    source: docs/audits/COMFYUI_PREVIOUS_WORKFLOW_FORENSICS.md, docs/audits/PANEL_PRODUCTION_LOOP_REPORT.md
+    text: >-
+      Text-to-image is not an option for this character and never was. The
+      forensic audit of the 337 retained ComfyUI history jobs found every single
+      one of them to be a bare text2img graph of six node classes
+      (CheckpointLoaderSimple, CLIPTextEncode x2, EmptyLatentImage, KSampler,
+      VAEDecode, SaveImage). Across all 337 jobs the counts for
+      ControlNetLoader, IPAdapterModelLoader, LoadImage, LoraLoader, VAEEncode
+      and ImageCompositeMasked are all zero - the approved character art was
+      never connected to the generator. Moodz's identity is carried almost
+      entirely by an ASYMMETRIC detail (fringe over one eye, blue accent on the
+      left) plus a stitched chest panel, which is precisely the class of detail
+      a text prompt cannot pin down. Compositing approved art is not an
+      optimisation here; it is the only method with any evidence behind it.
+  not_permitted_as_first_choice:
+    - text2img_new_pose
+  untested_here:
+    - ipadapter_reference   # ip-adapter-plus_sdxl_vit-h is installed but was not used for this character
+    - controlnet_pose       # controlnet-union-sdxl-1.0-promax is installed but was not used for this character
+    - inpaint_repair        # workflow builder exists; never executed against a real defect
+  house_style_agreement:
+    provenance: verified
+    source: canon/style/HOUSE_STYLE.md section 8
+    text: 'Character identity and finish: Approved character art and true-alpha layers. Never text-to-image.'
+
+# ---------------------------------------------------------------------------
+tested_resolution_range:
+  provenance: verified
+  source_layer_native_px: [880, 1184]
+  composite_working_space_px: [960, 1024]
+  moodz_rendered_in_working_space_px: [195, 245]
+  delivered_panel_px: [1534, 1642]
+  derived_note:
+    provenance: derived
+    text: >-
+      1534/960 = 1.598 and 1642/1024 = 1.604. The delivery resize is therefore
+      not exactly aspect-preserving - about 0.35% anisotropic. Small, but it is
+      a stretch, not a scale. Flagged, not fixed.
+  readability_caution:
+    provenance: derived
+    text: >-
+      At 245 px tall in the working space, Moodz's stitched chest panel and grey
+      eye rings are only a few pixels across before the 1.6x delivery upscale.
+      Two of his four required identifying features are the smallest details on
+      him. Legibility at final print size has not been formally assessed - the
+      review package contains `readability_final_size.png` (429x459) but no
+      pass/fail record.
+  untested:
+    - Any composite working space other than 960x1024.
+    - Any delivered panel size other than 1534x1642.
+    - Any use of the 912x1216 flat references (they have no alpha).
+
+tested_camera_angles:
+  provenance: verified
+  tested:
+    - name: eye-level, front, midground
+      evidence: workflows/comfyui/experiments/exp005-composite-v2/exp005_report.json
+      plate: exp003_seed760201.png, horizon_y 430, calib_foot_y 1000, calib_height_px 460
+  not_tested:
+    - low angle
+    - high angle
+    - three-quarter camera
+    - profile camera
+    - over-shoulder
+    - close-up generated independently (the close-up in the review package is a
+      crop of the same eye-level frame, not a separate render)
+    - foreground occlusion
+  hard_limit:
+    provenance: measured
+    text: >-
+      The alpha layer set contains 17 front-facing layers and 1 back view
+      (moodz_30_backview.png - blue-accent centroid measured at 0.54, i.e.
+      centred, consistent with a rear view). There is no three-quarter, profile
+      or over-shoulder layer with alpha.
+
+# ---------------------------------------------------------------------------
+expression_and_pose_coverage:
+  provenance: verified
+  source: >-
+    Directory listing of source_material/imported_canon/character_layers/moodz/
+    cross-checked against source_material/imported_canon/character_layers/layer_menu.json,
+    which lists 18 entries for moodz. Counts agree.
+  total_layers: 18
+  layers:
+    - {file: moodz_00_clean_base.png,   pose: clean_base,  ground_contact: standing (VERIFIED by inspection)}
+    - {file: moodz_10_walking.png,      pose: walking,     ground_contact: standing (declared; not visually verified)}
+    - {file: moodz_15_laughing.png,     pose: laughing,    ground_contact: standing (VERIFIED by inspection)}
+    - {file: moodz_16_worried.png,      pose: worried,     ground_contact: standing (declared; not visually verified)}
+    - {file: moodz_17_disgusted.png,    pose: disgusted,   ground_contact: standing (declared; not visually verified)}
+    - {file: moodz_18_sleepy.png,       pose: sleepy,      ground_contact: standing (declared; not visually verified)}
+    - {file: moodz_19_determined.png,   pose: determined,  ground_contact: standing (declared; not visually verified)}
+    - {file: moodz_20_confused.png,     pose: confused,    ground_contact: standing (declared; not visually verified)}
+    - {file: moodz_21_running.png,      pose: running,     ground_contact: NON-STANDING (one foot, mid-stride)}
+    - {file: moodz_22_jumping.png,      pose: jumping,     ground_contact: NON-STANDING (airborne)}
+    - {file: moodz_23_waving.png,       pose: waving,      ground_contact: standing (declared; not visually verified)}
+    - {file: moodz_24_thinking.png,     pose: thinking,    ground_contact: standing (declared; not visually verified)}
+    - {file: moodz_25_crouching.png,    pose: crouching,   ground_contact: "MISLABELLED - inspected and it is STANDING. See known-failures KF-MZ-05"}
+    - {file: moodz_26_reaching.png,     pose: reaching,    ground_contact: standing (declared; not visually verified)}
+    - {file: moodz_27_defeated.png,     pose: defeated,    ground_contact: NON-STANDING per the compositor's table (not visually verified for Moodz)}
+    - {file: moodz_28_celebrating.png,  pose: celebrating, ground_contact: standing (declared; not visually verified)}
+    - {file: moodz_29_lookingup.png,    pose: lookingup,   ground_contact: standing (declared; not visually verified)}
+    - {file: moodz_30_backview.png,     pose: backview,    ground_contact: standing (declared; not visually verified)}
+  missing_relative_to_the_flat_reference_set:
+    - neutral, threeqtr, profile, overshoulder, portrait, angry, sad, shocked,
+      smile, armscrossed, sitting, pointing, shout
+    - note: >-
+        Thirteen poses/expressions exist as flat RGB references but have no
+        alpha layer. Notably `moodz_12_sitting.png` exists but has no alpha, so
+        Moodz cannot currently be staged seated either.
+  layer_used_in_the_one_validated_panel: moodz_00_clean_base.png
+
+# ---------------------------------------------------------------------------
+compositor_settings:
+  # Values used for the ISSUE001-P16-02 candidate (exp005).
+  # NOTE the provenance split. Three of these are recorded in the repository.
+  # Three were supplied to the author of this file and could not be found in
+  # any repository file. They are marked and must be confirmed before reuse.
+  code: app/services/compositor.py
+  plate_calibration:
+    provenance: verified
+    source: workflows/comfyui/experiments/exp003-weighted-style/exp003_seed760201.calibration.yaml
+    horizon_y: 430.0
+    calib_foot_y: 1000.0
+    calib_height_px: 460.0
+    calib_height_in_characters: 1.0
+    ground_surface: metal floor grating, hard reflective
+    caveat: >-
+      The calibration file states plainly that these are art-directed estimates
+      read off the plate by eye, checked against a scale-ladder preview, and are
+      not camera calibration.
+
+  light_and_scale:
+    key_strength:
+      value: 0.22
+      provenance: verified
+      source: docs/audits/PANEL_PRODUCTION_LOOP_REPORT.md EXP-005 ("key strength 0.50 -> 0.22")
+      note: compositor default is 0.55
+    fill_strength:
+      value: 0.10
+      provenance: verified
+      source: docs/audits/PANEL_PRODUCTION_LOOP_REPORT.md EXP-005 ("fill 0.20 -> 0.10")
+      note: compositor default is 0.18
+    scale_multiplier:
+      value: 0.78
+      provenance: verified
+      source: workflows/comfyui/experiments/exp005-composite-v2/exp005_report.json
+    rim_strength:
+      value: 0.10
+      provenance: unverified
+      note: >-
+        NOT FOUND in any repository file. The compositor's LightContract default
+        for rim_strength is 0.0 and no experiment record sets it. Confirm before
+        relying on this value.
+    contact_opacity:
+      value: 0.85
+      provenance: unverified
+      note: >-
+        NOT FOUND in any repository file. Compositor default is 0.72.
+    cast_opacity:
+      value: 0.50
+      provenance: unverified
+      note: >-
+        NOT FOUND in any repository file. Compositor default is 0.42.
+    key_colour:
+      provenance: verified
+      source: docs/audits/PANEL_PRODUCTION_LOOP_REPORT.md EXP-005
+      note: >-
+        Matched to the plate's actual cyan light, not the panel script's ideal
+        red. The calibration file records key_color [200, 80, 58] (red) and
+        fill_color [30, 74, 85]; the report states the key colour was changed
+        for exp005. The exact substituted RGB triple is not recorded anywhere.
+
+  placement_used:
+    provenance: verified
+    source: workflows/comfyui/experiments/exp005-composite-v2/exp005_report.json
+    layer: moodz_00_clean_base.png
+    centre_x: 660
+    foot_y: 820
+    depth_plane: midground
+    scale_multiplier: 0.78
+    rendered_px: [195, 245]
+    top_left: [563, 575]
+    flip: refused by the compositor
+
+  guards_that_apply_to_this_character:
+    no_flip:
+      provenance: verified
+      source: app/services/compositor.py NO_FLIP
+      entry: 'MZ-CHAR-001: "black fringe over one eye, blue accent on the left"'
+      behaviour: >-
+        The compositor refuses the flip and emits a CANON warning. It does not
+        silently mirror.
+      fired_in_exp005: true
+      warning_text: >-
+        "CANON: refused to mirror MZ-CHAR-001 - black fringe over one eye, blue
+        accent on the left"
+    non_standing_poses:
+      provenance: verified
+      source: app/services/compositor.py NON_STANDING_POSES
+      applies_to_layers_by_slug: [running, jumping, crouching, defeated]
+      behaviour: >-
+        Warns when the pose slug is in the set and contact_offset is 0.0.
+        It warns; it does not refuse.
+      known_false_positive: >-
+        moodz_25_crouching.png is not crouched - it is standing. The slug-based
+        guard will demand a contact_offset that this layer does not need. See
+        known-failures.md KF-MZ-05.
+
+# ---------------------------------------------------------------------------
+validation_status:
+  provenance: verified
+  source: docs/audits/PANEL_PRODUCTION_LOOP_REPORT.md
+  panels_produced: 1
+  panel_id: ISSUE001-P16-02
+  panel_status: candidate - NOT approved
+  panel_types_validated: 1 of 10 required
+  runs_per_panel_type_required: 3
+  runs_achieved: 1
+  overall: PANEL PIPELINE PARTIALLY WORKING

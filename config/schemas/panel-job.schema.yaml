@@ -1,0 +1,568 @@
+schema_id: panel_job
+version: 1.0.0
+title: Panel Generation Job
+description: >-
+  Everything a machine needs to produce one panel, and everything a human needs
+  to reproduce or diagnose it afterwards. The panel script says what the panel
+  means; this document says what is actually done about it.
+
+  It exists because the previous system kept the pictures and threw away the
+  configuration. 337 ComfyUI history entries survive with their graphs intact
+  and not one of them can be tied back to a panel, a character or an approved
+  reference. See docs/audits/COMFYUI_PREVIOUS_WORKFLOW_FORENSICS.md.
+
+  Every model, adapter and workflow enum below is constrained to what is
+  installed on the production host, verified by a read-only query against the
+  running ComfyUI instance (app/adapters/comfyui.py). A job that validates is a
+  job that can be run. Where a field names a capability that is NOT yet built,
+  that is called out in a comment above the field rather than left to be
+  discovered at run time.
+identity_field: panel_id
+
+fields:
+  # --- Addressing ------------------------------------------------------------
+  panel_id:
+    type: string
+    required: true
+    pattern: "^ISSUE[0-9]{3}-P[0-9]{2}-[0-9]{2}$"
+    description: >-
+      The panel this job produces. Must match a panel_id in the issue's
+      panel-script.yaml. Unique across every panel job.
+  issue_id: {type: string, required: true, pattern: "^issue-[0-9]{3}$", description: Owning issue.}
+  page_number: {type: integer, required: true, minimum: 1, description: Page the panel sits on.}
+  panel_number: {type: integer, required: true, minimum: 1, description: Panel within the page.}
+
+  # --- Geometry --------------------------------------------------------------
+  # Pixel and millimetre sizes are not decoration. A panel generated at the
+  # wrong size is either upscaled (impossible here - zero upscale models are
+  # installed) or resampled down, and both are visible at print size.
+  panel_width_px:
+    type: integer
+    required: true
+    minimum: 1
+    description: Final panel width in pixels, as demanded by 05_layouts/layout-spec.yaml.
+  panel_height_px:
+    type: integer
+    required: true
+    minimum: 1
+    description: Final panel height in pixels, as demanded by the layout spec.
+  aspect_ratio:
+    type: number
+    required: true
+    minimum: 0.01
+    description: >-
+      panel_width_px divided by panel_height_px, to four decimal places.
+      Recorded separately so a size change that silently alters the crop is
+      visible in a diff.
+  print_width_mm:
+    type: number
+    required: true
+    minimum: 0.1
+    description: Panel width on the printed page, in millimetres.
+  print_height_mm:
+    type: number
+    required: true
+    minimum: 0.1
+    description: Panel height on the printed page, in millimetres.
+  print_dpi:
+    type: integer
+    required: true
+    minimum: 72
+    description: >-
+      Resolution the pixel size is intended to satisfy. The issue format
+      standard prints at 300; anything lower must be justified in qa_requirements.
+  safe_zone:
+    type: map
+    required: true
+    description: >-
+      The region inside the panel that must hold every piece of story-critical
+      art. Nothing that carries the beat may sit outside it.
+    fields:
+      inset_px:
+        type: integer
+        required: true
+        minimum: 0
+        description: >-
+          Uniform inset from the panel edge, in pixels. Zero is legitimate for a
+          panel that sits wholly inside the page live area; state why in `basis`.
+      basis:
+        type: string
+        required: true
+        description: >-
+          Where the number comes from - the page live margin, the trim, or a
+          panel-specific decision. A safe zone with no stated basis is a guess.
+  bleed:
+    type: map
+    required: true
+    description: >-
+      Whether this panel runs off the trimmed page edge, and by how much. A
+      bleeding panel must be generated oversize; a non-bleeding one must not.
+    fields:
+      bleeds: {type: boolean, required: true, description: True if any edge of the panel crosses the trim.}
+      bleed_mm:
+        type: number
+        required: true
+        minimum: 0
+        description: >-
+          Bleed allowance in millimetres from the page spec. Meaningful only
+          when `bleeds` is true; recorded regardless so the page value is visible.
+      edges:
+        type: list
+        required: false
+        item_type: string
+        enum_items: [top, bottom, left, right]
+        description: Which edges bleed. Empty or absent when `bleeds` is false.
+
+  # --- Intent ----------------------------------------------------------------
+  story_purpose:
+    type: string
+    required: true
+    description: >-
+      The job this panel does in the story. Copied from the panel script's
+      narrative_purpose so a generation job can be read without the script open.
+      If the two disagree, the script wins and this document is stale.
+  visual_beat:
+    type: string
+    required: true
+    description: What the reader sees happen. Must be visible in the image, not merely captioned.
+
+  # --- Place and time --------------------------------------------------------
+  location:
+    type: string
+    required: true
+    pattern: "^LOC-[a-z0-9-]+$"
+    description: Location ID. Must match a location bible.
+  time_of_day: {type: string, required: true, description: Story time, and the light state it implies.}
+  weather:
+    type: string
+    required: true
+    description: >-
+      Conditions. Required even for interiors - "interior, weather not visible"
+      is an answer, an absent field is not.
+
+  # --- Camera ----------------------------------------------------------------
+  camera:
+    type: map
+    required: true
+    description: >-
+      The camera, split into the five decisions that are independently wrong-able.
+      The panel script carries shot, angle and lens feeling; height and direction
+      are added here because a compositor needs them and prose does not supply them.
+    fields:
+      shot:
+        type: string
+        required: true
+        enum: [extreme_wide, wide, full, medium_wide, medium, medium_close, close, extreme_close, insert, over_shoulder, two_shot]
+        description: Shot size. Same vocabulary as panel.schema.yaml camera_shot.
+      angle:
+        type: string
+        required: true
+        enum: [eye_level, low_angle, high_angle, worm_eye, birds_eye, dutch]
+        description: Tilt of the camera relative to level.
+      height:
+        type: string
+        required: true
+        enum: [ground_level, low, character_eye, high, overhead]
+        description: >-
+          Where the camera sits vertically. Distinct from `angle`: a camera at
+          character eye height can still be tilted.
+      direction:
+        type: string
+        required: true
+        enum: [front, three_quarter, profile, rear_three_quarter, rear]
+        description: >-
+          Where the camera sits relative to the primary subject, AS RENDERED.
+          Record what the artwork can actually deliver, not what the script asked
+          for; a divergence belongs in `defects`, not in a hopeful value here.
+      focal_style:
+        type: string
+        required: true
+        enum: [wide_distorted, normal, compressed_telephoto]
+        description: Perspective character of the shot. Same vocabulary as panel.schema.yaml lens_feeling.
+
+  # --- Cast (the integration contract) ---------------------------------------
+  characters:
+    type: list
+    required: false
+    item_fields:
+      character_id:
+        type: string
+        required: true
+        pattern: "^MZ-CHAR-[A-Z0-9]+$"
+        description: Who. Must exist in the character library.
+      approved_reference_images:
+        type: list
+        required: true
+        item_type: string
+        description: >-
+          Repository-relative paths to the approved art this character's
+          appearance comes from. Identity comes from approved art, never from a
+          text description - that substitution is the documented root cause of
+          the previous system's off-model output.
+      pose: {type: string, required: true, description: Body pose, and which layer or approved pose supplies it.}
+      expression: {type: string, required: true, description: Facial expression, and which layer or approved expression supplies it.}
+      body_orientation:
+        type: string
+        required: true
+        enum: [front, three_quarter_left, three_quarter_right, profile_left, profile_right, rear_three_quarter_left, rear_three_quarter_right, rear]
+        description: >-
+          Which way the body faces, AS RENDERED. The current layer library is
+          front-facing turnarounds only, so `front` is often the honest answer
+          even when the script asks for a profile.
+      screen_position:
+        type: string
+        required: true
+        description: >-
+          Where the figure sits in frame, in pixels where they are known. State
+          the coordinate space - it is not always the final panel size.
+      relative_scale:
+        type: number
+        required: true
+        minimum: 0.01
+        description: >-
+          Multiplier applied to the ground-plane height computed at this
+          character's contact point. 1.0 is a standing adult at that depth.
+      eye_line: {type: string, required: true, description: Where they are looking.}
+      hand_action: {type: string, required: true, description: What the hands are doing.}
+      prop_interaction: {type: string, required: false, description: Prop handled, and how. Omit when nothing is held or touched.}
+      wardrobe: {type: string, required: true, description: What they are wearing, and whether it differs from the character bible default.}
+      lighting_notes:
+        type: string
+        required: true
+        description: >-
+          How this figure is lit into the plate - key and fill strengths, colour
+          match, any relight applied. Desaturation from an over-strong relight is
+          a recorded failure mode on cel-shaded art.
+      occlusion_notes: {type: string, required: false, description: What crosses in front of this character, and where.}
+    description: >-
+      One entry per character in frame. Legitimately empty for a plate-only or
+      pure-environment job.
+
+  # --- Space -----------------------------------------------------------------
+  foreground: {type: string, required: true, description: What sits in front of the cast.}
+  midground: {type: string, required: true, description: The plane the cast occupies.}
+  background: {type: string, required: true, description: What sits behind the cast.}
+  ground_plane:
+    type: map
+    required: true
+    description: >-
+      The floor, expressed so character scale is computed rather than guessed.
+      Field names match the plate calibration files written by
+      scripts/production/calibrate_plate.py so values copy across without translation.
+    fields:
+      ground_surface: {type: string, required: true, description: What the characters stand on, and how it takes a shadow.}
+      horizon_y: {type: number, required: true, description: Screen y of the horizon, in the coordinate space named below.}
+      calib_foot_y: {type: number, required: true, description: Screen y of the calibration object's contact point.}
+      calib_height_px: {type: number, required: true, minimum: 0.01, description: Screen height of the calibration object, in pixels.}
+      calib_height_in_characters:
+        type: number
+        required: true
+        minimum: 0.01
+        description: Height of the calibration object expressed in character heights.
+      calib_x: {type: number, required: false, description: Screen x of the calibration object.}
+      calib_object: {type: string, required: true, description: What was measured. A named object, not "the floor".}
+      coordinate_space:
+        type: string
+        required: true
+        description: >-
+          The pixel space every number in this map and in screen_position is
+          expressed in. Frequently the generated plate size rather than the final
+          panel size, because compositing happens before the final resize.
+      calibration_source: {type: string, required: false, description: Repository-relative path to the calibration file these values came from.}
+      derivation_note:
+        type: string
+        required: true
+        description: >-
+          How the values were obtained. Calibration on this project is currently
+          art-directed estimate read off the plate, not camera calibration, and
+          saying so is the difference between a convention and a false measurement.
+  depth_plan: {type: string, required: true, description: How foreground, midground and background read as one continuous space.}
+
+  # --- Light and colour ------------------------------------------------------
+  lighting_direction:
+    type: string
+    required: true
+    description: >-
+      Where the key light comes from, in words and in degrees where a compositor
+      value exists. 0 is from frame right, 90 is directly above, 180 is from frame left.
+  lighting_temperature:
+    type: string
+    required: true
+    description: >-
+      Colour of key and fill. Give RGB triples where the compositor consumed
+      them; a named temperature alone cannot be checked against the artwork.
+  shadow_requirements:
+    type: map
+    required: true
+    description: >-
+      Shadows are the single cheapest test of whether a character is in the
+      scene or in front of it. Absence of a contact shadow is a CRITICAL defect.
+    fields:
+      contact_shadow: {type: string, required: true, description: Shape and behaviour of the shadow where the figure meets the ground.}
+      cast_shadow: {type: string, required: false, description: The longer shadow thrown by the figure. Omit only where the light genuinely throws none.}
+      cast_direction: {type: string, required: false, description: Which way cast shadows run, and from which source.}
+      verification:
+        type: string
+        required: true
+        description: >-
+          How shadow presence was confirmed. On dark plates, by eye is not
+          adequate; state the measurement and its result.
+  color_mood: {type: string, required: true, description: Palette and emotional temperature of the panel.}
+
+  # --- Lettering reservations ------------------------------------------------
+  # Zones are fractions of the panel box, matching 05_layouts/layout-spec.yaml.
+  # They are an instruction to the generation and compositing stages: the art is
+  # composed with these areas quiet. A balloon is never moved to dodge a face
+  # after the fact.
+  dialogue_safe_zones:
+    type: list
+    required: false
+    item_fields:
+      speaker: {type: string, required: true, description: Character ID this balloon belongs to, or OFF.}
+      x: {type: number, required: true, minimum: 0, maximum: 1, description: Left edge as a fraction of panel width.}
+      y: {type: number, required: true, minimum: 0, maximum: 1, description: Top edge as a fraction of panel height.}
+      w: {type: number, required: true, minimum: 0, maximum: 1, description: Width as a fraction of panel width.}
+      h: {type: number, required: true, minimum: 0, maximum: 1, description: Height as a fraction of panel height.}
+      note: {type: string, required: false, description: What this zone must specifically avoid.}
+    description: Balloon reservations in reading order. Absent for a silent panel.
+  caption_safe_zone:
+    type: map
+    required: false
+    description: Reservation for a narration box, if the panel carries one.
+    fields:
+      x: {type: number, required: true, minimum: 0, maximum: 1, description: Left edge as a fraction of panel width.}
+      y: {type: number, required: true, minimum: 0, maximum: 1, description: Top edge as a fraction of panel height.}
+      w: {type: number, required: true, minimum: 0, maximum: 1, description: Width as a fraction of panel width.}
+      h: {type: number, required: true, minimum: 0, maximum: 1, description: Height as a fraction of panel height.}
+      note: {type: string, required: false, description: What this zone must specifically avoid.}
+  sfx_safe_zones:
+    type: list
+    required: false
+    item_fields:
+      sfx: {type: string, required: true, description: The effect this zone is reserved for.}
+      x: {type: number, required: true, minimum: 0, maximum: 1, description: Left edge as a fraction of panel width.}
+      y: {type: number, required: true, minimum: 0, maximum: 1, description: Top edge as a fraction of panel height.}
+      w: {type: number, required: true, minimum: 0, maximum: 1, description: Width as a fraction of panel width.}
+      h: {type: number, required: true, minimum: 0, maximum: 1, description: Height as a fraction of panel height.}
+      note: {type: string, required: false, description: What this zone must specifically avoid.}
+    description: >-
+      SFX reservations. SFX are artwork placed at the effects stage and are
+      never rendered into the panel art.
+
+  # --- Production route ------------------------------------------------------
+  generation_strategy:
+    type: string
+    required: true
+    enum: [approved_layer_composite, background_plus_layers, controlnet_pose_render, inpaint_repair, manual_art, reuse_approved_panel]
+    description: >-
+      How the panel is actually made. Same vocabulary as panel.schema.yaml
+      generation_approach; the two must agree.
+
+  # The five workflow slots. Each names the code path that runs, or `none`.
+  # `none` is a real answer and must be used rather than leaving a slot vague.
+  background_workflow:
+    type: string
+    required: true
+    enum: [none, background_plate, background_from_reference]
+    description: >-
+      Plate builder from app/services/workflows.py. `background_plate` has run
+      and has evidence. `background_from_reference` is built and unit-tested but
+      has NEVER been executed - it needs depth_anything_v2_vitl.pth, whose
+      presence on this host is unverified.
+  # ASPIRATIONAL VALUE: `ipadapter_controlnet_pose` is the Class C route in
+  # docs/workflows/COMFYUI_INTEGRATION_PLAN.md. No builder for it exists in
+  # app/services/workflows.py. It is admitted here so a job can declare intent,
+  # but nothing will execute it today.
+  character_workflow:
+    type: string
+    required: true
+    enum: [none, approved_alpha_layer, ipadapter_controlnet_pose]
+    description: >-
+      How character art is obtained. `approved_alpha_layer` takes it from the
+      approved layer library and involves no diffusion, which is the only route
+      with identity evidence behind it.
+  composite_workflow:
+    type: string
+    required: true
+    enum: [none, deterministic_compositor_v1]
+    description: >-
+      Assembly stage. `deterministic_compositor_v1` is app/services/compositor.py -
+      no diffusion, so a defect can be diagnosed rather than re-rolled.
+  # BUILT BUT NEVER EXECUTED: inpaint_repair has not been run against a real
+  # defect. Selecting it commits to being the first.
+  repair_workflow:
+    type: string
+    required: true
+    enum: [none, inpaint_repair]
+    description: Masked local repair builder from app/services/workflows.py.
+  # ASPIRATIONAL FIELD: `none` is the only permitted value. Zero upscale models
+  # are installed on this host (UpscaleModelLoader is registered, its model list
+  # is empty). Widen this enum when a model is installed, not before.
+  upscale_workflow:
+    type: string
+    required: true
+    enum: [none]
+    description: >-
+      Enlargement stage. Not available. A panel that needs more pixels than the
+      generator produces must be generated larger or tiled.
+
+  # --- Generation parameters -------------------------------------------------
+  # Every enum below was read from the running host, not from documentation.
+  model:
+    type: string
+    required: true
+    enum: [RealVisXL_V4.0.safetensors, animagine-xl-4.0.safetensors]
+    description: >-
+      Checkpoint. These two are the only ones installed. animagine-xl-4.0 is
+      admitted because it is present, not because it is recommended - it failed
+      the house-style comparison in exp001 and produced all 49 legacy Issue 001 jobs.
+  vae:
+    type: string
+    required: true
+    enum: [checkpoint_baked, sdxl_vae.safetensors, z_image_ae.safetensors]
+    description: >-
+      Decoder. `checkpoint_baked` means the VAE that ships inside the checkpoint,
+      which is what a graph does when VAEDecode is wired to the loader. The host
+      also exposes the TAESD family and pixel_space; those are preview decoders
+      and are excluded from production jobs.
+  # NOT MACHINE-ENFORCED: this dialect has no "must be empty" constraint. Zero
+  # LoRAs are installed, so any entry names a file that does not exist and the
+  # job will fail at submission. Reviewers must check this by eye until a LoRA
+  # exists and this field gains an enum_items list.
+  loras:
+    type: list
+    required: false
+    item_type: string
+    description: >-
+      LoRA files applied. MUST be empty or absent. The host reports zero LoRAs
+      installed. Training a house-style LoRA is the highest-value future work
+      and is what would make this field meaningful.
+  reference_adapter:
+    type: string
+    required: true
+    enum: [none, ip-adapter-plus_sdxl_vit-h.safetensors]
+    description: >-
+      IP-Adapter used to condition on approved reference art. The only installed
+      adapter needs CLIP-ViT-H-14-laion2B-s32B-b79K.safetensors as its vision
+      encoder, which is present. Its value on chibi faces is untested.
+  controlnet:
+    type: string
+    required: true
+    enum: [none, controlnet-union-sdxl-1.0-promax.safetensors]
+    description: >-
+      ControlNet used. One union model is installed; the control type (depth,
+      openpose, canny and others) is selected by SetUnionControlNetType inside
+      the graph, not here.
+  # The host advertises 44 samplers. This enum admits the non-ancestral,
+  # non-SDE, non-cfg_pp subset only: exp006 established bit-identical pixels for
+  # a repeated dpmpp_2m graph, and that reproducibility claim has not been
+  # tested for the stochastic families.
+  sampler:
+    type: string
+    required: true
+    enum: [euler, heun, dpm_2, lms, dpmpp_2m, deis, ddim, uni_pc, uni_pc_bh2]
+    description: Sampler. dpmpp_2m is the only one with panel evidence behind it.
+  scheduler:
+    type: string
+    required: true
+    enum: [simple, sgm_uniform, karras, exponential, ddim_uniform, beta, normal, linear_quadratic, kl_optimal]
+    description: Noise schedule. The full list registered on this host.
+  steps:
+    type: integer
+    required: true
+    minimum: 1
+    maximum: 150
+    description: Sampling steps. Measured cost at 960x1024 and 32 steps is roughly two minutes uncontended and over six when the shared GPU is busy.
+  cfg:
+    type: number
+    required: true
+    minimum: 0.0
+    maximum: 30.0
+    description: >-
+      Classifier-free guidance. The source project recorded hallucination at
+      cfg 1.0 on an img2img route; low values are not a free lunch.
+  seed:
+    type: integer
+    required: true
+    minimum: 0
+    description: >-
+      Always recorded. An unreproducible image cannot be iterated on, and
+      recovering the seed after the fact is not possible.
+
+  # --- Provenance ------------------------------------------------------------
+  source_assets:
+    type: list
+    required: true
+    item_type: string
+    description: >-
+      Repository-relative paths to every input the panel depends on - plates,
+      calibrations, character layers, props. An asset that cannot be traced to
+      an approved source is a recorded defect class of its own.
+  masks:
+    type: list
+    required: false
+    item_type: string
+    description: Repository-relative paths to masks used, for repair or occlusion.
+  control_images:
+    type: list
+    required: false
+    item_type: string
+    description: Repository-relative paths to depth, pose or edge maps fed to ControlNet.
+  workflow_version:
+    type: string
+    required: true
+    description: >-
+      Version tag of the workflow builders used, so a graph change is
+      attributable. Currently panel-production-v1; nothing is in
+      workflows/comfyui/locked/ because nothing has earned a lock.
+
+  # --- Review ----------------------------------------------------------------
+  qa_requirements:
+    type: list
+    required: true
+    item_type: string
+    description: >-
+      Panel-specific checks beyond the standard gate in
+      docs/quality/QUALITY_STANDARD.md. These are human judgements against the
+      artwork; no automated check in this repository looks at a picture.
+  approval_status:
+    type: string
+    required: true
+    enum: [draft, candidate, in_review, approved, rejected]
+    description: >-
+      State of the artwork this job produced. Extends the four-state document
+      vocabulary with `candidate`, matching the job-manifest contract in
+      docs/workflows/COMFYUI_INTEGRATION_PLAN.md: generated output starts at
+      `candidate` and no job may ever write `approved`. Only a human may.
+  reviewer:
+    type: string
+    required: false
+    description: >-
+      The human who reviewed the output. Empty until a human actually has.
+      Never written by a generation step.
+  defects:
+    type: list
+    required: false
+    item_fields:
+      code:
+        type: string
+        required: true
+        pattern: "^(ASSET|IDENT|ANAT|INTEG|STAGE|PANEL|PAGE|ISSUE|PROC)-[A-Z0-9-]+$"
+        description: Code from docs/quality/DEFECT_TAXONOMY.md.
+      severity:
+        type: string
+        required: true
+        enum: [BLOCKER, CRITICAL, MAJOR, MINOR, COSMETIC]
+        description: Severity, defaulting to the taxonomy's value for the code.
+      description: {type: string, required: true, description: What is wrong, specifically.}
+      evidence: {type: string, required: false, description: Repository-relative path to the image, crop or report showing it.}
+      status:
+        type: string
+        required: true
+        enum: [open, fixed, accepted, rejected]
+        description: >-
+          Where the defect stands. `accepted` is a human decision with a stated
+          reason, not a way of clearing a list.
+    description: >-
+      Defects found in the output. An empty or absent list is a claim that none
+      were found, not a claim that none exist.

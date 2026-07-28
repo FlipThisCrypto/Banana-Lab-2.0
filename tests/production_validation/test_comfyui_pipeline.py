@@ -255,3 +255,44 @@ def test_job_manifests_record_both_hashes():
             assert output.get("sha256"), f"{path.name} output missing sha256"
             checked += 1
     assert checked, "no outputs recorded in any manifest"
+
+
+# --- source material immutability ----------------------------------------
+
+def test_imported_source_material_is_not_writable():
+    """Regression for INCIDENT-2026-07-28.
+
+    A subagent modified 81 imported files despite an explicit instruction not
+    to. `assert_safe_write_target` did not stop it because direct file writes
+    never call it. The OS read-only bit does.
+
+    Re-protect with: python scripts/migration/protect_source_material.py
+    """
+    import os
+
+    from app.core import paths
+
+    protected = [
+        paths.IMPORTED_CANON,
+        paths.IMPORTED_BIBLES,
+        paths.VISUAL_REFERENCES,
+        paths.HISTORICAL_ISSUES,
+        paths.LEGACY_REFERENCE,
+    ]
+    writable: list[str] = []
+    total = 0
+    for root in protected:
+        if not root.is_dir():
+            continue
+        for path in root.rglob("*"):
+            if path.is_file():
+                total += 1
+                if os.access(path, os.W_OK):
+                    writable.append(path.relative_to(paths.REPO_ROOT).as_posix())
+
+    if total == 0:
+        pytest.skip("imported source material not present in this checkout")
+    assert not writable, (
+        f"{len(writable)} of {total} imported files are writable; "
+        f"run scripts/migration/protect_source_material.py. First few: {writable[:5]}"
+    )

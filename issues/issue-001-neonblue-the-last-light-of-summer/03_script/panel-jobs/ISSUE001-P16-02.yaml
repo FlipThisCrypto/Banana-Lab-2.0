@@ -1,0 +1,280 @@
+# Panel job for ISSUE001-P16-02 - the controlled test panel.
+#
+# This is a record of what was ACTUALLY run on 2026-07-28, not a plan. Every
+# value below is taken from a file in this repository:
+#
+#   plate graph and parameters   workflows/comfyui/experiments/exp003-weighted-style/
+#                                exp003_seed760201_manifest.json
+#   ground plane and light       workflows/comfyui/experiments/exp003-weighted-style/
+#                                exp003_seed760201.calibration.yaml
+#   placements                   issues/.../12_qa/review-packages/ISSUE001-P16-02/
+#                                placement_report.json
+#   panel size and bubble zone   issues/.../05_layouts/layout-spec.yaml, page 16
+#   intent, blocking, QA list    issues/.../03_script/panel-script.yaml
+#
+# The panel is a CANDIDATE. It is not approved and it carries three open
+# defects. See the `defects` block at the end.
+
+panel_id: ISSUE001-P16-02
+issue_id: issue-001
+page_number: 16
+panel_number: 2
+
+# --- Geometry ---------------------------------------------------------------
+# 1534 x 1642 is the layout spec's box for this panel, 0.7136 x 0.5167 of the
+# page live area, which is 182 x 269 mm at 300 dpi.
+panel_width_px: 1534
+panel_height_px: 1642
+aspect_ratio: 0.9342
+print_width_mm: 129.9
+print_height_mm: 139.0
+print_dpi: 300
+safe_zone:
+  inset_px: 0
+  basis: >-
+    The panel sits wholly inside the page live area, which is already inset
+    14 mm from trim and 4 mm inside the 10 mm safe margin (layout-spec.yaml
+    page block). No further inset is needed against the trim. Lettering is
+    constrained by dialogue_safe_zones below, not by this number.
+bleed:
+  bleeds: false
+  bleed_mm: 3.0
+
+# --- Intent -----------------------------------------------------------------
+story_purpose: Moodz removes the obligation rather than issuing an instruction.
+visual_beat: Moodz closer now, still not touching him.
+
+# --- Place and time ---------------------------------------------------------
+location: LOC-festival-service-corridor
+time_of_day: Night.
+weather: >-
+  Interior corridor, weather not visible. The issue is a clear, warm,
+  late-summer evening with dry ground.
+
+# --- Camera -----------------------------------------------------------------
+camera:
+  shot: medium
+  angle: eye_level
+  height: character_eye
+  direction: front
+  focal_style: normal
+  # `direction: front` is what the artwork delivers, not what the script asks
+  # for. The script stages NeonBlue side-on. The layer library holds only
+  # front-facing turnarounds, so a profile was not available. Recorded as
+  # defect STAGE-EYELINE below.
+
+# --- Cast -------------------------------------------------------------------
+# Placement numbers are in PLATE space (960 x 1024), not final panel space.
+# Compositing happens before the final resize to 1534 x 1642.
+characters:
+  - character_id: MZ-CHAR-005
+    approved_reference_images:
+      - source_material/imported_canon/character_layers/neonblue/neonblue_16_worried.png
+    pose: >-
+      Standing, both feet flat, weight settled back. Supplied by the approved
+      alpha layer neonblue_16_worried.png - a standing front-facing turnaround.
+      No pose generation was involved.
+    expression: >-
+      Worried, from the same layer. The panel script declares EXP-005-sad; the
+      nearest available approved layer is 16_worried and that is what was used.
+    body_orientation: front
+    screen_position: >-
+      Frame left. Centre x 330, foot y 930, rendered 209 x 314 px, top-left
+      226,616. Midground. Plate coordinates.
+    relative_scale: 0.78
+    eye_line: >-
+      At Moodz per the script. NOT achieved - the layer looks at camera.
+    hand_action: One hand still against the wall.
+    prop_interaction: None. Nothing held or touched.
+    wardrobe: >-
+      Black vest and white-studded punk pants, per the character bible. No
+      wardrobe change is scripted for this panel.
+    lighting_notes: >-
+      Relit toward the plate rather than repainted. The exp005 pass reduced key
+      strength from 0.50 to 0.22 and fill from 0.20 to 0.10 after exp004
+      desaturated both figures; cel-shaded art needs key strength at or below
+      0.25. The exact LightContract object used was not saved - see defect
+      PROC-NO-PROVENANCE.
+    occlusion_notes: None. Nothing crosses in front of this figure.
+
+  - character_id: MZ-CHAR-001
+    approved_reference_images:
+      - source_material/imported_canon/character_layers/moodz/moodz_00_clean_base.png
+    pose: >-
+      Standing, both feet flat, weight even, hands at his sides - deliberately
+      not reaching out. Supplied by the approved alpha layer
+      moodz_00_clean_base.png. NOT mirrored: the compositor's NO_FLIP guard
+      refuses to flip this character because his black fringe and blue accent
+      are left-side canon features. A mirrored Moodz was a real canon violation
+      in exp004.
+    expression: >-
+      Neutral, from moodz_00_clean_base.png, matching the script's EXP-001-neutral.
+    body_orientation: front
+    screen_position: >-
+      Frame right, a clear step further from camera. Centre x 660, foot y 820,
+      rendered 195 x 245 px, top-left 563,575. Midground. Plate coordinates.
+    relative_scale: 0.78
+    eye_line: >-
+      Level at NeonBlue per the script. NOT achieved - the layer looks at camera.
+    hand_action: Hands at his sides, not reaching out. This is the beat.
+    prop_interaction: None. Nothing held or touched.
+    wardrobe: >-
+      Black studded jacket, pants and cuffs with grey platform boots, per the
+      character bible. No wardrobe change is scripted.
+    lighting_notes: >-
+      Same relight treatment and same reduced key and fill as NeonBlue. Depth
+      falloff is carried by scale, not by extra haze - both figures are on the
+      midground plane, which applies no blur and 0.06 haze.
+    occlusion_notes: None. Nothing crosses in front of this figure.
+
+# --- Space ------------------------------------------------------------------
+foreground: >-
+  Clear open floor. Deliberately empty - the plate prompt asks for a clear
+  foreground so the two figures have somewhere to stand.
+midground: >-
+  Both characters, on the grating, at measurably different depths. NeonBlue
+  314 px tall at foot y 930; Moodz 245 px at foot y 820.
+background: >-
+  Service corridor running away from camera in deep one-point perspective.
+  Pipework along the left wall, one red strip light on the ceiling midway down,
+  cyan glow from a distant doorway at the far end.
+ground_plane:
+  ground_surface: Metal floor grating, hard and reflective.
+  horizon_y: 430.0
+  calib_foot_y: 1000.0
+  calib_height_px: 460.0
+  calib_height_in_characters: 1.0
+  calib_x: 480
+  calib_object: Notional standing character at the near floor edge.
+  coordinate_space: >-
+    Plate pixels, 960 x 1024. Every y value in this map and in screen_position
+    above is in this space, before the final resize to 1534 x 1642.
+  calibration_source: workflows/comfyui/experiments/exp003-weighted-style/exp003_seed760201.calibration.yaml
+  derivation_note: >-
+    Art-directed estimates read off the plate by eye and checked against the
+    scale-ladder preview. These are NOT camera calibration. Treat as a
+    production convention, not a measurement.
+depth_plan: >-
+  NeonBlue nearer, Moodz further, corridor continuing past both to darkness.
+  Depth reads through scale falloff on the calibrated ground plane, light
+  falloff, and the floor perspective. Both figures sit on the same midground
+  plane, so no depth blur is applied to either.
+
+# --- Light and colour -------------------------------------------------------
+lighting_direction: >-
+  Overhead. key_angle_deg 90.0 in the compositor's convention, meaning directly
+  above, from the red ceiling practical between and slightly behind the figures.
+lighting_temperature: >-
+  Key RGB 200,80,58 - warm red-orange. Fill RGB 30,74,85 - cold cyan bounce
+  from the corridor's far end. Both values are from the saved plate calibration.
+  The run report describes exp005 as having matched the key to the plate's cyan
+  instead; the two disagree and the compositing script that would settle it was
+  not saved. See defect PROC-NO-PROVENANCE.
+shadow_requirements:
+  contact_shadow: >-
+    Hard contact shadow under both figures, on grating. The shadow shape must
+    follow the grating pattern rather than reading as a generic ellipse. This is
+    an open QA item - the compositor draws a blurred ellipse and does not yet
+    conform the shadow to the surface pattern.
+  cast_shadow: Both figures throw short shadows toward camera from the overhead source.
+  cast_direction: >-
+    Away from the key. With key_angle_deg 90 the lean term is near zero, so the
+    cast shadow stays close under the figure rather than raking sideways.
+  verification: >-
+    Measured, not eyeballed - the plate floor is near-black and shadows are not
+    visible by impression. Differencing the composite against the plate gives
+    13252 changed pixels, bbox x 226-434 y 864-994, max delta 146.3, against an
+    expected contact region around y 930, x 330. The shadow lands at the contact
+    point. Evidence image is in the review package.
+color_mood: Warm red and cold cyan meeting. Two people, two colours, one floor.
+
+# --- Lettering reservations -------------------------------------------------
+dialogue_safe_zones:
+  - speaker: MZ-CHAR-001
+    x: 0.28
+    y: 0.05
+    w: 0.44
+    h: 0.2
+    note: >-
+      Upper centre. Two stacked balloons read top to bottom inside this one
+      zone. Must stay clear of both faces and of NeonBlue's hand on the wall.
+
+# --- Production route -------------------------------------------------------
+generation_strategy: background_plus_layers
+background_workflow: background_plate
+character_workflow: approved_alpha_layer
+composite_workflow: deterministic_compositor_v1
+repair_workflow: none
+upscale_workflow: none
+
+# --- Generation parameters --------------------------------------------------
+# These apply to the plate. The composite stage runs no diffusion at all.
+model: RealVisXL_V4.0.safetensors
+vae: checkpoint_baked
+loras: []
+reference_adapter: none
+controlnet: none
+sampler: dpmpp_2m
+scheduler: karras
+steps: 32
+cfg: 6.0
+seed: 760201
+# The plate took 116.6 s on this host. exp006 re-ran this exact graph and seed
+# and produced bit-identical decoded pixels, so the plate is reproducible.
+
+# --- Provenance -------------------------------------------------------------
+source_assets:
+  - workflows/comfyui/experiments/exp003-weighted-style/exp003_seed760201.png
+  - workflows/comfyui/experiments/exp003-weighted-style/exp003_seed760201.calibration.yaml
+  - source_material/imported_canon/character_layers/neonblue/neonblue_16_worried.png
+  - source_material/imported_canon/character_layers/moodz/moodz_00_clean_base.png
+masks: []
+control_images: []
+workflow_version: panel-production-v1
+
+# --- Review -----------------------------------------------------------------
+qa_requirements:
+  - CONTROLLED TEST PANEL - method gate before any bulk generation
+  - Both characters recognisable against approved reference
+  - Feet meet the grating with correct perspective
+  - Contact shadow follows the grating pattern, not a generic ellipse
+  - Key light direction matches the overhead practical on both figures
+  - No matte halo at any character edge
+  - Relative scale consistent with the door frame reference
+  - Moodz is visibly not reaching toward NeonBlue
+  - Reads as house style beside an Edition Two panel
+approval_status: candidate
+reviewer: ""
+defects:
+  - code: ASSET-UNAPPROVED
+    severity: BLOCKER
+    description: >-
+      The plate is an experiment output, not an approved location plate. It was
+      never human-selected and it does not match the approved
+      LOC-festival-service-corridor reference. The panel cannot be approved
+      until it is rebuilt on an approved, calibrated festival plate.
+    evidence: workflows/comfyui/experiments/exp003-weighted-style/exp003_seed760201.png
+    status: open
+  - code: STAGE-EYELINE
+    severity: MAJOR
+    description: >-
+      Both figures read as facing camera. The script declares NeonBlue looking
+      at Moodz and Moodz level at NeonBlue. The approved layer library contains
+      front-facing turnarounds only, so directed eye lines are not currently
+      achievable for any two-character conversation. Unsolved - likely needs
+      ControlNet openpose over approved art.
+    evidence: issues/issue-001-neonblue-the-last-light-of-summer/12_qa/review-packages/ISSUE001-P16-02/crop_face_neonblue.png
+    status: open
+  - code: PROC-NO-PROVENANCE
+    severity: MAJOR
+    description: >-
+      The compositing stage has no saved configuration. The plate is fully
+      reproducible from its graph and manifest, but the script that produced the
+      composite - the Placement list, the LightContract, the output size - was
+      not committed. The key colour recorded in the plate calibration
+      (200,80,58, red-orange) and the key colour described in the run report
+      (the plate's cyan) disagree, and nothing in the repository resolves which
+      was used. This document is the first saved record of the stage and it is a
+      reconstruction, not a capture.
+    evidence: docs/audits/PANEL_PRODUCTION_LOOP_REPORT.md
+    status: open
