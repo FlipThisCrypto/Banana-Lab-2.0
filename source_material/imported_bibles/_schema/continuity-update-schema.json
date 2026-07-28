@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "monkeyzoo/continuity-update-schema.json",
+  "title": "MonkeyZoo Character Continuity Update",
+  "type": "object",
+  "required": ["issue_id", "character_id", "update_type", "summary", "canon_impact"],
+  "properties": {
+    "issue_id": { "type": "string", "minLength": 1 },
+    "character_id": { "type": "string", "pattern": "^MZ-CHAR-[A-Z0-9-]+$" },
+    "character_display_name": { "type": ["string", "null"] },
+    "update_type": {
+      "type": "string",
+      "enum": ["new_trait", "trait_strengthened", "trait_retired", "relationship_change", "major_event", "lesson_learned", "open_arc", "visual_correction", "contradiction"]
+    },
+    "summary": { "type": "string", "minLength": 1 },
+    "affected_traits": { "type": "array", "items": { "type": "string" } },
+    "canon_impact": {
+      "type": "string",
+      "enum": ["canon", "established", "experimental", "optional", "dormant", "retired", "contradicted", "unknown", "reserved"]
+    },
+    "source_files": { "type": "array", "items": { "type": "string" } },
+    "requires_owner_review": { "type": "boolean", "default": false },
+    "notes": { "type": ["string", "null"] }
+  },
+  "additionalProperties": false
+}

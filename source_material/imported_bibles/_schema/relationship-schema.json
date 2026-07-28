@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "monkeyzoo/relationship-schema.json",
+  "title": "MonkeyZoo Character Relationship",
+  "type": "object",
+  "required": ["target_character_id", "relationship_status"],
+  "properties": {
+    "target_character_id": { "type": ["string", "null"], "pattern": "^MZ-CHAR-[A-Z0-9-]+$" },
+    "target_display_name": { "type": ["string", "null"] },
+    "relationship_type": { "type": ["string", "null"] },
+    "how_this_character_sees_them": { "type": ["string", "null"] },
+    "how_the_other_character_sees_this_character": { "type": ["string", "null"] },
+    "source_of_tension": { "type": ["string", "null"] },
+    "source_of_affection": { "type": ["string", "null"] },
+    "typical_interaction": { "type": ["string", "null"] },
+    "relationship_status": {
+      "type": "string",
+      "enum": ["canon", "established", "experimental", "optional", "dormant", "retired", "contradicted", "unknown", "reserved"]
+    },
+    "established_issue_references": { "type": "array", "items": { "type": "string" } },
+    "notes": { "type": ["string", "null"] }
+  },
+  "additionalProperties": false
+}

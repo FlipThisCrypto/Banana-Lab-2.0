@@ -1,0 +1,117 @@
+# =============================================================================
+# Banana Lab 2.0 - COMIC FORMAT STANDARD
+#
+# Authority: OWNER-MANDATED, 2026-07-28.
+# "I need the new finished comics to be [industry-standard page and panel
+#  counts]... lock this into the build."
+#
+# This standard OUTRANKS the story bibles on format. Where the MonkeyZoo season
+# bible recommends 8 pages and 20 panels (SEASON-BIBLE.md section 18), that
+# recommendation is SUPERSEDED for all new production. See
+# canon/rules/FORMAT_STANDARD.md for the reasoning and the migration note.
+#
+# Enforced by:
+#   app/services/validation.py  -> validate_issue_format()
+#   python -m app.cli.main validate
+# =============================================================================
+
+version: 1.0.0
+effective_from: 2026-07-28
+authority: owner_mandated
+supersedes:
+  - "SEASON-BIBLE.md section 18 (8 pages / 20 panels recommended standard)"
+
+formats:
+
+  # ---------------------------------------------------------------------------
+  single_issue:
+    label: Single-Issue Mainstream Comic Book
+    description: >-
+      The standard monthly floppy. Total pages include covers and front/back
+      matter; story pages are the sequential-art pages only.
+    total_pages:
+      min: 24
+      max: 32
+      typical: 28
+    story_pages:
+      min: 20
+      max: 22
+      typical: 22
+    panels_per_page:
+      average_target: 5.0
+      average_tolerance: 0.8   # issue average must land within +/- of target
+      min: 1                   # a splash page
+      max: 9
+      soft_max: 6              # above this is allowed but flagged for review
+    total_panels:
+      # Derived guidance, not a hard gate: story_pages * average_target
+      min: 100
+      max: 132
+    notes:
+      - A page with 1 panel is a splash and must earn it.
+      - Pages above 6 panels are permitted but rare; the validator warns.
+      - Pages above 9 panels fail.
+
+  # ---------------------------------------------------------------------------
+  trade_paperback:
+    label: Trade Paperback (Collection)
+    description: Collected edition gathering multiple single issues.
+    total_pages:
+      min: 96
+      max: 200
+      typical: 144
+    story_pages:
+      min: 88
+      max: 190
+      typical: 132
+    panels_per_page:
+      average_target: 5.0
+      average_tolerance: 0.8
+      min: 1
+      max: 9
+      soft_max: 6
+    notes:
+      - Commonly 120 to 160 pages.
+      - Panel standards are inherited from the collected issues.
+
+  # ---------------------------------------------------------------------------
+  original_graphic_novel:
+    label: Original Graphic Novel
+    description: Standalone long-form work, not serialised first.
+    total_pages:
+      min: 48
+      max: 500
+      typical: 120
+    story_pages:
+      min: 44
+      max: 490
+      typical: 112
+    panels_per_page:
+      average_target: 5.0
+      average_tolerance: 1.0   # long form earns more pacing latitude
+      min: 1
+      max: 9
+      soft_max: 6
+
+# --- Non-story page budget ---------------------------------------------------
+# What fills the gap between total_pages and story_pages in a single issue.
+front_and_back_matter:
+  single_issue:
+    - {slot: front_cover, pages: 1, required: true, note: "Carries the Fiend Studios collectible stamp."}
+    - {slot: inside_front_cover, pages: 1, required: true, note: "Credits, recap, or full-bleed art."}
+    - {slot: story, pages: 22, required: true}
+    - {slot: back_matter, pages: 2, required: false, note: "Character notes, process pages, next-issue tease."}
+    - {slot: inside_back_cover, pages: 1, required: true}
+    - {slot: back_cover, pages: 1, required: true}
+    # 1 + 1 + 22 + 2 + 1 + 1 = 28 total, inside the 24-32 window.
+
+# --- Rhythm requirements -----------------------------------------------------
+# Hitting an average of 5 by putting 5 panels on every page would reproduce the
+# exact monotony this rebuild exists to correct. Variety is mandatory.
+rhythm:
+  require_panel_count_variety: true
+  min_distinct_panel_counts: 4      # across the issue's pages
+  max_consecutive_pages_same_count: 2
+  require_at_least_one_splash: true
+  require_at_least_one_dense_page: true   # 7 or more panels
+  no_repeated_grid_on_consecutive_pages: true

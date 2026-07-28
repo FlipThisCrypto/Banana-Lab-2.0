@@ -1,0 +1,953 @@
+schema_version: '1.0'
+identification:
+  current_display_name: Japes
+  series_name: Cheeky Monkey
+  personal_name: Japes
+  legacy_label: Cheeky
+  nationality: British
+  country_of_origin: United Kingdom
+  codename: null
+  nicknames:
+  - mz_faction_cheeky
+  naming_status: personal_name_canon
+  character_id: MZ-CHAR-CHEEKY
+  development_level: 2
+  canon_status: approved_canon
+visual_canon:
+  primary_reference_image: references/primary/primary-reference.png
+  supporting_reference_images:
+  - references/alternate/alternate-pose-01.png
+  - references/alternate/alternate-pose-02.png
+  - references/alternate/alternate-pose-03.png
+  - references/alternate/alternate-pose-04.png
+  - references/alternate/expression-portrait-05.png
+  - references/alternate/alternate-pose-06.png
+  - references/alternate/alternate-pose-07.png
+  - references/alternate/alternate-pose-08.png
+  - references/group/group-fusion-squad-01.png
+  species_or_form:
+  - category: visual_feature
+    name: monkey form
+    value: MonkeyZoo monkey character form.
+    status: canon
+    strength: defining
+    usage_frequency: almost always
+    confidence: confirmed canon
+    rationale: All current character refs are MonkeyZoo monkey designs or documented monkey roles.
+    evidence: &id001
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - all appearances
+    incompatible_contexts:
+    - non-monkey redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id001
+    notes: null
+  body_shape:
+  - category: visual_feature
+    name: Monkey with huge solid-blue eyes, tongue out, short mohawk-like hair, open vest, and banana-print teal
+      shorts.
+    value: Monkey with huge solid-blue eyes, tongue out, short mohawk-like hair, open vest, and banana-print teal
+      shorts.
+    status: canon
+    strength: moderate
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id002
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id002
+    notes: null
+  face: []
+  eyes:
+  - category: visual_feature
+    name: 'no'
+    value: 'no'
+    status: canon
+    strength: background
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id003
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id003
+    notes: null
+  hair_or_fur: []
+  clothing:
+  - category: visual_feature
+    name: open dark vest
+    value: open dark vest
+    status: canon
+    strength: strong
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id004
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id004
+    notes: null
+  - category: visual_feature
+    name: banana-print teal shorts
+    value: banana-print teal shorts
+    status: canon
+    strength: strong
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id005
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id005
+    notes: null
+  accessories: []
+  color_palette:
+  - category: color_preference_or_aversion
+    name: blue eyes
+    value: blue eyes
+    status: canon
+    strength: strong
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id006
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id006
+    notes: null
+  - category: color_preference_or_aversion
+    name: teal/yellow shorts
+    value: teal/yellow shorts
+    status: canon
+    strength: strong
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id007
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id007
+    notes: null
+  - category: color_preference_or_aversion
+    name: brown fur
+    value: brown fur
+    status: canon
+    strength: strong
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id008
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id008
+    notes: null
+  - category: color_preference_or_aversion
+    name: cream face
+    value: cream face
+    status: canon
+    strength: strong
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id009
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id009
+    notes: null
+  signature_silhouette:
+  - category: visual_feature
+    name: huge solid-blue eyes
+    value: huge solid-blue eyes
+    status: canon
+    strength: defining
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id010
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id010
+    notes: null
+  - category: visual_feature
+    name: tongue-out expression
+    value: tongue-out expression
+    status: canon
+    strength: defining
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id011
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id011
+    notes: null
+  distinguishing_features:
+  - category: visual_feature
+    name: huge solid-blue eyes
+    value: huge solid-blue eyes
+    status: canon
+    strength: strong
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id012
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id012
+    notes: null
+  - category: visual_feature
+    name: tongue-out expression
+    value: tongue-out expression
+    status: canon
+    strength: strong
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id013
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id013
+    notes: null
+  - category: visual_feature
+    name: banana-print shorts
+    value: banana-print shorts
+    status: canon
+    strength: strong
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id014
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id014
+    notes: null
+  features_that_must_never_change:
+  - &id042
+    category: visual_feature
+    name: huge solid-blue eyes
+    value: huge solid-blue eyes
+    status: canon
+    strength: defining
+    usage_frequency: almost always
+    confidence: confirmed canon
+    rationale: Taken from completed inventory and approved refs.
+    evidence: &id015
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - all visual appearances
+    incompatible_contexts:
+    - redesigns without owner approval
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id015
+    notes: null
+  - category: visual_feature
+    name: tongue-out expression
+    value: tongue-out expression
+    status: canon
+    strength: defining
+    usage_frequency: almost always
+    confidence: confirmed canon
+    rationale: Taken from completed inventory and approved refs.
+    evidence: &id016
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - all visual appearances
+    incompatible_contexts:
+    - redesigns without owner approval
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id016
+    notes: null
+  - category: visual_feature
+    name: banana-print shorts
+    value: banana-print shorts
+    status: canon
+    strength: defining
+    usage_frequency: almost always
+    confidence: confirmed canon
+    rationale: Taken from completed inventory and approved refs.
+    evidence: &id017
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - all visual appearances
+    incompatible_contexts:
+    - redesigns without owner approval
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id017
+    notes: null
+  features_that_may_vary:
+  - category: visual_feature
+    name: pose and expression set
+    value: Approved alternate poses and expressions may vary by scene.
+    status: established
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: confirmed canon
+    rationale: Approved 30-pose reference sets exist for visual characters.
+    evidence: &id018
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - scene acting
+    incompatible_contexts:
+    - changing identity markers
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id018
+    notes: null
+  prohibited_visual_additions: &id043
+  - category: visual_feature
+    name: glasses added without approval
+    value: Do not add glasses; Clever is the only confirmed glasses-wearing monkey.
+    status: canon
+    strength: defining
+    usage_frequency: never
+    confidence: confirmed canon
+    rationale: Inventory glasses rule.
+    evidence: &id019
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - owner-approved redesign
+    incompatible_contexts:
+    - ordinary art generation
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id019
+    notes: null
+  glasses_status: confirmed_no_glasses
+character_core:
+  archetype:
+  - category: role
+    name: archetype
+    value: mischievous crowd mover
+    status: established
+    strength: strong
+    usage_frequency: often
+    confidence: strong inference
+    rationale: Synthesized from existing canon, inventory, and repeated draft role.
+    evidence: &id020
+    - MonkeyZoo_Comic_Factory/00_SYSTEM/character_bible.md
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - story planning
+    incompatible_contexts:
+    - treating archetype as a single joke
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id020
+    notes: null
+  team_role:
+  - category: role
+    name: team role
+    value: chaos redirector
+    status: established
+    strength: strong
+    usage_frequency: often
+    confidence: strong inference
+    rationale: Chosen to avoid duplicating exact story function across the cast.
+    evidence: &id021
+    - MonkeyZoo_Comic_Factory/00_SYSTEM/character_bible.md
+    - july/2026-07-monkeyzoo-july-edition-test.md
+    compatible_contexts:
+    - ensemble planning
+    incompatible_contexts:
+    - every issue requiring this role
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id021
+    notes: null
+  story_function:
+  - category: role
+    name: story function
+    value: chaos redirector
+    status: established
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: strong inference
+    rationale: Derived from documented issue use and visual identity.
+    evidence: &id022
+    - july/2026-07-monkeyzoo-july-edition-test.md
+    - MonkeyZoo_Comic_Factory/00_SYSTEM/character_bible.md
+    compatible_contexts:
+    - plot assignment
+    incompatible_contexts:
+    - forcing spotlight
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id022
+    notes: null
+  dominant_traits:
+  - &id036
+    category: specific_talent
+    name: prank redirection
+    value: Can turn chaos into crowd movement or distraction.
+    status: established
+    strength: strong
+    usage_frequency: sometimes
+    confidence: confirmed canon
+    rationale: July draft assigns prank war and crowd distraction; faction archetype says chaotic showman.
+    evidence: &id023
+    - july/2026-07-monkeyzoo-july-edition-test.md
+    - MonkeyZoo_Comic_Factory/00_SYSTEM/character_bible.md
+    compatible_contexts:
+    - evacuation
+    - comic relief
+    incompatible_contexts:
+    - undercutting serious trauma beats
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id023
+    notes: null
+  - category: emotional_tell
+    name: open mischief
+    value: Tongue-out expression and blue-eyed design support playful readable mischief.
+    status: experimental
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: strong inference
+    rationale: Repeated visual refs show tongue-out and high expressiveness.
+    evidence:
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - light action
+    incompatible_contexts:
+    - making him cruel
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs:
+    - character-bibles/_inventory/character-inventory.json
+    notes: null
+  strengths:
+  - &id035
+    category: specific_talent
+    name: moves attention
+    value: Redirects eyes and energy quickly.
+    status: established
+    strength: strong
+    usage_frequency: sometimes
+    confidence: strong inference
+    rationale: Crowd distraction role implies useful attention control.
+    evidence: &id024
+    - july/2026-07-monkeyzoo-july-edition-test.md
+    compatible_contexts:
+    - evacuations
+    - decoy plans
+    incompatible_contexts:
+    - quiet exposition
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id024
+    notes: null
+  flaws:
+  - &id037
+    category: signature_mistake
+    name: mistimes the joke
+    value: Can misread when play is helping versus escalating.
+    status: experimental
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: experimental suggestion
+    rationale: A useful flaw derived from documented prank role.
+    evidence: &id025
+    - july/2026-07-monkeyzoo-july-edition-test.md
+    compatible_contexts:
+    - crowd scenes
+    incompatible_contexts:
+    - every scene as prank failure
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id025
+    notes: null
+  vulnerabilities:
+  - &id028
+    category: personal_rule
+    name: needs laughter to be useful
+    value: May overvalue being the fun one.
+    status: experimental
+    strength: subtle
+    usage_frequency: rarely
+    confidence: experimental suggestion
+    rationale: Gives the showman role a future emotional hook without canonizing it strongly.
+    evidence: &id026
+    - MonkeyZoo_Comic_Factory/00_SYSTEM/character_bible.md
+    compatible_contexts:
+    - spotlight issue
+    incompatible_contexts:
+    - ensemble filler
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id026
+    notes: null
+  motivation:
+  - category: motivation
+    name: growth direction
+    value: Learning when a joke should protect people instead of just getting a reaction.
+    status: experimental
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: experimental suggestion
+    rationale: Future-facing seed based on current canon gaps.
+    evidence: &id027
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - future issue planning
+    incompatible_contexts:
+    - treating as approved canon before review
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id027
+    notes: null
+  fear: []
+  personal_values: []
+  internal_contradiction:
+  - *id028
+voice_and_dialogue:
+  speech_rhythm: []
+  vocabulary_level: []
+  sentence_length: []
+  humor_style:
+  - category: speech_pattern
+    name: humor style
+    value: visual prank energy
+    status: experimental
+    strength: subtle
+    usage_frequency: sometimes
+    confidence: strong inference
+    rationale: Set by documented voice where available and conservative team differentiation elsewhere.
+    evidence: &id029
+    - MonkeyZoo_Comic_Factory/00_SYSTEM/character_bible.md
+    - july/2026-07-monkeyzoo-july-edition-test.md
+    compatible_contexts:
+    - dialogue drafting
+    incompatible_contexts:
+    - flattening character into gag
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id029
+    notes: null
+  catchphrase: []
+  favorite_words: []
+  words_the_character_avoids: []
+  stress_speech: []
+  excited_speech: []
+  sad_speech: []
+  angry_speech: []
+  example_dialogue: []
+  dialogue_rules:
+  - category: writing_rule
+    name: do not caricature voice
+    value: Use the speech trait only when it supports the scene.
+    status: established
+    strength: strong
+    usage_frequency: often
+    confidence: strong inference
+    rationale: Request requires rules preventing caricature.
+    evidence: &id030
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - dialogue polish
+    incompatible_contexts:
+    - filler quirks
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id030
+    notes: null
+behavior:
+  default_behavior: &id032 []
+  stress_response:
+  - *id028
+  conflict_response:
+  - category: role
+    name: conflict style
+    value: turns danger into distraction
+    status: experimental
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: strong inference
+    rationale: Differentiates conflict behavior across the team.
+    evidence: &id031
+    - july/2026-07-monkeyzoo-july-edition-test.md
+    - MonkeyZoo_Comic_Factory/00_SYSTEM/character_bible.md
+    compatible_contexts:
+    - conflict scenes
+    incompatible_contexts:
+    - repeating formula
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id031
+    notes: null
+  success_response: []
+  failure_response: []
+  habits: []
+  quirks: *id032
+  physical_ticks:
+  - &id050
+    category: physical_tick
+    name: tongue-out showmanship
+    value: Uses exaggerated face/body language to sell the bit.
+    status: established
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: strong inference
+    rationale: Visual refs repeatedly show tongue-out expression.
+    evidence: &id033
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - comedy panels
+    incompatible_contexts:
+    - serious grief scenes
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id033
+    notes: null
+  props: []
+  emotional_tells:
+  - &id049
+    category: emotional_tell
+    name: open mischief
+    value: Tongue-out expression and blue-eyed design support playful readable mischief.
+    status: retired
+    strength: moderate
+    usage_frequency: never
+    confidence: strong inference
+    rationale: Repeated visual refs show tongue-out and high expressiveness.
+    evidence: &id034
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - light action
+    incompatible_contexts:
+    - making him cruel
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id034
+    notes: 'REJECTED:'
+  entrance_behavior: []
+  exit_behavior: []
+  celebration_behavior: []
+skills_and_limitations:
+  core_abilities:
+  - *id035
+  secondary_skills: []
+  specific_talents:
+  - *id036
+  - *id035
+  weaknesses:
+  - *id037
+  things_the_character_believes_they_can_do: []
+  things_the_character_actually_can_do:
+  - *id035
+  situations_where_they_excel: []
+  situations_where_they_struggle:
+  - *id037
+  - *id028
+relationships: []
+story_use:
+  best_story_genres: []
+  best_adventure_roles:
+  - category: role
+    name: best adventure role
+    value: chaos redirector
+    status: experimental
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: strong inference
+    rationale: Based on current team differentiation.
+    evidence: &id038
+    - july/2026-07-monkeyzoo-july-edition-test.md
+    compatible_contexts:
+    - issue planning
+    incompatible_contexts:
+    - mandatory use
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id038
+    notes: null
+  typical_plot_contribution:
+  - category: role
+    name: plot contribution
+    value: chaos redirector
+    status: experimental
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: strong inference
+    rationale: Evidence-backed starting point only.
+    evidence: &id039
+    - july/2026-07-monkeyzoo-july-edition-test.md
+    - MonkeyZoo_Comic_Factory/00_SYSTEM/character_bible.md
+    compatible_contexts:
+    - ensemble scenes
+    incompatible_contexts:
+    - overuse
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id039
+    notes: null
+  comic_relief_function:
+  - category: role
+    name: humor function
+    value: visual prank energy
+    status: experimental
+    strength: subtle
+    usage_frequency: sometimes
+    confidence: strong inference
+    rationale: Keeps humor distinct without requiring a gag.
+    evidence: &id040
+    - MonkeyZoo_Comic_Factory/00_SYSTEM/character_bible.md
+    - july/2026-07-monkeyzoo-july-edition-test.md
+    compatible_contexts:
+    - light panels
+    incompatible_contexts:
+    - serious beats if mismatched
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id040
+    notes: null
+  emotional_function: []
+  problem_solving_function:
+  - *id035
+  appropriate_spotlight_scenes: []
+  situations_to_avoid:
+  - category: writing_rule
+    name: avoid caricature
+    value: Do not reduce the character to the easiest visual joke or single trait.
+    status: established
+    strength: strong
+    usage_frequency: often
+    confidence: strong inference
+    rationale: Required by prompt and consistent with schema purpose.
+    evidence: &id041
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - all writing
+    incompatible_contexts:
+    - none
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id041
+    notes: null
+  pairings_that_work_well: []
+  pairings_that_should_be_used_sparingly: []
+writing_rules:
+  always:
+  - *id042
+  often:
+  - *id035
+  sometimes: *id032
+  rarely: []
+  never: *id043
+  anti_caricature_rules:
+  - category: writing_rule
+    name: anti-caricature
+    value: Let the character have scene purpose beyond one quirk.
+    status: established
+    strength: strong
+    usage_frequency: often
+    confidence: strong inference
+    rationale: Required to prevent overloaded or one-dimensional use.
+    evidence: &id044
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - all writing
+    incompatible_contexts:
+    - none
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id044
+    notes: null
+running_elements:
+  running_gags: []
+  recurring_mysteries: []
+  repeated_props: []
+  ongoing_goals:
+  - category: personal_mission
+    name: growth seed
+    value: Learning when a joke should protect people instead of just getting a reaction.
+    status: experimental
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: experimental suggestion
+    rationale: Future-facing direction for review.
+    evidence: &id045
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - future arcs
+    incompatible_contexts:
+    - canon until approved
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id045
+    notes: null
+  unresolved_questions:
+  - category: recurring_mystery
+    name: unresolved naming or future work
+    value: Future review may refine name, relationships, and depth.
+    status: reserved
+    strength: background
+    usage_frequency: special circumstances only
+    confidence: reserved
+    rationale: Several characters are intentionally sparse or series-named.
+    evidence: &id046
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - Bible review
+    incompatible_contexts:
+    - issue dialogue
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id046
+    notes: null
+  future_seeds:
+  - category: personal_mission
+    name: future growth
+    value: Learning when a joke should protect people instead of just getting a reaction.
+    status: experimental
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: experimental suggestion
+    rationale: Evidence-informed next direction.
+    evidence: &id047
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - future planning
+    incompatible_contexts:
+    - treating as locked canon
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id047
+    notes: null
+growth_and_continuity:
+  first_appearance: null
+  published_appearances:
+  - MonkeyZoo_Comic_Factory/00_SYSTEM/character_bible.md
+  - MonkeyZoo_Comic_Factory/00_SYSTEM/monkeyzoo_master_bible.md
+  - MonkeyZoo_Comic_Factory/00_SYSTEM/world_bible.md
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-07_Mango_Pier/art_prompt_pack.json
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-07_Mango_Pier/issue_brief.md
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-07_Mango_Pier/issue_script.md
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-07_Mango_Pier/metadata.json
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-07_Mango_Pier/page_panel_plan.json
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-07_Mango_Pier/qa_report.md
+  - MonkeyZoo_Comic_Factory/03_APPROVED_CANON/approved_characters/_ref_matrix_30.md
+  - character-bibles/_inventory/artwork-inventory.csv
+  - character-bibles/_inventory/canon-conflicts.md
+  - character-bibles/_inventory/character-inventory.json
+  - character-bibles/_inventory/character-inventory.md
+  - july/2026-07-monkeyzoo-july-edition-test.md
+  lessons_learned: []
+  new_traits_introduced: []
+  traits_strengthened: []
+  traits_retired: []
+  relationship_changes: []
+  major_story_events: []
+  current_emotional_state: []
+  open_character_arcs:
+  - category: continuity
+    name: growth seed
+    value: Learning when a joke should protect people instead of just getting a reaction.
+    status: experimental
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: experimental suggestion
+    rationale: Reserved for owner review before canonization.
+    evidence: &id048
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - future continuity
+    incompatible_contexts:
+    - current canon summary
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id048
+    notes: null
+issue_level_usage:
+  traits_eligible_for_selection:
+  - *id036
+  - *id049
+  - *id035
+  - *id037
+  - *id050
+  maximum_defining_traits_per_issue: 1
+  maximum_minor_quirks_per_issue: 1
+  catchphrase_cooldown:
+    minimum_issues_between_uses: 1
+    last_used_issue: null
+    notes: Use no more than once per issue unless repetition is the point of the scene.
+  running_gag_cooldown:
+    minimum_issues_between_uses: 1
+    last_used_issue: null
+    notes: Do not use a running element as filler.
+  recent_traits_used: []
+  traits_that_should_not_appear_together: []
+  required_context_for_special_traits: []
+source_notes:
+- Initial Bible generated from completed inventory, existing character_bible.md, continuity ledger, and July draft.
+- Experimental traits are evidence-based suggestions and are not owner-approved canon yet.

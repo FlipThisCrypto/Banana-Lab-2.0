@@ -1,0 +1,178 @@
+schema_id: character
+version: 1.0.0
+title: Character Bible
+description: >-
+  Identity, performance and generation record for one character. The character
+  bible outranks every other document on questions of who a character is and
+  how they may be drawn. Story bibles may propose new history; they may not
+  silently change identity.
+identity_field: character_id
+
+fields:
+  # --- Identification --------------------------------------------------------
+  character_id:
+    type: string
+    required: true
+    pattern: "^MZ-CHAR-[A-Z0-9]+$"
+    description: Stable identifier. Never reused, never renumbered.
+  display_name:
+    type: string
+    required: true
+    description: The name used in scripts, dialogue attribution and credits.
+  canon_status:
+    type: string
+    required: true
+    enum: [core_canon, proposed_story_canon, experimental, deprecated]
+    description: >-
+      core_canon is owner-approved identity. proposed_story_canon is introduced
+      by a story bible and awaits approval.
+  source_provenance:
+    type: string
+    required: true
+    description: Where this record came from, including the imported source path.
+  last_reviewed:
+    type: date
+    required: true
+    description: Date a human last confirmed this record.
+  approval:
+    type: map
+    required: true
+    description: Human approval record. Never written by a generation step.
+    fields:
+      approved: {type: boolean, required: true, description: Owner approval state.}
+      actor: {type: string, required: true, description: Who approved it.}
+      note: {type: string, required: false, description: Approval context.}
+
+  # --- Physical identity -----------------------------------------------------
+  species:
+    type: string
+    required: true
+    description: Species presentation, e.g. monkey.
+  age_presentation:
+    type: string
+    required: true
+    description: How old the character reads on the page, not a birth date.
+  height_relationship:
+    type: string
+    required: true
+    description: >-
+      Height expressed relative to the cast, not in absolute units. Absolute
+      heights invite scale drift; relative statements survive style changes.
+  body_proportions:
+    type: string
+    required: true
+    description: Head-to-body ratio and build.
+  face_shape: {type: string, required: true, description: Head and muzzle silhouette.}
+  eye_design: {type: string, required: true, description: Eye shape, pupil style, eye ring treatment.}
+  fur_or_skin_colors:
+    type: list
+    required: true
+    item_type: string
+    description: Named fur or skin colours.
+  color_palette:
+    type: list
+    required: true
+    item_fields:
+      name: {type: string, required: true, description: Swatch name.}
+      hex: {type: string, required: true, pattern: "^#[0-9A-Fa-f]{6}$", description: Hex value.}
+      use: {type: string, required: true, description: Where the swatch applies.}
+    description: The character's controlled palette.
+  hair: {type: string, required: true, description: Hair shape, colour and parting.}
+  wardrobe:
+    type: list
+    required: true
+    item_type: string
+    description: Default garments.
+  accessories:
+    type: list
+    required: false
+    item_type: string
+    description: Persistent worn objects.
+  required_identifying_features:
+    type: list
+    required: true
+    item_type: string
+    description: >-
+      Features that must be legible in every appearance. If one is missing the
+      panel fails character QA regardless of how good it looks.
+  forbidden_changes:
+    type: list
+    required: true
+    item_type: string
+    description: Changes that are never permitted without owner approval.
+
+  # --- Performance -----------------------------------------------------------
+  personality: {type: string, required: true, description: Who they are under pressure.}
+  motivation: {type: string, required: true, description: What they are reaching for.}
+  fears: {type: list, required: true, item_type: string, description: What they avoid.}
+  strengths: {type: list, required: true, item_type: string, description: Story-useful capabilities.}
+  weaknesses: {type: list, required: true, item_type: string, description: Story-useful limitations.}
+  speech_style: {type: string, required: true, description: Rhythm, length and register of their lines.}
+  common_phrases: {type: list, required: false, item_type: string, description: Approved recurring lines.}
+  humor_style: {type: string, required: false, description: How they are funny, if they are.}
+  emotional_baseline: {type: string, required: true, description: Their resting emotional state.}
+  relationship_map:
+    type: list
+    required: true
+    item_fields:
+      character_id: {type: string, required: true, description: The other character.}
+      relationship: {type: string, required: true, description: Nature of the bond.}
+      tension: {type: string, required: false, description: What strains it.}
+    description: Named relationships with the rest of the cast.
+  story_history: {type: string, required: true, description: Established past, canon only.}
+  current_arc: {type: string, required: true, description: What is changing for them now.}
+  continuity_notes: {type: list, required: false, item_type: string, description: Open threads and cautions.}
+
+  # --- Approved art ----------------------------------------------------------
+  approved_reference_images:
+    type: list
+    required: true
+    item_type: string
+    description: Repository-relative paths to approved reference art.
+  approved_expressions:
+    type: list
+    required: false
+    item_type: string
+    description: Expression IDs available for this character.
+  approved_poses:
+    type: list
+    required: false
+    item_type: string
+    description: Pose IDs available for this character.
+  expression_restrictions:
+    type: list
+    required: false
+    item_type: string
+    description: Expressions this character must not be drawn with.
+  pose_restrictions:
+    type: list
+    required: false
+    item_type: string
+    description: Poses this character must not be drawn in.
+
+  # --- Generation control ----------------------------------------------------
+  prompt_fragments:
+    type: list
+    required: true
+    item_type: string
+    description: >-
+      Identity-preserving phrases for generation. These describe the approved
+      character; they do not redesign it.
+  negative_prompt_fragments:
+    type: list
+    required: true
+    item_type: string
+    description: Phrases that suppress known failure modes.
+  preferred_generation_methods:
+    type: list
+    required: true
+    item_type: string
+    enum_items: [approved_layer_composite, ipadapter_reference, controlnet_pose, inpaint_repair, text2img_new_pose, manual_art]
+    description: >-
+      Ordered from most to least preferred. Uncontrolled text-to-image is never
+      first for an established character.
+  known_failure_modes:
+    type: list
+    required: true
+    item_type: string
+    description: Documented ways generation gets this character wrong.

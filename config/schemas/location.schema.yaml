@@ -1,0 +1,93 @@
+schema_id: location
+version: 1.0.0
+title: Location Bible
+description: >-
+  A place characters can stand in. A location is not finished when it has a
+  pretty plate; it is finished when a stager can place a character in it at the
+  right size, on the right ground, lit from the right direction.
+identity_field: location_id
+
+fields:
+  location_id:
+    type: string
+    required: true
+    pattern: "^LOC-[a-z0-9-]+$"
+    description: "Format: LOC-<slug>, e.g. LOC-festival-grounds."
+  name: {type: string, required: true, description: Display name.}
+  description: {type: string, required: true, description: What the place is.}
+  canon_role: {type: string, required: true, description: Why the story needs it.}
+  geography: {type: string, required: true, description: Where it sits in MonkeyZoo.}
+  architecture: {type: string, required: true, description: Built forms and materials.}
+  color_palette:
+    type: list
+    required: true
+    item_fields:
+      name: {type: string, required: true, description: Swatch name.}
+      hex: {type: string, required: true, pattern: "^#[0-9A-Fa-f]{6}$", description: Hex value.}
+      use: {type: string, required: true, description: Where it applies.}
+    description: Controlled palette for the location.
+  key_landmarks:
+    type: list
+    required: true
+    item_type: string
+    description: Features that make the place recognisable between panels.
+  lighting_behavior: {type: string, required: true, description: Where light comes from and how it falls.}
+  time_of_day_variations:
+    type: list
+    required: false
+    item_type: string
+    description: Approved times of day.
+  weather_variations:
+    type: list
+    required: false
+    item_type: string
+    description: Approved weather states.
+  camera_angles:
+    type: list
+    required: true
+    item_type: string
+    description: Angles the location has been established from.
+  scale_references:
+    type: list
+    required: true
+    item_fields:
+      object: {type: string, required: true, description: The object used for scale.}
+      real_size: {type: string, required: true, description: Its size relative to a character.}
+    description: >-
+      Objects a stager can measure a character against. Without these, character
+      scale is guesswork and the cast ends up looking pasted on.
+  character_interaction_points:
+    type: list
+    required: true
+    item_type: string
+    description: Places a character can stand, sit, lean, climb or hide.
+  reusable_background_plates:
+    type: list
+    required: true
+    item_fields:
+      plate_id: {type: string, required: true, description: Plate identifier.}
+      path: {type: string, required: true, description: Repository-relative path.}
+      width: {type: integer, required: true, minimum: 1, description: Pixel width.}
+      height: {type: integer, required: true, minimum: 1, description: Pixel height.}
+      calibrated: {type: boolean, required: true, description: Whether a ground-plane calibration exists.}
+    description: Frameless plates available for staging.
+  continuity_restrictions:
+    type: list
+    required: true
+    item_type: string
+    description: Things that must stay consistent across appearances.
+  approved_references:
+    type: list
+    required: true
+    item_type: string
+    description: Repository-relative paths to approved reference art.
+  known_generation_failures:
+    type: list
+    required: true
+    item_type: string
+    description: What generation gets wrong here.
+  canon_status:
+    type: string
+    required: true
+    enum: [approved, candidate, rejected]
+    description: Approval state.

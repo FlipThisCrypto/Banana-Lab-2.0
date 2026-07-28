@@ -1,0 +1,14 @@
+Copyright (c) 2026 Fiend Studios. All rights reserved.
+
+MonkeyZoo, the Emo Monkeys, Fusion Squad, and all associated characters, names,
+likenesses, artwork, story material, and related indicia are the property of
+Fiend Studios.
+
+This repository and its contents are proprietary. No part of this repository —
+including source code, story bibles, character bibles, scripts, layouts, or
+artwork — may be reproduced, distributed, published, or used to train machine
+learning models without the express written permission of the copyright holder.
+
+Imported source material under `source_material/` originates from the MonkeyZoo
+Comic Factory project and remains subject to the same ownership. Provenance for
+every imported file is recorded in `source_material/manifests/`.

@@ -1,0 +1,1165 @@
+schema_version: '1.0'
+identification:
+  current_display_name: Ash
+  series_name: Emo Monkey / Fusion Squad lead
+  personal_name: Ash
+  codename: null
+  nicknames:
+  - mz_ash
+  - 'Card #1173'
+  naming_status: personal_name_canon
+  character_id: MZ-CHAR-004
+  development_level: 5
+  canon_status: core_canon
+visual_canon:
+  primary_reference_image: references/primary/primary-reference.webp
+  supporting_reference_images:
+  - references/alternate/alternate-pose-01.png
+  - references/alternate/alternate-pose-02.png
+  - references/alternate/alternate-pose-03.png
+  - references/alternate/alternate-pose-04.png
+  - references/alternate/expression-portrait-05.png
+  - references/alternate/alternate-pose-06.png
+  - references/alternate/alternate-pose-07.png
+  - references/alternate/alternate-pose-08.png
+  - references/group/group-fusion-squad-01.png
+  species_or_form:
+  - category: visual_feature
+    name: monkey form
+    value: MonkeyZoo monkey character form.
+    status: canon
+    strength: defining
+    usage_frequency: almost always
+    confidence: confirmed canon
+    rationale: All current character refs are MonkeyZoo monkey designs or documented monkey roles.
+    evidence: &id001
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - all appearances
+    incompatible_contexts:
+    - non-monkey redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id001
+    notes: null
+  body_shape:
+  - category: visual_feature
+    name: Pale-faced monkey with shaggy silver-white emo fringe covering one eye, droopy grey eye bags, stitched
+      pale chest, black studded punk outfit.
+    value: Pale-faced monkey with shaggy silver-white emo fringe covering one eye, droopy grey eye bags, stitched
+      pale chest, black studded punk outfit.
+    status: canon
+    strength: moderate
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id002
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id002
+    notes: null
+  face: []
+  eyes:
+  - category: visual_feature
+    name: 'no'
+    value: 'no'
+    status: canon
+    strength: background
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id003
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id003
+    notes: null
+  hair_or_fur:
+  - category: visual_feature
+    name: silver-white fringe over one eye
+    value: silver-white fringe over one eye
+    status: canon
+    strength: strong
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id004
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id004
+    notes: null
+  clothing:
+  - category: visual_feature
+    name: open black vest
+    value: open black vest
+    status: canon
+    strength: strong
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id005
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id005
+    notes: null
+  - category: visual_feature
+    name: black punk pants with silver studs
+    value: black punk pants with silver studs
+    status: canon
+    strength: strong
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id006
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id006
+    notes: null
+  - category: visual_feature
+    name: black studded wrist cuffs
+    value: black studded wrist cuffs
+    status: canon
+    strength: strong
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id007
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id007
+    notes: null
+  - category: visual_feature
+    name: chunky grey creeper boots
+    value: chunky grey creeper boots
+    status: canon
+    strength: strong
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id008
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id008
+    notes: null
+  accessories:
+  - category: visual_feature
+    name: occasional grey Stratocaster-style electric guitar
+    value: occasional grey Stratocaster-style electric guitar
+    status: optional
+    strength: moderate
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id009
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id009
+    notes: null
+  color_palette:
+  - category: color_preference_or_aversion
+    name: silver-white
+    value: silver-white
+    status: canon
+    strength: strong
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id010
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id010
+    notes: null
+  - category: color_preference_or_aversion
+    name: ash-white
+    value: ash-white
+    status: canon
+    strength: strong
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id011
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id011
+    notes: null
+  - category: color_preference_or_aversion
+    name: jet black
+    value: jet black
+    status: canon
+    strength: strong
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id012
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id012
+    notes: null
+  - category: color_preference_or_aversion
+    name: silver studs
+    value: silver studs
+    status: canon
+    strength: strong
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id013
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id013
+    notes: null
+  - category: color_preference_or_aversion
+    name: mocha brown
+    value: mocha brown
+    status: canon
+    strength: strong
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id014
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id014
+    notes: null
+  - category: color_preference_or_aversion
+    name: teal card background
+    value: teal card background
+    status: canon
+    strength: strong
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id015
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id015
+    notes: null
+  signature_silhouette:
+  - category: visual_feature
+    name: silver-white fringe over one eye
+    value: silver-white fringe over one eye
+    status: canon
+    strength: defining
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id016
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id016
+    notes: null
+  - category: visual_feature
+    name: droopy half-lidded eyes
+    value: droopy half-lidded eyes
+    status: canon
+    strength: defining
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id017
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id017
+    notes: null
+  distinguishing_features:
+  - category: visual_feature
+    name: silver-white fringe over one eye
+    value: silver-white fringe over one eye
+    status: canon
+    strength: strong
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id018
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id018
+    notes: null
+  - category: visual_feature
+    name: droopy half-lidded eyes
+    value: droopy half-lidded eyes
+    status: canon
+    strength: strong
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id019
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id019
+    notes: null
+  - category: visual_feature
+    name: chest stitch marks
+    value: chest stitch marks
+    status: canon
+    strength: strong
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id020
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id020
+    notes: null
+  - category: visual_feature
+    name: mocha-brown ears/arms/tail
+    value: mocha-brown ears/arms/tail
+    status: canon
+    strength: strong
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id021
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id021
+    notes: null
+  features_that_must_never_change:
+  - &id053
+    category: visual_feature
+    name: silver-white fringe over one eye
+    value: silver-white fringe over one eye
+    status: canon
+    strength: defining
+    usage_frequency: almost always
+    confidence: confirmed canon
+    rationale: Taken from completed inventory and approved refs.
+    evidence: &id022
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - all visual appearances
+    incompatible_contexts:
+    - redesigns without owner approval
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id022
+    notes: null
+  - category: visual_feature
+    name: droopy half-lidded eyes
+    value: droopy half-lidded eyes
+    status: canon
+    strength: defining
+    usage_frequency: almost always
+    confidence: confirmed canon
+    rationale: Taken from completed inventory and approved refs.
+    evidence: &id023
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - all visual appearances
+    incompatible_contexts:
+    - redesigns without owner approval
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id023
+    notes: null
+  - category: visual_feature
+    name: chest stitch marks
+    value: chest stitch marks
+    status: canon
+    strength: defining
+    usage_frequency: almost always
+    confidence: confirmed canon
+    rationale: Taken from completed inventory and approved refs.
+    evidence: &id024
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - all visual appearances
+    incompatible_contexts:
+    - redesigns without owner approval
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id024
+    notes: null
+  - category: visual_feature
+    name: mocha-brown ears/arms/tail
+    value: mocha-brown ears/arms/tail
+    status: canon
+    strength: defining
+    usage_frequency: almost always
+    confidence: confirmed canon
+    rationale: Taken from completed inventory and approved refs.
+    evidence: &id025
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - all visual appearances
+    incompatible_contexts:
+    - redesigns without owner approval
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id025
+    notes: null
+  features_that_may_vary:
+  - category: visual_feature
+    name: pose and expression set
+    value: Approved alternate poses and expressions may vary by scene.
+    status: established
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: confirmed canon
+    rationale: Approved 30-pose reference sets exist for visual characters.
+    evidence: &id026
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - scene acting
+    incompatible_contexts:
+    - changing identity markers
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id026
+    notes: null
+  prohibited_visual_additions: &id055
+  - category: visual_feature
+    name: glasses added without approval
+    value: Do not add glasses; Clever is the only confirmed glasses-wearing monkey.
+    status: canon
+    strength: defining
+    usage_frequency: never
+    confidence: confirmed canon
+    rationale: Inventory glasses rule.
+    evidence: &id027
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - owner-approved redesign
+    incompatible_contexts:
+    - ordinary art generation
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id027
+    notes: null
+  glasses_status: confirmed_no_glasses
+character_core:
+  archetype:
+  - category: role
+    name: archetype
+    value: quiet conscience
+    status: established
+    strength: strong
+    usage_frequency: often
+    confidence: strong inference
+    rationale: Synthesized from existing canon, inventory, and repeated draft role.
+    evidence: &id028
+    - MonkeyZoo_Comic_Factory/00_SYSTEM/character_bible.md
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - story planning
+    incompatible_contexts:
+    - treating archetype as a single joke
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id028
+    notes: null
+  team_role:
+  - category: role
+    name: team role
+    value: low-volume truth teller
+    status: established
+    strength: strong
+    usage_frequency: often
+    confidence: strong inference
+    rationale: Chosen to avoid duplicating exact story function across the cast.
+    evidence: &id029
+    - MonkeyZoo_Comic_Factory/00_SYSTEM/character_bible.md
+    - july/2026-07-monkeyzoo-july-edition-test.md
+    compatible_contexts:
+    - ensemble planning
+    incompatible_contexts:
+    - every issue requiring this role
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id029
+    notes: null
+  story_function:
+  - category: role
+    name: story function
+    value: low-volume truth teller
+    status: established
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: strong inference
+    rationale: Derived from documented issue use and visual identity.
+    evidence: &id030
+    - july/2026-07-monkeyzoo-july-edition-test.md
+    - MonkeyZoo_Comic_Factory/00_SYSTEM/character_bible.md
+    compatible_contexts:
+    - plot assignment
+    incompatible_contexts:
+    - forcing spotlight
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id030
+    notes: null
+  dominant_traits:
+  - &id039
+    category: speech_pattern
+    name: rare precise lines
+    value: Says little, but the line lands.
+    status: canon
+    strength: defining
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Existing bible locks rare, short, precise speech.
+    evidence: &id031
+    - MonkeyZoo_Comic_Factory/00_SYSTEM/character_bible.md
+    compatible_contexts:
+    - turning points
+    incompatible_contexts:
+    - chatty banter
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id031
+    notes: null
+  - &id046
+    category: emotional_tell
+    name: drained restraint
+    value: Carries tiredness and restraint as visible emotional texture.
+    status: canon
+    strength: strong
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Existing bible locks emotionally drained, droopy eyes, deadpan tired state.
+    evidence: &id032
+    - MonkeyZoo_Comic_Factory/00_SYSTEM/character_bible.md
+    compatible_contexts:
+    - aftermath
+    - quiet scenes
+    incompatible_contexts:
+    - bouncy default comedy
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id032
+    notes: null
+  - &id061
+    category: personal_rule
+    name: truth over noise
+    value: Cuts through pressure with a spare, accurate observation.
+    status: established
+    strength: strong
+    usage_frequency: sometimes
+    confidence: strong inference
+    rationale: Canon examples like Optional feels loud and Gifts knock function as concise truths.
+    evidence: &id033
+    - MonkeyZoo_Comic_Factory/00_SYSTEM/character_bible.md
+    - MonkeyZoo_Comic_Factory/00_SYSTEM/continuity_ledger.md
+    compatible_contexts:
+    - moral clarity moments
+    incompatible_contexts:
+    - exposition dumps
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id033
+    notes: null
+  strengths:
+  - &id047
+    category: specific_talent
+    name: economized clarity
+    value: Finds the few words that change the room.
+    status: canon
+    strength: strong
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Bible states four-word truths that end conversations.
+    evidence: &id034
+    - MonkeyZoo_Comic_Factory/00_SYSTEM/character_bible.md
+    compatible_contexts:
+    - climax reflection
+    incompatible_contexts:
+    - banter-heavy pages
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id034
+    notes: null
+  flaws:
+  - &id048
+    category: specific_weakness
+    name: withdraws too far
+    value: May stay silent until others have already escalated.
+    status: experimental
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: experimental suggestion
+    rationale: A conservative limitation of canon rare speech.
+    evidence: &id035
+    - MonkeyZoo_Comic_Factory/00_SYSTEM/character_bible.md
+    compatible_contexts:
+    - relationship tension
+    incompatible_contexts:
+    - making silence equal indifference
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id035
+    notes: null
+  vulnerabilities:
+  - &id038
+    category: emotional_tell
+    name: visible exhaustion
+    value: His tired presentation can mask concern.
+    status: established
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: strong inference
+    rationale: Visual refs and bible emphasize half-lidded tiredness.
+    evidence: &id036
+    - character-bibles/_inventory/character-inventory.json
+    - MonkeyZoo_Comic_Factory/00_SYSTEM/character_bible.md
+    compatible_contexts:
+    - quiet concern
+    incompatible_contexts:
+    - lazy stereotype
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id036
+    notes: null
+  motivation:
+  - category: motivation
+    name: growth direction
+    value: Learning that rare words can be connection, not just defense.
+    status: experimental
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: experimental suggestion
+    rationale: Future-facing seed based on current canon gaps.
+    evidence: &id037
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - future issue planning
+    incompatible_contexts:
+    - treating as approved canon before review
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id037
+    notes: null
+  fear: []
+  personal_values: []
+  internal_contradiction:
+  - *id038
+voice_and_dialogue:
+  speech_rhythm:
+  - *id039
+  vocabulary_level: []
+  sentence_length: []
+  humor_style:
+  - category: speech_pattern
+    name: humor style
+    value: four-word verdicts
+    status: experimental
+    strength: subtle
+    usage_frequency: sometimes
+    confidence: strong inference
+    rationale: Set by documented voice where available and conservative team differentiation elsewhere.
+    evidence: &id040
+    - MonkeyZoo_Comic_Factory/00_SYSTEM/character_bible.md
+    - july/2026-07-monkeyzoo-july-edition-test.md
+    compatible_contexts:
+    - dialogue drafting
+    incompatible_contexts:
+    - flattening character into gag
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id040
+    notes: null
+  catchphrase:
+  - &id054
+    category: catchphrase
+    name: Optional feels loud.
+    value: A concise warning when choice becomes pressure.
+    status: canon
+    strength: moderate
+    usage_frequency: special circumstances only
+    confidence: confirmed canon
+    rationale: Edition 4 script documents the line.
+    evidence: &id041
+    - Bible and other files/MonkeyZoo_Emo_Edition4_STILL_ME.md
+    compatible_contexts:
+    - choice/pressure scenes
+    incompatible_contexts:
+    - generic joke line
+    first_eligible_issue: MZ-ED-04
+    last_used_issue: null
+    source_refs: *id041
+    notes: null
+  favorite_words: []
+  words_the_character_avoids: []
+  stress_speech: []
+  excited_speech: []
+  sad_speech: []
+  angry_speech: []
+  example_dialogue: []
+  dialogue_rules:
+  - category: writing_rule
+    name: do not caricature voice
+    value: Use the speech trait only when it supports the scene.
+    status: established
+    strength: strong
+    usage_frequency: often
+    confidence: strong inference
+    rationale: Request requires rules preventing caricature.
+    evidence: &id042
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - dialogue polish
+    incompatible_contexts:
+    - filler quirks
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id042
+    notes: null
+behavior:
+  default_behavior: &id044 []
+  stress_response:
+  - *id038
+  conflict_response:
+  - category: role
+    name: conflict style
+    value: speaks once when it matters
+    status: experimental
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: strong inference
+    rationale: Differentiates conflict behavior across the team.
+    evidence: &id043
+    - july/2026-07-monkeyzoo-july-edition-test.md
+    - MonkeyZoo_Comic_Factory/00_SYSTEM/character_bible.md
+    compatible_contexts:
+    - conflict scenes
+    incompatible_contexts:
+    - repeating formula
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id043
+    notes: null
+  success_response: []
+  failure_response: []
+  habits: []
+  quirks: *id044
+  physical_ticks:
+  - &id062
+    category: signature_pose
+    name: arms crossed watchfulness
+    value: Often watches from a contained stance before speaking.
+    status: established
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: strong inference
+    rationale: Edition 4 and refs show arms-crossed quiet watching.
+    evidence: &id045
+    - Bible and other files/MonkeyZoo_Emo_Edition4_STILL_ME.md
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - observing danger
+    incompatible_contexts:
+    - constant brooding
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id045
+    notes: null
+  props: []
+  emotional_tells:
+  - *id046
+  - *id038
+  entrance_behavior: []
+  exit_behavior: []
+  celebration_behavior: []
+skills_and_limitations:
+  core_abilities:
+  - *id047
+  secondary_skills: []
+  specific_talents:
+  - *id047
+  weaknesses:
+  - *id048
+  things_the_character_believes_they_can_do: []
+  things_the_character_actually_can_do:
+  - *id047
+  situations_where_they_excel: []
+  situations_where_they_struggle:
+  - *id048
+  - *id038
+relationships: []
+story_use:
+  best_story_genres: []
+  best_adventure_roles:
+  - category: role
+    name: best adventure role
+    value: low-volume truth teller
+    status: experimental
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: strong inference
+    rationale: Based on current team differentiation.
+    evidence: &id049
+    - july/2026-07-monkeyzoo-july-edition-test.md
+    compatible_contexts:
+    - issue planning
+    incompatible_contexts:
+    - mandatory use
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id049
+    notes: null
+  typical_plot_contribution:
+  - category: role
+    name: plot contribution
+    value: low-volume truth teller
+    status: experimental
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: strong inference
+    rationale: Evidence-backed starting point only.
+    evidence: &id050
+    - july/2026-07-monkeyzoo-july-edition-test.md
+    - MonkeyZoo_Comic_Factory/00_SYSTEM/character_bible.md
+    compatible_contexts:
+    - ensemble scenes
+    incompatible_contexts:
+    - overuse
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id050
+    notes: null
+  comic_relief_function:
+  - category: role
+    name: humor function
+    value: four-word verdicts
+    status: experimental
+    strength: subtle
+    usage_frequency: sometimes
+    confidence: strong inference
+    rationale: Keeps humor distinct without requiring a gag.
+    evidence: &id051
+    - MonkeyZoo_Comic_Factory/00_SYSTEM/character_bible.md
+    - july/2026-07-monkeyzoo-july-edition-test.md
+    compatible_contexts:
+    - light panels
+    incompatible_contexts:
+    - serious beats if mismatched
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id051
+    notes: null
+  emotional_function: []
+  problem_solving_function:
+  - *id047
+  appropriate_spotlight_scenes: []
+  situations_to_avoid:
+  - category: writing_rule
+    name: avoid caricature
+    value: Do not reduce the character to the easiest visual joke or single trait.
+    status: established
+    strength: strong
+    usage_frequency: often
+    confidence: strong inference
+    rationale: Required by prompt and consistent with schema purpose.
+    evidence: &id052
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - all writing
+    incompatible_contexts:
+    - none
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id052
+    notes: null
+  pairings_that_work_well: []
+  pairings_that_should_be_used_sparingly: []
+writing_rules:
+  always:
+  - *id053
+  often:
+  - *id047
+  sometimes: *id044
+  rarely:
+  - *id054
+  never: *id055
+  anti_caricature_rules:
+  - category: writing_rule
+    name: anti-caricature
+    value: Let the character have scene purpose beyond one quirk.
+    status: established
+    strength: strong
+    usage_frequency: often
+    confidence: strong inference
+    rationale: Required to prevent overloaded or one-dimensional use.
+    evidence: &id056
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - all writing
+    incompatible_contexts:
+    - none
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id056
+    notes: null
+running_elements:
+  running_gags: []
+  recurring_mysteries: []
+  repeated_props: []
+  ongoing_goals:
+  - category: personal_mission
+    name: growth seed
+    value: Learning that rare words can be connection, not just defense.
+    status: experimental
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: experimental suggestion
+    rationale: Future-facing direction for review.
+    evidence: &id057
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - future arcs
+    incompatible_contexts:
+    - canon until approved
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id057
+    notes: null
+  unresolved_questions:
+  - category: recurring_mystery
+    name: unresolved naming or future work
+    value: Future review may refine name, relationships, and depth.
+    status: reserved
+    strength: background
+    usage_frequency: special circumstances only
+    confidence: reserved
+    rationale: Several characters are intentionally sparse or series-named.
+    evidence: &id058
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - Bible review
+    incompatible_contexts:
+    - issue dialogue
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id058
+    notes: null
+  future_seeds:
+  - category: personal_mission
+    name: future growth
+    value: Learning that rare words can be connection, not just defense.
+    status: experimental
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: experimental suggestion
+    rationale: Evidence-informed next direction.
+    evidence: &id059
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - future planning
+    incompatible_contexts:
+    - treating as locked canon
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id059
+    notes: null
+growth_and_continuity:
+  first_appearance: null
+  published_appearances:
+  - .claude/settings.local.json
+  - 3/winter edition 3/Comic_Export.html
+  - 3/winter edition 3/First Run of the Year/index.html
+  - 3/winter edition 3/First Run of the Year2/index.html
+  - Bible and other files/MonkeyZoo_Emo_Edition4_STILL_ME.md
+  - MonkeyZoo_Comic_Factory/.claude/skills/mz-art-run/SKILL.md
+  - MonkeyZoo_Comic_Factory/.claude/skills/mz-char-refs/SKILL.md
+  - MonkeyZoo_Comic_Factory/.claude/skills/mz-new-issue/SKILL.md
+  - MonkeyZoo_Comic_Factory/.claude/skills/mz-package/SKILL.md
+  - MonkeyZoo_Comic_Factory/00_SYSTEM/agents/stage_02_continuity.md
+  - MonkeyZoo_Comic_Factory/00_SYSTEM/agents/stage_03_showrunner.md
+  - MonkeyZoo_Comic_Factory/00_SYSTEM/agents/stage_04_script.md
+  - MonkeyZoo_Comic_Factory/00_SYSTEM/agents/stage_06_art_generation.md
+  - MonkeyZoo_Comic_Factory/00_SYSTEM/agents/stage_08_layout_lettering.md
+  - MonkeyZoo_Comic_Factory/00_SYSTEM/agents/stage_09_final_qa.md
+  - MonkeyZoo_Comic_Factory/00_SYSTEM/agents/stage_10_release.md
+  - MonkeyZoo_Comic_Factory/00_SYSTEM/automation_rules.md
+  - MonkeyZoo_Comic_Factory/00_SYSTEM/character_bible.md
+  - MonkeyZoo_Comic_Factory/00_SYSTEM/continuity_ledger.md
+  - MonkeyZoo_Comic_Factory/00_SYSTEM/issue_brief_schema.json
+  - MonkeyZoo_Comic_Factory/00_SYSTEM/monkeyzoo_master_bible.md
+  - MonkeyZoo_Comic_Factory/00_SYSTEM/monthly_issue_template.md
+  - MonkeyZoo_Comic_Factory/00_SYSTEM/page_panel_plan_schema.json
+  - MonkeyZoo_Comic_Factory/00_SYSTEM/prompt_rules.md
+  - MonkeyZoo_Comic_Factory/00_SYSTEM/tooling_pxpipe.md
+  - MonkeyZoo_Comic_Factory/00_SYSTEM/visual_style_bible.md
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-07_Issue_05/art_prompt_pack.json
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-07_Issue_05/cover_prompt.md
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-07_Issue_05/final_export_checklist.md
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-07_Issue_05/generation_log.md
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-07_Issue_05/issue_brief.md
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-07_Issue_05/issue_outline.md
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-07_Issue_05/issue_script.md
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-07_Issue_05/page_panel_plan.json
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-07_Issue_05/qa_report.md
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-07_Issue_05/social_posts.md
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-07_Mango_Pier/art_prompt_pack.json
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-07_Mango_Pier/generation_log.md
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-07_Mango_Pier/issue_brief.md
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-07_Mango_Pier/issue_script.md
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-07_Mango_Pier/metadata.json
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-07_Mango_Pier/page_panel_plan.json
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-07_Mango_Pier/qa_report.md
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-08_Issue_06/art_prompt_pack.json
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-08_Issue_06/final_export_checklist.md
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-08_Issue_06/generation_log.md
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-08_Issue_06/issue_brief.md
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-08_Issue_06/issue_outline.md
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-08_Issue_06/issue_script.md
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-08_Issue_06/layout/layout_overrides.json
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-08_Issue_06/page_panel_plan.json
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-08_Issue_06/qa_report.md
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-08_Issue_06/social_posts.md
+  - MonkeyZoo_Comic_Factory/03_APPROVED_CANON/approved_characters/_ref_matrix_30.md
+  - character-bibles/_inventory/artwork-inventory.csv
+  - character-bibles/_inventory/canon-conflicts.md
+  - character-bibles/_inventory/character-inventory.json
+  - character-bibles/_inventory/character-inventory.md
+  - july/2026-07-monkeyzoo-july-edition-test.md
+  - test/test 1/The Whispering Woods Mystery.json
+  lessons_learned: []
+  new_traits_introduced: []
+  traits_strengthened: []
+  traits_retired: []
+  relationship_changes: []
+  major_story_events: []
+  current_emotional_state: []
+  open_character_arcs:
+  - category: continuity
+    name: growth seed
+    value: Learning that rare words can be connection, not just defense.
+    status: experimental
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: experimental suggestion
+    rationale: Reserved for owner review before canonization.
+    evidence: &id060
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - future continuity
+    incompatible_contexts:
+    - current canon summary
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id060
+    notes: null
+issue_level_usage:
+  traits_eligible_for_selection:
+  - *id039
+  - *id046
+  - *id061
+  - *id047
+  - *id048
+  - *id062
+  - *id054
+  maximum_defining_traits_per_issue: 1
+  maximum_minor_quirks_per_issue: 1
+  catchphrase_cooldown:
+    minimum_issues_between_uses: 1
+    last_used_issue: null
+    notes: Use no more than once per issue unless repetition is the point of the scene.
+  running_gag_cooldown:
+    minimum_issues_between_uses: 1
+    last_used_issue: null
+    notes: Do not use a running element as filler.
+  recent_traits_used: []
+  traits_that_should_not_appear_together: []
+  required_context_for_special_traits: []
+source_notes:
+- Initial Bible generated from completed inventory, existing character_bible.md, continuity ledger, and July draft.
+- Experimental traits are evidence-based suggestions and are not owner-approved canon yet.

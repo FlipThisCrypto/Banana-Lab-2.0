@@ -1,0 +1,364 @@
+# =============================================================================
+# Banana Lab 2.0 — source material import plan
+#
+# Read by scripts/migration/import_source_material.py
+#
+# RULES
+#   * The source root is READ-ONLY. Nothing in this plan may write to it.
+#   * Every rule copies; nothing moves or deletes.
+#   * Every copied file is hashed (SHA-256) and recorded in the manifests.
+#   * `authority` is a deliberate human classification, not an inference.
+#
+# AUTHORITY VALUES
+#   authoritative        Approved canon. The source of truth. Never overwrite.
+#   approved-reference   Human-approved, usable as production reference.
+#   historical-reference Older material. Informative, not automatically valid.
+#   candidate            Unapproved output awaiting review.
+#   superseded           Replaced by newer approved material.
+#   rejected             Reviewed and rejected.
+#   unknown              Needs classification before production use.
+# =============================================================================
+
+source_root: "I:/MonkeyZoo Comic Strip/Fusion Squad/MonkeyZoo_Comic_Factory"
+
+# A second read-only root holding the OWNER-DESIGNATED published editions.
+# These are the authoritative aesthetic target for every issue, confirmed by the
+# project owner on 2026-07-28. Rules may set `root: published` to read from here.
+published_root: "I:/MonkeyZoo Comic Strip/Fusion Squad"
+
+# Never traverse these, anywhere.
+global_excludes:
+  - "**/.git/**"
+  - "**/__pycache__/**"
+  - "**/node_modules/**"
+  - "**/.pytest_cache/**"
+  - "**/.ruff_cache/**"
+  - "**/06_BACKUPS/**"
+  - "**/*.pyc"
+  - "**/*.pyo"
+
+rules:
+  # ---------------------------------------------------------------------------
+  # 1. APPROVED CANON — the authoritative asset library
+  # ---------------------------------------------------------------------------
+  - id: canon-characters
+    source: "03_APPROVED_CANON/approved_characters"
+    dest: "source_material/imported_canon/approved_characters"
+    include: ["**/*.png", "**/*.webp", "**/*.md", "**/*.json"]
+    authority: authoritative
+    classification: character-art
+    notes: >-
+      Approved character turnarounds, poses and expression sheets for all
+      twelve canon characters. Opaque backgrounds; not composite-ready.
+
+  - id: canon-expressions
+    source: "03_APPROVED_CANON/approved_expressions"
+    dest: "source_material/imported_canon/approved_expressions"
+    include: ["**/*.png", "**/*.md"]
+    authority: authoritative
+    classification: expression-art
+    notes: >-
+      Approved expression library. Substantially overlaps approved_characters;
+      duplicates are detected by hash and reported, not deleted.
+
+  - id: canon-locations
+    source: "03_APPROVED_CANON/approved_locations"
+    dest: "source_material/imported_canon/approved_locations"
+    include: ["**/*.png", "**/*.md"]
+    authority: authoritative
+    classification: location-plate
+    notes: >-
+      Approved location plates at 1280x720. Only four festival plates exist,
+      which is the primary background bottleneck for Issue 001.
+
+  - id: canon-props
+    source: "03_APPROVED_CANON/approved_props"
+    dest: "source_material/imported_canon/approved_props"
+    include: ["**/*.png", "**/*.md"]
+    authority: authoritative
+    classification: prop-art
+    notes: Approved prop references, one primary view each.
+
+# NOTE: 03_APPROVED_CANON has no root-level files. The canon index lives at
+# approved_characters/CHARACTER_IMAGE_INDEX.md and is captured by canon-characters.
+
+  # ---------------------------------------------------------------------------
+  # 2. TRUE-ALPHA CHARACTER LAYERS — the key compositing asset
+  # ---------------------------------------------------------------------------
+  - id: character-layers
+    source: "00_SYSTEM/integration_upgrade/character_layers"
+    dest: "source_material/imported_canon/character_layers"
+    include: ["**/*.png"]
+    authority: approved-reference
+    classification: character-layer-alpha
+    notes: >-
+      Background-removed, true-alpha derivatives of approved character art.
+      Derived assets, not primary canon, but human-reviewed and the only
+      composite-ready character source that exists. Lil Devil is ABSENT.
+
+  - id: character-layer-menu
+    source: "00_SYSTEM/integration_upgrade"
+    dest: "source_material/imported_canon/character_layers"
+    include: ["layer_menu.json"]
+    recursive: false
+    authority: approved-reference
+    classification: character-layer-index
+
+  - id: plate-calibrations
+    source: "00_SYSTEM/integration_upgrade/plate_calibrations"
+    dest: "source_material/imported_canon/plate_calibrations"
+    include: ["**/*.json"]
+    authority: approved-reference
+    classification: staging-calibration
+    notes: >-
+      Ground-plane / horizon calibrations for four NON-festival plates.
+      Art-directed estimates. No festival plate is calibrated yet.
+
+  # ---------------------------------------------------------------------------
+  # 3. STORY AND CHARACTER BIBLES — narrative source of truth
+  # ---------------------------------------------------------------------------
+  - id: story-bibles
+    source: "story-bibles"
+    dest: "source_material/imported_bibles/story-bibles"
+    include: ["**/*.md", "**/*.yaml"]
+    authority: authoritative
+    classification: story-bible
+    notes: >-
+      Season bible for "Emo Monkeys: The Signal Between Us" plus per-issue
+      story briefs. Section 7 is the authoritative Issue 001 plan.
+
+  - id: character-bibles
+    source: "character-bibles"
+    dest: "source_material/imported_bibles/character-bibles"
+    include: ["MZ-CHAR-*/bible.md", "MZ-CHAR-*/bible.yaml", "MZ-CHAR-*/continuity-log.md", "MZ-CHAR-*/development-notes.md", "MZ-CHAR-*/approval-history.json"]
+    authority: authoritative
+    classification: character-bible
+    notes: Character identity source of truth; outranks story bibles on identity.
+
+  - id: character-bible-schema
+    source: "character-bibles/_schema"
+    dest: "source_material/imported_bibles/_schema"
+    include: ["**/*.json", "**/*.yaml", "**/*.md"]
+    authority: historical-reference
+    classification: legacy-schema
+    notes: Legacy schema shapes, retained to inform the 2.0 schemas.
+
+  - id: master-bible
+    source: "00_SYSTEM"
+    dest: "source_material/imported_bibles/system"
+    include: ["monkeyzoo_master_bible.md", "continuity_ledger.md", "prompt_rules.md", "automation_rules.md", "project_direction.json"]
+    recursive: false
+    authority: authoritative
+    classification: world-bible
+
+  # ---------------------------------------------------------------------------
+  # 4. PUBLISHED EDITIONS — THE authoritative aesthetic target
+  #
+  # Owner-designated on 2026-07-28: "This is the artistic style that I want for
+  # each issue." These outrank Mango Pier, which is now a secondary reference.
+  # ---------------------------------------------------------------------------
+  - id: edition-one-fusion-squad
+    root: published
+    source: "1"
+    dest: "source_material/visual_references/published_editions/edition-01-the-fusion-squad"
+    include: ["TheFusionSquad.pdf", "metadata.json", "metadata1.json", "metadata3.json", "MZ1iconimage.png", "icon.jpg"]
+    recursive: false
+    authority: authoritative
+    classification: published-edition
+    notes: >-
+      Edition One, "MonkeyZoo: The Battle Against Inefficiency and
+      Centralization". 11 pages. Full-colour finished comic: irregular panel
+      grids on a pale-blue page ground, integrated characters with cast shadows,
+      large stylised SFX, classic balloons. THE style target.
+
+  - id: edition-two-defusion-tapes
+    root: published
+    source: "2/nft"
+    dest: "source_material/visual_references/published_editions/edition-02-the-defusion-tapes"
+    include: ["*.pdf", "metadata.json"]
+    recursive: false
+    authority: authoritative
+    classification: published-edition
+    notes: >-
+      Edition Two, "FusionZoo: The De-Fusion Tapes". 9 pages. The Emo Monkey
+      cast at night in server-room interiors with green data energy and cyan
+      holograms, per-page coloured page frames and colour-coded balloons. The
+      closest tonal and stylistic match for Issue 001.
+
+  - id: edition-three-winter-pages
+    root: published
+    source: "3/winter edition 3"
+    dest: "source_material/visual_references/published_editions/edition-03-winter/panels"
+    include: ["p*.jpg"]
+    recursive: false
+    authority: authoritative
+    classification: published-edition-panel
+    notes: >-
+      Edition Three, winter. Individual finished panels: clean high-key flat
+      vector with thick outlines, extreme shot-size variation from macro detail
+      to empty landscape breath panels, diegetic HUD overlays in goggles.
+
+  - id: edition-three-covers
+    root: published
+    source: "3/winter edition 3"
+    dest: "source_material/visual_references/published_editions/edition-03-winter"
+    include: ["Front Cover.jpg", "Back Cover.png", "edition 3.png", "winter edition.pdf"]
+    recursive: false
+    authority: authoritative
+    classification: published-edition
+    notes: Edition Three covers, edition stamp and assembled PDF.
+
+  - id: edition-stamps
+    root: published
+    source: "2"
+    dest: "source_material/visual_references/published_editions/_stamps"
+    include: ["Fiend_Studios_Stamp_2-removebg-preview.png"]
+    recursive: false
+    authority: authoritative
+    classification: brand-mark
+    notes: >-
+      Fiend Studios "COLLECTIBLE / EDITION <N>" circular stamp. Appears on every
+      published cover. Required brand furniture for each new issue.
+
+  - id: emo-edition-4-bible
+    root: published
+    source: "Bible and other files"
+    dest: "source_material/imported_bibles/emo-editions"
+    include: ["MonkeyZoo_Emo_Edition4_STILL_ME.md"]
+    recursive: false
+    authority: authoritative
+    classification: story-bible
+    notes: >-
+      Emo Monkey Edition 4 "STILL ME" bible. Establishes the Emo Monkey cast
+      voice and the FusionZoo-chamber premise. Useful for character voice and
+      cover-design conventions.
+
+  - id: character-concept-art
+    root: published
+    source: "Bible and other files"
+    dest: "source_material/visual_references/character_concepts"
+    include: ["NeonBlue/*.png", "Ash/*.png", "Static/*.png", "scarline/*.png"]
+    authority: candidate
+    classification: concept-art
+    notes: >-
+      Per-character concept renders. NOT approved canon - classified `candidate`.
+      Useful for expression and pose ideas; must not override approved canon.
+
+  # ---------------------------------------------------------------------------
+  # 5. SECONDARY VISUAL REFERENCE — Mango Pier
+  #
+  # Retains value as a recent in-house production, but it is a DRAFT-TIER
+  # comparison, not the target. Superseded by the published editions above.
+  # ---------------------------------------------------------------------------
+  - id: mango-pier-panels
+    source: "02_MONTHLY_ISSUES/2026-07_Mango_Pier/generated_art/selected_panels"
+    dest: "source_material/visual_references/mango-pier/panels"
+    include: ["**/*.png"]
+    authority: approved-reference
+    classification: style-reference
+    notes: >-
+      Closest approved rendering of the MonkeyZoo house style. Use for colour,
+      line, finish and mood. Do NOT copy its staging monotony.
+
+  - id: mango-pier-pages
+    source: "02_MONTHLY_ISSUES/2026-07_Mango_Pier/layout/print_layout"
+    dest: "source_material/visual_references/mango-pier/pages"
+    include: ["**/*.png"]
+    authority: approved-reference
+    classification: page-layout-reference
+
+  - id: mango-pier-docs
+    source: "02_MONTHLY_ISSUES/2026-07_Mango_Pier"
+    dest: "source_material/visual_references/mango-pier"
+    include: ["issue_script.md", "issue_brief.md", "qa_report.md", "metadata.json", "page_panel_plan.json", "art_prompt_pack.json", "generation_log.md"]
+    recursive: false
+    authority: approved-reference
+    classification: issue-record
+
+  - id: mango-pier-cover
+    source: "02_MONTHLY_ISSUES/2026-07_Mango_Pier/exports"
+    dest: "source_material/visual_references/mango-pier"
+    include: ["cover.png"]
+    recursive: false
+    authority: approved-reference
+    classification: cover-reference
+
+  # ---------------------------------------------------------------------------
+  # 5. LEGACY ISSUE 001 — the material being rebuilt
+  # ---------------------------------------------------------------------------
+  - id: legacy-issue01-docs
+    source: "02_MONTHLY_ISSUES/2026-08_Issue_01"
+    dest: "source_material/legacy_reference/issue-001-2026-08"
+    include: ["issue_script.md", "issue_brief.md", "issue_brief.json", "issue_outline.md", "page_panel_plan.json", "metadata.json", "qa_report.md", "art_prompt_pack.json", "cover_prompt.md", "generation_log.md", "social_posts.md", "final_export_checklist.md", ".workflow-status.json", "release_hash_manifest.json"]
+    recursive: false
+    authority: historical-reference
+    classification: legacy-issue-record
+    notes: >-
+      The previous Issue 001 production record. Script and outline are useful.
+      The QA report is evidence of the gate failure this rebuild must correct.
+
+  - id: legacy-issue01-panels
+    source: "02_MONTHLY_ISSUES/2026-08_Issue_01/generated_art/selected_panels"
+    dest: "source_material/legacy_reference/issue-001-2026-08/selected_panels"
+    include: ["**/*.png"]
+    authority: superseded
+    classification: draft-composite
+    notes: >-
+      Self-labelled "DRAFT COMPOSITE" placeholders: a background plate with
+      opaque character reference cards pasted in a row. Not finished artwork.
+      Retained as evidence only. Must not be reused as panel art.
+
+  - id: legacy-issue01-pages
+    source: "02_MONTHLY_ISSUES/2026-08_Issue_01/layout/print_layout"
+    dest: "source_material/legacy_reference/issue-001-2026-08/pages"
+    include: ["**/*.png"]
+    authority: superseded
+    classification: draft-page-layout
+    notes: Assembled pages built from draft composites. Layout grid is reusable evidence.
+
+  - id: legacy-issue01-cover
+    source: "02_MONTHLY_ISSUES/2026-08_Issue_01/generated_art/covers"
+    dest: "source_material/legacy_reference/issue-001-2026-08"
+    include: ["main_cover.png"]
+    recursive: false
+    authority: superseded
+    classification: draft-cover
+
+  # ---------------------------------------------------------------------------
+  # 6. HISTORICAL ISSUES — published PDFs and the legacy HTML app
+  # ---------------------------------------------------------------------------
+  - id: historical-pdfs
+    source: "02_MONTHLY_ISSUES"
+    dest: "source_material/historical_issues/monthly"
+    include: ["*/exports/*.pdf"]
+    authority: historical-reference
+    classification: published-issue-pdf
+    notes: Earlier published issues. Informative for continuity, not automatically approved.
+
+  - id: genesis-pdf
+    source: "GENESIS/release"
+    dest: "source_material/historical_issues/genesis"
+    include: ["*.pdf"]
+    recursive: false
+    authority: historical-reference
+    classification: published-issue-pdf
+    notes: The GENESIS collected edition.
+
+  - id: genesis-docs
+    source: "GENESIS"
+    dest: "source_material/historical_issues/genesis"
+    include: ["*.md", "*.json"]
+    recursive: false
+    authority: historical-reference
+    classification: issue-record
+
+  - id: legacy-html-app
+    source: "docs"
+    dest: "source_material/legacy_reference/banana-lab-1-html"
+    include: ["index.html"]
+    recursive: false
+    authority: historical-reference
+    classification: legacy-application
+    notes: >-
+      The Banana Lab 1.0 review application shell. This is an application UI,
+      NOT an HTML comic. Recorded so the "older HTML comic" question is closed.

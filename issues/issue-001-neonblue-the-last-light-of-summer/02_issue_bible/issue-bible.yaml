@@ -1,0 +1,270 @@
+issue_id: issue-001
+issue_number: 1
+title: The Last Light of Summer
+season: "Emo Monkeys: The Signal Between Us (2026-08 – 2027-01)"
+featured_character: MZ-CHAR-005
+
+supporting_characters:
+  - character_id: MZ-CHAR-LILDEVIL
+    function: >-
+      Pressure toward immediate force. His impatience with the locked service
+      gate accidentally reveals that the failures are not random. He contributes
+      decisive force only after NeonBlue identifies where force is safe.
+    weight: guest
+  - character_id: MZ-CHAR-001
+    function: >-
+      Moodz recognises that NeonBlue is making promises to manage his own fear,
+      and names it without demanding he change.
+    weight: meaningful_secondary
+  - character_id: MZ-CHAR-002
+    function: >-
+      TwoTone reads the outages as two converging paths, and at the climax
+      supplies the route through the service corridor.
+    weight: meaningful_secondary
+  - character_id: MZ-CHAR-003
+    function: >-
+      Static feels the interference before the first blackout, hears the
+      six-part pulse, and calls the timing window during the rescue.
+    weight: functional_beat
+  - character_id: MZ-CHAR-004
+    function: >-
+      Ash delivers one precise line when NeonBlue begins denying the risk.
+    weight: functional_beat
+  - character_id: MZ-CHAR-006
+    function: >-
+      Scarline warns that the crowd's panic is not the real danger, and at the
+      decision point confirms that the choice in front of NeonBlue is a real
+      one — without making it for him.
+    weight: observational
+
+continuity_position: >-
+  First issue of a six-issue season. Establishes the Echo as something that
+  responds to a defining choice, and opens the Patch thread.
+
+previous_issue_dependencies:
+  - None. This is the season opener and must be readable with no prior knowledge.
+
+following_issue_setup:
+  - One of six Echo symbol segments is activated and must remain unexplained.
+  - The question "why did the old relay recognise NeonBlue?" is left open.
+  - Patch is established as an emotional wound, with status unresolved.
+  - The cyan frequency established here recurs as one of six tones in Issue 002.
+  - Lil Devil has begun learning that restraint can direct power.
+
+theme: >-
+  Hope that refuses to look at risk is not hope; it is a way of managing fear.
+  Hope that can name the danger and move anyway is the thing worth having.
+
+logline: >-
+  When a travelling blackout swallows MonkeyZoo's end-of-summer festival,
+  NeonBlue must stop promising everyone that it will be fine and choose the
+  people nobody is looking at.
+
+synopsis: >-
+  The six Emo Monkeys arrive at the end-of-summer night festival, where NeonBlue
+  volunteers the group for more jobs than anyone agreed to. When a section of
+  the grounds goes dark, he promises the backup will hold. It does not. The
+  outages travel in a pattern; Static hears something inside the surges and
+  TwoTone sees two converging paths. Lil Devil, impatient with a locked service
+  gate, forces it — and the system's reaction to that interference reveals that
+  the failures are not random. In a service corridor NeonBlue finds a relay
+  marker carrying a frequency Patch once used, and his reassurance turns
+  brittle. Moodz tells him he does not have to sell safety. As the final
+  countdown pulls the crowd to the main stage, Static and Scarline find three
+  young festival-goers trapped behind a jammed emergency shutter. The obvious
+  move is to save the light show. NeonBlue chooses the corridor, and for the
+  first time gives the team an honest plan instead of a promise. The rescue
+  works. The festival finishes half-lit. Only afterwards, unseen behind him,
+  does a single cyan segment of a larger symbol come alive.
+
+beginning: >-
+  Festival arrival. NeonBlue over-volunteers. The first blackout hits and his
+  promise about the backup system fails in front of everyone.
+
+middle: >-
+  The outages travel. Static, TwoTone and Lil Devil between them establish that
+  the failure is patterned and reactive. NeonBlue finds Patch's frequency on a
+  relay marker; his optimism starts sounding like denial, and Ash and Moodz each
+  name it in their own way.
+
+end: >-
+  The trapped group is discovered as the countdown starts. NeonBlue chooses
+  them over the main stage, plans honestly, directs the team, and gets everyone
+  out. The night ends reduced and true. The Echo answers the choice.
+
+emotional_arc: >-
+  Effortful brightness → brittle over-brightness → exposure → honesty →
+  earned quiet. NeonBlue does not stop being hopeful; he stops needing the
+  hope to be a guarantee.
+
+character_arcs:
+  - character_id: MZ-CHAR-005
+    start_state: >-
+      Treats reassurance as part of rescue. Promises outcomes before anyone
+      understands the problem.
+    turn: >-
+      A relay marker carrying Patch's frequency makes the danger personal, and
+      the choice between the visible crowd and the unseen group makes
+      reassurance impossible to sustain.
+    end_state: >-
+      Gives an honest plan with no guarantee, and can say the night was good
+      without claiming it was perfect.
+  - character_id: MZ-CHAR-LILDEVIL
+    start_state: Wants to break the problem open immediately.
+    turn: >-
+      His forced gate produces information nobody wanted and nobody expected,
+      and later his strike works because it is aimed.
+    end_state: >-
+      Beginning to understand that restraint makes force effective rather than
+      smaller.
+
+conflict: >-
+  NeonBlue against his own need to reassure, under a failure he cannot promise
+  his way out of, with a crowd pulling his attention exactly where the danger
+  is not.
+
+stakes: >-
+  Three young festival-goers are trapped in the dark while every eye and every
+  resource is aimed at the main stage. If NeonBlue keeps managing the room's
+  mood, nobody goes down that corridor.
+
+turning_points:
+  - The backup fails immediately after NeonBlue guarantees it. (page 2)
+  - Lil Devil forces the gate and the system reacts. (page 4)
+  - NeonBlue finds Patch's frequency on the relay marker. (page 5)
+  - The trapped group is found as the countdown begins. (page 6)
+  - NeonBlue chooses the corridor and plans honestly. (page 7)
+
+reveal: >-
+  The failures are not random. Something in the old infrastructure is
+  responding — and it answers a choice, not a presence.
+
+resolution: >-
+  A reduced festival, everyone accounted for, and one cyan segment lighting
+  behind NeonBlue where he cannot see it.
+
+running_jokes:
+  - >-
+    NeonBlue's volunteering outpaces the team's consent. Used twice, lightly,
+    and dropped once the stakes turn.
+
+callbacks: []
+
+foreshadowing:
+  - The six-part pulse Static hears sets up the six tones of Issue 002.
+  - The cyan relay marker and Patch's frequency open the season's central thread.
+  - The single lit segment implies five more.
+
+required_locations:
+  - LOC-festival-grounds
+  - LOC-festival-main-stage
+  - LOC-festival-service-corridor
+  - LOC-festival-control-node
+
+required_props:
+  - PROP-control-box
+  - PROP-service-gate
+  - PROP-cyan-relay-marker
+  - PROP-echo-symbol
+  - PROP-public-projection-screen
+  - PROP-festival-backup-panel
+
+wardrobe_continuity: >-
+  Default wardrobe for all six Emo Monkeys and Lil Devil throughout. No changes,
+  no damage, no additions. A single continuous evening.
+
+time_of_day: >-
+  Dusk into night. The light falls across the issue: warm low sun on page 1,
+  true night by page 4, restored artificial light on page 8. The title is a
+  lighting instruction as much as a theme.
+
+weather: Clear, warm, late-summer evening. No rain. Ground is dry.
+
+# Format per the owner-mandated standard: canon/rules/FORMAT_STANDARD.md
+format: single_issue
+page_count: 28          # total book, including covers and front/back matter
+story_page_count: 22    # sequential-art pages the script and layout spec cover
+target_panel_count: 103
+
+intended_audience: >-
+  All ages. Readable by younger readers, layered enough for adults. Accessible
+  as a season opener with no prior knowledge.
+
+content_restrictions:
+  - No resolution of Patch's status or fate.
+  - No more than one of six Echo segments activated.
+  - No explanation of FusionZoo infrastructure history, and no dating of it.
+  - No character redesigns; nonnegotiable visual canon applies.
+  - No glasses on any character except Clever Monkey, who does not appear.
+  - No facial scar on Scarline.
+  - The Echo must not read as magical, sentient, supernatural or villain-run.
+  - No guest character may solve the central problem.
+  - No injury to the trapped group; the danger is being overlooked, not harmed.
+
+dialogue_source: >-
+  Restored from the legacy Issue 001 script where it matched the season bible,
+  re-edited for balloon length, with drifted lines returned to their bible
+  wording. Ash's line is the season bible's proposed line, used verbatim.
+
+canon_conflicts:
+  - conflict_id: C-01
+    description: >-
+      Season bible requires the Echo relay to activate only after NeonBlue
+      chooses the unseen group. The legacy script fires the cyan reveal at the
+      midpoint, before any choice is made.
+    sources:
+      - "SEASON-BIBLE.md §7 Echo reveal"
+      - "legacy issue_script.md panel 4.1"
+    resolution: >-
+      Follow the season bible. Page 4 carries an ambiguous flicker triggered by
+      Lil Devil's interference; the true activation lands on page 8 after the
+      rescue.
+    requires_owner_decision: true
+  - conflict_id: C-02
+    description: >-
+      Season bible gives Lil Devil the accidental discovery. The legacy script
+      has the control system react to NeonBlue directly, leaving the guest with
+      no story function.
+    sources:
+      - "SEASON-BIBLE.md §7 Guest function; §14 Lil Devil"
+      - "legacy issue_script.md panels 1.2, 4.1, 7.2"
+    resolution: >-
+      Restore the bible. Lil Devil forces the gate against advice and the
+      system's response to that interference exposes the pattern.
+    requires_owner_decision: true
+  - conflict_id: C-03
+    description: Ash's line drifted from "Hope can read warnings." to "Hope reads warnings first."
+    sources: ["SEASON-BIBLE.md §7", "legacy issue_script.md panel 4.1"]
+    resolution: Use the season bible wording verbatim.
+    requires_owner_decision: false
+  - conflict_id: C-04
+    description: >-
+      Legacy script invents "a thirteen-year-old system", "five thousand people"
+      and "three main zones, eight rides", none supported by any bible. The
+      first dates FusionZoo infrastructure, which the season reserves.
+    sources: ["SEASON-BIBLE.md §3 mystery rules", "legacy issue_script.md panels 1.1, 6.1, 8.2"]
+    resolution: Remove all three.
+    requires_owner_decision: false
+  - conflict_id: C-05
+    description: Legacy script has 19 panels; legacy page plan and metadata have 24. Never reconciled.
+    sources: ["legacy issue_script.md", "legacy page_panel_plan.json", "legacy metadata.json"]
+    resolution: Rebuild to the season bible recommendation of 8 pages and 20 panels.
+    requires_owner_decision: false
+  - conflict_id: C-06
+    description: >-
+      Season bible requires every supporting character to have a purposeful
+      function. Scarline has one line on page 2 and nothing thereafter.
+    sources: ["SEASON-BIBLE.md §5, §7", "legacy issue_script.md"]
+    resolution: Give Scarline a validating beat at NeonBlue's decision point.
+    requires_owner_decision: false
+  - conflict_id: C-07
+    description: >-
+      Season bible leaves the trapped group unspecified. The legacy script makes
+      them anonymous "fairgoers" and the art never depicts them.
+    sources: ["SEASON-BIBLE.md §7 Crisis", "legacy issue_script.md panel 6.2"]
+    resolution: >-
+      Three unnamed young festival-goers, visually specific and established one
+      page before the rescue. No new named character and no new canon.
+    requires_owner_decision: false
+
+approval_status: draft

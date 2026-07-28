@@ -1,0 +1,591 @@
+schema_version: '1.0'
+identification:
+  current_display_name: Patch
+  series_name: Zombie/Stayed/Pending-related story character
+  personal_name: Patch
+  codename: null
+  nicknames: []
+  naming_status: personal_name_canon
+  character_id: MZ-CHAR-PATCH
+  development_level: 1
+  canon_status: established
+  legacy_label: Patch
+  alias_of: MZ-CHAR-ZOMBIE
+visual_canon:
+  primary_reference_image: null
+  supporting_reference_images: []
+  species_or_form: []
+  body_shape: []
+  face: []
+  eyes: []
+  hair_or_fur: []
+  clothing: []
+  accessories: []
+  color_palette: []
+  signature_silhouette: []
+  distinguishing_features: []
+  features_that_must_never_change: []
+  features_that_may_vary: []
+  prohibited_visual_additions: &id023 []
+  glasses_status: unknown
+character_core:
+  archetype:
+  - category: role
+    name: archetype
+    value: threshold survivor
+    status: established
+    strength: strong
+    usage_frequency: often
+    confidence: strong inference
+    rationale: Synthesized from existing canon, inventory, and repeated draft role.
+    evidence: &id001
+    - MonkeyZoo_Comic_Factory/00_SYSTEM/character_bible.md
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - story planning
+    incompatible_contexts:
+    - treating archetype as a single joke
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id001
+    notes: null
+  team_role:
+  - category: role
+    name: team role
+    value: living open thread
+    status: established
+    strength: strong
+    usage_frequency: often
+    confidence: strong inference
+    rationale: Chosen to avoid duplicating exact story function across the cast.
+    evidence: &id002
+    - MonkeyZoo_Comic_Factory/00_SYSTEM/character_bible.md
+    - july/2026-07-monkeyzoo-july-edition-test.md
+    compatible_contexts:
+    - ensemble planning
+    incompatible_contexts:
+    - every issue requiring this role
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id002
+    notes: null
+  story_function:
+  - category: role
+    name: story function
+    value: living open thread
+    status: established
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: strong inference
+    rationale: Derived from documented issue use and visual identity.
+    evidence: &id003
+    - july/2026-07-monkeyzoo-july-edition-test.md
+    - MonkeyZoo_Comic_Factory/00_SYSTEM/character_bible.md
+    compatible_contexts:
+    - plot assignment
+    incompatible_contexts:
+    - forcing spotlight
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id003
+    notes: null
+  dominant_traits:
+  - &id029
+    category: relationship_dynamic
+    name: NeonBlue old friend
+    value: Patch matters because NeonBlue recognizes him and carries guilt.
+    status: canon
+    strength: defining
+    usage_frequency: special circumstances only
+    confidence: confirmed canon
+    rationale: Continuity ledger explicitly identifies Patch as NeonBlue old friend.
+    evidence: &id004
+    - MonkeyZoo_Comic_Factory/00_SYSTEM/continuity_ledger.md
+    compatible_contexts:
+    - NeonBlue guilt
+    - Stayed/Pending stories
+    incompatible_contexts:
+    - background crowd use without identity
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id004
+    notes: null
+  strengths:
+  - &id016
+    category: unknown
+    name: undefined strength
+    value: null
+    status: reserved
+    strength: background
+    usage_frequency: never
+    confidence: reserved
+    rationale: No individual skill is established yet.
+    evidence: &id005
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts: []
+    incompatible_contexts:
+    - forcing a power set
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id005
+    notes: null
+  flaws:
+  - &id017
+    category: unknown
+    name: undefined flaw
+    value: null
+    status: reserved
+    strength: background
+    usage_frequency: never
+    confidence: reserved
+    rationale: No flaw is established yet; reserve until visual/story evidence exists.
+    evidence: &id006
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts: []
+    incompatible_contexts:
+    - inventing trauma behavior without evidence
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id006
+    notes: null
+  vulnerabilities:
+  - &id009
+    category: recurring_mystery
+    name: home frequency
+    value: Patch recognizes Relay 1 but cannot or will not explain how.
+    status: canon
+    strength: strong
+    usage_frequency: special circumstances only
+    confidence: confirmed canon
+    rationale: Issue 06 ledger records Patch saying home frequency.
+    evidence: &id007
+    - MonkeyZoo_Comic_Factory/00_SYSTEM/continuity_ledger.md
+    compatible_contexts:
+    - Relay 1 arcs
+    incompatible_contexts:
+    - unrelated issues
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id007
+    notes: null
+  motivation:
+  - category: motivation
+    name: growth direction
+    value: Clarify visual identity, relationship with NeonBlue, and why Relay 1 feels like home frequency.
+    status: experimental
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: experimental suggestion
+    rationale: Future-facing seed based on current canon gaps.
+    evidence: &id008
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - future issue planning
+    incompatible_contexts:
+    - treating as approved canon before review
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id008
+    notes: null
+  fear: []
+  personal_values: []
+  internal_contradiction:
+  - *id009
+voice_and_dialogue:
+  speech_rhythm: []
+  vocabulary_level: []
+  sentence_length: []
+  humor_style:
+  - category: speech_pattern
+    name: humor style
+    value: undefined
+    status: experimental
+    strength: subtle
+    usage_frequency: sometimes
+    confidence: strong inference
+    rationale: Set by documented voice where available and conservative team differentiation elsewhere.
+    evidence: &id010
+    - MonkeyZoo_Comic_Factory/00_SYSTEM/character_bible.md
+    - july/2026-07-monkeyzoo-july-edition-test.md
+    compatible_contexts:
+    - dialogue drafting
+    incompatible_contexts:
+    - flattening character into gag
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id010
+    notes: null
+  catchphrase:
+  - &id022
+    category: catchphrase
+    name: '...home frequency'
+    value: A cryptic continuity line, not a reusable catchphrase yet.
+    status: canon
+    strength: subtle
+    usage_frequency: special circumstances only
+    confidence: confirmed canon
+    rationale: Ledger quotes Patch directly.
+    evidence: &id011
+    - MonkeyZoo_Comic_Factory/00_SYSTEM/continuity_ledger.md
+    compatible_contexts:
+    - Relay 1 continuity
+    incompatible_contexts:
+    - ordinary dialogue
+    first_eligible_issue: MZ-2026-08-06
+    last_used_issue: null
+    source_refs: *id011
+    notes: null
+  favorite_words: []
+  words_the_character_avoids: []
+  stress_speech: []
+  excited_speech: []
+  sad_speech: []
+  angry_speech: []
+  example_dialogue: []
+  dialogue_rules:
+  - category: writing_rule
+    name: do not caricature voice
+    value: Use the speech trait only when it supports the scene.
+    status: established
+    strength: strong
+    usage_frequency: often
+    confidence: strong inference
+    rationale: Request requires rules preventing caricature.
+    evidence: &id012
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - dialogue polish
+    incompatible_contexts:
+    - filler quirks
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id012
+    notes: null
+behavior:
+  default_behavior: &id014 []
+  stress_response:
+  - *id009
+  conflict_response:
+  - category: role
+    name: conflict style
+    value: undefined
+    status: experimental
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: strong inference
+    rationale: Differentiates conflict behavior across the team.
+    evidence: &id013
+    - july/2026-07-monkeyzoo-july-edition-test.md
+    - MonkeyZoo_Comic_Factory/00_SYSTEM/character_bible.md
+    compatible_contexts:
+    - conflict scenes
+    incompatible_contexts:
+    - repeating formula
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id013
+    notes: null
+  success_response: []
+  failure_response: []
+  habits: []
+  quirks: *id014
+  physical_ticks:
+  - &id030
+    category: unknown
+    name: undefined behavior
+    value: null
+    status: reserved
+    strength: background
+    usage_frequency: never
+    confidence: reserved
+    rationale: No repeated behavior found in the inventory.
+    evidence: &id015
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts: []
+    incompatible_contexts:
+    - inventing mannerisms
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id015
+    notes: null
+  props: []
+  emotional_tells: []
+  entrance_behavior: []
+  exit_behavior: []
+  celebration_behavior: []
+skills_and_limitations:
+  core_abilities:
+  - *id016
+  secondary_skills: []
+  specific_talents: []
+  weaknesses:
+  - *id017
+  things_the_character_believes_they_can_do: []
+  things_the_character_actually_can_do:
+  - *id016
+  situations_where_they_excel: []
+  situations_where_they_struggle:
+  - *id017
+  - *id009
+relationships: []
+story_use:
+  best_story_genres: []
+  best_adventure_roles:
+  - category: role
+    name: best adventure role
+    value: living open thread
+    status: experimental
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: strong inference
+    rationale: Based on current team differentiation.
+    evidence: &id018
+    - july/2026-07-monkeyzoo-july-edition-test.md
+    compatible_contexts:
+    - issue planning
+    incompatible_contexts:
+    - mandatory use
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id018
+    notes: null
+  typical_plot_contribution:
+  - category: role
+    name: plot contribution
+    value: living open thread
+    status: experimental
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: strong inference
+    rationale: Evidence-backed starting point only.
+    evidence: &id019
+    - july/2026-07-monkeyzoo-july-edition-test.md
+    - MonkeyZoo_Comic_Factory/00_SYSTEM/character_bible.md
+    compatible_contexts:
+    - ensemble scenes
+    incompatible_contexts:
+    - overuse
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id019
+    notes: null
+  comic_relief_function:
+  - category: role
+    name: humor function
+    value: undefined
+    status: experimental
+    strength: subtle
+    usage_frequency: sometimes
+    confidence: strong inference
+    rationale: Keeps humor distinct without requiring a gag.
+    evidence: &id020
+    - MonkeyZoo_Comic_Factory/00_SYSTEM/character_bible.md
+    - july/2026-07-monkeyzoo-july-edition-test.md
+    compatible_contexts:
+    - light panels
+    incompatible_contexts:
+    - serious beats if mismatched
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id020
+    notes: null
+  emotional_function: []
+  problem_solving_function:
+  - *id016
+  appropriate_spotlight_scenes: []
+  situations_to_avoid:
+  - category: writing_rule
+    name: avoid caricature
+    value: Do not reduce the character to the easiest visual joke or single trait.
+    status: established
+    strength: strong
+    usage_frequency: often
+    confidence: strong inference
+    rationale: Required by prompt and consistent with schema purpose.
+    evidence: &id021
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - all writing
+    incompatible_contexts:
+    - none
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id021
+    notes: null
+  pairings_that_work_well: []
+  pairings_that_should_be_used_sparingly: []
+writing_rules:
+  always: []
+  often:
+  - *id016
+  sometimes: *id014
+  rarely:
+  - *id022
+  never: *id023
+  anti_caricature_rules:
+  - category: writing_rule
+    name: anti-caricature
+    value: Let the character have scene purpose beyond one quirk.
+    status: established
+    strength: strong
+    usage_frequency: often
+    confidence: strong inference
+    rationale: Required to prevent overloaded or one-dimensional use.
+    evidence: &id024
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - all writing
+    incompatible_contexts:
+    - none
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id024
+    notes: null
+running_elements:
+  running_gags: []
+  recurring_mysteries:
+  - *id009
+  repeated_props: []
+  ongoing_goals:
+  - category: personal_mission
+    name: growth seed
+    value: Clarify visual identity, relationship with NeonBlue, and why Relay 1 feels like home frequency.
+    status: experimental
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: experimental suggestion
+    rationale: Future-facing direction for review.
+    evidence: &id025
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - future arcs
+    incompatible_contexts:
+    - canon until approved
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id025
+    notes: null
+  unresolved_questions:
+  - category: recurring_mystery
+    name: unresolved naming or future work
+    value: Future review may refine name, relationships, and depth.
+    status: reserved
+    strength: background
+    usage_frequency: special circumstances only
+    confidence: reserved
+    rationale: Several characters are intentionally sparse or series-named.
+    evidence: &id026
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - Bible review
+    incompatible_contexts:
+    - issue dialogue
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id026
+    notes: null
+  future_seeds:
+  - category: personal_mission
+    name: future growth
+    value: Clarify visual identity, relationship with NeonBlue, and why Relay 1 feels like home frequency.
+    status: experimental
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: experimental suggestion
+    rationale: Evidence-informed next direction.
+    evidence: &id027
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - future planning
+    incompatible_contexts:
+    - treating as locked canon
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id027
+    notes: null
+growth_and_continuity:
+  first_appearance: null
+  published_appearances:
+  - 3/winter edition 3/Comic_Export.html
+  - 3/winter edition 3/First Run of the Year/index.html
+  - 3/winter edition 3/First Run of the Year2/index.html
+  - MonkeyZoo_Comic_Factory/00_SYSTEM/automation_rules.md
+  - MonkeyZoo_Comic_Factory/00_SYSTEM/character_bible.md
+  - MonkeyZoo_Comic_Factory/00_SYSTEM/continuity_ledger.md
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-07_Issue_05/art_prompt_pack.json
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-07_Issue_05/cover_prompt.md
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-07_Issue_05/final_export_checklist.md
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-07_Issue_05/issue_brief.md
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-07_Issue_05/issue_outline.md
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-07_Issue_05/issue_script.md
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-07_Issue_05/page_panel_plan.json
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-07_Issue_05/qa_report.md
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-07_Issue_05/social_posts.md
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-08_Issue_06/art_prompt_pack.json
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-08_Issue_06/cover_prompt.md
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-08_Issue_06/final_export_checklist.md
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-08_Issue_06/generation_log.md
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-08_Issue_06/issue_brief.md
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-08_Issue_06/issue_outline.md
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-08_Issue_06/issue_script.md
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-08_Issue_06/metadata.json
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-08_Issue_06/page_panel_plan.json
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-08_Issue_06/qa_report.md
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-08_Issue_06/social_posts.md
+  - character-bibles/_inventory/canon-conflicts.md
+  - character-bibles/_inventory/character-inventory.json
+  - character-bibles/_inventory/character-inventory.md
+  - character-bibles/_inventory/unidentified-characters.md
+  lessons_learned: []
+  new_traits_introduced: []
+  traits_strengthened: []
+  traits_retired: []
+  relationship_changes: []
+  major_story_events: []
+  current_emotional_state: []
+  open_character_arcs:
+  - category: continuity
+    name: growth seed
+    value: Clarify visual identity, relationship with NeonBlue, and why Relay 1 feels like home frequency.
+    status: experimental
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: experimental suggestion
+    rationale: Reserved for owner review before canonization.
+    evidence: &id028
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - future continuity
+    incompatible_contexts:
+    - current canon summary
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id028
+    notes: null
+issue_level_usage:
+  traits_eligible_for_selection:
+  - *id029
+  - *id016
+  - *id017
+  - *id030
+  - *id022
+  maximum_defining_traits_per_issue: 1
+  maximum_minor_quirks_per_issue: 0
+  catchphrase_cooldown:
+    minimum_issues_between_uses: 1
+    last_used_issue: null
+    notes: Use no more than once per issue unless repetition is the point of the scene.
+  running_gag_cooldown:
+    minimum_issues_between_uses: 1
+    last_used_issue: null
+    notes: Do not use a running element as filler.
+  recent_traits_used: []
+  traits_that_should_not_appear_together: []
+  required_context_for_special_traits:
+  - *id029
+  - *id009
+source_notes:
+- Initial Bible generated from completed inventory, existing character_bible.md, continuity ledger, and July draft.
+- Experimental traits are evidence-based suggestions and are not owner-approved canon yet.
+- 'Patch primary reference filed from issue evidence: `zombie.png (#1997 = Patch)`. Owner should review whether
+  this is final individual art or a faction-derived placeholder.'

@@ -1,0 +1,69 @@
+schema_id: expression
+version: 1.0.0
+title: Expression Record
+description: >-
+  One approved facial performance for one character. Expressions exist to serve
+  scripted beats. Coverage against the script matters; a round number of
+  expressions does not.
+identity_field: expression_id
+
+fields:
+  expression_id:
+    type: string
+    required: true
+    pattern: "^EXP-[A-Z0-9]+-[a-z0-9_]+$"
+    description: "Format: EXP-<CHARACTER SUFFIX>-<slug>, e.g. EXP-005-worried."
+  character_id:
+    type: string
+    required: true
+    pattern: "^MZ-CHAR-[A-Z0-9]+$"
+    description: Owning character.
+  name:
+    type: string
+    required: true
+    description: Short human label.
+  emotional_meaning:
+    type: string
+    required: true
+    description: What the reader should feel the character is feeling.
+  intensity:
+    type: integer
+    required: true
+    minimum: 1
+    maximum: 5
+    description: 1 is barely readable, 5 is the character's ceiling.
+  eye_state: {type: string, required: true, description: Lid position, pupil size, direction.}
+  brow_state: {type: string, required: true, description: Brow angle and height.}
+  mouth_state: {type: string, required: true, description: Mouth shape and openness.}
+  head_angle: {type: string, required: true, description: Tilt and turn.}
+  suitable_scene_types:
+    type: list
+    required: true
+    item_type: string
+    description: Scene kinds where this expression reads correctly.
+  unsuitable_scene_types:
+    type: list
+    required: true
+    item_type: string
+    description: >-
+      Scene kinds where this expression would misread. Recording this prevents
+      the most common failure: a correct-looking face attached to the wrong beat.
+  approved_reference:
+    type: string
+    required: true
+    description: Repository-relative path to the approved image.
+  transparency_status:
+    type: string
+    required: true
+    enum: [true_alpha, opaque, unknown]
+    description: >-
+      true_alpha assets are composite-ready. opaque assets need background
+      removal before they can be staged into a panel.
+  image_width: {type: integer, required: true, minimum: 1, description: Pixel width.}
+  image_height: {type: integer, required: true, minimum: 1, description: Pixel height.}
+  canon_status:
+    type: string
+    required: true
+    enum: [approved, candidate, rejected]
+    description: Approval state.
+  notes: {type: string, required: false, description: Anything a stager needs to know.}

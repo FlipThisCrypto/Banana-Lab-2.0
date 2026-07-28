@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bananalab"
+version = "0.1.0"
+description = "Banana Lab 2.0 — a structured comic-production system for MonkeyZoo"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Proprietary" }
+authors = [{ name = "Fiend Studios" }]
+
+dependencies = [
+    "PyYAML>=6.0",
+    "Pillow>=10.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+    "ruff>=0.6",
+]
+
+[project.scripts]
+bananalab = "app.cli.main:main"
+
+[tool.setuptools]
+packages = ["app", "app.core", "app.domain", "app.services", "app.adapters", "app.cli", "app.ui"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-q"
+markers = [
+    "integration: touches the filesystem beyond fixtures",
+    "production_validation: validates real project content, not fixtures",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
+ignore = ["E501"]

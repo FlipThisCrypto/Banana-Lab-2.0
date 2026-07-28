@@ -1,0 +1,65 @@
+trait_statuses:
+  canon: immutable unless deliberately revised by the project owner
+  established: repeatedly used and considered reliable
+  experimental: may be tested in a future comic
+  optional: available when useful but not defining
+  dormant: previously used but currently inactive
+  retired: should no longer appear
+  contradicted: conflicts with stronger canon and requires review
+  unknown: not yet determined
+  reserved: intentionally left open for future development
+
+trait_strengths:
+  defining: may appear frequently and shapes recognition
+  strong: reliable but not required in every appearance
+  moderate: useful when story-relevant
+  subtle: light flavor, not a scene driver
+  background: rare texture, never filler
+
+usage_frequencies:
+  - almost always
+  - often
+  - sometimes
+  - rarely
+  - special circumstances only
+  - never
+
+categories:
+  - catchphrase
+  - physical_tick
+  - running_prop
+  - entrance_style
+  - exit_style
+  - favorite_word
+  - speech_pattern
+  - personal_rule
+  - unusual_fear
+  - lucky_charm
+  - theme_music_or_audio_cue
+  - color_preference_or_aversion
+  - signature_pose
+  - favorite_snack
+  - mini_celebration
+  - specific_talent
+  - specific_weakness
+  - imaginary_or_unseen_companion
+  - bad_timing_habit
+  - narrator_awareness
+  - personal_sound_effect
+  - literal_misunderstanding_tendency
+  - collection_or_obsession
+  - unexpected_hobby
+  - emotional_tell
+  - personal_mission
+  - unusual_luck_pattern
+  - relationship_dynamic
+  - signature_mistake
+  - recurring_mystery
+
+selection_guidance:
+  core_lead_starting_elements: 5-8
+  supporting_starting_elements: 3-5
+  minor_starting_elements: 1-3
+  background_starting_elements: visual identity only
+  rule: "Do not add a quirk merely because a category exists."
+

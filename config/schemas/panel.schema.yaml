@@ -1,0 +1,152 @@
+schema_id: panel
+version: 1.0.0
+title: Panel Script Record
+description: >-
+  One panel, specified well enough that a different artist or a generation
+  workflow could produce it without guessing. The staging fields exist because
+  the dominant defect in the previous system was characters that looked correct
+  but did not occupy the scene. A panel that does not say where the character's
+  feet are cannot be QA'd for ground contact.
+identity_field: panel_id
+
+fields:
+  # --- Addressing ------------------------------------------------------------
+  issue_id: {type: string, required: true, pattern: "^issue-[0-9]{3}$", description: Owning issue.}
+  page_number: {type: integer, required: true, minimum: 1, description: Page.}
+  panel_number: {type: integer, required: true, minimum: 1, description: Panel within the page.}
+  panel_id:
+    type: string
+    required: true
+    pattern: "^ISSUE[0-9]{3}-P[0-9]{2}-[0-9]{2}$"
+    description: "Format: ISSUE001-P03-02. Unique across the issue."
+
+  # --- Intent ----------------------------------------------------------------
+  narrative_purpose:
+    type: string
+    required: true
+    description: >-
+      The job this panel does. If it cannot be stated, the panel is filler and
+      should be cut.
+  visual_beat: {type: string, required: true, description: What the reader sees happen.}
+
+  # --- Text ------------------------------------------------------------------
+  dialogue:
+    type: list
+    required: false
+    item_fields:
+      speaker: {type: string, required: true, description: Character ID or OFF.}
+      text: {type: string, required: true, description: The line as lettered.}
+      bubble_type: {type: string, required: true, enum: [speech, thought, whisper, shout, radio, off_panel, burst], description: Balloon treatment.}
+    description: Spoken lines in reading order.
+  caption: {type: string, required: false, description: Narration box text.}
+  sound_effects: {type: list, required: false, item_type: string, description: SFX lettering.}
+
+  # --- Cast ------------------------------------------------------------------
+  characters_present:
+    type: list
+    required: false
+    item_type: string
+    description: >-
+      Character IDs in frame. Legitimately empty for establishing shots, inserts
+      and pure-environment panels, so it is not required. When it IS populated,
+      every listed character must appear in character_blocking - that cross-field
+      rule is enforced by the panel-script validator, not by this schema.
+  speaker: {type: string, required: false, description: Primary speaker.}
+  listener: {type: string, required: false, description: Who is being addressed.}
+
+  # --- Place and time --------------------------------------------------------
+  location: {type: string, required: true, description: Location ID.}
+  time: {type: string, required: true, description: Story time.}
+
+  # --- Camera ----------------------------------------------------------------
+  camera_shot:
+    type: string
+    required: true
+    enum: [extreme_wide, wide, full, medium_wide, medium, medium_close, close, extreme_close, insert, over_shoulder, two_shot]
+    description: Shot size.
+  camera_angle:
+    type: string
+    required: true
+    enum: [eye_level, low_angle, high_angle, worm_eye, birds_eye, dutch]
+    description: Camera height and tilt.
+  lens_feeling:
+    type: string
+    required: true
+    enum: [wide_distorted, normal, compressed_telephoto]
+    description: Perspective character of the shot.
+
+  # --- Staging (the integration contract) ------------------------------------
+  character_blocking:
+    type: list
+    required: false
+    item_fields:
+      character_id: {type: string, required: true, description: Who.}
+      position: {type: string, required: true, description: Where in frame, e.g. left third, midground.}
+      depth_plane: {type: string, required: true, enum: [foreground, midground, background], description: Depth layer.}
+      scale_note: {type: string, required: true, description: Size relative to a named scale reference in the plate.}
+      pose_id: {type: string, required: false, description: Approved pose, if one covers it.}
+      expression_id: {type: string, required: false, description: Approved expression, if one covers it.}
+      ground_contact: {type: string, required: true, description: Exactly how they meet the ground.}
+      eye_line: {type: string, required: true, description: Where they are looking.}
+      hand_activity: {type: string, required: true, description: What the hands are doing.}
+      occlusion: {type: string, required: false, description: What crosses in front of them.}
+    description: >-
+      One entry per character in frame. Required even for a single figure — this
+      is the record QA checks integration against.
+  character_scale: {type: string, required: true, description: Overall scale logic for the panel.}
+  prop_interactions: {type: list, required: false, item_type: string, description: Prop IDs and how they are handled.}
+
+  # --- Environment -----------------------------------------------------------
+  background_description: {type: string, required: true, description: What is behind the cast.}
+  foreground_elements: {type: list, required: false, item_type: string, description: Things in front.}
+  midground_elements: {type: list, required: false, item_type: string, description: Things between.}
+  depth_plan: {type: string, required: true, description: How the three planes read as one space.}
+  lighting:
+    type: map
+    required: true
+    description: Light contract the character render must match.
+    fields:
+      key_direction: {type: string, required: true, description: Where the main light comes from.}
+      key_color: {type: string, required: true, description: Colour of the key.}
+      fill: {type: string, required: true, description: Fill light description.}
+      rim: {type: string, required: false, description: Rim or backlight.}
+      contact_shadow: {type: string, required: true, description: Shadow where the character meets the ground.}
+      cast_shadow: {type: string, required: false, description: Longer shadow thrown by the figure.}
+      color_spill: {type: string, required: false, description: Environmental colour bounced onto the character.}
+  color_mood: {type: string, required: true, description: Palette and emotional temperature.}
+  motion: {type: string, required: false, description: Implied movement.}
+
+  # --- Layout ----------------------------------------------------------------
+  bubble_placement_zone: {type: string, required: true, description: Where lettering will sit; must be kept clear of faces.}
+  panel_shape:
+    type: string
+    required: true
+    enum: [rectangle, tall, wide, square, inset, borderless, bleed, splash, irregular]
+    description: Panel form.
+  relative_panel_size:
+    type: string
+    required: true
+    enum: [xs, small, medium, large, xl, full_page]
+    description: >-
+      Size must follow narrative weight. A beat that carries the issue does not
+      get the same box as a transition.
+  transition_type:
+    type: string
+    required: true
+    enum: [moment_to_moment, action_to_action, subject_to_subject, scene_to_scene, aspect_to_aspect, non_sequitur]
+    description: Relationship to the previous panel.
+
+  # --- Production ------------------------------------------------------------
+  continuity_dependencies: {type: list, required: false, item_type: string, description: Panels or facts this depends on.}
+  generation_approach:
+    type: string
+    required: true
+    enum: [approved_layer_composite, background_plus_layers, controlnet_pose_render, inpaint_repair, manual_art, reuse_approved_panel]
+    description: How this panel will actually be made.
+  required_source_assets: {type: list, required: true, item_type: string, description: Plates, layers and props needed.}
+  qa_checklist: {type: list, required: true, item_type: string, description: Panel-specific checks beyond the standard gate.}
+  approval_status:
+    type: string
+    required: true
+    enum: [draft, in_review, approved, rejected]
+    description: Approval state. Only a human may set `approved`.

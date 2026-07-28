@@ -1,0 +1,201 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "monkeyzoo/character-bible.schema.json",
+  "title": "MonkeyZoo Character Bible",
+  "description": "Sparse-friendly character identity and writing guidance. Unknown, blank, and reserved values are valid when marked explicitly.",
+  "type": "object",
+  "required": ["identification", "visual_canon", "issue_level_usage"],
+  "properties": {
+    "schema_version": { "type": "string", "default": "1.0" },
+    "identification": {
+      "type": "object",
+      "required": ["current_display_name", "naming_status", "character_id", "development_level", "canon_status"],
+      "properties": {
+        "current_display_name": { "type": "string", "minLength": 1 },
+        "series_name": { "type": ["string", "null"] },
+        "personal_name": { "type": ["string", "null"] },
+        "legacy_label": { "type": ["string", "null"] },
+        "nationality": { "type": ["string", "null"] },
+        "country_of_origin": { "type": ["string", "null"] },
+        "alias_of": { "type": ["string", "null"], "pattern": "^MZ-CHAR-[A-Z0-9-]+$" },
+        "codename": { "type": ["string", "null"] },
+        "nicknames": { "type": "array", "items": { "type": "string" } },
+        "naming_status": {
+          "type": "string",
+          "enum": ["personal_name_canon", "series_name_only", "codename_only", "nickname_only", "personal_name_unresolved", "unresolved", "reserved"]
+        },
+        "character_id": { "type": "string", "pattern": "^MZ-CHAR-[A-Z0-9-]+$" },
+        "development_level": { "type": "integer", "minimum": 1, "maximum": 5 },
+        "canon_status": {
+          "type": "string",
+          "enum": ["core_canon", "approved_canon", "established", "probable", "experimental", "unidentified", "duplicate_or_variant", "retired"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "visual_canon": {
+      "type": "object",
+      "required": ["primary_reference_image", "features_that_must_never_change", "prohibited_visual_additions"],
+      "properties": {
+        "primary_reference_image": { "type": ["string", "null"] },
+        "supporting_reference_images": { "type": "array", "items": { "type": "string" } },
+        "species_or_form": { "$ref": "#/$defs/trait_list" },
+        "body_shape": { "$ref": "#/$defs/trait_list" },
+        "face": { "$ref": "#/$defs/trait_list" },
+        "eyes": { "$ref": "#/$defs/trait_list" },
+        "hair_or_fur": { "$ref": "#/$defs/trait_list" },
+        "clothing": { "$ref": "#/$defs/trait_list" },
+        "accessories": { "$ref": "#/$defs/trait_list" },
+        "color_palette": { "$ref": "#/$defs/trait_list" },
+        "signature_silhouette": { "$ref": "#/$defs/trait_list" },
+        "distinguishing_features": { "$ref": "#/$defs/trait_list" },
+        "features_that_must_never_change": { "$ref": "#/$defs/trait_list" },
+        "features_that_may_vary": { "$ref": "#/$defs/trait_list" },
+        "prohibited_visual_additions": { "$ref": "#/$defs/trait_list" },
+        "glasses_status": {
+          "type": "string",
+          "enum": ["confirmed_glasses", "confirmed_no_glasses", "ambiguous", "unknown", "reserved"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "character_core": { "$ref": "#/$defs/core_section" },
+    "voice_and_dialogue": { "$ref": "#/$defs/core_section" },
+    "behavior": { "$ref": "#/$defs/core_section" },
+    "skills_and_limitations": { "$ref": "#/$defs/core_section" },
+    "relationships": {
+      "type": "array",
+      "items": { "$ref": "relationship-schema.json" }
+    },
+    "story_use": { "$ref": "#/$defs/core_section" },
+    "writing_rules": {
+      "type": "object",
+      "properties": {
+        "always": { "$ref": "#/$defs/trait_list" },
+        "often": { "$ref": "#/$defs/trait_list" },
+        "sometimes": { "$ref": "#/$defs/trait_list" },
+        "rarely": { "$ref": "#/$defs/trait_list" },
+        "never": { "$ref": "#/$defs/trait_list" },
+        "anti_caricature_rules": { "$ref": "#/$defs/trait_list" }
+      },
+      "additionalProperties": false
+    },
+    "running_elements": { "$ref": "#/$defs/core_section" },
+    "growth_and_continuity": {
+      "type": "object",
+      "properties": {
+        "first_appearance": { "type": ["string", "null"] },
+        "published_appearances": { "type": "array", "items": { "type": "string" } },
+        "lessons_learned": { "$ref": "#/$defs/trait_list" },
+        "new_traits_introduced": { "$ref": "#/$defs/trait_list" },
+        "traits_strengthened": { "$ref": "#/$defs/trait_list" },
+        "traits_retired": { "$ref": "#/$defs/trait_list" },
+        "relationship_changes": { "$ref": "#/$defs/trait_list" },
+        "major_story_events": { "$ref": "#/$defs/trait_list" },
+        "current_emotional_state": { "$ref": "#/$defs/trait_list" },
+        "open_character_arcs": { "$ref": "#/$defs/trait_list" }
+      },
+      "additionalProperties": false
+    },
+    "issue_level_usage": {
+      "type": "object",
+      "required": ["maximum_defining_traits_per_issue", "maximum_minor_quirks_per_issue"],
+      "properties": {
+        "traits_eligible_for_selection": { "$ref": "#/$defs/trait_list" },
+        "maximum_defining_traits_per_issue": { "type": "integer", "minimum": 0, "maximum": 3, "default": 1 },
+        "maximum_minor_quirks_per_issue": { "type": "integer", "minimum": 0, "maximum": 4, "default": 1 },
+        "catchphrase_cooldown": { "$ref": "#/$defs/cooldown" },
+        "running_gag_cooldown": { "$ref": "#/$defs/cooldown" },
+        "recent_traits_used": { "type": "array", "items": { "type": "string" } },
+        "traits_that_should_not_appear_together": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "minItems": 2,
+            "items": { "type": "string" }
+          }
+        },
+        "required_context_for_special_traits": { "$ref": "#/$defs/trait_list" }
+      },
+      "additionalProperties": false
+    },
+    "source_notes": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "core_section": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          { "$ref": "#/$defs/trait_list" },
+          { "type": ["string", "null"] },
+          { "type": "array", "items": { "type": "string" } }
+        ]
+      }
+    },
+    "trait_list": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/trait" }
+    },
+    "trait": {
+      "type": "object",
+      "required": ["name", "status", "strength", "usage_frequency"],
+      "properties": {
+        "category": {
+          "type": "string",
+          "enum": [
+            "catchphrase", "physical_tick", "running_prop", "entrance_style", "exit_style",
+            "favorite_word", "speech_pattern", "personal_rule", "unusual_fear", "lucky_charm",
+            "theme_music_or_audio_cue", "color_preference_or_aversion", "signature_pose",
+            "favorite_snack", "mini_celebration", "specific_talent", "specific_weakness",
+            "imaginary_or_unseen_companion", "bad_timing_habit", "narrator_awareness",
+            "personal_sound_effect", "literal_misunderstanding_tendency", "collection_or_obsession",
+            "unexpected_hobby", "emotional_tell", "personal_mission", "unusual_luck_pattern",
+            "relationship_dynamic", "signature_mistake", "recurring_mystery", "visual_feature",
+            "role", "motivation", "fear", "value", "skill", "limitation", "writing_rule",
+            "continuity", "unknown", "reserved"
+          ]
+        },
+        "name": { "type": "string", "minLength": 1 },
+        "value": { "type": ["string", "null"] },
+        "status": { "$ref": "#/$defs/trait_status" },
+        "strength": { "$ref": "#/$defs/trait_strength" },
+        "usage_frequency": { "$ref": "#/$defs/usage_frequency" },
+        "confidence": {
+          "type": "string",
+          "enum": ["confirmed canon", "strong inference", "experimental suggestion", "unknown", "reserved"]
+        },
+        "rationale": { "type": ["string", "null"] },
+        "evidence": { "type": "array", "items": { "type": "string" } },
+        "compatible_contexts": { "type": "array", "items": { "type": "string" } },
+        "incompatible_contexts": { "type": "array", "items": { "type": "string" } },
+        "first_eligible_issue": { "type": ["string", "null"] },
+        "last_used_issue": { "type": ["string", "null"] },
+        "source_refs": { "type": "array", "items": { "type": "string" } },
+        "notes": { "type": ["string", "null"] }
+      },
+      "additionalProperties": false
+    },
+    "trait_status": {
+      "type": "string",
+      "enum": ["canon", "established", "experimental", "optional", "dormant", "retired", "contradicted", "unknown", "reserved"]
+    },
+    "trait_strength": {
+      "type": "string",
+      "enum": ["defining", "strong", "moderate", "subtle", "background"]
+    },
+    "usage_frequency": {
+      "type": "string",
+      "enum": ["almost always", "often", "sometimes", "rarely", "special circumstances only", "never"]
+    },
+    "cooldown": {
+      "type": "object",
+      "properties": {
+        "minimum_issues_between_uses": { "type": "integer", "minimum": 0 },
+        "last_used_issue": { "type": ["string", "null"] },
+        "notes": { "type": ["string", "null"] }
+      },
+      "additionalProperties": false
+    }
+  }
+}

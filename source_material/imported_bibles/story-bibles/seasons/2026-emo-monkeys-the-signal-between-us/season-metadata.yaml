@@ -1,0 +1,31 @@
+season_id: 2026-emo-monkeys-the-signal-between-us
+title: 'Emo Monkeys: The Signal Between Us'
+span: August 2026 through January 2027
+format: six connected monthly comic issues
+canon_status: story-development document; new facts remain proposed until approved
+primary_cast:
+- Moodz
+- TwoTone
+- Static
+- Ash
+- NeonBlue
+- Scarline
+guest_characters:
+- Lil Devil
+- Clever
+- Zombie
+- Cheeky
+- Super Monkey
+open_threads:
+- Patch
+- The Echo
+- Relay 1
+- The Pending
+- the Keeper
+character_source_of_truth: character-bibles/MZ-CHAR-*/bible.yaml
+image_source_of_truth: MonkeyZoo_Comic_Factory/03_APPROVED_CANON/approved_characters/
+continuity_source_of_truth: MonkeyZoo_Comic_Factory/00_SYSTEM/continuity_ledger.md
+official_external_sources:
+- https://monkeyzoo.net/
+- https://monkeyzoo.net/what-is-nft-fusion/
+- https://monkeyzoo.net/learn/

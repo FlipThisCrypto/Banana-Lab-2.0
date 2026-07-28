@@ -1,0 +1,84 @@
+schema_id: issue
+version: 1.0.0
+title: Issue Bible
+description: >-
+  The narrative contract for one issue. Everything downstream — script, layouts,
+  backgrounds, staging, QA — is checked against this document. If the issue
+  bible and a panel disagree, one of them is wrong and the disagreement must be
+  resolved before art is approved.
+identity_field: issue_id
+
+fields:
+  issue_id:
+    type: string
+    required: true
+    pattern: "^issue-[0-9]{3}$"
+    description: "Format: issue-NNN."
+  issue_number: {type: integer, required: true, minimum: 1, description: Ordinal in the season.}
+  title: {type: string, required: true, description: Issue title.}
+  season: {type: string, required: true, description: Season this issue belongs to.}
+  featured_character: {type: string, required: true, pattern: "^MZ-CHAR-[A-Z0-9]+$", description: The spotlight character.}
+  supporting_characters:
+    type: list
+    required: true
+    item_fields:
+      character_id: {type: string, required: true, description: Character.}
+      function: {type: string, required: true, description: Their job in this issue.}
+      weight: {type: string, required: true, enum: [meaningful_secondary, functional_beat, observational, guest], description: How much room they get.}
+    description: >-
+      Every named character must have a stated function. A character with no
+      function is a character who should be cut or moved to the background.
+  continuity_position: {type: string, required: true, description: Where this sits in the season.}
+  previous_issue_dependencies: {type: list, required: true, item_type: string, description: What a reader must already know.}
+  following_issue_setup: {type: list, required: true, item_type: string, description: What this must leave in place.}
+  theme: {type: string, required: true, description: The idea the issue argues.}
+  logline: {type: string, required: true, description: One sentence.}
+  synopsis: {type: string, required: true, description: The whole story, briefly.}
+  beginning: {type: string, required: true, description: Act one.}
+  middle: {type: string, required: true, description: Act two.}
+  end: {type: string, required: true, description: Act three.}
+  emotional_arc: {type: string, required: true, description: The feeling journey.}
+  character_arcs:
+    type: list
+    required: true
+    item_fields:
+      character_id: {type: string, required: true, description: Character.}
+      start_state: {type: string, required: true, description: Where they begin.}
+      turn: {type: string, required: true, description: What changes them.}
+      end_state: {type: string, required: true, description: Where they land.}
+    description: Arc per character who has one.
+  conflict: {type: string, required: true, description: What opposes the protagonist.}
+  stakes: {type: string, required: true, description: What is lost if they fail.}
+  turning_points: {type: list, required: true, item_type: string, description: Structural pivots.}
+  reveal: {type: string, required: true, description: What the reader learns.}
+  resolution: {type: string, required: true, description: How it settles.}
+  running_jokes: {type: list, required: false, item_type: string, description: Repeated comic beats.}
+  callbacks: {type: list, required: false, item_type: string, description: References to earlier issues.}
+  foreshadowing: {type: list, required: false, item_type: string, description: Seeds for later issues.}
+  required_locations: {type: list, required: true, item_type: string, description: Location IDs used.}
+  required_props: {type: list, required: true, item_type: string, description: Prop IDs used.}
+  wardrobe_continuity: {type: string, required: true, description: What everyone is wearing and whether it changes.}
+  time_of_day: {type: string, required: true, description: When the issue happens.}
+  weather: {type: string, required: true, description: Conditions.}
+  page_count: {type: integer, required: true, minimum: 1, description: Pages.}
+  target_panel_count: {type: integer, required: true, minimum: 1, description: Planned panels.}
+  intended_audience: {type: string, required: true, description: Who this is for.}
+  content_restrictions: {type: list, required: true, item_type: string, description: What must not appear.}
+  dialogue_source: {type: string, required: true, description: Where the dialogue came from.}
+  canon_conflicts:
+    type: list
+    required: true
+    item_fields:
+      conflict_id: {type: string, required: true, description: Identifier.}
+      description: {type: string, required: true, description: What disagrees with what.}
+      sources: {type: list, required: true, item_type: string, description: Documents in conflict.}
+      resolution: {type: string, required: true, description: How it was resolved, or UNRESOLVED.}
+      requires_owner_decision: {type: boolean, required: true, description: Whether a human must rule on it.}
+    description: >-
+      Conflicts are recorded, never silently resolved. An empty list is a claim
+      that none were found, not a claim that none exist.
+  approval_status:
+    type: string
+    required: true
+    enum: [draft, in_review, approved, rejected]
+    description: Approval state. Only a human may set `approved`.

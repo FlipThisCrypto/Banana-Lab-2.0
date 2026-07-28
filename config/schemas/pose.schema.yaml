@@ -1,0 +1,80 @@
+schema_id: pose
+version: 1.0.0
+title: Pose Record
+description: >-
+  One approved body performance for one character. A pose is only usable in a
+  panel if its camera angle and ground contact match the plate it will be staged
+  onto — that is why those fields are required, not optional.
+identity_field: pose_id
+
+fields:
+  pose_id:
+    type: string
+    required: true
+    pattern: "^POSE-[A-Z0-9]+-[a-z0-9_]+$"
+    description: "Format: POSE-<CHARACTER SUFFIX>-<slug>, e.g. POSE-005-reaching."
+  character_id:
+    type: string
+    required: true
+    pattern: "^MZ-CHAR-[A-Z0-9]+$"
+    description: Owning character.
+  action: {type: string, required: true, description: What the body is doing.}
+  body_orientation:
+    type: string
+    required: true
+    enum: [front, three_quarter_left, three_quarter_right, profile_left, profile_right, back, back_three_quarter]
+    description: Which way the body faces relative to camera.
+  camera_angle:
+    type: string
+    required: true
+    enum: [eye_level, low_angle, high_angle, worm_eye, birds_eye]
+    description: >-
+      The angle the source art was drawn at. A pose drawn at eye level cannot be
+      staged into a low-angle plate without breaking perspective.
+  energy_level:
+    type: integer
+    required: true
+    minimum: 1
+    maximum: 5
+    description: 1 is still, 5 is peak action.
+  hand_visibility:
+    type: string
+    required: true
+    enum: [both_visible, one_visible, none_visible, obscured]
+    description: >-
+      Hands are the highest-risk anatomy in generated art. Recording visibility
+      lets QA prioritise the panels that need the closest look.
+  ground_contact:
+    type: string
+    required: true
+    enum: [both_feet, one_foot, seated, airborne, leaning, prone, partial_occluded]
+    description: How the character meets the ground plane.
+  weight_distribution: {type: string, required: true, description: Where the mass sits.}
+  intended_emotion: {type: string, required: true, description: The feeling the body language carries.}
+  suitable_shot_type:
+    type: list
+    required: true
+    item_type: string
+    description: Shot sizes this pose reads well in.
+  approved_reference: {type: string, required: true, description: Repository-relative path.}
+  pose_control_source:
+    type: string
+    required: true
+    enum: [approved_art, openpose_extracted, depth_guided, hand_authored, none]
+    description: How the pose was derived, for reproducibility.
+  known_anatomy_risks:
+    type: list
+    required: true
+    item_type: string
+    description: What tends to break in this pose.
+  transparency_status:
+    type: string
+    required: true
+    enum: [true_alpha, opaque, unknown]
+    description: Whether the asset is composite-ready.
+  canon_status:
+    type: string
+    required: true
+    enum: [approved, candidate, rejected]
+    description: Approval state.
+  notes: {type: string, required: false, description: Staging guidance.}

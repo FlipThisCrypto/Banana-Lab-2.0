@@ -1,0 +1,158 @@
+# =============================================================================
+# Banana Lab 2.0 — ignore rules
+# Policy rationale: docs/architecture/REPOSITORY_POLICY.md
+# =============================================================================
+
+# --- Python ------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+.venv/
+venv/
+env/
+.tox/
+.nox/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+
+# --- Node (only if a UI toolchain is added later) -----------------------------
+node_modules/
+.npm/
+.pnpm-store/
+*.tsbuildinfo
+
+# --- IDE / editor -------------------------------------------------------------
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.antigravity/
+
+# --- OS -----------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# --- Secrets and local machine configuration ---------------------------------
+# Never commit credentials or machine-specific absolute paths.
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.pfx
+secrets.*
+credentials.*
+config/local/**
+!config/local/.gitkeep
+!config/local/README.md
+
+# --- Model weights and generation runtimes -----------------------------------
+# These belong on the generation machine, not in source control.
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+*.bin
+*.onnx
+*.gguf
+models/
+checkpoints/
+loras/
+controlnet/
+embeddings/
+vae/
+
+# --- Unapproved AI output ------------------------------------------------------
+# Candidates are reviewed on disk and promoted into `approved/` when accepted.
+# Only their sidecar metadata is tracked so provenance survives without the bytes.
+characters/generated_candidates/**
+locations/generated_candidates/**
+props/generated_candidates/**
+!**/generated_candidates/**/*.json
+!**/generated_candidates/**/*.yaml
+!**/generated_candidates/**/*.md
+!**/generated_candidates/.gitkeep
+
+issues/**/06_backgrounds/generated_candidates/**
+!issues/**/06_backgrounds/generated_candidates/*.json
+!issues/**/06_backgrounds/generated_candidates/.gitkeep
+issues/**/08_character_renders/**
+!issues/**/08_character_renders/*.json
+!issues/**/08_character_renders/.gitkeep
+issues/**/09_composites/**
+!issues/**/09_composites/*.json
+!issues/**/09_composites/.gitkeep
+
+# --- Rejected material ---------------------------------------------------------
+characters/rejected/**
+locations/rejected/**
+props/rejected/**
+!**/rejected/.gitkeep
+!**/rejected/*.md
+
+# --- Disposable workspace ------------------------------------------------------
+workspace/**
+!workspace/*/.gitkeep
+!workspace/README.md
+
+# --- Vault (retained, excluded from discovery and production) ------------------
+vault/**
+!vault/*/.gitkeep
+!vault/README.md
+
+# --- Imported source binaries --------------------------------------------------
+# The migration manifest records path + SHA-256 for every imported file, so the
+# repository stays clonable while provenance remains verifiable. Re-import with
+# `python -m scripts.migration.import_source_material`.
+source_material/imported_canon/**
+source_material/visual_references/**
+source_material/historical_issues/**
+source_material/legacy_reference/**
+!source_material/**/.gitkeep
+!source_material/**/*.md
+!source_material/**/*.yaml
+!source_material/**/*.json
+!source_material/manifests/**
+
+# --- Large working art formats -------------------------------------------------
+*.psd
+*.psb
+*.kra
+*.xcf
+*.tiff
+*.tif
+*.exr
+
+# --- Build / export outputs ----------------------------------------------------
+issues/**/14_exports/**
+!issues/**/14_exports/.gitkeep
+!issues/**/14_exports/*.md
+!issues/**/14_exports/*.json
+*.cbz
+*.cbr
+
+# --- Logs, caches, temporary renders -------------------------------------------
+*.log
+logs/
+.cache/
+tmp/
+temp/
+*.tmp
+*.bak
+thumbs/
+contact_sheets/
+!issues/**/04_storyboards/storyboard-contact-sheet.*

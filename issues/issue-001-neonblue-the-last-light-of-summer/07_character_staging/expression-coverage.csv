@@ -1,0 +1,17 @@
+character_id,character,expression_id,panels_requiring,approved_layer_exists,source_slug,action
+MZ-CHAR-001,Moodz,EXP-001-neutral,2,no,moodz,GENERATE CANDIDATE
+MZ-CHAR-003,Static,EXP-003-determined,3,yes,static,reuse approved layer
+MZ-CHAR-003,Static,EXP-003-shocked,2,no,static,GENERATE CANDIDATE
+MZ-CHAR-003,Static,EXP-003-worried,4,yes,static,reuse approved layer
+MZ-CHAR-005,NeonBlue,EXP-005-angry,1,no,neonblue,GENERATE CANDIDATE
+MZ-CHAR-005,NeonBlue,EXP-005-celebrating,1,yes,neonblue,reuse approved layer
+MZ-CHAR-005,NeonBlue,EXP-005-confused,2,yes,neonblue,reuse approved layer
+MZ-CHAR-005,NeonBlue,EXP-005-defeated,1,yes,neonblue,reuse approved layer
+MZ-CHAR-005,NeonBlue,EXP-005-determined,3,yes,neonblue,reuse approved layer
+MZ-CHAR-005,NeonBlue,EXP-005-laughing,1,yes,neonblue,reuse approved layer
+MZ-CHAR-005,NeonBlue,EXP-005-neutral,3,no,neonblue,GENERATE CANDIDATE
+MZ-CHAR-005,NeonBlue,EXP-005-sad,2,no,neonblue,GENERATE CANDIDATE
+MZ-CHAR-005,NeonBlue,EXP-005-sleepy,2,yes,neonblue,reuse approved layer
+MZ-CHAR-005,NeonBlue,EXP-005-smile,8,no,neonblue,GENERATE CANDIDATE
+MZ-CHAR-005,NeonBlue,EXP-005-thinking,1,yes,neonblue,reuse approved layer
+MZ-CHAR-005,NeonBlue,EXP-005-worried,2,yes,neonblue,reuse approved layer

@@ -1,0 +1,144 @@
+schema_version: "1.0"
+
+identification:
+  current_display_name: ""
+  series_name: null
+  personal_name: null
+  codename: null
+  nicknames: []
+  naming_status: unresolved
+  character_id: MZ-CHAR-REPLACE-ME
+  development_level: 1
+  canon_status: experimental
+
+visual_canon:
+  primary_reference_image: null
+  supporting_reference_images: []
+  species_or_form: []
+  body_shape: []
+  face: []
+  eyes: []
+  hair_or_fur: []
+  clothing: []
+  accessories: []
+  color_palette: []
+  signature_silhouette: []
+  distinguishing_features: []
+  features_that_must_never_change: []
+  features_that_may_vary: []
+  prohibited_visual_additions: []
+  glasses_status: unknown
+
+character_core:
+  archetype: []
+  team_role: []
+  story_function: []
+  dominant_traits: []
+  strengths: []
+  flaws: []
+  vulnerabilities: []
+  motivation: []
+  fear: []
+  personal_values: []
+  internal_contradiction: []
+
+voice_and_dialogue:
+  speech_rhythm: []
+  vocabulary_level: []
+  sentence_length: []
+  humor_style: []
+  catchphrase: []
+  favorite_words: []
+  words_the_character_avoids: []
+  stress_speech: []
+  excited_speech: []
+  sad_speech: []
+  angry_speech: []
+  example_dialogue: []
+  dialogue_rules: []
+
+behavior:
+  default_behavior: []
+  stress_response: []
+  conflict_response: []
+  success_response: []
+  failure_response: []
+  habits: []
+  quirks: []
+  physical_ticks: []
+  props: []
+  emotional_tells: []
+  entrance_behavior: []
+  exit_behavior: []
+  celebration_behavior: []
+
+skills_and_limitations:
+  core_abilities: []
+  secondary_skills: []
+  specific_talents: []
+  weaknesses: []
+  things_the_character_believes_they_can_do: []
+  things_the_character_actually_can_do: []
+  situations_where_they_excel: []
+  situations_where_they_struggle: []
+
+relationships: []
+
+story_use:
+  best_story_genres: []
+  best_adventure_roles: []
+  typical_plot_contribution: []
+  comic_relief_function: []
+  emotional_function: []
+  problem_solving_function: []
+  appropriate_spotlight_scenes: []
+  situations_to_avoid: []
+  pairings_that_work_well: []
+  pairings_that_should_be_used_sparingly: []
+
+writing_rules:
+  always: []
+  often: []
+  sometimes: []
+  rarely: []
+  never: []
+  anti_caricature_rules: []
+
+running_elements:
+  running_gags: []
+  recurring_mysteries: []
+  repeated_props: []
+  ongoing_goals: []
+  unresolved_questions: []
+  future_seeds: []
+
+growth_and_continuity:
+  first_appearance: null
+  published_appearances: []
+  lessons_learned: []
+  new_traits_introduced: []
+  traits_strengthened: []
+  traits_retired: []
+  relationship_changes: []
+  major_story_events: []
+  current_emotional_state: []
+  open_character_arcs: []
+
+issue_level_usage:
+  traits_eligible_for_selection: []
+  maximum_defining_traits_per_issue: 1
+  maximum_minor_quirks_per_issue: 1
+  catchphrase_cooldown:
+    minimum_issues_between_uses: 1
+    last_used_issue: null
+    notes: null
+  running_gag_cooldown:
+    minimum_issues_between_uses: 1
+    last_used_issue: null
+    notes: null
+  recent_traits_used: []
+  traits_that_should_not_appear_together: []
+  required_context_for_special_traits: []
+
+source_notes:
+  - "Start sparse. Add only traits supported by inventory, published issues, or owner direction."

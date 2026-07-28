@@ -1,0 +1,61 @@
+schema_id: prop
+version: 1.0.0
+title: Prop Bible
+description: >-
+  An object characters handle or the story points at. Props carry continuity
+  weight out of proportion to their size: a relay marker that changes shape
+  between panels breaks a reveal.
+identity_field: prop_id
+
+fields:
+  prop_id:
+    type: string
+    required: true
+    pattern: "^PROP-[a-z0-9-]+$"
+    description: "Format: PROP-<slug>, e.g. PROP-cyan-relay-marker."
+  name: {type: string, required: true, description: Display name.}
+  owner: {type: string, required: false, description: Character or location that owns it.}
+  scale: {type: string, required: true, description: Size relative to a character's hand or body.}
+  materials: {type: list, required: true, item_type: string, description: What it is made of.}
+  color:
+    type: list
+    required: true
+    item_fields:
+      name: {type: string, required: true, description: Swatch name.}
+      hex: {type: string, required: true, pattern: "^#[0-9A-Fa-f]{6}$", description: Hex value.}
+    description: Controlled colours.
+  key_visual_features:
+    type: list
+    required: true
+    item_type: string
+    description: What makes it recognisable at small panel size.
+  allowed_variations:
+    type: list
+    required: false
+    item_type: string
+    description: Changes that are permitted.
+  continuity_constraints:
+    type: list
+    required: true
+    item_type: string
+    description: What must never change between appearances.
+  approved_views:
+    type: list
+    required: true
+    item_type: string
+    description: Repository-relative paths to approved views.
+  interaction_poses:
+    type: list
+    required: false
+    item_type: string
+    description: How characters hold or use it.
+  known_generation_failures:
+    type: list
+    required: true
+    item_type: string
+    description: What generation gets wrong.
+  canon_status:
+    type: string
+    required: true
+    enum: [approved, candidate, rejected]
+    description: Approval state.

@@ -1,0 +1,999 @@
+schema_version: '1.0'
+identification:
+  current_display_name: Lily
+  series_name: Clever Monkey
+  personal_name: Lily
+  legacy_label: Clever
+  nationality: Scottish
+  country_of_origin: Scotland
+  codename: null
+  nicknames:
+  - Clever Monkey
+  - mz_faction_clever
+  naming_status: personal_name_canon
+  character_id: MZ-CHAR-CLEVER
+  development_level: 2
+  canon_status: approved_canon
+visual_canon:
+  primary_reference_image: references/primary/primary-reference.png
+  supporting_reference_images:
+  - references/alternate/alternate-pose-01.png
+  - references/alternate/alternate-pose-02.png
+  - references/alternate/alternate-pose-03.png
+  - references/alternate/alternate-pose-04.png
+  - references/alternate/expression-portrait-05.png
+  - references/alternate/alternate-pose-06.png
+  - references/alternate/alternate-pose-07.png
+  - references/alternate/alternate-pose-08.png
+  - references/group/group-fusion-squad-01.png
+  species_or_form:
+  - category: visual_feature
+    name: monkey form
+    value: MonkeyZoo monkey character form.
+    status: canon
+    strength: defining
+    usage_frequency: almost always
+    confidence: confirmed canon
+    rationale: All current character refs are MonkeyZoo monkey designs or documented monkey roles.
+    evidence: &id001
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - all appearances
+    incompatible_contexts:
+    - non-monkey redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id001
+    notes: null
+  body_shape:
+  - category: visual_feature
+    name: Monkey with round black-rimmed glasses, brown ponytail tied with pink band, blue shirt with shield/chest
+      emblem, red pants.
+    value: Monkey with round black-rimmed glasses, brown ponytail tied with pink band, blue shirt with shield/chest
+      emblem, red pants.
+    status: canon
+    strength: moderate
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id002
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id002
+    notes: null
+  face: []
+  eyes:
+  - category: visual_feature
+    name: glasses
+    value: glasses
+    status: canon
+    strength: defining
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id003
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id003
+    notes: null
+  hair_or_fur: []
+  clothing:
+  - category: visual_feature
+    name: blue tee/shirt with shield emblem
+    value: blue tee/shirt with shield emblem
+    status: canon
+    strength: strong
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id004
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id004
+    notes: null
+  - category: visual_feature
+    name: red pants
+    value: red pants
+    status: canon
+    strength: strong
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id005
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id005
+    notes: null
+  accessories:
+  - category: visual_feature
+    name: round black-rimmed glasses
+    value: round black-rimmed glasses
+    status: canon
+    strength: strong
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id006
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id006
+    notes: null
+  color_palette:
+  - category: color_preference_or_aversion
+    name: blue
+    value: blue
+    status: canon
+    strength: strong
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id007
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id007
+    notes: null
+  - category: color_preference_or_aversion
+    name: red
+    value: red
+    status: canon
+    strength: strong
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id008
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id008
+    notes: null
+  - category: color_preference_or_aversion
+    name: brown
+    value: brown
+    status: canon
+    strength: strong
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id009
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id009
+    notes: null
+  - category: color_preference_or_aversion
+    name: black glasses
+    value: black glasses
+    status: canon
+    strength: strong
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id010
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id010
+    notes: null
+  - category: color_preference_or_aversion
+    name: pink hair tie
+    value: pink hair tie
+    status: canon
+    strength: strong
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id011
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id011
+    notes: null
+  signature_silhouette:
+  - category: visual_feature
+    name: round black-rimmed glasses
+    value: round black-rimmed glasses
+    status: canon
+    strength: defining
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id012
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id012
+    notes: null
+  - category: visual_feature
+    name: ponytail with pink band
+    value: ponytail with pink band
+    status: canon
+    strength: defining
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id013
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id013
+    notes: null
+  distinguishing_features:
+  - category: visual_feature
+    name: round black-rimmed glasses
+    value: round black-rimmed glasses
+    status: canon
+    strength: strong
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id014
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id014
+    notes: null
+  - category: visual_feature
+    name: ponytail with pink band
+    value: ponytail with pink band
+    status: canon
+    strength: strong
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id015
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id015
+    notes: null
+  - category: visual_feature
+    name: blue shirt emblem
+    value: blue shirt emblem
+    status: canon
+    strength: strong
+    usage_frequency: often
+    confidence: confirmed canon
+    rationale: Taken from completed inventory.
+    evidence: &id016
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - character reference
+    incompatible_contexts:
+    - unsupported redesign
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id016
+    notes: null
+  features_that_must_never_change:
+  - &id044
+    category: visual_feature
+    name: round black-rimmed glasses
+    value: round black-rimmed glasses
+    status: canon
+    strength: defining
+    usage_frequency: almost always
+    confidence: confirmed canon
+    rationale: Taken from completed inventory and approved refs.
+    evidence: &id017
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - all visual appearances
+    incompatible_contexts:
+    - redesigns without owner approval
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id017
+    notes: null
+  - category: visual_feature
+    name: ponytail with pink band
+    value: ponytail with pink band
+    status: canon
+    strength: defining
+    usage_frequency: almost always
+    confidence: confirmed canon
+    rationale: Taken from completed inventory and approved refs.
+    evidence: &id018
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - all visual appearances
+    incompatible_contexts:
+    - redesigns without owner approval
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id018
+    notes: null
+  - category: visual_feature
+    name: blue shirt emblem
+    value: blue shirt emblem
+    status: canon
+    strength: defining
+    usage_frequency: almost always
+    confidence: confirmed canon
+    rationale: Taken from completed inventory and approved refs.
+    evidence: &id019
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - all visual appearances
+    incompatible_contexts:
+    - redesigns without owner approval
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id019
+    notes: null
+  features_that_may_vary:
+  - category: visual_feature
+    name: pose and expression set
+    value: Approved alternate poses and expressions may vary by scene.
+    status: established
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: confirmed canon
+    rationale: Approved 30-pose reference sets exist for visual characters.
+    evidence: &id020
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - scene acting
+    incompatible_contexts:
+    - changing identity markers
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id020
+    notes: null
+  prohibited_visual_additions: &id045
+  - category: visual_feature
+    name: removed or broken glasses gag
+    value: Do not remove, swap, break, or hide glasses as casual gag.
+    status: canon
+    strength: defining
+    usage_frequency: never
+    confidence: confirmed canon
+    rationale: Special handling and inventory verify glasses as immutable identifier.
+    evidence: &id021
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - owner-approved story about glasses
+    incompatible_contexts:
+    - casual gag
+    first_eligible_issue: null
+    last_used_issue: null
+    source_refs: *id021
+    notes: null
+  glasses_status: confirmed_glasses
+character_core:
+  archetype:
+  - category: role
+    name: archetype
+    value: curious system-reader
+    status: established
+    strength: strong
+    usage_frequency: often
+    confidence: strong inference
+    rationale: Synthesized from existing canon, inventory, and repeated draft role.
+    evidence: &id022
+    - MonkeyZoo_Comic_Factory/00_SYSTEM/character_bible.md
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - story planning
+    incompatible_contexts:
+    - treating archetype as a single joke
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id022
+    notes: null
+  team_role:
+  - category: role
+    name: team role
+    value: technical explainer
+    status: established
+    strength: strong
+    usage_frequency: often
+    confidence: strong inference
+    rationale: Chosen to avoid duplicating exact story function across the cast.
+    evidence: &id023
+    - MonkeyZoo_Comic_Factory/00_SYSTEM/character_bible.md
+    - july/2026-07-monkeyzoo-july-edition-test.md
+    compatible_contexts:
+    - ensemble planning
+    incompatible_contexts:
+    - every issue requiring this role
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id023
+    notes: null
+  story_function:
+  - category: role
+    name: story function
+    value: technical explainer
+    status: established
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: strong inference
+    rationale: Derived from documented issue use and visual identity.
+    evidence: &id024
+    - july/2026-07-monkeyzoo-july-edition-test.md
+    - MonkeyZoo_Comic_Factory/00_SYSTEM/character_bible.md
+    compatible_contexts:
+    - plot assignment
+    incompatible_contexts:
+    - forcing spotlight
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id024
+    notes: null
+  dominant_traits:
+  - &id037
+    category: specific_talent
+    name: system logic
+    value: Tracks wiring, patterns, and hidden FusionZoo infrastructure.
+    status: established
+    strength: strong
+    usage_frequency: sometimes
+    confidence: confirmed canon
+    rationale: Character bible calls Clever didactic explainer; July draft gives hidden wiring/system logic role.
+    evidence: &id025
+    - MonkeyZoo_Comic_Factory/00_SYSTEM/character_bible.md
+    - july/2026-07-monkeyzoo-july-edition-test.md
+    compatible_contexts:
+    - technical puzzles
+    incompatible_contexts:
+    - replacing every other character's insight
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id025
+    notes: null
+  - &id051
+    category: visual_feature
+    name: glasses as identifier
+    value: Round black-rimmed glasses are immutable visual identity.
+    status: canon
+    strength: defining
+    usage_frequency: almost always
+    confidence: confirmed canon
+    rationale: Inventory verified Clever as the only clear glasses-wearing monkey.
+    evidence: &id026
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - all visual appearances
+    incompatible_contexts:
+    - broken/missing/swapped glasses gag
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id026
+    notes: null
+  strengths:
+  - &id036
+    category: specific_talent
+    name: clear technical read
+    value: Makes complicated systems legible.
+    status: established
+    strength: strong
+    usage_frequency: sometimes
+    confidence: confirmed canon
+    rationale: Faction archetype says didactic explainer.
+    evidence: &id027
+    - MonkeyZoo_Comic_Factory/00_SYSTEM/character_bible.md
+    compatible_contexts:
+    - educational panels
+    incompatible_contexts:
+    - long lectures in action panels
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id027
+    notes: null
+  flaws:
+  - category: specific_weakness
+    name: can focus on the system before the room
+    value: May initially follow the mechanism while others track emotions.
+    status: experimental
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: experimental suggestion
+    rationale: A humanizing limitation tied to the technical role, not a stereotype.
+    evidence:
+    - july/2026-07-monkeyzoo-july-edition-test.md
+    compatible_contexts:
+    - technical emergencies
+    incompatible_contexts:
+    - making Clever emotionless
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs:
+    - july/2026-07-monkeyzoo-july-edition-test.md
+    notes: null
+  vulnerabilities:
+  - &id030
+    category: relationship_dynamic
+    name: needs translation between facts and feelings
+    value: May need teammates to connect data to the crowd's emotional state.
+    status: experimental
+    strength: subtle
+    usage_frequency: rarely
+    confidence: experimental suggestion
+    rationale: Differentiates Clever from TwoTone and Moodz without overloading.
+    evidence: &id028
+    - july/2026-07-monkeyzoo-july-edition-test.md
+    compatible_contexts:
+    - ensemble problem solving
+    incompatible_contexts:
+    - social ineptitude jokes
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id028
+    notes: null
+  motivation:
+  - category: motivation
+    name: growth direction
+    value: Future naming and emotional range work; intelligence should gain a human limitation without becoming
+      a stereotype.
+    status: experimental
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: experimental suggestion
+    rationale: Future-facing seed based on current canon gaps.
+    evidence: &id029
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - future issue planning
+    incompatible_contexts:
+    - treating as approved canon before review
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id029
+    notes: null
+  fear: []
+  personal_values: []
+  internal_contradiction:
+  - *id030
+voice_and_dialogue:
+  speech_rhythm: []
+  vocabulary_level: []
+  sentence_length: []
+  humor_style:
+  - category: speech_pattern
+    name: humor style
+    value: earnest precision, not social ineptitude
+    status: experimental
+    strength: subtle
+    usage_frequency: sometimes
+    confidence: strong inference
+    rationale: Set by documented voice where available and conservative team differentiation elsewhere.
+    evidence: &id031
+    - MonkeyZoo_Comic_Factory/00_SYSTEM/character_bible.md
+    - july/2026-07-monkeyzoo-july-edition-test.md
+    compatible_contexts:
+    - dialogue drafting
+    incompatible_contexts:
+    - flattening character into gag
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id031
+    notes: null
+  catchphrase: []
+  favorite_words: []
+  words_the_character_avoids: []
+  stress_speech: []
+  excited_speech: []
+  sad_speech: []
+  angry_speech: []
+  example_dialogue: []
+  dialogue_rules:
+  - category: writing_rule
+    name: do not caricature voice
+    value: Use the speech trait only when it supports the scene.
+    status: established
+    strength: strong
+    usage_frequency: often
+    confidence: strong inference
+    rationale: Request requires rules preventing caricature.
+    evidence: &id032
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - dialogue polish
+    incompatible_contexts:
+    - filler quirks
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id032
+    notes: null
+behavior:
+  default_behavior: &id034 []
+  stress_response:
+  - *id030
+  conflict_response:
+  - category: role
+    name: conflict style
+    value: investigates the mechanism
+    status: experimental
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: strong inference
+    rationale: Differentiates conflict behavior across the team.
+    evidence: &id033
+    - july/2026-07-monkeyzoo-july-edition-test.md
+    - MonkeyZoo_Comic_Factory/00_SYSTEM/character_bible.md
+    compatible_contexts:
+    - conflict scenes
+    incompatible_contexts:
+    - repeating formula
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id033
+    notes: null
+  success_response: []
+  failure_response: []
+  habits: []
+  quirks: *id034
+  physical_ticks:
+  - &id052
+    category: signature_pose
+    name: points out the clue
+    value: Uses pointing/inspection poses when identifying mechanisms.
+    status: experimental
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: strong inference
+    rationale: Approved pose set includes pointing and thoughtful poses; July role supports clue-spotting.
+    evidence: &id035
+    - character-bibles/_inventory/character-inventory.json
+    - july/2026-07-monkeyzoo-july-edition-test.md
+    compatible_contexts:
+    - clue discovery
+    incompatible_contexts:
+    - every appearance
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id035
+    notes: null
+  props: []
+  emotional_tells: []
+  entrance_behavior: []
+  exit_behavior: []
+  celebration_behavior: []
+skills_and_limitations:
+  core_abilities:
+  - *id036
+  secondary_skills: []
+  specific_talents:
+  - *id037
+  - *id036
+  weaknesses:
+  - &id039
+    category: specific_weakness
+    name: can focus on the system before the room
+    value: May initially follow the mechanism while others track emotions.
+    status: established
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: experimental suggestion
+    rationale: A humanizing limitation tied to the technical role, not a stereotype.
+    evidence: &id038
+    - july/2026-07-monkeyzoo-july-edition-test.md
+    compatible_contexts:
+    - technical emergencies
+    incompatible_contexts:
+    - making Clever emotionless
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id038
+    notes: null
+  things_the_character_believes_they_can_do: []
+  things_the_character_actually_can_do:
+  - *id036
+  situations_where_they_excel: []
+  situations_where_they_struggle:
+  - *id039
+  - *id030
+relationships: []
+story_use:
+  best_story_genres: []
+  best_adventure_roles:
+  - category: role
+    name: best adventure role
+    value: technical explainer
+    status: experimental
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: strong inference
+    rationale: Based on current team differentiation.
+    evidence: &id040
+    - july/2026-07-monkeyzoo-july-edition-test.md
+    compatible_contexts:
+    - issue planning
+    incompatible_contexts:
+    - mandatory use
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id040
+    notes: null
+  typical_plot_contribution:
+  - category: role
+    name: plot contribution
+    value: technical explainer
+    status: experimental
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: strong inference
+    rationale: Evidence-backed starting point only.
+    evidence: &id041
+    - july/2026-07-monkeyzoo-july-edition-test.md
+    - MonkeyZoo_Comic_Factory/00_SYSTEM/character_bible.md
+    compatible_contexts:
+    - ensemble scenes
+    incompatible_contexts:
+    - overuse
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id041
+    notes: null
+  comic_relief_function:
+  - category: role
+    name: humor function
+    value: earnest precision, not social ineptitude
+    status: experimental
+    strength: subtle
+    usage_frequency: sometimes
+    confidence: strong inference
+    rationale: Keeps humor distinct without requiring a gag.
+    evidence: &id042
+    - MonkeyZoo_Comic_Factory/00_SYSTEM/character_bible.md
+    - july/2026-07-monkeyzoo-july-edition-test.md
+    compatible_contexts:
+    - light panels
+    incompatible_contexts:
+    - serious beats if mismatched
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id042
+    notes: null
+  emotional_function: []
+  problem_solving_function:
+  - *id036
+  appropriate_spotlight_scenes: []
+  situations_to_avoid:
+  - category: writing_rule
+    name: avoid caricature
+    value: Do not reduce the character to the easiest visual joke or single trait.
+    status: established
+    strength: strong
+    usage_frequency: often
+    confidence: strong inference
+    rationale: Required by prompt and consistent with schema purpose.
+    evidence: &id043
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - all writing
+    incompatible_contexts:
+    - none
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id043
+    notes: null
+  pairings_that_work_well: []
+  pairings_that_should_be_used_sparingly: []
+writing_rules:
+  always:
+  - *id044
+  often:
+  - *id036
+  sometimes: *id034
+  rarely: []
+  never: *id045
+  anti_caricature_rules:
+  - category: writing_rule
+    name: anti-caricature
+    value: Let the character have scene purpose beyond one quirk.
+    status: established
+    strength: strong
+    usage_frequency: often
+    confidence: strong inference
+    rationale: Required to prevent overloaded or one-dimensional use.
+    evidence: &id046
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - all writing
+    incompatible_contexts:
+    - none
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id046
+    notes: null
+running_elements:
+  running_gags: []
+  recurring_mysteries: []
+  repeated_props: []
+  ongoing_goals:
+  - category: personal_mission
+    name: growth seed
+    value: Future naming and emotional range work; intelligence should gain a human limitation without becoming
+      a stereotype.
+    status: experimental
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: experimental suggestion
+    rationale: Future-facing direction for review.
+    evidence: &id047
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - future arcs
+    incompatible_contexts:
+    - canon until approved
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id047
+    notes: null
+  unresolved_questions:
+  - category: recurring_mystery
+    name: unresolved naming or future work
+    value: Future review may refine name, relationships, and depth.
+    status: reserved
+    strength: background
+    usage_frequency: special circumstances only
+    confidence: reserved
+    rationale: Several characters are intentionally sparse or series-named.
+    evidence: &id048
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - Bible review
+    incompatible_contexts:
+    - issue dialogue
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id048
+    notes: null
+  future_seeds:
+  - category: personal_mission
+    name: future growth
+    value: Future naming and emotional range work; intelligence should gain a human limitation without becoming
+      a stereotype.
+    status: experimental
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: experimental suggestion
+    rationale: Evidence-informed next direction.
+    evidence: &id049
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - future planning
+    incompatible_contexts:
+    - treating as locked canon
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id049
+    notes: null
+growth_and_continuity:
+  first_appearance: null
+  published_appearances:
+  - 1/metadata.json
+  - 1/metadata3.json
+  - 2/metadata.json
+  - 2/nft/metadata.json
+  - 3/winter edition 3/winter edition new2/metadata.json
+  - MonkeyZoo_Comic_Factory/00_SYSTEM/character_bible.md
+  - MonkeyZoo_Comic_Factory/00_SYSTEM/monkeyzoo_master_bible.md
+  - MonkeyZoo_Comic_Factory/00_SYSTEM/world_bible.md
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-07_Issue_05/metadata.json
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-07_Mango_Pier/art_prompt_pack.json
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-07_Mango_Pier/issue_brief.md
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-07_Mango_Pier/issue_script.md
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-07_Mango_Pier/metadata.json
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-07_Mango_Pier/page_panel_plan.json
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-07_Mango_Pier/qa_report.md
+  - MonkeyZoo_Comic_Factory/02_MONTHLY_ISSUES/2026-08_Issue_06/metadata.json
+  - MonkeyZoo_Comic_Factory/03_APPROVED_CANON/approved_characters/_ref_matrix_30.md
+  - character-bibles/_inventory/artwork-inventory.csv
+  - character-bibles/_inventory/canon-conflicts.md
+  - character-bibles/_inventory/character-inventory.json
+  - character-bibles/_inventory/character-inventory.md
+  - july/2026-07-monkeyzoo-july-edition-test.md
+  lessons_learned: []
+  new_traits_introduced: []
+  traits_strengthened: []
+  traits_retired: []
+  relationship_changes: []
+  major_story_events: []
+  current_emotional_state: []
+  open_character_arcs:
+  - category: continuity
+    name: growth seed
+    value: Future naming and emotional range work; intelligence should gain a human limitation without becoming
+      a stereotype.
+    status: experimental
+    strength: moderate
+    usage_frequency: sometimes
+    confidence: experimental suggestion
+    rationale: Reserved for owner review before canonization.
+    evidence: &id050
+    - character-bibles/_inventory/character-inventory.json
+    compatible_contexts:
+    - future continuity
+    incompatible_contexts:
+    - current canon summary
+    first_eligible_issue: next owner-approved issue
+    last_used_issue: null
+    source_refs: *id050
+    notes: null
+issue_level_usage:
+  traits_eligible_for_selection:
+  - *id037
+  - *id051
+  - *id036
+  - *id039
+  - *id052
+  maximum_defining_traits_per_issue: 1
+  maximum_minor_quirks_per_issue: 1
+  catchphrase_cooldown:
+    minimum_issues_between_uses: 1
+    last_used_issue: null
+    notes: Use no more than once per issue unless repetition is the point of the scene.
+  running_gag_cooldown:
+    minimum_issues_between_uses: 1
+    last_used_issue: null
+    notes: Do not use a running element as filler.
+  recent_traits_used: []
+  traits_that_should_not_appear_together: []
+  required_context_for_special_traits: []
+source_notes:
+- Initial Bible generated from completed inventory, existing character_bible.md, continuity ledger, and July draft.
+- Experimental traits are evidence-based suggestions and are not owner-approved canon yet.
