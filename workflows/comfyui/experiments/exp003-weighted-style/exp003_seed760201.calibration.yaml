@@ -1,0 +1,26 @@
+plate: workflows/comfyui/experiments/exp003-weighted-style/exp003_seed760201.png
+plate_size:
+- 960
+- 1024
+derivation_note: Ground-plane values are art-directed estimates read off the plate
+  by eye and checked against the scale-ladder preview. They are not camera calibration.
+  Treat as a production convention, not a measurement.
+ground_plane:
+  horizon_y: 430.0
+  calib_foot_y: 1000.0
+  calib_height_px: 460.0
+  calib_height_in_characters: 1.0
+  calib_x: 480
+  calib_object: notional standing character at the near floor edge
+  ground_surface: metal floor grating, hard reflective
+light:
+  key_angle_deg: 90.0
+  key_color:
+  - 200
+  - 80
+  - 58
+  fill_color:
+  - 30
+  - 74
+  - 85
+note: Test plate for ISSUE001-P16-02 method gate

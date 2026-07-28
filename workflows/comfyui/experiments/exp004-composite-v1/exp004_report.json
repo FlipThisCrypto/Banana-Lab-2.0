@@ -1,0 +1,33 @@
+{
+  "placements": [
+    {
+      "character_id": "MZ-CHAR-005",
+      "layer": "neonblue_27_defeated.png",
+      "centre_x": 300,
+      "foot_y": 960,
+      "rendered_height_px": 427,
+      "rendered_width_px": 370,
+      "depth_plane": "midground",
+      "scale_multiplier": 1.0,
+      "top_left": [
+        115,
+        533
+      ]
+    },
+    {
+      "character_id": "MZ-CHAR-001",
+      "layer": "moodz_00_clean_base.png",
+      "centre_x": 660,
+      "foot_y": 830,
+      "rendered_height_px": 322,
+      "rendered_width_px": 256,
+      "depth_plane": "midground",
+      "scale_multiplier": 1.0,
+      "top_left": [
+        532,
+        508
+      ]
+    }
+  ],
+  "warnings": []
+}

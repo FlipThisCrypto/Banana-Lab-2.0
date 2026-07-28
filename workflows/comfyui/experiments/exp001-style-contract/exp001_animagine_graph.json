@@ -1,0 +1,107 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "animagine-xl-4.0.safetensors"
+    },
+    "_meta": {
+      "title": "checkpoint"
+    }
+  },
+  "2": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "flat vector cartoon illustration, thick uniform black outlines, flat colour fills with hard-edged cel shading, bold saturated palette, clean comic book background art, graphic novel panel background, strong directional lighting, clear perspective. MonkeyZoo festival service corridor at night, industrial interior, pipework along the left wall, metal floor grating, one overhead red practical light midway down, deep one-point perspective receding to a distant doorway, empty corridor, no people",
+      "clip": [
+        "1",
+        1
+      ]
+    },
+    "_meta": {
+      "title": "prompt-2"
+    }
+  },
+  "3": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "photorealistic, photograph, 3d render, realistic textures, characters, people, person, figure, animal, monkey, creature, mascot, text, letters, words, signature, watermark, logo, caption, speech bubble, panel border, frame, comic frame, white border, gutter, blurry, noisy, jpeg artifacts, low contrast mush, duplicated objects, warped architecture, broken geometry, extra limbs",
+      "clip": [
+        "1",
+        1
+      ]
+    },
+    "_meta": {
+      "title": "prompt-3"
+    }
+  },
+  "4": {
+    "class_type": "EmptyLatentImage",
+    "inputs": {
+      "width": 1344,
+      "height": 768,
+      "batch_size": 1
+    },
+    "_meta": {
+      "title": "panel-size"
+    }
+  },
+  "5": {
+    "class_type": "KSampler",
+    "inputs": {
+      "seed": 770001,
+      "steps": 30,
+      "cfg": 6.0,
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "karras",
+      "denoise": 1.0,
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "2",
+        0
+      ],
+      "negative": [
+        "3",
+        0
+      ],
+      "latent_image": [
+        "4",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "sampler"
+    }
+  },
+  "6": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "5",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    },
+    "_meta": {
+      "title": "decode"
+    }
+  },
+  "7": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "filename_prefix": "bananalab/exp001_animagine",
+      "images": [
+        "6",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "save"
+    }
+  }
+}

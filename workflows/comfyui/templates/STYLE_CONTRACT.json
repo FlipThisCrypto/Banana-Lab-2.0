@@ -1,0 +1,9 @@
+{
+  "workflow_version": "panel-production-v1",
+  "style_positive": "(flat 2d vector cartoon illustration:1.5), (thick uniform black outlines:1.4), (flat colour fills with hard cel shading:1.4), comic book background art, graphic novel panel, bold saturated palette, clear perspective",
+  "style_suffix": "(flat cartoon vector art:1.4), (bold black outlines:1.3), (cel shaded:1.3), non-photorealistic",
+  "style_negative": "(photorealistic:1.6), (photograph:1.6), (realistic lighting:1.4), (3d render:1.4), (volumetric light:1.3), (depth of field:1.3), cinematic photography, film still, octane render, unreal engine, realistic textures, reflections, bokeh, lens flare, characters, people, person, figure, animal, monkey, creature, mascot, text, letters, words, signature, watermark, logo, caption, speech bubble, panel border, frame, comic frame, white border, gutter, blurry, noisy, jpeg artifacts, low contrast mush, duplicated objects, warped architecture, broken geometry, extra limbs",
+  "checkpoint": "RealVisXL_V4.0.safetensors",
+  "rejected_checkpoint": "animagine-xl-4.0.safetensors",
+  "evidence": "exp001 (checkpoint), exp002 vs exp003 (weighting)"
+}

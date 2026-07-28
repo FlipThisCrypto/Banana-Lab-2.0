@@ -1,0 +1,107 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "RealVisXL_V4.0.safetensors"
+    },
+    "_meta": {
+      "title": "checkpoint"
+    }
+  },
+  "2": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "(flat 2d vector cartoon illustration:1.5), (thick uniform black outlines:1.4), (flat colour fills with hard cel shading:1.4), comic book background art, graphic novel panel, bold saturated palette, clear perspective. narrow industrial service corridor at night in deep one-point perspective, pipework along the left wall, metal floor grating receding to a vanishing point, one red strip light on the ceiling midway down, cyan glow from a distant doorway at the far end, empty corridor, clear open floor in the foreground. (flat cartoon vector art:1.4), (bold black outlines:1.3), (cel shaded:1.3), non-photorealistic",
+      "clip": [
+        "1",
+        1
+      ]
+    },
+    "_meta": {
+      "title": "prompt-2"
+    }
+  },
+  "3": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "(photorealistic:1.6), (photograph:1.6), (realistic lighting:1.4), (3d render:1.4), (volumetric light:1.3), (depth of field:1.3), cinematic photography, film still, octane render, unreal engine, realistic textures, reflections, bokeh, lens flare, characters, people, person, figure, animal, monkey, creature, mascot, text, letters, words, signature, watermark, logo, caption, speech bubble, panel border, frame, comic frame, white border, gutter, blurry, noisy, jpeg artifacts, low contrast mush, duplicated objects, warped architecture, broken geometry, extra limbs, lockers, cabinets, doors along walls, clutter",
+      "clip": [
+        "1",
+        1
+      ]
+    },
+    "_meta": {
+      "title": "prompt-3"
+    }
+  },
+  "4": {
+    "class_type": "EmptyLatentImage",
+    "inputs": {
+      "width": 960,
+      "height": 1024,
+      "batch_size": 1
+    },
+    "_meta": {
+      "title": "panel-size"
+    }
+  },
+  "5": {
+    "class_type": "KSampler",
+    "inputs": {
+      "seed": 760201,
+      "steps": 32,
+      "cfg": 6.0,
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "karras",
+      "denoise": 1.0,
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "2",
+        0
+      ],
+      "negative": [
+        "3",
+        0
+      ],
+      "latent_image": [
+        "4",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "sampler"
+    }
+  },
+  "6": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "5",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    },
+    "_meta": {
+      "title": "decode"
+    }
+  },
+  "7": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "filename_prefix": "bananalab/exp003_760201",
+      "images": [
+        "6",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "save"
+    }
+  }
+}

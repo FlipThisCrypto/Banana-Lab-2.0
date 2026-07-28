@@ -1,0 +1,34 @@
+{
+  "jobs": 337,
+  "node_classes": {
+    "CLIPTextEncode": 672,
+    "KSampler": 337,
+    "VAEDecode": 337,
+    "SaveImage": 337,
+    "CheckpointLoaderSimple": 335,
+    "EmptyLatentImage": 335,
+    "UNETLoader": 2,
+    "CLIPLoader": 2,
+    "VAELoader": 2,
+    "ConditioningZeroOut": 2,
+    "EmptySD3LatentImage": 2,
+    "ModelSamplingAuraFlow": 2
+  },
+  "checkpoints": {
+    "animagine-xl-4.0.safetensors": 49,
+    "RealVisXL_V4.0.safetensors": 286
+  },
+  "latent_sizes": {
+    "1216x832": 49,
+    "1344x768": 143,
+    "1024x1024": 143
+  },
+  "identity_nodes_present": {
+    "ControlNetLoader": 0,
+    "IPAdapterModelLoader": 0,
+    "LoadImage": 0,
+    "LoraLoader": 0,
+    "VAEEncode": 0,
+    "ImageCompositeMasked": 0
+  }
+}

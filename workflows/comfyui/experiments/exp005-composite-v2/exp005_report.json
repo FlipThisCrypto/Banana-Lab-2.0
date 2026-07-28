@@ -1,0 +1,35 @@
+{
+  "placements": [
+    {
+      "character_id": "MZ-CHAR-005",
+      "layer": "neonblue_16_worried.png",
+      "centre_x": 330,
+      "foot_y": 930,
+      "rendered_height_px": 314,
+      "rendered_width_px": 209,
+      "depth_plane": "midground",
+      "scale_multiplier": 0.78,
+      "top_left": [
+        226,
+        616
+      ]
+    },
+    {
+      "character_id": "MZ-CHAR-001",
+      "layer": "moodz_00_clean_base.png",
+      "centre_x": 660,
+      "foot_y": 820,
+      "rendered_height_px": 245,
+      "rendered_width_px": 195,
+      "depth_plane": "midground",
+      "scale_multiplier": 0.78,
+      "top_left": [
+        563,
+        575
+      ]
+    }
+  ],
+  "warnings": [
+    "CANON: refused to mirror MZ-CHAR-001 - black fringe over one eye, blue accent on the left"
+  ]
+}

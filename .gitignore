@@ -156,3 +156,10 @@ temp/
 thumbs/
 contact_sheets/
 !issues/**/04_storyboards/storyboard-contact-sheet.*
+
+# --- ComfyUI experiment outputs -------------------------------------------
+# Graphs, manifests and calibrations are tracked (they are the evidence).
+# The generated PNGs are not - they are reproducible from the saved seed.
+workflows/comfyui/experiments/**/*.png
+workflows/comfyui/experiments/**/*.jpg
+!workflows/comfyui/experiments/**/*_calib_preview.jpg
