@@ -15,7 +15,7 @@ real result and it is reproducible from saved configuration.
 
 It is **not locked**, and I am not going to call it locked. The brief requires
 ten representative panel types with three successful runs each before locking.
-**One panel type was validated. Two of the ten were touched. Seven were not
+**Two panel types were validated. Three of the ten were touched. Six were not
 attempted.** Calling this validated would repeat exactly the failure this
 project exists to correct.
 
@@ -89,7 +89,7 @@ connected.
 
 ## 3. Experiments
 
-Five iterations. One variable per iteration, as required.
+Seven iterations. One variable per iteration, as required.
 
 ### EXP-001 — Which checkpoint produces house style?
 
@@ -182,6 +182,79 @@ fill 0.20 → 0.10; scale ×0.78.
 - Style coherent between characters and plate
 - Output at the layout spec's exact 1534×1642
 
+### EXP-006 — Is generation deterministic here?
+
+**Hypothesis:** an identical graph and seed reproduces an identical image.
+**Why it matters:** it decides whether golden-image regression is usable on this
+environment, and whether "re-runnable from saved configuration" means you get
+*the same panel* back or merely *a panel*.
+
+**First reading: FAILED.** Two runs of seed 760201 with the same graph produced
+different SHA-256 file hashes.
+
+**That reading was wrong.** Measuring the pixels rather than trusting the hash:
+
+```
+mean abs pixel diff : 0.000 / 255
+max  abs pixel diff : 0
+pixels differing >2 : 0.00%
+pixel sha256 run A  : 345c6322587c8278c6208f05
+pixel sha256 run B  : 345c6322587c8278c6208f05
+```
+
+**Generation IS bit-deterministic.** The images are identical. The file hashes
+differ because ComfyUI embeds the prompt graph in a PNG `prompt` text chunk, and
+that graph contains the `SaveImage` `filename_prefix` — which differed between
+the two runs (`bananalab/exp003_760201` vs `bananalab/exp006_determinism`).
+
+The container changed. The image did not.
+
+**Consequences, and the action taken:**
+
+| Consequence | Action |
+|---|---|
+| Golden-image regression **is** viable on this rig | Recorded; enables pixel-level regression later |
+| A file hash **cannot** be used to detect image drift | `pixel_sha256_of()` added; job manifests now record both hashes |
+| Duplicate detection on generated output must use pixel hashes | Same fix |
+| "Re-runnable from saved configuration" is literally true | Claim stands, now with evidence |
+
+Regression test: `test_pixel_hash_ignores_embedded_metadata`.
+
+This is also a caution worth recording about method: the first hash comparison
+said "not deterministic" and would have led to abandoning golden-image
+regression for no reason. Measuring rather than trusting the hash inverted the
+conclusion.
+
+### EXP-007 — How do we produce an extreme-aspect letterbox panel?
+
+`ISSUE001-P18-01` is 2149×278 — a **7.73:1** letterbox. SDXL has no native
+bucket anywhere near that.
+
+**Hypothesis:** generating directly at an extreme ratio degrades badly because
+it is far outside the training distribution; generating at a supported bucket
+and cropping the band is the route.
+**Variable:** generation size only. Same scene, same seed (780101), same steps
+and cfg.
+
+| Variant | Size | Result |
+|---|---|---|
+| **A — direct** | 1920×256 (7.5:1) | **Coherent.** Stage structures, flags, crowd, night sky with stars. Correct house style. No duplication, no warping, no degradation. 74 s |
+| **B — bucket + crop** | 1536×640 (2.4:1) | Beautiful full frame — arguably the better *image*. But cropped to the 7.73:1 band it loses its composition: heads sliced, stage awkwardly placed. 80 s |
+
+**Result: hypothesis REJECTED.** Direct generation at the extreme aspect is
+*better*, because the model composes **for the frame it is given**. Cropping
+discards a composition that was built for different proportions.
+
+**Adopted rule:** always generate a plate at the panel's actual aspect, however
+extreme. Do not generate at a "safe" bucket and crop.
+
+This matters beyond one panel — the layout spec contains panels from 7.73:1 down
+to 0.28:1, and the naive approach would have mis-composed all of them.
+
+**Caveat:** at 256 px tall, crowd figures are necessarily simplified. Acceptable
+for a letterbox establishing shot; it would not be acceptable for a panel where
+a face must read.
+
 ### Shadow verification — measured, not eyeballed
 
 Contact and cast shadows are hard to see against this plate's near-black floor,
@@ -223,16 +296,16 @@ The shadow lands exactly at the contact point. Visual evidence:
 |---|---:|---:|---|
 | Two-character conversation | 2 | 1 | Validated once |
 | Close-up | 1 | 1 | Derived by crop, not independently generated |
-| Wide environmental | 3 | 2 | Plate only, no characters staged |
+| Wide environmental | 6 | 5 | Plate only, no characters staged. Style contract confirmed across two independent seeds, so the result is reproducible rather than lucky |
 | Single-character full body | 0 | 0 | **Not attempted** |
 | Seated / furniture interaction | 0 | 0 | **Not attempted** |
 | Prop interaction | 0 | 0 | **Not attempted** |
 | Action / movement | 0 | 0 | **Not attempted** |
 | Foreground occlusion | 0 | 0 | **Not attempted** |
-| Nonstandard aspect | 0 | 0 | **Not attempted** |
+| Nonstandard aspect | 2 | 1 | **Validated** at 7.5:1. Direct generation beats bucket+crop (EXP-007) |
 | Emotionally important panel | 0 | 0 | **Not attempted** |
 
-**1 of 10 panel types validated. The brief requires 10, three times each.**
+**2 of 10 panel types validated. The brief requires 10, three times each.**
 
 ---
 
@@ -252,8 +325,9 @@ The shadow lands exactly at the contact point. Visual evidence:
 | Final composite | `issues/…/09_composites/ISSUE001-P16-02_composite_v1.png` |
 
 Every generation carries a job manifest with prompt, negative, seed, model,
-sampler, steps, cfg, dimensions and output SHA-256. The panel is re-runnable
-from saved configuration with no reliance on ComfyUI browser state.
+sampler, steps, cfg, dimensions, output SHA-256 **and pixel SHA-256**. The panel
+is re-runnable from saved configuration with no reliance on ComfyUI browser
+state, and EXP-006 proves a re-run reproduces the image bit-for-bit.
 
 ---
 

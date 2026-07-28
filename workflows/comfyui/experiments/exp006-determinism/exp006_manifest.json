@@ -1,16 +1,16 @@
 {
-  "job_id": "EXP003-760202",
+  "job_id": "EXP006-determinism",
   "job_class": "A",
   "workflow_version": "panel-production-v1",
-  "prompt_id": "c8693865-875d-4389-b9f6-d5dcdfc2c2a7",
+  "prompt_id": "e077b7ae-e7c8-49fc-9059-cd6d21bab705",
   "ok": true,
   "error": "",
-  "seconds": 397.9,
+  "seconds": 98.6,
   "outputs": [
     {
-      "path": "workflows/comfyui/experiments/exp003-weighted-style/exp003_seed760202.png",
-      "sha256": "e247b05979aa5366bcfbd1daad8f256708ece8e9be45755e1c2b4adaf79b7bed",
-      "bytes": 1732120
+      "path": "workflows/comfyui/experiments/exp006-determinism/exp006_seed760201_rerun.png",
+      "sha256": "06e7e65fde43c8fb803206b5cb7c36aed7348e58ca3d080c67dedb810810d68b",
+      "bytes": 1606298
     }
   ],
   "graph": {
@@ -63,7 +63,7 @@
     "5": {
       "class_type": "KSampler",
       "inputs": {
-        "seed": 760202,
+        "seed": 760201,
         "steps": 32,
         "cfg": 6.0,
         "sampler_name": "dpmpp_2m",
@@ -109,7 +109,7 @@
     "7": {
       "class_type": "SaveImage",
       "inputs": {
-        "filename_prefix": "bananalab/exp003_760202",
+        "filename_prefix": "bananalab/exp006_determinism",
         "images": [
           "6",
           0
@@ -123,8 +123,22 @@
   "review_status": "candidate",
   "reviewed_by": "",
   "review_note": "",
-  "hypothesis": "weighted + suffixed style contract resists dilution",
-  "variable": "style contract (weights + suffix); scene/seed/size fixed vs exp002",
-  "compare_against": "exp002_seed760202",
-  "panel_id": "ISSUE001-P16-02"
+  "hypothesis": "identical seed + graph reproduces identical bytes",
+  "prior_sha256": "8913bc12de225e94eadad2055348392ad0d70bc5a7eba7d347498c19de294ec3",
+  "rerun_sha256": "06e7e65fde43c8fb803206b5cb7c36aed7348e58ca3d080c67dedb810810d68b",
+  "deterministic": false,
+  "extra_findings": {
+    "question": "Is generation deterministic on this environment?",
+    "method": "Identical graph and seed run twice; compared file hash and decoded-pixel hash.",
+    "file_sha256_run_a": "8913bc12de225e94eadad2055348392ad0d70bc5a7eba7d347498c19de294ec3",
+    "file_sha256_run_b": "06e7e65fde43c8fb803206b5cb7c36aed7348e58ca3d080c67dedb810810d68b",
+    "pixel_sha256_run_a": "345c6322587c8278c6208f05a355d93f23e403fef0f3bc70b7865f6b3eb14efc",
+    "pixel_sha256_run_b": "345c6322587c8278c6208f05a355d93f23e403fef0f3bc70b7865f6b3eb14efc",
+    "file_hashes_match": false,
+    "pixel_hashes_match": true,
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "conclusion": "Generation IS bit-deterministic for an identical graph. The file hashes differ only because ComfyUI embeds the prompt graph in a PNG text chunk and that graph contains the SaveImage filename_prefix, which differed between runs. Golden-image regression IS viable here, but must hash decoded pixels.",
+    "action_taken": "Added pixel_sha256_of(); job manifests now record both hashes."
+  }
 }

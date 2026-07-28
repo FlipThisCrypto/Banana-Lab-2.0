@@ -204,3 +204,54 @@ def test_capabilities_the_pipeline_depends_on(live):
     for capability in ("controlnet", "controlnet_union", "depth_preprocessor",
                        "inpaint", "background_removal", "mask_composite"):
         assert live.capabilities.get(capability), capability
+
+
+# --- reproducibility ------------------------------------------------------
+
+def test_pixel_hash_ignores_embedded_metadata(tmp_path):
+    """EXP-006: identical pixels, different file bytes.
+
+    ComfyUI embeds the prompt graph in a PNG text chunk, and that graph contains
+    the SaveImage filename_prefix. Two runs of the same seed therefore produce
+    different FILE hashes and identical PIXELS. Regression and duplicate checks
+    must hash pixels or they report drift that did not happen.
+    """
+    from PIL import Image
+    from PIL.PngImagePlugin import PngInfo
+
+    from app.adapters.comfy_client import pixel_sha256_of, sha256_of
+
+    image = Image.new("RGB", (32, 32), (12, 34, 56))
+
+    a = tmp_path / "a.png"
+    meta_a = PngInfo()
+    meta_a.add_text("prompt", '{"7":{"inputs":{"filename_prefix":"run_a"}}}')
+    image.save(a, pnginfo=meta_a)
+
+    b = tmp_path / "b.png"
+    meta_b = PngInfo()
+    meta_b.add_text("prompt", '{"7":{"inputs":{"filename_prefix":"run_b"}}}')
+    image.save(b, pnginfo=meta_b)
+
+    assert sha256_of(a) != sha256_of(b), "metadata should change the file hash"
+    assert pixel_sha256_of(a) == pixel_sha256_of(b), "pixels are identical"
+
+
+def test_job_manifests_record_both_hashes():
+    """Provenance needs the file hash; reproducibility needs the pixel hash."""
+    import json
+
+    from app.core import paths
+
+    manifests = list(
+        (paths.REPO_ROOT / "workflows" / "comfyui" / "experiments").rglob("*_manifest.json")
+    )
+    assert manifests, "no experiment manifests found"
+
+    checked = 0
+    for path in manifests:
+        data = json.loads(path.read_text(encoding="utf-8"))
+        for output in data.get("outputs", []):
+            assert output.get("sha256"), f"{path.name} output missing sha256"
+            checked += 1
+    assert checked, "no outputs recorded in any manifest"

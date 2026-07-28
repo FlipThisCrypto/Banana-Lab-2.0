@@ -183,7 +183,27 @@ class ComfyClient:
 
 
 def sha256_of(path: Path) -> str:
+    """Hash of the file as stored on disk, including embedded metadata."""
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def pixel_sha256_of(path: Path) -> str:
+    """Hash of the decoded pixels only, ignoring container metadata.
+
+    Experiment 006: two runs of an identical graph produced different FILE
+    hashes but identical PIXELS. ComfyUI embeds the prompt graph in a PNG text
+    chunk, and that graph contains the SaveImage filename_prefix - so changing
+    only the output name changes the file hash while the image is untouched.
+
+    Regression checks and duplicate detection must use this, not the file hash,
+    or they will report drift that did not happen.
+    """
+    try:
+        from PIL import Image
+    except ImportError:  # pragma: no cover - Pillow is a declared dependency
+        return ""
+    with Image.open(path) as image:
+        return hashlib.sha256(image.convert("RGB").tobytes()).hexdigest()
 
 
 def write_job_manifest(
@@ -207,7 +227,13 @@ def write_job_manifest(
         "error": result.error,
         "seconds": round(result.seconds, 1),
         "outputs": [
-            {"path": p.as_posix(), "sha256": sha256_of(p), "bytes": p.stat().st_size}
+            {
+                "path": p.as_posix(),
+                "sha256": sha256_of(p),
+                # The reproducibility hash. See pixel_sha256_of.
+                "pixel_sha256": pixel_sha256_of(p),
+                "bytes": p.stat().st_size,
+            }
             for p in result.images
         ],
         "graph": graph,

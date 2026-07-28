@@ -13,12 +13,17 @@ Regenerate after any script change:
 from __future__ import annotations
 
 import argparse
+import math
 import sys
 from pathlib import Path
 
 import yaml
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
+
+#: Aspect of the live area (inside the margins) on an A4 page at 300 dpi.
+#: 2149 x 3177 px -> 0.6765. Used to convert fractional boxes into real aspects.
+LIVE_ASPECT = 2149 / 3177
 
 # Relative weight each declared size contributes when dividing a page.
 SIZE_WEIGHT = {"xs": 0.6, "small": 1.0, "medium": 1.6, "large": 2.6, "xl": 3.4, "full_page": 8.0}
@@ -65,45 +70,119 @@ def template_name(count: int, index: int) -> str:
     return options[index % len(options)]
 
 
-def layout_page(page_number: int, panels: list[dict], template: str) -> list[dict]:
-    """Divide the live area into boxes whose areas follow declared panel size.
+#: The aspect each declared panel_shape is asking for. Row grouping is chosen to
+#: get as close to these as possible.
+#:
+#: Without this, row packing honoured only relative_panel_size and 52 of 103
+#: panels ended up with a box that contradicted their declared shape - a panel
+#: written as a wide establishing shot got a portrait box. Since plate
+#: generation takes its dimensions from the box, that would have produced the
+#: wrong image for half the issue.
+TARGET_ASPECT = {
+    "wide": 2.40,
+    "tall": 0.52,
+    "square": 1.00,
+    "rectangle": 1.35,
+    "inset": 1.15,
+    "borderless": 1.50,
+    "bleed": 1.50,
+    "irregular": 1.30,
+    "splash": 0.68,
+}
 
-    Rows are packed top to bottom. Panels are grouped into rows so that each row
-    holds between one and three panels, and row height is proportional to the
-    combined weight of the panels in it.
+#: Never put more than this many panels in one row - beyond it, reading order
+#: gets ambiguous regardless of how well the aspects fit.
+MAX_PER_ROW = 3
+
+
+def _row_partitions(count: int, max_per_row: int = MAX_PER_ROW) -> list[list[list[int]]]:
+    """Every contiguous, order-preserving way to split panels into rows.
+
+    Order preserving is not negotiable: reading order is the story order.
+    """
+    if count == 0:
+        return [[]]
+    results: list[list[list[int]]] = []
+
+    def walk(start: int, acc: list[list[int]]) -> None:
+        if start == count:
+            results.append([row[:] for row in acc])
+            return
+        for size in range(1, min(max_per_row, count - start) + 1):
+            acc.append(list(range(start, start + size)))
+            walk(start + size, acc)
+            acc.pop()
+
+    walk(0, [])
+    return results
+
+
+def _score_partition(
+    plan: list[list[int]], panels: list[dict], weights: list[float], gap: float
+) -> float:
+    """Total squared log-aspect error against each panel's declared shape.
+
+    Log space so that being 2x too wide and 2x too tall cost the same.
+    """
+    row_weights = [sum(weights[i] for i in row) for row in plan]
+    total = sum(row_weights) or 1.0
+    usable_h = 1.0 - gap * (len(plan) - 1)
+
+    error = 0.0
+    for row, row_weight in zip(plan, row_weights):
+        h = usable_h * (row_weight / total)
+        if h <= 0:
+            return float("inf")
+        row_total = sum(weights[i] for i in row) or 1.0
+        usable_w = 1.0 - gap * (len(row) - 1)
+        for i in row:
+            w = usable_w * (weights[i] / row_total)
+            # Aspect in page terms; the live area is taller than it is wide.
+            aspect = (w * LIVE_ASPECT) / h
+            target = TARGET_ASPECT.get(panels[i].get("panel_shape", "rectangle"), 1.35)
+            error += (math.log(aspect / target)) ** 2
+    return error
+
+
+def layout_page(page_number: int, panels: list[dict], template: str) -> list[dict]:
+    """Divide the live area into boxes that honour both size AND declared shape.
+
+    Row height still follows relative_panel_size, so narrative weight drives
+    area. Row *grouping* is chosen by search to best satisfy each panel's
+    declared shape.
     """
     weights = [SIZE_WEIGHT.get(p.get("relative_panel_size", "medium"), 1.6) for p in panels]
     count = len(panels)
 
-    # Row plans per panel count. Every plan consumes panel indices in ASCENDING
-    # order - reading order is left-to-right, top-to-bottom and must never be
-    # rearranged for visual variety. Two plans per count give neighbouring pages
-    # of equal panel count different shapes without touching sequence.
-    row_plans = {
-        1: ([[0]], [[0]]),
-        2: ([[0], [1]], [[0], [1]]),
-        3: ([[0], [1, 2]], [[0, 1], [2]]),
-        4: ([[0], [1, 2], [3]], [[0, 1], [2], [3]]),
-        5: ([[0, 1], [2, 3], [4]], [[0], [1, 2], [3, 4]]),
-        6: ([[0], [1, 2], [3, 4], [5]], [[0, 1], [2], [3, 4, 5]]),
-        7: ([[0, 1], [2, 3, 4], [5], [6]], [[0], [1, 2], [3, 4, 5], [6]]),
-    }
-    primary, alternate = row_plans.get(
-        count, ([[i] for i in range(count)], [[i] for i in range(count)])
+    # Row grouping is chosen by SEARCH, not from a fixed table. Enumerate every
+    # contiguous, order-preserving partition (at most 2^(n-1), n <= 9) and take
+    # the one whose resulting boxes best match each panel's declared shape.
+    #
+    # Order preserving is not negotiable: reading order is story order. Variety
+    # comes from how rows are grouped, never from resequencing panels.
+    gap = 0.012
+    scored = sorted(
+        ((_score_partition(p, panels, weights, gap), p) for p in _row_partitions(count)),
+        key=lambda pair: pair[0],
     )
+    plan = scored[0][1] if scored else [[i] for i in range(count)]
+
+    # Neighbouring pages with the same panel count would otherwise get the same
+    # grouping. When a variant is requested, take the runner-up - but only if it
+    # is not appreciably worse at honouring the declared shapes.
     use_alternate = template.endswith("-b") or template in {
         "quad-asymmetric", "wide-over-quad", "six-irregular", "stacked-wides",
         "tall-left-stacked-right", "triple-stack", "two-by-two-offset",
         "tall-left-quad-right", "large-over-five",
     }
-    plan = alternate if use_alternate else primary
+    if use_alternate and len(scored) > 1 and scored[1][0] <= scored[0][0] * 2.0 + 0.25:
+        plan = scored[1][1]
 
     row_weights = [sum(weights[i] for i in row) for row in plan]
     total = sum(row_weights) or 1.0
 
     boxes: list[dict] = []
     y = 0.0
-    gap = 0.012
     usable_h = 1.0 - gap * (len(plan) - 1)
 
     for row, row_weight in zip(plan, row_weights):
@@ -167,6 +246,7 @@ def main() -> int:
         by_page.setdefault(panel["page_number"], []).append(panel)
 
     pages = []
+    shape_mismatches: list[dict] = []
     previous_template = ""
     variant = 0
     for page_number in sorted(by_page):
@@ -179,6 +259,31 @@ def main() -> int:
         variant += 1
 
         color, note = FRAME_COLORS.get(page_number, ("#556677", ""))
+        boxes = layout_page(page_number, panels, template)
+
+        # A page must tile completely, so a set of declared shapes can be
+        # collectively unsatisfiable. Where the box a panel actually gets
+        # contradicts its declared shape, say so in the spec rather than let
+        # the disagreement sit there silently - plate generation reads its
+        # dimensions from the BOX, so a hidden mismatch produces the wrong image.
+        for panel, box in zip(panels, boxes):
+            _, _, w, h = box["box"]
+            aspect = (w * LIVE_ASPECT) / h if h else 0.0
+            declared = panel.get("panel_shape", "rectangle")
+            target = TARGET_ASPECT.get(declared, 1.35)
+            box["actual_aspect"] = round(aspect, 3)
+            if aspect and not (0.62 <= aspect / target <= 1.62):
+                box["shape_mismatch"] = (
+                    f"script declares '{declared}' (target aspect {target}) but the "
+                    f"page can only give this panel {aspect:.2f}. Generate the plate "
+                    f"at the ACTUAL aspect, and consider revising the declared shape."
+                )
+                shape_mismatches.append(
+                    {"panel_id": panel["panel_id"], "declared": declared,
+                     "target_aspect": target, "actual_aspect": round(aspect, 3),
+                     "page": page_number}
+                )
+
         pages.append(
             {
                 "page_number": page_number,
@@ -187,7 +292,7 @@ def main() -> int:
                 "frame_color": color,
                 "frame_note": note,
                 "panel_count": len(panels),
-                "panels": layout_page(page_number, panels, template),
+                "panels": boxes,
             }
         )
 
@@ -227,6 +332,7 @@ def main() -> int:
             "Balloon zones never overlap a face or a hand.",
             "Panel art is frameless and textless.",
         ],
+        "shape_mismatches": shape_mismatches,
         "pages": pages,
         "cover": {
             "required_elements": [
@@ -262,6 +368,17 @@ def main() -> int:
     print(f"wrote {out.relative_to(REPO_ROOT).as_posix()}")
     print(f"  pages   : {len(pages)}")
     print(f"  grids   : {len({p['grid_name'] for p in pages})} distinct")
+    if shape_mismatches:
+        print(f"  shape mismatches: {len(shape_mismatches)} of {spec['panel_count']} panels")
+        print("    the page cannot give these panels the aspect the script declares;")
+        print("    generate plates at the ACTUAL aspect and consider revising the script")
+        for m in shape_mismatches[:8]:
+            print(f"      p{m['page']:02d} {m['panel_id']}: declared {m['declared']} "
+                  f"(target {m['target_aspect']}) -> actual {m['actual_aspect']}")
+        if len(shape_mismatches) > 8:
+            print(f"      ... and {len(shape_mismatches) - 8} more; see layout-spec.yaml")
+    else:
+        print("  shape mismatches: none")
     return 0
 
 

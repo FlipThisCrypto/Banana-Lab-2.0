@@ -40,6 +40,227 @@ rules:
 - Reading order must be unambiguous without arrows or numbers.
 - Balloon zones never overlap a face or a hand.
 - Panel art is frameless and textless.
+shape_mismatches:
+- panel_id: ISSUE001-P01-03
+  declared: wide
+  target_aspect: 2.4
+  actual_aspect: 4.77
+  page: 1
+- panel_id: ISSUE001-P01-04
+  declared: rectangle
+  target_aspect: 1.35
+  actual_aspect: 2.982
+  page: 1
+- panel_id: ISSUE001-P03-03
+  declared: rectangle
+  target_aspect: 1.35
+  actual_aspect: 0.689
+  page: 3
+- panel_id: ISSUE001-P03-04
+  declared: rectangle
+  target_aspect: 1.35
+  actual_aspect: 0.689
+  page: 3
+- panel_id: ISSUE001-P03-05
+  declared: wide
+  target_aspect: 2.4
+  actual_aspect: 1.102
+  page: 3
+- panel_id: ISSUE001-P04-01
+  declared: tall
+  target_aspect: 0.52
+  actual_aspect: 0.959
+  page: 4
+- panel_id: ISSUE001-P04-02
+  declared: wide
+  target_aspect: 2.4
+  actual_aspect: 0.959
+  page: 4
+- panel_id: ISSUE001-P04-03
+  declared: inset
+  target_aspect: 1.15
+  actual_aspect: 0.567
+  page: 4
+- panel_id: ISSUE001-P04-05
+  declared: rectangle
+  target_aspect: 1.35
+  actual_aspect: 3.881
+  page: 4
+- panel_id: ISSUE001-P05-01
+  declared: wide
+  target_aspect: 2.4
+  actual_aspect: 4.387
+  page: 5
+- panel_id: ISSUE001-P05-06
+  declared: wide
+  target_aspect: 2.4
+  actual_aspect: 1.083
+  page: 5
+- panel_id: ISSUE001-P06-02
+  declared: rectangle
+  target_aspect: 1.35
+  actual_aspect: 2.544
+  page: 6
+- panel_id: ISSUE001-P06-04
+  declared: wide
+  target_aspect: 2.4
+  actual_aspect: 4.07
+  page: 6
+- panel_id: ISSUE001-P08-01
+  declared: rectangle
+  target_aspect: 1.35
+  actual_aspect: 2.946
+  page: 8
+- panel_id: ISSUE001-P08-02
+  declared: rectangle
+  target_aspect: 1.35
+  actual_aspect: 0.689
+  page: 8
+- panel_id: ISSUE001-P08-04
+  declared: rectangle
+  target_aspect: 1.35
+  actual_aspect: 0.689
+  page: 8
+- panel_id: ISSUE001-P08-05
+  declared: wide
+  target_aspect: 2.4
+  actual_aspect: 1.102
+  page: 8
+- panel_id: ISSUE001-P09-01
+  declared: wide
+  target_aspect: 2.4
+  actual_aspect: 0.79
+  page: 9
+- panel_id: ISSUE001-P09-02
+  declared: wide
+  target_aspect: 2.4
+  actual_aspect: 1.264
+  page: 9
+- panel_id: ISSUE001-P10-04
+  declared: rectangle
+  target_aspect: 1.35
+  actual_aspect: 0.689
+  page: 10
+- panel_id: ISSUE001-P10-05
+  declared: tall
+  target_aspect: 0.52
+  actual_aspect: 1.102
+  page: 10
+- panel_id: ISSUE001-P12-05
+  declared: rectangle
+  target_aspect: 1.35
+  actual_aspect: 0.8
+  page: 12
+- panel_id: ISSUE001-P13-01
+  declared: wide
+  target_aspect: 2.4
+  actual_aspect: 1.386
+  page: 13
+- panel_id: ISSUE001-P13-02
+  declared: inset
+  target_aspect: 1.15
+  actual_aspect: 3.604
+  page: 13
+- panel_id: ISSUE001-P14-03
+  declared: rectangle
+  target_aspect: 1.35
+  actual_aspect: 0.728
+  page: 14
+- panel_id: ISSUE001-P14-04
+  declared: rectangle
+  target_aspect: 1.35
+  actual_aspect: 0.728
+  page: 14
+- panel_id: ISSUE001-P14-05
+  declared: rectangle
+  target_aspect: 1.35
+  actual_aspect: 2.946
+  page: 14
+- panel_id: ISSUE001-P15-03
+  declared: square
+  target_aspect: 1.0
+  actual_aspect: 2.481
+  page: 15
+- panel_id: ISSUE001-P16-03
+  declared: rectangle
+  target_aspect: 1.35
+  actual_aspect: 0.689
+  page: 16
+- panel_id: ISSUE001-P16-04
+  declared: wide
+  target_aspect: 2.4
+  actual_aspect: 1.102
+  page: 16
+- panel_id: ISSUE001-P17-01
+  declared: wide
+  target_aspect: 2.4
+  actual_aspect: 1.106
+  page: 17
+- panel_id: ISSUE001-P18-01
+  declared: wide
+  target_aspect: 2.4
+  actual_aspect: 1.142
+  page: 18
+- panel_id: ISSUE001-P18-04
+  declared: wide
+  target_aspect: 2.4
+  actual_aspect: 1.207
+  page: 18
+- panel_id: ISSUE001-P18-05
+  declared: wide
+  target_aspect: 2.4
+  actual_aspect: 7.82
+  page: 18
+- panel_id: ISSUE001-P18-07
+  declared: wide
+  target_aspect: 2.4
+  actual_aspect: 4.884
+  page: 18
+- panel_id: ISSUE001-P19-02
+  declared: wide
+  target_aspect: 2.4
+  actual_aspect: 1.369
+  page: 19
+- panel_id: ISSUE001-P21-01
+  declared: rectangle
+  target_aspect: 1.35
+  actual_aspect: 2.537
+  page: 21
+- panel_id: ISSUE001-P21-02
+  declared: wide
+  target_aspect: 2.4
+  actual_aspect: 4.122
+  page: 21
+- panel_id: ISSUE001-P21-03
+  declared: wide
+  target_aspect: 2.4
+  actual_aspect: 1.307
+  page: 21
+- panel_id: ISSUE001-P21-04
+  declared: square
+  target_aspect: 1.0
+  actual_aspect: 0.503
+  page: 21
+- panel_id: ISSUE001-P21-05
+  declared: wide
+  target_aspect: 2.4
+  actual_aspect: 4.122
+  page: 21
+- panel_id: ISSUE001-P22-01
+  declared: wide
+  target_aspect: 2.4
+  actual_aspect: 5.264
+  page: 22
+- panel_id: ISSUE001-P22-03
+  declared: rectangle
+  target_aspect: 1.35
+  actual_aspect: 0.642
+  page: 22
+- panel_id: ISSUE001-P22-05
+  declared: tall
+  target_aspect: 0.52
+  actual_aspect: 1.226
+  page: 22
 pages:
 - page_number: 1
   purpose: Open on the festival at its best, so the reader knows what is about to
@@ -53,8 +274,8 @@ pages:
     - 0.0
     - 0.0
     - 1.0
-    - 0.3732
-    area_share: 0.3732
+    - 0.3686
+    area_share: 0.3686
     shape: wide
     silent: true
     anchor: true
@@ -65,13 +286,14 @@ pages:
       - 0.44
       - 0.2
       for: caption
+    actual_aspect: 1.835
   - panel_id: ISSUE001-P01-02
     box:
     - 0.0
-    - 0.3852
-    - 0.608
-    - 0.3732
-    area_share: 0.2269
+    - 0.3806
+    - 1.0
+    - 0.2268
+    area_share: 0.2268
     shape: wide
     silent: false
     anchor: false
@@ -82,24 +304,28 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-003
+    actual_aspect: 2.982
   - panel_id: ISSUE001-P01-03
     box:
-    - 0.62
-    - 0.3852
-    - 0.38
-    - 0.3732
+    - 0.0
+    - 0.6194
+    - 1.0
+    - 0.1418
     area_share: 0.1418
     shape: wide
     silent: true
     anchor: false
     bubble_zones: []
+    actual_aspect: 4.77
+    shape_mismatch: script declares 'wide' (target aspect 2.4) but the page can only give this panel 4.77.
+      Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
   - panel_id: ISSUE001-P01-04
     box:
     - 0.0
-    - 0.7704
+    - 0.7732
     - 1.0
-    - 0.2296
-    area_share: 0.2296
+    - 0.2268
+    area_share: 0.2268
     shape: rectangle
     silent: false
     anchor: false
@@ -110,6 +336,9 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-005
+    actual_aspect: 2.982
+    shape_mismatch: script declares 'rectangle' (target aspect 1.35) but the page can only give this panel
+      2.98. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
 - page_number: 2
   purpose: NeonBlue volunteers the group before anyone agrees. The first characte
   grid_name: p02-six-irregular
@@ -121,9 +350,9 @@ pages:
     box:
     - 0.0
     - 0.0
-    - 0.608
-    - 0.3095
-    area_share: 0.1882
+    - 1.0
+    - 0.1881
+    area_share: 0.1881
     shape: wide
     silent: false
     anchor: false
@@ -134,13 +363,14 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-005
+    actual_aspect: 3.596
   - panel_id: ISSUE001-P02-02
     box:
-    - 0.62
     - 0.0
-    - 0.38
-    - 0.3095
-    area_share: 0.1176
+    - 0.2001
+    - 0.494
+    - 0.2351
+    area_share: 0.1162
     shape: rectangle
     silent: false
     anchor: false
@@ -151,13 +381,14 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-002
+    actual_aspect: 1.421
   - panel_id: ISSUE001-P02-03
     box:
-    - 0.0
-    - 0.3215
-    - 1.0
-    - 0.119
-    area_share: 0.119
+    - 0.506
+    - 0.2001
+    - 0.494
+    - 0.2351
+    area_share: 0.1162
     shape: square
     silent: false
     anchor: false
@@ -168,35 +399,38 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-005
+    actual_aspect: 1.421
   - panel_id: ISSUE001-P02-04
     box:
     - 0.0
-    - 0.4525
-    - 0.2122
-    - 0.5475
+    - 0.4472
+    - 0.494
+    - 0.2351
     area_share: 0.1162
     shape: rectangle
     silent: true
     anchor: false
     bubble_zones: []
+    actual_aspect: 1.421
   - panel_id: ISSUE001-P02-05
     box:
-    - 0.2242
-    - 0.4525
-    - 0.2122
-    - 0.5475
+    - 0.506
+    - 0.4472
+    - 0.494
+    - 0.2351
     area_share: 0.1162
     shape: rectangle
     silent: true
     anchor: false
     bubble_zones: []
+    actual_aspect: 1.421
   - panel_id: ISSUE001-P02-06
     box:
-    - 0.4483
-    - 0.4525
-    - 0.5517
-    - 0.5475
-    area_share: 0.302
+    - 0.0
+    - 0.6943
+    - 1.0
+    - 0.3057
+    area_share: 0.3057
     shape: wide
     silent: true
     anchor: true
@@ -207,6 +441,7 @@ pages:
       - 0.42
       - 0.2
       for: caption
+    actual_aspect: 2.213
 - page_number: 3
   purpose: Show the festival functioning so its failure has something to fail fro
   grid_name: p03-tall-left-quad-right
@@ -231,6 +466,7 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-005
+    actual_aspect: 2.946
   - panel_id: ISSUE001-P03-02
     box:
     - 0.0
@@ -248,6 +484,7 @@ pages:
       - 0.44
       - 0.2
       for: MZ-CHAR-LILDEVIL
+    actual_aspect: 1.102
   - panel_id: ISSUE001-P03-03
     box:
     - 0.62
@@ -265,6 +502,9 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-LILDEVIL
+    actual_aspect: 0.689
+    shape_mismatch: script declares 'rectangle' (target aspect 1.35) but the page can only give this panel
+      0.69. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
   - panel_id: ISSUE001-P03-04
     box:
     - 0.0
@@ -282,6 +522,9 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-005
+    actual_aspect: 0.689
+    shape_mismatch: script declares 'rectangle' (target aspect 1.35) but the page can only give this panel
+      0.69. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
   - panel_id: ISSUE001-P03-05
     box:
     - 0.392
@@ -293,6 +536,9 @@ pages:
     silent: true
     anchor: false
     bubble_zones: []
+    actual_aspect: 1.102
+    shape_mismatch: script declares 'wide' (target aspect 2.4) but the page can only give this panel 1.10.
+      Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
 - page_number: 4
   purpose: Static perceives the fault before any instrument does.
   grid_name: p04-four-small-over-wide
@@ -317,6 +563,9 @@ pages:
       - 0.8
       - 0.26
       for: MZ-CHAR-003
+    actual_aspect: 0.959
+    shape_mismatch: script declares 'tall' (target aspect 0.52) but the page can only give this panel
+      0.96. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
   - panel_id: ISSUE001-P04-02
     box:
     - 0.506
@@ -328,6 +577,9 @@ pages:
     silent: true
     anchor: false
     bubble_zones: []
+    actual_aspect: 0.959
+    shape_mismatch: script declares 'wide' (target aspect 2.4) but the page can only give this panel 0.96.
+      Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
   - panel_id: ISSUE001-P04-03
     box:
     - 0.0
@@ -339,6 +591,9 @@ pages:
     silent: true
     anchor: false
     bubble_zones: []
+    actual_aspect: 0.567
+    shape_mismatch: script declares 'inset' (target aspect 1.15) but the page can only give this panel
+      0.57. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
   - panel_id: ISSUE001-P04-04
     box:
     - 0.392
@@ -356,6 +611,7 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-003
+    actual_aspect: 0.908
   - panel_id: ISSUE001-P04-05
     box:
     - 0.0
@@ -367,6 +623,9 @@ pages:
     silent: true
     anchor: false
     bubble_zones: []
+    actual_aspect: 3.881
+    shape_mismatch: script declares 'rectangle' (target aspect 1.35) but the page can only give this panel
+      3.88. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
 - page_number: 5
   purpose: Static reaches NeonBlue, and NeonBlue answers before hearing it.
   grid_name: p05-six-irregular
@@ -378,9 +637,9 @@ pages:
     box:
     - 0.0
     - 0.0
-    - 0.3764
-    - 0.4099
-    area_share: 0.1543
+    - 1.0
+    - 0.1542
+    area_share: 0.1542
     shape: wide
     silent: false
     anchor: false
@@ -391,13 +650,16 @@ pages:
       - 0.44
       - 0.2
       for: MZ-CHAR-003
+    actual_aspect: 4.387
+    shape_mismatch: script declares 'wide' (target aspect 2.4) but the page can only give this panel 4.39.
+      Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
   - panel_id: ISSUE001-P05-02
     box:
-    - 0.3884
     - 0.0
-    - 0.6116
-    - 0.4099
-    area_share: 0.2507
+    - 0.1662
+    - 1.0
+    - 0.2506
+    area_share: 0.2506
     shape: wide
     silent: false
     anchor: true
@@ -408,24 +670,26 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-005
+    actual_aspect: 2.699
   - panel_id: ISSUE001-P05-03
     box:
     - 0.0
-    - 0.4219
-    - 1.0
-    - 0.1562
-    area_share: 0.1562
+    - 0.4289
+    - 0.608
+    - 0.2506
+    area_share: 0.1524
     shape: wide
     silent: true
     anchor: false
     bubble_zones: []
+    actual_aspect: 1.641
   - panel_id: ISSUE001-P05-04
     box:
-    - 0.0
-    - 0.5901
-    - 0.2324
-    - 0.4099
-    area_share: 0.0953
+    - 0.62
+    - 0.4289
+    - 0.38
+    - 0.2506
+    area_share: 0.0952
     shape: rectangle
     silent: false
     anchor: false
@@ -436,12 +700,13 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-005
+    actual_aspect: 1.026
   - panel_id: ISSUE001-P05-05
     box:
-    - 0.2444
-    - 0.5901
-    - 0.3718
-    - 0.4099
+    - 0.0
+    - 0.6915
+    - 0.494
+    - 0.3085
     area_share: 0.1524
     shape: rectangle
     silent: false
@@ -453,12 +718,13 @@ pages:
       - 0.44
       - 0.2
       for: MZ-CHAR-001
+    actual_aspect: 1.083
   - panel_id: ISSUE001-P05-06
     box:
-    - 0.6282
-    - 0.5901
-    - 0.3718
-    - 0.4099
+    - 0.506
+    - 0.6915
+    - 0.494
+    - 0.3085
     area_share: 0.1524
     shape: wide
     silent: false
@@ -470,6 +736,9 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-005
+    actual_aspect: 1.083
+    shape_mismatch: script declares 'wide' (target aspect 2.4) but the page can only give this panel 1.08.
+      Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
 - page_number: 6
   purpose: Show the crowd's reaction as the actual developing hazard.
   grid_name: p06-two-by-two-offset
@@ -481,20 +750,21 @@ pages:
     box:
     - 0.0
     - 0.0
-    - 0.494
-    - 0.5385
-    area_share: 0.266
+    - 1.0
+    - 0.2659
+    area_share: 0.2659
     shape: wide
     silent: true
     anchor: false
     bubble_zones: []
+    actual_aspect: 2.544
   - panel_id: ISSUE001-P06-02
     box:
-    - 0.506
     - 0.0
-    - 0.494
-    - 0.5385
-    area_share: 0.266
+    - 0.2779
+    - 1.0
+    - 0.2659
+    area_share: 0.2659
     shape: rectangle
     silent: false
     anchor: false
@@ -505,13 +775,16 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-006
+    actual_aspect: 2.544
+    shape_mismatch: script declares 'rectangle' (target aspect 1.35) but the page can only give this panel
+      2.54. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
   - panel_id: ISSUE001-P06-03
     box:
     - 0.0
-    - 0.5505
+    - 0.5559
     - 1.0
-    - 0.2692
-    area_share: 0.2692
+    - 0.2659
+    area_share: 0.2659
     shape: wide
     silent: false
     anchor: false
@@ -522,17 +795,21 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-002
+    actual_aspect: 2.544
   - panel_id: ISSUE001-P06-04
     box:
     - 0.0
-    - 0.8317
+    - 0.8338
     - 1.0
-    - 0.1683
-    area_share: 0.1683
+    - 0.1662
+    area_share: 0.1662
     shape: wide
     silent: true
     anchor: false
     bubble_zones: []
+    actual_aspect: 4.07
+    shape_mismatch: script declares 'wide' (target aspect 2.4) but the page can only give this panel 4.07.
+      Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
 - page_number: 7
   purpose: Open the dense page with a fast beat - a ride stopping.
   grid_name: p07-dense-seven-a
@@ -557,6 +834,7 @@ pages:
       - 0.42
       - 0.2
       for: caption
+    actual_aspect: 1.594
   - panel_id: ISSUE001-P07-02
     box:
     - 0.506
@@ -568,13 +846,14 @@ pages:
     silent: true
     anchor: false
     bubble_zones: []
+    actual_aspect: 1.594
   - panel_id: ISSUE001-P07-03
     box:
     - 0.0
     - 0.2216
-    - 0.3253
-    - 0.3143
-    area_share: 0.1023
+    - 0.494
+    - 0.2096
+    area_share: 0.1035
     shape: square
     silent: false
     anchor: false
@@ -585,35 +864,38 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-003
+    actual_aspect: 1.594
   - panel_id: ISSUE001-P07-04
     box:
-    - 0.3373
+    - 0.506
     - 0.2216
-    - 0.3253
-    - 0.3143
-    area_share: 0.1023
+    - 0.494
+    - 0.2096
+    area_share: 0.1035
     shape: rectangle
     silent: true
     anchor: false
     bubble_zones: []
+    actual_aspect: 1.594
   - panel_id: ISSUE001-P07-05
     box:
-    - 0.6747
-    - 0.2216
-    - 0.3253
-    - 0.3143
-    area_share: 0.1023
+    - 0.0
+    - 0.4431
+    - 0.38
+    - 0.2724
+    area_share: 0.1035
     shape: rectangle
     silent: true
     anchor: false
     bubble_zones: []
+    actual_aspect: 0.944
   - panel_id: ISSUE001-P07-06
     box:
-    - 0.0
-    - 0.5479
-    - 1.0
-    - 0.1677
-    area_share: 0.1677
+    - 0.392
+    - 0.4431
+    - 0.608
+    - 0.2724
+    area_share: 0.1656
     shape: rectangle
     silent: false
     anchor: false
@@ -624,6 +906,7 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-005
+    actual_aspect: 1.51
   - panel_id: ISSUE001-P07-07
     box:
     - 0.0
@@ -635,6 +918,7 @@ pages:
     silent: true
     anchor: true
     bubble_zones: []
+    actual_aspect: 2.483
 - page_number: 8
   purpose: TwoTone starts working the problem the way only he does.
   grid_name: p08-wide-over-quad
@@ -659,6 +943,9 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-002
+    actual_aspect: 2.946
+    shape_mismatch: script declares 'rectangle' (target aspect 1.35) but the page can only give this panel
+      2.95. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
   - panel_id: ISSUE001-P08-02
     box:
     - 0.0
@@ -676,6 +963,9 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-002
+    actual_aspect: 0.689
+    shape_mismatch: script declares 'rectangle' (target aspect 1.35) but the page can only give this panel
+      0.69. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
   - panel_id: ISSUE001-P08-03
     box:
     - 0.392
@@ -693,6 +983,7 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-005
+    actual_aspect: 1.102
   - panel_id: ISSUE001-P08-04
     box:
     - 0.0
@@ -710,6 +1001,9 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-LILDEVIL
+    actual_aspect: 0.689
+    shape_mismatch: script declares 'rectangle' (target aspect 1.35) but the page can only give this panel
+      0.69. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
   - panel_id: ISSUE001-P08-05
     box:
     - 0.392
@@ -727,6 +1021,9 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-005
+    actual_aspect: 1.102
+    shape_mismatch: script declares 'wide' (target aspect 2.4) but the page can only give this panel 1.10.
+      Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
 - page_number: 9
   purpose: Static's perception becomes something the reader can see.
   grid_name: p09-large-over-five
@@ -745,6 +1042,9 @@ pages:
     silent: true
     anchor: false
     bubble_zones: []
+    actual_aspect: 0.79
+    shape_mismatch: script declares 'wide' (target aspect 2.4) but the page can only give this panel 0.79.
+      Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
   - panel_id: ISSUE001-P09-02
     box:
     - 0.392
@@ -762,13 +1062,16 @@ pages:
       - 0.42
       - 0.2
       for: caption
+    actual_aspect: 1.264
+    shape_mismatch: script declares 'wide' (target aspect 2.4) but the page can only give this panel 1.26.
+      Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
   - panel_id: ISSUE001-P09-03
     box:
     - 0.0
     - 0.3373
-    - 1.0
-    - 0.2002
-    area_share: 0.2002
+    - 0.608
+    - 0.3253
+    area_share: 0.1978
     shape: rectangle
     silent: false
     anchor: false
@@ -779,24 +1082,26 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-003
+    actual_aspect: 1.264
   - panel_id: ISSUE001-P09-04
     box:
-    - 0.0
-    - 0.5495
-    - 0.2711
-    - 0.4505
-    area_share: 0.1221
+    - 0.62
+    - 0.3373
+    - 0.38
+    - 0.3253
+    area_share: 0.1236
     shape: inset
     silent: true
     anchor: false
     bubble_zones: []
+    actual_aspect: 0.79
   - panel_id: ISSUE001-P09-05
     box:
-    - 0.2831
-    - 0.5495
-    - 0.4338
-    - 0.4505
-    area_share: 0.1954
+    - 0.0
+    - 0.6747
+    - 0.608
+    - 0.3253
+    area_share: 0.1978
     shape: rectangle
     silent: false
     anchor: false
@@ -807,13 +1112,14 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-005
+    actual_aspect: 1.264
   - panel_id: ISSUE001-P09-06
     box:
-    - 0.7289
-    - 0.5495
-    - 0.2711
-    - 0.4505
-    area_share: 0.1221
+    - 0.62
+    - 0.6747
+    - 0.38
+    - 0.3253
+    area_share: 0.1236
     shape: square
     silent: false
     anchor: false
@@ -824,6 +1130,7 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-003
+    actual_aspect: 0.79
 - page_number: 10
   purpose: NeonBlue's brightness gets louder as the situation gets worse.
   grid_name: p10-four-small-over-wide
@@ -848,6 +1155,7 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-005
+    actual_aspect: 1.102
   - panel_id: ISSUE001-P10-02
     box:
     - 0.62
@@ -859,13 +1167,14 @@ pages:
     silent: true
     anchor: false
     bubble_zones: []
+    actual_aspect: 0.689
   - panel_id: ISSUE001-P10-03
     box:
     - 0.0
     - 0.3852
-    - 0.608
-    - 0.3732
-    area_share: 0.2269
+    - 1.0
+    - 0.2296
+    area_share: 0.2296
     shape: wide
     silent: false
     anchor: false
@@ -876,10 +1185,11 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-005
+    actual_aspect: 2.946
   - panel_id: ISSUE001-P10-04
     box:
-    - 0.62
-    - 0.3852
+    - 0.0
+    - 0.6268
     - 0.38
     - 0.3732
     area_share: 0.1418
@@ -887,17 +1197,23 @@ pages:
     silent: true
     anchor: false
     bubble_zones: []
+    actual_aspect: 0.689
+    shape_mismatch: script declares 'rectangle' (target aspect 1.35) but the page can only give this panel
+      0.69. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
   - panel_id: ISSUE001-P10-05
     box:
-    - 0.0
-    - 0.7704
-    - 1.0
-    - 0.2296
-    area_share: 0.2296
+    - 0.392
+    - 0.6268
+    - 0.608
+    - 0.3732
+    area_share: 0.2269
     shape: tall
     silent: true
     anchor: false
     bubble_zones: []
+    actual_aspect: 1.102
+    shape_mismatch: script declares 'tall' (target aspect 0.52) but the page can only give this panel
+      1.10. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
 - page_number: 11
   purpose: The page-turn reveal. Give the reader the whole pattern at once, befor
   grid_name: p11-full-page-splash
@@ -916,6 +1232,7 @@ pages:
     silent: true
     anchor: true
     bubble_zones: []
+    actual_aspect: 0.676
 - page_number: 12
   purpose: Arrive at the locked gate, the last obstacle before the control node.
   grid_name: p12-large-over-five
@@ -927,9 +1244,9 @@ pages:
     box:
     - 0.0
     - 0.0
-    - 0.608
-    - 0.3253
-    area_share: 0.1978
+    - 1.0
+    - 0.1977
+    area_share: 0.1977
     shape: wide
     silent: false
     anchor: false
@@ -940,13 +1257,14 @@ pages:
       - 0.92
       - 0.18
       for: MZ-CHAR-LILDEVIL
+    actual_aspect: 3.421
   - panel_id: ISSUE001-P12-02
     box:
-    - 0.62
     - 0.0
-    - 0.38
-    - 0.3253
-    area_share: 0.1236
+    - 0.2097
+    - 0.494
+    - 0.2472
+    area_share: 0.1221
     shape: rectangle
     silent: false
     anchor: false
@@ -957,13 +1275,14 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-006
+    actual_aspect: 1.352
   - panel_id: ISSUE001-P12-03
     box:
-    - 0.0
-    - 0.3373
-    - 1.0
-    - 0.1251
-    area_share: 0.1251
+    - 0.506
+    - 0.2097
+    - 0.494
+    - 0.2472
+    area_share: 0.1221
     shape: rectangle
     silent: false
     anchor: false
@@ -974,12 +1293,13 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-005
+    actual_aspect: 1.352
   - panel_id: ISSUE001-P12-04
     box:
     - 0.0
-    - 0.4745
-    - 0.3718
-    - 0.5255
+    - 0.4689
+    - 0.608
+    - 0.3213
     area_share: 0.1954
     shape: rectangle
     silent: false
@@ -991,12 +1311,13 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-LILDEVIL
+    actual_aspect: 1.28
   - panel_id: ISSUE001-P12-05
     box:
-    - 0.3838
-    - 0.4745
-    - 0.2324
-    - 0.5255
+    - 0.62
+    - 0.4689
+    - 0.38
+    - 0.3213
     area_share: 0.1221
     shape: rectangle
     silent: true
@@ -1008,17 +1329,21 @@ pages:
       - 0.42
       - 0.2
       for: caption
+    actual_aspect: 0.8
+    shape_mismatch: script declares 'rectangle' (target aspect 1.35) but the page can only give this panel
+      0.80. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
   - panel_id: ISSUE001-P12-06
     box:
-    - 0.6282
-    - 0.4745
-    - 0.3718
-    - 0.5255
-    area_share: 0.1954
+    - 0.0
+    - 0.8023
+    - 1.0
+    - 0.1977
+    area_share: 0.1977
     shape: wide
     silent: true
     anchor: false
     bubble_zones: []
+    actual_aspect: 3.421
 - page_number: 13
   purpose: 'The system responds to the interference. The discovery, and Lil Devil '
   grid_name: p13-large-over-twin
@@ -1031,8 +1356,8 @@ pages:
     - 0.0
     - 0.0
     - 1.0
-    - 0.494
-    area_share: 0.494
+    - 0.488
+    area_share: 0.488
     shape: wide
     silent: false
     anchor: true
@@ -1043,24 +1368,30 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-LILDEVIL
+    actual_aspect: 1.386
+    shape_mismatch: script declares 'wide' (target aspect 2.4) but the page can only give this panel 1.39.
+      Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
   - panel_id: ISSUE001-P13-02
     box:
     - 0.0
-    - 0.506
-    - 0.38
-    - 0.494
+    - 0.5
+    - 1.0
+    - 0.1877
     area_share: 0.1877
     shape: inset
     silent: true
     anchor: false
     bubble_zones: []
+    actual_aspect: 3.604
+    shape_mismatch: script declares 'inset' (target aspect 1.15) but the page can only give this panel
+      3.60. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
   - panel_id: ISSUE001-P13-03
     box:
-    - 0.392
-    - 0.506
-    - 0.608
-    - 0.494
-    area_share: 0.3004
+    - 0.0
+    - 0.6997
+    - 1.0
+    - 0.3003
+    area_share: 0.3003
     shape: wide
     silent: false
     anchor: false
@@ -1071,6 +1402,7 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-005
+    actual_aspect: 2.252
 - page_number: 14
   purpose: NeonBlue reaches for the ordinary explanation.
   grid_name: p14-wide-over-quad
@@ -1082,9 +1414,9 @@ pages:
     box:
     - 0.0
     - 0.0
-    - 1.0
-    - 0.1435
-    area_share: 0.1435
+    - 0.494
+    - 0.2871
+    area_share: 0.1418
     shape: rectangle
     silent: false
     anchor: false
@@ -1095,12 +1427,13 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-005
+    actual_aspect: 1.164
   - panel_id: ISSUE001-P14-02
     box:
+    - 0.506
     - 0.0
-    - 0.1555
-    - 0.38
-    - 0.3732
+    - 0.494
+    - 0.2871
     area_share: 0.1418
     shape: rectangle
     silent: false
@@ -1112,12 +1445,13 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-LILDEVIL
+    actual_aspect: 1.164
   - panel_id: ISSUE001-P14-03
     box:
-    - 0.392
-    - 0.1555
-    - 0.608
-    - 0.3732
+    - 0.0
+    - 0.2991
+    - 0.494
+    - 0.4593
     area_share: 0.2269
     shape: rectangle
     silent: false
@@ -1129,10 +1463,13 @@ pages:
       - 0.44
       - 0.2
       for: MZ-CHAR-005
+    actual_aspect: 0.728
+    shape_mismatch: script declares 'rectangle' (target aspect 1.35) but the page can only give this panel
+      0.73. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
   - panel_id: ISSUE001-P14-04
     box:
-    - 0.0
-    - 0.5407
+    - 0.506
+    - 0.2991
     - 0.494
     - 0.4593
     area_share: 0.2269
@@ -1146,17 +1483,23 @@ pages:
       - 0.44
       - 0.2
       for: MZ-CHAR-004
+    actual_aspect: 0.728
+    shape_mismatch: script declares 'rectangle' (target aspect 1.35) but the page can only give this panel
+      0.73. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
   - panel_id: ISSUE001-P14-05
     box:
-    - 0.506
-    - 0.5407
-    - 0.494
-    - 0.4593
-    area_share: 0.2269
+    - 0.0
+    - 0.7704
+    - 1.0
+    - 0.2296
+    area_share: 0.2296
     shape: rectangle
     silent: true
     anchor: false
     bubble_zones: []
+    actual_aspect: 2.946
+    shape_mismatch: script declares 'rectangle' (target aspect 1.35) but the page can only give this panel
+      2.95. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
 - page_number: 15
   purpose: Move into the corridor. Change the world of the issue.
   grid_name: p15-triple-stack
@@ -1175,6 +1518,7 @@ pages:
     silent: true
     anchor: false
     bubble_zones: []
+    actual_aspect: 0.356
   - panel_id: ISSUE001-P15-02
     box:
     - 0.3884
@@ -1192,6 +1536,7 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-005
+    actual_aspect: 0.578
   - panel_id: ISSUE001-P15-03
     box:
     - 0.0
@@ -1203,6 +1548,9 @@ pages:
     silent: true
     anchor: false
     bubble_zones: []
+    actual_aspect: 2.481
+    shape_mismatch: script declares 'square' (target aspect 1.0) but the page can only give this panel
+      2.48. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
 - page_number: 16
   purpose: Moodz arrives without being called.
   grid_name: p16-wide-anchor-over-trio
@@ -1221,13 +1569,14 @@ pages:
     silent: true
     anchor: false
     bubble_zones: []
+    actual_aspect: 2.946
   - panel_id: ISSUE001-P16-02
     box:
     - 0.0
     - 0.2416
-    - 0.7136
-    - 0.5167
-    area_share: 0.3687
+    - 1.0
+    - 0.3732
+    area_share: 0.3732
     shape: rectangle
     silent: false
     anchor: true
@@ -1238,24 +1587,28 @@ pages:
       - 0.44
       - 0.2
       for: MZ-CHAR-001
+    actual_aspect: 1.812
   - panel_id: ISSUE001-P16-03
     box:
-    - 0.7256
-    - 0.2416
-    - 0.2744
-    - 0.5167
+    - 0.0
+    - 0.6268
+    - 0.38
+    - 0.3732
     area_share: 0.1418
     shape: rectangle
     silent: true
     anchor: false
     bubble_zones: []
+    actual_aspect: 0.689
+    shape_mismatch: script declares 'rectangle' (target aspect 1.35) but the page can only give this panel
+      0.69. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
   - panel_id: ISSUE001-P16-04
     box:
-    - 0.0
-    - 0.7704
-    - 1.0
-    - 0.2296
-    area_share: 0.2296
+    - 0.392
+    - 0.6268
+    - 0.608
+    - 0.3732
+    area_share: 0.2269
     shape: wide
     silent: false
     anchor: false
@@ -1266,6 +1619,9 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-001
+    actual_aspect: 1.102
+    shape_mismatch: script declares 'wide' (target aspect 2.4) but the page can only give this panel 1.10.
+      Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
 - page_number: 17
   purpose: Let the midpoint land. Deliberate negative space, borrowed from Editio
   grid_name: p17-tall-pair
@@ -1284,6 +1640,9 @@ pages:
     silent: true
     anchor: true
     bubble_zones: []
+    actual_aspect: 1.106
+    shape_mismatch: script declares 'wide' (target aspect 2.4) but the page can only give this panel 1.11.
+      Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
   - panel_id: ISSUE001-P17-02
     box:
     - 0.0
@@ -1295,6 +1654,7 @@ pages:
     silent: true
     anchor: false
     bubble_zones: []
+    actual_aspect: 1.797
 - page_number: 18
   purpose: The countdown begins. The pull toward the visible thing.
   grid_name: p18-dense-seven-b
@@ -1306,9 +1666,9 @@ pages:
     box:
     - 0.0
     - 0.0
-    - 1.0
-    - 0.0876
-    area_share: 0.0876
+    - 0.38
+    - 0.225
+    area_share: 0.0855
     shape: wide
     silent: true
     anchor: false
@@ -1319,13 +1679,16 @@ pages:
       - 0.42
       - 0.2
       for: caption
+    actual_aspect: 1.142
+    shape_mismatch: script declares 'wide' (target aspect 2.4) but the page can only give this panel 1.14.
+      Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
   - panel_id: ISSUE001-P18-02
     box:
+    - 0.392
     - 0.0
-    - 0.0996
-    - 0.494
-    - 0.2804
-    area_share: 0.1385
+    - 0.608
+    - 0.225
+    area_share: 0.1368
     shape: wide
     silent: true
     anchor: false
@@ -1336,13 +1699,14 @@ pages:
       - 0.42
       - 0.2
       for: caption
+    actual_aspect: 1.828
   - panel_id: ISSUE001-P18-03
     box:
-    - 0.506
-    - 0.0996
+    - 0.0
+    - 0.237
     - 0.494
-    - 0.2804
-    area_share: 0.1385
+    - 0.2769
+    area_share: 0.1368
     shape: rectangle
     silent: false
     anchor: false
@@ -1353,13 +1717,14 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-003
+    actual_aspect: 1.207
   - panel_id: ISSUE001-P18-04
     box:
-    - 0.0
-    - 0.3921
-    - 0.3003
-    - 0.4557
-    area_share: 0.1369
+    - 0.506
+    - 0.237
+    - 0.494
+    - 0.2769
+    area_share: 0.1368
     shape: wide
     silent: true
     anchor: false
@@ -1370,24 +1735,30 @@ pages:
       - 0.42
       - 0.2
       for: caption
+    actual_aspect: 1.207
+    shape_mismatch: script declares 'wide' (target aspect 2.4) but the page can only give this panel 1.21.
+      Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
   - panel_id: ISSUE001-P18-05
     box:
-    - 0.3123
-    - 0.3921
-    - 0.1877
-    - 0.4557
-    area_share: 0.0855
+    - 0.0
+    - 0.526
+    - 1.0
+    - 0.0865
+    area_share: 0.0865
     shape: wide
     silent: true
     anchor: false
     bubble_zones: []
+    actual_aspect: 7.82
+    shape_mismatch: script declares 'wide' (target aspect 2.4) but the page can only give this panel 7.82.
+      Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
   - panel_id: ISSUE001-P18-06
     box:
-    - 0.512
-    - 0.3921
-    - 0.488
-    - 0.4557
-    area_share: 0.2224
+    - 0.0
+    - 0.6245
+    - 1.0
+    - 0.225
+    area_share: 0.225
     shape: wide
     silent: false
     anchor: true
@@ -1398,17 +1769,21 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-003
+    actual_aspect: 3.006
   - panel_id: ISSUE001-P18-07
     box:
     - 0.0
-    - 0.8598
+    - 0.8615
     - 1.0
-    - 0.1402
-    area_share: 0.1402
+    - 0.1385
+    area_share: 0.1385
     shape: wide
     silent: true
     anchor: false
     bubble_zones: []
+    actual_aspect: 4.884
+    shape_mismatch: script declares 'wide' (target aspect 2.4) but the page can only give this panel 4.88.
+      Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
 - page_number: 19
   purpose: The decision. The emotional centre of the issue.
   grid_name: p19-tall-pair
@@ -1433,6 +1808,7 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-006
+    actual_aspect: 1.369
   - panel_id: ISSUE001-P19-02
     box:
     - 0.0
@@ -1444,6 +1820,9 @@ pages:
     silent: true
     anchor: true
     bubble_zones: []
+    actual_aspect: 1.369
+    shape_mismatch: script declares 'wide' (target aspect 2.4) but the page can only give this panel 1.37.
+      Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
 - page_number: 20
   purpose: Hope that admits risk. Leadership without a guarantee.
   grid_name: p20-six-irregular
@@ -1455,8 +1834,8 @@ pages:
     box:
     - 0.0
     - 0.0
-    - 0.7136
-    - 0.4285
+    - 1.0
+    - 0.3057
     area_share: 0.3057
     shape: wide
     silent: false
@@ -1468,13 +1847,14 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-005
+    actual_aspect: 2.213
   - panel_id: ISSUE001-P20-02
     box:
-    - 0.7256
     - 0.0
-    - 0.2744
-    - 0.4285
-    area_share: 0.1176
+    - 0.3177
+    - 0.494
+    - 0.2351
+    area_share: 0.1162
     shape: inset
     silent: false
     anchor: false
@@ -1485,13 +1865,14 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-002
+    actual_aspect: 1.421
   - panel_id: ISSUE001-P20-03
     box:
-    - 0.0
-    - 0.4405
-    - 1.0
-    - 0.119
-    area_share: 0.119
+    - 0.506
+    - 0.3177
+    - 0.494
+    - 0.2351
+    area_share: 0.1162
     shape: inset
     silent: false
     anchor: false
@@ -1502,35 +1883,38 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-003
+    actual_aspect: 1.421
   - panel_id: ISSUE001-P20-04
     box:
     - 0.0
-    - 0.5715
-    - 0.2711
-    - 0.4285
+    - 0.5648
+    - 0.494
+    - 0.2351
     area_share: 0.1162
     shape: inset
     silent: true
     anchor: false
     bubble_zones: []
+    actual_aspect: 1.421
   - panel_id: ISSUE001-P20-05
     box:
-    - 0.2831
-    - 0.5715
-    - 0.2711
-    - 0.4285
+    - 0.506
+    - 0.5648
+    - 0.494
+    - 0.2351
     area_share: 0.1162
     shape: rectangle
     silent: true
     anchor: false
     bubble_zones: []
+    actual_aspect: 1.421
   - panel_id: ISSUE001-P20-06
     box:
-    - 0.5662
-    - 0.5715
-    - 0.4338
-    - 0.4285
-    area_share: 0.1859
+    - 0.0
+    - 0.8119
+    - 1.0
+    - 0.1881
+    area_share: 0.1881
     shape: wide
     silent: true
     anchor: false
@@ -1541,6 +1925,7 @@ pages:
       - 0.42
       - 0.2
       for: caption
+    actual_aspect: 3.596
 - page_number: 21
   purpose: Directed force works. Lil Devil's growth is visible, not stated.
   grid_name: p21-tall-left-quad-right
@@ -1553,8 +1938,8 @@ pages:
     - 0.0
     - 0.0
     - 1.0
-    - 0.27
-    area_share: 0.27
+    - 0.2666
+    area_share: 0.2666
     shape: rectangle
     silent: false
     anchor: true
@@ -1565,24 +1950,30 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-LILDEVIL
+    actual_aspect: 2.537
+    shape_mismatch: script declares 'rectangle' (target aspect 1.35) but the page can only give this panel
+      2.54. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
   - panel_id: ISSUE001-P21-02
     box:
     - 0.0
-    - 0.282
-    - 0.3764
-    - 0.4361
+    - 0.2786
+    - 1.0
+    - 0.1641
     area_share: 0.1641
     shape: wide
     silent: true
     anchor: false
     bubble_zones: []
+    actual_aspect: 4.122
+    shape_mismatch: script declares 'wide' (target aspect 2.4) but the page can only give this panel 4.12.
+      Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
   - panel_id: ISSUE001-P21-03
     box:
-    - 0.3884
-    - 0.282
-    - 0.6116
-    - 0.4361
-    area_share: 0.2667
+    - 0.0
+    - 0.4547
+    - 0.7136
+    - 0.3692
+    area_share: 0.2634
     shape: wide
     silent: false
     anchor: true
@@ -1593,28 +1984,37 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-005
+    actual_aspect: 1.307
+    shape_mismatch: script declares 'wide' (target aspect 2.4) but the page can only give this panel 1.31.
+      Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
   - panel_id: ISSUE001-P21-04
     box:
-    - 0.0
-    - 0.73
-    - 0.38
-    - 0.27
-    area_share: 0.1026
+    - 0.7256
+    - 0.4547
+    - 0.2744
+    - 0.3692
+    area_share: 0.1013
     shape: square
     silent: true
     anchor: false
     bubble_zones: []
+    actual_aspect: 0.503
+    shape_mismatch: script declares 'square' (target aspect 1.0) but the page can only give this panel
+      0.50. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
   - panel_id: ISSUE001-P21-05
     box:
-    - 0.392
-    - 0.73
-    - 0.608
-    - 0.27
+    - 0.0
+    - 0.8359
+    - 1.0
+    - 0.1641
     area_share: 0.1641
     shape: wide
     silent: true
     anchor: false
     bubble_zones: []
+    actual_aspect: 4.122
+    shape_mismatch: script declares 'wide' (target aspect 2.4) but the page can only give this panel 4.12.
+      Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
 - page_number: 22
   purpose: The festival continues in reduced form.
   grid_name: p22-twin-wides-over-quad
@@ -1633,6 +2033,9 @@ pages:
     silent: true
     anchor: false
     bubble_zones: []
+    actual_aspect: 5.264
+    shape_mismatch: script declares 'wide' (target aspect 2.4) but the page can only give this panel 5.26.
+      Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
   - panel_id: ISSUE001-P22-02
     box:
     - 0.0
@@ -1650,6 +2053,7 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-005
+    actual_aspect: 1.669
   - panel_id: ISSUE001-P22-03
     box:
     - 0.7256
@@ -1661,6 +2065,9 @@ pages:
     silent: true
     anchor: false
     bubble_zones: []
+    actual_aspect: 0.642
+    shape_mismatch: script declares 'rectangle' (target aspect 1.35) but the page can only give this panel
+      0.64. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
   - panel_id: ISSUE001-P22-04
     box:
     - 0.0
@@ -1672,6 +2079,7 @@ pages:
     silent: true
     anchor: false
     bubble_zones: []
+    actual_aspect: 0.755
   - panel_id: ISSUE001-P22-05
     box:
     - 0.3884
@@ -1689,6 +2097,9 @@ pages:
       - 0.42
       - 0.2
       for: MZ-CHAR-005
+    actual_aspect: 1.226
+    shape_mismatch: script declares 'tall' (target aspect 0.52) but the page can only give this panel
+      1.23. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
   - panel_id: ISSUE001-P22-06
     box:
     - 0.0
@@ -1706,6 +2117,7 @@ pages:
       - 0.42
       - 0.2
       for: caption
+    actual_aspect: 3.238
 cover:
   required_elements:
   - Stylised title logo, house style, heavy comic lettering
