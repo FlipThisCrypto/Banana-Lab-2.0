@@ -169,6 +169,34 @@ def test_contamination_fails_even_with_a_perfect_palette(tmp_path):
     assert dirty.contamination_score < 99.0
 
 
+def test_unknown_contamination_does_not_read_as_clean(tmp_path):
+    """"Not known to be dirty" is not "known to be clean".
+
+    The bleed detector returns UNDETERMINED for layers it cannot align with
+    their source sheet. That used to arrive at the metric as contamination_px=0
+    - indistinguishable from a measured zero - and 49 of the 139 library layers
+    (35%) were passing on it. A machine gate may only reject (ADR-005), so an
+    unmeasured component cannot contribute a pass.
+    """
+    arr = np.zeros((400, 240, 4), dtype=np.uint8)
+    arr[..., 3] = 255
+    arr[..., :3] = (200, 200, 200)
+    path = tmp_path / "layer.png"
+    Image.fromarray(arr, "RGBA").save(path)
+    layer = Image.open(path).convert("RGBA")
+
+    measured_clean = measure(layer, path, "MZ-CHAR-001", contamination_px=0)
+    assert measured_clean.passed
+    assert measured_clean.contamination_measured
+
+    unknown = measure(layer, path, "MZ-CHAR-001", contamination_px=None)
+    assert not unknown.passed, "unknown contamination must not pass"
+    assert not unknown.contamination_measured
+    assert any("UNMEASURABLE" in n for n in unknown.notes)
+    # The palette is identical in both - only the unknown status differs.
+    assert unknown.palette_score == measured_clean.palette_score
+
+
 def test_a_tiny_render_fails_legibility(tmp_path):
     arr = np.zeros((60, 40, 4), dtype=np.uint8)
     arr[..., 3] = 255

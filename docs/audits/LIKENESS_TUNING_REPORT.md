@@ -10,11 +10,19 @@ state.
 
 **How to read this report.** It is written as a record of what was measured, in
 the order it was measured, including the parts that were wrong. The metric was
-found to be broken **six** times. Five of those were caught by negative
-controls, not by inspection, and three of them were caught only *after* the
-library had scored 100%. If you take one thing from this document, take the
-habit that produced it: never accept a pass rate without the matching rejection
-rate on deliberately broken input, measured on the same run.
+found to be broken **seven** times. Five of those were caught by negative
+controls rather than by inspection, and four were caught only *after* the
+library had scored 100%.
+
+Two habits produced everything useful here, and they are the only part of this
+document worth generalising:
+
+1. **Never accept a pass rate without the matching rejection rate** on
+   deliberately broken input, measured on the same run.
+2. **An unmeasured thing is not a passing thing.** Three separate faults were
+   silent holes — a colour the palette never tracked, a gate that disagreed with
+   its own rule, a contamination status nobody had determined — and each one
+   read as success until it was asked directly.
 
 ---
 
@@ -659,6 +667,7 @@ Zombie has **3** measurements — one layer. That is a coverage gap, not a resul
 | **+ Lab recombination (Fix 4)** | **82.0%** | **95 / 139** |
 | **+ consistent dE gate (Fix 5)** | **100.0%** — *18 controls escaped* | 139 / 139 |
 | **+ pixel-drift rule (Fix 6)** | **100.0%** | **139 / 139** |
+| **+ unknown contamination fails (Fix 7)** | *re-measuring* | — |
 
 The two 100% rows differ only in whether broken input could sneak through. The
 first let 18 damaged images pass; the second lets none through that the control
@@ -674,6 +683,43 @@ every layer and every scene, now all fail.
 That is the lesson of this run, three times over: **a pass rate means nothing
 without a matched rejection rate on deliberately broken input.** Every single
 time the pass rate went up on its own, it was wrong.
+
+---
+
+## Fix 7 — "not known to be dirty" was reading as "known to be clean"
+
+The 100% deserved one more question: *what does the metric do with a layer whose
+contamination it could not measure?*
+
+The bleed detector reports UNDETERMINED for layers it cannot align against their
+source sheet. That verdict reached the metric as `contamination_px = 0` —
+indistinguishable from a **measured** zero. Reconciling the detector and repair
+passes:
+
+| detector | repair | layers | what is actually known |
+|---|---|---:|---|
+| BLEED | REPAIRED | 40 | bleed found and repaired — known |
+| UNDETERMINED | REPAIRED | 19 | repaired — known |
+| UNDETERMINED | CLEAN | 16 | repair pass aligned it — known |
+| CLEAN | CLEAN | 14 | known clean |
+| CLEAN | REPAIRED | 1 | known |
+| **UNDETERMINED** | **UNDETERMINED** | **49** | **unknown — scored as clean anyway** |
+
+**49 of 139 layers (35%) were passing on an assumption nobody had checked**, and
+they are concentrated: 30 Clever, 17 Scarline, 1 Ash, 1 Static.
+
+This is the same class of error as every other fault in this report — a number
+that looks complete because the hole in it is silent. It also runs straight into
+ADR-005: a machine gate may only reject, never approve. Treating "unmeasured" as
+"passed" is the gate approving something.
+
+`contamination_px` now accepts `None` for *unknown*, distinct from `0` for
+*measured clean*, and an unmeasured component cannot contribute a pass — the
+same rule the module already applied to unaligned renders. The layer is reported
+UNMEASURABLE with instructions, rather than quietly cleared.
+
+This **lowers** the headline number, which is the point. The 49 layers are not
+newly broken; they were never known to be sound.
 
 ---
 
@@ -889,9 +935,11 @@ is worse.
   the tolerance, correctly, because his identity is carried by shape and value
   rather than colour. Those two axes are *not* covered by this metric for any
   character. This is the largest honest limitation of the current gate.
-- 49 layers remain UNDETERMINED for bleed, mostly Clever's 30 (the layers are
-  cropped to a different size from their source sheets and cannot be aligned).
-  These need human review or a re-cut from source.
+- 49 layers remain UNDETERMINED for bleed (30 Clever, 17 Scarline, 1 Ash, 1
+  Static) - cropped to a different size from their source sheets and so
+  unalignable. Since Fix 7 they FAIL rather than silently pass, but that is a
+  refusal to guess, not a resolution: they still need human review or a re-cut
+  from source before any of them can be used in a panel.
 - The metric measures palette, contamination and size. It does **not** measure
   whether the face is drawn correctly — that remains a human judgement, and the
   approved-art pipeline is what makes it safe to assume.

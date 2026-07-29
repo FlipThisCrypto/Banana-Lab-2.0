@@ -268,6 +268,9 @@ class LikenessResult:
     swatches: list[SwatchResult] = field(default_factory=list)
     contamination_px: int = 0
     contamination_score: float = 100.0
+    #: False when the caller could not determine the layer's card-bleed status.
+    #: An unmeasured component must never read as a passed one - see `passed`.
+    contamination_measured: bool = True
     rendered_height_px: int = 0
     feature_legibility_score: float = 100.0
     #: True when the render was below the legibility floor but was staged as
@@ -297,6 +300,13 @@ class LikenessResult:
             # Equivalent to: worst swatch within SWATCH_TOLERANCE AND mean
             # within MEAN_DRIFT_TOLERANCE. See the palette_score derivation.
             and self.palette_score >= 92.0
+            # An UNMEASURED component cannot pass. The bleed detector returns
+            # UNDETERMINED for layers it cannot align against their source
+            # sheet, and 49 of 139 library layers were in that state - scored
+            # contamination_px=0, i.e. silently assumed clean, and passing. A
+            # machine gate may only reject; "not known to be dirty" is not
+            # "known to be clean". Same rule as the unaligned-render path.
+            and self.contamination_measured
             and self.contamination_score >= 99.0
             and self.feature_legibility_score >= 85.0
         )
@@ -315,6 +325,7 @@ class LikenessResult:
             "lightness_shift": round(self.lightness_shift, 1),
             "contamination_score": round(self.contamination_score, 1),
             "contamination_px": self.contamination_px,
+            "contamination_measured": self.contamination_measured,
             "feature_legibility_score": round(self.feature_legibility_score, 1),
             "rendered_height_px": self.rendered_height_px,
             "legibility_exempt": self.legibility_exempt,
@@ -382,7 +393,7 @@ def measure(
     canon_layer: Path | Image.Image,
     character_id: str,
     *,
-    contamination_px: int = 0,
+    contamination_px: int | None = 0,
     layer_name: str = "",
     identity_critical: bool = True,
 ) -> LikenessResult:
@@ -399,7 +410,7 @@ def measure(
         palette_delta_e=0.0,
         palette_score=100.0,
         rendered_height_px=rendered.height,
-        contamination_px=contamination_px,
+        contamination_px=contamination_px or 0,
     )
     if not canon:
         result.notes.append("approved layer has no opaque pixels; cannot measure")
@@ -587,7 +598,15 @@ def measure(
         )
 
     # Contamination: any card bleed inside the silhouette is a hard identity fault.
-    if contamination_px > 0:
+    if contamination_px is None:
+        result.contamination_measured = False
+        result.notes.append(
+            "UNMEASURABLE: this layer's card-bleed status could not be "
+            "determined, so contamination is unknown rather than zero. Align "
+            "the layer with its source sheet, or re-cut it, before treating "
+            "this as a pass."
+        )
+    elif contamination_px > 0:
         share = contamination_px / max(1, int(solid.sum()))
         result.contamination_score = max(0.0, 100.0 - share * 4000.0)
         result.notes.append(

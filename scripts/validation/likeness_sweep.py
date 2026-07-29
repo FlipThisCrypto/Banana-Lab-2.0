@@ -54,16 +54,39 @@ SCENES = {
 }
 
 
-def load_contamination() -> dict[str, int]:
-    """Card-bleed pixel counts, if the bleed detector has been run."""
-    path = REPO_ROOT / "docs" / "audits" / "layer-card-bleed.csv"
-    if not path.is_file():
+def load_contamination() -> dict[str, int | None]:
+    """Card-bleed pixel counts per layer, or None where the status is unknown.
+
+    None is not zero. The detector reports UNDETERMINED for layers it cannot
+    align against their source sheet, and this used to fall through as "no
+    bleed recorded" - 49 of 139 layers were scored contamination_px=0 and
+    passed on an assumption nobody had checked. The repair pass resolves some
+    of them, so its verdict is read too, and only layers still undetermined
+    after BOTH passes are reported as unknown.
+    """
+    detected = REPO_ROOT / "docs" / "audits" / "layer-card-bleed.csv"
+    repaired = REPO_ROOT / "docs" / "audits" / "layer-bleed-repair.csv"
+    if not detected.is_file():
         return {}
-    out: dict[str, int] = {}
-    with path.open(encoding="utf-8", newline="") as handle:
+
+    out: dict[str, int | None] = {}
+    with detected.open(encoding="utf-8", newline="") as handle:
         for row in csv.DictReader(handle):
-            if row.get("status") == "BLEED":
+            status = row.get("status")
+            if status == "BLEED":
                 out[row["layer"]] = int(row.get("bleed_px") or 0)
+            elif status == "CLEAN":
+                out[row["layer"]] = 0
+            else:
+                out[row["layer"]] = None
+
+    if repaired.is_file():
+        with repaired.open(encoding="utf-8", newline="") as handle:
+            for row in csv.DictReader(handle):
+                if row.get("status") in {"REPAIRED", "CLEAN"}:
+                    # The repair pass aligned it and dealt with it, so the
+                    # layer's status is known whatever the detector thought.
+                    out[row["layer"]] = 0
     return out
 
 
@@ -105,7 +128,8 @@ def main() -> int:
             )
             # Contamination only counts against a layer that has NOT been
             # repaired; a repaired layer no longer carries it.
-            bleed = 0 if use != layer else contamination.get(rel, 0)
+            # `use` is the repaired layer when one exists; its bleed is fixed.
+            bleed = 0 if use != layer else contamination.get(rel, None)
             # Compare the prepared layer against its own relit self, so the
             # comparison stays on the exact pixel-aligned path. Passing the
             # on-disk file here would be a size mismatch, because `image` has
