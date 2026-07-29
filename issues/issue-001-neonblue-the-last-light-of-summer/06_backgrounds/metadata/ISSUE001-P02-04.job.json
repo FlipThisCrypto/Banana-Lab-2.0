@@ -1,0 +1,140 @@
+{
+  "job_id": "ISSUE001-P02-04",
+  "job_class": "background_plate",
+  "workflow_version": "sample-pages-1",
+  "prompt_id": "c46f949b-a6c9-4464-b71a-90665c65f9d3",
+  "ok": true,
+  "error": "",
+  "seconds": 46.3,
+  "outputs": [
+    {
+      "path": "issues/issue-001-neonblue-the-last-light-of-summer/06_backgrounds/generated_candidates/ISSUE001-P02-04.png",
+      "sha256": "0bcb7b04197fe895bffd55245a4bde95f22d3c671dade9a858ce18862e38db26",
+      "pixel_sha256": "86e17701d154fd30e4398b9723422d0624bf3bb1801535a5ca172664d9b2641c",
+      "bytes": 2389405
+    }
+  ],
+  "graph": {
+    "1": {
+      "class_type": "CheckpointLoaderSimple",
+      "inputs": {
+        "ckpt_name": "RealVisXL_V4.0.safetensors"
+      },
+      "_meta": {
+        "title": "checkpoint"
+      }
+    },
+    "2": {
+      "class_type": "CLIPTextEncode",
+      "inputs": {
+        "text": "(flat 2d vector cartoon illustration:1.5), (thick uniform black outlines:1.4), (flat colour fills with hard cel shading:1.4), comic book background art, graphic novel panel, bold saturated palette, clear perspective. an outdoor summer music festival site, rows of food and game stalls with striped awnings, strings of warm festival bulbs overhead, bunting, fairground rides and a ferris wheel beyond, trodden grass and dirt underfoot, festival crowd in summer clothes, The crowd flowing past a junction of two paths. Ordinary festival behaviour, depth: Scarline midground, crowd behind at two depths, lit by Overhead strings, Warm white key, Ambient fill, medium shot, eye level, (bold saturated colour:1.2), warm summer evening palette. (flat cartoon vector art:1.4), (bold black outlines:1.3), (cel shaded:1.3), non-photorealistic",
+        "clip": [
+          "1",
+          1
+        ]
+      },
+      "_meta": {
+        "title": "prompt-2"
+      }
+    },
+    "3": {
+      "class_type": "CLIPTextEncode",
+      "inputs": {
+        "text": "(photorealistic:1.6), (photograph:1.6), (realistic lighting:1.4), (3d render:1.4), (volumetric light:1.3), (depth of field:1.3), cinematic photography, film still, octane render, unreal engine, realistic textures, reflections, bokeh, lens flare, characters, people, person, figure, animal, monkey, creature, mascot, text, letters, words, signature, watermark, logo, caption, speech bubble, panel border, frame, comic frame, white border, gutter, blurry, noisy, jpeg artifacts, low contrast mush, duplicated objects, warped architecture, broken geometry, extra limbs",
+        "clip": [
+          "1",
+          1
+        ]
+      },
+      "_meta": {
+        "title": "prompt-3"
+      }
+    },
+    "4": {
+      "class_type": "EmptyLatentImage",
+      "inputs": {
+        "width": 1304,
+        "height": 880,
+        "batch_size": 1
+      },
+      "_meta": {
+        "title": "panel-size"
+      }
+    },
+    "5": {
+      "class_type": "KSampler",
+      "inputs": {
+        "seed": 991009,
+        "steps": 30,
+        "cfg": 6.0,
+        "sampler_name": "dpmpp_2m",
+        "scheduler": "karras",
+        "denoise": 1.0,
+        "model": [
+          "1",
+          0
+        ],
+        "positive": [
+          "2",
+          0
+        ],
+        "negative": [
+          "3",
+          0
+        ],
+        "latent_image": [
+          "4",
+          0
+        ]
+      },
+      "_meta": {
+        "title": "sampler"
+      }
+    },
+    "6": {
+      "class_type": "VAEDecode",
+      "inputs": {
+        "samples": [
+          "5",
+          0
+        ],
+        "vae": [
+          "1",
+          2
+        ]
+      },
+      "_meta": {
+        "title": "decode"
+      }
+    },
+    "7": {
+      "class_type": "SaveImage",
+      "inputs": {
+        "filename_prefix": "bananalab/sample/ISSUE001-P02-04",
+        "images": [
+          "6",
+          0
+        ]
+      },
+      "_meta": {
+        "title": "save"
+      }
+    }
+  },
+  "review_status": "candidate",
+  "reviewed_by": "",
+  "review_note": "",
+  "panel_id": "ISSUE001-P02-04",
+  "page": 2,
+  "prompt": "an outdoor summer music festival site, rows of food and game stalls with striped awnings, strings of warm festival bulbs overhead, bunting, fairground rides and a ferris wheel beyond, trodden grass and dirt underfoot, festival crowd in summer clothes, The crowd flowing past a junction of two paths. Ordinary festival behaviour, depth: Scarline midground, crowd behind at two depths, lit by Overhead strings, Warm white key, Ambient fill, medium shot, eye level, (bold saturated colour:1.2), warm summer evening palette",
+  "seed": 991009,
+  "gen_size": [
+    1304,
+    880
+  ],
+  "print_size": [
+    1225,
+    825
+  ],
+  "note": "SAMPLE RUN candidate. Not reviewed, not approved."
+}

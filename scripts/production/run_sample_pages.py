@@ -1,0 +1,609 @@
+"""Sample run: generate plates, composite the cast, lay out pages, export a PDF.
+
+This is the first end-to-end run of the pipeline on real script data. It is a
+SAMPLE: everything it writes is a candidate. Nothing is approved, nothing is
+promoted, and the approval record is not touched (ADR-005).
+
+    python scripts/production/run_sample_pages.py --pages 1 2 --cover --pdf
+
+What it does, per requested page:
+
+  1. Derives a plate spec for every panel from `03_script/panel-script.yaml`
+     and `05_layouts/layout-spec.yaml`. The plate is generated at the panel's
+     ACTUAL aspect ratio, never a standard bucket - exp007 established that
+     bucket-and-crop loses composition built for different proportions.
+  2. Generates the plate through the locked background_plate workflow, so the
+     style contract cannot be omitted, and writes a job manifest with prompt,
+     seed, sampler, model and both output hashes.
+  3. Composites approved character layers onto the plate, measuring likeness
+     AND scene integration for every placement.
+  4. Assembles the page at print geometry from the layout spec, with the page's
+     declared frame colour and gutters.
+  5. Optionally exports the assembled pages as a PDF.
+
+Ground planes for the festival locations are ESTIMATED - see GROUND_ESTIMATES.
+No festival plate calibration exists in approved canon, and this run does not
+invent one; the estimate is recorded per panel in the run report so a later
+calibration pass can supersede it.
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import sys
+import time
+from dataclasses import dataclass, field
+from pathlib import Path
+
+import yaml
+from PIL import Image, ImageDraw
+
+sys.path.insert(0, ".")
+
+from app.adapters.comfy_client import (  # noqa: E402
+    ComfyClient, write_job_manifest,
+)
+from app.core import paths  # noqa: E402
+from app.services import workflows as wf  # noqa: E402
+from app.services.compositor import (  # noqa: E402
+    GroundPlane, LightContract, Placement, composite_panel,
+)
+
+ISSUE = Path("issues/issue-001-neonblue-the-last-light-of-summer")
+LAYERS = Path("source_material/imported_canon/character_layers")
+REPAIRED = Path("characters/working/repaired_layers")
+
+OUT_PLATES = ISSUE / "06_backgrounds" / "generated_candidates"
+OUT_MANIFESTS = ISSUE / "06_backgrounds" / "metadata"
+OUT_PROMPTS = ISSUE / "06_backgrounds" / "prompts"
+OUT_COMPOSITES = ISSUE / "09_composites" / "generated_candidates"
+OUT_PAGES = ISSUE / "09_composites" / "sample_pages"
+OUT_EXPORT = ISSUE / "14_exports" / "sample"
+
+WORKFLOW_VERSION = "sample-pages-1"
+
+#: Character id -> approved layer folder. Taken from the character bibles.
+CHARACTERS = {
+    "MZ-CHAR-001": "moodz",
+    "MZ-CHAR-002": "twotone",
+    "MZ-CHAR-003": "static",
+    "MZ-CHAR-004": "ash",
+    "MZ-CHAR-005": "neonblue",
+    "MZ-CHAR-006": "scarline",
+}
+
+#: Characters named in the script with no approved alpha layers. Recorded and
+#: skipped - never substituted with someone else's art.
+NO_LAYERS = {"MZ-CHAR-LILDEVIL": "Lil Devil"}
+
+#: Ground-plane ESTIMATES, as a fraction of plate height, per camera shot.
+#: (horizon, foot line for a character standing at mid-depth, character height)
+#:
+#: These are not calibrations. No festival plate calibration exists in approved
+#: canon, and the four that do exist are for corridor/transit locations. Every
+#: panel records which estimate it used so a real calibration pass can replace
+#: it. Values follow the pattern of the approved calibrations: horizon above the
+#: standing foot line, character height a modest fraction of frame.
+GROUND_ESTIMATES = {
+    "extreme_wide":  (0.46, 0.95, 0.16),
+    "wide":          (0.44, 0.96, 0.30),
+    "medium_wide":   (0.42, 0.97, 0.42),
+    "medium":        (0.40, 0.99, 0.62),
+    "medium_close":  (0.36, 1.06, 0.95),
+    "close":         (0.30, 1.20, 1.45),
+}
+
+#: Shots where the reader is asked to recognise the character. Anything wider is
+#: staged as background presence, and the legibility floor is waived per
+#: placement and recorded. Derived from the shot the SCRIPT declares, not chosen
+#: to make the gate pass - see LIKENESS_TUNING_REPORT.md ruling R-01.
+IDENTITY_SHOTS = {"medium", "medium_close", "close"}
+
+#: SDXL works best near 1 megapixel. Plates are generated at the panel's exact
+#: aspect near this budget, then upscaled to print size. Generating at
+#: 2480 px wide directly is far outside the model's trained range.
+GEN_PIXEL_BUDGET = 1_150_000
+
+
+def _round8(value: float) -> int:
+    return max(256, int(round(value / 8.0)) * 8)
+
+
+def gen_size(width: int, height: int) -> tuple[int, int]:
+    """The generation size at the panel's exact aspect, near the pixel budget."""
+    aspect = width / height
+    gen_h = (GEN_PIXEL_BUDGET / aspect) ** 0.5
+    return _round8(gen_h * aspect), _round8(gen_h)
+
+
+#: What each script location actually looks like, so a short panel description
+#: still lands somewhere real.
+#:
+#: The first run omitted this and it was the single worst defect: panels whose
+#: background_description is one defocus phrase ("Defocused stall lights
+#: behind", 30 characters) gave the model nothing to hold onto and it drifted
+#: to generic scenes - a bookshop interior, two crowds of uniformed men, a
+#: greyscale city street. Six of eleven plates were off-brief. The location was
+#: in the script the whole time and simply was not being sent.
+LOCATION_ANCHORS = {
+    "LOC-festival-grounds": (
+        "an outdoor summer music festival site, rows of food and game stalls "
+        "with striped awnings, strings of warm festival bulbs overhead, "
+        "bunting, fairground rides and a ferris wheel beyond, trodden grass "
+        "and dirt underfoot, festival crowd in summer clothes"
+    ),
+    "LOC-festival-main-stage": (
+        "the main stage of an outdoor summer music festival, truss towers, "
+        "speaker stacks, stage lighting rig, festival crowd below"
+    ),
+}
+
+#: Below this, a description is too thin to anchor an image on its own and the
+#: location anchor is added. Measured against the failures above: the panels
+#: that drifted had 30-79 characters.
+THIN_DESCRIPTION = 110
+
+
+def plate_prompt(panel: dict) -> str:
+    """The scene description, assembled from the script rather than invented.
+
+    The style contract is added by workflows.background_plate, which is why
+    nothing here restates it.
+    """
+    light = panel.get("lighting") or {}
+    description = panel["background_description"].strip().rstrip(".")
+    anchor = LOCATION_ANCHORS.get(panel["location"], "")
+
+    parts = []
+    if anchor and len(description) < THIN_DESCRIPTION:
+        # Anchor first so the setting is established before the detail, and the
+        # detail then reads as a description OF that setting.
+        parts.append(anchor)
+        parts.append(description)
+    else:
+        parts.append(description)
+        if anchor:
+            parts.append(f"setting: {anchor}")
+
+    parts.append(f"depth: {panel['depth_plan'].strip().rstrip('.')}")
+    parts.append(f"lit by {light.get('key_direction', 'ambient light')}, "
+                 f"{light.get('key_color', 'neutral')} key")
+    if light.get("fill"):
+        parts.append(f"{light['fill']} fill")
+    parts.append(f"{panel['camera_shot'].replace('_', ' ')} shot, "
+                 f"{panel.get('camera_angle', 'eye level').replace('_', ' ')}")
+    # The house style is a bold saturated palette. Several first-run plates came
+    # back near-greyscale, so it is asked for explicitly rather than hoped for.
+    parts.append("(bold saturated colour:1.2), warm summer evening palette")
+    return ", ".join(parts)
+
+
+def cover_prompt(cover: dict) -> str:
+    """The cover plate: the environment only.
+
+    The cast is composited from approved art, so the plate must not contain
+    figures - background_plate's negative prompt already excludes characters.
+    The title logo, tagline, stamp and spine text are LETTERING and belong to a
+    later stage; this run leaves their space clear and does not fake them.
+    """
+    # Revision 2. Revision 1 said "deep dusk sky" and "the last of the sun" and
+    # got a healthy golden-hour festival with every light working - a beautiful
+    # plate for page 1 panel 1, and the opposite of the cover's brief, which is
+    # the blackout. Sunset language is what did it, so all of it is gone and the
+    # darkness is stated positively and repeatedly instead. Both revisions are
+    # kept as candidates; neither is approved.
+    return (
+        "(night:1.4), (blacked out fairground:1.4), the festival grounds during "
+        "a total power failure, seen wide and slightly low, ferris wheel and "
+        "main stage as dark silhouettes against a starless deep blue night sky, "
+        "every bulb dead and unlit, strings of dead bulbs hanging overhead, "
+        "stalls and booths in cold blue shadow, "
+        "(one single small warm lamp still burning at the centre of frame:1.4), "
+        "a narrow pool of warm light on the ground beneath it, "
+        "empty foreground path leading in toward that one light, "
+        "depth: foreground path and dead bunting, midground darkened rides and "
+        "stalls, background black skyline, "
+        "lit only by that one small warm source at centre frame, deep amber key "
+        "falling off fast into darkness, cold blue moonlight ambient fill, "
+        "cover composition with clear central space for a figure and clear "
+        "upper third of empty night sky for a title"
+    )
+
+
+@dataclass
+class PanelResult:
+    panel_id: str
+    page: int
+    print_size: tuple[int, int]
+    gen_size: tuple[int, int]
+    prompt: str
+    seed: int
+    plate: Path | None = None
+    composite: Path | None = None
+    placements: list[dict] = field(default_factory=list)
+    warnings: list[str] = field(default_factory=list)
+    skipped_characters: list[str] = field(default_factory=list)
+    ground_estimate: str = ""
+    seconds: float = 0.0
+    error: str = ""
+
+
+def pick_layer(character_id: str, panel: dict) -> Path | None:
+    """An approved layer for this character, preferring a pose the script implies.
+
+    Prefers the repaired copy when one exists. Never falls back to a different
+    character.
+    """
+    folder = CHARACTERS.get(character_id)
+    if not folder:
+        return None
+
+    beat = " ".join([
+        panel.get("visual_beat", ""), panel.get("narrative_purpose", ""),
+        json.dumps(panel.get("characters_in_frame", "")),
+    ]).lower()
+
+    available = sorted((LAYERS / folder).glob("*.png"))
+    if not available:
+        return None
+
+    ranked = []
+    for path in available:
+        pose = path.stem.split("_", 2)[-1]
+        score = 0
+        if pose.replace("_", " ") in beat:
+            score += 3
+        if pose == "clean_base":
+            score += 1
+        ranked.append((score, path.name, path))
+    ranked.sort(key=lambda r: (-r[0], r[1]))
+    chosen = ranked[0][2]
+
+    repaired = REPAIRED / folder / chosen.name
+    return repaired if repaired.is_file() else chosen
+
+
+def light_from_panel(panel: dict) -> tuple[LightContract, tuple[int, int, int]]:
+    """A light contract for the compositor, from the script's lighting block."""
+    light = panel.get("lighting") or {}
+    text = f"{light.get('key_color','')} {light.get('key_direction','')}".lower()
+
+    if "amber" in text or "warm" in text or "gold" in text:
+        key, fill, spill = (255, 190, 120), (70, 55, 40), (120, 80, 45)
+        angle = 20.0
+    elif "magenta" in text or "cool white" in text or "cool" in text:
+        key, fill, spill = (200, 210, 235), (50, 55, 75), (90, 95, 120)
+        angle = 90.0
+    else:
+        key, fill, spill = (230, 220, 200), (60, 60, 60), (110, 105, 95)
+        angle = 60.0
+
+    direction = (light.get("key_direction") or "").lower()
+    if "frame left" in direction:
+        angle = 160.0
+    elif "frame right" in direction:
+        angle = 20.0
+    elif "overhead" in direction or "above" in direction:
+        angle = 90.0
+
+    return LightContract(
+        key_angle_deg=angle, key_color=key, fill_color=fill,
+        key_strength=0.22, fill_strength=0.10, rim_strength=0.10,
+        spill_strength=0.14, protect_neutrals=0.85,
+    ), spill
+
+
+def stage_panel(panel: dict, plate_path: Path, size: tuple[int, int],
+                result: PanelResult) -> Path | None:
+    """Composite the panel's cast onto its plate and record every measurement."""
+    shot = panel["camera_shot"]
+    horizon_f, foot_f, height_f = GROUND_ESTIMATES.get(
+        shot, GROUND_ESTIMATES["medium"])
+    width, height = size
+    result.ground_estimate = (
+        f"{shot}: horizon {horizon_f:.2f}H, foot {foot_f:.2f}H, "
+        f"character {height_f:.2f}H (ESTIMATE, no festival calibration exists)"
+    )
+    ground = GroundPlane(
+        horizon_y=horizon_f * height,
+        calib_foot_y=foot_f * height,
+        calib_height_px=height_f * height,
+    )
+
+    present = [c for c in (panel.get("characters_present") or [])]
+    for character_id in present:
+        if character_id not in CHARACTERS:
+            result.skipped_characters.append(
+                f"{character_id} ({NO_LAYERS.get(character_id, 'unknown id')}) "
+                f"- no approved alpha layers exist"
+            )
+
+    stageable = [c for c in present if c in CHARACTERS]
+    if not stageable:
+        return None
+
+    light, spill = light_from_panel(panel)
+    identity = shot in IDENTITY_SHOTS
+
+    placements: list[Placement] = []
+    slots = len(stageable)
+    # Depth ladder. The first run staggered foot_y by +/-0.02 of frame height,
+    # which at these panel sizes is a few pixels - so all six characters landed
+    # on one baseline at one size and read as exactly the standing row the
+    # compositor exists to prevent. The ground plane converts foot_y into size,
+    # so the spread has to be large enough to produce visibly different heights.
+    #
+    # Ladder from the horizon down to the bottom of frame, alternating near and
+    # far so neighbours differ rather than marching front to back.
+    span = max(0.0, foot_f - horizon_f) * 0.62
+    order = []
+    for index in range(slots):
+        # 0, n-1, 1, n-2, ... so adjacent x positions get non-adjacent depths.
+        order.append(index // 2 if index % 2 == 0 else slots - 1 - index // 2)
+
+    for index, character_id in enumerate(stageable):
+        layer = pick_layer(character_id, panel)
+        if layer is None:
+            result.skipped_characters.append(f"{character_id} - no layer found")
+            continue
+        rung = order[index] / max(1, slots - 1)
+        foot = foot_f - span * (1.0 - rung)
+        # Nearer figures sit lower in frame AND further from centre, so the
+        # composition opens up instead of stacking.
+        frac = (index + 1) / (slots + 1)
+        placements.append(Placement(
+            character_id=character_id,
+            layer_path=layer,
+            centre_x=int(width * frac),
+            foot_y=int(height * min(0.995, foot)),
+            depth_plane="midground" if rung > 0.34 else "background",
+            identity_critical=identity,
+        ))
+
+    if not placements:
+        return None
+
+    panel_image, report = composite_panel(
+        plate_path, ground, light, placements, )
+    result.placements = report.placements
+    result.warnings.extend(report.warnings)
+
+    OUT_COMPOSITES.mkdir(parents=True, exist_ok=True)
+    out = OUT_COMPOSITES / f"{panel['panel_id']}_composite.png"
+    paths.assert_safe_write_target(out)
+    panel_image.convert("RGB").save(out)
+    return out
+
+
+def generate_plate(client: ComfyClient, spec: PanelResult, job_class: str,
+                   *, dry_run: bool) -> None:
+    OUT_PLATES.mkdir(parents=True, exist_ok=True)
+    OUT_PROMPTS.mkdir(parents=True, exist_ok=True)
+    (OUT_PROMPTS / f"{spec.panel_id}.txt").write_text(spec.prompt, encoding="utf-8")
+
+    if dry_run:
+        return
+
+    graph = wf.background_plate(
+        prompt=spec.prompt,
+        width=spec.gen_size[0], height=spec.gen_size[1],
+        seed=spec.seed,
+        filename_prefix=f"bananalab/sample/{spec.panel_id}",
+    )
+    started = time.time()
+    outcome = client.run(graph, OUT_PLATES, spec.panel_id)
+    spec.seconds = time.time() - started
+
+    if not outcome.ok:
+        spec.error = outcome.error or "generation failed"
+        return
+
+    spec.plate = outcome.images[0]
+    write_job_manifest(
+        OUT_MANIFESTS / f"{spec.panel_id}.job.json",
+        job_id=spec.panel_id, job_class=job_class,
+        workflow_version=WORKFLOW_VERSION, graph=graph, result=outcome,
+        extra={
+            "panel_id": spec.panel_id, "page": spec.page,
+            "prompt": spec.prompt, "seed": spec.seed,
+            "gen_size": list(spec.gen_size),
+            "print_size": list(spec.print_size),
+            "note": "SAMPLE RUN candidate. Not reviewed, not approved.",
+        },
+    )
+
+
+def assemble_page(page_layout: dict, panels: dict[str, Path],
+                  geometry: dict) -> Image.Image:
+    """Lay the panel art onto the page at print geometry."""
+    width, height = geometry["print_pixels"]
+    dpi = geometry["print_dpi"]
+    gutter = int(geometry["gutter_mm"] / 25.4 * dpi)
+    frame = page_layout.get("frame_color", "#000000")
+
+    page = Image.new("RGB", (width, height), "white")
+    draw = ImageDraw.Draw(page)
+
+    for panel in page_layout["panels"]:
+        box = panel["box"]
+        x0, y0 = int(box[0] * width), int(box[1] * height)
+        pw, ph = int(box[2] * width), int(box[3] * height)
+        # Inset by half a gutter so neighbouring panels sit a full gutter apart.
+        half = gutter // 2
+        x0, y0 = x0 + half, y0 + half
+        pw, ph = max(1, pw - gutter), max(1, ph - gutter)
+
+        art = panels.get(panel["panel_id"])
+        if art and Path(art).is_file():
+            with Image.open(art) as source:
+                page.paste(source.convert("RGB").resize((pw, ph), Image.LANCZOS),
+                           (x0, y0))
+        else:
+            draw.rectangle([x0, y0, x0 + pw, y0 + ph], fill="#EFEFEF")
+            draw.text((x0 + 24, y0 + 24), f"{panel['panel_id']} - no art",
+                      fill="#999999")
+
+        draw.rectangle([x0, y0, x0 + pw, y0 + ph], outline=frame, width=10)
+
+    return page
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(
+        description=__doc__,
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--pages", type=int, nargs="*", default=[1, 2])
+    ap.add_argument("--cover", action="store_true")
+    ap.add_argument("--pdf", action="store_true")
+    ap.add_argument("--seed", type=int, default=880101)
+    ap.add_argument("--dry-run", action="store_true",
+                    help="derive and print the specs without generating")
+    args = ap.parse_args()
+
+    script = yaml.safe_load((ISSUE / "03_script/panel-script.yaml")
+                            .read_text(encoding="utf-8"))
+    layout = yaml.safe_load((ISSUE / "05_layouts/layout-spec.yaml")
+                            .read_text(encoding="utf-8"))
+    geometry = layout["page"]
+    page_width, page_height = geometry["print_pixels"]
+    boxes = {p["panel_id"]: p for pg in layout["pages"] for p in pg["panels"]}
+    by_page = {pg["page_number"]: pg for pg in layout["pages"]}
+
+    client = ComfyClient()
+    if not args.dry_run and not client.reachable():
+        print("ComfyUI is not reachable - start it, or use --dry-run",
+              file=sys.stderr)
+        return 2
+
+    specs: list[PanelResult] = []
+
+    if args.cover:
+        # The cover is a full trim page, not a panel in the grid.
+        gw, gh = gen_size(page_width, page_height)
+        specs.append(PanelResult(
+            panel_id="ISSUE001-COVER", page=0,
+            print_size=(page_width, page_height), gen_size=(gw, gh),
+            prompt=cover_prompt(layout["cover"]), seed=args.seed,
+        ))
+
+    for page_number in args.pages:
+        for panel in [p for p in script["panels"]
+                      if p["page_number"] == page_number]:
+            box = boxes[panel["panel_id"]]["box"]
+            pw = int(round(box[2] * page_width))
+            ph = int(round(box[3] * page_height))
+            gw, gh = gen_size(pw, ph)
+            specs.append(PanelResult(
+                panel_id=panel["panel_id"], page=page_number,
+                print_size=(pw, ph), gen_size=(gw, gh),
+                prompt=plate_prompt(panel),
+                seed=args.seed + len(specs) * 101,
+            ))
+
+    print(f"{'panel':22s}{'print':>13s}{'generate':>13s}{'aspect':>8s}")
+    for spec in specs:
+        print(f"{spec.panel_id:22s}"
+              f"{spec.print_size[0]:6d}x{spec.print_size[1]:<6d}"
+              f"{spec.gen_size[0]:6d}x{spec.gen_size[1]:<6d}"
+              f"{spec.print_size[0] / spec.print_size[1]:8.2f}")
+    if args.dry_run:
+        print("\n--dry-run: nothing generated")
+        return 0
+
+    script_by_id = {p["panel_id"]: p for p in script["panels"]}
+
+    for spec in specs:
+        job_class = "cover_plate" if spec.page == 0 else "background_plate"
+        print(f"\n[{spec.panel_id}] generating {spec.gen_size[0]}x"
+              f"{spec.gen_size[1]} ...", flush=True)
+        generate_plate(client, spec, job_class, dry_run=False)
+        if spec.error:
+            print(f"  FAILED: {spec.error}")
+            continue
+        print(f"  plate: {spec.plate.name}  ({spec.seconds:.0f}s)")
+
+        panel = script_by_id.get(spec.panel_id)
+        if panel:
+            composite = stage_panel(panel, spec.plate, spec.gen_size, spec)
+            if composite:
+                spec.composite = composite
+                for record in spec.placements:
+                    print(f"    {record['character_id']:14s} "
+                          f"h{record['rendered_height_px']:5d}  "
+                          f"likeness {record['likeness_score']:5.1f} "
+                          f"{'PASS' if record['likeness_passed'] else 'FAIL'}  "
+                          f"integration {record.get('integration_score', 0):5.1f}")
+                for skipped in spec.skipped_characters:
+                    print(f"    SKIPPED {skipped}")
+
+    art = {s.panel_id: (s.composite or s.plate) for s in specs if s.plate}
+
+    OUT_PAGES.mkdir(parents=True, exist_ok=True)
+    rendered: list[tuple[str, Path]] = []
+
+    cover_spec = next((s for s in specs if s.page == 0), None)
+    if cover_spec and cover_spec.plate:
+        out = OUT_PAGES / "page_00_cover.png"
+        paths.assert_safe_write_target(out)
+        with Image.open(cover_spec.plate) as source:
+            source.convert("RGB").resize((page_width, page_height),
+                                         Image.LANCZOS).save(out)
+        rendered.append(("cover", out))
+
+    for page_number in args.pages:
+        if page_number not in by_page:
+            continue
+        page = assemble_page(by_page[page_number], art, geometry)
+        out = OUT_PAGES / f"page_{page_number:02d}.png"
+        paths.assert_safe_write_target(out)
+        page.save(out)
+        rendered.append((f"page {page_number}", out))
+        print(f"\nassembled {out}")
+
+    report = {
+        "run": "sample-pages",
+        "workflow_version": WORKFLOW_VERSION,
+        "status": "CANDIDATE - not reviewed, not approved",
+        "pages": args.pages,
+        "cover": bool(args.cover),
+        "panels": [
+            {
+                "panel_id": s.panel_id, "page": s.page,
+                "print_size": list(s.print_size), "gen_size": list(s.gen_size),
+                "seed": s.seed, "seconds": round(s.seconds, 1),
+                "plate": s.plate.as_posix() if s.plate else None,
+                "composite": s.composite.as_posix() if s.composite else None,
+                "ground_plane_estimate": s.ground_estimate,
+                "placements": s.placements,
+                "warnings": s.warnings,
+                "skipped_characters": s.skipped_characters,
+                "error": s.error,
+            }
+            for s in specs
+        ],
+    }
+    OUT_EXPORT.mkdir(parents=True, exist_ok=True)
+    (OUT_EXPORT / "sample-run-report.json").write_text(
+        json.dumps(report, indent=2), encoding="utf-8")
+
+    if args.pdf and rendered:
+        pdf = OUT_EXPORT / "issue-001-sample-cover-p1-p2.pdf"
+        paths.assert_safe_write_target(pdf)
+        images = []
+        for _, path in rendered:
+            with Image.open(path) as source:
+                images.append(source.convert("RGB"))
+        images[0].save(pdf, "PDF", resolution=geometry["print_dpi"],
+                       save_all=True, append_images=images[1:])
+        print(f"\nPDF: {pdf}  ({len(images)} pages)")
+
+    failures = [s for s in specs if s.error]
+    print(f"\n{len(specs) - len(failures)}/{len(specs)} plates generated")
+    skipped = [x for s in specs for x in s.skipped_characters]
+    if skipped:
+        print(f"{len(skipped)} character placements skipped for missing art")
+    return 1 if failures else 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
