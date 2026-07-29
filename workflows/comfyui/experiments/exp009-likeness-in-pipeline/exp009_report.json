@@ -21,7 +21,9 @@
     "rendered at 149px tall; below 320px small identifying features are not proven legible at print size"
    ],
    "likeness_legibility_exempt": false,
-   "identity_critical": true
+   "identity_critical": true,
+   "integration_score": 79.3,
+   "integration_notes": []
   },
   {
    "character_id": "MZ-CHAR-001",
@@ -44,7 +46,11 @@
     "rendered at 136px tall; below 320px small identifying features are not proven legible at print size"
    ],
    "likeness_legibility_exempt": false,
-   "identity_critical": true
+   "identity_critical": true,
+   "integration_score": 64.4,
+   "integration_notes": [
+    "this contract can only move a real surface 2.40 dE along the plate's illuminant axis, under the 3.0 dE visibility floor; the light is too weak to integrate this figure whatever protect_neutrals does, so it is scored against the floor"
+   ]
   }
  ],
  "warnings": [

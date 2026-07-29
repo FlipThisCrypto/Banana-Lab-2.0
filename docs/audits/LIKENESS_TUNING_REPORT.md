@@ -720,7 +720,103 @@ is the value the visual checks in Fix 3 were made against — an inherited value
 honestly labelled as such, not a measured optimum.
 
 Closing this needs a second measure on the opposing axis, scored so an interior
-optimum exists. That work is tracked separately.
+optimum exists.
+
+---
+
+## The opposing axis — scene integration
+
+### Four designs, four failures, one failure
+
+Four independent designs were commissioned for "does this character belong in
+this plate's light?", through deliberately different lenses — colorimetric
+agreement, local-context agreement, shading-direction agreement, and illuminant
+recovery — and each was then attacked by an independent reviewer told to default
+to *does not survive*.
+
+**All four were broken.** More usefully, they broke the same way three times
+over:
+
+1. **The plate was never load-bearing.** In one, deleting the plate changed the
+   score by 0.000000. In another the plate reduced to a sign bit. A measure of
+   "does this belong *here*" that gives the same answer with the *here* removed
+   is not measuring integration.
+2. **They measured chroma and only chroma.** So all four were beaten by an
+   object with a colour filter and no light.
+3. **They were scale-free in `key_strength`.** An invisible light scored
+   perfectly, because dividing by the contract's own prediction cancels the
+   contract's own strength.
+
+### The composite, and re-verifying it rather than trusting it
+
+The surviving design is a composite — chroma response measured along the axis
+recovered from the **plate's own pixels**, with an absolute visibility floor
+under the denominator, gated by whether a *lighting* operation happened at all.
+
+It arrived with a long list of measured claims. Those claims were re-run here
+rather than accepted, and that mattered:
+
+| Claim | Independent result |
+|---|---|
+| Monotone decreasing in `protect_neutrals` | **Holds** — 98.2 → 0.6 across 0.0 → 1.0 |
+| Plate is load-bearing | **Holds** — neutral plate returns *unscoreable*; a warm-cast plate returns 0.0 |
+| Not scale-free in `key_strength` | **Holds** — 34.6 / 35.9 / 38.3 / 47.2 / 37.1 across a 80× range, with an overshoot penalty at the top |
+| Not a reparametrisation of the dial | **Holds** — R² on `(1 − protect)` alone is 0.796, residual sd 15.3 points |
+| "The decal scores 0.0" | **FALSE — 46.6, against an honest relight's 47.2** |
+
+The decal is the adversary that killed one of the four originals, and the
+composite claimed to have fixed it. It had not. Its own control was too weak: a
+colour filter with essentially no lightness change (mean |dL\*| ≈ 0.15). A real
+sticker darkens.
+
+### The fix — a partial correlation
+
+The mechanism failed for a reason worth writing down. The measure compared the
+candidate's lightness-change field against the declared light's by **raw
+correlation**. But `relight()` and a flat multiply are *both multiplicative*, so
+both produce a dL\* field proportional to the figure's own albedo — and that
+shared component dominates. Measured correlation between an honest relight and a
+flat decal matched to its mean colour: **r = 0.8398**.
+
+The term was measuring the character's albedo, not the light's direction.
+
+It is now a **partial** correlation, controlling for the figure's luminance, so
+only the part a light's direction contributes is compared:
+
+| | before | after |
+|---|---|---|
+| Flat decal, 9 character × protect cells | rejected in **0** | rejected in **9** |
+| Honest relight (protect 0.00 / 0.50 / 0.85) | 98.2 / 87.5 / 47.2 | **98.2 / 87.5 / 47.2** |
+| Lit from 270° against a 90° contract | 5.3 | **0.0** |
+
+Closing the hole while costing the honest signal *exactly nothing* is the same
+shape as Fix 6 above, and is the strongest evidence available that a fix is real
+rather than a threshold moved.
+
+### Status: reported, not gated
+
+Likeness has **1,089** adversarial controls behind it. This has roughly 400. So
+`composite_panel()` records `integration_score` for every placement and warns
+below 25 — a character that barely responds to the panel's light reads as pasted
+on — but **likeness remains the only hard constraint.** Promoting this to a gate
+needs the same treatment likeness got.
+
+On the exp009 panel both numbers now appear in the record: likeness 85.3 / 85.9,
+integration 79.3 / 64.4, with the measure noting that the contract can only move
+a real surface 2.40 dE along the plate's illuminant axis — under its own
+visibility floor.
+
+### What this does not settle
+
+The one real calibrated plate available is cool-lit, and the measure correctly
+refuses to score a contract whose light opposes the plate's own. So the warm and
+red keys used throughout this work are **off-diagonal cells that return 0.0 by
+design** against this plate, and could not be validated here. That is a coverage
+limit of the evidence, not a property of the measure, and it will not be
+resolved until there are plates lit for those scenes.
+
+`protect_neutrals` therefore stays at **0.85**. There is now a second axis to
+choose it against, but not yet enough validated scenes to choose it on.
 
 ---
 

@@ -137,6 +137,11 @@ NO_FLIP = {
     "MZ-CHAR-004": "stitched chest detail",
 }
 
+#: Below this scene-integration score a character barely responds to the panel's
+#: light and starts to read as pasted on. A WARNING threshold, not a gate - see
+#: app/services/integration.py for why this is reported rather than enforced.
+CUTOUT_WARNING_SCORE = 25.0
+
 #: Poses whose contact point is not the soles of the feet. Placing these with a
 #: standing foot_y drops the character through the floor or floats them.
 NON_STANDING_POSES = {
@@ -368,7 +373,7 @@ def composite_panel(
     order = {"background": 0, "midground": 1, "foreground": 2}
     ordered = sorted(placements, key=lambda p: order.get(p.depth_plane, 1))
 
-    prepared: list[tuple[Placement, Image.Image, int, int, LikenessResult]] = []
+    prepared: list[tuple[Placement, Image.Image, int, int, LikenessResult, object]] = []
 
     for place in ordered:
         if place.flip and place.character_id in NO_FLIP:
@@ -459,14 +464,36 @@ def composite_panel(
                 + (f" - {likeness.notes[0]}" if likeness.notes else "")
             )
 
-        prepared.append((place, layer, left, top, likeness))
+        # Scene integration: the opposing axis. Likeness alone is maximised by
+        # not lighting the character at all, so a panel that reports only
+        # likeness cannot tell a well-lit character from a cut-out.
+        #
+        # Imported here, not at module scope: integration imports LightContract
+        # and relight from this module, so a top-level import is a cycle.
+        from app.services.integration import measure_integration
+
+        integration = measure_integration(
+            layer, canon_reference, plate,
+            (left, top, left + layer.width, top + layer.height),
+            light, spill_color=spill,
+        )
+        # REPORTED, NOT GATED. Likeness has 1089 adversarial controls behind it;
+        # this has ~400. It warns loudly and leaves the verdict to likeness.
+        if integration.score < CUTOUT_WARNING_SCORE and integration.score > 0.0:
+            report.warnings.append(
+                f"INTEGRATION: {place.character_id} scored "
+                f"{integration.score:.1f} - barely responds to the panel's "
+                f"light and may read as pasted on"
+            )
+
+        prepared.append((place, layer, left, top, likeness, integration))
 
     # Burn shadows into the plate before the characters land on top.
     shadow_rgba = Image.new("RGBA", canvas.size, (0, 0, 0, 0))
     shadow_rgba.putalpha(shadow_layer)
     canvas = Image.alpha_composite(canvas, shadow_rgba)
 
-    for place, layer, left, top, likeness in prepared:
+    for place, layer, left, top, likeness, integration in prepared:
         canvas.alpha_composite(layer, (left, top))
         if place.occluder and Path(place.occluder).is_file():
             occ = _load_rgba(Path(place.occluder)).resize(canvas.size, Image.LANCZOS)
@@ -489,6 +516,8 @@ def composite_panel(
                 "likeness_notes": likeness.notes,
                 "likeness_legibility_exempt": likeness.legibility_exempt,
                 "identity_critical": place.identity_critical,
+                "integration_score": integration.score,
+                "integration_notes": integration.notes,
             }
         )
 
