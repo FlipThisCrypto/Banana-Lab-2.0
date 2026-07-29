@@ -1,0 +1,734 @@
+{
+  "references": {
+    "edition-one-fusion-squad": {
+      "path": "I:/MonkeyZoo Comic Strip/Fusion Squad/1/TheFusionSquad.pdf",
+      "page_count": 11,
+      "pages": [
+        {
+          "size": [
+            850,
+            1100
+          ],
+          "panel_block": {
+            "inset_top_pct": 31.55,
+            "inset_bottom_pct": 0.0,
+            "inset_left_pct": 0.0,
+            "inset_right_pct": 0.0
+          },
+          "horizontal_rules": 10,
+          "border_weight_pct_of_height": 0.273,
+          "page_ground": {
+            "top_rgb": [
+              140.7,
+              105.4,
+              106.0
+            ]
+          },
+          "panel_interior": {
+            "mean_chroma": 7.0,
+            "p90_chroma": 11.3,
+            "share_chroma_under_12": 0.911,
+            "share_chroma_over_40": 0.013,
+            "mean_L": 44.6,
+            "sd_L": 27.8,
+            "ink_share": 0.379
+          },
+          "page": 0
+        },
+        {
+          "size": [
+            850,
+            1100
+          ],
+          "panel_block": {
+            "inset_top_pct": 60.36,
+            "inset_bottom_pct": 6.09,
+            "inset_left_pct": 4.47,
+            "inset_right_pct": 4.47
+          },
+          "horizontal_rules": 4,
+          "border_weight_pct_of_height": 0.182,
+          "page_ground": {
+            "top_rgb": [
+              142.4,
+              119.3,
+              107.2
+            ],
+            "bottom_rgb": [
+              149.5,
+              208.5,
+              224.5
+            ],
+            "gradient_delta_e": 43.1
+          },
+          "panel_interior": {
+            "mean_chroma": 9.0,
+            "p90_chroma": 19.5,
+            "share_chroma_under_12": 0.819,
+            "share_chroma_over_40": 0.025,
+            "mean_L": 41.0,
+            "sd_L": 24.0,
+            "ink_share": 0.415
+          },
+          "page": 1
+        },
+        {
+          "size": [
+            850,
+            1100
+          ],
+          "panel_block": {
+            "inset_top_pct": 4.09,
+            "inset_bottom_pct": 50.18,
+            "inset_left_pct": 4.35,
+            "inset_right_pct": 95.53
+          },
+          "horizontal_rules": 6,
+          "border_weight_pct_of_height": 0.182,
+          "page_ground": {
+            "top_rgb": [
+              84.3,
+              125.7,
+              148.1
+            ],
+            "bottom_rgb": [
+              131.6,
+              137.1,
+              142.7
+            ],
+            "gradient_delta_e": 16.1
+          },
+          "panel_interior": {
+            "mean_chroma": 4.6,
+            "p90_chroma": 19.1,
+            "share_chroma_under_12": 0.877,
+            "share_chroma_over_40": 0.008,
+            "mean_L": 12.0,
+            "sd_L": 18.7,
+            "ink_share": 0.883
+          },
+          "page": 2
+        },
+        {
+          "size": [
+            850,
+            1100
+          ],
+          "panel_block": {
+            "inset_top_pct": 5.64,
+            "inset_bottom_pct": 3.09,
+            "inset_left_pct": 4.35,
+            "inset_right_pct": 4.35
+          },
+          "horizontal_rules": 7,
+          "border_weight_pct_of_height": 0.182,
+          "page_ground": {
+            "top_rgb": [
+              84.8,
+              126.4,
+              148.9
+            ],
+            "bottom_rgb": [
+              150.8,
+              209.8,
+              225.8
+            ],
+            "gradient_delta_e": 30.8
+          },
+          "panel_interior": {
+            "mean_chroma": 31.7,
+            "p90_chroma": 70.2,
+            "share_chroma_under_12": 0.203,
+            "share_chroma_over_40": 0.322,
+            "mean_L": 52.8,
+            "sd_L": 26.1,
+            "ink_share": 0.284
+          },
+          "page": 3
+        },
+        {
+          "size": [
+            850,
+            1100
+          ],
+          "panel_block": {
+            "inset_top_pct": 3.36,
+            "inset_bottom_pct": 1.64,
+            "inset_left_pct": 4.24,
+            "inset_right_pct": 4.24
+          },
+          "horizontal_rules": 7,
+          "border_weight_pct_of_height": 0.182,
+          "page_ground": {
+            "top_rgb": [
+              84.1,
+              125.4,
+              147.6
+            ],
+            "bottom_rgb": [
+              151.4,
+              210.4,
+              226.4
+            ],
+            "gradient_delta_e": 31.4
+          },
+          "panel_interior": {
+            "mean_chroma": 21.6,
+            "p90_chroma": 44.3,
+            "share_chroma_under_12": 0.24,
+            "share_chroma_over_40": 0.117,
+            "mean_L": 58.4,
+            "sd_L": 26.7,
+            "ink_share": 0.196
+          },
+          "page": 4
+        },
+        {
+          "size": [
+            850,
+            1100
+          ],
+          "panel_block": {
+            "inset_top_pct": 3.09,
+            "inset_bottom_pct": 3.91,
+            "inset_left_pct": 66.12,
+            "inset_right_pct": 2.82
+          },
+          "horizontal_rules": 7,
+          "border_weight_pct_of_height": 0.182,
+          "page_ground": {
+            "top_rgb": [
+              84.0,
+              125.2,
+              147.4
+            ],
+            "bottom_rgb": [
+              150.4,
+              209.4,
+              225.4
+            ],
+            "gradient_delta_e": 31.1
+          },
+          "panel_interior": {
+            "mean_chroma": 29.6,
+            "p90_chroma": 60.2,
+            "share_chroma_under_12": 0.15,
+            "share_chroma_over_40": 0.28,
+            "mean_L": 52.7,
+            "sd_L": 23.7,
+            "ink_share": 0.23
+          },
+          "page": 5
+        },
+        {
+          "size": [
+            850,
+            1100
+          ],
+          "panel_block": {
+            "inset_top_pct": 4.0,
+            "inset_bottom_pct": 3.45,
+            "inset_left_pct": 4.35,
+            "inset_right_pct": 4.24
+          },
+          "horizontal_rules": 4,
+          "border_weight_pct_of_height": 0.409,
+          "page_ground": {
+            "top_rgb": [
+              84.3,
+              125.7,
+              148.0
+            ],
+            "bottom_rgb": [
+              150.6,
+              209.6,
+              225.6
+            ],
+            "gradient_delta_e": 31.0
+          },
+          "panel_interior": {
+            "mean_chroma": 36.0,
+            "p90_chroma": 57.1,
+            "share_chroma_under_12": 0.174,
+            "share_chroma_over_40": 0.524,
+            "mean_L": 64.5,
+            "sd_L": 21.8,
+            "ink_share": 0.076
+          },
+          "page": 6
+        },
+        {
+          "size": [
+            850,
+            1100
+          ],
+          "panel_block": {
+            "inset_top_pct": 5.45,
+            "inset_bottom_pct": 5.45,
+            "inset_left_pct": 5.29,
+            "inset_right_pct": 5.29
+          },
+          "horizontal_rules": 6,
+          "border_weight_pct_of_height": 6.773,
+          "page_ground": {
+            "top_rgb": [
+              84.7,
+              126.3,
+              148.8
+            ],
+            "bottom_rgb": [
+              149.7,
+              208.8,
+              224.7
+            ],
+            "gradient_delta_e": 30.5
+          },
+          "panel_interior": {
+            "mean_chroma": 14.0,
+            "p90_chroma": 24.7,
+            "share_chroma_under_12": 0.427,
+            "share_chroma_over_40": 0.02,
+            "mean_L": 36.1,
+            "sd_L": 27.0,
+            "ink_share": 0.574
+          },
+          "page": 7
+        },
+        {
+          "size": [
+            850,
+            1100
+          ],
+          "panel_block": {
+            "inset_top_pct": 3.36,
+            "inset_bottom_pct": 2.27,
+            "inset_left_pct": 4.35,
+            "inset_right_pct": 95.53
+          },
+          "horizontal_rules": 6,
+          "border_weight_pct_of_height": 0.136,
+          "page_ground": {
+            "top_rgb": [
+              84.1,
+              125.4,
+              147.6
+            ],
+            "bottom_rgb": [
+              151.1,
+              210.1,
+              226.1
+            ],
+            "gradient_delta_e": 31.3
+          },
+          "panel_interior": {
+            "mean_chroma": 14.7,
+            "p90_chroma": 47.7,
+            "share_chroma_under_12": 0.713,
+            "share_chroma_over_40": 0.186,
+            "mean_L": 19.9,
+            "sd_L": 25.9,
+            "ink_share": 0.746
+          },
+          "page": 8
+        },
+        {
+          "size": [
+            850,
+            1100
+          ],
+          "panel_block": {
+            "inset_top_pct": 3.73,
+            "inset_bottom_pct": 3.82,
+            "inset_left_pct": 4.35,
+            "inset_right_pct": 4.35
+          },
+          "horizontal_rules": 2,
+          "border_weight_pct_of_height": 3.091,
+          "page_ground": {
+            "top_rgb": [
+              84.2,
+              125.6,
+              147.9
+            ],
+            "bottom_rgb": [
+              150.4,
+              209.4,
+              225.4
+            ],
+            "gradient_delta_e": 31.0
+          },
+          "panel_interior": {
+            "mean_chroma": 33.5,
+            "p90_chroma": 54.2,
+            "share_chroma_under_12": 0.11,
+            "share_chroma_over_40": 0.219,
+            "mean_L": 55.3,
+            "sd_L": 25.1,
+            "ink_share": 0.203
+          },
+          "page": 9
+        },
+        {
+          "size": [
+            850,
+            1100
+          ],
+          "panel_block": {
+            "inset_top_pct": 3.82,
+            "inset_bottom_pct": 3.82,
+            "inset_left_pct": 4.35,
+            "inset_right_pct": 4.24
+          },
+          "horizontal_rules": 18,
+          "border_weight_pct_of_height": 0.591,
+          "page_ground": {
+            "top_rgb": [
+              84.2,
+              125.6,
+              148.0
+            ],
+            "bottom_rgb": [
+              171.5,
+              209.0,
+              219.2
+            ],
+            "gradient_delta_e": 32.0
+          },
+          "panel_interior": {
+            "mean_chroma": 19.1,
+            "p90_chroma": 28.7,
+            "share_chroma_under_12": 0.288,
+            "share_chroma_over_40": 0.078,
+            "mean_L": 43.1,
+            "sd_L": 30.7,
+            "ink_share": 0.489
+          },
+          "page": 10
+        }
+      ]
+    },
+    "edition-two-defusion-tapes": {
+      "path": "I:/MonkeyZoo Comic Strip/Fusion Squad/2/nft/FusionZoo The DeFusion Tapes.pdf",
+      "page_count": 9,
+      "pages": [
+        {
+          "size": [
+            850,
+            1100
+          ],
+          "panel_block": {
+            "inset_top_pct": 0.0,
+            "inset_bottom_pct": 0.0,
+            "inset_left_pct": 9.18,
+            "inset_right_pct": 0.0
+          },
+          "horizontal_rules": 13,
+          "border_weight_pct_of_height": 1.091,
+          "page_ground": {},
+          "panel_interior": {
+            "mean_chroma": 18.9,
+            "p90_chroma": 43.7,
+            "share_chroma_under_12": 0.386,
+            "share_chroma_over_40": 0.228,
+            "mean_L": 34.1,
+            "sd_L": 29.5,
+            "ink_share": 0.657
+          },
+          "page": 0
+        },
+        {
+          "size": [
+            850,
+            1100
+          ],
+          "panel_block": {
+            "inset_top_pct": 2.18,
+            "inset_bottom_pct": 0.0,
+            "inset_left_pct": 0.0,
+            "inset_right_pct": 0.0
+          },
+          "horizontal_rules": 5,
+          "border_weight_pct_of_height": 10.545,
+          "page_ground": {
+            "top_rgb": [
+              143.6,
+              42.9,
+              43.1
+            ]
+          },
+          "panel_interior": {
+            "mean_chroma": 18.8,
+            "p90_chroma": 46.2,
+            "share_chroma_under_12": 0.31,
+            "share_chroma_over_40": 0.169,
+            "mean_L": 24.4,
+            "sd_L": 17.2,
+            "ink_share": 0.795
+          },
+          "page": 1
+        },
+        {
+          "size": [
+            850,
+            1100
+          ],
+          "panel_block": {
+            "inset_top_pct": 0.0,
+            "inset_bottom_pct": 2.18,
+            "inset_left_pct": 4.12,
+            "inset_right_pct": 4.24
+          },
+          "horizontal_rules": 6,
+          "border_weight_pct_of_height": 3.5,
+          "page_ground": {
+            "bottom_rgb": [
+              172.7,
+              94.1,
+              51.2
+            ]
+          },
+          "panel_interior": {
+            "mean_chroma": 9.8,
+            "p90_chroma": 30.3,
+            "share_chroma_under_12": 0.709,
+            "share_chroma_over_40": 0.041,
+            "mean_L": 37.9,
+            "sd_L": 31.9,
+            "ink_share": 0.55
+          },
+          "page": 2
+        },
+        {
+          "size": [
+            850,
+            1100
+          ],
+          "panel_block": {
+            "inset_top_pct": 0.0,
+            "inset_bottom_pct": 2.18,
+            "inset_left_pct": 4.59,
+            "inset_right_pct": 3.88
+          },
+          "horizontal_rules": 17,
+          "border_weight_pct_of_height": 0.455,
+          "page_ground": {
+            "bottom_rgb": [
+              172.7,
+              94.1,
+              51.2
+            ]
+          },
+          "panel_interior": {
+            "mean_chroma": 16.5,
+            "p90_chroma": 42.6,
+            "share_chroma_under_12": 0.506,
+            "share_chroma_over_40": 0.106,
+            "mean_L": 40.0,
+            "sd_L": 25.1,
+            "ink_share": 0.487
+          },
+          "page": 3
+        },
+        {
+          "size": [
+            850,
+            1100
+          ],
+          "panel_block": {
+            "inset_top_pct": 3.18,
+            "inset_bottom_pct": 0.0,
+            "inset_left_pct": 0.0,
+            "inset_right_pct": 0.0
+          },
+          "horizontal_rules": 9,
+          "border_weight_pct_of_height": 0.545,
+          "page_ground": {
+            "top_rgb": [
+              143.2,
+              42.8,
+              42.9
+            ]
+          },
+          "panel_interior": {
+            "mean_chroma": 18.6,
+            "p90_chroma": 44.2,
+            "share_chroma_under_12": 0.362,
+            "share_chroma_over_40": 0.18,
+            "mean_L": 32.4,
+            "sd_L": 19.8,
+            "ink_share": 0.635
+          },
+          "page": 4
+        },
+        {
+          "size": [
+            850,
+            1100
+          ],
+          "panel_block": {
+            "inset_top_pct": 0.0,
+            "inset_bottom_pct": 0.0,
+            "inset_left_pct": 0.0,
+            "inset_right_pct": 0.0
+          },
+          "horizontal_rules": 14,
+          "border_weight_pct_of_height": 1.273,
+          "page_ground": {},
+          "panel_interior": {
+            "mean_chroma": 21.5,
+            "p90_chroma": 51.3,
+            "share_chroma_under_12": 0.32,
+            "share_chroma_over_40": 0.177,
+            "mean_L": 33.8,
+            "sd_L": 22.5,
+            "ink_share": 0.541
+          },
+          "page": 5
+        },
+        {
+          "size": [
+            850,
+            1100
+          ],
+          "panel_block": {
+            "inset_top_pct": 0.0,
+            "inset_bottom_pct": 0.0,
+            "inset_left_pct": 0.0,
+            "inset_right_pct": 0.0
+          },
+          "horizontal_rules": 17,
+          "border_weight_pct_of_height": 0.182,
+          "page_ground": {},
+          "panel_interior": {
+            "mean_chroma": 11.7,
+            "p90_chroma": 30.7,
+            "share_chroma_under_12": 0.753,
+            "share_chroma_over_40": 0.063,
+            "mean_L": 29.3,
+            "sd_L": 22.9,
+            "ink_share": 0.708
+          },
+          "page": 6
+        },
+        {
+          "size": [
+            850,
+            1100
+          ],
+          "panel_block": {
+            "inset_top_pct": 0.0,
+            "inset_bottom_pct": 2.18,
+            "inset_left_pct": 2.82,
+            "inset_right_pct": 2.82
+          },
+          "horizontal_rules": 10,
+          "border_weight_pct_of_height": 2.455,
+          "page_ground": {
+            "bottom_rgb": [
+              172.7,
+              94.1,
+              51.2
+            ]
+          },
+          "panel_interior": {
+            "mean_chroma": 12.1,
+            "p90_chroma": 32.9,
+            "share_chroma_under_12": 0.733,
+            "share_chroma_over_40": 0.061,
+            "mean_L": 32.0,
+            "sd_L": 27.6,
+            "ink_share": 0.642
+          },
+          "page": 7
+        },
+        {
+          "size": [
+            850,
+            1100
+          ],
+          "panel_block": {
+            "inset_top_pct": 0.0,
+            "inset_bottom_pct": 0.0,
+            "inset_left_pct": 0.0,
+            "inset_right_pct": 0.0
+          },
+          "horizontal_rules": 26,
+          "border_weight_pct_of_height": 0.455,
+          "page_ground": {},
+          "panel_interior": {
+            "mean_chroma": 14.6,
+            "p90_chroma": 34.7,
+            "share_chroma_under_12": 0.504,
+            "share_chroma_over_40": 0.087,
+            "mean_L": 35.9,
+            "sd_L": 27.9,
+            "ink_share": 0.603
+          },
+          "page": 8
+        }
+      ]
+    }
+  },
+  "aggregate": {
+    "aspect": {
+      "min": 0.773,
+      "median": 0.773,
+      "max": 0.773
+    },
+    "inset_top_pct": {
+      "min": 0.0,
+      "median": 3.27,
+      "max": 60.36
+    },
+    "inset_left_pct": {
+      "min": 0.0,
+      "median": 4.35,
+      "max": 66.12
+    },
+    "border_weight_pct": {
+      "min": 0.136,
+      "median": 0.455,
+      "max": 10.545
+    },
+    "gradient_delta_e": {
+      "min": 16.1,
+      "median": 31.05,
+      "max": 43.1
+    },
+    "mean_chroma": {
+      "min": 4.6,
+      "median": 17.55,
+      "max": 36.0
+    },
+    "p90_chroma": {
+      "min": 11.3,
+      "median": 43.15,
+      "max": 70.2
+    },
+    "share_chroma_under_12": {
+      "min": 0.11,
+      "median": 0.406,
+      "max": 0.911
+    },
+    "share_chroma_over_40": {
+      "min": 0.008,
+      "median": 0.112,
+      "max": 0.524
+    },
+    "mean_L": {
+      "min": 12.0,
+      "median": 37.0,
+      "max": 64.5
+    },
+    "sd_L": {
+      "min": 17.2,
+      "median": 25.5,
+      "max": 31.9
+    },
+    "ink_share": {
+      "min": 0.076,
+      "median": 0.546,
+      "max": 0.883
+    }
+  }
+}
