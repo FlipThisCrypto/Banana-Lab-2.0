@@ -53,6 +53,84 @@ def srgb_to_lab(rgb: np.ndarray) -> np.ndarray:
     return np.stack([116 * fy - 16, 500 * (fx - fy), 200 * (fy - fz)], axis=-1)
 
 
+def lab_to_srgb(lab: np.ndarray) -> np.ndarray:
+    """Inverse of srgb_to_lab. Returns 0-255 floats, unclamped."""
+    lab = np.asarray(lab, dtype=np.float64)
+    fy = (lab[..., 0] + 16.0) / 116.0
+    fx = fy + lab[..., 1] / 500.0
+    fz = fy - lab[..., 2] / 200.0
+
+    eps = 216 / 24389
+    kappa = 24389 / 27
+    def finv(f):
+        cubed = f ** 3
+        return np.where(cubed > eps, cubed, (116.0 * f - 16.0) / kappa)
+
+    xyz = np.stack([finv(fx), finv(fy), finv(fz)], axis=-1) * _WHITE
+    linear = xyz @ np.linalg.inv(_SRGB_TO_XYZ).T
+    # Signed gamma, deliberately NOT clipped. Out-of-gamut Lab must come back
+    # as an out-of-range number, or lab_to_srgb_in_gamut() cannot detect the
+    # condition it exists to correct - clipping here made every colour look
+    # in-gamut and the mapping became a no-op.
+    mag = np.abs(linear)
+    srgb = np.sign(linear) * np.where(mag <= 0.0031308, mag * 12.92,
+                                      1.055 * np.power(mag, 1 / 2.4) - 0.055)
+    return srgb * 255.0
+
+
+def lab_to_srgb_in_gamut(lab: np.ndarray) -> np.ndarray:
+    """Lab -> sRGB, mapped into gamut by reducing chroma, never by clipping.
+
+    Darkening a saturated colour in Lab routinely leaves sRGB. Clipping the
+    channels there bends the hue: cyan (52,229,232) taken to 60% lightness
+    clips red to 0 and swings a* from -40.9 to -28.9. Scaling a*/b* toward
+    the neutral axis instead holds the hue angle exactly and gives up only
+    the chroma the display genuinely cannot show.
+
+    Returns 0-255 floats guaranteed inside the cube.
+    """
+    lab = np.asarray(lab, dtype=np.float64)
+    out = lab_to_srgb(lab)
+
+    # Most pixels already fit. Searching all of them costs 24 full colour
+    # conversions per image; searching only the offenders costs 24 conversions
+    # of a small subset. On the layer library that is the difference between
+    # ~14s and well under a second per megapixel.
+    offenders = (out.min(axis=-1) < 0.0) | (out.max(axis=-1) > 255.0)
+    if not offenders.any():
+        return np.clip(out, 0.0, 255.0)
+
+    work = lab[offenders]                  # (n, 3)
+
+    # Flat comic art repeats colours: one layer gave 3397 distinct offending
+    # Lab values across 704258 offending pixels. Solve each distinct value
+    # once. Quantising to 0.1 only decides which scale factor to use - the
+    # factor is then applied to the full-precision Lab, so the output keeps
+    # its precision.
+    _, index, inverse = np.unique(np.round(work, 1), axis=0,
+                                  return_index=True, return_inverse=True)
+    uniq = work[index]
+    lo = np.zeros(uniq.shape[0])           # always in gamut: the neutral axis
+    hi = np.ones(uniq.shape[0])
+    for _ in range(24):
+        mid = (lo + hi) / 2.0
+        trial = uniq * np.stack([np.ones_like(mid), mid, mid], axis=-1)
+        rgb = lab_to_srgb(trial)
+        # Strict: a tolerance here is not slack, it is hue error. Accepting
+        # R = -0.4 and then clipping to 0 shifts the hue by exactly as much as
+        # clipping would have, which defeats the mapping.
+        ok = (rgb.min(axis=-1) >= 0.0) & (rgb.max(axis=-1) <= 255.0)
+        lo = np.where(ok, mid, lo)
+        hi = np.where(ok, hi, mid)
+
+    scale = lo[inverse]
+    fixed = lab_to_srgb(work * np.stack([np.ones_like(scale), scale, scale],
+                                        axis=-1))
+    out = out.copy()
+    out[offenders] = fixed
+    return np.clip(out, 0.0, 255.0)
+
+
 def delta_e(a: np.ndarray, b: np.ndarray) -> np.ndarray:
     """CIE76 distance between two Lab arrays."""
     return np.sqrt(((np.asarray(a) - np.asarray(b)) ** 2).sum(axis=-1))
@@ -177,6 +255,13 @@ class LikenessResult:
     #: Worst dE across the character's canon swatches, weighted by area.
     palette_delta_e: float
     palette_score: float
+    #: The two rules behind palette_score, reported separately so a failure
+    #: says which one bit. See MEAN_DRIFT_TOLERANCE.
+    palette_mean_de: float = 0.0
+    palette_worst_de: float = 0.0
+    #: Mean chroma dE over every opaque pixel. Only meaningful on the aligned
+    #: path; stays 0.0 when the render cannot be compared pixel for pixel.
+    pixel_drift_de: float = 0.0
     #: Mean L* change between the approved layer and the render. Expected to be
     #: non-zero: this is the light doing its job.
     lightness_shift: float = 0.0
@@ -185,6 +270,9 @@ class LikenessResult:
     contamination_score: float = 100.0
     rendered_height_px: int = 0
     feature_legibility_score: float = 100.0
+    #: True when the render was below the legibility floor but was staged as
+    #: non-identity-bearing, so the floor was waived. Recorded, never silent.
+    legibility_exempt: bool = False
     notes: list[str] = field(default_factory=list)
 
     @property
@@ -206,6 +294,8 @@ class LikenessResult:
         """
         return (
             self.score >= 95.0
+            # Equivalent to: worst swatch within SWATCH_TOLERANCE AND mean
+            # within MEAN_DRIFT_TOLERANCE. See the palette_score derivation.
             and self.palette_score >= 92.0
             and self.contamination_score >= 99.0
             and self.feature_legibility_score >= 85.0
@@ -218,12 +308,16 @@ class LikenessResult:
             "score": self.score,
             "passed": self.passed,
             "palette_score": round(self.palette_score, 1),
+            "palette_mean_de": round(self.palette_mean_de, 2),
+            "palette_worst_de": round(self.palette_worst_de, 2),
+            "pixel_drift_de": round(self.pixel_drift_de, 2),
             "palette_delta_e": round(self.palette_delta_e, 1),
             "lightness_shift": round(self.lightness_shift, 1),
             "contamination_score": round(self.contamination_score, 1),
             "contamination_px": self.contamination_px,
             "feature_legibility_score": round(self.feature_legibility_score, 1),
             "rendered_height_px": self.rendered_height_px,
+            "legibility_exempt": self.legibility_exempt,
             "swatches": [
                 {
                     "canon": s.canon_hex, "rendered": s.rendered_hex,
@@ -237,6 +331,38 @@ class LikenessResult:
 
 #: Chroma-plane dE at which a canon swatch is considered preserved.
 SWATCH_TOLERANCE = 12.0
+
+#: Area-weighted mean chroma dE across all canon swatches.
+#:
+#: SWATCH_TOLERANCE alone cannot catch a free tint: tinting the whole character
+#: moves every swatch a little, and "a little" is under 12 for each one taken
+#: separately. This rule catches the aggregate. The two are complementary, and
+#: neither does the other's job - measured:
+#:
+#:                            worst dE   mean dE
+#:   legitimate relights       1.6-9.2   0.7-1.5   (9 cases, 3 chars x 3 scenes)
+#:   free tint, cool key          10.3       5.9
+#:   free tint, red key           17.6       9.7
+#:   fully desaturated            40.3       2.7   <- only worst catches this
+#:   crown recoloured orange      86.9       2.4   <- only worst catches this
+#:
+#: 3.0 sits at 2x the worst legitimate mean and half the mildest free tint.
+MEAN_DRIFT_TOLERANCE = 3.0
+
+#: Mean chroma dE over EVERY opaque pixel, tracked by the palette or not.
+#:
+#: The swatch rules are blind to colours the palette never captured, and small
+#: fragmented identity colours are exactly the ones that fall through. This rule
+#: measures the whole figure, so it has no coverage hole. Measured over 8
+#: characters x 3 scenes:
+#:
+#:   legitimate relights   max 1.64   (mean 1.13, p95 1.54)
+#:   damaging controls     min 3.02   (median 6.37)
+#:
+#: 2.5 gives 52% headroom over the worst legitimate case while catching every
+#: control that materially damaged the art. It CANNOT catch damage that moves
+#: the whole-figure mean by less than 2.5 dE - that is a real and stated limit.
+PIXEL_DRIFT_TOLERANCE = 2.5
 
 #: How far mean lightness may move under scene light before identity is at risk.
 #: Light is SUPPOSED to change lightness, so this is a wide band, not a tight
@@ -258,6 +384,7 @@ def measure(
     *,
     contamination_px: int = 0,
     layer_name: str = "",
+    identity_critical: bool = True,
 ) -> LikenessResult:
     """Compare a rendered character crop against its approved layer.
 
@@ -315,6 +442,23 @@ def measure(
         canon_rgb = canon_arr_full[..., :3].astype(float)
         canon_pixels = canon_rgb[solid]
         canon_pixel_lab = srgb_to_lab(canon_pixels)
+
+        # Every opaque pixel, whether or not the palette tracks its colour.
+        #
+        # The swatch rules can only see colours that made it into the palette,
+        # and the palette has a coverage hole: a cluster under min_share is not
+        # tracked at all. neonblue_21_running is the proof - 11201 high-chroma
+        # pixels, 3.60% of the figure, and 100% of them more than dE 14 from any
+        # tracked swatch, because his cyan crown fragments into clusters that
+        # each fall below the threshold. Recolouring it scored exactly 100.0.
+        # The metric saw nothing, because there was nothing there to see.
+        #
+        # This rule cannot have that hole. It is the safety net under the
+        # palette, not a replacement for it - the palette is what makes a
+        # failure explainable ("your cyan moved"), this is what makes it certain.
+        result.pixel_drift_de = float(
+            delta_e_chroma(rendered_lab, canon_pixel_lab).mean()
+        )
 
         for swatch in canon:
             # The pixels that were this swatch in the approved art. Matched in
@@ -376,8 +520,26 @@ def measure(
     # So the score is driven by the WORST swatch as much as the mean, and any
     # single swatch over tolerance fails the component outright.
     result.palette_delta_e = max(mean_de, worst_de * 0.5)
-    blended = 0.5 * mean_de + 0.5 * worst_de
-    result.palette_score = max(0.0, 100.0 - (blended / SWATCH_TOLERANCE) * 100.0 / 3.0)
+    result.palette_mean_de = mean_de
+    result.palette_worst_de = worst_de
+
+    # Score each rule against its OWN tolerance and report the worse. This used
+    # to blend the two dE values and divide by SWATCH_TOLERANCE alone, which
+    # made the score gate disagree with the per-swatch rule: a layer whose every
+    # swatch was inside tolerance still failed, and the note said "palette
+    # drift" when nothing had drifted past tolerance. Clever under the red key
+    # was the case that exposed it - worst 9.2, mean 1.4, every swatch ok,
+    # scored 85.2 and failed.
+    #
+    # usage is 1.0 exactly at either tolerance, so palette_score >= 92 is now
+    # equivalent to "mean within MEAN_DRIFT_TOLERANCE and worst within
+    # SWATCH_TOLERANCE" - the gate and the rule cannot drift apart again.
+    usage = max(
+        mean_de / MEAN_DRIFT_TOLERANCE,
+        worst_de / SWATCH_TOLERANCE,
+        result.pixel_drift_de / PIXEL_DRIFT_TOLERANCE,
+    )
+    result.palette_score = max(0.0, 100.0 - 8.0 * usage)
 
     if any(not s.passed for s in result.swatches):
         # A canon colour has been changed, not merely lit differently.
@@ -406,6 +568,23 @@ def measure(
             f"{len(failed)} of {len(result.swatches)} canon swatches exceed dE "
             f"{SWATCH_TOLERANCE}: " + ", ".join(f"{s.canon_hex}({s.delta_e:.0f})" for s in failed[:4])
         )
+    elif result.pixel_drift_de > PIXEL_DRIFT_TOLERANCE:
+        result.notes.append(
+            f"no tracked swatch moved past tolerance, but the whole figure "
+            f"drifted dE {result.pixel_drift_de:.1f} over the "
+            f"{PIXEL_DRIFT_TOLERANCE:.1f} pixel limit; a colour the palette "
+            f"does not track has been changed"
+        )
+    elif mean_de > MEAN_DRIFT_TOLERANCE:
+        # Say which rule failed. No individual swatch has moved past tolerance;
+        # the character has been tinted as a whole. Reporting this as "swatches
+        # exceed tolerance" sent me hunting for a swatch that did not exist.
+        result.notes.append(
+            f"every swatch is individually within dE {SWATCH_TOLERANCE:.0f}, but "
+            f"the area-weighted mean is dE {mean_de:.1f}, over the "
+            f"{MEAN_DRIFT_TOLERANCE:.1f} aggregate limit; the whole character "
+            f"has been tinted"
+        )
 
     # Contamination: any card bleed inside the silhouette is a hard identity fault.
     if contamination_px > 0:
@@ -418,11 +597,22 @@ def measure(
 
     # Legibility: small features stop reading below a height threshold.
     if rendered.height < MIN_LEGIBLE_HEIGHT:
-        ratio = rendered.height / MIN_LEGIBLE_HEIGHT
-        result.feature_legibility_score = max(0.0, 100.0 * ratio)
-        result.notes.append(
-            f"rendered at {rendered.height}px tall; below {MIN_LEGIBLE_HEIGHT}px "
-            f"small identifying features are not proven legible at print size"
-        )
+        if identity_critical:
+            ratio = rendered.height / MIN_LEGIBLE_HEIGHT
+            result.feature_legibility_score = max(0.0, 100.0 * ratio)
+            result.notes.append(
+                f"rendered at {rendered.height}px tall; below "
+                f"{MIN_LEGIBLE_HEIGHT}px small identifying features are not "
+                f"proven legible at print size"
+            )
+        else:
+            # Exempted, but never silently. The number is still recorded so an
+            # approval step can see exactly what was waived and by how much.
+            result.legibility_exempt = True
+            result.notes.append(
+                f"LEGIBILITY EXEMPT: rendered at {rendered.height}px, below the "
+                f"{MIN_LEGIBLE_HEIGHT}px floor, and staged as non-identity-"
+                f"bearing background presence. Colour identity was still gated."
+            )
 
     return result

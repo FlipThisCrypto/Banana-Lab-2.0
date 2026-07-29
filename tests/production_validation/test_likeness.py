@@ -13,13 +13,52 @@ from PIL import Image
 
 from app.services.compositor import LightContract, relight
 from app.services.likeness import (
-    SWATCH_TOLERANCE, delta_e, extract_palette, measure, srgb_to_lab,
+    MEAN_DRIFT_TOLERANCE, PIXEL_DRIFT_TOLERANCE, SWATCH_TOLERANCE, delta_e,
+    delta_e_chroma,
+    extract_palette, lab_to_srgb,
+    lab_to_srgb_in_gamut, measure, srgb_to_lab,
 )
 
 pytestmark = pytest.mark.production_validation
 
 
 # --- colour maths ---------------------------------------------------------
+
+def test_lab_srgb_round_trip_is_exact():
+    """relight() recombines in Lab, so the inverse must be a true inverse.
+
+    A lossy inverse would silently shift every canon colour on every panel.
+    """
+    rgb = np.array([
+        [185, 66, 53], [52, 229, 232], [222, 222, 222], [10, 10, 10],
+        [0, 0, 0], [255, 255, 255], [168, 192, 156], [144, 144, 144],
+    ], dtype=float)
+    back = lab_to_srgb(srgb_to_lab(rgb))
+    assert np.abs(back - rgb).max() < 1e-6
+
+
+def test_lab_recombination_holds_hue_when_out_of_gamut():
+    """Darkening saturated colours leaves sRGB. The hue must survive anyway.
+
+    Channel clipping does not survive it: cyan taken to 60% L* clips red to
+    zero and swings a* by 12. Chroma-scaled gamut mapping keeps the hue angle
+    and gives up only unrepresentable chroma.
+    """
+    rgb = np.array([[185, 66, 53], [52, 229, 232], [168, 192, 156]], dtype=float)
+    lab = srgb_to_lab(rgb)
+    darker = lab.copy()
+    darker[:, 0] *= 0.6
+
+    mapped = srgb_to_lab(lab_to_srgb_in_gamut(darker))
+    clipped = srgb_to_lab(np.clip(lab_to_srgb(darker), 0.0, 255.0))
+
+    def hue_deg(v):
+        return np.degrees(np.arctan2(v[:, 2], v[:, 1]))
+
+    assert np.abs(hue_deg(mapped) - hue_deg(lab)).max() < 1.0
+    assert (np.abs(hue_deg(clipped) - hue_deg(lab)).max()
+            > np.abs(hue_deg(mapped) - hue_deg(lab)).max())
+
 
 def test_lab_conversion_anchors():
     """Known reference values, so a broken conversion cannot silently pass."""
@@ -152,17 +191,19 @@ def _flat(rgb: tuple[int, int, int], size=(160, 100)) -> Image.Image:
 
 
 def _hue_shift(before: Image.Image, after: Image.Image) -> float:
-    """dE between the two, after normalising away any luminance change.
+    """Chroma-plane dE: drift in a*/b*, ignoring the L* the light may change.
 
-    Isolates hue drift from the value change the light is supposed to cause.
+    This used to normalise luminance by scaling RGB uniformly and then take a
+    full dE. That is not luminance-normalisation - scaling a saturated colour
+    up in RGB also raises its chroma. Restoring (180,60,48) after a relight
+    needed a x1.52 scale, which pushed a*b* from (47.9, 34.0) to (64.4, 46.4)
+    and reported dE 21.6 for a relight whose real chroma drift was 2.3. The
+    helper was measuring its own normalisation. Use the same L*-independent
+    instrument the metric itself uses.
     """
     a = np.asarray(before.convert("RGB")).astype(float).reshape(-1, 3).mean(axis=0)
     b = np.asarray(after.convert("RGB")).astype(float).reshape(-1, 3).mean(axis=0)
-    weights = np.array([0.2126, 0.7152, 0.0722])
-    la, lb = (a * weights).sum(), (b * weights).sum()
-    if lb > 1e-4:
-        b = np.clip(b * (la / lb), 0, 255)
-    return float(delta_e(srgb_to_lab(a), srgb_to_lab(b)))
+    return float(delta_e_chroma(srgb_to_lab(b), srgb_to_lab(a)))
 
 
 CYAN_LIGHT = dict(key_angle_deg=90.0, key_color=(150, 225, 235),
@@ -212,6 +253,32 @@ def test_relight_still_changes_luminance():
     assert abs(after - before) > 1.0, "the light must still affect value"
 
 
+def test_colour_under_full_transparency_cannot_reach_the_output():
+    """relight() neutralises RGB where alpha == 0, for speed. Prove it is free.
+
+    Cut-out layers carry arbitrary matte colour under alpha=0. It never renders,
+    but it dominated the gamut search (67.6% of pixels out of gamut, only 4.1%
+    both visible AND out of gamut). Neutralising it took relight from 8.23s to
+    1.66s on a 1.04MP layer. Measured bit-identical on 8 layers; this holds it.
+    """
+    arr = np.zeros((120, 120, 4), dtype=np.uint8)
+    arr[..., :3] = (200, 100, 50)
+    arr[30:90, 30:90, 3] = 255
+    arr[20:40, 20:40, 3] = 128          # semi-transparent edge must be kept
+    clean = Image.fromarray(arr, "RGBA")
+
+    polluted = arr.copy()
+    polluted[..., :3][polluted[..., 3] == 0] = (37, 211, 102)
+
+    light = LightContract(**CYAN_LIGHT, protect_neutrals=0.85)
+    a = np.asarray(relight(clean, light, spill_color=(40, 90, 100))).astype(int)
+    b = np.asarray(relight(Image.fromarray(polluted, "RGBA"), light,
+                           spill_color=(40, 90, 100))).astype(int)
+
+    visible = arr[..., 3] > 0
+    assert np.array_equal(a[..., :3][visible], b[..., :3][visible])
+
+
 def test_relight_preserves_alpha():
     arr = np.zeros((80, 80, 4), dtype=np.uint8)
     arr[..., :3] = (200, 100, 50)
@@ -258,6 +325,110 @@ def test_control_unmodified_passes(canon_character):
     result = _score(canon_character, canon_character)
     assert result.passed
     assert result.score >= 99.0
+
+
+def test_damage_to_a_colour_the_palette_never_tracked_is_still_caught():
+    """The palette has a coverage hole. The pixel rule is the net under it.
+
+    A cluster below min_share is not tracked at all, so nothing in the swatch
+    rules can see it change. Measured on real art: neonblue_21_running has
+    11201 high-chroma pixels (3.60% of the figure) and 100% of them sit more
+    than dE 14 from any tracked swatch - his palette comes back entirely
+    neutral, because the cyan crown fragments into Lab clusters that each fall
+    under the threshold. Recolouring it scored exactly 100.0. The metric saw
+    nothing, because nothing was there to see.
+
+    Reproduced here by varying the accent across Lab bins, which is what the
+    real art does. Note that scattering one FLAT colour spatially does not
+    reproduce it - that stays a single cluster and gets tracked normally.
+    """
+    arr = np.zeros((400, 300, 4), dtype=np.uint8)
+    arr[..., 3] = 255
+    arr[:, :, :3] = (222, 222, 222)
+    arr[240:, :, :3] = (10, 10, 10)
+    # A saturated accent spread across Lab bins: 13 distinct colours, 4.8% of
+    # the figure, none of them a large enough single cluster to be tracked.
+    accents = []
+    for i, row in enumerate(range(20, 220, 16)):
+        colour = (min(250, 20 + i * 16), min(250, 190 + i * 10),
+                  min(250, 205 + i * 10))
+        arr[row:row + 2, 40:260, :3] = colour
+        accents.append(colour)
+    canon = Image.fromarray(arr, "RGBA")
+
+    chromatic = [s for s in extract_palette(canon) if max(s.rgb) - min(s.rgb) > 40]
+    assert not chromatic, (
+        "fixture invalid: the accent IS tracked, so it does not test the hole"
+    )
+
+    recoloured = arr.copy()
+    for colour in set(accents):
+        mask = np.all(arr[..., :3] == colour, axis=-1)
+        recoloured[..., :3][mask] = (colour[2], colour[0], colour[1])
+
+    result = measure(Image.fromarray(recoloured, "RGBA"), canon, "MZ-CHAR-001")
+    assert result.pixel_drift_de > PIXEL_DRIFT_TOLERANCE
+    assert not result.passed, (
+        "recolouring an untracked identity colour must still fail"
+    )
+
+
+def test_the_two_palette_rules_each_catch_what_the_other_misses(canon_character):
+    """The mean rule and the worst rule are not redundant. Measured separation:
+
+                                worst dE   mean dE
+      legitimate relights        1.6-9.2   0.7-1.5
+      free tint, cool key           10.3       5.9   <- only the mean catches it
+      free tint, red key            17.6       9.7
+      fully desaturated             40.3       2.7   <- only the worst catches it
+      crown recoloured orange       86.9       2.4   <- only the worst catches it
+
+    Drop either rule and a real identity failure passes.
+    """
+    arr = np.asarray(canon_character).copy()
+
+    # Recolour the small crown: huge worst, tiny mean (it is 2.7% of the figure).
+    recoloured = arr.copy()
+    recoloured[20:60, 110:190, :3] = (232, 140, 52)
+    r = _score(Image.fromarray(recoloured, "RGBA"), canon_character)
+    assert not r.passed
+    assert r.palette_worst_de > SWATCH_TOLERANCE
+    assert r.palette_mean_de < MEAN_DRIFT_TOLERANCE, (
+        "the mean must NOT catch this - that is why the worst rule exists"
+    )
+
+    # Tint everything gently: every swatch stays inside tolerance, mean does not.
+    tinted = arr.astype(float)
+    tinted[..., :3] *= np.array([0.92, 1.0, 1.03])
+    tinted = np.clip(tinted, 0, 255).astype(np.uint8)
+    r = _score(Image.fromarray(tinted, "RGBA"), canon_character)
+    assert not r.passed
+    assert r.palette_worst_de < SWATCH_TOLERANCE, (
+        "no single swatch should be over tolerance - that is why the mean exists"
+    )
+    assert r.palette_mean_de > MEAN_DRIFT_TOLERANCE
+
+
+def test_palette_gate_and_the_de_tolerances_cannot_disagree(canon_character):
+    """palette_score >= 92 must mean exactly 'both dE rules satisfied'.
+
+    They disagreed once: Clever under the red key had every swatch inside dE 12
+    and an area-weighted mean of 1.4, yet scored 85.2 and was reported as
+    'palette drift' when nothing had drifted past tolerance. A gate derived
+    from one tolerance while the rule used another will always drift apart.
+    """
+    arr = np.asarray(canon_character).astype(float)
+    for factor in (1.00, 0.97, 0.94, 0.90, 0.85, 0.75, 0.60):
+        shifted = arr.copy()
+        shifted[..., :3] *= np.array([factor, 1.0, 2.0 - factor])
+        r = _score(Image.fromarray(np.clip(shifted, 0, 255).astype(np.uint8),
+                                   "RGBA"), canon_character)
+        within = (r.palette_mean_de <= MEAN_DRIFT_TOLERANCE
+                  and r.palette_worst_de <= SWATCH_TOLERANCE)
+        assert (r.palette_score >= 92.0) == within, (
+            f"factor {factor}: score {r.palette_score:.1f} disagrees with "
+            f"mean {r.palette_mean_de:.2f} / worst {r.palette_worst_de:.2f}"
+        )
 
 
 def test_control_hue_swap_fails(canon_character):

@@ -19,6 +19,10 @@ from pathlib import Path
 import numpy as np
 from PIL import Image, ImageChops, ImageDraw, ImageFilter
 
+from app.services.likeness import (
+    LikenessResult, lab_to_srgb_in_gamut, measure, srgb_to_lab,
+)
+
 
 @dataclass
 class GroundPlane:
@@ -99,6 +103,24 @@ class Placement:
     contact_offset: float = 0.0
     occluder: Path | None = None
     notes: str = ""
+    #: Whether this character's identity has to READ in this panel.
+    #:
+    #: Default True: the character must be large enough for its small
+    #: identifying features to survive print. Set False only for a figure that
+    #: is deliberately background presence - a silhouette in a crowd, a distant
+    #: passer-by - where the script does not ask the reader to recognise them.
+    #:
+    #: This exists because the approved plate calibrations frame chibi
+    #: characters as WIDE shots. On school-pa-zone a character standing at the
+    #: very bottom of frame is 167 px in an 832 px panel, and reaching the
+    #: 320 px legibility floor would need foot_y = 1185 - off the bottom of the
+    #: image. Ground-plane-correct staging on these plates CANNOT produce an
+    #: identity-legible character, so the choice is tighter framing or an
+    #: explicit, recorded decision that this figure is not identity-bearing.
+    #:
+    #: It is an opt-out, per placement, recorded in the composite report. It is
+    #: not a way to turn the gate off, and colour identity is still measured.
+    identity_critical: bool = True
 
 
 DEPTH_BLUR = {"foreground": 0.0, "midground": 0.0, "background": 1.1}
@@ -174,6 +196,15 @@ def relight(
     rgb, alpha = rgba[..., :3], rgba[..., 3:4] / 255.0
     height, width = rgb.shape[:2]
 
+    # Cut-out layers carry arbitrary colour under alpha=0 - whatever the matte
+    # left behind. It never renders (alpha is passed through untouched below),
+    # but the Lab work still pays for it, and that colour is often wildly
+    # out of gamut once darkened. Measured on the layer library: ~63% of pixels
+    # are fully transparent and 67.6% go out of gamut, but only 4.1% are BOTH
+    # visible and out of gamut. Neutralising the invisible ones is free.
+    # Anti-aliased edge pixels have alpha > 0 and are untouched.
+    rgb = np.where(alpha > 0.0, rgb, 0.0)
+
     # A soft linear gradient standing in for a distant directional source.
     angle = math.radians(light.key_angle_deg)
     xs = np.linspace(-1.0, 1.0, width, dtype=np.float32)[None, :]
@@ -207,13 +238,18 @@ def relight(
         tinted = (tinted * (1.0 - light.spill_strength)
                   + tinted * spill * light.spill_strength * 2.0)
 
-    weights = np.array([0.2126, 0.7152, 0.0722], dtype=np.float32)
-    base_luma = (base * weights).sum(axis=2, keepdims=True)
-    lit_luma = (tinted * weights).sum(axis=2, keepdims=True)
-
-    # Original hue, carrying the light's luminance. Hue is exactly preserved.
-    scale = lit_luma / np.maximum(base_luma, 1e-4)
-    hue_safe = np.clip(base * scale, 0.0, 1.0)
+    # Take the light's LIGHTNESS and the art's HUE AND CHROMA, recombined in
+    # Lab. Doing this by scaling RGB ratios instead - the obvious approach - is
+    # not the same thing: uniform RGB scaling preserves hue in RGB terms but
+    # still moves a* and b*, leaving an irreducible ~10 dE on saturated colours
+    # even at full protection. Measured on a flat #B94235 patch under a cyan
+    # key: 10.2 dE at protect=1.0, where it should be ~0.
+    base_lab = srgb_to_lab(base * 255.0)
+    tinted_lab = srgb_to_lab(np.clip(tinted, 0.0, 1.0) * 255.0)
+    recombined = np.stack(
+        [tinted_lab[..., 0], base_lab[..., 1], base_lab[..., 2]], axis=-1
+    )
+    hue_safe = (lab_to_srgb_in_gamut(recombined) / 255.0).astype(np.float32)
 
     # Then allow a limited amount of real tint back, so the character still
     # belongs to the scene rather than looking cut out of a different one.
@@ -296,6 +332,21 @@ class CompositeReport:
     placements: list[dict] = field(default_factory=list)
     warnings: list[str] = field(default_factory=list)
 
+    @property
+    def likeness_passed(self) -> bool:
+        """True only if every staged character cleared the likeness gate.
+
+        A panel with an uncertain character identity is not approvable, so the
+        compositor records a number for every placement rather than leaving it
+        to a later manual check that may not happen.
+        """
+        return all(p.get("likeness_passed", False) for p in self.placements)
+
+    @property
+    def worst_likeness(self) -> float:
+        return min((p.get("likeness_score", 0.0) for p in self.placements),
+                   default=100.0)
+
 
 def composite_panel(
     plate_path: Path,
@@ -317,7 +368,7 @@ def composite_panel(
     order = {"background": 0, "midground": 1, "foreground": 2}
     ordered = sorted(placements, key=lambda p: order.get(p.depth_plane, 1))
 
-    prepared: list[tuple[Placement, Image.Image, int, int, int]] = []
+    prepared: list[tuple[Placement, Image.Image, int, int, LikenessResult]] = []
 
     for place in ordered:
         if place.flip and place.character_id in NO_FLIP:
@@ -358,6 +409,13 @@ def composite_panel(
         left = place.centre_x - layer.width // 2
         top = int(place.foot_y - layer.height + place.contact_offset)
 
+        # The identity reference for this placement: the approved layer as it
+        # will appear in the panel, before any lighting touches it. Captured
+        # after flip and depth blur (both legitimate staging) and before relight
+        # and haze (both of which can move colour), so the measurement isolates
+        # what the lighting did to the character.
+        canon_reference = layer.copy()
+
         spill = _sample_environment(plate, place.centre_x, int(place.foot_y - layer.height * 0.5))
         layer = relight(layer, light, spill_color=spill)
 
@@ -386,14 +444,29 @@ def composite_panel(
         region = shadow_layer.crop((gx, gy, gx + cast.width, gy + cast.height))
         shadow_layer.paste(ImageChops.lighter(region, cast), (gx, gy))
 
-        prepared.append((place, layer, left, top, 0))
+        # Measure identity now, while the reference is still aligned. Once the
+        # character is composited onto the plate it cannot be separated from the
+        # background, and the number would no longer be recoverable.
+        likeness = measure(
+            layer, canon_reference, place.character_id,
+            layer_name=Path(place.layer_path).name,
+            identity_critical=place.identity_critical,
+        )
+        if not likeness.passed:
+            report.warnings.append(
+                f"LIKENESS: {place.character_id} scored {likeness.score:.1f} "
+                f"(gate 95.0) from {Path(place.layer_path).name}"
+                + (f" - {likeness.notes[0]}" if likeness.notes else "")
+            )
+
+        prepared.append((place, layer, left, top, likeness))
 
     # Burn shadows into the plate before the characters land on top.
     shadow_rgba = Image.new("RGBA", canvas.size, (0, 0, 0, 0))
     shadow_rgba.putalpha(shadow_layer)
     canvas = Image.alpha_composite(canvas, shadow_rgba)
 
-    for place, layer, left, top, _ in prepared:
+    for place, layer, left, top, likeness in prepared:
         canvas.alpha_composite(layer, (left, top))
         if place.occluder and Path(place.occluder).is_file():
             occ = _load_rgba(Path(place.occluder)).resize(canvas.size, Image.LANCZOS)
@@ -409,6 +482,13 @@ def composite_panel(
                 "depth_plane": place.depth_plane,
                 "scale_multiplier": place.scale_multiplier,
                 "top_left": [left, top],
+                "likeness_score": likeness.score,
+                "likeness_passed": likeness.passed,
+                "likeness_palette_de": round(likeness.palette_delta_e, 2),
+                "likeness_pixel_drift_de": round(likeness.pixel_drift_de, 2),
+                "likeness_notes": likeness.notes,
+                "likeness_legibility_exempt": likeness.legibility_exempt,
+                "identity_critical": place.identity_critical,
             }
         )
 

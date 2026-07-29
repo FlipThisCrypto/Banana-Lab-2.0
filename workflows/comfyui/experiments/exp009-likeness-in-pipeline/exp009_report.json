@@ -1,0 +1,56 @@
+{
+ "placements": [
+  {
+   "character_id": "MZ-CHAR-005",
+   "layer": "neonblue_16_worried.png",
+   "centre_x": 330,
+   "foot_y": 790,
+   "rendered_height_px": 149,
+   "rendered_width_px": 99,
+   "depth_plane": "midground",
+   "scale_multiplier": 1.0,
+   "top_left": [
+    281,
+    641
+   ],
+   "likeness_score": 85.3,
+   "likeness_passed": false,
+   "likeness_palette_de": 2.36,
+   "likeness_pixel_drift_de": 2.3,
+   "likeness_notes": [
+    "rendered at 149px tall; below 320px small identifying features are not proven legible at print size"
+   ],
+   "likeness_legibility_exempt": false,
+   "identity_critical": true
+  },
+  {
+   "character_id": "MZ-CHAR-001",
+   "layer": "moodz_00_clean_base.png",
+   "centre_x": 760,
+   "foot_y": 760,
+   "rendered_height_px": 136,
+   "rendered_width_px": 108,
+   "depth_plane": "midground",
+   "scale_multiplier": 1.0,
+   "top_left": [
+    706,
+    624
+   ],
+   "likeness_score": 85.9,
+   "likeness_passed": false,
+   "likeness_palette_de": 1.5,
+   "likeness_pixel_drift_de": 1.47,
+   "likeness_notes": [
+    "rendered at 136px tall; below 320px small identifying features are not proven legible at print size"
+   ],
+   "likeness_legibility_exempt": false,
+   "identity_critical": true
+  }
+ ],
+ "warnings": [
+  "LIKENESS: MZ-CHAR-005 scored 85.3 (gate 95.0) from neonblue_16_worried.png - rendered at 149px tall; below 320px small identifying features are not proven legible at print size",
+  "LIKENESS: MZ-CHAR-001 scored 85.9 (gate 95.0) from moodz_00_clean_base.png - rendered at 136px tall; below 320px small identifying features are not proven legible at print size"
+ ],
+ "likeness_passed": false,
+ "worst_likeness": 85.3
+}

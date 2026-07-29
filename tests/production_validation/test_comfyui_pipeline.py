@@ -10,6 +10,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import numpy as np
 import pytest
 
 from app.core import paths
@@ -148,6 +149,161 @@ def test_non_standing_pose_without_offset_is_flagged(tmp_path):
 
     _, report = composite_panel(plate, ground, light, [place])
     assert any("STAGING" in w for w in report.warnings)
+
+
+def test_every_staged_character_gets_a_likeness_number(tmp_path):
+    """A panel must not be producible without a likeness measurement.
+
+    The metric existed for a while as a validation script only - nothing in the
+    production path called it, so a panel could be composited with no record of
+    whether its characters still looked like themselves. Once a character is
+    composited onto the plate it cannot be separated from the background and the
+    number is no longer recoverable, so it has to be taken during staging.
+    """
+    from PIL import Image
+
+    from app.services.compositor import (
+        GroundPlane, LightContract, Placement, composite_panel,
+    )
+
+    plate = tmp_path / "plate.png"
+    Image.new("RGB", (400, 500), (20, 30, 40)).save(plate)
+    layer = tmp_path / "static_01_neutral.png"
+    arr = np.zeros((240, 120, 4), dtype=np.uint8)
+    arr[..., 3] = 255
+    arr[..., :3] = (222, 222, 222)
+    arr[150:, :, :3] = (20, 20, 20)
+    Image.fromarray(arr, "RGBA").save(layer)
+
+    ground = GroundPlane(horizon_y=100, calib_foot_y=480, calib_height_px=300)
+    place = Placement("MZ-CHAR-003", layer, centre_x=200, foot_y=470)
+
+    _, report = composite_panel(
+        plate, ground,
+        LightContract(key_angle_deg=90, key_color=(150, 225, 235),
+                      key_strength=0.22, fill_strength=0.10,
+                      spill_strength=0.14),
+        [place],
+    )
+    assert len(report.placements) == 1
+    record = report.placements[0]
+    assert "likeness_score" in record and record["likeness_score"] > 0
+    assert "likeness_passed" in record
+    assert report.worst_likeness == record["likeness_score"]
+
+
+def test_a_character_wrecked_by_the_light_is_reported_not_silently_staged(tmp_path):
+    """A hostile light must produce a warning, not a quiet panel.
+
+    protect_neutrals=0.0 is the free tint the relight design exists to prevent.
+    """
+    from PIL import Image
+
+    from app.services.compositor import (
+        GroundPlane, LightContract, Placement, composite_panel,
+    )
+
+    plate = tmp_path / "plate.png"
+    Image.new("RGB", (400, 500), (20, 30, 40)).save(plate)
+    layer = tmp_path / "static_01_neutral.png"
+    arr = np.zeros((240, 120, 4), dtype=np.uint8)
+    arr[..., 3] = 255
+    arr[..., :3] = (222, 222, 222)
+    arr[150:, :, :3] = (20, 20, 20)
+    Image.fromarray(arr, "RGBA").save(layer)
+
+    ground = GroundPlane(horizon_y=100, calib_foot_y=480, calib_height_px=300)
+    place = Placement("MZ-CHAR-003", layer, centre_x=200, foot_y=470)
+
+    _, report = composite_panel(
+        plate, ground,
+        LightContract(key_angle_deg=90, key_color=(255, 60, 40),
+                      key_strength=0.6, fill_strength=0.4,
+                      spill_strength=0.5, protect_neutrals=0.0),
+        [place],
+    )
+    assert any("LIKENESS" in w for w in report.warnings)
+    assert not report.likeness_passed
+
+
+def test_legibility_can_be_waived_only_explicitly_and_never_silently(tmp_path):
+    """A background figure may be small. The waiver must still be recorded.
+
+    The approved plate calibrations frame chibi characters as wide shots: on
+    school-pa-zone a character standing at the very bottom of an 832px frame is
+    167px, and reaching the 320px floor would need foot_y = 1185. So the floor
+    is unreachable by correct staging, and without an explicit opt-out the
+    pressure would be to disable the gate wholesale - which is worse.
+    """
+    from PIL import Image
+
+    from app.services.compositor import (
+        GroundPlane, LightContract, Placement, composite_panel,
+    )
+
+    plate = tmp_path / "plate.png"
+    Image.new("RGB", (400, 500), (20, 30, 40)).save(plate)
+    layer = tmp_path / "static_01_neutral.png"
+    arr = np.zeros((240, 120, 4), dtype=np.uint8)
+    arr[..., 3] = 255
+    arr[..., :3] = (222, 222, 222)
+    arr[150:, :, :3] = (20, 20, 20)
+    Image.fromarray(arr, "RGBA").save(layer)
+
+    ground = GroundPlane(horizon_y=100, calib_foot_y=480, calib_height_px=300)
+    light = LightContract(key_angle_deg=90, key_color=(150, 225, 235),
+                          key_strength=0.22, fill_strength=0.10,
+                          spill_strength=0.14)
+
+    # foot_y 350 renders ~197px. The floor is a ramp, not a cliff: 320px scores
+    # 100 and the 85 gate bites below ~272px, so the fixture has to be well
+    # under the floor for the default to fail.
+    strict = Placement("MZ-CHAR-003", layer, centre_x=200, foot_y=350)
+    _, report = composite_panel(plate, ground, light, [strict])
+    assert not report.likeness_passed, "small render must fail by default"
+
+    waived = Placement("MZ-CHAR-003", layer, centre_x=200, foot_y=350,
+                       identity_critical=False)
+    _, report = composite_panel(plate, ground, light, [waived])
+    record = report.placements[0]
+    assert report.likeness_passed
+    assert record["likeness_legibility_exempt"] is True
+    assert record["identity_critical"] is False
+    assert any("LEGIBILITY EXEMPT" in n for n in record["likeness_notes"]), (
+        "the waiver must appear in the record, not just change the verdict"
+    )
+
+
+def test_a_waiver_does_not_also_waive_colour_identity(tmp_path):
+    """identity_critical=False relaxes SIZE only. Colour is still gated."""
+    from PIL import Image
+
+    from app.services.compositor import (
+        GroundPlane, LightContract, Placement, composite_panel,
+    )
+
+    plate = tmp_path / "plate.png"
+    Image.new("RGB", (400, 500), (20, 30, 40)).save(plate)
+    layer = tmp_path / "static_01_neutral.png"
+    arr = np.zeros((240, 120, 4), dtype=np.uint8)
+    arr[..., 3] = 255
+    arr[..., :3] = (222, 222, 222)
+    arr[150:, :, :3] = (20, 20, 20)
+    Image.fromarray(arr, "RGBA").save(layer)
+
+    ground = GroundPlane(horizon_y=100, calib_foot_y=480, calib_height_px=300)
+    waived = Placement("MZ-CHAR-003", layer, centre_x=200, foot_y=470,
+                       identity_critical=False)
+
+    _, report = composite_panel(
+        plate, ground,
+        LightContract(key_angle_deg=90, key_color=(255, 60, 40),
+                      key_strength=0.6, fill_strength=0.4,
+                      spill_strength=0.5, protect_neutrals=0.0),
+        [waived],
+    )
+    assert not report.likeness_passed
+    assert any("LIKENESS" in w for w in report.warnings)
 
 
 def test_ground_plane_scale_falls_off_with_depth():
