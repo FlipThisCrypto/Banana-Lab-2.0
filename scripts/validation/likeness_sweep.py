@@ -106,9 +106,13 @@ def main() -> int:
             # Contamination only counts against a layer that has NOT been
             # repaired; a repaired layer no longer carries it.
             bleed = 0 if use != layer else contamination.get(rel, 0)
+            # Compare the prepared layer against its own relit self, so the
+            # comparison stays on the exact pixel-aligned path. Passing the
+            # on-disk file here would be a size mismatch, because `image` has
+            # been trimmed and eroded.
             result = measure(
                 relight(image, light, spill_color=scene["spill"]),
-                use, cid, contamination_px=bleed,
+                image, cid, contamination_px=bleed, layer_name=rel,
             )
             rows.append({
                 "layer": rel, "character": character, "scene": scene_name,

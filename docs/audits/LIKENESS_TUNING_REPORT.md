@@ -230,6 +230,118 @@ cyan light.
 
 ---
 
+## The metric was wrong. Twice. Negative controls caught it.
+
+After the fixes above, the library scored **417 / 417 (100%)**.
+
+That number was worthless, and finding out why was the most valuable work in
+this run.
+
+### Why 100% was not believable
+
+A metric that passes everything is indistinguishable from no metric. So before
+reporting the result, the metric was run against deliberately broken inputs that
+it *must* reject.
+
+**Three of six negative controls passed:**
+
+| Control | Expected | Got |
+|---|---|---|
+| Hue-swapped character (R↔G) | FAIL | **PASS**, 99.1 |
+| Fully desaturated | FAIL | **PASS**, 98.2 |
+| Free tint, no hue protection | FAIL | **PASS**, 99.5 |
+| Crushed to 25% lightness | FAIL | FAIL |
+| Clean art + 6000 px card bleed | FAIL | FAIL |
+| Rendered at 1/5 size | FAIL | FAIL |
+
+The free-tint case is the damning one: that is the exact failure mode this
+module exists to catch, and the metric waved it through at 99.5.
+
+### Fault 1 — nearest-neighbour matching
+
+The palette check found, for each canon swatch, the *nearest rendered colour*.
+Across tens of thousands of pixels something always lands near any given
+swatch. A character could be almost entirely the wrong colour and still score
+perfectly.
+
+**Fix:** where the render is pixel-aligned with the approved layer — which it is
+for every composite this pipeline produces, since the render *is* the
+transformed layer — compare the pixels that **were** each canon swatch with what
+they **became**. That correspondence is exact and cannot be satisfied by a
+coincidence elsewhere in the image.
+
+Free tint and crushed-lightness then failed correctly. Hue-swap and desaturate
+still passed.
+
+### Fault 2 — area weighting buried the identity colours
+
+NeonBlue is mostly neutral: white fur, black clothing. Swapping R and G does
+nothing to a grey pixel, so an area-weighted mean barely moved.
+
+But the parts that *do* carry hue are exactly the required identifying
+features — his cyan crown, Moodz's blue accent, Scarline's scarlet streak. They
+are small-area and high-importance, and area weighting is precisely the wrong
+weighting for them.
+
+**Fix:** the palette score is now driven by the **worst** swatch as much as the
+mean, and any single swatch over tolerance caps the component at 80, which fails
+the gate outright.
+
+### Fault 3 — the identity colours were not in the palette at all
+
+Even after that, recolouring **14,923 px of NeonBlue's cyan crown to orange**
+still scored 100.
+
+Diagnosis:
+
+```
+cyan-crown pixels : 14,108 = 3.98% of the character
+spread across     : 1,087 quantised RGB bins
+largest single bin: 0.121% of the character
+```
+
+The palette was built by binning RGB at `//6`. Any colour with a gradient or
+anti-aliasing fragments across dozens of bins, none of which clears the 1.2%
+share threshold — so the crown was never a tracked swatch, and changing it was
+literally not measured.
+
+Worse: **8 of the 10 tracked swatches had zero chroma.** The metric was barely
+measuring colour at all.
+
+**Fix:** cluster in Lab rather than binning RGB. Gradients merge into one
+perceptual cluster; distinct hues stay apart. The crown now appears as a tracked
+swatch at 1.40% share with chroma 180.
+
+### Controls after all three fixes
+
+| Control | Expected | Score | Result |
+|---|---|---:|---|
+| Hue-swapped (R↔G) | FAIL | 45.0 | FAIL |
+| Fully desaturated | FAIL | 67.1 | FAIL |
+| Free tint, no hue protection | FAIL | 87.9 | FAIL |
+| Crushed to 25% lightness | FAIL | 73.1 | FAIL |
+| Clean + 6000 px card bleed | FAIL | 80.6 | FAIL |
+| **Cyan crown recoloured orange** | FAIL | 45.0 | FAIL |
+| Unmodified layer | PASS | 100.0 | PASS |
+| Correct hue-safe relight | PASS | 97.1 | PASS |
+
+**0 incorrect verdicts.**
+
+### The lesson
+
+Every number in this report before this section was produced by a metric that
+could not tell a correct character from a hue-swapped one. The fixes to the
+*pipeline* were real and remain valid — the card bleed was genuine, the relight
+drift was genuine, both were confirmed by eye. But the *scores* attached to them
+were not measuring what they claimed.
+
+A metric is not trustworthy because it is precise, or because it agrees with
+your expectations. It is trustworthy when it rejects things it should reject.
+Negative controls are not optional, and they belong in the regression suite —
+which is where they now live.
+
+---
+
 ## Current position
 
 | Stage | Pass rate | Layers clean across all 3 scenes |

@@ -226,3 +226,113 @@ def test_relight_preserves_alpha():
 def test_default_protection_is_the_tuned_value():
     """Guards against someone lowering the default and quietly regressing."""
     assert LightContract(key_angle_deg=0, key_color=(255, 255, 255)).protect_neutrals >= 0.85
+
+
+# --- negative controls ----------------------------------------------------
+#
+# These exist because the metric passed three of six deliberately-broken inputs
+# on its first two designs, including the exact free-tint failure mode it was
+# written to catch. A metric that passes everything is indistinguishable from no
+# metric. These are not optional.
+
+@pytest.fixture
+def canon_character():
+    """A small synthetic character: mostly neutral, with one small hue accent.
+
+    Shaped like the real problem - NeonBlue is mostly white fur and black
+    clothing, and his identity lives in a cyan crown that is under 4% of him.
+    """
+    arr = np.zeros((400, 300, 4), dtype=np.uint8)
+    arr[..., 3] = 255
+    arr[:, :, :3] = (222, 222, 222)          # pale fur, dominant
+    arr[240:, :, :3] = (10, 10, 10)          # black clothing
+    arr[20:60, 110:190, :3] = (52, 229, 232)  # cyan crown, ~2.7% of the figure
+    return Image.fromarray(arr, "RGBA")
+
+
+def _score(rendered, canon):
+    return measure(rendered, canon, "MZ-CHAR-005")
+
+
+def test_control_unmodified_passes(canon_character):
+    result = _score(canon_character, canon_character)
+    assert result.passed
+    assert result.score >= 99.0
+
+
+def test_control_hue_swap_fails(canon_character):
+    arr = np.asarray(canon_character).copy()
+    arr[..., [0, 1]] = arr[..., [1, 0]]
+    result = _score(Image.fromarray(arr, "RGBA"), canon_character)
+    assert not result.passed, "a hue-swapped character must not pass"
+
+
+def test_control_desaturation_fails(canon_character):
+    arr = np.asarray(canon_character).astype(float).copy()
+    luma = (arr[..., :3] * [0.2126, 0.7152, 0.0722]).sum(axis=2, keepdims=True)
+    arr[..., :3] = np.repeat(luma, 3, axis=2)
+    result = _score(Image.fromarray(arr.astype(np.uint8), "RGBA"), canon_character)
+    assert not result.passed, "a desaturated character must not pass"
+
+
+def test_control_small_accent_recolour_fails(canon_character):
+    """The accent is under 3% of the figure. Area weighting alone misses it.
+
+    This is the case that survived two metric designs: recolouring the whole of
+    NeonBlue's cyan crown scored 100.
+    """
+    arr = np.asarray(canon_character).copy()
+    accent = (arr[..., 2] > 150) & (arr[..., 1] > 150) & (arr[..., 0] < 170)
+    assert accent.sum() > 0, "fixture must contain an accent to destroy"
+    assert accent.sum() / (arr.shape[0] * arr.shape[1]) < 0.05, "accent must be small"
+    arr[..., :3][accent] = (200, 120, 60)
+    result = _score(Image.fromarray(arr, "RGBA"), canon_character)
+    assert not result.passed, "destroying a small identity accent must fail"
+
+
+def test_control_free_tint_fails(canon_character):
+    """The failure mode this whole module exists to catch."""
+    free = relight(canon_character,
+                   LightContract(**CYAN_LIGHT, protect_neutrals=0.0),
+                   spill_color=(40, 90, 100))
+    assert not _score(free, canon_character).passed
+
+
+def test_control_crushed_lightness_fails(canon_character):
+    arr = np.asarray(canon_character).astype(float).copy()
+    arr[..., :3] *= 0.25
+    result = _score(Image.fromarray(arr.astype(np.uint8), "RGBA"), canon_character)
+    assert not result.passed
+
+
+def test_control_contamination_fails(canon_character):
+    result = measure(canon_character, canon_character, "MZ-CHAR-005",
+                     contamination_px=6000)
+    assert not result.passed
+
+
+def test_correct_relight_still_passes(canon_character):
+    """The positive control. If this fails, the gate is simply too tight."""
+    safe = relight(canon_character,
+                   LightContract(**CYAN_LIGHT, protect_neutrals=0.85),
+                   spill_color=(40, 90, 100))
+    assert _score(safe, canon_character).passed
+
+
+def test_small_accent_is_actually_tracked_in_the_palette(canon_character):
+    """Root cause of the third metric failure: the accent was never a swatch.
+
+    It fragmented across 1087 RGB bins on the real layer and never cleared the
+    share threshold, so changing it was literally not measured.
+    """
+    palette = extract_palette(canon_character)
+    chromatic = [s for s in palette if max(s.rgb) - min(s.rgb) > 60]
+    assert chromatic, f"no chromatic swatch tracked; palette was {[s.hex for s in palette]}"
+
+
+def test_unaligned_comparison_is_reported_as_unmeasurable(canon_character):
+    """A size mismatch must be loudly flagged, not silently scored."""
+    smaller = canon_character.resize((canon_character.width // 2,
+                                      canon_character.height // 2))
+    result = measure(smaller, canon_character, "MZ-CHAR-005")
+    assert any("UNMEASURABLE" in n for n in result.notes)
