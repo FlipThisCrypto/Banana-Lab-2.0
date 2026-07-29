@@ -1,0 +1,418 @@
+layer,character,scene,source,score,passed,palette_score,palette_delta_e,contamination_score,contamination_px,legibility_score,note
+ash/ash_00_clean_base.png,ash,cool-corridor,repaired,89.3,False,80.5,7.02,100.0,0,100.0,
+ash/ash_00_clean_base.png,ash,warm-festival,repaired,86.8,False,76.1,8.62,100.0,0,100.0,"4 of 8 canon swatches exceed dE 12.0: #DEDEDE(14), #E4E4E4(15), #DEDED8(12), #D8D8D8(13)"
+ash/ash_00_clean_base.png,ash,red-emergency,repaired,79.2,False,62.1,13.63,100.0,0,100.0,"4 of 8 canon swatches exceed dE 12.0: #DEDEDE(22), #E4E4E4(23), #DEDED8(21), #D8D8D8(21)"
+ash/ash_13_pointing.png,ash,cool-corridor,original,88.6,False,79.2,7.47,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #F6E4CC(15), #F6E4D2(14), #F6EAD2(14), #F0F0F0(12)"
+ash/ash_13_pointing.png,ash,warm-festival,original,91.5,False,84.5,5.57,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #D8DEDE(12), #F0F0F0(17)"
+ash/ash_13_pointing.png,ash,red-emergency,original,81.8,False,67.0,11.89,100.0,0,100.0,"6 of 10 canon swatches exceed dE 12.0: #D8D8D8(18), #F6E4CC(19), #D8DEDE(20), #F6E4D2(18)"
+ash/ash_15_laughing.png,ash,cool-corridor,repaired,90.8,False,83.3,6.0,100.0,0,100.0,1 of 8 canon swatches exceed dE 12.0: #F6F6F6(14)
+ash/ash_15_laughing.png,ash,warm-festival,repaired,88.6,False,79.3,7.45,100.0,0,100.0,1 of 8 canon swatches exceed dE 12.0: #F6F6F6(19)
+ash/ash_15_laughing.png,ash,red-emergency,repaired,83.3,False,69.6,10.94,100.0,0,100.0,"3 of 8 canon swatches exceed dE 12.0: #D2D2D2(17), #F6F6F6(26), #CCCCCC(15)"
+ash/ash_16_worried.png,ash,cool-corridor,repaired,89.6,False,81.1,6.81,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #F0F0F0(13), #F6F6F6(14), #EAEAEA(12)"
+ash/ash_16_worried.png,ash,warm-festival,repaired,86.8,False,76.0,8.62,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #F0F0F0(17), #F6F6F6(19), #EAEAEA(16)"
+ash/ash_16_worried.png,ash,red-emergency,repaired,80.9,False,65.3,12.5,100.0,0,100.0,"5 of 10 canon swatches exceed dE 12.0: #D2D2D2(17), #F0F0F0(25), #CCCCCC(15), #F6F6F6(27)"
+ash/ash_17_disgusted.png,ash,cool-corridor,repaired,90.2,False,82.2,6.4,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #F0F0EA(14), #F6F6F6(14), #F0F0F0(13), #EAEAEA(12)"
+ash/ash_17_disgusted.png,ash,warm-festival,repaired,88.1,False,78.3,7.82,100.0,0,100.0,"5 of 10 canon swatches exceed dE 12.0: #F0F0EA(15), #F6F6F6(18), #F0F0F0(17), #E4E4E4(15)"
+ash/ash_17_disgusted.png,ash,red-emergency,repaired,82.4,False,68.0,11.51,100.0,0,100.0,"7 of 10 canon swatches exceed dE 12.0: #C6C6C6(14), #F0F0EA(24), #F6F6F6(27), #F0F0F0(25)"
+ash/ash_18_sleepy.png,ash,cool-corridor,original,88.5,False,79.1,7.54,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #F0F0F0(13), #F6F6F6(15)"
+ash/ash_18_sleepy.png,ash,warm-festival,original,86.0,False,74.6,9.13,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #DEDEDE(14), #F0F0F0(17), #D8D8D8(13), #F6F6F6(19)"
+ash/ash_18_sleepy.png,ash,red-emergency,original,79.5,False,62.7,13.42,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #DEDEDE(20), #F0F0F0(25), #D8D8D8(18), #F6F6F6(27)"
+ash/ash_19_determined.png,ash,cool-corridor,repaired,90.1,False,82.0,6.48,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #EAEAEA(12), #F0F0F0(13), #F6F6F6(13)"
+ash/ash_19_determined.png,ash,warm-festival,repaired,86.8,False,76.0,8.63,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #EAEAEA(16), #F0F0F0(17), #F6F6F6(19), #E4E4E4(15)"
+ash/ash_19_determined.png,ash,red-emergency,repaired,81.0,False,65.4,12.44,100.0,0,100.0,"8 of 10 canon swatches exceed dE 12.0: #EAEAEA(23), #BABABA(12), #F0F0F0(25), #C0C0C0(13)"
+ash/ash_20_confused.png,ash,cool-corridor,repaired,89.4,False,80.8,6.93,100.0,0,100.0,1 of 9 canon swatches exceed dE 12.0: #F6F6F6(14)
+ash/ash_20_confused.png,ash,warm-festival,repaired,87.3,False,76.9,8.32,100.0,0,100.0,"4 of 9 canon swatches exceed dE 12.0: #DEDEDE(14), #D8D8D8(13), #E4E4E4(15), #F6F6F6(19)"
+ash/ash_20_confused.png,ash,red-emergency,repaired,80.0,False,63.7,13.08,100.0,0,100.0,"4 of 9 canon swatches exceed dE 12.0: #DEDEDE(22), #D8D8D8(21), #E4E4E4(23), #F6F6F6(27)"
+ash/ash_21_running.png,ash,cool-corridor,repaired,90.2,False,82.1,6.44,100.0,0,100.0,
+ash/ash_21_running.png,ash,warm-festival,repaired,88.4,False,79.0,7.57,100.0,0,100.0,"3 of 8 canon swatches exceed dE 12.0: #D8D8D8(13), #D2D2D2(13), #DEDEDE(14)"
+ash/ash_21_running.png,ash,red-emergency,repaired,82.0,False,67.4,11.75,100.0,0,100.0,"3 of 8 canon swatches exceed dE 12.0: #D8D8D8(21), #D2D2D2(19), #DEDEDE(22)"
+ash/ash_22_jumping.png,ash,cool-corridor,repaired,90.3,False,82.5,6.32,100.0,0,100.0,"3 of 9 canon swatches exceed dE 12.0: #F6F6F6(14), #F0F0F0(13), #EAEAEA(12)"
+ash/ash_22_jumping.png,ash,warm-festival,repaired,87.5,False,77.3,8.16,100.0,0,100.0,"3 of 9 canon swatches exceed dE 12.0: #F6F6F6(19), #F0F0F0(17), #EAEAEA(16)"
+ash/ash_22_jumping.png,ash,red-emergency,repaired,82.4,False,68.0,11.52,100.0,0,100.0,"6 of 9 canon swatches exceed dE 12.0: #C6C6C6(14), #F6F6F6(27), #F0F0F0(25), #CCCCCC(15)"
+ash/ash_23_waving.png,ash,cool-corridor,repaired,90.7,False,83.0,6.1,100.0,0,100.0,1 of 8 canon swatches exceed dE 12.0: #F6F6F6(14)
+ash/ash_23_waving.png,ash,warm-festival,repaired,88.8,False,79.7,7.31,100.0,0,100.0,1 of 8 canon swatches exceed dE 12.0: #F6F6F6(18)
+ash/ash_23_waving.png,ash,red-emergency,repaired,83.4,False,69.8,10.87,100.0,0,100.0,"3 of 8 canon swatches exceed dE 12.0: #CCCCCC(15), #F6F6F6(27), #C6C6C6(14)"
+ash/ash_24_thinking.png,ash,cool-corridor,repaired,91.0,False,83.7,5.88,100.0,0,100.0,1 of 10 canon swatches exceed dE 12.0: #F6F6F6(14)
+ash/ash_24_thinking.png,ash,warm-festival,repaired,89.9,False,81.6,6.61,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #D8D8D8(13), #F6F6F6(19), #DEDEDE(14)"
+ash/ash_24_thinking.png,ash,red-emergency,repaired,84.1,False,71.2,10.38,100.0,0,100.0,"5 of 10 canon swatches exceed dE 12.0: #C6C6C6(16), #D8D8D8(20), #F6F6F6(27), #C0C0C0(15)"
+ash/ash_25_crouching.png,ash,cool-corridor,repaired,90.1,False,82.0,6.48,100.0,0,100.0,"2 of 9 canon swatches exceed dE 12.0: #EAEAEA(12), #F0F0F0(13)"
+ash/ash_25_crouching.png,ash,warm-festival,repaired,87.3,False,76.9,8.3,100.0,0,100.0,"3 of 9 canon swatches exceed dE 12.0: #EAEAEA(16), #F0F0F0(18), #D2D2D2(12)"
+ash/ash_25_crouching.png,ash,red-emergency,repaired,82.0,False,67.2,11.8,100.0,0,100.0,"5 of 9 canon swatches exceed dE 12.0: #EAEAEA(24), #CCCCCC(15), #C6C6C6(14), #F0F0F0(25)"
+ash/ash_26_reaching.png,ash,cool-corridor,repaired,91.8,False,85.0,5.4,100.0,0,100.0,
+ash/ash_26_reaching.png,ash,warm-festival,repaired,90.8,False,83.3,6.0,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #D8D8D8(13), #E4E4E4(15), #DEDEDE(14)"
+ash/ash_26_reaching.png,ash,red-emergency,repaired,85.7,False,73.9,9.38,100.0,0,100.0,"6 of 10 canon swatches exceed dE 12.0: #C0C0C0(14), #D8D8D8(20), #E4E4E4(23), #DEDEDE(22)"
+ash/ash_27_defeated.png,ash,cool-corridor,repaired,90.6,False,82.9,6.14,100.0,0,100.0,1 of 8 canon swatches exceed dE 12.0: #F6F6F6(15)
+ash/ash_27_defeated.png,ash,warm-festival,repaired,88.7,False,79.4,7.42,100.0,0,100.0,1 of 8 canon swatches exceed dE 12.0: #F6F6F6(18)
+ash/ash_27_defeated.png,ash,red-emergency,repaired,83.6,False,70.1,10.75,100.0,0,100.0,"3 of 8 canon swatches exceed dE 12.0: #CCCCCC(15), #F6F6F6(27), #C6C6C6(14)"
+ash/ash_28_celebrating.png,ash,cool-corridor,repaired,92.4,False,86.1,5.0,100.0,0,100.0,"2 of 7 canon swatches exceed dE 12.0: #F0F0F0(13), #F6F6F6(14)"
+ash/ash_28_celebrating.png,ash,warm-festival,repaired,91.5,False,84.6,5.54,100.0,0,100.0,"2 of 7 canon swatches exceed dE 12.0: #F0F0F0(18), #F6F6F6(19)"
+ash/ash_28_celebrating.png,ash,red-emergency,repaired,86.7,False,75.8,8.73,100.0,0,100.0,"3 of 7 canon swatches exceed dE 12.0: #CCCCCC(15), #F0F0F0(25), #F6F6F6(27)"
+ash/ash_29_lookingup.png,ash,cool-corridor,repaired,90.6,False,82.9,6.15,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #F0F0F0(13), #F6F6F6(14)"
+ash/ash_29_lookingup.png,ash,warm-festival,repaired,87.9,False,78.1,7.9,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #F0F0F0(17), #F6F6F6(19)"
+ash/ash_29_lookingup.png,ash,red-emergency,repaired,82.8,False,68.7,11.28,100.0,0,100.0,"6 of 10 canon swatches exceed dE 12.0: #F0F0F0(25), #F6F6F6(27), #BABABA(12), #D2D2D2(17)"
+ash/ash_30_backview.png,ash,cool-corridor,original,90.3,False,82.3,6.38,100.0,0,100.0,
+ash/ash_30_backview.png,ash,warm-festival,original,88.4,False,78.9,7.61,100.0,0,100.0,"3 of 8 canon swatches exceed dE 12.0: #DEDEDE(15), #E4E4E4(16), #D8D8D8(14)"
+ash/ash_30_backview.png,ash,red-emergency,original,82.1,False,67.5,11.69,100.0,0,100.0,"3 of 8 canon swatches exceed dE 12.0: #DEDEDE(22), #E4E4E4(23), #D8D8D8(20)"
+clever/clever_00_clean_base.png,clever,cool-corridor,original,89.1,False,80.2,7.13,100.0,0,100.0,"3 of 9 canon swatches exceed dE 12.0: #C6C09C(13), #F0F0F0(13), #BA4230(20)"
+clever/clever_00_clean_base.png,clever,warm-festival,original,94.0,False,89.1,3.94,100.0,0,100.0,1 of 9 canon swatches exceed dE 12.0: #F0F0F0(18)
+clever/clever_00_clean_base.png,clever,red-emergency,original,87.0,False,76.3,8.53,100.0,0,100.0,"3 of 9 canon swatches exceed dE 12.0: #C6C09C(18), #F0F0F0(25), #C0C09C(19)"
+clever/clever_01_neutral.png,clever,cool-corridor,original,89.1,False,80.2,7.13,100.0,0,100.0,"3 of 9 canon swatches exceed dE 12.0: #C6C09C(13), #F0F0F0(13), #BA4230(20)"
+clever/clever_01_neutral.png,clever,warm-festival,original,94.0,False,89.1,3.94,100.0,0,100.0,1 of 9 canon swatches exceed dE 12.0: #F0F0F0(18)
+clever/clever_01_neutral.png,clever,red-emergency,original,87.0,False,76.3,8.53,100.0,0,100.0,"3 of 9 canon swatches exceed dE 12.0: #C6C09C(18), #F0F0F0(25), #C0C09C(19)"
+clever/clever_02_threeqtr.png,clever,cool-corridor,original,88.6,False,79.2,7.47,100.0,0,100.0,"5 of 10 canon swatches exceed dE 12.0: #C0BA9C(12), #EAEAEA(12), #B44236(20), #F0F0F0(13)"
+clever/clever_02_threeqtr.png,clever,warm-festival,original,94.2,False,89.4,3.83,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #EAEAEA(16), #F0F0F0(18)"
+clever/clever_02_threeqtr.png,clever,red-emergency,original,87.7,False,77.7,8.03,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #C0BA9C(15), #EAEAEA(23), #C0C09C(20), #F0F0F0(25)"
+clever/clever_03_profile.png,clever,cool-corridor,original,91.8,False,85.1,5.35,100.0,0,100.0,"3 of 9 canon swatches exceed dE 12.0: #C0BA96(13), #EAEAEA(12), #F0F0F0(13)"
+clever/clever_03_profile.png,clever,warm-festival,original,95.8,True,92.3,2.76,100.0,0,100.0,"2 of 9 canon swatches exceed dE 12.0: #EAEAEA(16), #F0F0F0(18)"
+clever/clever_03_profile.png,clever,red-emergency,original,93.0,False,87.2,4.61,100.0,0,100.0,"4 of 9 canon swatches exceed dE 12.0: #C0BA9C(15), #C0BA96(17), #EAEAEA(23), #F0F0F0(25)"
+clever/clever_04_overshoulder.png,clever,cool-corridor,original,89.3,False,80.6,6.98,100.0,0,100.0,"6 of 10 canon swatches exceed dE 12.0: #C0BA9C(12), #F0F0F0(13), #C0BA96(13), #B43C30(18)"
+clever/clever_04_overshoulder.png,clever,warm-festival,original,94.4,False,89.7,3.69,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #F0F0F0(17), #EAEAEA(16)"
+clever/clever_04_overshoulder.png,clever,red-emergency,original,88.3,False,78.8,7.64,100.0,0,100.0,"5 of 10 canon swatches exceed dE 12.0: #C0C09C(19), #C0BA9C(15), #F0F0F0(25), #C0BA96(18)"
+clever/clever_06_angry.png,clever,cool-corridor,original,90.0,False,81.8,6.55,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #C0BA96(12), #B43C30(17), #F0F0F0(13), #EAEAEA(12)"
+clever/clever_06_angry.png,clever,warm-festival,original,94.7,False,90.4,3.45,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #F0F0F0(17), #EAEAEA(16)"
+clever/clever_06_angry.png,clever,red-emergency,original,88.3,False,78.7,7.68,100.0,0,100.0,"5 of 10 canon swatches exceed dE 12.0: #C0BA9C(15), #C0C09C(19), #C0BA96(17), #F0F0F0(25)"
+clever/clever_07_sad.png,clever,cool-corridor,original,91.0,False,83.7,5.87,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #B44230(20), #C0BA96(12), #F0F0F0(13)"
+clever/clever_07_sad.png,clever,warm-festival,original,96.3,True,93.4,2.39,100.0,0,100.0,1 of 10 canon swatches exceed dE 12.0: #F0F0F0(14)
+clever/clever_07_sad.png,clever,red-emergency,original,90.2,False,82.1,6.43,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #C0C09C(19), #C0BA9C(15), #C0BA96(17), #F0F0F0(22)"
+clever/clever_08_shocked.png,clever,cool-corridor,original,90.5,False,82.7,6.23,100.0,0,100.0,"5 of 10 canon swatches exceed dE 12.0: #C6C09C(12), #F0F0F0(12), #B44236(15), #F0F0EA(13)"
+clever/clever_08_shocked.png,clever,warm-festival,original,93.3,False,87.8,4.38,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #F0F0F0(17), #F0F0EA(15)"
+clever/clever_08_shocked.png,clever,red-emergency,original,87.1,False,76.5,8.45,100.0,0,100.0,"5 of 10 canon swatches exceed dE 12.0: #C0C09C(20), #C6C09C(18), #F0F0F0(25), #C0BA9C(16)"
+clever/clever_09_smile.png,clever,cool-corridor,original,90.2,False,82.2,6.41,100.0,0,100.0,"5 of 10 canon swatches exceed dE 12.0: #F0F0F0(13), #EAEAEA(12), #C0BA96(12), #B43C30(17)"
+clever/clever_09_smile.png,clever,warm-festival,original,94.4,False,89.8,3.66,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #F0F0F0(17), #EAEAEA(16)"
+clever/clever_09_smile.png,clever,red-emergency,original,87.9,False,78.1,7.89,100.0,0,100.0,"5 of 10 canon swatches exceed dE 12.0: #C0BA9C(15), #C0C09C(19), #F0F0F0(25), #EAEAEA(23)"
+clever/clever_10_walking.png,clever,cool-corridor,original,90.2,False,82.3,6.39,100.0,0,100.0,"5 of 10 canon swatches exceed dE 12.0: #F0F0F0(12), #C6C09C(13), #B44236(15), #F0F0EA(13)"
+clever/clever_10_walking.png,clever,warm-festival,original,94.0,False,89.1,3.93,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #F0F0F0(17), #F0F0EA(15)"
+clever/clever_10_walking.png,clever,red-emergency,original,87.4,False,77.0,8.28,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #C0C09C(19), #F0F0F0(25), #C6C09C(18), #F0F0EA(24)"
+clever/clever_11_armscrossed.png,clever,cool-corridor,original,90.2,False,82.2,6.42,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #F0F0F0(12), #B43C30(20), #F0F0EA(13)"
+clever/clever_11_armscrossed.png,clever,warm-festival,original,93.0,False,87.3,4.56,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #F0F0F0(17), #F0F0EA(16)"
+clever/clever_11_armscrossed.png,clever,red-emergency,original,86.3,False,75.1,8.97,100.0,0,100.0,"5 of 10 canon swatches exceed dE 12.0: #C0C09C(19), #F0F0F0(25), #C0BA9C(15), #F0F0EA(25)"
+clever/clever_12_sitting.png,clever,cool-corridor,original,91.1,False,83.9,5.79,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #F0F0F0(12), #F0F0EA(13), #AE4230(15)"
+clever/clever_12_sitting.png,clever,warm-festival,original,93.9,False,88.9,4.0,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #F0F0F0(17), #F0F0EA(15)"
+clever/clever_12_sitting.png,clever,red-emergency,original,87.5,False,77.3,8.18,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #C6C09C(18), #C0C09C(19), #F0F0F0(25), #F0F0EA(25)"
+clever/clever_13_pointing.png,clever,cool-corridor,original,89.8,False,81.5,6.68,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #F0F0F0(12), #B44236(18), #F0F0EA(13), #C0BA96(12)"
+clever/clever_13_pointing.png,clever,warm-festival,original,92.9,False,87.1,4.63,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #F0F0F0(18), #EAEAEA(16), #F0F0EA(16)"
+clever/clever_13_pointing.png,clever,red-emergency,original,86.9,False,76.2,8.57,100.0,0,100.0,"6 of 10 canon swatches exceed dE 12.0: #C0C09C(19), #C0BA9C(15), #F0F0F0(25), #EAEAEA(23)"
+clever/clever_14_shout.png,clever,cool-corridor,original,90.5,False,82.7,6.21,100.0,0,100.0,"5 of 10 canon swatches exceed dE 12.0: #C0BA96(13), #C0BA9C(13), #EAEAEA(12), #AE4230(17)"
+clever/clever_14_shout.png,clever,warm-festival,original,95.0,False,90.9,3.28,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #EAEAEA(16), #F0F0F0(18)"
+clever/clever_14_shout.png,clever,red-emergency,original,89.6,False,81.1,6.82,100.0,0,100.0,"5 of 10 canon swatches exceed dE 12.0: #C0BA96(18), #C0BA9C(15), #EAEAEA(23), #F0F0F0(25)"
+clever/clever_15_laughing.png,clever,cool-corridor,original,91.7,False,84.9,5.42,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #C0BA96(12), #B44236(18)"
+clever/clever_15_laughing.png,clever,warm-festival,original,96.1,True,92.9,2.57,100.0,0,100.0,
+clever/clever_15_laughing.png,clever,red-emergency,original,90.8,False,83.4,5.99,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #C0C09C(18), #C0BA9C(14), #C0BA96(17), #BABA96(18)"
+clever/clever_16_worried.png,clever,cool-corridor,original,90.4,False,82.6,6.28,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #F0F0F0(13), #C0BA96(12), #EAEAEA(12), #AE4230(15)"
+clever/clever_16_worried.png,clever,warm-festival,original,94.2,False,89.4,3.82,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #F0F0F0(17), #EAEAEA(16)"
+clever/clever_16_worried.png,clever,red-emergency,original,87.7,False,77.7,8.02,100.0,0,100.0,"5 of 10 canon swatches exceed dE 12.0: #C0C09C(19), #C0BA9C(15), #F0F0F0(25), #C0BA96(18)"
+clever/clever_17_disgusted.png,clever,cool-corridor,original,91.4,False,84.4,5.63,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #C0BA96(12), #B44230(20), #F0F0F0(13), #EAEAEA(12)"
+clever/clever_17_disgusted.png,clever,warm-festival,original,95.7,True,92.2,2.8,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #F0F0F0(18), #EAEAEA(16)"
+clever/clever_17_disgusted.png,clever,red-emergency,original,90.9,False,83.4,5.98,100.0,0,100.0,"5 of 10 canon swatches exceed dE 12.0: #C0BA9C(15), #C0BA96(18), #C0C09C(19), #F0F0F0(25)"
+clever/clever_18_sleepy.png,clever,cool-corridor,original,89.9,False,81.6,6.63,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #C0BA96(12), #B43C30(17), #B44230(17)"
+clever/clever_18_sleepy.png,clever,warm-festival,original,95.3,False,91.5,3.07,100.0,0,100.0,
+clever/clever_18_sleepy.png,clever,red-emergency,original,88.4,False,78.9,7.59,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #C0C09C(20), #C0BA9C(15), #C0BA96(18)"
+clever/clever_19_determined.png,clever,cool-corridor,original,89.5,False,80.9,6.86,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #C0BA96(13), #B43C30(18), #F0F0F0(13), #EAEAEA(12)"
+clever/clever_19_determined.png,clever,warm-festival,original,94.4,False,89.8,3.69,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #F0F0F0(17), #EAEAEA(16)"
+clever/clever_19_determined.png,clever,red-emergency,original,88.1,False,78.3,7.8,100.0,0,100.0,"5 of 10 canon swatches exceed dE 12.0: #C0BA9C(15), #C0C09C(20), #C0BA96(18), #F0F0F0(25)"
+clever/clever_20_confused.png,clever,cool-corridor,original,89.2,False,80.3,7.09,100.0,0,100.0,"5 of 10 canon swatches exceed dE 12.0: #C0BA9C(12), #EAEAEA(12), #C0BA96(13), #AE4230(19)"
+clever/clever_20_confused.png,clever,warm-festival,original,93.6,False,88.4,4.17,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #EAEAEA(16), #24A8DE(18)"
+clever/clever_20_confused.png,clever,red-emergency,original,87.2,False,76.8,8.35,100.0,0,100.0,"5 of 10 canon swatches exceed dE 12.0: #C0BA9C(15), #EAEAEA(24), #C0BA96(18), #24A8DE(19)"
+clever/clever_21_running.png,clever,cool-corridor,original,89.9,False,81.6,6.64,100.0,0,100.0,"5 of 10 canon swatches exceed dE 12.0: #C0BA9C(12), #C0BA96(13), #F0F0F0(13), #AE3C30(18)"
+clever/clever_21_running.png,clever,warm-festival,original,95.1,False,91.2,3.18,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #F0F0F0(18), #EAEAEA(16)"
+clever/clever_21_running.png,clever,red-emergency,original,89.6,False,81.1,6.82,100.0,0,100.0,"5 of 10 canon swatches exceed dE 12.0: #C0BA9C(15), #C0BA96(17), #F0F0F0(25), #EAEAEA(23)"
+clever/clever_22_jumping.png,clever,cool-corridor,original,90.2,False,82.2,6.42,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #C0BA96(13), #EAEAEA(12), #C0BA9C(13), #B44230(20)"
+clever/clever_22_jumping.png,clever,warm-festival,original,94.1,False,89.2,3.88,100.0,0,100.0,1 of 10 canon swatches exceed dE 12.0: #EAEAEA(17)
+clever/clever_22_jumping.png,clever,red-emergency,original,89.0,False,80.0,7.22,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #C0BA96(18), #EAEAEA(23), #C0BA9C(15), #BABA96(19)"
+clever/clever_23_waving.png,clever,cool-corridor,original,91.3,False,84.2,5.7,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #F0F0F0(12), #B43C30(17), #F0F0EA(13)"
+clever/clever_23_waving.png,clever,warm-festival,original,94.1,False,89.3,3.85,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #F0F0F0(17), #F0F0EA(15)"
+clever/clever_23_waving.png,clever,red-emergency,original,89.0,False,79.9,7.23,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #C0C09C(19), #F0F0F0(25), #F0F0EA(25), #C0BA9C(14)"
+clever/clever_24_thinking.png,clever,cool-corridor,original,90.3,False,82.4,6.32,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #F0F0F0(12), #B43C30(19), #F0F0EA(13)"
+clever/clever_24_thinking.png,clever,warm-festival,original,93.9,False,89.0,3.97,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #F0F0F0(17), #EAEAEA(16), #F0F0EA(15)"
+clever/clever_24_thinking.png,clever,red-emergency,original,88.1,False,78.3,7.82,100.0,0,100.0,"5 of 10 canon swatches exceed dE 12.0: #C0C09C(19), #F0F0F0(24), #C0BA9C(15), #EAEAEA(23)"
+clever/clever_25_crouching.png,clever,cool-corridor,original,90.5,False,82.7,6.23,100.0,0,100.0,"2 of 9 canon swatches exceed dE 12.0: #EAEAEA(12), #F0F0F0(13)"
+clever/clever_25_crouching.png,clever,warm-festival,original,94.3,False,89.6,3.74,100.0,0,100.0,"2 of 9 canon swatches exceed dE 12.0: #EAEAEA(16), #F0F0F0(18)"
+clever/clever_25_crouching.png,clever,red-emergency,original,89.2,False,80.4,7.06,100.0,0,100.0,"4 of 9 canon swatches exceed dE 12.0: #C0BA9C(15), #C0C09C(19), #EAEAEA(23), #F0F0F0(25)"
+clever/clever_26_reaching.png,clever,cool-corridor,original,90.0,False,81.8,6.55,100.0,0,100.0,"6 of 10 canon swatches exceed dE 12.0: #C0BA9C(12), #C0BA96(13), #EAEAEA(12), #B44230(19)"
+clever/clever_26_reaching.png,clever,warm-festival,original,94.9,False,90.8,3.32,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #EAEAEA(16), #F0F0F0(18)"
+clever/clever_26_reaching.png,clever,red-emergency,original,89.6,False,81.1,6.8,100.0,0,100.0,"5 of 10 canon swatches exceed dE 12.0: #C0BA9C(14), #C0C09C(18), #C0BA96(17), #EAEAEA(23)"
+clever/clever_27_defeated.png,clever,cool-corridor,original,91.6,False,84.7,5.52,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #C0BA96(13), #AE3C30(15), #F0F0F0(13)"
+clever/clever_27_defeated.png,clever,warm-festival,original,96.7,True,94.0,2.17,100.0,0,100.0,1 of 10 canon swatches exceed dE 12.0: #F0F0F0(17)
+clever/clever_27_defeated.png,clever,red-emergency,original,92.1,False,85.6,5.19,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #C0BA96(17), #C0BA9C(15), #F0F0F0(25), #C0C09C(19)"
+clever/clever_28_celebrating.png,clever,cool-corridor,original,90.5,False,82.7,6.22,100.0,0,100.0,"5 of 10 canon swatches exceed dE 12.0: #EAEAEA(12), #C0BA96(13), #C0BA9C(12), #AE4230(17)"
+clever/clever_28_celebrating.png,clever,warm-festival,original,94.1,False,89.2,3.88,100.0,0,100.0,1 of 10 canon swatches exceed dE 12.0: #EAEAEA(17)
+clever/clever_28_celebrating.png,clever,red-emergency,original,88.9,False,79.8,7.26,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #EAEAEA(23), #C0BA96(18), #C0BA9C(15), #30C0D8(19)"
+clever/clever_29_lookingup.png,clever,cool-corridor,original,89.3,False,80.5,7.04,100.0,0,100.0,"6 of 10 canon swatches exceed dE 12.0: #C0BA9C(12), #C0BA96(13), #EAEAEA(12), #B44236(19)"
+clever/clever_29_lookingup.png,clever,warm-festival,original,94.7,False,90.3,3.49,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #EAEAEA(16), #F0F0F0(18)"
+clever/clever_29_lookingup.png,clever,red-emergency,original,89.1,False,80.2,7.13,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #C0BA9C(15), #C0BA96(18), #EAEAEA(24), #F0F0F0(26)"
+clever/clever_30_backview.png,clever,cool-corridor,original,92.4,False,86.1,5.0,100.0,0,100.0,"2 of 8 canon swatches exceed dE 12.0: #B43C30(21), #F0F0F0(13)"
+clever/clever_30_backview.png,clever,warm-festival,original,96.6,True,93.9,2.21,100.0,0,100.0,"2 of 8 canon swatches exceed dE 12.0: #24A8E4(19), #F0F0F0(18)"
+clever/clever_30_backview.png,clever,red-emergency,original,94.0,False,89.0,3.95,100.0,0,100.0,"4 of 8 canon swatches exceed dE 12.0: #24A8E4(19), #C0C09C(18), #F0F0F0(25), #C0BA9C(14)"
+moodz/moodz_00_clean_base.png,moodz,cool-corridor,repaired,93.0,False,87.3,4.57,100.0,0,100.0,1 of 7 canon swatches exceed dE 12.0: #FCFCFC(15)
+moodz/moodz_00_clean_base.png,moodz,warm-festival,repaired,91.3,False,84.2,5.68,100.0,0,100.0,"3 of 7 canon swatches exceed dE 12.0: #DEDEDE(14), #FCFCFC(20), #24489C(15)"
+moodz/moodz_00_clean_base.png,moodz,red-emergency,repaired,86.2,False,74.9,9.02,100.0,0,100.0,"3 of 7 canon swatches exceed dE 12.0: #DEDEDE(22), #FCFCFC(29), #24489C(14)"
+moodz/moodz_10_walking.png,moodz,cool-corridor,repaired,95.0,False,90.8,3.31,100.0,0,100.0,1 of 10 canon swatches exceed dE 12.0: #FCFCFC(15)
+moodz/moodz_10_walking.png,moodz,warm-festival,repaired,92.3,False,86.0,5.04,100.0,0,100.0,"5 of 10 canon swatches exceed dE 12.0: #DEDEDE(15), #1E4896(12), #D8D8D8(14), #1E489C(16)"
+moodz/moodz_10_walking.png,moodz,red-emergency,repaired,88.8,False,79.6,7.36,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #DEDEDE(22), #D8D8D8(21), #1E489C(15), #FCFCFC(29)"
+moodz/moodz_15_laughing.png,moodz,cool-corridor,repaired,95.7,True,92.1,2.85,100.0,0,100.0,
+moodz/moodz_15_laughing.png,moodz,warm-festival,repaired,93.9,False,88.9,4.01,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #DEDEDE(14), #D8D8D8(13)"
+moodz/moodz_15_laughing.png,moodz,red-emergency,repaired,90.9,False,83.5,5.93,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #DEDEDE(21), #D8D8D8(20)"
+moodz/moodz_16_worried.png,moodz,cool-corridor,original,95.0,False,90.9,3.29,100.0,0,100.0,1 of 8 canon swatches exceed dE 12.0: #F6F6F6(14)
+moodz/moodz_16_worried.png,moodz,warm-festival,original,92.5,False,86.3,4.92,100.0,0,100.0,"2 of 8 canon swatches exceed dE 12.0: #D8D8D8(13), #F6F6F6(19)"
+moodz/moodz_16_worried.png,moodz,red-emergency,original,89.2,False,80.3,7.09,100.0,0,100.0,"2 of 8 canon swatches exceed dE 12.0: #D8D8D8(19), #F6F6F6(26)"
+moodz/moodz_17_disgusted.png,moodz,cool-corridor,repaired,95.4,False,91.7,2.98,100.0,0,100.0,1 of 10 canon swatches exceed dE 12.0: #FCFCFC(15)
+moodz/moodz_17_disgusted.png,moodz,warm-festival,repaired,93.9,False,88.9,4.01,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #DEDEDE(14), #FCFCFC(20), #D8D8D8(13), #1E489C(16)"
+moodz/moodz_17_disgusted.png,moodz,red-emergency,repaired,91.2,False,84.0,5.76,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #DEDEDE(20), #FCFCFC(28), #D8D8D8(18), #1E489C(14)"
+moodz/moodz_18_sleepy.png,moodz,cool-corridor,original,94.7,False,90.4,3.45,100.0,0,100.0,
+moodz/moodz_18_sleepy.png,moodz,warm-festival,original,92.9,False,87.0,4.66,100.0,0,100.0,"3 of 9 canon swatches exceed dE 12.0: #DEDEDE(14), #244896(12), #D8D8D8(13)"
+moodz/moodz_18_sleepy.png,moodz,red-emergency,original,90.1,False,82.0,6.47,100.0,0,100.0,"2 of 9 canon swatches exceed dE 12.0: #DEDEDE(20), #D8D8D8(19)"
+moodz/moodz_19_determined.png,moodz,cool-corridor,repaired,94.8,False,90.6,3.38,100.0,0,100.0,
+moodz/moodz_19_determined.png,moodz,warm-festival,repaired,92.8,False,86.8,4.74,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #DEDEDE(14), #D8D8D8(13), #1E489C(15), #24489C(15)"
+moodz/moodz_19_determined.png,moodz,red-emergency,repaired,88.9,False,79.9,7.24,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #DEDEDE(22), #D8D8D8(20), #1E489C(14), #24489C(14)"
+moodz/moodz_20_confused.png,moodz,cool-corridor,repaired,94.6,False,90.1,3.55,100.0,0,100.0,1 of 9 canon swatches exceed dE 12.0: #FCFCFC(15)
+moodz/moodz_20_confused.png,moodz,warm-festival,repaired,92.9,False,87.2,4.62,100.0,0,100.0,"4 of 9 canon swatches exceed dE 12.0: #DEDEDE(14), #24489C(15), #FCFCFC(20), #D8D8D8(13)"
+moodz/moodz_20_confused.png,moodz,red-emergency,repaired,89.2,False,80.4,7.05,100.0,0,100.0,"4 of 9 canon swatches exceed dE 12.0: #DEDEDE(21), #24489C(13), #FCFCFC(29), #D8D8D8(20)"
+moodz/moodz_21_running.png,moodz,cool-corridor,repaired,94.3,False,89.7,3.7,100.0,0,100.0,1 of 9 canon swatches exceed dE 12.0: #FCFCFC(15)
+moodz/moodz_21_running.png,moodz,warm-festival,repaired,92.4,False,86.3,4.95,100.0,0,100.0,"4 of 9 canon swatches exceed dE 12.0: #DEDEDE(14), #FCFCFC(19), #24489C(15), #D8D8D8(13)"
+moodz/moodz_21_running.png,moodz,red-emergency,repaired,88.6,False,79.3,7.47,100.0,0,100.0,"4 of 9 canon swatches exceed dE 12.0: #DEDEDE(22), #FCFCFC(28), #24489C(14), #D8D8D8(20)"
+moodz/moodz_22_jumping.png,moodz,cool-corridor,original,94.8,False,90.6,3.39,100.0,0,100.0,1 of 9 canon swatches exceed dE 12.0: #FCFCFC(15)
+moodz/moodz_22_jumping.png,moodz,warm-festival,original,93.1,False,87.4,4.55,100.0,0,100.0,"4 of 9 canon swatches exceed dE 12.0: #DEDEDE(14), #D8D8D8(14), #1E4896(13), #FCFCFC(20)"
+moodz/moodz_22_jumping.png,moodz,red-emergency,original,89.2,False,80.4,7.05,100.0,0,100.0,"3 of 9 canon swatches exceed dE 12.0: #DEDEDE(22), #D8D8D8(21), #FCFCFC(29)"
+moodz/moodz_23_waving.png,moodz,cool-corridor,repaired,94.9,False,90.7,3.35,100.0,0,100.0,1 of 8 canon swatches exceed dE 12.0: #FCFCFC(15)
+moodz/moodz_23_waving.png,moodz,warm-festival,repaired,92.9,False,87.0,4.68,100.0,0,100.0,"4 of 8 canon swatches exceed dE 12.0: #DEDEDE(14), #D8D8D8(14), #244896(13), #FCFCFC(19)"
+moodz/moodz_23_waving.png,moodz,red-emergency,repaired,89.8,False,81.5,6.66,100.0,0,100.0,"3 of 8 canon swatches exceed dE 12.0: #DEDEDE(21), #D8D8D8(19), #FCFCFC(29)"
+moodz/moodz_24_thinking.png,moodz,cool-corridor,repaired,95.3,False,91.5,3.06,100.0,0,100.0,1 of 10 canon swatches exceed dE 12.0: #FCFCFC(15)
+moodz/moodz_24_thinking.png,moodz,warm-festival,repaired,92.1,False,85.6,5.19,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #DEDEDE(14), #1E489C(14), #24489C(14), #FCFCFC(20)"
+moodz/moodz_24_thinking.png,moodz,red-emergency,repaired,88.3,False,78.6,7.69,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #DEDEDE(21), #1E489C(14), #24489C(14), #FCFCFC(28)"
+moodz/moodz_25_crouching.png,moodz,cool-corridor,repaired,94.1,False,89.3,3.86,100.0,0,100.0,1 of 10 canon swatches exceed dE 12.0: #FCFCFC(15)
+moodz/moodz_25_crouching.png,moodz,warm-festival,repaired,92.5,False,86.3,4.94,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #D8D8D8(13), #DEDEDE(14), #244896(13), #FCFCFC(20)"
+moodz/moodz_25_crouching.png,moodz,red-emergency,repaired,88.3,False,78.7,7.65,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #D8D8D8(21), #DEDEDE(22), #FCFCFC(28)"
+moodz/moodz_26_reaching.png,moodz,cool-corridor,original,95.2,False,91.2,3.17,100.0,0,100.0,1 of 7 canon swatches exceed dE 12.0: #FCFCFC(15)
+moodz/moodz_26_reaching.png,moodz,warm-festival,original,94.1,False,89.2,3.88,100.0,0,100.0,"2 of 7 canon swatches exceed dE 12.0: #DEDEDE(14), #FCFCFC(19)"
+moodz/moodz_26_reaching.png,moodz,red-emergency,original,90.8,False,83.4,5.99,100.0,0,100.0,"2 of 7 canon swatches exceed dE 12.0: #DEDEDE(21), #FCFCFC(28)"
+moodz/moodz_27_defeated.png,moodz,cool-corridor,original,95.8,True,92.4,2.75,100.0,0,100.0,"2 of 9 canon swatches exceed dE 12.0: #F6F6F6(14), #F0F0F0(13)"
+moodz/moodz_27_defeated.png,moodz,warm-festival,original,92.8,False,86.9,4.72,100.0,0,100.0,"4 of 9 canon swatches exceed dE 12.0: #F6F6F6(18), #24489C(15), #F0F0F0(17), #1E489C(14)"
+moodz/moodz_27_defeated.png,moodz,red-emergency,original,90.3,False,82.3,6.38,100.0,0,100.0,"4 of 9 canon swatches exceed dE 12.0: #F6F6F6(26), #24489C(14), #F0F0F0(25), #1E489C(14)"
+moodz/moodz_28_celebrating.png,moodz,cool-corridor,repaired,96.2,True,93.1,2.49,100.0,0,100.0,"2 of 8 canon swatches exceed dE 12.0: #FCFCFC(15), #F6F6F6(14)"
+moodz/moodz_28_celebrating.png,moodz,warm-festival,repaired,95.1,False,91.1,3.21,100.0,0,100.0,"4 of 8 canon swatches exceed dE 12.0: #DEDEDE(14), #FCFCFC(20), #F6F6F6(19), #D8D8D8(13)"
+moodz/moodz_28_celebrating.png,moodz,red-emergency,repaired,93.0,False,87.2,4.6,100.0,0,100.0,"4 of 8 canon swatches exceed dE 12.0: #DEDEDE(20), #FCFCFC(28), #F6F6F6(26), #D8D8D8(18)"
+moodz/moodz_29_lookingup.png,moodz,cool-corridor,repaired,94.1,False,89.3,3.87,100.0,0,100.0,1 of 9 canon swatches exceed dE 12.0: #FCFCFC(15)
+moodz/moodz_29_lookingup.png,moodz,warm-festival,repaired,91.7,False,85.0,5.41,100.0,0,100.0,"4 of 9 canon swatches exceed dE 12.0: #DEDEDE(14), #FCFCFC(20), #244896(12), #1E4896(12)"
+moodz/moodz_29_lookingup.png,moodz,red-emergency,repaired,88.2,False,78.6,7.7,100.0,0,100.0,"2 of 9 canon swatches exceed dE 12.0: #DEDEDE(20), #FCFCFC(28)"
+moodz/moodz_30_backview.png,moodz,cool-corridor,repaired,99.1,True,98.3,0.6,100.0,0,100.0,
+moodz/moodz_30_backview.png,moodz,warm-festival,repaired,94.7,False,90.4,3.46,100.0,0,100.0,"3 of 9 canon swatches exceed dE 12.0: #24489C(13), #1E489C(13), #DEDEDE(15)"
+moodz/moodz_30_backview.png,moodz,red-emergency,repaired,93.5,False,88.2,4.25,100.0,0,100.0,"3 of 9 canon swatches exceed dE 12.0: #24489C(14), #1E489C(14), #DEDEDE(22)"
+neonblue/neonblue_00_clean_base.png,neonblue,cool-corridor,repaired,89.6,False,81.2,6.78,100.0,0,100.0,"2 of 7 canon swatches exceed dE 12.0: #F0F0F0(12), #F6F6F6(13)"
+neonblue/neonblue_00_clean_base.png,neonblue,warm-festival,repaired,89.9,False,81.7,6.58,100.0,0,100.0,"2 of 7 canon swatches exceed dE 12.0: #F0F0F0(15), #F6F6F6(17)"
+neonblue/neonblue_00_clean_base.png,neonblue,red-emergency,repaired,85.6,False,73.8,9.44,100.0,0,100.0,"3 of 7 canon swatches exceed dE 12.0: #DEDEDE(15), #F0F0F0(21), #F6F6F6(23)"
+neonblue/neonblue_15_laughing.png,neonblue,cool-corridor,repaired,93.0,False,87.2,4.6,100.0,0,100.0,
+neonblue/neonblue_15_laughing.png,neonblue,warm-festival,repaired,93.5,False,88.1,4.28,100.0,0,100.0,
+neonblue/neonblue_15_laughing.png,neonblue,red-emergency,repaired,90.7,False,83.2,6.05,100.0,0,100.0,"2 of 8 canon swatches exceed dE 12.0: #DEDEDE(15), #D8D8D8(13)"
+neonblue/neonblue_16_worried.png,neonblue,cool-corridor,original,90.7,False,83.2,6.06,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #F0F0F0(12), #F6F6F6(13)"
+neonblue/neonblue_16_worried.png,neonblue,warm-festival,original,90.9,False,83.4,5.97,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #F0F0F0(14), #F6F6F6(15)"
+neonblue/neonblue_16_worried.png,neonblue,red-emergency,original,87.2,False,76.8,8.36,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #DEDEDE(15), #F0F0F0(21), #D8D8D8(13), #F6F6F6(23)"
+neonblue/neonblue_17_disgusted.png,neonblue,cool-corridor,repaired,91.3,False,84.1,5.72,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #F0F0F0(13), #F6F6F6(14)"
+neonblue/neonblue_17_disgusted.png,neonblue,warm-festival,repaired,91.3,False,84.2,5.69,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #F0F0F0(14), #F6F6F6(15)"
+neonblue/neonblue_17_disgusted.png,neonblue,red-emergency,repaired,87.4,False,77.1,8.24,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #DEDEDE(15), #F0F0F0(21), #D8D8D8(13), #F6F6F6(23)"
+neonblue/neonblue_18_sleepy.png,neonblue,cool-corridor,repaired,91.3,False,84.1,5.72,100.0,0,100.0,
+neonblue/neonblue_18_sleepy.png,neonblue,warm-festival,repaired,91.0,False,83.6,5.91,100.0,0,100.0,
+neonblue/neonblue_18_sleepy.png,neonblue,red-emergency,repaired,88.5,False,79.1,7.51,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #DEDEDE(15), #D8D8D8(13), #DEDED8(15)"
+neonblue/neonblue_19_determined.png,neonblue,cool-corridor,repaired,91.2,False,83.9,5.79,100.0,0,100.0,1 of 8 canon swatches exceed dE 12.0: #F0F0F0(13)
+neonblue/neonblue_19_determined.png,neonblue,warm-festival,repaired,90.4,False,82.5,6.29,100.0,0,100.0,"2 of 8 canon swatches exceed dE 12.0: #F0F0F0(17), #DEDEDE(13)"
+neonblue/neonblue_19_determined.png,neonblue,red-emergency,repaired,87.6,False,77.5,8.08,100.0,0,100.0,"3 of 8 canon swatches exceed dE 12.0: #D8D8D8(14), #F0F0F0(23), #DEDEDE(16)"
+neonblue/neonblue_20_confused.png,neonblue,cool-corridor,repaired,90.5,False,82.8,6.21,100.0,0,100.0,1 of 9 canon swatches exceed dE 12.0: #F0F0F0(13)
+neonblue/neonblue_20_confused.png,neonblue,warm-festival,repaired,90.6,False,82.9,6.16,100.0,0,100.0,1 of 9 canon swatches exceed dE 12.0: #F0F0F0(15)
+neonblue/neonblue_20_confused.png,neonblue,red-emergency,repaired,86.5,False,75.5,8.83,100.0,0,100.0,"3 of 9 canon swatches exceed dE 12.0: #DEDEDE(16), #D8D8D8(13), #F0F0F0(22)"
+neonblue/neonblue_21_running.png,neonblue,cool-corridor,original,91.5,False,84.6,5.53,100.0,0,100.0,1 of 7 canon swatches exceed dE 12.0: #F0F0F0(13)
+neonblue/neonblue_21_running.png,neonblue,warm-festival,original,91.3,False,84.1,5.72,100.0,0,100.0,1 of 7 canon swatches exceed dE 12.0: #F0F0F0(15)
+neonblue/neonblue_21_running.png,neonblue,red-emergency,original,87.7,False,77.7,8.03,100.0,0,100.0,"3 of 7 canon swatches exceed dE 12.0: #D8D8D8(13), #DEDEDE(15), #F0F0F0(21)"
+neonblue/neonblue_22_jumping.png,neonblue,cool-corridor,original,89.6,False,81.1,6.81,100.0,0,100.0,1 of 8 canon swatches exceed dE 12.0: #F0F0F0(13)
+neonblue/neonblue_22_jumping.png,neonblue,warm-festival,original,88.7,False,79.4,7.41,100.0,0,100.0,"2 of 8 canon swatches exceed dE 12.0: #F0F0F0(17), #DEDEDE(13)"
+neonblue/neonblue_22_jumping.png,neonblue,red-emergency,original,85.2,False,73.2,9.66,100.0,0,100.0,"3 of 8 canon swatches exceed dE 12.0: #D8D8D8(15), #F0F0F0(23), #DEDEDE(17)"
+neonblue/neonblue_23_waving.png,neonblue,cool-corridor,repaired,90.9,False,83.5,5.94,100.0,0,100.0,1 of 7 canon swatches exceed dE 12.0: #F0F0F0(13)
+neonblue/neonblue_23_waving.png,neonblue,warm-festival,repaired,90.7,False,83.2,6.06,100.0,0,100.0,1 of 7 canon swatches exceed dE 12.0: #F0F0F0(16)
+neonblue/neonblue_23_waving.png,neonblue,red-emergency,repaired,87.0,False,76.3,8.52,100.0,0,100.0,"3 of 7 canon swatches exceed dE 12.0: #D8D8D8(15), #F0F0F0(23), #DEDEDE(17)"
+neonblue/neonblue_24_thinking.png,neonblue,cool-corridor,original,90.2,False,82.1,6.44,100.0,0,100.0,1 of 7 canon swatches exceed dE 12.0: #F0F0F0(12)
+neonblue/neonblue_24_thinking.png,neonblue,warm-festival,original,89.6,False,81.0,6.83,100.0,0,100.0,"2 of 7 canon swatches exceed dE 12.0: #F0F0F0(17), #DEDEDE(13)"
+neonblue/neonblue_24_thinking.png,neonblue,red-emergency,original,85.9,False,74.4,9.21,100.0,0,100.0,"3 of 7 canon swatches exceed dE 12.0: #D8D8D8(15), #F0F0F0(23), #DEDEDE(17)"
+neonblue/neonblue_25_crouching.png,neonblue,cool-corridor,repaired,90.4,False,82.5,6.29,100.0,0,100.0,1 of 8 canon swatches exceed dE 12.0: #F6F6F6(13)
+neonblue/neonblue_25_crouching.png,neonblue,warm-festival,repaired,90.6,False,82.9,6.15,100.0,0,100.0,"2 of 8 canon swatches exceed dE 12.0: #F0F0F0(14), #F6F6F6(15)"
+neonblue/neonblue_25_crouching.png,neonblue,red-emergency,repaired,85.7,False,74.1,9.33,100.0,0,100.0,"4 of 8 canon swatches exceed dE 12.0: #DEDEDE(15), #F0F0F0(21), #F6F6F6(23), #D8D8D8(13)"
+neonblue/neonblue_26_reaching.png,neonblue,cool-corridor,repaired,91.3,False,84.2,5.69,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #F0F0F0(14), #F6F6F6(15)"
+neonblue/neonblue_26_reaching.png,neonblue,warm-festival,repaired,93.0,False,87.2,4.6,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #F0F0F0(16), #F6F6F6(18)"
+neonblue/neonblue_26_reaching.png,neonblue,red-emergency,repaired,87.4,False,77.1,8.26,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #DEDEDE(17), #F0F0F0(23), #F6F6F6(25), #D8D8D8(15)"
+neonblue/neonblue_27_defeated.png,neonblue,cool-corridor,original,91.6,False,84.7,5.52,100.0,0,100.0,
+neonblue/neonblue_27_defeated.png,neonblue,warm-festival,original,92.2,False,85.9,5.09,100.0,0,100.0,
+neonblue/neonblue_27_defeated.png,neonblue,red-emergency,original,89.0,False,80.0,7.21,100.0,0,100.0,"3 of 9 canon swatches exceed dE 12.0: #DEDEDE(16), #D8D8D8(13), #DEDED8(15)"
+neonblue/neonblue_28_celebrating.png,neonblue,cool-corridor,repaired,92.7,False,86.8,4.76,100.0,0,100.0,1 of 8 canon swatches exceed dE 12.0: #F0F0F0(13)
+neonblue/neonblue_28_celebrating.png,neonblue,warm-festival,repaired,93.0,False,87.2,4.59,100.0,0,100.0,1 of 8 canon swatches exceed dE 12.0: #F0F0F0(17)
+neonblue/neonblue_28_celebrating.png,neonblue,red-emergency,repaired,91.6,False,84.7,5.49,100.0,0,100.0,"3 of 8 canon swatches exceed dE 12.0: #D8D8D8(12), #F0F0F0(20), #DEDEDE(14)"
+neonblue/neonblue_29_lookingup.png,neonblue,cool-corridor,original,90.4,False,82.6,6.26,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #F0F0F0(13), #F6F6F6(14)"
+neonblue/neonblue_29_lookingup.png,neonblue,warm-festival,original,89.3,False,80.6,6.97,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #DEDEDE(13), #F0F0F0(17), #F6F6F6(19)"
+neonblue/neonblue_29_lookingup.png,neonblue,red-emergency,original,86.4,False,75.3,8.89,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #DEDEDE(16), #D8D8D8(14), #F0F0F0(22), #F6F6F6(24)"
+neonblue/neonblue_30_backview.png,neonblue,cool-corridor,original,93.4,False,88.0,4.3,100.0,0,100.0,
+neonblue/neonblue_30_backview.png,neonblue,warm-festival,original,92.8,False,86.9,4.73,100.0,0,100.0,
+neonblue/neonblue_30_backview.png,neonblue,red-emergency,original,88.8,False,79.7,7.33,100.0,0,100.0,"4 of 9 canon swatches exceed dE 12.0: #DEDEDE(16), #D8D8D8(14), #24D2D8(12), #DEDED8(16)"
+scarline/scarline_00_clean_base.png,scarline,cool-corridor,original,94.0,False,89.0,3.96,100.0,0,100.0,"2 of 8 canon swatches exceed dE 12.0: #FCFCFC(13), #E42A36(17)"
+scarline/scarline_00_clean_base.png,scarline,warm-festival,original,87.7,False,77.6,8.05,100.0,0,100.0,"3 of 8 canon swatches exceed dE 12.0: #DEDEDE(14), #E4E4E4(15), #FCFCFC(20)"
+scarline/scarline_00_clean_base.png,scarline,red-emergency,original,81.1,False,65.6,12.39,100.0,0,100.0,"3 of 8 canon swatches exceed dE 12.0: #DEDEDE(21), #E4E4E4(23), #FCFCFC(29)"
+scarline/scarline_15_laughing.png,scarline,cool-corridor,original,95.3,False,91.5,3.05,100.0,0,100.0,"2 of 9 canon swatches exceed dE 12.0: #DE2A36(16), #FCFCFC(13)"
+scarline/scarline_15_laughing.png,scarline,warm-festival,original,90.4,False,82.5,6.28,100.0,0,100.0,"3 of 9 canon swatches exceed dE 12.0: #DEDEDE(14), #E4E4E4(15), #FCFCFC(20)"
+scarline/scarline_15_laughing.png,scarline,red-emergency,original,85.5,False,73.6,9.5,100.0,0,100.0,"3 of 9 canon swatches exceed dE 12.0: #DEDEDE(22), #E4E4E4(23), #FCFCFC(28)"
+scarline/scarline_16_worried.png,scarline,cool-corridor,original,93.9,False,88.8,4.02,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #FCFCFC(13), #DE3036(16)"
+scarline/scarline_16_worried.png,scarline,warm-festival,original,88.3,False,78.7,7.66,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #DEDEDE(14), #FCFCFC(19), #D8D8D8(13)"
+scarline/scarline_16_worried.png,scarline,red-emergency,original,82.0,False,67.2,11.81,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #DEDEDE(22), #FCFCFC(28), #D8D8D8(21)"
+scarline/scarline_17_disgusted.png,scarline,cool-corridor,original,94.9,False,90.8,3.32,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #DE2A36(15), #DE3036(14)"
+scarline/scarline_17_disgusted.png,scarline,warm-festival,original,89.8,False,81.5,6.66,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #DEDEDE(14), #E4E4E4(15)"
+scarline/scarline_17_disgusted.png,scarline,red-emergency,original,84.7,False,72.2,9.99,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #DEDEDE(21), #E4E4E4(22)"
+scarline/scarline_18_sleepy.png,scarline,cool-corridor,original,95.0,False,90.9,3.27,100.0,0,100.0,1 of 9 canon swatches exceed dE 12.0: #DE2A36(14)
+scarline/scarline_18_sleepy.png,scarline,warm-festival,original,88.1,False,78.4,7.77,100.0,0,100.0,"2 of 9 canon swatches exceed dE 12.0: #DEDEDE(15), #E4E4E4(16)"
+scarline/scarline_18_sleepy.png,scarline,red-emergency,original,83.0,False,69.2,11.11,100.0,0,100.0,"2 of 9 canon swatches exceed dE 12.0: #DEDEDE(21), #E4E4E4(23)"
+scarline/scarline_19_determined.png,scarline,cool-corridor,original,94.6,False,90.2,3.51,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #DE3036(16), #FCFCFC(14), #DE2A36(16)"
+scarline/scarline_19_determined.png,scarline,warm-festival,original,89.3,False,80.6,6.97,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #DEDEDE(14), #FCFCFC(20)"
+scarline/scarline_19_determined.png,scarline,red-emergency,original,83.4,False,69.8,10.86,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #DEDEDE(22), #FCFCFC(29)"
+scarline/scarline_20_confused.png,scarline,cool-corridor,original,94.3,False,89.7,3.7,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #FCFCFC(14), #DE3036(16)"
+scarline/scarline_20_confused.png,scarline,warm-festival,original,87.7,False,77.6,8.05,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #DEDEDE(14), #FCFCFC(19), #D8D8D8(14)"
+scarline/scarline_20_confused.png,scarline,red-emergency,original,81.4,False,66.1,12.2,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #DEDEDE(22), #FCFCFC(28), #D8D8D8(20), #BABABA(14)"
+scarline/scarline_21_running.png,scarline,cool-corridor,original,94.9,False,90.8,3.32,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #DE3036(15), #FCFCFC(14)"
+scarline/scarline_21_running.png,scarline,warm-festival,original,89.1,False,80.2,7.14,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #DEDEDE(15), #D8D8D8(15), #FCFCFC(19)"
+scarline/scarline_21_running.png,scarline,red-emergency,original,84.4,False,71.6,10.22,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #DEDEDE(22), #D8D8D8(20), #FCFCFC(28)"
+scarline/scarline_22_jumping.png,scarline,cool-corridor,original,94.6,False,90.2,3.51,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #FCFCFC(14), #DE3036(15), #DE2A36(16)"
+scarline/scarline_22_jumping.png,scarline,warm-festival,original,88.5,False,79.2,7.5,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #DEDEDE(14), #FCFCFC(19)"
+scarline/scarline_22_jumping.png,scarline,red-emergency,original,82.0,False,67.2,11.81,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #DEDEDE(23), #FCFCFC(29), #BABABA(14)"
+scarline/scarline_23_waving.png,scarline,cool-corridor,original,95.3,False,91.4,3.08,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #FCFCFC(13), #DE3036(15)"
+scarline/scarline_23_waving.png,scarline,warm-festival,original,89.4,False,80.8,6.92,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #DEDEDE(14), #E4E4E4(15), #FCFCFC(20)"
+scarline/scarline_23_waving.png,scarline,red-emergency,original,83.8,False,70.6,10.59,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #DEDEDE(22), #E4E4E4(23), #FCFCFC(29), #BABABA(13)"
+scarline/scarline_24_thinking.png,scarline,cool-corridor,original,94.2,False,89.5,3.77,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #FCFCFC(14), #DE2A36(16)"
+scarline/scarline_24_thinking.png,scarline,warm-festival,original,89.4,False,80.7,6.93,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #DEDEDE(14), #FCFCFC(20), #E4E4E4(15)"
+scarline/scarline_24_thinking.png,scarline,red-emergency,original,82.8,False,68.7,11.26,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #DEDEDE(22), #FCFCFC(29), #E4E4E4(23)"
+scarline/scarline_25_crouching.png,scarline,cool-corridor,original,92.0,False,85.4,5.26,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #FCFCFC(15), #E43036(18), #DE3036(15)"
+scarline/scarline_25_crouching.png,scarline,warm-festival,original,89.1,False,80.2,7.13,100.0,0,100.0,"5 of 10 canon swatches exceed dE 12.0: #DEDEDE(14), #FCFCFC(20), #D8D8D8(13), #E4E4E4(15)"
+scarline/scarline_25_crouching.png,scarline,red-emergency,original,84.4,False,71.7,10.19,100.0,0,100.0,"5 of 10 canon swatches exceed dE 12.0: #DEDEDE(20), #FCFCFC(29), #D8D8D8(18), #E4E4E4(22)"
+scarline/scarline_26_reaching.png,scarline,cool-corridor,original,95.1,False,91.0,3.24,100.0,0,100.0,1 of 9 canon swatches exceed dE 12.0: #FCFCFC(15)
+scarline/scarline_26_reaching.png,scarline,warm-festival,original,90.3,False,82.4,6.32,100.0,0,100.0,"3 of 9 canon swatches exceed dE 12.0: #DEDEDE(14), #E4E4E4(15), #FCFCFC(20)"
+scarline/scarline_26_reaching.png,scarline,red-emergency,original,85.3,False,73.2,9.63,100.0,0,100.0,"3 of 9 canon swatches exceed dE 12.0: #DEDEDE(22), #E4E4E4(23), #FCFCFC(28)"
+scarline/scarline_27_defeated.png,scarline,cool-corridor,original,92.3,False,85.9,5.06,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #DE3036(16), #DE2A36(16), #E43036(19)"
+scarline/scarline_27_defeated.png,scarline,warm-festival,original,89.8,False,81.5,6.65,100.0,0,100.0,1 of 10 canon swatches exceed dE 12.0: #DEDEDE(15)
+scarline/scarline_27_defeated.png,scarline,red-emergency,original,85.1,False,72.9,9.76,100.0,0,100.0,1 of 10 canon swatches exceed dE 12.0: #DEDEDE(22)
+scarline/scarline_28_celebrating.png,scarline,cool-corridor,original,95.4,False,91.7,3.0,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #FCFCFC(13), #DE3036(15)"
+scarline/scarline_28_celebrating.png,scarline,warm-festival,original,90.7,False,83.1,6.08,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #DEDEDE(14), #FCFCFC(20), #E4E4E4(15)"
+scarline/scarline_28_celebrating.png,scarline,red-emergency,original,85.7,False,74.1,9.34,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #DEDEDE(22), #FCFCFC(29), #E4E4E4(23), #BABABA(14)"
+scarline/scarline_29_lookingup.png,scarline,cool-corridor,original,91.8,False,85.0,5.38,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #FCFCFC(15), #DE2A36(17)"
+scarline/scarline_29_lookingup.png,scarline,warm-festival,original,89.8,False,81.4,6.71,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #DEDEDE(14), #D8D8D8(13), #FCFCFC(20)"
+scarline/scarline_29_lookingup.png,scarline,red-emergency,original,83.8,False,70.5,10.63,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #DEDEDE(23), #C0C0C0(15), #D8D8D8(21), #FCFCFC(29)"
+scarline/scarline_30_backview.png,scarline,cool-corridor,original,95.6,True,92.1,2.86,100.0,0,100.0,1 of 10 canon swatches exceed dE 12.0: #DE2A36(17)
+scarline/scarline_30_backview.png,scarline,warm-festival,original,92.1,False,85.7,5.15,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #D8D8D8(15), #D2D2D2(14), #CCCCCC(14), #C6C6C6(12)"
+scarline/scarline_30_backview.png,scarline,red-emergency,original,87.0,False,76.4,8.49,100.0,0,100.0,"6 of 10 canon swatches exceed dE 12.0: #D8D8D8(24), #D2D2D2(23), #909090(12), #CCCCCC(21)"
+static/static_00_clean_base.png,static,cool-corridor,repaired,90.6,False,82.9,6.16,100.0,0,100.0,"2 of 9 canon swatches exceed dE 12.0: #F6F6F6(14), #F0F0F0(13)"
+static/static_00_clean_base.png,static,warm-festival,repaired,88.5,False,79.1,7.53,100.0,0,100.0,"4 of 9 canon swatches exceed dE 12.0: #DEDEDE(14), #F6F6F6(19), #D8D8D8(13), #F0F0F0(18)"
+static/static_00_clean_base.png,static,red-emergency,repaired,82.0,False,67.2,11.81,100.0,0,100.0,"4 of 9 canon swatches exceed dE 12.0: #DEDEDE(22), #F6F6F6(27), #D8D8D8(21), #F0F0F0(26)"
+static/static_14_shout.png,static,cool-corridor,repaired,93.8,False,88.7,4.06,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #F6F6F6(14), #F0F0F0(13)"
+static/static_14_shout.png,static,warm-festival,repaired,92.6,False,86.5,4.87,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #D8D8D8(13), #F6F6F6(18), #F0F0F0(17), #DEDEDE(14)"
+static/static_14_shout.png,static,red-emergency,repaired,88.9,False,79.8,7.26,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #D8D8D8(18), #F6F6F6(26), #F0F0F0(25), #DEDEDE(20)"
+static/static_15_laughing.png,static,cool-corridor,repaired,92.7,False,86.8,4.75,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #EAEAEA(12), #F0F0F0(13)"
+static/static_15_laughing.png,static,warm-festival,repaired,90.8,False,83.2,6.05,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #EAEAEA(16), #F0F0F0(17), #E4E4E4(15)"
+static/static_15_laughing.png,static,red-emergency,repaired,86.7,False,75.7,8.73,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #EAEAEA(23), #F0F0F0(25), #E4E4E4(22)"
+static/static_16_worried.png,static,cool-corridor,original,91.7,False,85.0,5.41,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #F6F6F6(13), #F0F0F0(13)"
+static/static_16_worried.png,static,warm-festival,original,90.0,False,81.9,6.53,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #D8D8D8(13), #DEDEDE(14), #F6F6F6(19), #F0F0F0(17)"
+static/static_16_worried.png,static,red-emergency,original,85.6,False,73.8,9.45,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #D8D8D8(18), #DEDEDE(20), #F6F6F6(27), #F0F0F0(25)"
+static/static_17_disgusted.png,static,cool-corridor,repaired,91.8,False,85.1,5.36,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #F0F0F0(13), #EAEAEA(12), #F6F6F6(14)"
+static/static_17_disgusted.png,static,warm-festival,repaired,89.4,False,80.7,6.95,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #F0F0F0(17), #EAEAEA(16), #F6F6F6(18)"
+static/static_17_disgusted.png,static,red-emergency,repaired,84.6,False,72.0,10.08,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #F0F0F0(25), #EAEAEA(23), #F6F6F6(27)"
+static/static_18_sleepy.png,static,cool-corridor,repaired,92.1,False,85.7,5.14,100.0,0,100.0,
+static/static_18_sleepy.png,static,warm-festival,repaired,90.2,False,82.1,6.43,100.0,0,100.0,"2 of 8 canon swatches exceed dE 12.0: #D8D8D8(15), #DEDEDE(15)"
+static/static_18_sleepy.png,static,red-emergency,repaired,86.0,False,74.5,9.18,100.0,0,100.0,"2 of 8 canon swatches exceed dE 12.0: #D8D8D8(20), #DEDEDE(22)"
+static/static_19_determined.png,static,cool-corridor,repaired,92.5,False,86.4,4.9,100.0,0,100.0,1 of 10 canon swatches exceed dE 12.0: #F6F6F6(14)
+static/static_19_determined.png,static,warm-festival,repaired,91.0,False,83.6,5.91,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #D8D8D8(13), #F6F6F6(18), #DEDEDE(14)"
+static/static_19_determined.png,static,red-emergency,repaired,87.0,False,76.5,8.48,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #D8D8D8(18), #D2D2D2(16), #F6F6F6(27), #DEDEDE(19)"
+static/static_20_confused.png,static,cool-corridor,repaired,93.0,False,87.2,4.6,100.0,0,100.0,
+static/static_20_confused.png,static,warm-festival,repaired,91.7,False,84.9,5.44,100.0,0,100.0,"2 of 8 canon swatches exceed dE 12.0: #D8D8D8(13), #DEDEDE(14)"
+static/static_20_confused.png,static,red-emergency,repaired,88.1,False,78.3,7.81,100.0,0,100.0,"2 of 8 canon swatches exceed dE 12.0: #D8D8D8(18), #DEDEDE(20)"
+static/static_21_running.png,static,cool-corridor,original,93.2,False,87.6,4.45,100.0,0,100.0,1 of 10 canon swatches exceed dE 12.0: #F6F6F6(14)
+static/static_21_running.png,static,warm-festival,original,91.8,False,85.1,5.37,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #D8D8D8(13), #F6F6F6(19), #DEDEDE(14)"
+static/static_21_running.png,static,red-emergency,original,87.4,False,77.1,8.24,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #D8D8D8(20), #F6F6F6(27), #DEDEDE(21)"
+static/static_22_jumping.png,static,cool-corridor,original,91.6,False,84.8,5.49,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #EAEAEA(12), #F0F0F0(13), #F6F6F6(13)"
+static/static_22_jumping.png,static,warm-festival,original,89.2,False,80.5,7.04,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #EAEAEA(16), #F0F0F0(17), #F6F6F6(19)"
+static/static_22_jumping.png,static,red-emergency,original,84.3,False,71.4,10.31,100.0,0,100.0,"5 of 10 canon swatches exceed dE 12.0: #EAEAEA(23), #F0F0F0(25), #CCCCCC(17), #D2D2D2(18)"
+static/static_23_waving.png,static,cool-corridor,repaired,92.4,False,86.2,4.99,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #F6F6F6(13), #F0F0F0(13)"
+static/static_23_waving.png,static,warm-festival,repaired,91.3,False,84.2,5.68,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #D8D8D8(13), #F6F6F6(19), #F0F0F0(17)"
+static/static_23_waving.png,static,red-emergency,repaired,87.1,False,76.6,8.41,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #D8D8D8(18), #F6F6F6(27), #F0F0F0(25)"
+static/static_24_thinking.png,static,cool-corridor,original,92.5,False,86.4,4.89,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #F6F6F6(13), #F0F0F0(13)"
+static/static_24_thinking.png,static,warm-festival,original,90.9,False,83.5,5.93,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #D8D8D8(13), #DEDEDE(14), #F6F6F6(19), #F0F0F0(17)"
+static/static_24_thinking.png,static,red-emergency,original,87.0,False,76.4,8.49,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #D8D8D8(18), #DEDEDE(20), #F6F6F6(27), #F0F0F0(25)"
+static/static_25_crouching.png,static,cool-corridor,repaired,91.9,False,85.4,5.27,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #F6F6F6(13), #F0F0F0(13)"
+static/static_25_crouching.png,static,warm-festival,repaired,90.0,False,81.8,6.56,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #DEDEDE(14), #F6F6F6(18), #D8D8D8(13), #F0F0F0(17)"
+static/static_25_crouching.png,static,red-emergency,repaired,85.4,False,73.5,9.54,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #DEDEDE(20), #F6F6F6(27), #D8D8D8(18), #F0F0F0(25)"
+static/static_26_reaching.png,static,cool-corridor,original,92.9,False,87.1,4.65,100.0,0,100.0,1 of 10 canon swatches exceed dE 12.0: #F6F6F6(14)
+static/static_26_reaching.png,static,warm-festival,original,91.7,False,84.9,5.44,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #D8D8D8(13), #F6F6F6(19), #DEDEDE(14)"
+static/static_26_reaching.png,static,red-emergency,original,87.5,False,77.2,8.2,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #D8D8D8(18), #F6F6F6(27), #DEDEDE(19)"
+static/static_27_defeated.png,static,cool-corridor,original,93.9,False,88.8,4.02,100.0,0,100.0,1 of 10 canon swatches exceed dE 12.0: #F6F6F6(14)
+static/static_27_defeated.png,static,warm-festival,original,92.7,False,86.7,4.79,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #D8D8D8(13), #DEDEDE(14), #F6F6F6(18)"
+static/static_27_defeated.png,static,red-emergency,original,89.6,False,81.1,6.81,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #D8D8D8(18), #DEDEDE(20), #F6F6F6(27)"
+static/static_28_celebrating.png,static,cool-corridor,repaired,93.2,False,87.6,4.47,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #F6F6F6(14), #EAEAEA(12)"
+static/static_28_celebrating.png,static,warm-festival,repaired,92.5,False,86.3,4.92,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #E4E4E4(15), #F6F6F6(19), #EAEAEA(16)"
+static/static_28_celebrating.png,static,red-emergency,repaired,88.3,False,78.7,7.66,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #E4E4E4(22), #F6F6F6(27), #EAEAEA(24)"
+static/static_29_lookingup.png,static,cool-corridor,repaired,91.8,False,85.2,5.34,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #F6F6F6(14), #F0F0F0(13)"
+static/static_29_lookingup.png,static,warm-festival,repaired,90.0,False,81.8,6.55,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #D8D8D8(13), #DEDEDE(14), #F6F6F6(19), #F0F0F0(17)"
+static/static_29_lookingup.png,static,red-emergency,repaired,85.5,False,73.7,9.46,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #D8D8D8(18), #DEDEDE(20), #F6F6F6(27), #F0F0F0(25)"
+static/static_30_backview.png,static,cool-corridor,original,98.0,True,96.4,1.28,100.0,0,100.0,
+static/static_30_backview.png,static,warm-festival,original,98.5,True,97.2,1.0,100.0,0,100.0,1 of 6 canon swatches exceed dE 12.0: #D8D8D8(13)
+static/static_30_backview.png,static,red-emergency,original,97.0,True,94.6,1.94,100.0,0,100.0,1 of 6 canon swatches exceed dE 12.0: #D8D8D8(19)
+static/static_scene_freeze.png,static,cool-corridor,original,88.7,False,79.4,7.42,100.0,0,100.0,"3 of 8 canon swatches exceed dE 12.0: #FCFCFC(14), #965A3C(14), #FCC6A8(19)"
+static/static_scene_freeze.png,static,warm-festival,original,88.7,False,79.5,7.36,100.0,0,100.0,"2 of 8 canon swatches exceed dE 12.0: #FCFCFC(19), #DEDEDE(13)"
+static/static_scene_freeze.png,static,red-emergency,original,82.8,False,68.7,11.27,100.0,0,100.0,"2 of 8 canon swatches exceed dE 12.0: #FCFCFC(28), #DEDEDE(19)"
+twotone/twotone_00_clean_base.png,twotone,cool-corridor,repaired,91.5,False,84.5,5.58,100.0,0,100.0,1 of 10 canon swatches exceed dE 12.0: #FCFCFC(15)
+twotone/twotone_00_clean_base.png,twotone,warm-festival,repaired,89.5,False,80.9,6.88,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #DEDEDE(14), #E4E4E4(15), #D8D8D8(13), #FCFCFC(20)"
+twotone/twotone_00_clean_base.png,twotone,red-emergency,repaired,83.6,False,70.1,10.76,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #DEDEDE(21), #E4E4E4(23), #D8D8D8(20), #FCFCFC(28)"
+twotone/twotone_10_walking.png,twotone,cool-corridor,original,93.6,False,88.3,4.21,100.0,0,100.0,1 of 10 canon swatches exceed dE 12.0: #F6F6F6(14)
+twotone/twotone_10_walking.png,twotone,warm-festival,original,91.7,False,84.9,5.45,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #D8D8D8(15), #E4E4E4(16), #DEDEDE(16), #F6F6F6(18)"
+twotone/twotone_10_walking.png,twotone,red-emergency,original,88.0,False,78.2,7.83,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #D8D8D8(21), #E4E4E4(23), #DEDEDE(22), #F6F6F6(27)"
+twotone/twotone_12_sitting.png,twotone,cool-corridor,original,87.0,False,76.3,8.52,100.0,0,100.0,"5 of 10 canon swatches exceed dE 12.0: #FCFCFC(14), #F6E4D8(14), #F6EAD8(14), #F6E4D2(15)"
+twotone/twotone_12_sitting.png,twotone,warm-festival,original,90.0,False,81.7,6.57,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #FCFCFC(19), #FCFCF6(17)"
+twotone/twotone_12_sitting.png,twotone,red-emergency,original,81.4,False,66.2,12.16,100.0,0,100.0,"5 of 10 canon swatches exceed dE 12.0: #FCFCFC(28), #F6E4D8(18), #F6EAD8(21), #F6E4D2(18)"
+twotone/twotone_13_pointing.png,twotone,cool-corridor,repaired,88.2,False,78.5,7.74,100.0,0,100.0,"3 of 9 canon swatches exceed dE 12.0: #FCFCFC(14), #E4B496(14), #E4B49C(13)"
+twotone/twotone_13_pointing.png,twotone,warm-festival,repaired,88.7,False,79.4,7.42,100.0,0,100.0,1 of 9 canon swatches exceed dE 12.0: #FCFCFC(19)
+twotone/twotone_13_pointing.png,twotone,red-emergency,repaired,82.0,False,67.3,11.77,100.0,0,100.0,1 of 9 canon swatches exceed dE 12.0: #FCFCFC(28)
+twotone/twotone_16_worried.png,twotone,cool-corridor,repaired,91.6,False,84.8,5.47,100.0,0,100.0,1 of 8 canon swatches exceed dE 12.0: #F6F6F6(14)
+twotone/twotone_16_worried.png,twotone,warm-festival,repaired,89.1,False,80.2,7.13,100.0,0,100.0,"4 of 8 canon swatches exceed dE 12.0: #DEDEDE(14), #EAEAEA(16), #F6F6F6(18), #D8D8D8(13)"
+twotone/twotone_16_worried.png,twotone,red-emergency,repaired,83.3,False,69.7,10.9,100.0,0,100.0,"4 of 8 canon swatches exceed dE 12.0: #DEDEDE(21), #EAEAEA(24), #F6F6F6(27), #D8D8D8(20)"
+twotone/twotone_17_disgusted.png,twotone,cool-corridor,repaired,92.3,False,86.0,5.02,100.0,0,100.0,1 of 8 canon swatches exceed dE 12.0: #F6F6F6(13)
+twotone/twotone_17_disgusted.png,twotone,warm-festival,repaired,91.0,False,83.6,5.92,100.0,0,100.0,"3 of 8 canon swatches exceed dE 12.0: #D8D8D8(13), #DEDEDE(14), #F6F6F6(18)"
+twotone/twotone_17_disgusted.png,twotone,red-emergency,repaired,85.9,False,74.4,9.23,100.0,0,100.0,"3 of 8 canon swatches exceed dE 12.0: #D8D8D8(20), #DEDEDE(22), #F6F6F6(27)"
+twotone/twotone_18_sleepy.png,twotone,cool-corridor,repaired,91.1,False,83.9,5.81,100.0,0,100.0,"2 of 8 canon swatches exceed dE 12.0: #F6F6F6(13), #F0F0F0(13)"
+twotone/twotone_18_sleepy.png,twotone,warm-festival,repaired,88.1,False,78.4,7.79,100.0,0,100.0,"4 of 8 canon swatches exceed dE 12.0: #E4E4E4(16), #DEDEDE(15), #F6F6F6(18), #F0F0F0(17)"
+twotone/twotone_18_sleepy.png,twotone,red-emergency,repaired,82.6,False,68.4,11.38,100.0,0,100.0,"4 of 8 canon swatches exceed dE 12.0: #E4E4E4(23), #DEDEDE(21), #F6F6F6(27), #F0F0F0(26)"
+twotone/twotone_19_determined.png,twotone,cool-corridor,original,92.6,False,86.5,4.85,100.0,0,100.0,"2 of 9 canon swatches exceed dE 12.0: #F0F0F0(12), #F6F6F6(13)"
+twotone/twotone_19_determined.png,twotone,warm-festival,original,91.0,False,83.7,5.88,100.0,0,100.0,"4 of 9 canon swatches exceed dE 12.0: #D8D8D8(13), #F0F0F0(18), #F6F6F6(18), #D2D2D2(12)"
+twotone/twotone_19_determined.png,twotone,red-emergency,original,86.2,False,74.9,9.02,100.0,0,100.0,"4 of 9 canon swatches exceed dE 12.0: #D8D8D8(20), #F0F0F0(25), #F6F6F6(27), #D2D2D2(19)"
+twotone/twotone_20_confused.png,twotone,cool-corridor,repaired,91.9,False,85.3,5.28,100.0,0,100.0,1 of 10 canon swatches exceed dE 12.0: #F6F6F6(14)
+twotone/twotone_20_confused.png,twotone,warm-festival,repaired,89.9,False,81.6,6.62,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #D8D8D8(13), #E4E4E4(15), #DEDEDE(14), #F6F6F6(19)"
+twotone/twotone_20_confused.png,twotone,red-emergency,repaired,84.9,False,72.6,9.86,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #D8D8D8(19), #E4E4E4(22), #DEDEDE(21), #F6F6F6(27)"
+twotone/twotone_21_running.png,twotone,cool-corridor,original,91.9,False,85.2,5.32,100.0,0,100.0,1 of 9 canon swatches exceed dE 12.0: #F6F6F6(14)
+twotone/twotone_21_running.png,twotone,warm-festival,original,89.6,False,81.2,6.78,100.0,0,100.0,"4 of 9 canon swatches exceed dE 12.0: #D8D8D8(14), #E4E4E4(15), #DEDEDE(15), #F6F6F6(19)"
+twotone/twotone_21_running.png,twotone,red-emergency,original,84.7,False,72.1,10.04,100.0,0,100.0,"4 of 9 canon swatches exceed dE 12.0: #D8D8D8(20), #E4E4E4(23), #DEDEDE(21), #F6F6F6(27)"
+twotone/twotone_22_jumping.png,twotone,cool-corridor,original,91.7,False,85.0,5.41,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #F6F6F6(14), #E4E4DE(12)"
+twotone/twotone_22_jumping.png,twotone,warm-festival,original,90.0,False,81.9,6.53,100.0,0,100.0,"6 of 10 canon swatches exceed dE 12.0: #D8D8D8(13), #E4E4E4(15), #DEDEDE(14), #D2D2D2(13)"
+twotone/twotone_22_jumping.png,twotone,red-emergency,original,84.1,False,71.2,10.38,100.0,0,100.0,"6 of 10 canon swatches exceed dE 12.0: #D8D8D8(21), #E4E4E4(23), #DEDEDE(22), #D2D2D2(20)"
+twotone/twotone_23_waving.png,twotone,cool-corridor,original,92.2,False,85.8,5.11,100.0,0,100.0,1 of 9 canon swatches exceed dE 12.0: #F6F6F6(14)
+twotone/twotone_23_waving.png,twotone,warm-festival,original,90.5,False,82.7,6.24,100.0,0,100.0,"4 of 9 canon swatches exceed dE 12.0: #D8D8D8(14), #E4E4E4(15), #DEDEDE(14), #F6F6F6(19)"
+twotone/twotone_23_waving.png,twotone,red-emergency,original,85.3,False,73.3,9.6,100.0,0,100.0,"4 of 9 canon swatches exceed dE 12.0: #D8D8D8(21), #E4E4E4(23), #DEDEDE(22), #F6F6F6(27)"
+twotone/twotone_24_thinking.png,twotone,cool-corridor,repaired,92.2,False,85.7,5.14,100.0,0,100.0,"2 of 10 canon swatches exceed dE 12.0: #F0F0F0(12), #F6F6F6(13)"
+twotone/twotone_24_thinking.png,twotone,warm-festival,repaired,90.4,False,82.5,6.31,100.0,0,100.0,"5 of 10 canon swatches exceed dE 12.0: #D8D8D8(13), #F0F0F0(17), #EAEAEA(16), #F6F6F6(18)"
+twotone/twotone_24_thinking.png,twotone,red-emergency,repaired,85.0,False,72.7,9.82,100.0,0,100.0,"5 of 10 canon swatches exceed dE 12.0: #D8D8D8(20), #F0F0F0(25), #EAEAEA(24), #F6F6F6(27)"
+twotone/twotone_25_crouching.png,twotone,cool-corridor,original,91.7,False,85.0,5.41,100.0,0,100.0,1 of 9 canon swatches exceed dE 12.0: #F6F6F6(14)
+twotone/twotone_25_crouching.png,twotone,warm-festival,original,89.8,False,81.4,6.71,100.0,0,100.0,"4 of 9 canon swatches exceed dE 12.0: #D8D8D8(13), #E4E4E4(15), #DEDEDE(14), #F6F6F6(19)"
+twotone/twotone_25_crouching.png,twotone,red-emergency,original,84.2,False,71.2,10.36,100.0,0,100.0,"4 of 9 canon swatches exceed dE 12.0: #D8D8D8(20), #E4E4E4(22), #DEDEDE(21), #F6F6F6(27)"
+twotone/twotone_26_reaching.png,twotone,cool-corridor,repaired,92.8,False,86.9,4.7,100.0,0,100.0,1 of 10 canon swatches exceed dE 12.0: #F6F6F6(15)
+twotone/twotone_26_reaching.png,twotone,warm-festival,repaired,93.1,False,87.5,4.5,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #D8D8D8(13), #E4E4E4(15), #DEDEDE(14), #F6F6F6(19)"
+twotone/twotone_26_reaching.png,twotone,red-emergency,repaired,87.8,False,77.8,8.0,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #D8D8D8(20), #E4E4E4(22), #DEDEDE(21), #F6F6F6(27)"
+twotone/twotone_27_defeated.png,twotone,cool-corridor,original,93.3,False,87.8,4.4,100.0,0,100.0,1 of 9 canon swatches exceed dE 12.0: #E4E4DE(13)
+twotone/twotone_27_defeated.png,twotone,warm-festival,original,91.5,False,84.5,5.57,100.0,0,100.0,"4 of 9 canon swatches exceed dE 12.0: #E4E4E4(16), #DEDEDE(16), #D8D8D8(15), #E4E4DE(14)"
+twotone/twotone_27_defeated.png,twotone,red-emergency,original,87.4,False,77.2,8.22,100.0,0,100.0,"4 of 9 canon swatches exceed dE 12.0: #E4E4E4(23), #DEDEDE(22), #D8D8D8(20), #E4E4DE(23)"
+twotone/twotone_28_celebrating.png,twotone,cool-corridor,repaired,93.5,False,88.2,4.24,100.0,0,100.0,1 of 10 canon swatches exceed dE 12.0: #F6F6F6(14)
+twotone/twotone_28_celebrating.png,twotone,warm-festival,repaired,93.0,False,87.2,4.6,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #D8D8D8(13), #E4E4E4(15), #DEDEDE(14), #F6F6F6(19)"
+twotone/twotone_28_celebrating.png,twotone,red-emergency,repaired,88.6,False,79.3,7.44,100.0,0,100.0,"4 of 10 canon swatches exceed dE 12.0: #D8D8D8(21), #E4E4E4(23), #DEDEDE(22), #F6F6F6(27)"
+twotone/twotone_29_lookingup.png,twotone,cool-corridor,original,92.6,False,86.6,4.84,100.0,0,100.0,1 of 9 canon swatches exceed dE 12.0: #F6F6F6(14)
+twotone/twotone_29_lookingup.png,twotone,warm-festival,original,91.0,False,83.7,5.86,100.0,0,100.0,"4 of 9 canon swatches exceed dE 12.0: #D8D8D8(13), #E4E4E4(15), #F6F6F6(19), #DEDEDE(14)"
+twotone/twotone_29_lookingup.png,twotone,red-emergency,original,85.8,False,74.1,9.32,100.0,0,100.0,"4 of 9 canon swatches exceed dE 12.0: #D8D8D8(20), #E4E4E4(23), #F6F6F6(27), #DEDEDE(21)"
+twotone/twotone_30_backview.png,twotone,cool-corridor,repaired,94.2,False,89.4,3.82,100.0,0,100.0,
+twotone/twotone_30_backview.png,twotone,warm-festival,repaired,93.2,False,87.7,4.44,100.0,0,100.0,"2 of 7 canon swatches exceed dE 12.0: #E4E4E4(16), #DEDEDE(15)"
+twotone/twotone_30_backview.png,twotone,red-emergency,repaired,89.4,False,80.7,6.96,100.0,0,100.0,"2 of 7 canon swatches exceed dE 12.0: #E4E4E4(24), #DEDEDE(22)"
+zombie/zombie_00_clean_base.png,zombie,cool-corridor,repaired,92.6,False,86.5,4.85,100.0,0,100.0,1 of 10 canon swatches exceed dE 12.0: #F6F6F6(13)
+zombie/zombie_00_clean_base.png,zombie,warm-festival,repaired,89.5,False,80.9,6.88,100.0,0,100.0,1 of 10 canon swatches exceed dE 12.0: #F6F6F6(19)
+zombie/zombie_00_clean_base.png,zombie,red-emergency,repaired,81.0,False,65.4,12.46,100.0,0,100.0,"3 of 10 canon swatches exceed dE 12.0: #A8C09C(21), #F6F6F6(27), #A8C0A2(20)"

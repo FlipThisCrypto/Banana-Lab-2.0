@@ -1,0 +1,140 @@
+layer,status,bleed_px,blobs,note
+ash/ash_00_clean_base.png,REPAIRED,502,1,"445px@307,729"
+ash/ash_13_pointing.png,UNDETERMINED,0,0,no opaque source sheet
+ash/ash_15_laughing.png,REPAIRED,2453,2,"1378px@227,562; 615px@294,728"
+ash/ash_16_worried.png,REPAIRED,1264,3,"525px@173,537; 145px@285,649; 255px@265,662"
+ash/ash_17_disgusted.png,REPAIRED,614,2,"234px@268,627; 215px@312,732"
+ash/ash_18_sleepy.png,CLEAN,0,0,
+ash/ash_19_determined.png,REPAIRED,690,2,"206px@266,631; 311px@306,733"
+ash/ash_20_confused.png,REPAIRED,5254,1,"4996px@266,676"
+ash/ash_21_running.png,REPAIRED,3775,1,"3539px@252,690"
+ash/ash_22_jumping.png,REPAIRED,2950,2,"2208px@221,566; 303px@309,729"
+ash/ash_23_waving.png,REPAIRED,1146,2,"547px@241,439; 244px@563,682"
+ash/ash_24_thinking.png,REPAIRED,1686,2,"1246px@258,607; 116px@302,636"
+ash/ash_25_crouching.png,REPAIRED,1212,3,"286px@243,593; 89px@280,633; 538px@304,729"
+ash/ash_26_reaching.png,REPAIRED,6113,3,"168px@222,566; 157px@251,601; 5248px@265,649"
+ash/ash_27_defeated.png,REPAIRED,172,1,"99px@541,696"
+ash/ash_28_celebrating.png,REPAIRED,554,1,"433px@227,450"
+ash/ash_29_lookingup.png,REPAIRED,2027,3,"1076px@252,594; 73px@545,675; 482px@303,731"
+ash/ash_30_backview.png,CLEAN,0,0,
+clever/clever_00_clean_base.png,UNDETERMINED,0,0,layer and source differ in size; cannot align
+clever/clever_01_neutral.png,UNDETERMINED,0,0,layer and source differ in size; cannot align
+clever/clever_02_threeqtr.png,UNDETERMINED,0,0,layer and source differ in size; cannot align
+clever/clever_03_profile.png,UNDETERMINED,0,0,layer and source differ in size; cannot align
+clever/clever_04_overshoulder.png,UNDETERMINED,0,0,layer and source differ in size; cannot align
+clever/clever_06_angry.png,UNDETERMINED,0,0,layer and source differ in size; cannot align
+clever/clever_07_sad.png,UNDETERMINED,0,0,layer and source differ in size; cannot align
+clever/clever_08_shocked.png,UNDETERMINED,0,0,layer and source differ in size; cannot align
+clever/clever_09_smile.png,UNDETERMINED,0,0,layer and source differ in size; cannot align
+clever/clever_10_walking.png,UNDETERMINED,0,0,layer and source differ in size; cannot align
+clever/clever_11_armscrossed.png,UNDETERMINED,0,0,layer and source differ in size; cannot align
+clever/clever_12_sitting.png,UNDETERMINED,0,0,layer and source differ in size; cannot align
+clever/clever_13_pointing.png,UNDETERMINED,0,0,layer and source differ in size; cannot align
+clever/clever_14_shout.png,UNDETERMINED,0,0,layer and source differ in size; cannot align
+clever/clever_15_laughing.png,UNDETERMINED,0,0,layer and source differ in size; cannot align
+clever/clever_16_worried.png,UNDETERMINED,0,0,layer and source differ in size; cannot align
+clever/clever_17_disgusted.png,UNDETERMINED,0,0,layer and source differ in size; cannot align
+clever/clever_18_sleepy.png,UNDETERMINED,0,0,layer and source differ in size; cannot align
+clever/clever_19_determined.png,UNDETERMINED,0,0,layer and source differ in size; cannot align
+clever/clever_20_confused.png,UNDETERMINED,0,0,layer and source differ in size; cannot align
+clever/clever_21_running.png,UNDETERMINED,0,0,layer and source differ in size; cannot align
+clever/clever_22_jumping.png,UNDETERMINED,0,0,layer and source differ in size; cannot align
+clever/clever_23_waving.png,UNDETERMINED,0,0,layer and source differ in size; cannot align
+clever/clever_24_thinking.png,UNDETERMINED,0,0,layer and source differ in size; cannot align
+clever/clever_25_crouching.png,UNDETERMINED,0,0,layer and source differ in size; cannot align
+clever/clever_26_reaching.png,UNDETERMINED,0,0,layer and source differ in size; cannot align
+clever/clever_27_defeated.png,UNDETERMINED,0,0,layer and source differ in size; cannot align
+clever/clever_28_celebrating.png,UNDETERMINED,0,0,layer and source differ in size; cannot align
+clever/clever_29_lookingup.png,UNDETERMINED,0,0,layer and source differ in size; cannot align
+clever/clever_30_backview.png,UNDETERMINED,0,0,layer and source differ in size; cannot align
+moodz/moodz_00_clean_base.png,REPAIRED,1726,1,"1616px@287,729"
+moodz/moodz_10_walking.png,REPAIRED,2263,1,"2059px@291,720"
+moodz/moodz_15_laughing.png,REPAIRED,158,1,"106px@316,738"
+moodz/moodz_16_worried.png,CLEAN,0,0,
+moodz/moodz_17_disgusted.png,REPAIRED,1159,1,"1014px@287,733"
+moodz/moodz_18_sleepy.png,CLEAN,0,0,
+moodz/moodz_19_determined.png,REPAIRED,245,1,"193px@288,778"
+moodz/moodz_20_confused.png,REPAIRED,1279,1,"1098px@287,730"
+moodz/moodz_21_running.png,REPAIRED,1360,1,"1197px@296,719"
+moodz/moodz_22_jumping.png,CLEAN,0,0,
+moodz/moodz_23_waving.png,REPAIRED,423,1,"295px@285,483"
+moodz/moodz_24_thinking.png,REPAIRED,353,1,"272px@311,744"
+moodz/moodz_25_crouching.png,REPAIRED,1565,1,"1412px@287,729"
+moodz/moodz_26_reaching.png,CLEAN,0,0,
+moodz/moodz_27_defeated.png,CLEAN,0,0,
+moodz/moodz_28_celebrating.png,REPAIRED,6385,1,"5891px@246,605"
+moodz/moodz_29_lookingup.png,REPAIRED,1278,1,"1114px@287,731"
+moodz/moodz_30_backview.png,REPAIRED,375,1,"305px@328,752"
+neonblue/neonblue_00_clean_base.png,REPAIRED,300,1,"252px@314,729"
+neonblue/neonblue_15_laughing.png,REPAIRED,299,1,"219px@315,731"
+neonblue/neonblue_16_worried.png,CLEAN,0,0,
+neonblue/neonblue_17_disgusted.png,REPAIRED,601,2,"176px@323,706; 197px@496,717"
+neonblue/neonblue_18_sleepy.png,REPAIRED,298,1,"252px@314,731"
+neonblue/neonblue_19_determined.png,REPAIRED,1488,1,"1273px@519,657"
+neonblue/neonblue_20_confused.png,REPAIRED,5717,1,"5388px@264,659"
+neonblue/neonblue_21_running.png,CLEAN,0,0,
+neonblue/neonblue_22_jumping.png,CLEAN,0,0,
+neonblue/neonblue_23_waving.png,REPAIRED,7658,1,"7307px@252,604"
+neonblue/neonblue_24_thinking.png,CLEAN,0,0,
+neonblue/neonblue_25_crouching.png,REPAIRED,698,1,"536px@302,731"
+neonblue/neonblue_26_reaching.png,REPAIRED,447,2,"135px@583,452; 169px@322,482"
+neonblue/neonblue_27_defeated.png,CLEAN,0,0,
+neonblue/neonblue_28_celebrating.png,REPAIRED,7298,1,"7018px@260,637"
+neonblue/neonblue_29_lookingup.png,CLEAN,0,0,
+neonblue/neonblue_30_backview.png,CLEAN,0,0,
+scarline/scarline_00_clean_base.png,UNDETERMINED,0,0,no saturated background colour recoverable
+scarline/scarline_15_laughing.png,UNDETERMINED,0,0,no saturated background colour recoverable
+scarline/scarline_16_worried.png,UNDETERMINED,0,0,no saturated background colour recoverable
+scarline/scarline_17_disgusted.png,UNDETERMINED,0,0,no saturated background colour recoverable
+scarline/scarline_18_sleepy.png,UNDETERMINED,0,0,no saturated background colour recoverable
+scarline/scarline_19_determined.png,UNDETERMINED,0,0,no saturated background colour recoverable
+scarline/scarline_20_confused.png,UNDETERMINED,0,0,no saturated background colour recoverable
+scarline/scarline_21_running.png,UNDETERMINED,0,0,no saturated background colour recoverable
+scarline/scarline_22_jumping.png,UNDETERMINED,0,0,no saturated background colour recoverable
+scarline/scarline_23_waving.png,UNDETERMINED,0,0,no saturated background colour recoverable
+scarline/scarline_24_thinking.png,UNDETERMINED,0,0,no saturated background colour recoverable
+scarline/scarline_25_crouching.png,UNDETERMINED,0,0,no saturated background colour recoverable
+scarline/scarline_26_reaching.png,UNDETERMINED,0,0,no saturated background colour recoverable
+scarline/scarline_27_defeated.png,UNDETERMINED,0,0,no saturated background colour recoverable
+scarline/scarline_28_celebrating.png,UNDETERMINED,0,0,no saturated background colour recoverable
+scarline/scarline_29_lookingup.png,UNDETERMINED,0,0,no saturated background colour recoverable
+scarline/scarline_30_backview.png,UNDETERMINED,0,0,no saturated background colour recoverable
+static/static_00_clean_base.png,REPAIRED,906,1,"848px@296,729"
+static/static_14_shout.png,REPAIRED,3068,1,"2697px@390,551"
+static/static_15_laughing.png,REPAIRED,747,1,"661px@299,730"
+static/static_16_worried.png,CLEAN,0,0,
+static/static_17_disgusted.png,REPAIRED,683,1,"591px@299,732"
+static/static_18_sleepy.png,REPAIRED,769,1,"681px@299,730"
+static/static_19_determined.png,REPAIRED,318,1,"249px@312,738"
+static/static_20_confused.png,REPAIRED,6137,1,"5832px@262,643"
+static/static_21_running.png,CLEAN,0,0,
+static/static_22_jumping.png,CLEAN,0,0,
+static/static_23_waving.png,REPAIRED,5392,2,"184px@256,586; 4838px@216,680"
+static/static_24_thinking.png,CLEAN,0,0,
+static/static_25_crouching.png,REPAIRED,988,1,"878px@289,731"
+static/static_26_reaching.png,CLEAN,0,0,
+static/static_27_defeated.png,CLEAN,0,0,
+static/static_28_celebrating.png,REPAIRED,6380,1,"6149px@255,622"
+static/static_29_lookingup.png,REPAIRED,515,1,"418px@300,733"
+static/static_30_backview.png,CLEAN,0,0,
+static/static_scene_freeze.png,UNDETERMINED,0,0,no opaque source sheet
+twotone/twotone_00_clean_base.png,REPAIRED,346,1,"299px@312,730"
+twotone/twotone_10_walking.png,CLEAN,0,0,
+twotone/twotone_12_sitting.png,CLEAN,0,0,
+twotone/twotone_13_pointing.png,REPAIRED,2764,2,"2278px@277,628; 316px@560,746"
+twotone/twotone_16_worried.png,REPAIRED,111,1,"47px@654,372"
+twotone/twotone_17_disgusted.png,REPAIRED,551,2,"163px@211,339; 241px@310,734"
+twotone/twotone_18_sleepy.png,REPAIRED,425,2,"94px@679,421; 213px@315,731"
+twotone/twotone_19_determined.png,CLEAN,0,0,
+twotone/twotone_20_confused.png,REPAIRED,7399,1,"7053px@231,635"
+twotone/twotone_21_running.png,CLEAN,0,0,
+twotone/twotone_22_jumping.png,CLEAN,0,0,
+twotone/twotone_23_waving.png,CLEAN,0,0,
+twotone/twotone_24_thinking.png,REPAIRED,138,1,"79px@679,425"
+twotone/twotone_25_crouching.png,CLEAN,0,0,
+twotone/twotone_26_reaching.png,REPAIRED,304,1,"228px@253,374"
+twotone/twotone_27_defeated.png,CLEAN,0,0,
+twotone/twotone_28_celebrating.png,REPAIRED,6003,2,"66px@250,341; 5603px@259,647"
+twotone/twotone_29_lookingup.png,CLEAN,0,0,
+twotone/twotone_30_backview.png,REPAIRED,283,2,"102px@190,393; 47px@688,396"
+zombie/zombie_00_clean_base.png,REPAIRED,871,1,"784px@297,730"

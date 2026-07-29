@@ -61,6 +61,18 @@ class LightContract:
     fill_color: tuple[int, int, int] = (40, 46, 60)
     fill_strength: float = 0.18
     rim_strength: float = 0.0
+    #: How strongly bright near-neutral pixels resist the colour cast, 0-1.
+    #:
+    #: In cel art the whites and pale greys are graphic elements, not physical
+    #: surfaces: they carry eye whites, face fills, under-eye bags, eye rings and
+    #: stitched chest panels - identity-bearing features. Tinting them the way a
+    #: real white wall would tint under coloured light is physically defensible
+    #: and destroys likeness.
+    #:
+    #: Measured: at 0.0, the exp005 relight moved NeonBlue's #F0F0F0 to #C6E3E9
+    #: (dE 12.2) and Moodz's #FCFCFC to #C8ECF3 (dE 14.8), failing the likeness
+    #: gate at 90.7 and 93.2. See docs/audits/LIKENESS_TUNING_REPORT.md.
+    protect_neutrals: float = 0.85
     #: How far a cast shadow stretches, as a multiple of character height.
     cast_length: float = 0.6
     cast_opacity: float = 0.42
@@ -173,13 +185,40 @@ def relight(
     key = np.array(light.key_color, dtype=np.float32) / 255.0
     fill = np.array(light.fill_color, dtype=np.float32) / 255.0
 
-    out = rgb / 255.0
-    out = out * (1.0 - light.key_strength + light.key_strength * lit * key * 1.6)
-    out = out * (1.0 - light.fill_strength) + out * light.fill_strength * fill * 1.4
+    base = rgb / 255.0
 
+    # Light changes VALUE. In cel art it must barely change HUE, because the
+    # flat fills are graphic identity - Scarline's scarlet streak, Zombie's pale
+    # green, NeonBlue's cyan crown - not physical surfaces.
+    #
+    # So compute the fully-tinted result, then keep only its luminance and
+    # restore the original hue, blending a controlled amount of tint back in.
+    #
+    # Measured: tinting freely moved saturated canon swatches by dE 14-20
+    # (#B44236 -> dE 20, #A8C09C -> dE 14) and failed 74 of 417 library
+    # measurements. See docs/audits/LIKENESS_TUNING_REPORT.md.
+    tinted = base
+    tinted = tinted * (1.0 - light.key_strength
+                       + light.key_strength * lit * key * 1.6)
+    tinted = (tinted * (1.0 - light.fill_strength)
+              + tinted * light.fill_strength * fill * 1.4)
     if spill_color is not None and light.spill_strength > 0:
         spill = np.array(spill_color, dtype=np.float32) / 255.0
-        out = out * (1.0 - light.spill_strength) + out * spill * light.spill_strength * 2.0
+        tinted = (tinted * (1.0 - light.spill_strength)
+                  + tinted * spill * light.spill_strength * 2.0)
+
+    weights = np.array([0.2126, 0.7152, 0.0722], dtype=np.float32)
+    base_luma = (base * weights).sum(axis=2, keepdims=True)
+    lit_luma = (tinted * weights).sum(axis=2, keepdims=True)
+
+    # Original hue, carrying the light's luminance. Hue is exactly preserved.
+    scale = lit_luma / np.maximum(base_luma, 1e-4)
+    hue_safe = np.clip(base * scale, 0.0, 1.0)
+
+    # Then allow a limited amount of real tint back, so the character still
+    # belongs to the scene rather than looking cut out of a different one.
+    tint = np.clip(1.0 - light.protect_neutrals, 0.0, 1.0)
+    out = hue_safe * (1.0 - tint) + tinted * tint
 
     if light.ambient_lift:
         out = out + light.ambient_lift

@@ -1,0 +1,140 @@
+layer,character,status,card_hex,bleed_px,blobs,largest_blob_px,note
+ash/ash_00_clean_base.png,ash,BLEED,#27B3B2,436,1,436,
+ash/ash_13_pointing.png,ash,UNDETERMINED,,0,0,0,border colour occupies only 4% of the border
+ash/ash_15_laughing.png,ash,BLEED,#27B1B1,1890,2,1294,
+ash/ash_16_worried.png,ash,BLEED,#28B2B2,851,3,494,
+ash/ash_17_disgusted.png,ash,BLEED,#28B2B2,415,2,211,
+ash/ash_18_sleepy.png,ash,CLEAN,#28B2B2,0,0,0,
+ash/ash_19_determined.png,ash,BLEED,#28B2B2,488,2,298,
+ash/ash_20_confused.png,ash,BLEED,#28B2B2,4933,1,4933,
+ash/ash_21_running.png,ash,BLEED,#28B0AE,3477,1,3477,
+ash/ash_22_jumping.png,ash,BLEED,#28ADAC,2398,2,2109,
+ash/ash_23_waving.png,ash,BLEED,#27B1B1,695,2,480,
+ash/ash_24_thinking.png,ash,BLEED,#28B2B2,1290,2,1194,
+ash/ash_25_crouching.png,ash,BLEED,#2DA9AB,876,3,528,
+ash/ash_26_reaching.png,ash,BLEED,#28B0AE,5449,3,5169,
+ash/ash_27_defeated.png,ash,BLEED,#28B0B0,69,1,69,
+ash/ash_28_celebrating.png,ash,BLEED,#2CACAB,424,1,424,
+ash/ash_29_lookingup.png,ash,BLEED,#27B1B1,1544,3,1021,
+ash/ash_30_backview.png,ash,CLEAN,#27B1B1,0,0,0,
+clever/clever_00_clean_base.png,clever,UNDETERMINED,,0,0,0,border colour #000000 is not saturated (sat 0)
+clever/clever_01_neutral.png,clever,UNDETERMINED,,0,0,0,border colour #000000 is not saturated (sat 0)
+clever/clever_02_threeqtr.png,clever,UNDETERMINED,,0,0,0,border colour #000000 is not saturated (sat 0)
+clever/clever_03_profile.png,clever,UNDETERMINED,,0,0,0,border colour #000000 is not saturated (sat 0)
+clever/clever_04_overshoulder.png,clever,UNDETERMINED,,0,0,0,border colour #000000 is not saturated (sat 0)
+clever/clever_06_angry.png,clever,UNDETERMINED,,0,0,0,border colour #000000 is not saturated (sat 0)
+clever/clever_07_sad.png,clever,UNDETERMINED,,0,0,0,border colour #000000 is not saturated (sat 0)
+clever/clever_08_shocked.png,clever,UNDETERMINED,,0,0,0,border colour #000000 is not saturated (sat 0)
+clever/clever_09_smile.png,clever,UNDETERMINED,,0,0,0,border colour #000000 is not saturated (sat 0)
+clever/clever_10_walking.png,clever,UNDETERMINED,,0,0,0,border colour #000000 is not saturated (sat 0)
+clever/clever_11_armscrossed.png,clever,UNDETERMINED,,0,0,0,border colour #000000 is not saturated (sat 0)
+clever/clever_12_sitting.png,clever,UNDETERMINED,,0,0,0,border colour #000000 is not saturated (sat 0)
+clever/clever_13_pointing.png,clever,UNDETERMINED,,0,0,0,border colour #000000 is not saturated (sat 0)
+clever/clever_14_shout.png,clever,UNDETERMINED,,0,0,0,border colour #000000 is not saturated (sat 0)
+clever/clever_15_laughing.png,clever,UNDETERMINED,,0,0,0,border colour #000000 is not saturated (sat 0)
+clever/clever_16_worried.png,clever,UNDETERMINED,,0,0,0,border colour #000000 is not saturated (sat 0)
+clever/clever_17_disgusted.png,clever,UNDETERMINED,,0,0,0,border colour #000000 is not saturated (sat 0)
+clever/clever_18_sleepy.png,clever,UNDETERMINED,,0,0,0,border colour #000000 is not saturated (sat 0)
+clever/clever_19_determined.png,clever,UNDETERMINED,,0,0,0,border colour #000000 is not saturated (sat 0)
+clever/clever_20_confused.png,clever,UNDETERMINED,,0,0,0,border colour #000000 is not saturated (sat 0)
+clever/clever_21_running.png,clever,UNDETERMINED,,0,0,0,border colour #000000 is not saturated (sat 0)
+clever/clever_22_jumping.png,clever,UNDETERMINED,,0,0,0,border colour #000000 is not saturated (sat 0)
+clever/clever_23_waving.png,clever,UNDETERMINED,,0,0,0,border colour #000000 is not saturated (sat 0)
+clever/clever_24_thinking.png,clever,UNDETERMINED,,0,0,0,border colour #000000 is not saturated (sat 0)
+clever/clever_25_crouching.png,clever,UNDETERMINED,,0,0,0,border colour #000000 is not saturated (sat 0)
+clever/clever_26_reaching.png,clever,UNDETERMINED,,0,0,0,border colour #000000 is not saturated (sat 0)
+clever/clever_27_defeated.png,clever,UNDETERMINED,,0,0,0,border colour #000000 is not saturated (sat 0)
+clever/clever_28_celebrating.png,clever,UNDETERMINED,,0,0,0,border colour #000000 is not saturated (sat 0)
+clever/clever_29_lookingup.png,clever,UNDETERMINED,,0,0,0,border colour #000000 is not saturated (sat 0)
+clever/clever_30_backview.png,clever,UNDETERMINED,,0,0,0,border colour #000000 is not saturated (sat 0)
+moodz/moodz_00_clean_base.png,moodz,BLEED,#EB8F50,1606,1,1606,
+moodz/moodz_10_walking.png,moodz,BLEED,#EC8F52,2040,1,2040,
+moodz/moodz_15_laughing.png,moodz,BLEED,#E88E52,109,1,109,
+moodz/moodz_16_worried.png,moodz,CLEAN,#E68D53,0,0,0,
+moodz/moodz_17_disgusted.png,moodz,BLEED,#E78D51,1007,1,1007,
+moodz/moodz_18_sleepy.png,moodz,CLEAN,#EC8F52,0,0,0,
+moodz/moodz_19_determined.png,moodz,BLEED,#EC8F52,191,1,191,
+moodz/moodz_20_confused.png,moodz,BLEED,#EC8F52,1092,1,1092,
+moodz/moodz_21_running.png,moodz,BLEED,#EC8F52,1191,1,1191,
+moodz/moodz_22_jumping.png,moodz,CLEAN,#EC8F52,0,0,0,
+moodz/moodz_23_waving.png,moodz,BLEED,#EC8F52,279,1,279,
+moodz/moodz_24_thinking.png,moodz,BLEED,#EC8F52,266,1,266,
+moodz/moodz_25_crouching.png,moodz,BLEED,#E78E54,1432,1,1432,
+moodz/moodz_26_reaching.png,moodz,CLEAN,#EC8F52,0,0,0,
+moodz/moodz_27_defeated.png,moodz,CLEAN,#ED9053,0,0,0,
+moodz/moodz_28_celebrating.png,moodz,BLEED,#EC8F52,5861,1,5861,
+moodz/moodz_29_lookingup.png,moodz,BLEED,#EC8F52,1103,1,1103,
+moodz/moodz_30_backview.png,moodz,BLEED,#EC8F52,287,1,287,
+neonblue/neonblue_00_clean_base.png,neonblue,BLEED,#61E18C,255,1,255,
+neonblue/neonblue_15_laughing.png,neonblue,UNDETERMINED,,0,0,0,border colour occupies only 9% of the border
+neonblue/neonblue_16_worried.png,neonblue,CLEAN,#60DE8D,0,0,0,
+neonblue/neonblue_17_disgusted.png,neonblue,UNDETERMINED,,0,0,0,border colour occupies only 10% of the border
+neonblue/neonblue_18_sleepy.png,neonblue,UNDETERMINED,,0,0,0,border colour occupies only 10% of the border
+neonblue/neonblue_19_determined.png,neonblue,UNDETERMINED,,0,0,0,border colour occupies only 10% of the border
+neonblue/neonblue_20_confused.png,neonblue,BLEED,#60DE8D,5440,1,5440,
+neonblue/neonblue_21_running.png,neonblue,CLEAN,#5ED68C,0,0,0,
+neonblue/neonblue_22_jumping.png,neonblue,UNDETERMINED,,0,0,0,border colour occupies only 12% of the border
+neonblue/neonblue_23_waving.png,neonblue,BLEED,#5FD58B,7284,1,7284,
+neonblue/neonblue_24_thinking.png,neonblue,CLEAN,#61D78D,0,0,0,
+neonblue/neonblue_25_crouching.png,neonblue,UNDETERMINED,,0,0,0,border colour occupies only 10% of the border
+neonblue/neonblue_26_reaching.png,neonblue,BLEED,#5DDB8A,269,2,145,
+neonblue/neonblue_27_defeated.png,neonblue,UNDETERMINED,,0,0,0,border colour occupies only 8% of the border
+neonblue/neonblue_28_celebrating.png,neonblue,BLEED,#61D68F,7005,1,7005,
+neonblue/neonblue_29_lookingup.png,neonblue,UNDETERMINED,,0,0,0,border colour occupies only 11% of the border
+neonblue/neonblue_30_backview.png,neonblue,UNDETERMINED,,0,0,0,border colour occupies only 11% of the border
+scarline/scarline_00_clean_base.png,scarline,UNDETERMINED,,0,0,0,border colour #C1C1C1 is not saturated (sat 0)
+scarline/scarline_15_laughing.png,scarline,UNDETERMINED,,0,0,0,border colour #BEBEBE is not saturated (sat 0)
+scarline/scarline_16_worried.png,scarline,UNDETERMINED,,0,0,0,border colour #BFBFBF is not saturated (sat 0)
+scarline/scarline_17_disgusted.png,scarline,UNDETERMINED,,0,0,0,border colour #BFBFBF is not saturated (sat 0)
+scarline/scarline_18_sleepy.png,scarline,UNDETERMINED,,0,0,0,border colour #C0C0C0 is not saturated (sat 0)
+scarline/scarline_19_determined.png,scarline,UNDETERMINED,,0,0,0,border colour #BFBFBF is not saturated (sat 0)
+scarline/scarline_20_confused.png,scarline,UNDETERMINED,,0,0,0,border colour #BFBFBF is not saturated (sat 0)
+scarline/scarline_21_running.png,scarline,UNDETERMINED,,0,0,0,border colour #BEBEBE is not saturated (sat 0)
+scarline/scarline_22_jumping.png,scarline,UNDETERMINED,,0,0,0,border colour #BFBFBF is not saturated (sat 0)
+scarline/scarline_23_waving.png,scarline,UNDETERMINED,,0,0,0,border colour #BFBFBF is not saturated (sat 0)
+scarline/scarline_24_thinking.png,scarline,UNDETERMINED,,0,0,0,border colour #BFBFBF is not saturated (sat 0)
+scarline/scarline_25_crouching.png,scarline,UNDETERMINED,,0,0,0,border colour #999999 is not saturated (sat 0)
+scarline/scarline_26_reaching.png,scarline,UNDETERMINED,,0,0,0,border colour #BFBFBF is not saturated (sat 0)
+scarline/scarline_27_defeated.png,scarline,UNDETERMINED,,0,0,0,border colour #BFBFBF is not saturated (sat 0)
+scarline/scarline_28_celebrating.png,scarline,UNDETERMINED,,0,0,0,border colour #BFBFBF is not saturated (sat 0)
+scarline/scarline_29_lookingup.png,scarline,UNDETERMINED,,0,0,0,border colour #BDBDBD is not saturated (sat 0)
+scarline/scarline_30_backview.png,scarline,UNDETERMINED,,0,0,0,border colour #BFBFBF is not saturated (sat 0)
+static/static_00_clean_base.png,static,BLEED,#DC4781,855,1,855,
+static/static_14_shout.png,static,UNDETERMINED,,0,0,0,border colour occupies only 9% of the border
+static/static_15_laughing.png,static,UNDETERMINED,,0,0,0,border colour occupies only 9% of the border
+static/static_16_worried.png,static,UNDETERMINED,,0,0,0,border colour occupies only 7% of the border
+static/static_17_disgusted.png,static,UNDETERMINED,,0,0,0,border colour occupies only 9% of the border
+static/static_18_sleepy.png,static,UNDETERMINED,,0,0,0,border colour occupies only 12% of the border
+static/static_19_determined.png,static,UNDETERMINED,,0,0,0,border colour occupies only 8% of the border
+static/static_20_confused.png,static,UNDETERMINED,,0,0,0,border colour occupies only 9% of the border
+static/static_21_running.png,static,UNDETERMINED,,0,0,0,border colour occupies only 9% of the border
+static/static_22_jumping.png,static,UNDETERMINED,,0,0,0,border colour occupies only 8% of the border
+static/static_23_waving.png,static,UNDETERMINED,,0,0,0,border colour occupies only 11% of the border
+static/static_24_thinking.png,static,UNDETERMINED,,0,0,0,border colour occupies only 9% of the border
+static/static_25_crouching.png,static,UNDETERMINED,,0,0,0,border colour occupies only 8% of the border
+static/static_26_reaching.png,static,UNDETERMINED,,0,0,0,border colour occupies only 8% of the border
+static/static_27_defeated.png,static,UNDETERMINED,,0,0,0,border colour occupies only 9% of the border
+static/static_28_celebrating.png,static,BLEED,#D3487F,6106,1,6106,
+static/static_29_lookingup.png,static,UNDETERMINED,,0,0,0,border colour occupies only 8% of the border
+static/static_30_backview.png,static,UNDETERMINED,,0,0,0,border colour occupies only 7% of the border
+static/static_scene_freeze.png,static,UNDETERMINED,,0,0,0,no matching opaque source sheet in approved_characters
+twotone/twotone_00_clean_base.png,twotone,BLEED,#AA44B1,303,1,303,
+twotone/twotone_10_walking.png,twotone,CLEAN,#A946B2,0,0,0,
+twotone/twotone_12_sitting.png,twotone,UNDETERMINED,,0,0,0,border colour occupies only 3% of the border
+twotone/twotone_13_pointing.png,twotone,UNDETERMINED,,0,0,0,border colour occupies only 4% of the border
+twotone/twotone_16_worried.png,twotone,CLEAN,#A845B1,0,0,0,
+twotone/twotone_17_disgusted.png,twotone,BLEED,#A845B1,370,2,228,
+twotone/twotone_18_sleepy.png,twotone,UNDETERMINED,,0,0,0,border colour occupies only 12% of the border
+twotone/twotone_19_determined.png,twotone,UNDETERMINED,,0,0,0,border colour occupies only 12% of the border
+twotone/twotone_20_confused.png,twotone,BLEED,#A845B1,6942,1,6942,
+twotone/twotone_21_running.png,twotone,CLEAN,#9F43A8,0,0,0,
+twotone/twotone_22_jumping.png,twotone,CLEAN,#9D46A5,0,0,0,
+twotone/twotone_23_waving.png,twotone,UNDETERMINED,,0,0,0,border colour occupies only 11% of the border
+twotone/twotone_24_thinking.png,twotone,BLEED,#A845AF,63,1,63,
+twotone/twotone_25_crouching.png,twotone,CLEAN,#A845B1,0,0,0,
+twotone/twotone_26_reaching.png,twotone,UNDETERMINED,,0,0,0,border colour occupies only 11% of the border
+twotone/twotone_27_defeated.png,twotone,UNDETERMINED,,0,0,0,border colour occupies only 12% of the border
+twotone/twotone_28_celebrating.png,twotone,UNDETERMINED,,0,0,0,border colour occupies only 12% of the border
+twotone/twotone_29_lookingup.png,twotone,UNDETERMINED,,0,0,0,border colour occupies only 8% of the border
+twotone/twotone_30_backview.png,twotone,UNDETERMINED,,0,0,0,border colour occupies only 12% of the border
+zombie/zombie_00_clean_base.png,zombie,BLEED,#EA9052,784,1,784,
