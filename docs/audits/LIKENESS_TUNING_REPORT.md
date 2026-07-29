@@ -866,9 +866,39 @@ Closing the hole while costing the honest signal *exactly nothing* is the same
 shape as Fix 6 above, and is the strongest evidence available that a fix is real
 rather than a threshold moved.
 
+### The full control sweep
+
+Four controls — flat decal, untouched cut-out, wrong light direction, wrong
+scene's light — against every layer at three protection levels:
+
+```
+layers            : 139
+control measures  : 1668
+controls REJECTED : 1668 / 1668
+controls ESCAPED  : 0
+honest relight    : min 12.7  median 87.5  max 99.5
+```
+
+The first run of this sweep reported **4 escapes**, and they were worth chasing
+because they were not escapes. All four were the same layer:
+`moodz_30_backview` is 56% black and 21% saturated blue, so the cool contract
+can only move it **0.98 dE** along the plate's illuminant axis — under the
+measure's own 3.0 dE visibility floor. Its honest relight scores 12.7, and all
+four broken variants scored **0.0**: correctly ranked below, with no room for
+the 20-point gap the sweep demanded.
+
+The sweep's criterion was wrong, not the measure. It now requires the gap where
+the honest relight has room for one and strict ordering otherwise, and reports
+barely-integrating pairs separately — because *"this light does almost nothing
+to this artwork"* is a finding about that panel, not a failure of the metric.
+Exactly **1 of 417** pairs is in that category, and it is named in the output.
+
 ### Status: reported, not gated
 
-Likeness has **1,089** adversarial controls behind it. This has roughly 400. So
+Likeness has **1,089** adversarial controls behind it. This now has **1,668** —
+more, but over a much narrower slice: one plate, one scene light, four attack
+shapes, where likeness was probed across three scene lights and the whole
+library. Breadth of attack is not the same as breadth of coverage. So
 `composite_panel()` records `integration_score` for every placement and warns
 below 25 — a character that barely responds to the panel's light reads as pasted
 on — but **likeness remains the only hard constraint.** Promoting this to a gate
