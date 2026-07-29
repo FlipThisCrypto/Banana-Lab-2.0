@@ -677,6 +677,53 @@ time the pass rate went up on its own, it was wrong.
 
 ---
 
+## The loop cannot close on `protect_neutrals`, and that is the real finding
+
+`protect_neutrals` was still 0.85 by inheritance — chosen back when relight
+preserved hue by scaling RGB ratios, which it no longer does. So it was
+re-swept against the corrected relight, reporting library pass **and** control
+escapes at each level, on the rule that a level which passes everything is a
+failed experiment:
+
+| `protect` | library pass | min | median | control escapes | best broken |
+|---:|---:|---:|---:|---:|---:|
+| 0.70 | 61/66 | 94.7 | 96.4 | 0 | 93.8 |
+| 0.80 | 66/66 | 96.4 | 97.5 | 0 | 93.8 |
+| 0.85 | 66/66 | 96.6 | 98.0 | 0 | 93.8 |
+| 0.90 | 66/66 | 96.7 | 98.6 | 0 | 93.8 |
+| 0.95 | 66/66 | 96.7 | 99.2 | 0 | 93.8 |
+| **1.00** | 66/66 | **96.8** | **99.8** | 0 | 93.8 |
+
+Read naively, that says **use 1.00**. It is monotone: the more the character is
+protected, the better it scores. But look at what 1.00 actually does to the art,
+measured as the character's mean chroma response to a strong red key:
+
+| `protect` | chroma response to the scene light |
+|---:|---:|
+| 0.70 | 2.92 |
+| 0.85 | 1.55 |
+| **1.00** | **0.26** |
+
+At 1.00 the character **does not respond to the light at all**. It is a cut-out
+pasted onto a plate — which is exactly the failure the compositor was built to
+prevent, and exactly what the previous system did with its row of opaque
+reference cards.
+
+**The likeness metric has a degenerate optimum.** It measures identity
+preservation, and identity preservation is trivially maximised by doing nothing.
+The counter-pressure — *the character must belong in the scene* — is not
+measured anywhere, so no sweep of this parameter can terminate honestly.
+
+This is a limit of the loop, not of the parameter. Optimising a one-sided metric
+gets you a one-sided answer. `protect_neutrals` stays at **0.85** for now, which
+is the value the visual checks in Fix 3 were made against — an inherited value,
+honestly labelled as such, not a measured optimum.
+
+Closing this needs a second measure on the opposing axis, scored so an interior
+optimum exists. That work is tracked separately.
+
+---
+
 ## Wiring it into the pipeline — and what that immediately found
 
 A metric nothing calls is documentation, not a gate. Until now `likeness.py` was
@@ -759,10 +806,10 @@ is worse.
 - Everything here is measured on **relight of approved layers**, which is the
   compositing path. It says nothing yet about generated backgrounds or about
   panels assembled end to end.
-- `protect_neutrals` is still at 0.85 by inheritance, not by a fresh sweep
-  against the corrected relight. With the Lab recombination the parameter means
-  something different than it did when 0.85 was chosen, and it should be
-  re-swept.
+- `protect_neutrals` has now been re-swept against the corrected relight, and
+  the sweep **cannot pick a value** - likeness is monotone toward 1.00, where
+  the character stops responding to the scene light entirely. It stays at 0.85
+  as an inherited value, not a measured optimum. See the section above.
 - The worst broken input scores 94.9 against a gate of 95.0. Damage that moves
   the whole figure by less than about 3 dE is not reliably caught.
 - The 320 px legibility floor is a ramp, not a cliff: 320 px scores 100 and the
