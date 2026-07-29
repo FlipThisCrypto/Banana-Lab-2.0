@@ -667,7 +667,7 @@ Zombie has **3** measurements — one layer. That is a coverage gap, not a resul
 | **+ Lab recombination (Fix 4)** | **82.0%** | **95 / 139** |
 | **+ consistent dE gate (Fix 5)** | **100.0%** — *18 controls escaped* | 139 / 139 |
 | **+ pixel-drift rule (Fix 6)** | **100.0%** | **139 / 139** |
-| **+ unknown contamination fails (Fix 7)** | *re-measuring* | — |
+| **+ unknown contamination fails (Fix 7)** | **64.7%** | **90 / 139** |
 
 The two 100% rows differ only in whether broken input could sneak through. The
 first let 18 damaged images pass; the second lets none through that the control
@@ -718,8 +718,35 @@ ADR-005: a machine gate may only reject, never approve. Treating "unmeasured" as
 same rule the module already applied to unaligned renders. The layer is reported
 UNMEASURABLE with instructions, rather than quietly cleared.
 
-This **lowers** the headline number, which is the point. The 49 layers are not
-newly broken; they were never known to be sound.
+This **lowers** the headline number, which is the point. Re-measured:
+
+```
+measurements : 417  (139 layers x 3 scenes)
+PASS         : 270 / 417  (64.7%)
+layers clean : 90 / 139
+failures     : 147  - all of them "contamination status unknown"
+```
+
+147 is exactly 49 layers x 3 scenes. Nothing else changed, and that is the
+important part:
+
+| | before Fix 7 | after Fix 7 |
+|---|---:|---:|
+| Measurements failing a **colour** gate | 0 / 417 | **0 / 417** |
+| palette_score min / median / max | 93.5 / 98.1 / 99.5 | **93.5 / 98.1 / 99.5** |
+| Overall pass | 100% | 64.7% |
+
+So the honest statement of where the colour work landed is **not** "64.7%". It
+is two separate facts:
+
+- **Colour identity: 417 / 417.** Every layer, under every scene light, holds
+  its palette within all three dE rules, adversarially verified.
+- **Overall likeness gate: 270 / 417**, because 49 layers cannot be certified
+  free of card bleed at all.
+
+The 49 layers are not newly broken; they were never known to be sound. They are
+30 Clever, 17 Scarline, 1 Ash, 1 Static, and they need human review or a re-cut
+from source. That is a **materials** problem, not a metric problem.
 
 ---
 

@@ -2,9 +2,9 @@ layer,character,scene,source,score,passed,palette_score,palette_delta_e,contamin
 ash/ash_00_clean_base.png,ash,cool-corridor,repaired,98.2,True,96.7,1.06,100.0,0,100.0,
 ash/ash_00_clean_base.png,ash,warm-festival,repaired,97.9,True,96.1,1.27,100.0,0,100.0,
 ash/ash_00_clean_base.png,ash,red-emergency,repaired,97.3,True,95.1,1.59,100.0,0,100.0,
-ash/ash_13_pointing.png,ash,cool-corridor,original,97.8,True,96.0,1.35,100.0,0,100.0,
-ash/ash_13_pointing.png,ash,warm-festival,original,97.8,True,96.0,1.39,100.0,0,100.0,
-ash/ash_13_pointing.png,ash,red-emergency,original,97.1,True,94.8,1.83,100.0,0,100.0,
+ash/ash_13_pointing.png,ash,cool-corridor,original,97.8,False,96.0,1.35,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+ash/ash_13_pointing.png,ash,warm-festival,original,97.8,False,96.0,1.39,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+ash/ash_13_pointing.png,ash,red-emergency,original,97.1,False,94.8,1.83,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
 ash/ash_15_laughing.png,ash,cool-corridor,repaired,98.3,True,96.9,0.97,100.0,0,100.0,
 ash/ash_15_laughing.png,ash,warm-festival,repaired,98.0,True,96.4,1.16,100.0,0,100.0,
 ash/ash_15_laughing.png,ash,red-emergency,repaired,97.5,True,95.5,1.46,100.0,0,100.0,
@@ -53,96 +53,96 @@ ash/ash_29_lookingup.png,ash,red-emergency,repaired,97.5,True,95.5,1.45,100.0,0,
 ash/ash_30_backview.png,ash,cool-corridor,original,98.4,True,97.0,0.95,100.0,0,100.0,
 ash/ash_30_backview.png,ash,warm-festival,original,98.1,True,96.5,1.13,100.0,0,100.0,
 ash/ash_30_backview.png,ash,red-emergency,original,97.6,True,95.6,1.43,100.0,0,100.0,
-clever/clever_00_clean_base.png,clever,cool-corridor,original,97.9,True,96.2,2.35,100.0,0,100.0,
-clever/clever_00_clean_base.png,clever,warm-festival,original,97.5,True,95.5,3.36,100.0,0,100.0,
-clever/clever_00_clean_base.png,clever,red-emergency,original,96.6,True,93.9,4.61,100.0,0,100.0,
-clever/clever_01_neutral.png,clever,cool-corridor,original,97.9,True,96.2,2.35,100.0,0,100.0,
-clever/clever_01_neutral.png,clever,warm-festival,original,97.5,True,95.5,3.36,100.0,0,100.0,
-clever/clever_01_neutral.png,clever,red-emergency,original,96.6,True,93.9,4.61,100.0,0,100.0,
-clever/clever_02_threeqtr.png,clever,cool-corridor,original,98.0,True,96.3,1.27,100.0,0,100.0,
-clever/clever_02_threeqtr.png,clever,warm-festival,original,98.3,True,96.9,1.01,100.0,0,100.0,
-clever/clever_02_threeqtr.png,clever,red-emergency,original,97.4,True,95.3,1.31,100.0,0,100.0,
-clever/clever_03_profile.png,clever,cool-corridor,original,98.0,True,96.4,2.08,100.0,0,100.0,
-clever/clever_03_profile.png,clever,warm-festival,original,97.6,True,95.7,3.26,100.0,0,100.0,
-clever/clever_03_profile.png,clever,red-emergency,original,96.8,True,94.2,4.36,100.0,0,100.0,
-clever/clever_04_overshoulder.png,clever,cool-corridor,original,97.9,True,96.2,2.38,100.0,0,100.0,
-clever/clever_04_overshoulder.png,clever,warm-festival,original,97.6,True,95.6,3.31,100.0,0,100.0,
-clever/clever_04_overshoulder.png,clever,red-emergency,original,96.6,True,93.8,4.65,100.0,0,100.0,
-clever/clever_06_angry.png,clever,cool-corridor,original,97.9,True,96.3,1.28,100.0,0,100.0,
-clever/clever_06_angry.png,clever,warm-festival,original,98.3,True,96.9,1.02,100.0,0,100.0,
-clever/clever_06_angry.png,clever,red-emergency,original,97.4,True,95.2,1.28,100.0,0,100.0,
-clever/clever_07_sad.png,clever,cool-corridor,original,98.1,True,96.5,2.24,100.0,0,100.0,
-clever/clever_07_sad.png,clever,warm-festival,original,97.7,True,95.7,3.2,100.0,0,100.0,
-clever/clever_07_sad.png,clever,red-emergency,original,96.8,True,94.1,4.43,100.0,0,100.0,
-clever/clever_08_shocked.png,clever,cool-corridor,original,97.9,True,96.1,2.23,100.0,0,100.0,
-clever/clever_08_shocked.png,clever,warm-festival,original,97.6,True,95.6,3.29,100.0,0,100.0,
-clever/clever_08_shocked.png,clever,red-emergency,original,96.8,True,94.1,4.43,100.0,0,100.0,
-clever/clever_09_smile.png,clever,cool-corridor,original,98.0,True,96.3,2.31,100.0,0,100.0,
-clever/clever_09_smile.png,clever,warm-festival,original,97.6,True,95.6,3.28,100.0,0,100.0,
-clever/clever_09_smile.png,clever,red-emergency,original,96.7,True,94.0,4.53,100.0,0,100.0,
-clever/clever_10_walking.png,clever,cool-corridor,original,97.9,True,96.2,2.24,100.0,0,100.0,
-clever/clever_10_walking.png,clever,warm-festival,original,97.6,True,95.7,3.25,100.0,0,100.0,
-clever/clever_10_walking.png,clever,red-emergency,original,96.7,True,94.0,4.5,100.0,0,100.0,
-clever/clever_11_armscrossed.png,clever,cool-corridor,original,98.0,True,96.3,1.28,100.0,0,100.0,
-clever/clever_11_armscrossed.png,clever,warm-festival,original,98.3,True,97.0,1.01,100.0,0,100.0,
-clever/clever_11_armscrossed.png,clever,red-emergency,original,97.5,True,95.4,1.34,100.0,0,100.0,
-clever/clever_12_sitting.png,clever,cool-corridor,original,97.9,True,96.2,2.34,100.0,0,100.0,
-clever/clever_12_sitting.png,clever,warm-festival,original,97.5,True,95.5,3.35,100.0,0,100.0,
-clever/clever_12_sitting.png,clever,red-emergency,original,96.6,True,93.9,4.6,100.0,0,100.0,
-clever/clever_13_pointing.png,clever,cool-corridor,original,97.9,True,96.2,2.41,100.0,0,100.0,
-clever/clever_13_pointing.png,clever,warm-festival,original,97.6,True,95.6,3.29,100.0,0,100.0,
-clever/clever_13_pointing.png,clever,red-emergency,original,96.6,True,93.9,4.61,100.0,0,100.0,
-clever/clever_14_shout.png,clever,cool-corridor,original,98.0,True,96.3,2.22,100.0,0,100.0,
-clever/clever_14_shout.png,clever,warm-festival,original,97.7,True,95.8,3.18,100.0,0,100.0,
-clever/clever_14_shout.png,clever,red-emergency,original,96.8,True,94.2,4.37,100.0,0,100.0,
-clever/clever_15_laughing.png,clever,cool-corridor,original,98.0,True,96.4,2.27,100.0,0,100.0,
-clever/clever_15_laughing.png,clever,warm-festival,original,97.6,True,95.7,3.22,100.0,0,100.0,
-clever/clever_15_laughing.png,clever,red-emergency,original,96.7,True,94.1,4.46,100.0,0,100.0,
-clever/clever_16_worried.png,clever,cool-corridor,original,98.0,True,96.4,1.26,100.0,0,100.0,
-clever/clever_16_worried.png,clever,warm-festival,original,98.3,True,97.0,1.0,100.0,0,100.0,
-clever/clever_16_worried.png,clever,red-emergency,original,97.5,True,95.4,1.26,100.0,0,100.0,
-clever/clever_17_disgusted.png,clever,cool-corridor,original,98.0,True,96.4,1.27,100.0,0,100.0,
-clever/clever_17_disgusted.png,clever,warm-festival,original,98.4,True,97.1,0.92,100.0,0,100.0,
-clever/clever_17_disgusted.png,clever,red-emergency,original,97.6,True,95.7,1.15,100.0,0,100.0,
-clever/clever_18_sleepy.png,clever,cool-corridor,original,97.9,True,96.2,2.33,100.0,0,100.0,
-clever/clever_18_sleepy.png,clever,warm-festival,original,97.6,True,95.6,3.31,100.0,0,100.0,
-clever/clever_18_sleepy.png,clever,red-emergency,original,96.7,True,93.9,4.56,100.0,0,100.0,
-clever/clever_19_determined.png,clever,cool-corridor,original,97.9,True,96.2,2.11,100.0,0,100.0,
-clever/clever_19_determined.png,clever,warm-festival,original,97.8,True,96.0,3.02,100.0,0,100.0,
-clever/clever_19_determined.png,clever,red-emergency,original,96.8,True,94.2,4.37,100.0,0,100.0,
-clever/clever_20_confused.png,clever,cool-corridor,original,97.9,True,96.2,2.1,100.0,0,100.0,
-clever/clever_20_confused.png,clever,warm-festival,original,97.7,True,95.9,3.08,100.0,0,100.0,
-clever/clever_20_confused.png,clever,red-emergency,original,96.9,True,94.3,4.29,100.0,0,100.0,
-clever/clever_21_running.png,clever,cool-corridor,original,97.9,True,96.2,2.28,100.0,0,100.0,
-clever/clever_21_running.png,clever,warm-festival,original,97.7,True,95.9,3.09,100.0,0,100.0,
-clever/clever_21_running.png,clever,red-emergency,original,96.7,True,93.9,4.55,100.0,0,100.0,
-clever/clever_22_jumping.png,clever,cool-corridor,original,98.0,True,96.3,2.28,100.0,0,100.0,
-clever/clever_22_jumping.png,clever,warm-festival,original,97.6,True,95.6,3.29,100.0,0,100.0,
-clever/clever_22_jumping.png,clever,red-emergency,original,96.7,True,94.0,4.54,100.0,0,100.0,
-clever/clever_23_waving.png,clever,cool-corridor,original,97.9,True,96.1,2.29,100.0,0,100.0,
-clever/clever_23_waving.png,clever,warm-festival,original,97.6,True,95.6,3.33,100.0,0,100.0,
-clever/clever_23_waving.png,clever,red-emergency,original,96.7,True,94.0,4.48,100.0,0,100.0,
-clever/clever_24_thinking.png,clever,cool-corridor,original,98.1,True,96.5,1.28,100.0,0,100.0,
-clever/clever_24_thinking.png,clever,warm-festival,original,98.4,True,97.1,0.99,100.0,0,100.0,
-clever/clever_24_thinking.png,clever,red-emergency,original,97.6,True,95.7,1.25,100.0,0,100.0,
-clever/clever_25_crouching.png,clever,cool-corridor,original,98.1,True,96.5,2.02,100.0,0,100.0,
-clever/clever_25_crouching.png,clever,warm-festival,original,97.8,True,95.9,3.06,100.0,0,100.0,
-clever/clever_25_crouching.png,clever,red-emergency,original,96.9,True,94.4,4.22,100.0,0,100.0,
-clever/clever_26_reaching.png,clever,cool-corridor,original,98.0,True,96.4,1.73,100.0,0,100.0,
-clever/clever_26_reaching.png,clever,warm-festival,original,97.8,True,96.1,2.94,100.0,0,100.0,
-clever/clever_26_reaching.png,clever,red-emergency,original,97.1,True,94.7,3.99,100.0,0,100.0,
-clever/clever_27_defeated.png,clever,cool-corridor,original,98.0,True,96.4,2.73,100.0,0,100.0,
-clever/clever_27_defeated.png,clever,warm-festival,original,97.2,True,95.0,3.75,100.0,0,100.0,
-clever/clever_27_defeated.png,clever,red-emergency,original,96.4,True,93.5,4.89,100.0,0,100.0,
-clever/clever_28_celebrating.png,clever,cool-corridor,original,97.7,True,95.9,2.06,100.0,0,100.0,
-clever/clever_28_celebrating.png,clever,warm-festival,original,97.7,True,95.8,3.11,100.0,0,100.0,
-clever/clever_28_celebrating.png,clever,red-emergency,original,96.8,True,94.1,4.37,100.0,0,100.0,
-clever/clever_29_lookingup.png,clever,cool-corridor,original,98.0,True,96.4,1.26,100.0,0,100.0,
-clever/clever_29_lookingup.png,clever,warm-festival,original,98.3,True,97.0,0.98,100.0,0,100.0,
-clever/clever_29_lookingup.png,clever,red-emergency,original,97.5,True,95.4,1.26,100.0,0,100.0,
-clever/clever_30_backview.png,clever,cool-corridor,original,97.9,True,96.2,2.37,100.0,0,100.0,
-clever/clever_30_backview.png,clever,warm-festival,original,97.6,True,95.6,3.27,100.0,0,100.0,
-clever/clever_30_backview.png,clever,red-emergency,original,96.6,True,93.8,4.62,100.0,0,100.0,
+clever/clever_00_clean_base.png,clever,cool-corridor,original,97.9,False,96.2,2.35,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_00_clean_base.png,clever,warm-festival,original,97.5,False,95.5,3.36,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_00_clean_base.png,clever,red-emergency,original,96.6,False,93.9,4.61,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_01_neutral.png,clever,cool-corridor,original,97.9,False,96.2,2.35,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_01_neutral.png,clever,warm-festival,original,97.5,False,95.5,3.36,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_01_neutral.png,clever,red-emergency,original,96.6,False,93.9,4.61,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_02_threeqtr.png,clever,cool-corridor,original,98.0,False,96.3,1.27,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_02_threeqtr.png,clever,warm-festival,original,98.3,False,96.9,1.01,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_02_threeqtr.png,clever,red-emergency,original,97.4,False,95.3,1.31,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_03_profile.png,clever,cool-corridor,original,98.0,False,96.4,2.08,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_03_profile.png,clever,warm-festival,original,97.6,False,95.7,3.26,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_03_profile.png,clever,red-emergency,original,96.8,False,94.2,4.36,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_04_overshoulder.png,clever,cool-corridor,original,97.9,False,96.2,2.38,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_04_overshoulder.png,clever,warm-festival,original,97.6,False,95.6,3.31,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_04_overshoulder.png,clever,red-emergency,original,96.6,False,93.8,4.65,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_06_angry.png,clever,cool-corridor,original,97.9,False,96.3,1.28,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_06_angry.png,clever,warm-festival,original,98.3,False,96.9,1.02,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_06_angry.png,clever,red-emergency,original,97.4,False,95.2,1.28,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_07_sad.png,clever,cool-corridor,original,98.1,False,96.5,2.24,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_07_sad.png,clever,warm-festival,original,97.7,False,95.7,3.2,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_07_sad.png,clever,red-emergency,original,96.8,False,94.1,4.43,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_08_shocked.png,clever,cool-corridor,original,97.9,False,96.1,2.23,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_08_shocked.png,clever,warm-festival,original,97.6,False,95.6,3.29,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_08_shocked.png,clever,red-emergency,original,96.8,False,94.1,4.43,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_09_smile.png,clever,cool-corridor,original,98.0,False,96.3,2.31,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_09_smile.png,clever,warm-festival,original,97.6,False,95.6,3.28,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_09_smile.png,clever,red-emergency,original,96.7,False,94.0,4.53,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_10_walking.png,clever,cool-corridor,original,97.9,False,96.2,2.24,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_10_walking.png,clever,warm-festival,original,97.6,False,95.7,3.25,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_10_walking.png,clever,red-emergency,original,96.7,False,94.0,4.5,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_11_armscrossed.png,clever,cool-corridor,original,98.0,False,96.3,1.28,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_11_armscrossed.png,clever,warm-festival,original,98.3,False,97.0,1.01,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_11_armscrossed.png,clever,red-emergency,original,97.5,False,95.4,1.34,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_12_sitting.png,clever,cool-corridor,original,97.9,False,96.2,2.34,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_12_sitting.png,clever,warm-festival,original,97.5,False,95.5,3.35,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_12_sitting.png,clever,red-emergency,original,96.6,False,93.9,4.6,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_13_pointing.png,clever,cool-corridor,original,97.9,False,96.2,2.41,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_13_pointing.png,clever,warm-festival,original,97.6,False,95.6,3.29,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_13_pointing.png,clever,red-emergency,original,96.6,False,93.9,4.61,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_14_shout.png,clever,cool-corridor,original,98.0,False,96.3,2.22,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_14_shout.png,clever,warm-festival,original,97.7,False,95.8,3.18,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_14_shout.png,clever,red-emergency,original,96.8,False,94.2,4.37,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_15_laughing.png,clever,cool-corridor,original,98.0,False,96.4,2.27,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_15_laughing.png,clever,warm-festival,original,97.6,False,95.7,3.22,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_15_laughing.png,clever,red-emergency,original,96.7,False,94.1,4.46,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_16_worried.png,clever,cool-corridor,original,98.0,False,96.4,1.26,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_16_worried.png,clever,warm-festival,original,98.3,False,97.0,1.0,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_16_worried.png,clever,red-emergency,original,97.5,False,95.4,1.26,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_17_disgusted.png,clever,cool-corridor,original,98.0,False,96.4,1.27,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_17_disgusted.png,clever,warm-festival,original,98.4,False,97.1,0.92,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_17_disgusted.png,clever,red-emergency,original,97.6,False,95.7,1.15,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_18_sleepy.png,clever,cool-corridor,original,97.9,False,96.2,2.33,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_18_sleepy.png,clever,warm-festival,original,97.6,False,95.6,3.31,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_18_sleepy.png,clever,red-emergency,original,96.7,False,93.9,4.56,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_19_determined.png,clever,cool-corridor,original,97.9,False,96.2,2.11,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_19_determined.png,clever,warm-festival,original,97.8,False,96.0,3.02,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_19_determined.png,clever,red-emergency,original,96.8,False,94.2,4.37,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_20_confused.png,clever,cool-corridor,original,97.9,False,96.2,2.1,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_20_confused.png,clever,warm-festival,original,97.7,False,95.9,3.08,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_20_confused.png,clever,red-emergency,original,96.9,False,94.3,4.29,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_21_running.png,clever,cool-corridor,original,97.9,False,96.2,2.28,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_21_running.png,clever,warm-festival,original,97.7,False,95.9,3.09,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_21_running.png,clever,red-emergency,original,96.7,False,93.9,4.55,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_22_jumping.png,clever,cool-corridor,original,98.0,False,96.3,2.28,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_22_jumping.png,clever,warm-festival,original,97.6,False,95.6,3.29,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_22_jumping.png,clever,red-emergency,original,96.7,False,94.0,4.54,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_23_waving.png,clever,cool-corridor,original,97.9,False,96.1,2.29,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_23_waving.png,clever,warm-festival,original,97.6,False,95.6,3.33,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_23_waving.png,clever,red-emergency,original,96.7,False,94.0,4.48,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_24_thinking.png,clever,cool-corridor,original,98.1,False,96.5,1.28,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_24_thinking.png,clever,warm-festival,original,98.4,False,97.1,0.99,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_24_thinking.png,clever,red-emergency,original,97.6,False,95.7,1.25,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_25_crouching.png,clever,cool-corridor,original,98.1,False,96.5,2.02,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_25_crouching.png,clever,warm-festival,original,97.8,False,95.9,3.06,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_25_crouching.png,clever,red-emergency,original,96.9,False,94.4,4.22,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_26_reaching.png,clever,cool-corridor,original,98.0,False,96.4,1.73,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_26_reaching.png,clever,warm-festival,original,97.8,False,96.1,2.94,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_26_reaching.png,clever,red-emergency,original,97.1,False,94.7,3.99,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_27_defeated.png,clever,cool-corridor,original,98.0,False,96.4,2.73,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_27_defeated.png,clever,warm-festival,original,97.2,False,95.0,3.75,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_27_defeated.png,clever,red-emergency,original,96.4,False,93.5,4.89,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_28_celebrating.png,clever,cool-corridor,original,97.7,False,95.9,2.06,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_28_celebrating.png,clever,warm-festival,original,97.7,False,95.8,3.11,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_28_celebrating.png,clever,red-emergency,original,96.8,False,94.1,4.37,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_29_lookingup.png,clever,cool-corridor,original,98.0,False,96.4,1.26,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_29_lookingup.png,clever,warm-festival,original,98.3,False,97.0,0.98,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_29_lookingup.png,clever,red-emergency,original,97.5,False,95.4,1.26,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_30_backview.png,clever,cool-corridor,original,97.9,False,96.2,2.37,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_30_backview.png,clever,warm-festival,original,97.6,False,95.6,3.27,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+clever/clever_30_backview.png,clever,red-emergency,original,96.6,False,93.8,4.62,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
 moodz/moodz_00_clean_base.png,moodz,cool-corridor,repaired,98.8,True,97.9,0.78,100.0,0,100.0,
 moodz/moodz_00_clean_base.png,moodz,warm-festival,repaired,98.2,True,96.8,2.24,100.0,0,100.0,
 moodz/moodz_00_clean_base.png,moodz,red-emergency,repaired,97.9,True,96.2,2.46,100.0,0,100.0,
@@ -248,57 +248,57 @@ neonblue/neonblue_29_lookingup.png,neonblue,red-emergency,original,97.4,True,95.
 neonblue/neonblue_30_backview.png,neonblue,cool-corridor,original,98.2,True,96.8,1.08,100.0,0,100.0,
 neonblue/neonblue_30_backview.png,neonblue,warm-festival,original,97.8,True,96.0,2.0,100.0,0,100.0,
 neonblue/neonblue_30_backview.png,neonblue,red-emergency,original,96.8,True,94.2,3.39,100.0,0,100.0,
-scarline/scarline_00_clean_base.png,scarline,cool-corridor,original,98.0,True,96.4,1.84,100.0,0,100.0,
-scarline/scarline_00_clean_base.png,scarline,warm-festival,original,97.9,True,96.2,1.22,100.0,0,100.0,
-scarline/scarline_00_clean_base.png,scarline,red-emergency,original,97.5,True,95.4,1.5,100.0,0,100.0,
-scarline/scarline_15_laughing.png,scarline,cool-corridor,original,98.3,True,96.8,1.7,100.0,0,100.0,
-scarline/scarline_15_laughing.png,scarline,warm-festival,original,98.3,True,96.8,1.01,100.0,0,100.0,
-scarline/scarline_15_laughing.png,scarline,red-emergency,original,97.9,True,96.2,1.31,100.0,0,100.0,
-scarline/scarline_16_worried.png,scarline,cool-corridor,original,98.1,True,96.6,1.4,100.0,0,100.0,
-scarline/scarline_16_worried.png,scarline,warm-festival,original,98.0,True,96.3,1.19,100.0,0,100.0,
-scarline/scarline_16_worried.png,scarline,red-emergency,original,97.5,True,95.5,1.47,100.0,0,100.0,
-scarline/scarline_17_disgusted.png,scarline,cool-corridor,original,98.1,True,96.6,1.7,100.0,0,100.0,
-scarline/scarline_17_disgusted.png,scarline,warm-festival,original,98.1,True,96.6,1.1,100.0,0,100.0,
-scarline/scarline_17_disgusted.png,scarline,red-emergency,original,97.7,True,95.9,1.34,100.0,0,100.0,
-scarline/scarline_18_sleepy.png,scarline,cool-corridor,original,98.1,True,96.6,1.78,100.0,0,100.0,
-scarline/scarline_18_sleepy.png,scarline,warm-festival,original,98.0,True,96.4,1.15,100.0,0,100.0,
-scarline/scarline_18_sleepy.png,scarline,red-emergency,original,97.6,True,95.7,1.41,100.0,0,100.0,
-scarline/scarline_19_determined.png,scarline,cool-corridor,original,98.2,True,96.7,1.58,100.0,0,100.0,
-scarline/scarline_19_determined.png,scarline,warm-festival,original,98.1,True,96.5,1.14,100.0,0,100.0,
-scarline/scarline_19_determined.png,scarline,red-emergency,original,97.6,True,95.7,1.41,100.0,0,100.0,
-scarline/scarline_20_confused.png,scarline,cool-corridor,original,98.2,True,96.7,1.32,100.0,0,100.0,
-scarline/scarline_20_confused.png,scarline,warm-festival,original,98.0,True,96.3,1.21,100.0,0,100.0,
-scarline/scarline_20_confused.png,scarline,red-emergency,original,97.5,True,95.5,1.47,100.0,0,100.0,
-scarline/scarline_21_running.png,scarline,cool-corridor,original,98.3,True,96.8,1.58,100.0,0,100.0,
-scarline/scarline_21_running.png,scarline,warm-festival,original,98.0,True,96.4,1.18,100.0,0,100.0,
-scarline/scarline_21_running.png,scarline,red-emergency,original,97.8,True,96.0,1.3,100.0,0,100.0,
-scarline/scarline_22_jumping.png,scarline,cool-corridor,original,98.1,True,96.6,1.55,100.0,0,100.0,
-scarline/scarline_22_jumping.png,scarline,warm-festival,original,98.0,True,96.3,1.18,100.0,0,100.0,
-scarline/scarline_22_jumping.png,scarline,red-emergency,original,97.5,True,95.5,1.44,100.0,0,100.0,
-scarline/scarline_23_waving.png,scarline,cool-corridor,original,98.3,True,96.9,1.47,100.0,0,100.0,
-scarline/scarline_23_waving.png,scarline,warm-festival,original,98.1,True,96.6,1.08,100.0,0,100.0,
-scarline/scarline_23_waving.png,scarline,red-emergency,original,97.8,True,95.9,1.31,100.0,0,100.0,
-scarline/scarline_24_thinking.png,scarline,cool-corridor,original,98.2,True,96.7,1.71,100.0,0,100.0,
-scarline/scarline_24_thinking.png,scarline,warm-festival,original,98.1,True,96.5,1.12,100.0,0,100.0,
-scarline/scarline_24_thinking.png,scarline,red-emergency,original,97.7,True,95.7,1.39,100.0,0,100.0,
-scarline/scarline_25_crouching.png,scarline,cool-corridor,original,98.2,True,96.6,1.62,100.0,0,100.0,
-scarline/scarline_25_crouching.png,scarline,warm-festival,original,98.0,True,96.4,1.18,100.0,0,100.0,
-scarline/scarline_25_crouching.png,scarline,red-emergency,original,97.6,True,95.6,1.45,100.0,0,100.0,
-scarline/scarline_26_reaching.png,scarline,cool-corridor,original,98.5,True,97.2,2.03,100.0,0,100.0,
-scarline/scarline_26_reaching.png,scarline,warm-festival,original,98.3,True,96.9,1.02,100.0,0,100.0,
-scarline/scarline_26_reaching.png,scarline,red-emergency,original,98.0,True,96.4,1.22,100.0,0,100.0,
-scarline/scarline_27_defeated.png,scarline,cool-corridor,original,97.9,True,96.1,1.57,100.0,0,100.0,
-scarline/scarline_27_defeated.png,scarline,warm-festival,original,98.1,True,96.5,1.11,100.0,0,100.0,
-scarline/scarline_27_defeated.png,scarline,red-emergency,original,97.8,True,96.0,1.29,100.0,0,100.0,
-scarline/scarline_28_celebrating.png,scarline,cool-corridor,original,98.3,True,97.0,1.73,100.0,0,100.0,
-scarline/scarline_28_celebrating.png,scarline,warm-festival,original,98.4,True,97.0,1.01,100.0,0,100.0,
-scarline/scarline_28_celebrating.png,scarline,red-emergency,original,97.9,True,96.3,1.31,100.0,0,100.0,
-scarline/scarline_29_lookingup.png,scarline,cool-corridor,original,98.2,True,96.8,1.88,100.0,0,100.0,
-scarline/scarline_29_lookingup.png,scarline,warm-festival,original,98.1,True,96.6,1.09,100.0,0,100.0,
-scarline/scarline_29_lookingup.png,scarline,red-emergency,original,97.7,True,95.9,1.31,100.0,0,100.0,
-scarline/scarline_30_backview.png,scarline,cool-corridor,original,98.0,True,96.4,2.11,100.0,0,100.0,
-scarline/scarline_30_backview.png,scarline,warm-festival,original,98.3,True,97.0,0.96,100.0,0,100.0,
-scarline/scarline_30_backview.png,scarline,red-emergency,original,97.8,True,96.0,1.31,100.0,0,100.0,
+scarline/scarline_00_clean_base.png,scarline,cool-corridor,original,98.0,False,96.4,1.84,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_00_clean_base.png,scarline,warm-festival,original,97.9,False,96.2,1.22,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_00_clean_base.png,scarline,red-emergency,original,97.5,False,95.4,1.5,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_15_laughing.png,scarline,cool-corridor,original,98.3,False,96.8,1.7,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_15_laughing.png,scarline,warm-festival,original,98.3,False,96.8,1.01,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_15_laughing.png,scarline,red-emergency,original,97.9,False,96.2,1.31,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_16_worried.png,scarline,cool-corridor,original,98.1,False,96.6,1.4,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_16_worried.png,scarline,warm-festival,original,98.0,False,96.3,1.19,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_16_worried.png,scarline,red-emergency,original,97.5,False,95.5,1.47,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_17_disgusted.png,scarline,cool-corridor,original,98.1,False,96.6,1.7,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_17_disgusted.png,scarline,warm-festival,original,98.1,False,96.6,1.1,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_17_disgusted.png,scarline,red-emergency,original,97.7,False,95.9,1.34,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_18_sleepy.png,scarline,cool-corridor,original,98.1,False,96.6,1.78,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_18_sleepy.png,scarline,warm-festival,original,98.0,False,96.4,1.15,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_18_sleepy.png,scarline,red-emergency,original,97.6,False,95.7,1.41,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_19_determined.png,scarline,cool-corridor,original,98.2,False,96.7,1.58,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_19_determined.png,scarline,warm-festival,original,98.1,False,96.5,1.14,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_19_determined.png,scarline,red-emergency,original,97.6,False,95.7,1.41,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_20_confused.png,scarline,cool-corridor,original,98.2,False,96.7,1.32,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_20_confused.png,scarline,warm-festival,original,98.0,False,96.3,1.21,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_20_confused.png,scarline,red-emergency,original,97.5,False,95.5,1.47,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_21_running.png,scarline,cool-corridor,original,98.3,False,96.8,1.58,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_21_running.png,scarline,warm-festival,original,98.0,False,96.4,1.18,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_21_running.png,scarline,red-emergency,original,97.8,False,96.0,1.3,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_22_jumping.png,scarline,cool-corridor,original,98.1,False,96.6,1.55,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_22_jumping.png,scarline,warm-festival,original,98.0,False,96.3,1.18,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_22_jumping.png,scarline,red-emergency,original,97.5,False,95.5,1.44,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_23_waving.png,scarline,cool-corridor,original,98.3,False,96.9,1.47,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_23_waving.png,scarline,warm-festival,original,98.1,False,96.6,1.08,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_23_waving.png,scarline,red-emergency,original,97.8,False,95.9,1.31,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_24_thinking.png,scarline,cool-corridor,original,98.2,False,96.7,1.71,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_24_thinking.png,scarline,warm-festival,original,98.1,False,96.5,1.12,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_24_thinking.png,scarline,red-emergency,original,97.7,False,95.7,1.39,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_25_crouching.png,scarline,cool-corridor,original,98.2,False,96.6,1.62,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_25_crouching.png,scarline,warm-festival,original,98.0,False,96.4,1.18,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_25_crouching.png,scarline,red-emergency,original,97.6,False,95.6,1.45,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_26_reaching.png,scarline,cool-corridor,original,98.5,False,97.2,2.03,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_26_reaching.png,scarline,warm-festival,original,98.3,False,96.9,1.02,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_26_reaching.png,scarline,red-emergency,original,98.0,False,96.4,1.22,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_27_defeated.png,scarline,cool-corridor,original,97.9,False,96.1,1.57,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_27_defeated.png,scarline,warm-festival,original,98.1,False,96.5,1.11,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_27_defeated.png,scarline,red-emergency,original,97.8,False,96.0,1.29,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_28_celebrating.png,scarline,cool-corridor,original,98.3,False,97.0,1.73,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_28_celebrating.png,scarline,warm-festival,original,98.4,False,97.0,1.01,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_28_celebrating.png,scarline,red-emergency,original,97.9,False,96.3,1.31,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_29_lookingup.png,scarline,cool-corridor,original,98.2,False,96.8,1.88,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_29_lookingup.png,scarline,warm-festival,original,98.1,False,96.6,1.09,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_29_lookingup.png,scarline,red-emergency,original,97.7,False,95.9,1.31,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_30_backview.png,scarline,cool-corridor,original,98.0,False,96.4,2.11,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_30_backview.png,scarline,warm-festival,original,98.3,False,97.0,0.96,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+scarline/scarline_30_backview.png,scarline,red-emergency,original,97.8,False,96.0,1.31,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
 static/static_00_clean_base.png,static,cool-corridor,repaired,98.5,True,97.2,0.89,100.0,0,100.0,
 static/static_00_clean_base.png,static,warm-festival,repaired,98.2,True,96.8,1.03,100.0,0,100.0,
 static/static_00_clean_base.png,static,red-emergency,repaired,97.8,True,96.0,1.3,100.0,0,100.0,
@@ -353,9 +353,9 @@ static/static_29_lookingup.png,static,red-emergency,repaired,97.9,True,96.2,1.21
 static/static_30_backview.png,static,cool-corridor,original,99.4,True,98.8,0.81,100.0,0,100.0,
 static/static_30_backview.png,static,warm-festival,original,99.3,True,98.7,0.98,100.0,0,100.0,
 static/static_30_backview.png,static,red-emergency,original,99.1,True,98.3,1.24,100.0,0,100.0,
-static/static_scene_freeze.png,static,cool-corridor,original,98.1,True,96.5,1.19,100.0,0,100.0,
-static/static_scene_freeze.png,static,warm-festival,original,98.2,True,96.7,1.1,100.0,0,100.0,
-static/static_scene_freeze.png,static,red-emergency,original,97.8,True,96.1,1.28,100.0,0,100.0,
+static/static_scene_freeze.png,static,cool-corridor,original,98.1,False,96.5,1.19,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+static/static_scene_freeze.png,static,warm-festival,original,98.2,False,96.7,1.1,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
+static/static_scene_freeze.png,static,red-emergency,original,97.8,False,96.1,1.28,100.0,0,100.0,"UNMEASURABLE: this layer's card-bleed status could not be determined, so contamination is unknown rather than zero. Align the layer with its source sheet, or re-cut it, before treating this as a pass."
 twotone/twotone_00_clean_base.png,twotone,cool-corridor,repaired,98.5,True,97.3,0.88,100.0,0,100.0,
 twotone/twotone_00_clean_base.png,twotone,warm-festival,repaired,98.2,True,96.7,1.08,100.0,0,100.0,
 twotone/twotone_00_clean_base.png,twotone,red-emergency,repaired,97.8,True,96.0,1.28,100.0,0,100.0,
