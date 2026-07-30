@@ -143,6 +143,20 @@ LOCATION_ANCHORS = {
 #: that drifted had 30-79 characters.
 THIN_DESCRIPTION = 110
 
+#: What each shot type means as framing, since "close shot" alone does not stop
+#: SDXL producing an establishing view. Every page-2 close and medium_close
+#: panel came back aerial before this existed.
+SHOT_FRAMING = {
+    "extreme_wide": "the whole location seen from far back, figures tiny",
+    "wide": "the full setting, plenty of headroom and floor visible",
+    "medium_wide": "waist-up framing distance, setting still readable behind",
+    "medium": "the immediate surroundings only, background simplified",
+    "medium_close": "very close to the subject, background reduced to a few "
+                    "soft shapes, almost no detail behind",
+    "close": "extremely tight framing, background almost entirely out of focus, "
+             "one or two large soft colour shapes only, no scenery",
+}
+
 
 def plate_prompt(panel: dict) -> str:
     """The scene description, assembled from the script rather than invented.
@@ -153,13 +167,23 @@ def plate_prompt(panel: dict) -> str:
     light = panel.get("lighting") or {}
     description = panel["background_description"].strip().rstrip(".")
     anchor = LOCATION_ANCHORS.get(panel["location"], "")
+    shot = panel["camera_shot"].replace("_", " ")
+    angle = panel.get("camera_angle", "eye level").replace("_", " ")
 
-    parts = []
+    # The shot goes FIRST and weighted. It used to be appended last, after a
+    # long location paragraph, and was simply ignored: P02-03's prompt ended
+    # "close shot, eye level" and came back as another aerial establishing shot,
+    # as did every other close and medium_close panel on page 2. Framing is the
+    # first thing a reader sees, so it is the first thing the model is told.
+    parts = [f"({shot} shot:1.4), ({angle}:1.2)"]
+    parts.append(SHOT_FRAMING.get(panel["camera_shot"], ""))
+
     if anchor and len(description) < THIN_DESCRIPTION:
-        # Anchor first so the setting is established before the detail, and the
-        # detail then reads as a description OF that setting.
-        parts.append(anchor)
+        # Anchor after the framing, so the setting fills in the shot rather than
+        # replacing it. Whole-site language ahead of the shot term is what turned
+        # every page-2 panel into an establishing view.
         parts.append(description)
+        parts.append(f"setting: {anchor}")
     else:
         parts.append(description)
         if anchor:
@@ -170,12 +194,18 @@ def plate_prompt(panel: dict) -> str:
                  f"{light.get('key_color', 'neutral')} key")
     if light.get("fill"):
         parts.append(f"{light['fill']} fill")
-    parts.append(f"{panel['camera_shot'].replace('_', ' ')} shot, "
-                 f"{panel.get('camera_angle', 'eye level').replace('_', ' ')}")
-    # The house style is a bold saturated palette. Several first-run plates came
-    # back near-greyscale, so it is asked for explicitly rather than hoped for.
-    parts.append("(bold saturated colour:1.2), warm summer evening palette")
-    return ", ".join(parts)
+
+    # Measured against the published editions: their panel art sits in LARGE
+    # flat colour cells (share of art inside a cell >= 0.05 sq in: published
+    # median 0.558, this pipeline 0.201 and 0.029) with far less fine linework
+    # (hairline ink 2.65 published, 14.2 and 23.3 here) and fewer competing hues
+    # (4 families published, 6.8 and 6.1 here). That is the real gap - not
+    # saturation, which is already slightly BELOW published peak. So ask for
+    # simplicity, and do not ask for less colour.
+    parts.append("(large flat areas of colour:1.3), (simple bold shapes:1.3), "
+                 "(minimal fine detail:1.2), limited palette of four colours, "
+                 "clean uncluttered composition")
+    return ", ".join(p for p in parts if p)
 
 
 def cover_prompt(cover: dict) -> str:
@@ -346,7 +376,14 @@ def stage_panel(panel: dict, plate_path: Path, size: tuple[int, int],
         if layer is None:
             result.skipped_characters.append(f"{character_id} - no layer found")
             continue
-        rung = order[index] / max(1, slots - 1)
+        # A solo figure has no row to break up, so it must not be pushed to the
+        # deepest rung. With slots == 1 this read order[0] / max(1, 0) = 0.0,
+        # which applied the full depth penalty AND selected depth_plane
+        # "background" - DEPTH_BLUR 1.1 plus DEPTH_HAZE 0.18. Measured cost of
+        # that one expression: P01-04's NeonBlue went h379 -> h142 and its
+        # likeness 94.9 -> 84.1 between runs, and 8 of 9 recorded likeness
+        # failures were that haze's colour drift.
+        rung = 1.0 if slots == 1 else order[index] / max(1, slots - 1)
         foot = foot_f - span * (1.0 - rung)
         # Nearer figures sit lower in frame AND further from centre, so the
         # composition opens up instead of stacking.
@@ -414,20 +451,45 @@ def generate_plate(client: ComfyClient, spec: PanelResult, job_class: str,
 
 
 def assemble_page(page_layout: dict, panels: dict[str, Path],
-                  geometry: dict) -> Image.Image:
-    """Lay the panel art onto the page at print geometry."""
+                  geometry: dict, page_ground: dict | None = None) -> Image.Image:
+    """Lay the panel art onto the page at print geometry.
+
+    The published editions float their panels on a COLOURED BOARD behind a thin
+    near-black rule. The layout spec says so - `page_ground.style` is
+    `coloured_board_with_frame` and it declares `panel_border_color` #101014 -
+    and the first version of this function inverted it: it painted the page
+    white and used the board colour as a 10 px panel rule. Measured against the
+    published pages, that put the rule at L* 71.9 / chroma 57.5 (exactly
+    #E8A24A, page 1's declared board) where published rules sit at L* 2.2 /
+    chroma 1.3, and the page ground at L* 100 where published boards sit at
+    L* ~35. `panel_border_color` was in the spec, unused, the whole time.
+    """
     width, height = geometry["print_pixels"]
     dpi = geometry["print_dpi"]
     gutter = int(geometry["gutter_mm"] / 25.4 * dpi)
-    frame = page_layout.get("frame_color", "#000000")
+    ground = page_ground or {}
 
-    page = Image.new("RGB", (width, height), "white")
+    # frame_color is the BOARD the panels sit on, per page_ground.style.
+    board = page_layout.get("frame_color", "#2A2A32")
+    rule_color = ground.get("panel_border_color", "#101014")
+    rule_mm = float(ground.get("panel_border_mm", 0.45))
+    rule_px = max(1, round(rule_mm / 25.4 * dpi))
+
+    # Panels float inset on the board rather than bleeding to trim. Published
+    # median inset is 3.27% of page height at the top, 4.35% of width at the
+    # left; the panel grid is scaled into that window.
+    inset_x = int(width * float(ground.get("board_inset_x_pct", 4.35)) / 100.0)
+    inset_y = int(height * float(ground.get("board_inset_y_pct", 3.27)) / 100.0)
+    live_w, live_h = width - 2 * inset_x, height - 2 * inset_y
+
+    page = Image.new("RGB", (width, height), board)
     draw = ImageDraw.Draw(page)
 
     for panel in page_layout["panels"]:
         box = panel["box"]
-        x0, y0 = int(box[0] * width), int(box[1] * height)
-        pw, ph = int(box[2] * width), int(box[3] * height)
+        x0 = inset_x + int(box[0] * live_w)
+        y0 = inset_y + int(box[1] * live_h)
+        pw, ph = int(box[2] * live_w), int(box[3] * live_h)
         # Inset by half a gutter so neighbouring panels sit a full gutter apart.
         half = gutter // 2
         x0, y0 = x0 + half, y0 + half
@@ -443,7 +505,8 @@ def assemble_page(page_layout: dict, panels: dict[str, Path],
             draw.text((x0 + 24, y0 + 24), f"{panel['panel_id']} - no art",
                       fill="#999999")
 
-        draw.rectangle([x0, y0, x0 + pw, y0 + ph], outline=frame, width=10)
+        draw.rectangle([x0, y0, x0 + pw, y0 + ph], outline=rule_color,
+                       width=rule_px)
 
     return page
 
@@ -553,7 +616,8 @@ def main() -> int:
     for page_number in args.pages:
         if page_number not in by_page:
             continue
-        page = assemble_page(by_page[page_number], art, geometry)
+        page = assemble_page(by_page[page_number], art, geometry,
+                             layout.get("page_ground"))
         out = OUT_PAGES / f"page_{page_number:02d}.png"
         paths.assert_safe_write_target(out)
         page.save(out)

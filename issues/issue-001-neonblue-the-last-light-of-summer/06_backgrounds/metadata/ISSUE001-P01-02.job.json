@@ -2,16 +2,16 @@
   "job_id": "ISSUE001-P01-02",
   "job_class": "background_plate",
   "workflow_version": "sample-pages-1",
-  "prompt_id": "6d04910c-f6ae-43af-90c5-f9f69372b98b",
+  "prompt_id": "85ca921c-d2ec-4a70-be43-9157720a7765",
   "ok": true,
   "error": "",
-  "seconds": 46.2,
+  "seconds": 48.2,
   "outputs": [
     {
       "path": "issues/issue-001-neonblue-the-last-light-of-summer/06_backgrounds/generated_candidates/ISSUE001-P01-02.png",
-      "sha256": "8bba646f86f3e17611e045dbe9e35aafc84df3d7f83ab3c83be60dcb1b1d51a7",
-      "pixel_sha256": "177740ae8543a0a4ff2429be964e8a1d6ab585b0fd9a6e17db39b68f42ce8179",
-      "bytes": 2054394
+      "sha256": "aba1710fc564d7ba6d3b742b1feafc0d0d4c8d5467cdb54c10c9393fb5bfeb26",
+      "pixel_sha256": "80365bfd0039e3e26da9daf7768c6c59fb0d7f2a96ad40f951549ebe44bcf6f7",
+      "bytes": 1843164
     }
   ],
   "graph": {
@@ -27,7 +27,7 @@
     "2": {
       "class_type": "CLIPTextEncode",
       "inputs": {
-        "text": "(flat 2d vector cartoon illustration:1.5), (thick uniform black outlines:1.4), (flat colour fills with hard cel shading:1.4), comic book background art, graphic novel panel, bold saturated palette, clear perspective. an outdoor summer music festival site, rows of food and game stalls with striped awnings, strings of warm festival bulbs overhead, bunting, fairground rides and a ferris wheel beyond, trodden grass and dirt underfoot, festival crowd in summer clothes, The main gate arch strung with lights, crowd flowing both ways, booth row beyond, depth: Gate upright foreground, cast midground through the arch, festival beyond, lit by Warm gate lights overhead and behind, Amber and warm white key, Cool dusk sky fill, wide shot, low angle, (bold saturated colour:1.2), warm summer evening palette. (flat cartoon vector art:1.4), (bold black outlines:1.3), (cel shaded:1.3), non-photorealistic",
+        "text": "(flat 2d vector cartoon illustration:1.5), (thick uniform black outlines:1.4), (flat colour fills with hard cel shading:1.4), comic book background art, graphic novel panel, bold saturated palette, clear perspective. (wide shot:1.4), (low angle:1.2), the full setting, plenty of headroom and floor visible, The main gate arch strung with lights, crowd flowing both ways, booth row beyond, setting: an outdoor summer music festival site, rows of food and game stalls with striped awnings, strings of warm festival bulbs overhead, bunting, fairground rides and a ferris wheel beyond, trodden grass and dirt underfoot, festival crowd in summer clothes, depth: Gate upright foreground, cast midground through the arch, festival beyond, lit by Warm gate lights overhead and behind, Amber and warm white key, Cool dusk sky fill, (large flat areas of colour:1.3), (simple bold shapes:1.3), (minimal fine detail:1.2), limited palette of four colours, clean uncluttered composition. (flat cartoon vector art:1.4), (bold black outlines:1.3), (cel shaded:1.3), non-photorealistic",
         "clip": [
           "1",
           1
@@ -64,7 +64,7 @@
     "5": {
       "class_type": "KSampler",
       "inputs": {
-        "seed": 990403,
+        "seed": 771305,
         "steps": 30,
         "cfg": 6.0,
         "sampler_name": "dpmpp_2m",
@@ -126,8 +126,8 @@
   "review_note": "",
   "panel_id": "ISSUE001-P01-02",
   "page": 1,
-  "prompt": "an outdoor summer music festival site, rows of food and game stalls with striped awnings, strings of warm festival bulbs overhead, bunting, fairground rides and a ferris wheel beyond, trodden grass and dirt underfoot, festival crowd in summer clothes, The main gate arch strung with lights, crowd flowing both ways, booth row beyond, depth: Gate upright foreground, cast midground through the arch, festival beyond, lit by Warm gate lights overhead and behind, Amber and warm white key, Cool dusk sky fill, wide shot, low angle, (bold saturated colour:1.2), warm summer evening palette",
-  "seed": 990403,
+  "prompt": "(wide shot:1.4), (low angle:1.2), the full setting, plenty of headroom and floor visible, The main gate arch strung with lights, crowd flowing both ways, booth row beyond, setting: an outdoor summer music festival site, rows of food and game stalls with striped awnings, strings of warm festival bulbs overhead, bunting, fairground rides and a ferris wheel beyond, trodden grass and dirt underfoot, festival crowd in summer clothes, depth: Gate upright foreground, cast midground through the arch, festival beyond, lit by Warm gate lights overhead and behind, Amber and warm white key, Cool dusk sky fill, (large flat areas of colour:1.3), (simple bold shapes:1.3), (minimal fine detail:1.2), limited palette of four colours, clean uncluttered composition",
+  "seed": 771305,
   "gen_size": [
     1896,
     608
