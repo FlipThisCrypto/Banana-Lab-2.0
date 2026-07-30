@@ -34,7 +34,12 @@ INK_L = 34.0
 #: How many colour cells the plate is reduced to, excluding ink. The published
 #: pages measure about four hue families; a few more cells than that gives the
 #: shading steps cel art needs without reintroducing a gradient.
-PALETTE_SIZE = 10
+#: Swept over the cached plates across 11 configurations; see
+#: docs/audits/aesthetic-loop-ledger.json. n_hue_families against palette size:
+#: 10 -> 5.74, 6 -> 4.75, 5 -> 4.62, 4 -> 3.78, against a 5.5 ceiling and a
+#: published 4.0. Six keeps the published count without collapsing the shading
+#: steps cel art needs.
+PALETTE_SIZE = 6
 
 #: Chroma below which a cell counts as neutral. Neutrals are quantised in
 #: lightness only, so skies and ground do not collapse into one grey.
@@ -87,8 +92,19 @@ def posterise(image: Image.Image, palette_size: int = PALETTE_SIZE) -> Image.Ima
     return Image.fromarray(out.astype(np.uint8), "RGB")
 
 
-def focal_vignette(image: Image.Image, strength: float = 0.42,
-                   centre: tuple[float, float] = (0.5, 0.46)) -> Image.Image:
+#: Chroma gain is the lever for peak_over_field. Measured: 0.40 -> 35.9,
+#: 0.70 -> 42.4, 0.85 -> 43.5, 1.00 -> 49.1, against a 42.6 floor. 0.85 clears it
+#: with margin and leaves the C_p95 guardrail at 58.0 rather than pushing it.
+CHROMA_GAIN = 0.85
+
+#: The glow sits BELOW centre because that is where a standing figure is. Moving
+#: it from 0.46 to 0.58 took hairline 12.81 -> 12.44 and peak 43.5 -> 44.4.
+VIGNETTE_CENTRE = (0.5, 0.58)
+VIGNETTE_STRENGTH = 0.55
+
+
+def focal_vignette(image: Image.Image, strength: float = VIGNETTE_STRENGTH,
+                   centre: tuple[float, float] = VIGNETTE_CENTRE) -> Image.Image:
     """Brighten the middle, sink the corners, so the panel has a focal point.
 
     `peak_over_field` measured 37.1 then 39.4 against a 42.6 floor while the
@@ -120,7 +136,7 @@ def focal_vignette(image: Image.Image, strength: float = 0.42,
     # SATURATION contrast, not a brightness one - so a lightness gradient cannot
     # move it and a chroma gradient moves it directly: the centre gets more
     # saturated, the corners less. This also lifts C_p95 rather than risking it.
-    chroma_gain = 1.0 + field * 0.40
+    chroma_gain = 1.0 + field * CHROMA_GAIN
     lab[..., 1] *= chroma_gain
     lab[..., 2] *= chroma_gain
 
@@ -132,7 +148,7 @@ def focal_vignette(image: Image.Image, strength: float = 0.42,
 
 
 def finish_plate(path, palette_size: int = PALETTE_SIZE,
-                 vignette: float = 0.42) -> Image.Image:
+                 vignette: float = VIGNETTE_STRENGTH) -> Image.Image:
     """The full finishing pass, in the order the two steps must run.
 
     Posterise first, then vignette: flattening after the gradient would quantise

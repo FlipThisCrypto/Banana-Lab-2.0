@@ -1,0 +1,530 @@
+[
+  {
+    "config": {
+      "name": "it10-baseline",
+      "rationale": "the shipped configuration, for comparison",
+      "palette_size": 10,
+      "vignette": 0.42,
+      "vignette_centre": [
+        0.5,
+        0.46
+      ],
+      "chroma_gain": 0.4,
+      "ink_l": 34.0
+    },
+    "measured": {
+      "rect": 1.0,
+      "fullbleed": 0.0,
+      "n_panels": 5.0,
+      "page_share": 0.757,
+      "rule_edges": 18.5,
+      "rule_L": 4.8,
+      "rule_chroma": 2.41,
+      "rule_mm": 1.185,
+      "ground_L": 62.075,
+      "ground_chroma": 27.78,
+      "ground_share_pct": 24.1,
+      "lettering_count": 3.5,
+      "lettering_pct": 3.285,
+      "share_in_large_shapes": 0.311,
+      "hairline_ink_density": 13.561,
+      "peak_over_field": 35.865,
+      "n_hue_families": 5.736,
+      "C_p95": 52.519
+    },
+    "verdicts": {
+      "rule_L": true,
+      "rule_chroma": true,
+      "ground_L": true,
+      "lettering_pct": true,
+      "share_in_large_shapes": true,
+      "hairline_ink_density": false,
+      "peak_over_field": false,
+      "n_hue_families": false
+    },
+    "scored": 5,
+    "of": 8,
+    "guardrail_held": true,
+    "guardrail_value": 52.519
+  },
+  {
+    "config": {
+      "name": "it11-palette6",
+      "rationale": "fewer cells should pull n_hue_families under 5.5",
+      "palette_size": 6,
+      "vignette": 0.42,
+      "vignette_centre": [
+        0.5,
+        0.46
+      ],
+      "chroma_gain": 0.4,
+      "ink_l": 34.0
+    },
+    "measured": {
+      "rect": 1.0,
+      "fullbleed": 0.0,
+      "n_panels": 5.0,
+      "page_share": 0.757,
+      "rule_edges": 18.5,
+      "rule_L": 4.8,
+      "rule_chroma": 2.41,
+      "rule_mm": 1.185,
+      "ground_L": 62.075,
+      "ground_chroma": 27.78,
+      "ground_share_pct": 24.1,
+      "lettering_count": 3.5,
+      "lettering_pct": 3.15,
+      "share_in_large_shapes": 0.335,
+      "hairline_ink_density": 12.209,
+      "peak_over_field": 35.355,
+      "n_hue_families": 4.748,
+      "C_p95": 52.288
+    },
+    "verdicts": {
+      "rule_L": true,
+      "rule_chroma": true,
+      "ground_L": true,
+      "lettering_pct": true,
+      "share_in_large_shapes": true,
+      "hairline_ink_density": false,
+      "peak_over_field": false,
+      "n_hue_families": true
+    },
+    "scored": 6,
+    "of": 8,
+    "guardrail_held": true,
+    "guardrail_value": 52.288
+  },
+  {
+    "config": {
+      "name": "it12-palette4",
+      "rationale": "four cells is the published hue-family count",
+      "palette_size": 4,
+      "vignette": 0.42,
+      "vignette_centre": [
+        0.5,
+        0.46
+      ],
+      "chroma_gain": 0.4,
+      "ink_l": 34.0
+    },
+    "measured": {
+      "rect": 1.0,
+      "fullbleed": 0.0,
+      "n_panels": 5.0,
+      "page_share": 0.757,
+      "rule_edges": 18.5,
+      "rule_L": 4.8,
+      "rule_chroma": 2.41,
+      "rule_mm": 1.185,
+      "ground_L": 62.075,
+      "ground_chroma": 27.78,
+      "ground_share_pct": 24.1,
+      "lettering_count": 3.5,
+      "lettering_pct": 3.282,
+      "share_in_large_shapes": 0.344,
+      "hairline_ink_density": 13.018,
+      "peak_over_field": 34.206,
+      "n_hue_families": 3.784,
+      "C_p95": 51.502
+    },
+    "verdicts": {
+      "rule_L": true,
+      "rule_chroma": true,
+      "ground_L": true,
+      "lettering_pct": true,
+      "share_in_large_shapes": true,
+      "hairline_ink_density": false,
+      "peak_over_field": false,
+      "n_hue_families": true
+    },
+    "scored": 6,
+    "of": 8,
+    "guardrail_held": true,
+    "guardrail_value": 51.502
+  },
+  {
+    "config": {
+      "name": "it13-chroma70",
+      "rationale": "peak_over_field is chroma contrast; push harder",
+      "palette_size": 10,
+      "vignette": 0.42,
+      "vignette_centre": [
+        0.5,
+        0.46
+      ],
+      "chroma_gain": 0.7,
+      "ink_l": 34.0
+    },
+    "measured": {
+      "rect": 1.0,
+      "fullbleed": 0.0,
+      "n_panels": 5.0,
+      "page_share": 0.757,
+      "rule_edges": 18.5,
+      "rule_L": 4.8,
+      "rule_chroma": 2.41,
+      "rule_mm": 1.185,
+      "ground_L": 62.075,
+      "ground_chroma": 27.78,
+      "ground_share_pct": 24.1,
+      "lettering_count": 3.5,
+      "lettering_pct": 3.296,
+      "share_in_large_shapes": 0.311,
+      "hairline_ink_density": 13.569,
+      "peak_over_field": 42.357,
+      "n_hue_families": 5.58,
+      "C_p95": 55.501
+    },
+    "verdicts": {
+      "rule_L": true,
+      "rule_chroma": true,
+      "ground_L": true,
+      "lettering_pct": true,
+      "share_in_large_shapes": true,
+      "hairline_ink_density": false,
+      "peak_over_field": false,
+      "n_hue_families": false
+    },
+    "scored": 5,
+    "of": 8,
+    "guardrail_held": true,
+    "guardrail_value": 55.501
+  },
+  {
+    "config": {
+      "name": "it14-chroma100",
+      "rationale": "further still, watching the C_p95 guardrail",
+      "palette_size": 10,
+      "vignette": 0.42,
+      "vignette_centre": [
+        0.5,
+        0.46
+      ],
+      "chroma_gain": 1.0,
+      "ink_l": 34.0
+    },
+    "measured": {
+      "rect": 1.0,
+      "fullbleed": 0.0,
+      "n_panels": 5.0,
+      "page_share": 0.757,
+      "rule_edges": 18.5,
+      "rule_L": 4.8,
+      "rule_chroma": 2.41,
+      "rule_mm": 1.185,
+      "ground_L": 62.075,
+      "ground_chroma": 27.78,
+      "ground_share_pct": 24.1,
+      "lettering_count": 3.5,
+      "lettering_pct": 3.307,
+      "share_in_large_shapes": 0.311,
+      "hairline_ink_density": 13.57,
+      "peak_over_field": 49.144,
+      "n_hue_families": 5.58,
+      "C_p95": 58.594
+    },
+    "verdicts": {
+      "rule_L": true,
+      "rule_chroma": true,
+      "ground_L": true,
+      "lettering_pct": true,
+      "share_in_large_shapes": true,
+      "hairline_ink_density": false,
+      "peak_over_field": true,
+      "n_hue_families": false
+    },
+    "scored": 6,
+    "of": 8,
+    "guardrail_held": true,
+    "guardrail_value": 58.594
+  },
+  {
+    "config": {
+      "name": "it15-vig60",
+      "rationale": "deeper corners raise the field/peak separation",
+      "palette_size": 10,
+      "vignette": 0.6,
+      "vignette_centre": [
+        0.5,
+        0.46
+      ],
+      "chroma_gain": 0.7,
+      "ink_l": 34.0
+    },
+    "measured": {
+      "rect": 1.0,
+      "fullbleed": 0.0,
+      "n_panels": 5.0,
+      "page_share": 0.757,
+      "rule_edges": 18.5,
+      "rule_L": 4.8,
+      "rule_chroma": 2.41,
+      "rule_mm": 1.185,
+      "ground_L": 62.075,
+      "ground_chroma": 27.78,
+      "ground_share_pct": 24.1,
+      "lettering_count": 3.5,
+      "lettering_pct": 3.212,
+      "share_in_large_shapes": 0.31,
+      "hairline_ink_density": 14.236,
+      "peak_over_field": 40.907,
+      "n_hue_families": 5.58,
+      "C_p95": 53.699
+    },
+    "verdicts": {
+      "rule_L": true,
+      "rule_chroma": true,
+      "ground_L": true,
+      "lettering_pct": true,
+      "share_in_large_shapes": true,
+      "hairline_ink_density": false,
+      "peak_over_field": false,
+      "n_hue_families": false
+    },
+    "scored": 5,
+    "of": 8,
+    "guardrail_held": true,
+    "guardrail_value": 53.699
+  },
+  {
+    "config": {
+      "name": "it16-palette6-chroma70",
+      "rationale": "combine the two changes that worked alone",
+      "palette_size": 6,
+      "vignette": 0.42,
+      "vignette_centre": [
+        0.5,
+        0.46
+      ],
+      "chroma_gain": 0.7,
+      "ink_l": 34.0
+    },
+    "measured": {
+      "rect": 1.0,
+      "fullbleed": 0.0,
+      "n_panels": 5.0,
+      "page_share": 0.757,
+      "rule_edges": 18.5,
+      "rule_L": 4.8,
+      "rule_chroma": 2.41,
+      "rule_mm": 1.185,
+      "ground_L": 62.075,
+      "ground_chroma": 27.78,
+      "ground_share_pct": 24.1,
+      "lettering_count": 3.5,
+      "lettering_pct": 3.15,
+      "share_in_large_shapes": 0.334,
+      "hairline_ink_density": 12.189,
+      "peak_over_field": 42.552,
+      "n_hue_families": 4.628,
+      "C_p95": 55.577
+    },
+    "verdicts": {
+      "rule_L": true,
+      "rule_chroma": true,
+      "ground_L": true,
+      "lettering_pct": true,
+      "share_in_large_shapes": true,
+      "hairline_ink_density": false,
+      "peak_over_field": false,
+      "n_hue_families": true
+    },
+    "scored": 6,
+    "of": 8,
+    "guardrail_held": true,
+    "guardrail_value": 55.577
+  },
+  {
+    "config": {
+      "name": "it17-palette5-chroma85-vig55",
+      "rationale": "the best combination found, pushed one step",
+      "palette_size": 5,
+      "vignette": 0.55,
+      "vignette_centre": [
+        0.5,
+        0.46
+      ],
+      "chroma_gain": 0.85,
+      "ink_l": 34.0
+    },
+    "measured": {
+      "rect": 1.0,
+      "fullbleed": 0.0,
+      "n_panels": 5.0,
+      "page_share": 0.757,
+      "rule_edges": 18.5,
+      "rule_L": 4.8,
+      "rule_chroma": 2.41,
+      "rule_mm": 1.185,
+      "ground_L": 62.075,
+      "ground_chroma": 27.78,
+      "ground_share_pct": 24.1,
+      "lettering_count": 3.5,
+      "lettering_pct": 3.247,
+      "share_in_large_shapes": 0.335,
+      "hairline_ink_density": 12.811,
+      "peak_over_field": 43.494,
+      "n_hue_families": 4.625,
+      "C_p95": 56.08
+    },
+    "verdicts": {
+      "rule_L": true,
+      "rule_chroma": true,
+      "ground_L": true,
+      "lettering_pct": true,
+      "share_in_large_shapes": true,
+      "hairline_ink_density": false,
+      "peak_over_field": true,
+      "n_hue_families": true
+    },
+    "scored": 7,
+    "of": 8,
+    "guardrail_held": true,
+    "guardrail_value": 56.08
+  },
+  {
+    "config": {
+      "name": "it18-ink28",
+      "rationale": "a lower ink threshold posterises more of the plate, which should cut hairline ink",
+      "palette_size": 6,
+      "vignette": 0.42,
+      "vignette_centre": [
+        0.5,
+        0.46
+      ],
+      "chroma_gain": 0.7,
+      "ink_l": 28.0
+    },
+    "measured": {
+      "rect": 1.0,
+      "fullbleed": 0.0,
+      "n_panels": 5.0,
+      "page_share": 0.757,
+      "rule_edges": 18.5,
+      "rule_L": 4.8,
+      "rule_chroma": 2.41,
+      "rule_mm": 1.185,
+      "ground_L": 62.075,
+      "ground_chroma": 27.78,
+      "ground_share_pct": 24.1,
+      "lettering_count": 3.5,
+      "lettering_pct": 3.218,
+      "share_in_large_shapes": 0.342,
+      "hairline_ink_density": 13.204,
+      "peak_over_field": 42.154,
+      "n_hue_families": 3.926,
+      "C_p95": 56.257
+    },
+    "verdicts": {
+      "rule_L": true,
+      "rule_chroma": true,
+      "ground_L": true,
+      "lettering_pct": true,
+      "share_in_large_shapes": true,
+      "hairline_ink_density": false,
+      "peak_over_field": false,
+      "n_hue_families": true
+    },
+    "scored": 6,
+    "of": 8,
+    "guardrail_held": true,
+    "guardrail_value": 56.257
+  },
+  {
+    "config": {
+      "name": "it19-ink40",
+      "rationale": "a higher threshold protects more linework; does hairline get worse, confirming the mechanism",
+      "palette_size": 6,
+      "vignette": 0.42,
+      "vignette_centre": [
+        0.5,
+        0.46
+      ],
+      "chroma_gain": 0.7,
+      "ink_l": 40.0
+    },
+    "measured": {
+      "rect": 1.0,
+      "fullbleed": 0.0,
+      "n_panels": 5.0,
+      "page_share": 0.757,
+      "rule_edges": 18.5,
+      "rule_L": 4.8,
+      "rule_chroma": 2.41,
+      "rule_mm": 1.185,
+      "ground_L": 62.075,
+      "ground_chroma": 27.78,
+      "ground_share_pct": 24.1,
+      "lettering_count": 3.5,
+      "lettering_pct": 3.163,
+      "share_in_large_shapes": 0.33,
+      "hairline_ink_density": 13.12,
+      "peak_over_field": 42.068,
+      "n_hue_families": 4.593,
+      "C_p95": 55.195
+    },
+    "verdicts": {
+      "rule_L": true,
+      "rule_chroma": true,
+      "ground_L": true,
+      "lettering_pct": true,
+      "share_in_large_shapes": true,
+      "hairline_ink_density": false,
+      "peak_over_field": false,
+      "n_hue_families": true
+    },
+    "scored": 6,
+    "of": 8,
+    "guardrail_held": true,
+    "guardrail_value": 55.195
+  },
+  {
+    "config": {
+      "name": "it20-centre-low",
+      "rationale": "the figure stands in the lower half, so put the glow there",
+      "palette_size": 6,
+      "vignette": 0.55,
+      "vignette_centre": [
+        0.5,
+        0.58
+      ],
+      "chroma_gain": 0.85,
+      "ink_l": 34.0
+    },
+    "measured": {
+      "rect": 1.0,
+      "fullbleed": 0.0,
+      "n_panels": 5.0,
+      "page_share": 0.757,
+      "rule_edges": 18.5,
+      "rule_L": 4.8,
+      "rule_chroma": 2.41,
+      "rule_mm": 1.185,
+      "ground_L": 62.075,
+      "ground_chroma": 27.78,
+      "ground_share_pct": 24.1,
+      "lettering_count": 3.5,
+      "lettering_pct": 3.15,
+      "share_in_large_shapes": 0.335,
+      "hairline_ink_density": 12.441,
+      "peak_over_field": 44.389,
+      "n_hue_families": 4.511,
+      "C_p95": 57.983
+    },
+    "verdicts": {
+      "rule_L": true,
+      "rule_chroma": true,
+      "ground_L": true,
+      "lettering_pct": true,
+      "share_in_large_shapes": true,
+      "hairline_ink_density": false,
+      "peak_over_field": true,
+      "n_hue_families": true
+    },
+    "scored": 7,
+    "of": 8,
+    "guardrail_held": true,
+    "guardrail_value": 57.983
+  }
+]

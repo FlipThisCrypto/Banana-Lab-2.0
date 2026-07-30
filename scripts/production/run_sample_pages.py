@@ -128,16 +128,23 @@ def gen_size(width: int, height: int) -> tuple[int, int]:
 #: to generic scenes - a bookshop interior, two crowds of uniformed men, a
 #: greyscale city street. Six of eleven plates were off-brief. The location was
 #: in the script the whole time and simply was not being sent.
+#: Deliberately SHORT. Three elements, not eight.
+#:
+#: The previous version was a shopping list - stalls, awnings, bulbs, bunting,
+#: rides, a ferris wheel, grass and a crowd, eight object classes in one prompt -
+#: and the model dutifully drew all eight, every time, across the whole frame.
+#: That is why hairline_ink_density sat at 13-17 against an 11.0 ceiling and why
+#: peak_over_field would not rise: saturation spread evenly over a busy frame
+#: gives a high smoothed field median and no focal accent.
+#:
+#: The published plates carry two or three elements. So do these.
 LOCATION_ANCHORS = {
     "LOC-festival-grounds": (
-        "an outdoor summer music festival site, rows of food and game stalls "
-        "with striped awnings, strings of warm festival bulbs overhead, "
-        "bunting, fairground rides and a ferris wheel beyond, trodden grass "
-        "and dirt underfoot, festival crowd in summer clothes"
+        "a summer funfair at dusk, one ferris wheel silhouette against the sky, "
+        "two or three stall canopies, wide open trodden ground"
     ),
     "LOC-festival-main-stage": (
-        "the main stage of an outdoor summer music festival, truss towers, "
-        "speaker stacks, stage lighting rig, festival crowd below"
+        "one dark stage silhouette against a lit sky, open ground in front"
     ),
 }
 
@@ -153,9 +160,10 @@ NEAR_ANCHORS = {
     "LOC-festival-grounds": (
         # Iteration 2's near-anchor said "one striped stall awning" and produced
         # a cafe storefront, a cocktail bar and a treeline - generic premises,
-        # because nothing in it said FAIRGROUND. It does now, twice.
-        "at a night-time funfair, the edge of one striped fairground stall "
-        "canopy, a string of round festival bulbs, trodden grass underfoot"
+        # because nothing in it said FAIRGROUND. It does now, twice, and names
+        # only two things so the frame stays empty enough for a figure.
+        "at a night funfair, one striped stall canopy edge and a few round "
+        "glowing bulbs, nothing else"
     ),
     "LOC-festival-main-stage": (
         "one truss upright and a wash of stage light, everything else dark"
@@ -304,6 +312,15 @@ def plate_prompt(panel: dict) -> str:
     # (4 families published, 6.8 and 6.1 here). That is the real gap - not
     # saturation, which is already slightly BELOW published peak. So ask for
     # simplicity, and do not ask for less colour.
+    # The script's background_description is art direction written for a human
+    # artist. "Booth rows, bunting, dense warm crowd" tells an illustrator to
+    # render a massed shape; handed verbatim to SDXL it draws every booth and
+    # every person. The script's CONTENT is preserved - it is owner material -
+    # and only its EXECUTION is directed here.
+    parts.append(
+        "(render crowds and rows of objects as large simple massed silhouette "
+        "shapes:1.35), (not individual figures or individual objects:1.3)"
+    )
     parts.append(FOCAL_BACKGROUND)
     return ", ".join(p for p in parts if p)
 
