@@ -2,16 +2,16 @@
   "job_id": "ISSUE001-P01-01",
   "job_class": "background_plate",
   "workflow_version": "sample-pages-1",
-  "prompt_id": "c0ce23a5-4f1f-41d3-9020-ac51cd3c9a50",
+  "prompt_id": "92e8c08a-c473-4e54-9f50-41940e247e02",
   "ok": true,
   "error": "",
-  "seconds": 50.3,
+  "seconds": 58.4,
   "outputs": [
     {
       "path": "issues/issue-001-neonblue-the-last-light-of-summer/06_backgrounds/generated_candidates/ISSUE001-P01-01.png",
-      "sha256": "3ed8fb2e462c001b4259eff1cc3047f15dc4eeff8ad49a748a5b10b0a47209a0",
-      "pixel_sha256": "abd77481f0ddfcc08f3793c29ac611b0c762a3d65a8a0fadaeaa39d6fa04d7b5",
-      "bytes": 2446076
+      "sha256": "6e5e8d923ef6aec9f414ddc432cd1b5fb1d1ae3f52a0791fc90c3374491226de",
+      "pixel_sha256": "d8a9c1b69fd64d8dac7d39ee54e93cc7c2ababdb7d9c574df0b110efdcf97483",
+      "bytes": 2242828
     }
   ],
   "graph": {
@@ -27,7 +27,7 @@
     "2": {
       "class_type": "CLIPTextEncode",
       "inputs": {
-        "text": "(flat 2d vector cartoon illustration:1.5), (thick uniform black outlines:1.4), (flat colour fills with hard cel shading:1.4), comic book background art, graphic novel panel, bold saturated palette, clear perspective. (extreme wide shot:1.4), (high angle:1.2), the whole location seen from far back, figures tiny, The festival site from a raised angle. Ferris wheel, main stage, booth rows, bunting, dense warm crowd. Nothing is wrong yet, setting: an outdoor summer music festival site, rows of food and game stalls with striped awnings, strings of warm festival bulbs overhead, bunting, fairground rides and a ferris wheel beyond, trodden grass and dirt underfoot, festival crowd in summer clothes, depth: Foreground bunting, midground rides and stalls, background skyline and low sun, lit by Low sun from frame right, Deep amber key, Cool sky bounce fill, (large flat areas of colour:1.3), (simple bold shapes:1.3), (minimal fine detail:1.2), limited palette of four colours, clean uncluttered composition. (flat cartoon vector art:1.4), (bold black outlines:1.3), (cel shaded:1.3), non-photorealistic",
+        "text": "(flat 2d vector cartoon illustration:1.5), (thick uniform black outlines:1.4), (flat colour fills with hard cel shading:1.4), comic book background art, graphic novel panel, bold saturated palette, clear perspective. (extreme wide shot:1.4), (high angle:1.2), the whole location seen from far back, figures tiny, The festival site from a raised angle. Ferris wheel, main stage, booth rows, bunting, dense warm crowd. Nothing is wrong yet, setting: an outdoor summer music festival site, rows of food and game stalls with striped awnings, strings of warm festival bulbs overhead, bunting, fairground rides and a ferris wheel beyond, trodden grass and dirt underfoot, festival crowd in summer clothes, depth: Foreground bunting, midground rides and stalls, background skyline and low sun, lit by Low sun from frame right, Deep amber key, Cool sky bounce fill, (strong vignette:1.3), (brightest directly at the centre of frame:1.3), (darker toward the edges:1.2), (large simple flat shapes:1.35), (limited palette of three or four colours:1.3), (hard edged flat colour, no gradients, no airbrush:1.35), few elements, a clear open ground plane in the lower third, one dominant light source, deep shadow in the corners, generous empty space in the middle of frame for a figure to stand in. (flat cartoon vector art:1.4), (bold black outlines:1.3), (cel shaded:1.3), non-photorealistic",
         "clip": [
           "1",
           1
@@ -40,7 +40,7 @@
     "3": {
       "class_type": "CLIPTextEncode",
       "inputs": {
-        "text": "(photorealistic:1.6), (photograph:1.6), (realistic lighting:1.4), (3d render:1.4), (volumetric light:1.3), (depth of field:1.3), cinematic photography, film still, octane render, unreal engine, realistic textures, reflections, bokeh, lens flare, characters, people, person, figure, animal, monkey, creature, mascot, text, letters, words, signature, watermark, logo, caption, speech bubble, panel border, frame, comic frame, white border, gutter, blurry, noisy, jpeg artifacts, low contrast mush, duplicated objects, warped architecture, broken geometry, extra limbs",
+        "text": "(photorealistic:1.6), (photograph:1.6), (realistic lighting:1.4), (3d render:1.4), (volumetric light:1.3), (depth of field:1.3), cinematic photography, film still, octane render, unreal engine, realistic textures, reflections, bokeh, lens flare, characters, people, person, figure, animal, monkey, creature, mascot, text, letters, words, signature, watermark, logo, caption, speech bubble, panel border, frame, comic frame, white border, gutter, blurry, noisy, jpeg artifacts, low contrast mush, duplicated objects, warped architecture, broken geometry, extra limbs, aerial view, bird's eye view, isometric, top-down, map view, crowd of detailed people, hundreds of small figures, busy, cluttered, wimmelbild, densely packed stalls, repeated small objects, fine intricate detail, tiny text, signage lettering, flat evenly-lit scene, no focal point, airbrushed, soft gradient, painterly, oil painting, watercolour, blurry, out of focus photography, photographic bokeh, hazy, misty, soft focus, feathered edges, no linework",
         "clip": [
           "1",
           1
@@ -64,7 +64,7 @@
     "5": {
       "class_type": "KSampler",
       "inputs": {
-        "seed": 771204,
+        "seed": 550930,
         "steps": 30,
         "cfg": 6.0,
         "sampler_name": "dpmpp_2m",
@@ -126,8 +126,8 @@
   "review_note": "",
   "panel_id": "ISSUE001-P01-01",
   "page": 1,
-  "prompt": "(extreme wide shot:1.4), (high angle:1.2), the whole location seen from far back, figures tiny, The festival site from a raised angle. Ferris wheel, main stage, booth rows, bunting, dense warm crowd. Nothing is wrong yet, setting: an outdoor summer music festival site, rows of food and game stalls with striped awnings, strings of warm festival bulbs overhead, bunting, fairground rides and a ferris wheel beyond, trodden grass and dirt underfoot, festival crowd in summer clothes, depth: Foreground bunting, midground rides and stalls, background skyline and low sun, lit by Low sun from frame right, Deep amber key, Cool sky bounce fill, (large flat areas of colour:1.3), (simple bold shapes:1.3), (minimal fine detail:1.2), limited palette of four colours, clean uncluttered composition",
-  "seed": 771204,
+  "prompt": "(extreme wide shot:1.4), (high angle:1.2), the whole location seen from far back, figures tiny, The festival site from a raised angle. Ferris wheel, main stage, booth rows, bunting, dense warm crowd. Nothing is wrong yet, setting: an outdoor summer music festival site, rows of food and game stalls with striped awnings, strings of warm festival bulbs overhead, bunting, fairground rides and a ferris wheel beyond, trodden grass and dirt underfoot, festival crowd in summer clothes, depth: Foreground bunting, midground rides and stalls, background skyline and low sun, lit by Low sun from frame right, Deep amber key, Cool sky bounce fill, (strong vignette:1.3), (brightest directly at the centre of frame:1.3), (darker toward the edges:1.2), (large simple flat shapes:1.35), (limited palette of three or four colours:1.3), (hard edged flat colour, no gradients, no airbrush:1.35), few elements, a clear open ground plane in the lower third, one dominant light source, deep shadow in the corners, generous empty space in the middle of frame for a figure to stand in",
+  "seed": 550930,
   "gen_size": [
     1488,
     776

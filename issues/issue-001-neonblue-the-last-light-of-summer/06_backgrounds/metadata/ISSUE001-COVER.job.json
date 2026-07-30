@@ -2,16 +2,16 @@
   "job_id": "ISSUE001-COVER",
   "job_class": "cover_plate",
   "workflow_version": "sample-pages-1",
-  "prompt_id": "69405a14-5d42-4183-8cda-64f215c768f5",
+  "prompt_id": "f712749a-ece1-4572-8212-78b1e3935186",
   "ok": true,
   "error": "",
-  "seconds": 50.2,
+  "seconds": 50.5,
   "outputs": [
     {
       "path": "issues/issue-001-neonblue-the-last-light-of-summer/06_backgrounds/generated_candidates/ISSUE001-COVER.png",
-      "sha256": "aba984a2b16261a77054dfe33e1f52060fa881962f7e7805b0bf2756f001c5c4",
-      "pixel_sha256": "fc9b93539f9fc104ef989ff1c16ed078164aa105e3eb26b31066b1dd2376674d",
-      "bytes": 1818918
+      "sha256": "70b8b102ce9fa030412493a1aaf156e236608dfb8f1a449dac7177d66a331de3",
+      "pixel_sha256": "bc5d13877443d803b45d75da21cb170ed7229bae2f7a65d076da329ef6e89b5f",
+      "bytes": 1650734
     }
   ],
   "graph": {
@@ -40,7 +40,7 @@
     "3": {
       "class_type": "CLIPTextEncode",
       "inputs": {
-        "text": "(photorealistic:1.6), (photograph:1.6), (realistic lighting:1.4), (3d render:1.4), (volumetric light:1.3), (depth of field:1.3), cinematic photography, film still, octane render, unreal engine, realistic textures, reflections, bokeh, lens flare, characters, people, person, figure, animal, monkey, creature, mascot, text, letters, words, signature, watermark, logo, caption, speech bubble, panel border, frame, comic frame, white border, gutter, blurry, noisy, jpeg artifacts, low contrast mush, duplicated objects, warped architecture, broken geometry, extra limbs",
+        "text": "(photorealistic:1.6), (photograph:1.6), (realistic lighting:1.4), (3d render:1.4), (volumetric light:1.3), (depth of field:1.3), cinematic photography, film still, octane render, unreal engine, realistic textures, reflections, bokeh, lens flare, characters, people, person, figure, animal, monkey, creature, mascot, text, letters, words, signature, watermark, logo, caption, speech bubble, panel border, frame, comic frame, white border, gutter, blurry, noisy, jpeg artifacts, low contrast mush, duplicated objects, warped architecture, broken geometry, extra limbs, aerial view, bird's eye view, isometric, top-down, map view, crowd of detailed people, hundreds of small figures, busy, cluttered, wimmelbild, densely packed stalls, repeated small objects, fine intricate detail, tiny text, signage lettering, flat evenly-lit scene, no focal point, airbrushed, soft gradient, painterly, oil painting, watercolour, blurry, out of focus photography, photographic bokeh, hazy, misty, soft focus, feathered edges, no linework",
         "clip": [
           "1",
           1
@@ -64,7 +64,7 @@
     "5": {
       "class_type": "KSampler",
       "inputs": {
-        "seed": 771103,
+        "seed": 550829,
         "steps": 30,
         "cfg": 6.0,
         "sampler_name": "dpmpp_2m",
@@ -127,7 +127,7 @@
   "panel_id": "ISSUE001-COVER",
   "page": 0,
   "prompt": "(night:1.4), (blacked out fairground:1.4), the festival grounds during a total power failure, seen wide and slightly low, ferris wheel and main stage as dark silhouettes against a starless deep blue night sky, every bulb dead and unlit, strings of dead bulbs hanging overhead, stalls and booths in cold blue shadow, (one single small warm lamp still burning at the centre of frame:1.4), a narrow pool of warm light on the ground beneath it, empty foreground path leading in toward that one light, depth: foreground path and dead bunting, midground darkened rides and stalls, background black skyline, lit only by that one small warm source at centre frame, deep amber key falling off fast into darkness, cold blue moonlight ambient fill, cover composition with clear central space for a figure and clear upper third of empty night sky for a title",
-  "seed": 771103,
+  "seed": 550829,
   "gen_size": [
     904,
     1272

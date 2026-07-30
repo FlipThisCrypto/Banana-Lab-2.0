@@ -30,6 +30,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 import time
 from dataclasses import dataclass, field
@@ -138,6 +139,27 @@ LOCATION_ANCHORS = {
     ),
 }
 
+#: The same locations described for a TIGHT shot: a couple of nearby elements,
+#: not the whole site.
+#:
+#: The full anchor above lists rows of stalls, a ferris wheel and a crowd, which
+#: on a close shot fights the framing and wins - it is why every close and
+#: medium_close panel came back as another aerial fairground even after the shot
+#: term was moved to the front at weight 1.4. A close shot needs to know it is at
+#: a festival, not to be handed the festival.
+NEAR_ANCHORS = {
+    "LOC-festival-grounds": (
+        "the edge of one striped stall awning and a few large flat circles of "
+        "warm festival bulb light, a string of bulbs, trodden grass underfoot"
+    ),
+    "LOC-festival-main-stage": (
+        "one truss upright and a wash of stage light, everything else dark"
+    ),
+}
+
+#: Shots that get NEAR_ANCHORS instead of the full site.
+TIGHT_SHOTS = {"medium", "medium_close", "close"}
+
 #: Below this, a description is too thin to anchor an image on its own and the
 #: location anchor is added. Measured against the failures above: the panels
 #: that drifted had 30-79 characters.
@@ -157,6 +179,70 @@ SHOT_FRAMING = {
              "one or two large soft colour shapes only, no scenery",
 }
 
+#: A background whose job is to POINT AT the character, not to be looked at.
+#:
+#: This is the mechanism the published editions use and this pipeline was
+#: missing entirely. TheFusionSquad page 7 is the clearest case: a single green
+#: field, brightest directly behind the figure, radial streaks converging on it,
+#: three or four hue families, a handful of large simple shapes, and no detailed
+#: scenery anywhere. The character reads instantly because the background is
+#: built to make it read.
+#:
+#: The plates this pipeline produced were the opposite - detailed aerial
+#: fairground wimmelbild with no focal point at all, which is simultaneously why
+#: share_in_large_shapes measured 0.115 against a 0.26 floor, why
+#: hairline_ink_density measured 18.8 against an 11.0 ceiling, why
+#: n_hue_families measured 6.4 against 5.5, and why every figure looked tiny: an
+#: aerial view has nowhere to put a large character.
+FOCAL_BACKGROUND = (
+    "(strong vignette:1.3), (brightest directly at the centre of frame:1.3), "
+    "(darker toward the edges:1.2), (large simple flat shapes:1.35), "
+    "(limited palette of three or four colours:1.3), "
+    "(hard edged flat colour, no gradients, no airbrush:1.35), "
+    "few elements, a clear open ground plane in the lower third, one dominant "
+    "light source, deep shadow in the corners, generous empty space in the "
+    "middle of frame for a figure to stand in"
+)
+
+#: Things the published editions never do, and every failed plate did.
+FOCAL_NEGATIVE = (
+    "aerial view, bird's eye view, isometric, top-down, map view, "
+    "crowd of detailed people, hundreds of small figures, busy, cluttered, "
+    "wimmelbild, densely packed stalls, repeated small objects, "
+    "fine intricate detail, tiny text, signage lettering, "
+    "flat evenly-lit scene, no focal point, "
+    # Asking for simplicity without these produced a soft airbrushed field with
+    # no outlines at all - simple, but not the house style. The published art is
+    # simple AND hard-edged: flat fills inside black linework.
+    "airbrushed, soft gradient, painterly, oil painting, watercolour, "
+    "blurry, out of focus photography, photographic bokeh, hazy, misty, "
+    "soft focus, feathered edges, no linework"
+)
+
+#: Target character height as a share of PANEL height, per declared shot.
+#:
+#: Owner brief: characters should occupy 25-70% of the panel depending on the
+#: shot, never tiny figures pasted into enormous environments. Measured against
+#: the published editions, which sit in the same band. This replaces deriving
+#: height purely from an uncalibrated ground plane, which produced 68-231 px
+#: figures on 3508 px pages - 2 to 7%.
+#:
+#: The ground plane still decides WHERE the feet go and how depth ranks the
+#: cast; this decides HOW BIG they are once placed.
+CHARACTER_SHARE = {
+    "extreme_wide": 0.26,
+    "wide": 0.34,
+    "medium_wide": 0.45,
+    "medium": 0.58,
+    "medium_close": 0.68,
+    "close": 0.70,
+}
+
+#: How much smaller the furthest figure is than the nearest, as a multiplier on
+#: CHARACTER_SHARE. Keeps real depth separation without returning anyone to the
+#: 2-7% band - the deepest figure in a six-up still clears the 25% floor.
+DEPTH_FALLOFF = 0.74
+
 
 def plate_prompt(panel: dict) -> str:
     """The scene description, assembled from the script rather than invented.
@@ -166,7 +252,10 @@ def plate_prompt(panel: dict) -> str:
     """
     light = panel.get("lighting") or {}
     description = panel["background_description"].strip().rstrip(".")
-    anchor = LOCATION_ANCHORS.get(panel["location"], "")
+    if panel["camera_shot"] in TIGHT_SHOTS:
+        anchor = NEAR_ANCHORS.get(panel["location"], "")
+    else:
+        anchor = LOCATION_ANCHORS.get(panel["location"], "")
     shot = panel["camera_shot"].replace("_", " ")
     angle = panel.get("camera_angle", "eye level").replace("_", " ")
 
@@ -202,9 +291,7 @@ def plate_prompt(panel: dict) -> str:
     # (4 families published, 6.8 and 6.1 here). That is the real gap - not
     # saturation, which is already slightly BELOW published peak. So ask for
     # simplicity, and do not ask for less colour.
-    parts.append("(large flat areas of colour:1.3), (simple bold shapes:1.3), "
-                 "(minimal fine detail:1.2), limited palette of four colours, "
-                 "clean uncluttered composition")
+    parts.append(FOCAL_BACKGROUND)
     return ", ".join(p for p in parts if p)
 
 
@@ -258,33 +345,154 @@ class PanelResult:
     error: str = ""
 
 
-def pick_layer(character_id: str, panel: dict) -> Path | None:
-    """An approved layer for this character, preferring a pose the script implies.
+#: Words in a blocking `position` that place a figure across frame.
+_X_WORDS = [
+    (("far left", "left edge"), 0.16),
+    (("left rear", "left of centre", "left"), 0.28),
+    (("centre rear", "center rear", "centre", "center", "middle"), 0.50),
+    (("right of centre", "right rear", "right"), 0.72),
+    (("far right", "right edge"), 0.84),
+]
+
+#: Words that place a figure in depth. Lower is nearer the camera.
+_DEPTH_WORDS = [
+    (("foreground", "front of", "nearest", "closest"), 0.0),
+    (("half a step behind", "just behind"), 0.30),
+    (("centre rear", "center rear", "rear", "behind"), 0.62),
+    (("rearmost", "trailing", "furthest", "background"), 0.85),
+]
+
+
+def blocking_for(panel: dict) -> dict[str, dict]:
+    """The script's per-character staging direction, keyed by character id.
+
+    `character_blocking` declares position, depth_plane, scale_note,
+    ground_contact, eye_line and hand_activity for every figure in frame, and
+    this pipeline ignored all of it - spreading the cast evenly across frame on
+    a depth ladder of its own invention and picking `clean_base` for everyone.
+    The script had already directed the shot; nothing was reading the direction.
+    """
+    out: dict[str, dict] = {}
+    for record in panel.get("character_blocking") or []:
+        cid = record.get("character_id")
+        if not cid:
+            continue
+        position = (record.get("position") or "").lower()
+
+        x = None
+        for words, value in _X_WORDS:
+            if any(w in position for w in words):
+                x = value
+                break
+
+        depth = None
+        for words, value in _DEPTH_WORDS:
+            if any(w in position for w in words):
+                depth = value
+                break
+        if depth is None:
+            plane = (record.get("depth_plane") or "").lower()
+            depth = {"foreground": 0.0, "midground": 0.45,
+                     "background": 0.8}.get(plane)
+
+        # "6 percent smaller" -> 0.94. Relative scale the script asked for.
+        scale = 1.0
+        note = (record.get("scale_note") or "").lower()
+        match = re.search(r"(\d+)\s*percent\s*smaller", note)
+        if match:
+            scale = max(0.4, 1.0 - int(match.group(1)) / 100.0)
+
+        out[cid] = {
+            "x": x,
+            "depth": depth,
+            "scale": scale,
+            "plane": (record.get("depth_plane") or "").lower(),
+            "feet_in_frame": "out of frame" not in
+                             (record.get("ground_contact") or "").lower(),
+            "pose_words": " ".join([
+                record.get("ground_contact") or "",
+                record.get("hand_activity") or "",
+                record.get("eye_line") or "",
+            ]).lower(),
+        }
+    return out
+
+
+def pick_layer(character_id: str, panel: dict,
+               direction: dict | None = None) -> Path | None:
+    """An approved layer for this character, matching the pose the script asks for.
 
     Prefers the repaired copy when one exists. Never falls back to a different
     character.
+
+    The first version scored the pose name against the panel's prose beat and
+    gave `clean_base` a bonus, so almost every figure on every page came out in
+    the same neutral standing pose - six identical postures in a row on P01-02.
+    The script had already said what each character is doing: `ground_contact`
+    "Both feet mid-stride, weight forward", `hand_activity` "One hand near his
+    ear", `eye_line` "Down at the ground". Those are matched here.
     """
     folder = CHARACTERS.get(character_id)
     if not folder:
         return None
 
-    beat = " ".join([
-        panel.get("visual_beat", ""), panel.get("narrative_purpose", ""),
-        json.dumps(panel.get("characters_in_frame", "")),
-    ]).lower()
-
     available = sorted((LAYERS / folder).glob("*.png"))
     if not available:
         return None
+
+    words = (direction or {}).get("pose_words", "")
+    beat = " ".join([
+        panel.get("visual_beat", ""), panel.get("narrative_purpose", ""),
+        panel.get("mood", ""),
+    ]).lower()
+
+    # Pose name -> the blocking phrases that should select it.
+    cues = {
+        "walking": ("walking", "mid-stride", "stride", "unhurried", "slowest pace",
+                    "pace"),
+        "running": ("running", "run", "hurrying", "sprint"),
+        "determined": ("weight forward", "braced", "planted", "determined",
+                       "sets his", "squares"),
+        "worried": ("worried", "hesitating", "uneasy", "anxious", "listening"),
+        "sleepy": ("sleepy", "bored", "down at the ground", "slumped"),
+        "confused": ("confused", "scanning", "looking about", "puzzled"),
+        "laughing": ("laughing", "grinning", "delighted", "laugh"),
+        "shocked": ("shocked", "startled", "recoils", "alarm"),
+        "angry": ("angry", "furious", "glare", "snaps"),
+        "pointing": ("pointing", "points", "one arm raised", "gestures"),
+        "waving": ("waving", "waves"),
+        "thinking": ("thinking", "considers", "near his ear", "hand to chin"),
+        "armscrossed": ("arms crossed", "folded arms", "hands in pockets",
+                        "neutral at sides", "hoodie pocket"),
+        "lookingup": ("up and off", "looking up", "upward", "overhead"),
+        "crouching": ("crouch", "one knee", "kneeling"),
+        "jumping": ("jump", "airborne", "leaps"),
+        "backview": ("from behind", "walking away", "back to camera"),
+        "celebrating": ("celebrating", "cheering", "arms up"),
+        "reaching": ("reaching", "reaches", "hand out"),
+        "sitting": ("seated", "sitting", "sits"),
+        "defeated": ("defeated", "slumped", "beaten"),
+    }
 
     ranked = []
     for path in available:
         pose = path.stem.split("_", 2)[-1]
         score = 0
-        if pose.replace("_", " ") in beat:
-            score += 3
+        # The script's explicit direction for THIS character carries the most.
+        for cue in cues.get(pose, ()):
+            if cue in words:
+                score += 5
+                break
+        # Then the panel's own beat, which is about the moment not the figure.
+        for cue in cues.get(pose, ()):
+            if cue in beat:
+                score += 2
+                break
+        if pose.replace("_", " ") in words:
+            score += 4
+        # clean_base is the fallback of last resort, not a preference.
         if pose == "clean_base":
-            score += 1
+            score += 1 if not words else 0
         ranked.append((score, path.name, path))
     ranked.sort(key=lambda r: (-r[0], r[1]))
     chosen = ranked[0][2]
@@ -357,44 +565,80 @@ def stage_panel(panel: dict, plate_path: Path, size: tuple[int, int],
 
     placements: list[Placement] = []
     slots = len(stageable)
-    # Depth ladder. The first run staggered foot_y by +/-0.02 of frame height,
-    # which at these panel sizes is a few pixels - so all six characters landed
-    # on one baseline at one size and read as exactly the standing row the
-    # compositor exists to prevent. The ground plane converts foot_y into size,
-    # so the spread has to be large enough to produce visibly different heights.
+    directed = blocking_for(panel)
+
+    # The script already directs this shot. `character_blocking` gives every
+    # figure a position, a depth plane, a relative scale and a ground contact,
+    # and this pipeline used to ignore all of it: an even spread across frame on
+    # a depth ladder of its own, and `clean_base` for everyone. Read the
+    # direction; only fall back to the ladder where the script is silent.
     #
-    # Ladder from the horizon down to the bottom of frame, alternating near and
-    # far so neighbours differ rather than marching front to back.
+    # Depth ordering comes from the script's own words - "Front of the cluster",
+    # "Half a step behind", "Centre rear", "Rearmost, trailing".
+    ranked = sorted(range(slots),
+                    key=lambda i: directed.get(stageable[i], {}).get("depth")
+                    if directed.get(stageable[i], {}).get("depth") is not None
+                    else 0.5)
+    fallback_x = {}
+    unplaced = [c for c in stageable if directed.get(c, {}).get("x") is None]
+    for n, cid in enumerate(unplaced):
+        fallback_x[cid] = (n + 1) / (len(unplaced) + 1)
+
     span = max(0.0, foot_f - horizon_f) * 0.62
-    order = []
-    for index in range(slots):
-        # 0, n-1, 1, n-2, ... so adjacent x positions get non-adjacent depths.
-        order.append(index // 2 if index % 2 == 0 else slots - 1 - index // 2)
 
     for index, character_id in enumerate(stageable):
-        layer = pick_layer(character_id, panel)
+        direction = directed.get(character_id, {})
+        layer = pick_layer(character_id, panel, direction)
         if layer is None:
             result.skipped_characters.append(f"{character_id} - no layer found")
             continue
-        # A solo figure has no row to break up, so it must not be pushed to the
-        # deepest rung. With slots == 1 this read order[0] / max(1, 0) = 0.0,
-        # which applied the full depth penalty AND selected depth_plane
-        # "background" - DEPTH_BLUR 1.1 plus DEPTH_HAZE 0.18. Measured cost of
-        # that one expression: P01-04's NeonBlue went h379 -> h142 and its
-        # likeness 94.9 -> 84.1 between runs, and 8 of 9 recorded likeness
-        # failures were that haze's colour drift.
-        rung = 1.0 if slots == 1 else order[index] / max(1, slots - 1)
+
+        # depth 0.0 is nearest the camera, so rung 1.0 is nearest.
+        depth = direction.get("depth")
+        if depth is None:
+            depth = 0.5 if slots == 1 else ranked.index(index) / max(1, slots - 1)
+        rung = 1.0 - depth
+        if slots == 1:
+            rung = 1.0
+
         foot = foot_f - span * (1.0 - rung)
-        # Nearer figures sit lower in frame AND further from centre, so the
-        # composition opens up instead of stacking.
-        frac = (index + 1) / (slots + 1)
+        foot_y = int(height * min(0.995, foot))
+
+        # Size to a share of PANEL height, then solve the multiplier that gets
+        # there. Deriving height from the uncalibrated ground plane alone gave
+        # 68-231 px figures on a 3508 px page; the owner brief and the published
+        # editions both put a character at 25-70% of the panel.
+        share = CHARACTER_SHARE.get(shot, 0.5)
+        share *= DEPTH_FALLOFF + (1.0 - DEPTH_FALLOFF) * rung
+        # The script's own relative scale, e.g. "20 percent smaller".
+        share *= direction.get("scale", 1.0)
+        desired_h = share * height
+        try:
+            natural_h = ground.character_height_at(foot_y)
+        except ValueError:
+            natural_h = desired_h
+        multiplier = desired_h / natural_h if natural_h > 0 else 1.0
+
+        x_frac = direction.get("x")
+        if x_frac is None:
+            x_frac = fallback_x.get(character_id, (index + 1) / (slots + 1))
+
+        plane = direction.get("plane") or (
+            "midground" if rung > 0.34 else "background")
+
+        # A figure the script says is cropped at the waist must not be given a
+        # contact shadow on a ground line it never touches.
+        feet_in_frame = direction.get("feet_in_frame", True)
+
         placements.append(Placement(
             character_id=character_id,
             layer_path=layer,
-            centre_x=int(width * frac),
-            foot_y=int(height * min(0.995, foot)),
-            depth_plane="midground" if rung > 0.34 else "background",
+            centre_x=int(width * x_frac),
+            foot_y=foot_y if feet_in_frame else int(height * 1.04),
+            scale_multiplier=multiplier,
+            depth_plane=plane,
             identity_critical=identity,
+            notes=direction.get("pose_words", "")[:120],
         ))
 
     if not placements:
@@ -423,6 +667,7 @@ def generate_plate(client: ComfyClient, spec: PanelResult, job_class: str,
 
     graph = wf.background_plate(
         prompt=spec.prompt,
+        negative_extra=FOCAL_NEGATIVE,
         width=spec.gen_size[0], height=spec.gen_size[1],
         seed=spec.seed,
         filename_prefix=f"bananalab/sample/{spec.panel_id}",
