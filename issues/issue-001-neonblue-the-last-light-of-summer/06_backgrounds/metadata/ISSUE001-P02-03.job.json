@@ -2,16 +2,16 @@
   "job_id": "ISSUE001-P02-03",
   "job_class": "background_plate",
   "workflow_version": "sample-pages-1",
-  "prompt_id": "5bb9ec9d-bbbc-4b0a-9ac3-cd087b8bbc15",
+  "prompt_id": "df875afd-8e13-4d72-a6ca-0063fb88a602",
   "ok": true,
   "error": "",
-  "seconds": 48.3,
+  "seconds": 46.2,
   "outputs": [
     {
-      "path": "issues/issue-001-neonblue-the-last-light-of-summer/06_backgrounds/generated_candidates/ISSUE001-P02-03.png",
-      "sha256": "00426fa99beac18a71ade0743646149203c362c8ee24b9bb1569001ea18446a9",
-      "pixel_sha256": "bc38d0ecdb35fe66dd680181b489accac20528d4364f718a339fce9d65512aab",
-      "bytes": 1125518
+      "path": "issues/issue-001-neonblue-the-last-light-of-summer/06_backgrounds/generated_candidates/ISSUE001-P02-03_take3.png",
+      "sha256": "08bfb5765a01b77f4ac6f8d2c7de79fc355f9a210686450ea455984033e33b65",
+      "pixel_sha256": "2d5ec124eaa55766883ce7df870e877eff6691d7a082d3f3072f6cdbede7c6c6",
+      "bytes": 1631778
     }
   ],
   "graph": {
@@ -64,7 +64,7 @@
     "5": {
       "class_type": "KSampler",
       "inputs": {
-        "seed": 991724,
+        "seed": 147127,
         "steps": 30,
         "cfg": 6.0,
         "sampler_name": "dpmpp_2m",
@@ -127,7 +127,7 @@
   "panel_id": "ISSUE001-P02-03",
   "page": 2,
   "prompt": "(close shot:1.4), (eye level:1.2), extremely tight framing, background almost entirely out of focus, one or two large soft colour shapes only, no scenery, Heavily defocused warm festival light, setting: at a night funfair, one striped stall canopy edge and a few round glowing bulbs, nothing else, depth: Shallow, lit by Warm frontal, Amber key, Weak cool fill, (render crowds and rows of objects as large simple massed silhouette shapes:1.35), (not individual figures or individual objects:1.3), (dramatic single source lighting:1.45), (bright glow behind the centre of frame:1.4), (deep black shadow in all four corners:1.35), (strong vignette:1.3), (only three colours:1.4), (very few objects:1.35), (large simple flat shapes:1.35), (hard edged flat colour, no gradients, no airbrush:1.35), (seen from standing eye level:1.25), a clear open ground plane in the lower third, generous empty space in the middle of frame for a figure to stand in",
-  "seed": 991724,
+  "seed": 131289,
   "gen_size": [
     1304,
     880

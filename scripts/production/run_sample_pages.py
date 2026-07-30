@@ -722,16 +722,44 @@ def _score_candidate(path: Path) -> dict:
 
 _SCORECARD = None
 
-#: What makes one take better than another. Ordered, and stated rather than
-#: implied: never break the chroma guardrail, then fewest hairline strokes,
-#: then largest flat cells.
+#: The tolerances a plate is judged against, mirroring the scorecard.
+PLATE_TOLERANCES = {
+    "share_in_large_shapes": (">=", 0.26, None),
+    "hairline_ink_density": ("range", 0.4, 11.0),
+    "peak_over_field": ("range", 42.6, 66.6),
+    "n_hue_families": ("<=", 5.5, None),
+}
+
+
+def _outside(name: str, value: float) -> float:
+    """How far outside its tolerance a property sits, 0 when inside."""
+    operator, low, high = PLATE_TOLERANCES[name]
+    if operator == "<=":
+        return max(0.0, value - low) / max(low, 1e-6)
+    if operator == ">=":
+        return max(0.0, low - value) / max(low, 1e-6)
+    span = high - low
+    return max(0.0, low - value, value - high) / max(span, 1e-6)
+
+
+#: What makes one take better than another.
+#:
+#: The first version ranked on hairline then share, and it worked - hairline went
+#: 12.81 -> 9.23 and finally passed. It also dragged peak_over_field 45.25 ->
+#: 39.95 into failure, because a proxy was being optimised instead of the goal.
+#: Ranking on the NUMBER of tolerances met, then on total distance outside them,
+#: optimises what is actually wanted and cannot trade one property away to buy
+#: another without that showing in the count.
+#:
+#: The guardrail stays first and absolute. It has already earned its place: on
+#: P02-04 the lowest-hairline take measured C_p95 31.7 and was correctly passed
+#: over for one at 60.1.
 def _candidate_rank(scores: dict) -> tuple:
     guardrail_ok = scores.get("C_p95", 0.0) >= 50.0
-    return (
-        0 if guardrail_ok else 1,
-        scores.get("hairline_ink_density", 999.0),
-        -scores.get("share_in_large_shapes", 0.0),
-    )
+    missed = sum(1 for k in PLATE_TOLERANCES
+                 if _outside(k, scores.get(k, 0.0)) > 0)
+    distance = sum(_outside(k, scores.get(k, 0.0)) for k in PLATE_TOLERANCES)
+    return (0 if guardrail_ok else 1, missed, distance)
 
 
 def generate_plate(client: ComfyClient, spec: PanelResult, job_class: str,
@@ -777,8 +805,7 @@ def generate_plate(client: ComfyClient, spec: PanelResult, job_class: str,
     _, best_raw, best_finished, best_scores, best_seed = takes[0]
     spec.candidates = [
         {"seed": s, "raw": r.as_posix(), "finished": f.as_posix(),
-         "hairline_ink_density": round(sc.get("hairline_ink_density", 0.0), 2),
-         "share_in_large_shapes": round(sc.get("share_in_large_shapes", 0.0), 3),
+         **{k: round(sc.get(k, 0.0), 3) for k in PLATE_TOLERANCES},
          "C_p95": round(sc.get("C_p95", 0.0), 1),
          "chosen": f == best_finished}
         for _, r, f, sc, s in takes

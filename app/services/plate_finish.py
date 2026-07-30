@@ -96,11 +96,17 @@ def posterise(image: Image.Image, palette_size: int = PALETTE_SIZE) -> Image.Ima
 #: configurations: 0.40 -> 35.9, 0.70 -> 42.4, 0.85 -> 43.5, 1.00 -> 49.1,
 #: against a 42.6 floor.
 #:
-#: Settled at 0.60 AFTER the zero-mean fix below, not before. The high gains were
+#: Settled at 0.80 AFTER the zero-mean fix below, not before. The high gains were
 #: chosen while the vignette was silently darkening every plate by ~11 L*, and
 #: once that was fixed a much gentler gain cleared the same floor: 0.60 measures
 #: peak 47.5 with page lightness preserved.
-CHROMA_GAIN = 0.60
+#:
+#: Raised 0.60 -> 0.80 in round three once candidate selection had fixed
+#: hairline: swept over the CHOSEN plates, 0.60/0.70/0.80/0.90 gives peak
+#: 40.3/42.4/44.0/45.4 against a 42.6 floor. 0.80 clears it and leaves
+#: C_p95 at 67.1 against a published 66.05, i.e. in the published
+#: neighbourhood rather than pushed past it.
+CHROMA_GAIN = 0.80
 
 #: The glow sits BELOW centre because that is where a standing figure is. Moving
 #: it from 0.46 to 0.58 took hairline 12.81 -> 12.44 and peak 43.5 -> 44.4.

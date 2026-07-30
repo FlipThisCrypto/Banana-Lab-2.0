@@ -306,6 +306,65 @@ about failed outputs, and it applies to takes that merely lost.
 This is what a studio does: shoot several takes, print the best, keep the
 negatives.
 
+### 8/8, and the two harness bugs found getting there
+
+Candidate selection took `hairline_ink_density` 12.81 → 9.23 and it finally
+passed — the last stubborn property. It also dragged `peak_over_field` 45.25 →
+39.95 into failure, because the ranking optimised **hairline then share**, a
+proxy, instead of the goal. Re-ranked on *the number of tolerances met, then
+total distance outside them*, and re-selected from the candidates already on
+disk — no GPU.
+
+Then two measurement bugs, both mine, both caught by the numbers disagreeing:
+
+1. **The harness measured a proxy, not the deliverable.** `aesthetic_loop.py`
+   assembles pages from plates *without characters* — it says so in its own
+   docstring — and I used its result to predict the shipped page. It promised
+   8/8; the real page scored 7/8, because composited characters raise the chroma
+   field median and `peak_over_field` fell 44.00 → 41.88.
+2. **A stale-composite reading.** Changing the finish requires re-compositing:
+   characters are relit against the finished plate. Measuring new plates against
+   old composites gave a third, wrong answer.
+
+Swept end-to-end *with characters composited*, which is what actually ships:
+
+| chroma gain | peak | hairline | share | n_hue | C_p95 | scored |
+|---:|---:|---:|---:|---:|---:|---:|
+| 0.80 | 45.80 | 9.78 | 0.369 | 4.77 | 66.4 | **8/8** |
+| 0.95 | 47.88 | 9.78 | 0.370 | 4.83 | 67.9 | 8/8 |
+| 1.10 | 49.67 | 9.78 | 0.370 | 4.77 | 69.1 | 8/8 |
+
+0.80 adopted: it clears the floor and leaves `C_p95` at 66.4 against a published
+**66.05**, in the published neighbourhood rather than pushed past it.
+
+### Final state
+
+| property | published | tolerance | start | now | |
+|---|---:|---|---:|---:|---|
+| rule_L | 2.23 | ≤ 10 | 71.51 | 4.80 | PASS |
+| rule_chroma | 1.26 | ≤ 6 | 53.63 | 2.41 | PASS |
+| ground_L | 35.0 | 20–66 | 100.00 | 62.08 | PASS |
+| lettering_pct | 5.16 | ≥ 2.0 | 0.00 | 3.09 | PASS |
+| share_in_large_shapes | 0.56 | ≥ 0.26 | 0.12 | 0.37 | PASS |
+| hairline_ink_density | 2.65 | 0.4–11.0 | 18.75 | 9.78 | PASS |
+| peak_over_field | 54.60 | 42.6–66.6 | 39.93 | 45.80 | PASS |
+| n_hue_families | 4.00 | ≤ 5.5 | 6.45 | 4.77 | PASS |
+| C_p95 guardrail | 66.05 | ≥ 50 | 54.54 | 66.4 | held |
+
+**0/8 → 8/8**, page mean L\* 55.6 → 43.4 against a published 37.0.
+
+This is the first time the scorecard and the eye agree. Earlier 7/8 readings
+came with art that had drifted away from the reference; this one does not — page
+1 panel 3 (stage truss and crowd as silhouette bands against a magenta sky) is
+the reference's own visual language, and page 2's canopy spotlight panel has the
+single-source lighting the published editions use throughout.
+
+**8/8 is not "done".** It means eight measured properties sit inside published
+range on two pages. It does not measure whether a contour is confident, whether
+SFX read as artwork, whether balloons avoid faces, or whether the book holds up
+in CMYK — and the scorecard's author named all four as things no instrument here
+covers.
+
 ## Not yet addressed
 
 - **Lettering.** `lettering_pct` measures 0.1 against a published 5.16. Balloons,
