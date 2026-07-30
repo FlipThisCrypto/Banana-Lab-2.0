@@ -2,16 +2,16 @@
   "job_id": "ISSUE001-P02-02",
   "job_class": "background_plate",
   "workflow_version": "sample-pages-1",
-  "prompt_id": "826719e5-3e01-4b35-8a1b-963817bacae6",
+  "prompt_id": "2422e276-61a4-4ddd-9fd0-1ce189f812b8",
   "ok": true,
   "error": "",
-  "seconds": 48.3,
+  "seconds": 46.2,
   "outputs": [
     {
-      "path": "issues/issue-001-neonblue-the-last-light-of-summer/06_backgrounds/generated_candidates/ISSUE001-P02-02.png",
-      "sha256": "2181db3e477450270b7c9286fdedafe50b3aa54d58b4ab15831f38de70083c3a",
-      "pixel_sha256": "8e6aa92fb2b00cd1528f0c3b135c6680a9c679994682c26d13cd00911edd0bb8",
-      "bytes": 1746281
+      "path": "issues/issue-001-neonblue-the-last-light-of-summer/06_backgrounds/generated_candidates/ISSUE001-P02-02_take3.png",
+      "sha256": "bf6b60819416dfb6da68f9184bb1517ab709f386a2628098f6f6fed01d2a8310",
+      "pixel_sha256": "6d0e9d254206f27d4f2b721e8e41a87f27dd0ebea93094b3e3e01ef62417a2c5",
+      "bytes": 1546069
     }
   ],
   "graph": {
@@ -64,7 +64,7 @@
     "5": {
       "class_type": "KSampler",
       "inputs": {
-        "seed": 991623,
+        "seed": 147026,
         "steps": 30,
         "cfg": 6.0,
         "sampler_name": "dpmpp_2m",
@@ -127,7 +127,7 @@
   "panel_id": "ISSUE001-P02-02",
   "page": 2,
   "prompt": "(medium close shot:1.4), (eye level:1.2), very close to the subject, background reduced to a few soft shapes, almost no detail behind, Defocused stall lights behind, setting: at a night funfair, one striped stall canopy edge and a few round glowing bulbs, nothing else, depth: Sharp figure, soft bokeh background, lit by Warm from frame left, Amber key, Cool ambient fill, (render crowds and rows of objects as large simple massed silhouette shapes:1.35), (not individual figures or individual objects:1.3), (dramatic single source lighting:1.45), (bright glow behind the centre of frame:1.4), (deep black shadow in all four corners:1.35), (strong vignette:1.3), (only three colours:1.4), (very few objects:1.35), (large simple flat shapes:1.35), (hard edged flat colour, no gradients, no airbrush:1.35), (seen from standing eye level:1.25), a clear open ground plane in the lower third, generous empty space in the middle of frame for a figure to stand in",
-  "seed": 991623,
+  "seed": 147026,
   "gen_size": [
     1304,
     880

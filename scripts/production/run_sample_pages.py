@@ -367,6 +367,7 @@ class PanelResult:
     seed: int
     plate: Path | None = None
     raw_plate: Path | None = None
+    candidates: list[dict] = field(default_factory=list)
     composite: Path | None = None
     placements: list[dict] = field(default_factory=list)
     warnings: list[str] = field(default_factory=list)
@@ -687,6 +688,52 @@ def stage_panel(panel: dict, plate_path: Path, size: tuple[int, int],
     return out
 
 
+#: How many takes to generate per panel before choosing one.
+#:
+#: Measured: the SAME prompt at four seeds gave hairline_ink_density 18.59,
+#: 19.61, 25.11 and 33.86 - a spread of 15.27 with sd 6.05, on a property whose
+#: whole tolerance band is 0.4 to 11.0. Every prompt A/B this pipeline ran on
+#: single plates was smaller than that noise, and therefore meant nothing.
+#:
+#: Fighting the variance would need ~16 plates per arm to detect a 3-point
+#: effect. Exploiting it is cheaper and is what a studio actually does: generate
+#: several takes, keep the best one, and keep the rest as evidence. Every
+#: candidate is written and recorded; nothing is hidden.
+CANDIDATES_PER_PANEL = 3
+
+
+def _score_candidate(path: Path) -> dict:
+    """Aesthetic properties of one finished candidate."""
+    import importlib.util
+
+    global _SCORECARD
+    if _SCORECARD is None:
+        spec = importlib.util.spec_from_file_location(
+            "asc", "scripts/validation/aesthetic_scorecard.py")
+        module = importlib.util.module_from_spec(spec)
+        sys.modules["asc"] = module
+        spec.loader.exec_module(module)
+        _SCORECARD = module
+
+    import numpy as np
+    with Image.open(path) as image:
+        return _SCORECARD.score_page(np.asarray(image.convert("RGB")))
+
+
+_SCORECARD = None
+
+#: What makes one take better than another. Ordered, and stated rather than
+#: implied: never break the chroma guardrail, then fewest hairline strokes,
+#: then largest flat cells.
+def _candidate_rank(scores: dict) -> tuple:
+    guardrail_ok = scores.get("C_p95", 0.0) >= 50.0
+    return (
+        0 if guardrail_ok else 1,
+        scores.get("hairline_ink_density", 999.0),
+        -scores.get("share_in_large_shapes", 0.0),
+    )
+
+
 def generate_plate(client: ComfyClient, spec: PanelResult, job_class: str,
                    *, dry_run: bool) -> None:
     OUT_PLATES.mkdir(parents=True, exist_ok=True)
@@ -696,31 +743,50 @@ def generate_plate(client: ComfyClient, spec: PanelResult, job_class: str,
     if dry_run:
         return
 
-    graph = wf.background_plate(
-        prompt=spec.prompt,
-        negative_extra=FOCAL_NEGATIVE,
-        width=spec.gen_size[0], height=spec.gen_size[1],
-        seed=spec.seed,
-        filename_prefix=f"bananalab/sample/{spec.panel_id}",
-    )
     started = time.time()
-    outcome = client.run(graph, OUT_PLATES, spec.panel_id)
-    spec.seconds = time.time() - started
+    takes: list[tuple[tuple, Path, Path, dict, int]] = []
+    outcome = None
+    graph = None
 
-    if not outcome.ok:
-        spec.error = outcome.error or "generation failed"
+    for index in range(CANDIDATES_PER_PANEL):
+        seed = spec.seed + index * 7919
+        graph = wf.background_plate(
+            prompt=spec.prompt,
+            negative_extra=FOCAL_NEGATIVE,
+            width=spec.gen_size[0], height=spec.gen_size[1],
+            seed=seed,
+            filename_prefix=f"bananalab/sample/{spec.panel_id}",
+        )
+        result = client.run(graph, OUT_PLATES, f"{spec.panel_id}_take{index + 1}")
+        if not result.ok:
+            continue
+        outcome = result
+        raw = result.images[0]
+        finished = raw.with_name(f"{raw.stem}_finished{raw.suffix}")
+        paths.assert_safe_write_target(finished)
+        finish_plate(raw).save(finished)
+        scores = _score_candidate(finished)
+        takes.append((_candidate_rank(scores), raw, finished, scores, seed))
+
+    spec.seconds = time.time() - started
+    if not takes:
+        spec.error = "no candidate generated"
         return
 
-    # Deterministic finishing pass: posterise to a limited palette preserving
-    # linework, then a focal vignette in lightness AND chroma. Three scorecard
-    # properties resisted four rounds of prompt adjectives; they are properties
-    # of the pixels, so they are set in the pixels. See app/services/plate_finish.
-    raw = outcome.images[0]
-    finished = raw.with_name(f"{raw.stem}_finished{raw.suffix}")
-    paths.assert_safe_write_target(finished)
-    finish_plate(raw).save(finished)
-    spec.plate = finished
-    spec.raw_plate = raw
+    takes.sort(key=lambda t: t[0])
+    _, best_raw, best_finished, best_scores, best_seed = takes[0]
+    spec.candidates = [
+        {"seed": s, "raw": r.as_posix(), "finished": f.as_posix(),
+         "hairline_ink_density": round(sc.get("hairline_ink_density", 0.0), 2),
+         "share_in_large_shapes": round(sc.get("share_in_large_shapes", 0.0), 3),
+         "C_p95": round(sc.get("C_p95", 0.0), 1),
+         "chosen": f == best_finished}
+        for _, r, f, sc, s in takes
+    ]
+    spec.seed = best_seed
+
+    spec.plate = best_finished
+    spec.raw_plate = best_raw
     write_job_manifest(
         OUT_MANIFESTS / f"{spec.panel_id}.job.json",
         job_id=spec.panel_id, job_class=job_class,
@@ -999,6 +1065,7 @@ def main() -> int:
                 "seed": s.seed, "seconds": round(s.seconds, 1),
                 "plate": s.plate.as_posix() if s.plate else None,
                 "raw_plate": s.raw_plate.as_posix() if s.raw_plate else None,
+                "candidates": s.candidates,
                 "composite": s.composite.as_posix() if s.composite else None,
                 "ground_plane_estimate": s.ground_estimate,
                 "placements": s.placements,

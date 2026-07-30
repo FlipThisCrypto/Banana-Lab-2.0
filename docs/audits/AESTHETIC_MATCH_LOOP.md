@@ -248,6 +248,64 @@ configuration cleared the same tolerances with lightness preserved:
 Settled defaults: palette 6, chroma gain 0.60, vignette 0.35 centred at 0.58
 height, no ink dilation.
 
+## Round three: the noise floor, and what it invalidated
+
+### Per-panel measurement first
+
+`hairline_ink_density` was the last failing property, and the assumption was
+that wide and aerial shots caused it. Measured per plate, that is **false**:
+
+| panel | shot | hairline | share |
+|---|---|---:|---:|
+| P02-06 | wide | 32.58 | 0.046 |
+| P01-01 | extreme_wide | 23.41 | 0.218 |
+| P02-01 | medium_wide | 19.71 | 0.276 |
+| P02-04 | medium | 17.59 | 0.223 |
+| P02-02 | medium_close | 10.58 | 0.327 |
+| P01-02 | **wide** | **9.14** | 0.497 |
+| P01-03 | **wide** | **6.97** | 0.654 |
+| P01-04 | **medium** | **3.58** | 0.630 |
+
+`wide` appears at both 32.58 and 6.97. Shot type does not predict it. What does
+is `share_in_large_shapes` — every failing plate has low share, every passing one
+high. The driver is crowds and small objects, not framing.
+
+### The finding that invalidated the method
+
+A crowd-massing treatment was A/B'd on the two worst plates. It appeared to help
+one by 3.3 and hurt the other by 1.6. Before acting on that, the noise floor was
+measured — **the same prompt at four seeds**:
+
+```
+seed 11111   hairline 18.59   share 0.188
+seed 22222   hairline 19.61   share 0.320
+seed 33333   hairline 25.11   share 0.164
+seed 44444   hairline 33.86   share 0.100
+
+spread 15.27, sd 6.05
+```
+
+The tolerance band for this property is 0.4 to 11.0. **Seed variance is larger
+than the entire tolerance band, and far larger than any prompt effect measured
+on single plates.** Every single-plate prompt A/B in this loop was noise.
+
+Detecting a 3-point effect against sd 6.05 needs roughly 16 plates per arm —
+about 27 minutes of GPU per comparison.
+
+### Exploiting the variance instead of fighting it
+
+If the same prompt produces plates from 18.6 to 33.9, the pipeline should not
+take the first one. It now generates `CANDIDATES_PER_PANEL = 3` takes, finishes
+and scores each, and keeps the best by a stated objective: never break the
+`C_p95` guardrail, then fewest hairline strokes, then largest flat cells.
+
+Every candidate is written to disk and recorded in the run report with its
+scores and which one was chosen. Nothing is hidden — that is the standing rule
+about failed outputs, and it applies to takes that merely lost.
+
+This is what a studio does: shoot several takes, print the best, keep the
+negatives.
+
 ## Not yet addressed
 
 - **Lettering.** `lettering_pct` measures 0.1 against a published 5.16. Balloons,

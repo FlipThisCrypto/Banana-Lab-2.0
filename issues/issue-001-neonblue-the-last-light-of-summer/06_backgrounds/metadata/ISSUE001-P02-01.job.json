@@ -2,16 +2,16 @@
   "job_id": "ISSUE001-P02-01",
   "job_class": "background_plate",
   "workflow_version": "sample-pages-1",
-  "prompt_id": "65475b09-090e-4df3-b4d6-9221243e6e55",
+  "prompt_id": "0928fa1a-f7ac-4c44-9766-e593f92f92b3",
   "ok": true,
   "error": "",
-  "seconds": 50.2,
+  "seconds": 48.2,
   "outputs": [
     {
-      "path": "issues/issue-001-neonblue-the-last-light-of-summer/06_backgrounds/generated_candidates/ISSUE001-P02-01.png",
-      "sha256": "91c6b03eb8583d28d3f14a6632beedda03f0cd432338f3a272b912ed8fa32333",
-      "pixel_sha256": "d11be73b25bcd8c6d3d29ea4107b6b60cd5fb2b46b5dd956c1668d90c658228a",
-      "bytes": 1925162
+      "path": "issues/issue-001-neonblue-the-last-light-of-summer/06_backgrounds/generated_candidates/ISSUE001-P02-01_take3.png",
+      "sha256": "7e730404756c27609ab0e370d34ab8a3762873ac351c5325ead96cf32090510a",
+      "pixel_sha256": "cfd1d5d8597b4a0ec8636c56901042217a58476d0dc430db22306abc253563af",
+      "bytes": 1400061
     }
   ],
   "graph": {
@@ -64,7 +64,7 @@
     "5": {
       "class_type": "KSampler",
       "inputs": {
-        "seed": 991522,
+        "seed": 146925,
         "steps": 30,
         "cfg": 6.0,
         "sampler_name": "dpmpp_2m",
@@ -127,7 +127,7 @@
   "panel_id": "ISSUE001-P02-01",
   "page": 2,
   "prompt": "(medium wide shot:1.4), (eye level:1.2), waist-up framing distance, setting still readable behind, Festival path with stalls either side, crowd passing, setting: a summer funfair at dusk, one ferris wheel silhouette against the sky, two or three stall canopies, wide open trodden ground, depth: NeonBlue near, two behind, stalls receding, lit by Stall lights both sides, Amber and warm magenta key, Dusk sky fill, (render crowds and rows of objects as large simple massed silhouette shapes:1.35), (not individual figures or individual objects:1.3), (dramatic single source lighting:1.45), (bright glow behind the centre of frame:1.4), (deep black shadow in all four corners:1.35), (strong vignette:1.3), (only three colours:1.4), (very few objects:1.35), (large simple flat shapes:1.35), (hard edged flat colour, no gradients, no airbrush:1.35), (seen from standing eye level:1.25), a clear open ground plane in the lower third, generous empty space in the middle of frame for a figure to stand in",
-  "seed": 991522,
+  "seed": 146925,
   "gen_size": [
     2080,
     552
