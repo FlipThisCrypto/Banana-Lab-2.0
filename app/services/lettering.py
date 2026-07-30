@@ -144,13 +144,22 @@ def draw_balloon(page: Image.Image, balloon: Balloon) -> None:
         # hairline that read as a wire running from the balloon to the floor.
         # The base has to be a real fraction of the balloon so the tail is
         # visibly part of it.
-        spread = 0.42
-        base = max(body_w, body_h) * 0.46
+        spread = 0.30
+        base = max(body_w, body_h) * 0.40
+
+        # The tail is a SHORT stub, not a wedge stretching to the speaker.
+        # Drawing the polygon out to a distant target made the triangle scale
+        # with the distance: a speaker across the panel produced a white wedge
+        # covering the middle of the frame. Published tails extend roughly half a
+        # balloon height and let the reader's eye finish the line.
+        reach = min(math.hypot(tx - cx, ty - cy), body_h * 1.15)
+        tip = (cx + math.cos(angle) * reach, cy + math.sin(angle) * reach)
+
         p1 = (cx + math.cos(angle - spread) * base,
               cy + math.sin(angle - spread) * base)
         p2 = (cx + math.cos(angle + spread) * base,
               cy + math.sin(angle + spread) * base)
-        draw.polygon([p1, p2, (tx, ty)], fill=fill,
+        draw.polygon([p1, p2, tip], fill=fill,
                      outline=BALLOON_OUTLINE, width=rule)
 
     draw.ellipse([x, y, x + body_w, y + body_h], fill=fill,

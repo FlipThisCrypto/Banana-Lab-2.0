@@ -2,16 +2,16 @@
   "job_id": "ISSUE001-P01-01",
   "job_class": "background_plate",
   "workflow_version": "sample-pages-1",
-  "prompt_id": "7a0ed8f9-b60d-4489-9147-4b1c7d7f5652",
+  "prompt_id": "813f7e57-7d36-44e7-b711-6bf02a912b92",
   "ok": true,
   "error": "",
-  "seconds": 54.2,
+  "seconds": 54.3,
   "outputs": [
     {
       "path": "issues/issue-001-neonblue-the-last-light-of-summer/06_backgrounds/generated_candidates/ISSUE001-P01-01.png",
-      "sha256": "85ca9c49f25e296c597e932df35969129638f7fff3a5fa5f4eb6f4d7382a456c",
-      "pixel_sha256": "afc2003d11a8bbb90ced60ddbdc28879b464034cce5c345022bcf9005732a74f",
-      "bytes": 2340093
+      "sha256": "a6226baba29827287aea1d87023a5ba4c115b5ad66098d982ddc0bc23b06d7ab",
+      "pixel_sha256": "0b0fba31cb4c2d0796cef6d9d991e9e9b66888bf1409f09b97e96ca0998ab4ea",
+      "bytes": 2483327
     }
   ],
   "graph": {
@@ -64,7 +64,7 @@
     "5": {
       "class_type": "KSampler",
       "inputs": {
-        "seed": 310826,
+        "seed": 190712,
         "steps": 30,
         "cfg": 6.0,
         "sampler_name": "dpmpp_2m",
@@ -127,7 +127,7 @@
   "panel_id": "ISSUE001-P01-01",
   "page": 1,
   "prompt": "(extreme wide shot:1.4), (high angle:1.2), the whole location seen from far back, figures tiny, The festival site from a raised angle. Ferris wheel, main stage, booth rows, bunting, dense warm crowd. Nothing is wrong yet, setting: an outdoor summer music festival site, rows of food and game stalls with striped awnings, strings of warm festival bulbs overhead, bunting, fairground rides and a ferris wheel beyond, trodden grass and dirt underfoot, festival crowd in summer clothes, depth: Foreground bunting, midground rides and stalls, background skyline and low sun, lit by Low sun from frame right, Deep amber key, Cool sky bounce fill, (dramatic single source lighting:1.45), (bright glow behind the centre of frame:1.4), (deep black shadow in all four corners:1.35), (strong vignette:1.3), (only three colours:1.4), (very few objects:1.35), (large simple flat shapes:1.35), (hard edged flat colour, no gradients, no airbrush:1.35), (seen from standing eye level:1.25), a clear open ground plane in the lower third, generous empty space in the middle of frame for a figure to stand in",
-  "seed": 310826,
+  "seed": 190712,
   "gen_size": [
     1488,
     776

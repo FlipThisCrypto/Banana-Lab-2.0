@@ -527,3 +527,67 @@ def test_lettering_puts_the_script_words_on_the_page(tmp_path):
     )
     # A balloon has to be light on a mid-grey page, or the text will not read.
     assert after[..., :3].max() > 240
+
+
+def test_posterise_never_touches_the_linework():
+    """Flat fills are the style; the black outlines ARE the style.
+
+    Posterising the outlines would soften every edge and lose exactly what makes
+    the published art read as cel work, so ink comes back bit-exact.
+    """
+    from PIL import Image
+
+    from app.services.plate_finish import INK_L, posterise
+    from app.services.likeness import srgb_to_lab
+
+    rng = np.random.default_rng(11)
+    arr = rng.integers(60, 250, (240, 320, 3)).astype(np.uint8)
+    arr[100:140, :, :] = 6          # a black rule across the middle
+    arr[:, 40:60, :] = 10           # and a vertical one
+    source = Image.fromarray(arr, "RGB")
+
+    out = np.asarray(posterise(source)).astype(int)
+    ink = srgb_to_lab(arr.astype(float))[..., 0] < INK_L
+    assert ink.any()
+    assert np.array_equal(out[ink], arr.astype(int)[ink])
+
+
+def test_the_finishing_pass_is_deterministic():
+    """Same plate in, same plate out - or a defect cannot be reproduced."""
+    from PIL import Image
+
+    from app.services.plate_finish import posterise
+
+    rng = np.random.default_rng(5)
+    source = Image.fromarray(
+        rng.integers(0, 256, (200, 260, 3)).astype(np.uint8), "RGB")
+    first = np.asarray(posterise(source))
+    second = np.asarray(posterise(source))
+    assert np.array_equal(first, second)
+
+
+def test_the_finishing_pass_does_not_blur():
+    """Reducing hairline ink by softening edges would be gaming the scorecard.
+
+    A sigma=2px blur moves three properties inside the published band while
+    destroying the linework, so the finishing pass must leave edge contrast
+    intact.
+    """
+    from PIL import Image
+
+    from app.services.plate_finish import finish_plate
+
+    arr = np.full((240, 320, 3), 210, dtype=np.uint8)
+    arr[:, 150:156, :] = 8          # a hard edge
+    path = Image.fromarray(arr, "RGB")
+    tmp = Path("characters/working/_edge_probe.png")
+    tmp.parent.mkdir(parents=True, exist_ok=True)
+    path.save(tmp)
+    try:
+        out = np.asarray(finish_plate(tmp)).astype(int)
+    finally:
+        tmp.unlink(missing_ok=True)
+
+    row = out[120, :, :].mean(axis=1)
+    contrast = row.max() - row.min()
+    assert contrast > 150, f"edge contrast collapsed to {contrast:.0f}"

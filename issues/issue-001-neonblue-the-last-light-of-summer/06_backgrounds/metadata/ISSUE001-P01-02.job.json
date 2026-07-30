@@ -2,16 +2,16 @@
   "job_id": "ISSUE001-P01-02",
   "job_class": "background_plate",
   "workflow_version": "sample-pages-1",
-  "prompt_id": "be76c2c4-c397-411a-8d67-c8b1fadbda43",
+  "prompt_id": "147ebfd3-a657-45b0-83ec-598ff30fef11",
   "ok": true,
   "error": "",
-  "seconds": 54.3,
+  "seconds": 50.4,
   "outputs": [
     {
       "path": "issues/issue-001-neonblue-the-last-light-of-summer/06_backgrounds/generated_candidates/ISSUE001-P01-02.png",
-      "sha256": "204199eca166aff4404374ac2f3f65dc0663afd8befffdd5ccd020e3b02fe87b",
-      "pixel_sha256": "cab91a9954c310050713bd1d23159e1ee5012e48d4e25bb5e10253c5a0fca8c4",
-      "bytes": 1795271
+      "sha256": "0f72a30c3f15f594c837b96842b5430388db90b9b0bb43d823d4bd24a740f067",
+      "pixel_sha256": "45258af1887f9c2b46bea86a67e2a5c4b33bc13148e39c8a350017477e337bf3",
+      "bytes": 1601158
     }
   ],
   "graph": {
@@ -27,7 +27,7 @@
     "2": {
       "class_type": "CLIPTextEncode",
       "inputs": {
-        "text": "(flat 2d vector cartoon illustration:1.5), (thick uniform black outlines:1.4), (flat colour fills with hard cel shading:1.4), comic book background art, graphic novel panel, bold saturated palette, clear perspective. (wide shot:1.4), (low angle:1.2), the full setting, plenty of headroom and floor visible, The main gate arch strung with lights, crowd flowing both ways, booth row beyond, setting: an outdoor summer music festival site, rows of food and game stalls with striped awnings, strings of warm festival bulbs overhead, bunting, fairground rides and a ferris wheel beyond, trodden grass and dirt underfoot, festival crowd in summer clothes, depth: Gate upright foreground, cast midground through the arch, festival beyond, lit by Warm gate lights overhead and behind, Amber and warm white key, Cool dusk sky fill, (strong vignette:1.3), (brightest directly at the centre of frame:1.3), (darker toward the edges:1.2), (large simple flat shapes:1.35), (limited palette of three or four colours:1.3), (hard edged flat colour, no gradients, no airbrush:1.35), few elements, a clear open ground plane in the lower third, one dominant light source, deep shadow in the corners, generous empty space in the middle of frame for a figure to stand in. (flat cartoon vector art:1.4), (bold black outlines:1.3), (cel shaded:1.3), non-photorealistic",
+        "text": "(flat 2d vector cartoon illustration:1.5), (thick uniform black outlines:1.4), (flat colour fills with hard cel shading:1.4), comic book background art, graphic novel panel, bold saturated palette, clear perspective. (wide shot:1.4), (low angle:1.2), the full setting, plenty of headroom and floor visible, The main gate arch strung with lights, crowd flowing both ways, booth row beyond, setting: an outdoor summer music festival site, rows of food and game stalls with striped awnings, strings of warm festival bulbs overhead, bunting, fairground rides and a ferris wheel beyond, trodden grass and dirt underfoot, festival crowd in summer clothes, depth: Gate upright foreground, cast midground through the arch, festival beyond, lit by Warm gate lights overhead and behind, Amber and warm white key, Cool dusk sky fill, (dramatic single source lighting:1.45), (bright glow behind the centre of frame:1.4), (deep black shadow in all four corners:1.35), (strong vignette:1.3), (only three colours:1.4), (very few objects:1.35), (large simple flat shapes:1.35), (hard edged flat colour, no gradients, no airbrush:1.35), (seen from standing eye level:1.25), a clear open ground plane in the lower third, generous empty space in the middle of frame for a figure to stand in. (flat cartoon vector art:1.4), (bold black outlines:1.3), (cel shaded:1.3), non-photorealistic",
         "clip": [
           "1",
           1
@@ -40,7 +40,7 @@
     "3": {
       "class_type": "CLIPTextEncode",
       "inputs": {
-        "text": "(photorealistic:1.6), (photograph:1.6), (realistic lighting:1.4), (3d render:1.4), (volumetric light:1.3), (depth of field:1.3), cinematic photography, film still, octane render, unreal engine, realistic textures, reflections, bokeh, lens flare, characters, people, person, figure, animal, monkey, creature, mascot, text, letters, words, signature, watermark, logo, caption, speech bubble, panel border, frame, comic frame, white border, gutter, blurry, noisy, jpeg artifacts, low contrast mush, duplicated objects, warped architecture, broken geometry, extra limbs, aerial view, bird's eye view, isometric, top-down, map view, crowd of detailed people, hundreds of small figures, busy, cluttered, wimmelbild, densely packed stalls, repeated small objects, fine intricate detail, tiny text, signage lettering, flat evenly-lit scene, no focal point, airbrushed, soft gradient, painterly, oil painting, watercolour, blurry, out of focus photography, photographic bokeh, hazy, misty, soft focus, feathered edges, no linework",
+        "text": "(photorealistic:1.6), (photograph:1.6), (realistic lighting:1.4), (3d render:1.4), (volumetric light:1.3), (depth of field:1.3), cinematic photography, film still, octane render, unreal engine, realistic textures, reflections, bokeh, lens flare, characters, people, person, figure, animal, monkey, creature, mascot, text, letters, words, signature, watermark, logo, caption, speech bubble, panel border, frame, comic frame, white border, gutter, blurry, noisy, jpeg artifacts, low contrast mush, duplicated objects, warped architecture, broken geometry, extra limbs, aerial view, bird's eye view, isometric, top-down, map view, crowd of detailed people, hundreds of small figures, busy, cluttered, wimmelbild, densely packed stalls, repeated small objects, fine intricate detail, tiny text, signage lettering, flat evenly-lit scene, no focal point, evenly lit, bright daylight, many small objects, repeated detail, surface texture, airbrushed, soft gradient, painterly, oil painting, watercolour, blurry, out of focus photography, photographic bokeh, hazy, misty, soft focus, feathered edges, no linework",
         "clip": [
           "1",
           1
@@ -64,7 +64,7 @@
     "5": {
       "class_type": "KSampler",
       "inputs": {
-        "seed": 551031,
+        "seed": 190813,
         "steps": 30,
         "cfg": 6.0,
         "sampler_name": "dpmpp_2m",
@@ -126,8 +126,8 @@
   "review_note": "",
   "panel_id": "ISSUE001-P01-02",
   "page": 1,
-  "prompt": "(wide shot:1.4), (low angle:1.2), the full setting, plenty of headroom and floor visible, The main gate arch strung with lights, crowd flowing both ways, booth row beyond, setting: an outdoor summer music festival site, rows of food and game stalls with striped awnings, strings of warm festival bulbs overhead, bunting, fairground rides and a ferris wheel beyond, trodden grass and dirt underfoot, festival crowd in summer clothes, depth: Gate upright foreground, cast midground through the arch, festival beyond, lit by Warm gate lights overhead and behind, Amber and warm white key, Cool dusk sky fill, (strong vignette:1.3), (brightest directly at the centre of frame:1.3), (darker toward the edges:1.2), (large simple flat shapes:1.35), (limited palette of three or four colours:1.3), (hard edged flat colour, no gradients, no airbrush:1.35), few elements, a clear open ground plane in the lower third, one dominant light source, deep shadow in the corners, generous empty space in the middle of frame for a figure to stand in",
-  "seed": 551031,
+  "prompt": "(wide shot:1.4), (low angle:1.2), the full setting, plenty of headroom and floor visible, The main gate arch strung with lights, crowd flowing both ways, booth row beyond, setting: an outdoor summer music festival site, rows of food and game stalls with striped awnings, strings of warm festival bulbs overhead, bunting, fairground rides and a ferris wheel beyond, trodden grass and dirt underfoot, festival crowd in summer clothes, depth: Gate upright foreground, cast midground through the arch, festival beyond, lit by Warm gate lights overhead and behind, Amber and warm white key, Cool dusk sky fill, (dramatic single source lighting:1.45), (bright glow behind the centre of frame:1.4), (deep black shadow in all four corners:1.35), (strong vignette:1.3), (only three colours:1.4), (very few objects:1.35), (large simple flat shapes:1.35), (hard edged flat colour, no gradients, no airbrush:1.35), (seen from standing eye level:1.25), a clear open ground plane in the lower third, generous empty space in the middle of frame for a figure to stand in",
+  "seed": 190813,
   "gen_size": [
     1896,
     608

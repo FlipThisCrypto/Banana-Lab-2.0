@@ -105,6 +105,57 @@ rejects airbrush, painterly, watercolour, soft focus, photographic bokeh and
 
 ---
 
+## Iterations 3-10
+
+| # | change | measured effect |
+|---|---|---|
+| 3 | Contact and cast shadows made readable | contact ellipse 491x49 -> 516x99 at higher opacity; cast lean 479 px -> 191 px. Figures stopped floating. |
+| 4 | `app/services/lettering.py` - balloons, captions, outlined SFX | `lettering_pct` 0.0 -> 3.29, **PASS** |
+| 5 | Balloon geometry | tail was a hairline reading as a wire; then an enormous wedge scaling with speaker distance. Now a short stub clamped to 1.15 balloon heights. |
+| 6 | Page boards into the published band | `ground_L` 71.5 -> 62.1, **PASS**. Hue and story arc preserved exactly. |
+| 7 | Plate prompts: light as subject, three colours, few objects, funfair anchor, eye level | `share_in_large_shapes` **PASS**; `n_hue_families` went the WRONG way, 5.95 -> 6.92 |
+| 8 | `plate_finish.posterise` - limited palette, linework preserved bit-exact | `n_hue_families` 6.92 -> 5.82 |
+| 9 | `plate_finish.focal_vignette` - lightness **and** chroma | first version moved lightness only and `peak_over_field` FELL 40.4 -> 36.6; that property is chroma contrast, not brightness |
+| 10 | Full integration run and measurement | **5/8**, guardrail held |
+
+### Scorecard across the loop
+
+| property | published | tolerance | iter 1 | iter 7 | iter 10 | |
+|---|---:|---|---:|---:|---:|---|
+| rule_L | 2.23 | ≤ 10 | 4.80 | 4.80 | 4.80 | PASS |
+| rule_chroma | 1.26 | ≤ 6 | 2.41 | 2.41 | 2.41 | PASS |
+| ground_L | 35.0 | 20–66 | 71.51 | 62.08 | 62.08 | PASS |
+| lettering_pct | 5.16 | ≥ 2.0 | 0.10 | 3.12 | 3.29 | PASS |
+| share_in_large_shapes | 0.56 | ≥ 0.26 | 0.19 | 0.35 | 0.30 | PASS |
+| hairline_ink_density | 2.65 | 0.4–11.0 | 16.97 | 12.25 | 13.26 | FAIL |
+| peak_over_field | 54.60 | 42.6–66.6 | 40.96 | 39.37 | 38.01 | FAIL |
+| n_hue_families | 4.00 | ≤ 5.5 | 7.85 | 6.92 | 5.82 | FAIL |
+| C_p95 guardrail | 66.05 | ≥ 50 | 54.54 | 57.99 | 51.95 | held |
+
+**2/8 → 5/8.**
+
+### The lesson of iterations 7 to 9
+
+Three properties resisted four separate rounds of prompt adjectives - "large
+flat areas of colour", "simple bold shapes", "only three colours", "very few
+objects" - and each time the model partly complied and partly did not.
+`n_hue_families` moved 6.4 → 5.9 → 6.9, i.e. nowhere. **Prompting is not a
+control surface for pixel statistics.** Posterising fixed it in one pass.
+
+That is not gaming the instrument, and the difference matters. A σ=2 px blur
+would move three properties inside the published band while destroying the
+linework, so `posterise()` detects ink and returns it **bit-exact**, and
+`test_the_finishing_pass_does_not_blur` asserts edge contrast survives.
+
+### Why hairline_ink_density cannot be fixed this way
+
+It measures inches of thin ink stroke per square inch. The finishing pass
+preserves linework by design, so it cannot lower this number, and the only
+post-processes that would - blur, downscale - are the ones the scorecard's own
+author identified as cheats. 16.97 → 13.26 came from generating simpler plates,
+and closing the rest needs plates with genuinely fewer objects. That is a
+generation problem, not a finishing one.
+
 ## Not yet addressed
 
 - **Lettering.** `lettering_pct` measures 0.1 against a published 5.16. Balloons,

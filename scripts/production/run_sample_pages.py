@@ -50,6 +50,7 @@ from app.services.compositor import (  # noqa: E402
     GroundPlane, LightContract, Placement, composite_panel,
 )
 from app.services.lettering import Balloon, draw_balloon, draw_sfx  # noqa: E402
+from app.services.plate_finish import finish_plate  # noqa: E402
 
 ISSUE = Path("issues/issue-001-neonblue-the-last-light-of-summer")
 LAYERS = Path("source_material/imported_canon/character_layers")
@@ -348,6 +349,7 @@ class PanelResult:
     prompt: str
     seed: int
     plate: Path | None = None
+    raw_plate: Path | None = None
     composite: Path | None = None
     placements: list[dict] = field(default_factory=list)
     warnings: list[str] = field(default_factory=list)
@@ -692,7 +694,16 @@ def generate_plate(client: ComfyClient, spec: PanelResult, job_class: str,
         spec.error = outcome.error or "generation failed"
         return
 
-    spec.plate = outcome.images[0]
+    # Deterministic finishing pass: posterise to a limited palette preserving
+    # linework, then a focal vignette in lightness AND chroma. Three scorecard
+    # properties resisted four rounds of prompt adjectives; they are properties
+    # of the pixels, so they are set in the pixels. See app/services/plate_finish.
+    raw = outcome.images[0]
+    finished = raw.with_name(f"{raw.stem}_finished{raw.suffix}")
+    paths.assert_safe_write_target(finished)
+    finish_plate(raw).save(finished)
+    spec.plate = finished
+    spec.raw_plate = raw
     write_job_manifest(
         OUT_MANIFESTS / f"{spec.panel_id}.job.json",
         job_id=spec.panel_id, job_class=job_class,
@@ -970,6 +981,7 @@ def main() -> int:
                 "print_size": list(s.print_size), "gen_size": list(s.gen_size),
                 "seed": s.seed, "seconds": round(s.seconds, 1),
                 "plate": s.plate.as_posix() if s.plate else None,
+                "raw_plate": s.raw_plate.as_posix() if s.raw_plate else None,
                 "composite": s.composite.as_posix() if s.composite else None,
                 "ground_plane_estimate": s.ground_estimate,
                 "placements": s.placements,
