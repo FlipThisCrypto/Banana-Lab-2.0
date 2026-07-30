@@ -2,16 +2,16 @@
   "job_id": "ISSUE001-P01-04",
   "job_class": "background_plate",
   "workflow_version": "sample-pages-1",
-  "prompt_id": "e5e316d4-1a9c-42e8-8da3-63b5a6c00535",
+  "prompt_id": "c2d45190-8dc8-492c-8f88-afde33942327",
   "ok": true,
   "error": "",
-  "seconds": 50.3,
+  "seconds": 48.2,
   "outputs": [
     {
       "path": "issues/issue-001-neonblue-the-last-light-of-summer/06_backgrounds/generated_candidates/ISSUE001-P01-04.png",
-      "sha256": "8f3f713bc2075c076b50cc80b971fd413dee1cf4b84267d0d905f7c345e2d7d4",
-      "pixel_sha256": "a8df09120a1cdfc20bdb43255a5d5b0f3cdba0935508802f011a65b7c7a58ec2",
-      "bytes": 1393907
+      "sha256": "974635ade5f25c6a32a9cde4226667eedb89e75d90e285da23ad113a45a2929b",
+      "pixel_sha256": "22127fd232e41f1b975fb5673be294f10e815845575934ee5bd156cf8b0f370b",
+      "bytes": 1258712
     }
   ],
   "graph": {
@@ -27,7 +27,7 @@
     "2": {
       "class_type": "CLIPTextEncode",
       "inputs": {
-        "text": "(flat 2d vector cartoon illustration:1.5), (thick uniform black outlines:1.4), (flat colour fills with hard cel shading:1.4), comic book background art, graphic novel panel, bold saturated palette, clear perspective. (medium shot:1.4), (low angle:1.2), the immediate surroundings only, background simplified, Light strings converging overhead, festival glow behind, dusk sky above, setting: at a night-time funfair, the edge of one striped fairground stall canopy, a string of round festival bulbs, trodden grass underfoot, depth: Figure midground, light strings foreground crossing above, sky behind, lit by Warm string lights above and around, Amber key, Cool sky fill, (dramatic single source lighting:1.45), (bright glow behind the centre of frame:1.4), (deep black shadow in all four corners:1.35), (strong vignette:1.3), (only three colours:1.4), (very few objects:1.35), (large simple flat shapes:1.35), (hard edged flat colour, no gradients, no airbrush:1.35), (seen from standing eye level:1.25), a clear open ground plane in the lower third, generous empty space in the middle of frame for a figure to stand in. (flat cartoon vector art:1.4), (bold black outlines:1.3), (cel shaded:1.3), non-photorealistic",
+        "text": "(flat 2d vector cartoon illustration:1.5), (thick uniform black outlines:1.4), (flat colour fills with hard cel shading:1.4), comic book background art, graphic novel panel, bold saturated palette, clear perspective. (medium shot:1.4), (low angle:1.2), the immediate surroundings only, background simplified, Light strings converging overhead, festival glow behind, dusk sky above, setting: at a night funfair, one striped stall canopy edge and a few round glowing bulbs, nothing else, depth: Figure midground, light strings foreground crossing above, sky behind, lit by Warm string lights above and around, Amber key, Cool sky fill, (render crowds and rows of objects as large simple massed silhouette shapes:1.35), (not individual figures or individual objects:1.3), (dramatic single source lighting:1.45), (bright glow behind the centre of frame:1.4), (deep black shadow in all four corners:1.35), (strong vignette:1.3), (only three colours:1.4), (very few objects:1.35), (large simple flat shapes:1.35), (hard edged flat colour, no gradients, no airbrush:1.35), (seen from standing eye level:1.25), a clear open ground plane in the lower third, generous empty space in the middle of frame for a figure to stand in. (flat cartoon vector art:1.4), (bold black outlines:1.3), (cel shaded:1.3), non-photorealistic",
         "clip": [
           "1",
           1
@@ -64,7 +64,7 @@
     "5": {
       "class_type": "KSampler",
       "inputs": {
-        "seed": 191015,
+        "seed": 991421,
         "steps": 30,
         "cfg": 6.0,
         "sampler_name": "dpmpp_2m",
@@ -126,8 +126,8 @@
   "review_note": "",
   "panel_id": "ISSUE001-P01-04",
   "page": 1,
-  "prompt": "(medium shot:1.4), (low angle:1.2), the immediate surroundings only, background simplified, Light strings converging overhead, festival glow behind, dusk sky above, setting: at a night-time funfair, the edge of one striped fairground stall canopy, a string of round festival bulbs, trodden grass underfoot, depth: Figure midground, light strings foreground crossing above, sky behind, lit by Warm string lights above and around, Amber key, Cool sky fill, (dramatic single source lighting:1.45), (bright glow behind the centre of frame:1.4), (deep black shadow in all four corners:1.35), (strong vignette:1.3), (only three colours:1.4), (very few objects:1.35), (large simple flat shapes:1.35), (hard edged flat colour, no gradients, no airbrush:1.35), (seen from standing eye level:1.25), a clear open ground plane in the lower third, generous empty space in the middle of frame for a figure to stand in",
-  "seed": 191015,
+  "prompt": "(medium shot:1.4), (low angle:1.2), the immediate surroundings only, background simplified, Light strings converging overhead, festival glow behind, dusk sky above, setting: at a night funfair, one striped stall canopy edge and a few round glowing bulbs, nothing else, depth: Figure midground, light strings foreground crossing above, sky behind, lit by Warm string lights above and around, Amber key, Cool sky fill, (render crowds and rows of objects as large simple massed silhouette shapes:1.35), (not individual figures or individual objects:1.3), (dramatic single source lighting:1.45), (bright glow behind the centre of frame:1.4), (deep black shadow in all four corners:1.35), (strong vignette:1.3), (only three colours:1.4), (very few objects:1.35), (large simple flat shapes:1.35), (hard edged flat colour, no gradients, no airbrush:1.35), (seen from standing eye level:1.25), a clear open ground plane in the lower third, generous empty space in the middle of frame for a figure to stand in",
+  "seed": 991421,
   "gen_size": [
     1896,
     608

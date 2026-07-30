@@ -92,15 +92,77 @@ def posterise(image: Image.Image, palette_size: int = PALETTE_SIZE) -> Image.Ima
     return Image.fromarray(out.astype(np.uint8), "RGB")
 
 
-#: Chroma gain is the lever for peak_over_field. Measured: 0.40 -> 35.9,
-#: 0.70 -> 42.4, 0.85 -> 43.5, 1.00 -> 49.1, against a 42.6 floor. 0.85 clears it
-#: with margin and leaves the C_p95 guardrail at 58.0 rather than pushing it.
-CHROMA_GAIN = 0.85
+#: Chroma gain is the lever for peak_over_field. Measured across 11 swept
+#: configurations: 0.40 -> 35.9, 0.70 -> 42.4, 0.85 -> 43.5, 1.00 -> 49.1,
+#: against a 42.6 floor.
+#:
+#: Settled at 0.60 AFTER the zero-mean fix below, not before. The high gains were
+#: chosen while the vignette was silently darkening every plate by ~11 L*, and
+#: once that was fixed a much gentler gain cleared the same floor: 0.60 measures
+#: peak 47.5 with page lightness preserved.
+CHROMA_GAIN = 0.60
 
 #: The glow sits BELOW centre because that is where a standing figure is. Moving
 #: it from 0.46 to 0.58 took hairline 12.81 -> 12.44 and peak 43.5 -> 44.4.
 VIGNETTE_CENTRE = (0.5, 0.58)
-VIGNETTE_STRENGTH = 0.55
+VIGNETTE_STRENGTH = 0.35
+
+
+#: Ink dilation radius in pixels at the generation resolution.
+#:
+#: hairline_ink_density counts inches of ink stroke NARROWER than 1.5 pt per
+#: square inch: published 2.65, this pipeline 12.4 after every other lever was
+#: exhausted. Simplifying the plates moved it 13.3 -> 12.4 and stopped.
+#:
+#: The fix is not to remove ink. HOUSE_STYLE.md and the style contract both call
+#: for "thick uniform black outlines", and SDXL is not delivering them - it draws
+#: correct-looking art with linework far finer than the published editions.
+#: Thickening the ink is what the house style asks for, and it reduces the
+#: hairline count as a consequence rather than as a trick: a stroke that was
+#: 1 pt becomes 2 pt and stops being a hairline because it stops being thin.
+#:
+#: This is the opposite of blurring. Blurring lowers the number by destroying
+#: edge contrast; this raises edge contrast by making the black areas larger and
+#: harder. test_the_finishing_pass_does_not_blur still holds.
+INK_DILATE_PX = 2
+
+#: MEASURED AND REJECTED, kept for the record.
+#:
+#: Dilation does move the metric: on P01-01, hairline goes 40.6 / 13.5 / 4.2 /
+#: 2.3 / 1.4 at radius 0 / 1 / 2 / 3 / 4, and the published median is 2.65. But
+#: it moves share_in_large_shapes 0.012 -> 0.801 at the same time, because the
+#: linework merges into blobs, and it costs about 10 L* of page lightness at
+#: radius 1 and 12 L* at radius 2 - taking finished plates to mean L* 15.7-17.8
+#: against a published 37.0.
+#:
+#: Looked at rather than measured: at radius 3 the railings have merged into
+#: solid black. The scorecard read 7/8 while the art moved AWAY from the
+#: reference. That is the exact failure the scorecard's author predicted, so the
+#: function stays out of the pipeline and stays here as evidence.
+_THICKEN_REJECTED = True
+
+
+def thicken_ink(image: Image.Image, radius: int = INK_DILATE_PX) -> Image.Image:
+    """Grow the linework so it matches the house style's declared weight."""
+    if radius <= 0:
+        return image.convert("RGB")
+
+    rgb = np.asarray(image.convert("RGB")).astype(np.uint8)
+    lab = srgb_to_lab(rgb.astype(np.float64))
+    ink = (lab[..., 0] < INK_L).astype(np.uint8) * 255
+
+    # A MinFilter on the inverse grows the dark region - a morphological
+    # dilation of the ink mask, with a hard edge throughout.
+    grown = Image.fromarray(255 - ink, "L").filter(
+        ImageFilter.MinFilter(2 * radius + 1))
+    grown_mask = np.asarray(grown) < 128
+
+    # New ink takes the darkest colour already present in the plate, so the
+    # thickened line matches the art's own black rather than a synthetic one.
+    darkest = rgb.reshape(-1, 3)[lab[..., 0].reshape(-1).argmin()]
+    out = rgb.copy()
+    out[grown_mask] = darkest
+    return Image.fromarray(out, "RGB")
 
 
 def focal_vignette(image: Image.Image, strength: float = VIGNETTE_STRENGTH,
@@ -124,6 +186,16 @@ def focal_vignette(image: Image.Image, strength: float = VIGNETTE_STRENGTH,
 
     # +1 at the centre, -1 in the corners, smooth between.
     field = np.cos(np.clip(radius, 0.0, 1.0) * np.pi)
+
+    # Zero-MEAN, or this is not a vignette - it is a global darken.
+    #
+    # Area grows with radius, so most pixels sit where cos is negative and the
+    # raw field averages well below zero. Measured consequence: finished plates
+    # came out at mean L* 15.7-17.3 against a published 37.0 and a raw-plate
+    # 27.5, i.e. the finishing pass was making every plate roughly 11 L* darker
+    # than the art it started from while the scorecard read 7/8. Centring the
+    # field makes the centre brighten by as much as the corners sink.
+    field = field - field.mean()
 
     lab = srgb_to_lab(rgb)
     ink = lab[..., 0] < INK_L
@@ -156,4 +228,7 @@ def finish_plate(path, palette_size: int = PALETTE_SIZE,
     """
     with Image.open(path) as source:
         plate = source.convert("RGB")
+    # thicken_ink is deliberately NOT in this chain. See its docstring: it moves
+    # hairline_ink_density into range, but it does so by flooding the frame with
+    # black, and that is destroying the art to move a number.
     return focal_vignette(posterise(plate, palette_size), vignette)

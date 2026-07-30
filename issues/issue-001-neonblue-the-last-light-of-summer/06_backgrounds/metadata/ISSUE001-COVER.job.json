@@ -2,16 +2,16 @@
   "job_id": "ISSUE001-COVER",
   "job_class": "cover_plate",
   "workflow_version": "sample-pages-1",
-  "prompt_id": "0796f376-9006-4b69-b43e-c889eeca4818",
+  "prompt_id": "d11323c2-c07c-40d0-8cdb-72e7584d6cdc",
   "ok": true,
   "error": "",
-  "seconds": 58.3,
+  "seconds": 56.3,
   "outputs": [
     {
       "path": "issues/issue-001-neonblue-the-last-light-of-summer/06_backgrounds/generated_candidates/ISSUE001-COVER.png",
-      "sha256": "d84440255d7ebe7986a7cdaa0e1404623c66a31855a27429cbf39587cac9c8f1",
-      "pixel_sha256": "c4f0d046a718f1336f54709ba0371a6594e7e53e222a64dadb2ae7ffa81a8962",
-      "bytes": 1688359
+      "sha256": "a05870b9590a6cb9991a1b604c40397872bc8f0a5d09f82b2f74547dd59dd3bc",
+      "pixel_sha256": "58d0a6bd39f18a6d83006feaa0926f2a85986cf528de718e6957b2d713783ecf",
+      "bytes": 1766698
     }
   ],
   "graph": {
@@ -64,7 +64,7 @@
     "5": {
       "class_type": "KSampler",
       "inputs": {
-        "seed": 190611,
+        "seed": 991017,
         "steps": 30,
         "cfg": 6.0,
         "sampler_name": "dpmpp_2m",
@@ -127,7 +127,7 @@
   "panel_id": "ISSUE001-COVER",
   "page": 0,
   "prompt": "(night:1.4), (blacked out fairground:1.4), the festival grounds during a total power failure, seen wide and slightly low, ferris wheel and main stage as dark silhouettes against a starless deep blue night sky, every bulb dead and unlit, strings of dead bulbs hanging overhead, stalls and booths in cold blue shadow, (one single small warm lamp still burning at the centre of frame:1.4), a narrow pool of warm light on the ground beneath it, empty foreground path leading in toward that one light, depth: foreground path and dead bunting, midground darkened rides and stalls, background black skyline, lit only by that one small warm source at centre frame, deep amber key falling off fast into darkness, cold blue moonlight ambient fill, cover composition with clear central space for a figure and clear upper third of empty night sky for a title",
-  "seed": 190611,
+  "seed": 991017,
   "gen_size": [
     904,
     1272

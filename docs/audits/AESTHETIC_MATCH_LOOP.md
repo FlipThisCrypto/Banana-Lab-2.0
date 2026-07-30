@@ -156,6 +156,98 @@ author identified as cheats. 16.97 → 13.26 came from generating simpler plates
 and closing the rest needs plates with genuinely fewer objects. That is a
 generation problem, not a finishing one.
 
+## Round two: iterations 11-30
+
+### The process changed first
+
+Each iteration had been costing ~10 minutes of GPU because every change
+regenerated all 11 plates. Most remaining levers are FINISHING parameters that
+touch no model, so `scripts/validation/aesthetic_loop.py` sweeps them over the
+cached raw plates and appends every result to
+`docs/audits/aesthetic-loop-ledger.json`. Iterations became comparable instead
+of remembered.
+
+The harness had its own flaw, found by being bitten: the ledger was flushed once
+at the end, and the first long sweep was reaped mid-run and lost nine measured
+configurations. It now writes after every config. An experiment ledger that can
+lose experiments is not a ledger.
+
+### Iterations 11-20: swept, one lever at a time
+
+| config | scored | hairline | peak | n_hue | C_p95 |
+|---|---:|---:|---:|---:|---:|
+| it10-baseline | 5/8 | 13.56 | 35.87 | 5.74 | 52.52 |
+| it11-palette6 | 6/8 | 12.21 | 35.35 | 4.75 | 52.29 |
+| it12-palette4 | 6/8 | 13.02 | 34.21 | 3.78 | 51.50 |
+| it13-chroma70 | 5/8 | 13.57 | 42.36 | 5.58 | 55.50 |
+| it14-chroma100 | 6/8 | 13.57 | 49.14 | 5.58 | 58.59 |
+| it15-vig60 | 5/8 | 14.24 | 40.91 | 5.58 | 53.70 |
+| it16-palette6-chroma70 | 6/8 | 12.19 | 42.55 | 4.63 | 55.58 |
+| it17-palette5-chroma85-vig55 | 7/8 | 12.81 | 43.49 | 4.62 | 56.08 |
+| it18-ink28 | 6/8 | 13.20 | 42.15 | 3.93 | 56.26 |
+| it19-ink40 | 6/8 | 13.12 | 42.07 | 4.59 | 55.20 |
+| it20-centre-low | 7/8 | 12.44 | 44.39 | 4.51 | 57.98 |
+
+**Mechanisms confirmed.** `chroma_gain` is the lever for `peak_over_field`
+(0.40/0.70/0.85/1.00 → 35.9/42.4/43.5/49.1). `palette_size` is the lever for
+`n_hue_families` (10/6/5/4 → 5.74/4.75/4.62/3.78).
+
+**A hypothesis rejected and kept.** `ink_l` does *not* drive
+`hairline_ink_density`: 28/34/40 gives 13.20/12.19/13.12, no trend. Recorded as
+a negative result rather than quietly dropped. Vignette strength 0.60 made
+hairline *worse*, 14.24.
+
+### Iterations 21-22: simpler plates
+
+The location anchors were a shopping list — stalls, awnings, bulbs, bunting,
+rides, a ferris wheel, grass, a crowd: eight object classes, all of which the
+model dutifully drew across the whole frame. Cut to three. And the script's own
+`background_description` — owner material, preserved verbatim — now carries a
+rendering instruction to mass crowds and rows as silhouette shapes rather than
+individual objects, which directs execution without changing content.
+
+Result: 7/8 with real plates. hairline barely moved, 12.44 → 12.36.
+
+### Iterations 23-27: the ink-thickening trap
+
+`hairline_ink_density` counts strokes narrower than 1.5 pt. Since `HOUSE_STYLE.md`
+and the style contract both call for *"thick uniform black outlines"* and SDXL
+was not delivering them, thickening the ink looked like the stylistically correct
+fix. It worked, numerically: radius 0/1/2/3/4 gives hairline
+40.6/13.5/4.2/2.3/1.4 against a published 2.65.
+
+**And it was wrong.** Two measurements caught it, and then looking confirmed it:
+
+- `share_in_large_shapes` moved 0.012 → 0.801 at the same time, because the
+  linework merges into blobs.
+- page lightness fell to mean L\* 15.7–17.8 against a **published 37.0**.
+- at radius 3, the railings in P02-03 have merged into solid black.
+
+The scorecard read 7/8 while the art moved *away* from the reference. That is
+exactly the failure its author predicted. `thicken_ink()` stays in the module,
+out of the pipeline, with the evidence in its docstring.
+
+### Iterations 28-30: the bug the trap exposed
+
+Chasing the lightness collapse found a real bug in `focal_vignette`. The `cos`
+field is negative over most of the frame's **area** — area grows with radius — so
+the field averaged well below zero and the "vignette" was a **global darken**. It
+was making every plate roughly 11 L\* darker than the art it started from, and
+the high chroma gains chosen in iterations 13–17 were compensating for a defect
+rather than improving anything.
+
+Centring the field to zero mean fixed it, and once fixed a much *gentler*
+configuration cleared the same tolerances with lightness preserved:
+
+| | mean L\* | hairline | share | peak | n_hue | C_p95 |
+|---|---:|---:|---:|---:|---:|---:|
+| raw plate | 27.5 | 7.83 | 0.537 | 39.8 | 6.00 | 65.9 |
+| before the fix (pal6 vig.55 gain.85 dilate2) | **15.8** | 1.95 | 0.698 | 53.8 | 4.00 | 72.3 |
+| after (pal6 vig.35 gain.60, no dilation) | **29.1** | 6.06 | 0.562 | 47.5 | 5.00 | 70.4 |
+
+Settled defaults: palette 6, chroma gain 0.60, vignette 0.35 centred at 0.58
+height, no ink dilation.
+
 ## Not yet addressed
 
 - **Lettering.** `lettering_pct` measures 0.1 against a published 5.16. Balloons,

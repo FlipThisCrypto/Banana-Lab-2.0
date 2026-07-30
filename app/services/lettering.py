@@ -145,14 +145,17 @@ def draw_balloon(page: Image.Image, balloon: Balloon) -> None:
         # The base has to be a real fraction of the balloon so the tail is
         # visibly part of it.
         spread = 0.30
-        base = max(body_w, body_h) * 0.40
+        base = min(body_w, body_h) * 0.34
 
         # The tail is a SHORT stub, not a wedge stretching to the speaker.
         # Drawing the polygon out to a distant target made the triangle scale
         # with the distance: a speaker across the panel produced a white wedge
         # covering the middle of the frame. Published tails extend roughly half a
         # balloon height and let the reader's eye finish the line.
-        reach = min(math.hypot(tx - cx, ty - cy), body_h * 1.15)
+        # Clamped to 0.62 of balloon height, not 1.15. A tall balloon made
+        # even the 'short' stub large, because the clamp scaled with the
+        # thing it was supposed to be small relative to.
+        reach = min(math.hypot(tx - cx, ty - cy), body_h * 0.62)
         tip = (cx + math.cos(angle) * reach, cy + math.sin(angle) * reach)
 
         p1 = (cx + math.cos(angle - spread) * base,
