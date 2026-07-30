@@ -459,3 +459,71 @@ def test_imported_source_material_is_not_writable():
             f"source material is unlocked for editing. Re-protect with "
             f"scripts/migration/protect_source_material.py when finished."
         )
+
+
+def test_contact_shadow_is_large_enough_to_read(tmp_path):
+    """A shadow that exists in the pixels but not on the page grounds nothing.
+
+    The first version drew an ellipse 5.5% of figure height and blurred it by a
+    third of its own height: 49 px under a 900 px figure, mean darkening 11 L*.
+    Every figure floated. The published editions put a firm readable ellipse
+    under each character.
+    """
+    from app.services.compositor import LightContract, contact_shadow
+
+    light = LightContract(key_angle_deg=90, key_color=(255, 255, 255))
+    shadow = contact_shadow((600, 900), light)
+    assert shadow.height >= 900 * 0.09, (
+        f"contact shadow is {shadow.height}px under a 900px figure"
+    )
+    assert np.asarray(shadow).max() >= 200, "and it has to be dark enough to see"
+
+
+def test_cast_shadow_stays_attached_to_its_figure(tmp_path):
+    """A shadow the reader cannot attribute to the character is a wash.
+
+    0.85 of figure width threw a 600 px figure's shadow 479 px sideways across a
+    1558 px canvas - wider than the plate.
+    """
+    from PIL import Image
+
+    from app.services.compositor import LightContract, cast_shadow
+
+    arr = np.zeros((900, 600, 4), dtype=np.uint8)
+    arr[..., 3] = 255
+    arr[..., :3] = (200, 200, 200)
+    figure = Image.fromarray(arr, "RGBA")
+
+    light = LightContract(key_angle_deg=20, key_color=(255, 200, 140))
+    shadow, dx = cast_shadow(figure, light)
+    assert abs(dx) < 600 * 0.5, f"shadow leans {abs(dx)}px off a 600px figure"
+    assert shadow.width < 600 * 2.0, f"shadow is {shadow.width}px wide"
+
+
+def test_lettering_puts_the_script_words_on_the_page(tmp_path):
+    """lettering_pct measured 0.0 against a published 5.16 before this existed.
+
+    It was the largest single gap on the aesthetic scorecard and the reason the
+    pages read as illustrated backgrounds rather than as comics.
+    """
+    from PIL import Image
+
+    from app.services.lettering import Balloon, draw_balloon, draw_sfx
+
+    page = Image.new("RGBA", (1200, 800), (120, 130, 140, 255))
+    before = np.asarray(page).copy()
+
+    draw_balloon(page, Balloon(text="It smells like burnt sugar and ozone.",
+                               zone=(80, 60, 480, 220), speaker="MZ-CHAR-003",
+                               tail_to=(600, 620)))
+    draw_balloon(page, Balloon(text="The last night of summer.",
+                               zone=(80, 520, 420, 160), kind="caption"))
+    draw_sfx(page, "CRACK", (900, 400), 120)
+
+    after = np.asarray(page)
+    changed = (np.abs(after.astype(int) - before.astype(int)).sum(axis=2) > 20)
+    assert changed.mean() > 0.02, (
+        f"lettering covered only {changed.mean():.3%} of the page"
+    )
+    # A balloon has to be light on a mid-grey page, or the text will not read.
+    assert after[..., :3].max() > 240

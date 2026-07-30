@@ -277,14 +277,27 @@ def relight(
 
 
 def contact_shadow(size: tuple[int, int], light: LightContract) -> Image.Image:
-    """A tight dark pool directly under the character's contact point."""
+    """A tight dark pool directly under the character's contact point.
+
+    This is what makes a figure stand on the ground rather than hover above it,
+    so it has to actually READ at page scale. The first version drew an ellipse
+    5.5% of figure height and then blurred it by a third of its own height,
+    which measured 49 px tall under a 900 px figure and produced a mean
+    darkening of 11 L* - present in the pixels, invisible on the page. Every
+    figure floated.
+    """
     width, height = size
-    shadow_w = int(width * 0.82)
-    shadow_h = max(6, int(height * 0.055))
+    shadow_w = int(width * 0.86)
+    # 11% of figure height. The published editions put a firm, readable ellipse
+    # under each character, not a hairline.
+    shadow_h = max(10, int(height * 0.11))
     layer = Image.new("L", (shadow_w, shadow_h), 0)
     draw = ImageDraw.Draw(layer)
-    draw.ellipse([0, 0, shadow_w - 1, shadow_h - 1], fill=int(255 * light.contact_opacity))
-    layer = layer.filter(ImageFilter.GaussianBlur(max(2, shadow_h * 0.35)))
+    draw.ellipse([0, 0, shadow_w - 1, shadow_h - 1],
+                 fill=int(255 * min(1.0, light.contact_opacity * 1.15)))
+    # Blur a fifth of the height, not a third: enough to lose the vector edge,
+    # not enough to dissolve the shadow into the ground.
+    layer = layer.filter(ImageFilter.GaussianBlur(max(2, shadow_h * 0.20)))
     return layer
 
 
@@ -302,8 +315,13 @@ def cast_shadow(character: Image.Image, light: LightContract) -> tuple[Image.Ima
     silhouette = alpha.resize((width, shadow_h), Image.LANCZOS)
 
     # Lean away from the light. Positive key_angle from frame right pushes left.
+    #
+    # 0.85 of figure width was far too much: a 600 px figure produced a 1558 px
+    # shadow leaning 479 px, wider than the plate, which reads as an even wash
+    # over the whole ground rather than as a shadow belonging to this character.
+    # A shadow the reader can attribute to the figure has to stay near it.
     lean = -math.cos(math.radians(light.key_angle_deg))
-    shift = int(width * 0.85 * lean)
+    shift = int(width * 0.34 * lean)
 
     canvas_w = width + abs(shift) * 2
     canvas = Image.new("L", (canvas_w, shadow_h), 0)

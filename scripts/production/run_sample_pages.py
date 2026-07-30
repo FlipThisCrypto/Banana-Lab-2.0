@@ -49,6 +49,7 @@ from app.services import workflows as wf  # noqa: E402
 from app.services.compositor import (  # noqa: E402
     GroundPlane, LightContract, Placement, composite_panel,
 )
+from app.services.lettering import Balloon, draw_balloon, draw_sfx  # noqa: E402
 
 ISSUE = Path("issues/issue-001-neonblue-the-last-light-of-summer")
 LAYERS = Path("source_material/imported_canon/character_layers")
@@ -149,8 +150,11 @@ LOCATION_ANCHORS = {
 #: a festival, not to be handed the festival.
 NEAR_ANCHORS = {
     "LOC-festival-grounds": (
-        "the edge of one striped stall awning and a few large flat circles of "
-        "warm festival bulb light, a string of bulbs, trodden grass underfoot"
+        # Iteration 2's near-anchor said "one striped stall awning" and produced
+        # a cafe storefront, a cocktail bar and a treeline - generic premises,
+        # because nothing in it said FAIRGROUND. It does now, twice.
+        "at a night-time funfair, the edge of one striped fairground stall "
+        "canopy, a string of round festival bulbs, trodden grass underfoot"
     ),
     "LOC-festival-main-stage": (
         "one truss upright and a wash of stage light, everything else dark"
@@ -195,12 +199,19 @@ SHOT_FRAMING = {
 #: n_hue_families measured 6.4 against 5.5, and why every figure looked tiny: an
 #: aerial view has nowhere to put a large character.
 FOCAL_BACKGROUND = (
-    "(strong vignette:1.3), (brightest directly at the centre of frame:1.3), "
-    "(darker toward the edges:1.2), (large simple flat shapes:1.35), "
-    "(limited palette of three or four colours:1.3), "
+    # Iteration 2 asked for a vignette and got evenly-lit daylight:
+    # peak_over_field went the WRONG way, 41.0 -> 37.1 against a 42.6 floor.
+    # The light has to be stated as the subject, not as an adjective.
+    "(dramatic single source lighting:1.45), "
+    "(bright glow behind the centre of frame:1.4), "
+    "(deep black shadow in all four corners:1.35), (strong vignette:1.3), "
+    # hairline_ink_density 13.0 against an 11.0 ceiling, n_hue_families 5.9
+    # against 5.5: still too many small things and too many hues.
+    "(only three colours:1.4), (very few objects:1.35), "
+    "(large simple flat shapes:1.35), "
     "(hard edged flat colour, no gradients, no airbrush:1.35), "
-    "few elements, a clear open ground plane in the lower third, one dominant "
-    "light source, deep shadow in the corners, generous empty space in the "
+    "(seen from standing eye level:1.25), "
+    "a clear open ground plane in the lower third, generous empty space in the "
     "middle of frame for a figure to stand in"
 )
 
@@ -210,7 +221,8 @@ FOCAL_NEGATIVE = (
     "crowd of detailed people, hundreds of small figures, busy, cluttered, "
     "wimmelbild, densely packed stalls, repeated small objects, "
     "fine intricate detail, tiny text, signage lettering, "
-    "flat evenly-lit scene, no focal point, "
+    "flat evenly-lit scene, no focal point, evenly lit, bright daylight, "
+    "many small objects, repeated detail, surface texture, "
     # Asking for simplicity without these produced a soft airbrushed field with
     # no outlines at all - simple, but not the house style. The published art is
     # simple AND hard-edged: flat fills inside black linework.
@@ -695,8 +707,78 @@ def generate_plate(client: ComfyClient, spec: PanelResult, job_class: str,
     )
 
 
+def letter_panel(page: Image.Image, panel: dict, layout_panel: dict,
+                 box: tuple[int, int, int, int]) -> float:
+    """Balloons, captions and sound effects for one panel.
+
+    Zones come from the layout spec, which already declares where a balloon may
+    sit and whose it is. Text comes from the script. Neither is invented here.
+    Returns the share of the panel the lettering covers, for the record.
+    """
+    x0, y0, pw, ph = box
+    zones = layout_panel.get("bubble_zones") or []
+    dialogue = list(panel.get("dialogue") or [])
+    caption = panel.get("caption")
+    covered = 0.0
+
+    def to_page(zone):
+        zx, zy, zw, zh = zone
+        return (int(x0 + zx * pw), int(y0 + zy * ph),
+                int(zw * pw), int(zh * ph))
+
+    used = set()
+    for entry in zones:
+        target = entry.get("for", "")
+        rect = to_page(entry["zone"])
+        if target == "caption" and caption:
+            draw_balloon(page, Balloon(text=caption, zone=rect, kind="caption"))
+            covered += rect[2] * rect[3]
+            caption = None
+            continue
+        # A zone declared for a character gets that character's line.
+        line = next((d for d in dialogue
+                     if (d.get("speaker") or d.get("character_id")) == target
+                     and id(d) not in used), None)
+        if line is None:
+            continue
+        used.add(id(line))
+        draw_balloon(page, Balloon(
+            text=line.get("text") or line.get("line") or "",
+            zone=rect, speaker=target,
+            # Point at the middle of the panel's lower half, where the figure
+            # stands. Without per-figure positions to hand this is the honest
+            # approximation, and it is better than no tail at all.
+            tail_to=(x0 + pw // 2, y0 + int(ph * 0.62)),
+        ))
+        covered += rect[2] * rect[3]
+
+    # A line the layout gave no zone to is still a line. Drop it into the upper
+    # third rather than losing it silently.
+    leftovers = [d for d in dialogue if id(d) not in used]
+    for n, line in enumerate(leftovers[:2]):
+        rect = (x0 + int(pw * (0.06 + 0.48 * n)), y0 + int(ph * 0.05),
+                int(pw * 0.42), int(ph * 0.24))
+        draw_balloon(page, Balloon(
+            text=line.get("text") or "", zone=rect,
+            speaker=line.get("speaker") or "",
+            tail_to=(x0 + pw // 2, y0 + int(ph * 0.62)),
+        ))
+        covered += rect[2] * rect[3]
+
+    for effect in (panel.get("sfx") or [])[:2]:
+        text = effect if isinstance(effect, str) else effect.get("text", "")
+        if not text:
+            continue
+        draw_sfx(page, text.upper(),
+                 (x0 + int(pw * 0.24), y0 + int(ph * 0.78)),
+                 max(28, int(ph * 0.17)))
+
+    return covered / max(1, pw * ph)
+
+
 def assemble_page(page_layout: dict, panels: dict[str, Path],
-                  geometry: dict, page_ground: dict | None = None) -> Image.Image:
+                  geometry: dict, page_ground: dict | None = None,
+                  script_panels: dict[str, dict] | None = None) -> Image.Image:
     """Lay the panel art onto the page at print geometry.
 
     The published editions float their panels on a COLOURED BOARD behind a thin
@@ -752,6 +834,13 @@ def assemble_page(page_layout: dict, panels: dict[str, Path],
 
         draw.rectangle([x0, y0, x0 + pw, y0 + ph], outline=rule_color,
                        width=rule_px)
+
+        source = (script_panels or {}).get(panel["panel_id"])
+        if source:
+            lettered = page.convert("RGBA")
+            letter_panel(lettered, source, panel, (x0, y0, pw, ph))
+            page = lettered.convert("RGB")
+            draw = ImageDraw.Draw(page)
 
     return page
 
@@ -862,7 +951,7 @@ def main() -> int:
         if page_number not in by_page:
             continue
         page = assemble_page(by_page[page_number], art, geometry,
-                             layout.get("page_ground"))
+                             layout.get("page_ground"), script_by_id)
         out = OUT_PAGES / f"page_{page_number:02d}.png"
         paths.assert_safe_write_target(out)
         page.save(out)

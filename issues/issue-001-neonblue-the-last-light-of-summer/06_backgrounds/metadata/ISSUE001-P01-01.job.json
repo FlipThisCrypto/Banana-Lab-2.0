@@ -2,16 +2,16 @@
   "job_id": "ISSUE001-P01-01",
   "job_class": "background_plate",
   "workflow_version": "sample-pages-1",
-  "prompt_id": "92e8c08a-c473-4e54-9f50-41940e247e02",
+  "prompt_id": "7a0ed8f9-b60d-4489-9147-4b1c7d7f5652",
   "ok": true,
   "error": "",
-  "seconds": 58.4,
+  "seconds": 54.2,
   "outputs": [
     {
       "path": "issues/issue-001-neonblue-the-last-light-of-summer/06_backgrounds/generated_candidates/ISSUE001-P01-01.png",
-      "sha256": "6e5e8d923ef6aec9f414ddc432cd1b5fb1d1ae3f52a0791fc90c3374491226de",
-      "pixel_sha256": "d8a9c1b69fd64d8dac7d39ee54e93cc7c2ababdb7d9c574df0b110efdcf97483",
-      "bytes": 2242828
+      "sha256": "85ca9c49f25e296c597e932df35969129638f7fff3a5fa5f4eb6f4d7382a456c",
+      "pixel_sha256": "afc2003d11a8bbb90ced60ddbdc28879b464034cce5c345022bcf9005732a74f",
+      "bytes": 2340093
     }
   ],
   "graph": {
@@ -27,7 +27,7 @@
     "2": {
       "class_type": "CLIPTextEncode",
       "inputs": {
-        "text": "(flat 2d vector cartoon illustration:1.5), (thick uniform black outlines:1.4), (flat colour fills with hard cel shading:1.4), comic book background art, graphic novel panel, bold saturated palette, clear perspective. (extreme wide shot:1.4), (high angle:1.2), the whole location seen from far back, figures tiny, The festival site from a raised angle. Ferris wheel, main stage, booth rows, bunting, dense warm crowd. Nothing is wrong yet, setting: an outdoor summer music festival site, rows of food and game stalls with striped awnings, strings of warm festival bulbs overhead, bunting, fairground rides and a ferris wheel beyond, trodden grass and dirt underfoot, festival crowd in summer clothes, depth: Foreground bunting, midground rides and stalls, background skyline and low sun, lit by Low sun from frame right, Deep amber key, Cool sky bounce fill, (strong vignette:1.3), (brightest directly at the centre of frame:1.3), (darker toward the edges:1.2), (large simple flat shapes:1.35), (limited palette of three or four colours:1.3), (hard edged flat colour, no gradients, no airbrush:1.35), few elements, a clear open ground plane in the lower third, one dominant light source, deep shadow in the corners, generous empty space in the middle of frame for a figure to stand in. (flat cartoon vector art:1.4), (bold black outlines:1.3), (cel shaded:1.3), non-photorealistic",
+        "text": "(flat 2d vector cartoon illustration:1.5), (thick uniform black outlines:1.4), (flat colour fills with hard cel shading:1.4), comic book background art, graphic novel panel, bold saturated palette, clear perspective. (extreme wide shot:1.4), (high angle:1.2), the whole location seen from far back, figures tiny, The festival site from a raised angle. Ferris wheel, main stage, booth rows, bunting, dense warm crowd. Nothing is wrong yet, setting: an outdoor summer music festival site, rows of food and game stalls with striped awnings, strings of warm festival bulbs overhead, bunting, fairground rides and a ferris wheel beyond, trodden grass and dirt underfoot, festival crowd in summer clothes, depth: Foreground bunting, midground rides and stalls, background skyline and low sun, lit by Low sun from frame right, Deep amber key, Cool sky bounce fill, (dramatic single source lighting:1.45), (bright glow behind the centre of frame:1.4), (deep black shadow in all four corners:1.35), (strong vignette:1.3), (only three colours:1.4), (very few objects:1.35), (large simple flat shapes:1.35), (hard edged flat colour, no gradients, no airbrush:1.35), (seen from standing eye level:1.25), a clear open ground plane in the lower third, generous empty space in the middle of frame for a figure to stand in. (flat cartoon vector art:1.4), (bold black outlines:1.3), (cel shaded:1.3), non-photorealistic",
         "clip": [
           "1",
           1
@@ -40,7 +40,7 @@
     "3": {
       "class_type": "CLIPTextEncode",
       "inputs": {
-        "text": "(photorealistic:1.6), (photograph:1.6), (realistic lighting:1.4), (3d render:1.4), (volumetric light:1.3), (depth of field:1.3), cinematic photography, film still, octane render, unreal engine, realistic textures, reflections, bokeh, lens flare, characters, people, person, figure, animal, monkey, creature, mascot, text, letters, words, signature, watermark, logo, caption, speech bubble, panel border, frame, comic frame, white border, gutter, blurry, noisy, jpeg artifacts, low contrast mush, duplicated objects, warped architecture, broken geometry, extra limbs, aerial view, bird's eye view, isometric, top-down, map view, crowd of detailed people, hundreds of small figures, busy, cluttered, wimmelbild, densely packed stalls, repeated small objects, fine intricate detail, tiny text, signage lettering, flat evenly-lit scene, no focal point, airbrushed, soft gradient, painterly, oil painting, watercolour, blurry, out of focus photography, photographic bokeh, hazy, misty, soft focus, feathered edges, no linework",
+        "text": "(photorealistic:1.6), (photograph:1.6), (realistic lighting:1.4), (3d render:1.4), (volumetric light:1.3), (depth of field:1.3), cinematic photography, film still, octane render, unreal engine, realistic textures, reflections, bokeh, lens flare, characters, people, person, figure, animal, monkey, creature, mascot, text, letters, words, signature, watermark, logo, caption, speech bubble, panel border, frame, comic frame, white border, gutter, blurry, noisy, jpeg artifacts, low contrast mush, duplicated objects, warped architecture, broken geometry, extra limbs, aerial view, bird's eye view, isometric, top-down, map view, crowd of detailed people, hundreds of small figures, busy, cluttered, wimmelbild, densely packed stalls, repeated small objects, fine intricate detail, tiny text, signage lettering, flat evenly-lit scene, no focal point, evenly lit, bright daylight, many small objects, repeated detail, surface texture, airbrushed, soft gradient, painterly, oil painting, watercolour, blurry, out of focus photography, photographic bokeh, hazy, misty, soft focus, feathered edges, no linework",
         "clip": [
           "1",
           1
@@ -64,7 +64,7 @@
     "5": {
       "class_type": "KSampler",
       "inputs": {
-        "seed": 550930,
+        "seed": 310826,
         "steps": 30,
         "cfg": 6.0,
         "sampler_name": "dpmpp_2m",
@@ -126,8 +126,8 @@
   "review_note": "",
   "panel_id": "ISSUE001-P01-01",
   "page": 1,
-  "prompt": "(extreme wide shot:1.4), (high angle:1.2), the whole location seen from far back, figures tiny, The festival site from a raised angle. Ferris wheel, main stage, booth rows, bunting, dense warm crowd. Nothing is wrong yet, setting: an outdoor summer music festival site, rows of food and game stalls with striped awnings, strings of warm festival bulbs overhead, bunting, fairground rides and a ferris wheel beyond, trodden grass and dirt underfoot, festival crowd in summer clothes, depth: Foreground bunting, midground rides and stalls, background skyline and low sun, lit by Low sun from frame right, Deep amber key, Cool sky bounce fill, (strong vignette:1.3), (brightest directly at the centre of frame:1.3), (darker toward the edges:1.2), (large simple flat shapes:1.35), (limited palette of three or four colours:1.3), (hard edged flat colour, no gradients, no airbrush:1.35), few elements, a clear open ground plane in the lower third, one dominant light source, deep shadow in the corners, generous empty space in the middle of frame for a figure to stand in",
-  "seed": 550930,
+  "prompt": "(extreme wide shot:1.4), (high angle:1.2), the whole location seen from far back, figures tiny, The festival site from a raised angle. Ferris wheel, main stage, booth rows, bunting, dense warm crowd. Nothing is wrong yet, setting: an outdoor summer music festival site, rows of food and game stalls with striped awnings, strings of warm festival bulbs overhead, bunting, fairground rides and a ferris wheel beyond, trodden grass and dirt underfoot, festival crowd in summer clothes, depth: Foreground bunting, midground rides and stalls, background skyline and low sun, lit by Low sun from frame right, Deep amber key, Cool sky bounce fill, (dramatic single source lighting:1.45), (bright glow behind the centre of frame:1.4), (deep black shadow in all four corners:1.35), (strong vignette:1.3), (only three colours:1.4), (very few objects:1.35), (large simple flat shapes:1.35), (hard edged flat colour, no gradients, no airbrush:1.35), (seen from standing eye level:1.25), a clear open ground plane in the lower third, generous empty space in the middle of frame for a figure to stand in",
+  "seed": 310826,
   "gen_size": [
     1488,
     776

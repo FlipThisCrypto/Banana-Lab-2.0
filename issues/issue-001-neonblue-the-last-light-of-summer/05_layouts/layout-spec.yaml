@@ -265,7 +265,7 @@ pages:
 - page_number: 1
   purpose: Open on the festival at its best, so the reader knows what is about to
   grid_name: p01-wide-anchor-over-trio
-  frame_color: '#E8A24A'
+  frame_color: '#B68F64'
   frame_note: Warm amber. The good version of the evening.
   panel_count: 4
   panels:
@@ -342,7 +342,7 @@ pages:
 - page_number: 2
   purpose: NeonBlue volunteers the group before anyone agrees. The first characte
   grid_name: p02-six-irregular
-  frame_color: '#E0A257'
+  frame_color: '#B2906B'
   frame_note: Warm amber, holding.
   panel_count: 6
   panels:
@@ -445,7 +445,7 @@ pages:
 - page_number: 3
   purpose: Show the festival functioning so its failure has something to fail fro
   grid_name: p03-tall-left-quad-right
-  frame_color: '#D89A5C'
+  frame_color: '#B28F70'
   frame_note: Warm gold. Peak festival.
   panel_count: 5
   panels:
@@ -542,7 +542,7 @@ pages:
 - page_number: 4
   purpose: Static perceives the fault before any instrument does.
   grid_name: p04-four-small-over-wide
-  frame_color: '#C08A64'
+  frame_color: '#AE907C'
   frame_note: Cooling gold. Something is off.
   panel_count: 5
   panels:
@@ -629,7 +629,7 @@ pages:
 - page_number: 5
   purpose: Static reaches NeonBlue, and NeonBlue answers before hearing it.
   grid_name: p05-six-irregular
-  frame_color: '#B4527E'
+  frame_color: '#976579'
   frame_note: Magenta. The first failure.
   panel_count: 6
   panels:
@@ -742,7 +742,7 @@ pages:
 - page_number: 6
   purpose: Show the crowd's reaction as the actual developing hazard.
   grid_name: p06-two-by-two-offset
-  frame_color: '#A34C7E'
+  frame_color: '#895D74'
   frame_note: Magenta, deepening.
   panel_count: 4
   panels:
@@ -813,7 +813,7 @@ pages:
 - page_number: 7
   purpose: Open the dense page with a fast beat - a ride stopping.
   grid_name: p07-dense-seven-a
-  frame_color: '#8A4C86'
+  frame_color: '#785875'
   frame_note: Cool magenta. It is spreading.
   panel_count: 7
   panels:
@@ -922,7 +922,7 @@ pages:
 - page_number: 8
   purpose: TwoTone starts working the problem the way only he does.
   grid_name: p08-wide-over-quad
-  frame_color: '#6E4C8F'
+  frame_color: '#665476'
   frame_note: Violet. The pattern.
   panel_count: 5
   panels:
@@ -1027,7 +1027,7 @@ pages:
 - page_number: 9
   purpose: Static's perception becomes something the reader can see.
   grid_name: p09-large-over-five
-  frame_color: '#5E4A93'
+  frame_color: '#5C5076'
   frame_note: Violet, cooling toward cyan.
   panel_count: 6
   panels:
@@ -1134,7 +1134,7 @@ pages:
 - page_number: 10
   purpose: NeonBlue's brightness gets louder as the situation gets worse.
   grid_name: p10-four-small-over-wide
-  frame_color: '#4E4890'
+  frame_color: '#534D72'
   frame_note: Deep violet. The crack.
   panel_count: 5
   panels:
@@ -1217,7 +1217,7 @@ pages:
 - page_number: 11
   purpose: The page-turn reveal. Give the reader the whole pattern at once, befor
   grid_name: p11-full-page-splash
-  frame_color: '#2E5F8C'
+  frame_color: '#4B5D75'
   frame_note: Violet-cyan. The splash.
   panel_count: 1
   panels:
@@ -1236,7 +1236,7 @@ pages:
 - page_number: 12
   purpose: Arrive at the locked gate, the last obstacle before the control node.
   grid_name: p12-large-over-five
-  frame_color: '#1E6E82'
+  frame_color: '#4B6A74'
   frame_note: Cyan. The gate.
   panel_count: 6
   panels:
@@ -1347,7 +1347,7 @@ pages:
 - page_number: 13
   purpose: 'The system responds to the interference. The discovery, and Lil Devil '
   grid_name: p13-large-over-twin
-  frame_color: '#166374'
+  frame_color: '#425F68'
   frame_note: Deep cyan. The answer.
   panel_count: 3
   panels:
@@ -1406,7 +1406,7 @@ pages:
 - page_number: 14
   purpose: NeonBlue reaches for the ordinary explanation.
   grid_name: p14-wide-over-quad
-  frame_color: '#155566'
+  frame_color: '#39525A'
   frame_note: Deep cyan, darkening.
   panel_count: 5
   panels:
@@ -1503,7 +1503,7 @@ pages:
 - page_number: 15
   purpose: Move into the corridor. Change the world of the issue.
   grid_name: p15-triple-stack
-  frame_color: '#141B26'
+  frame_color: '#363940'
   frame_note: Near-black. The wound.
   panel_count: 3
   panels:
@@ -1554,7 +1554,7 @@ pages:
 - page_number: 16
   purpose: Moodz arrives without being called.
   grid_name: p16-wide-anchor-over-trio
-  frame_color: '#141B26'
+  frame_color: '#363940'
   frame_note: Near-black. Permission.
   panel_count: 4
   panels:
@@ -1625,7 +1625,7 @@ pages:
 - page_number: 17
   purpose: Let the midpoint land. Deliberate negative space, borrowed from Editio
   grid_name: p17-tall-pair
-  frame_color: '#10151E'
+  frame_color: '#37393E'
   frame_note: Darkest page ground in the issue.
   panel_count: 2
   panels:
@@ -1658,7 +1658,7 @@ pages:
 - page_number: 18
   purpose: The countdown begins. The pull toward the visible thing.
   grid_name: p18-dense-seven-b
-  frame_color: '#4A1A20'
+  frame_color: '#4D3234'
   frame_note: Red-black. The countdown and the three.
   panel_count: 7
   panels:
@@ -1787,7 +1787,7 @@ pages:
 - page_number: 19
   purpose: The decision. The emotional centre of the issue.
   grid_name: p19-tall-pair
-  frame_color: '#7A1E22'
+  frame_color: '#623330'
   frame_note: Deep red. The decision.
   panel_count: 2
   panels:
@@ -1826,7 +1826,7 @@ pages:
 - page_number: 20
   purpose: Hope that admits risk. Leadership without a guarantee.
   grid_name: p20-six-irregular
-  frame_color: '#A8622C'
+  frame_color: '#936B4F'
   frame_note: Working amber. Torchlight.
   panel_count: 6
   panels:
@@ -1929,7 +1929,7 @@ pages:
 - page_number: 21
   purpose: Directed force works. Lil Devil's growth is visible, not stated.
   grid_name: p21-tall-left-quad-right
-  frame_color: '#C8792E'
+  frame_color: '#B0825D'
   frame_note: Working amber, brighter.
   panel_count: 5
   panels:
@@ -2018,7 +2018,7 @@ pages:
 - page_number: 22
   purpose: The festival continues in reduced form.
   grid_name: p22-twin-wides-over-quad
-  frame_color: '#3E5B7A'
+  frame_color: '#4D5A6A'
   frame_note: Warm and cold together. Neither wins.
   panel_count: 6
   panels:

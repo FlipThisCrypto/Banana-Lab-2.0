@@ -55,6 +55,42 @@ FRAME_COLORS = {
 }
 
 
+#: The published boards sit at L* 20-66 with a median chroma of 19 (max 45.8),
+#: measured across all 20 pages of both editions. The declared arc above was
+#: authored for its STORY meaning - amber, magenta, violet, cyan, near-black,
+#: red, amber - and the meaning is right; the intensity was not. Measured before
+#: this correction: pages 1-3 at L* 68-72, above the published maximum, and
+#: every board at roughly twice the published chroma. Pages 15-17 sat at L*
+#: 6.7-9.6, below the published minimum, which also made the near-black panel
+#: rule invisible against its own board.
+#:
+#: So the hue of every board is preserved exactly and only its lightness and
+#: chroma are brought into the published band.
+BOARD_L_MIN, BOARD_L_MAX = 24.0, 62.0
+BOARD_CHROMA_SCALE = 0.52
+BOARD_CHROMA_MAX = 30.0
+
+
+def published_board(hex_colour: str) -> str:
+    """Same hue, published lightness and chroma."""
+    import numpy as np
+
+    from app.services.likeness import lab_to_srgb_in_gamut, srgb_to_lab
+
+    raw = hex_colour.lstrip("#")
+    rgb = np.array([int(raw[i:i + 2], 16) for i in (0, 2, 4)], dtype=float)
+    lab = srgb_to_lab(rgb)
+    chroma = float(np.hypot(lab[1], lab[2]))
+
+    lightness = min(BOARD_L_MAX, max(BOARD_L_MIN, float(lab[0])))
+    target = min(BOARD_CHROMA_MAX, chroma * BOARD_CHROMA_SCALE)
+    scale = target / chroma if chroma > 1e-6 else 0.0
+
+    out = lab_to_srgb_in_gamut(
+        np.array([lightness, lab[1] * scale, lab[2] * scale]))
+    return "#%02X%02X%02X" % tuple(int(round(v)) for v in out)
+
+
 def template_name(count: int, index: int) -> str:
     """A grid family name per panel count, varied so neighbours differ."""
     families = {
@@ -259,6 +295,7 @@ def main() -> int:
         variant += 1
 
         color, note = FRAME_COLORS.get(page_number, ("#556677", ""))
+        color = published_board(color)
         boxes = layout_page(page_number, panels, template)
 
         # A page must tile completely, so a set of declared shapes can be
