@@ -27,6 +27,11 @@ import yaml
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 LAYER_DIR = REPO_ROOT / "source_material" / "imported_canon" / "character_layers"
+#: Layers cut from approved pose sheets for characters imported canon has no
+#: alpha set for. Lil Devil was reported here as the issue's only hard blocker
+#: until his 31 layers were cut; counting only LAYER_DIR would still report him
+#: as having none.
+DERIVED_DIR = REPO_ROOT / "characters" / "working" / "derived_layers"
 
 NAMES = {
     "MZ-CHAR-001": "Moodz", "MZ-CHAR-002": "TwoTone", "MZ-CHAR-003": "Static",
@@ -42,15 +47,22 @@ SLUGS = {
 
 def available_layers() -> dict[str, list[str]]:
     """Poses available per character slug, from the imported layer library."""
+    found: dict[str, list[str]] = {}
     index = LAYER_DIR / "layer_menu.json"
     if index.is_file():
         data = json.loads(index.read_text(encoding="utf-8"))
-        return {slug: [e["pose"] for e in entries] for slug, entries in data.items()}
-    found: dict[str, list[str]] = {}
-    if LAYER_DIR.is_dir():
+        found = {slug: [e["pose"] for e in entries] for slug, entries in data.items()}
+    elif LAYER_DIR.is_dir():
         for child in sorted(LAYER_DIR.iterdir()):
             if child.is_dir():
-                found[child.name] = sorted(p.stem.split("_", 2)[-1] for p in child.glob("*.png"))
+                found[child.name] = sorted(p.stem.split("_", 2)[-1]
+                                           for p in child.glob("*.png"))
+
+    if DERIVED_DIR.is_dir():
+        for child in sorted(DERIVED_DIR.iterdir()):
+            if child.is_dir() and child.name not in found:
+                found[child.name] = sorted(p.stem.split("_", 2)[-1]
+                                           for p in child.glob("*.png"))
     return found
 
 

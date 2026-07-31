@@ -44,12 +44,15 @@ from app.services import workflows as wf  # noqa: E402
 from app.services.compositor import (  # noqa: E402
     GroundPlane, LightContract, Placement, composite_panel,
 )
-from app.services.cover import CoverText, render_cover  # noqa: E402
+from app.services.cover import (  # noqa: E402
+    CoverText, draw_hanging_light, render_cover,
+)
 from app.services.plate_finish import finish_plate  # noqa: E402
 
 ISSUE = Path("issues/issue-001-neonblue-the-last-light-of-summer")
 LAYERS = Path("source_material/imported_canon/character_layers")
 REPAIRED = Path("characters/working/repaired_layers")
+DERIVED = Path("characters/working/derived_layers")
 OUT_PLATES = ISSUE / "06_backgrounds" / "generated_candidates"
 OUT_META = ISSUE / "06_backgrounds" / "metadata"
 OUT_PAGES = ISSUE / "09_composites" / "sample_pages"
@@ -58,14 +61,23 @@ OUT_EXPORT = ISSUE / "14_exports" / "sample"
 #: The hero and the five who can actually be staged. Lil Devil is absent
 #: because he has no approved layers - see the module docstring.
 HERO = ("MZ-CHAR-005", "neonblue", "26_reaching")
+#: The brief puts Lil Devil second, raising a fist. 28_celebrating is the
+#: closest approved pose - both fists up - and he is staged larger and nearer
+#: than the rest of the supporting cast to read as the secondary figure.
+SECONDARY = ("MZ-CHAR-LILDEVIL", "lildevil", "28_celebrating", 0.735)
+#: (id, folder, pose, x fraction, DEPTH 0..1 where 1 is nearest camera).
+#: Depth varies so the cast is not the flat standing row the compositor exists
+#: to prevent - the first cover put all five at one baseline and one size.
 SUPPORTING = [
-    ("MZ-CHAR-001", "moodz", "19_determined", 0.10),
-    ("MZ-CHAR-003", "static", "16_worried", 0.245),
-    ("MZ-CHAR-002", "twotone", "24_thinking", 0.755),
-    ("MZ-CHAR-006", "scarline", "19_determined", 0.895),
-    ("MZ-CHAR-004", "ash", "18_sleepy", 0.375),
+    ("MZ-CHAR-001", "moodz", "19_determined", 0.085, 0.95),
+    ("MZ-CHAR-003", "static", "16_worried", 0.235, 0.35),
+    ("MZ-CHAR-002", "twotone", "24_thinking", 0.845, 0.80),
+    ("MZ-CHAR-006", "scarline", "19_determined", 0.925, 0.20),
+    ("MZ-CHAR-004", "ash", "18_sleepy", 0.360, 0.60),
 ]
-MISSING = {"MZ-CHAR-LILDEVIL": "Lil Devil - no approved alpha layers exist"}
+#: Lil Devil is now stageable: his 31 layers were cut from the approved pose
+#: sheets. The control-box prop the brief pairs him with still does not exist.
+MISSING: dict[str, str] = {}
 
 COVER_PROMPT = (
     "(night:1.45), (total blackout at a summer funfair:1.4), "
@@ -93,12 +105,15 @@ COVER_NEGATIVE = (
 
 
 def layer_for(folder: str, pose: str) -> Path | None:
-    for base in (REPAIRED, LAYERS):
+    for base in (REPAIRED, LAYERS, DERIVED):
         exact = base / folder / f"{folder}_{pose}.png"
         if exact.is_file():
             return exact
-    found = sorted((LAYERS / folder).glob("*.png"))
-    return found[0] if found else None
+    for base in (LAYERS, DERIVED):
+        found = sorted((base / folder).glob("*.png"))
+        if found:
+            return found[0]
+    return None
 
 
 def score(path: Path) -> dict:
@@ -214,20 +229,33 @@ def main() -> int:
     # hero about 40% of page height standing clear of the bottom edge.
     placements = [Placement(
         character_id=HERO[0], layer_path=layer_for(HERO[1], HERO[2]),
-        centre_x=int(pw * 0.50), foot_y=int(ph * 0.845),
-        scale_multiplier=(0.36 * ph) / ground.character_height_at(0.845 * ph),
+        centre_x=int(pw * 0.50), foot_y=int(ph * 0.815),
+        scale_multiplier=(0.34 * ph) / ground.character_height_at(0.815 * ph),
         depth_plane="foreground", identity_critical=True)]
 
-    for cid, folder, pose, x in SUPPORTING:
+    secondary_path = layer_for(SECONDARY[1], SECONDARY[2])
+    if secondary_path is not None:
+        placements.append(Placement(
+            character_id=SECONDARY[0], layer_path=secondary_path,
+            centre_x=int(pw * SECONDARY[3]), foot_y=int(ph * 0.800),
+            scale_multiplier=(0.24 * ph) / ground.character_height_at(0.800 * ph),
+            depth_plane="midground", identity_critical=True))
+    else:
+        report["missing"][SECONDARY[0]] = "no layer found"
+
+    for cid, folder, pose, x, depth in SUPPORTING:
         path = layer_for(folder, pose)
         if path is None:
             report["missing"][cid] = f"{folder} - no layer found"
             continue
+        foot = 0.745 + 0.075 * depth
+        share = 0.125 + 0.075 * depth
         placements.append(Placement(
             character_id=cid, layer_path=path,
-            centre_x=int(pw * x), foot_y=int(ph * 0.795),
-            scale_multiplier=(0.17 * ph) / ground.character_height_at(0.795 * ph),
-            depth_plane="background", identity_critical=False))
+            centre_x=int(pw * x), foot_y=int(ph * foot),
+            scale_multiplier=(share * ph) / ground.character_height_at(foot * ph),
+            depth_plane="midground" if depth > 0.55 else "background",
+            identity_critical=False))
 
     staged, composite_report = composite_panel(chosen, ground, light, placements)
     report["placements"] = composite_report.placements
@@ -243,7 +271,12 @@ def main() -> int:
         captions=["When the lights go out, somebody has to choose."],
     )
 
-    cover = render_cover(staged.resize((width, height), Image.LANCZOS), text)
+    dressed = staged.resize((width, height), Image.LANCZOS).convert("RGBA")
+    # Above and slightly right of the hero's raised hands, so the reach lands.
+    # Above the hero's raised hands, not between them: at 0.505 the bulb sat
+    # inside the loop his arms make and read as something he was holding.
+    draw_hanging_light(dressed, at=(0.515, 0.425), radius_frac=0.038)
+    cover = render_cover(dressed, text)
     OUT_PAGES.mkdir(parents=True, exist_ok=True)
     out = OUT_PAGES / "page_00_cover.png"
     paths.assert_safe_write_target(out)

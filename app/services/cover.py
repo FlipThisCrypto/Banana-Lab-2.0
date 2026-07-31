@@ -113,6 +113,56 @@ def draw_stripes(page: Image.Image, top: float, band: float,
     page.alpha_composite(layer)
 
 
+def draw_hanging_light(page: Image.Image, at: tuple[float, float],
+                       radius_frac: float = 0.055) -> None:
+    """The one bulb still burning, on its flex, with a glow.
+
+    The brief is "NeonBlue central, reaching toward a small light while the
+    festival blacks out". The generated plate puts its warm pool on the GROUND,
+    so there was nothing above him to reach toward and the raised arms read as
+    an empty gesture. This draws the thing the reach is aimed at.
+    """
+    width, height = page.size
+    cx, cy = int(width * at[0]), int(height * at[1])
+    radius = int(width * radius_frac)
+
+    # The glow has to carry the whole idea of "the last light", so it is not
+    # subtle. The first version peaked at alpha 79 over a mid-blue sky and was
+    # invisible; this reaches full opacity at the core and falls off over four
+    # bulb radii.
+    glow = Image.new("RGBA", page.size, (0, 0, 0, 0))
+    halo = ImageDraw.Draw(glow)
+    for step in range(14, 0, -1):
+        r = int(radius * step * 0.55)
+        alpha = int(6 + (14 - step) ** 2 * 1.5)
+        halo.ellipse([cx - r, cy - r, cx + r, cy + r],
+                     fill=(255, 214, 142, min(235, alpha)))
+    glow = glow.filter(ImageFilter.GaussianBlur(radius * 0.5))
+    page.alpha_composite(glow)
+
+    # A few rays, so it reads as a source rather than a sticker.
+    rays = Image.new("RGBA", page.size, (0, 0, 0, 0))
+    pen = ImageDraw.Draw(rays)
+    for index in range(12):
+        angle = math.radians(index * 30 + 8)
+        far = radius * 5.2
+        pen.line([(cx, cy), (cx + math.cos(angle) * far, cy + math.sin(angle) * far)],
+                 fill=(255, 226, 168, 46), width=max(2, int(radius * 0.10)))
+    rays = rays.filter(ImageFilter.GaussianBlur(radius * 0.22))
+    page.alpha_composite(rays)
+
+    draw = ImageDraw.Draw(page)
+    # Flex running up out of frame, so the bulb is hanging rather than floating.
+    draw.line([(cx, 0), (cx, cy - int(radius * 0.9))],
+              fill=(18, 16, 20, 255), width=max(3, int(width * 0.0035)))
+    draw.ellipse([cx - int(radius * 0.30), cy - int(radius * 1.15),
+                  cx + int(radius * 0.30), cy - int(radius * 0.72)],
+                 fill=(38, 34, 32, 255))
+    draw.ellipse([cx - radius // 2, cy - radius // 2, cx + radius // 2,
+                  cy + radius // 2], fill=(255, 232, 176, 255),
+                 outline=(24, 20, 18, 255), width=max(2, int(width * 0.002)))
+
+
 @dataclass
 class CoverText:
     masthead: str

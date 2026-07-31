@@ -9,7 +9,7 @@ Script: 103 panels across 22 story pages.
 | Character | Panels | Approved alpha layers | Status |
 |---|---:|---:|---|
 | NeonBlue | 46 | 17 | layers available |
-| Lil Devil | 17 | 0 | **BLOCKER - no layers exist** |
+| Lil Devil | 17 | 31 | layers available |
 | Static | 15 | 18 | layers available |
 | TwoTone | 13 | 19 | layers available |
 | Ash | 13 | 18 | layers available |

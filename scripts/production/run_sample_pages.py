@@ -55,6 +55,9 @@ from app.services.plate_finish import finish_plate  # noqa: E402
 ISSUE = Path("issues/issue-001-neonblue-the-last-light-of-summer")
 LAYERS = Path("source_material/imported_canon/character_layers")
 REPAIRED = Path("characters/working/repaired_layers")
+#: Layers cut from approved pose sheets by scripts/production/cut_character_layers.py
+#: for characters who had no true-alpha set in imported canon.
+DERIVED = Path("characters/working/derived_layers")
 
 OUT_PLATES = ISSUE / "06_backgrounds" / "generated_candidates"
 OUT_MANIFESTS = ISSUE / "06_backgrounds" / "metadata"
@@ -73,11 +76,14 @@ CHARACTERS = {
     "MZ-CHAR-004": "ash",
     "MZ-CHAR-005": "neonblue",
     "MZ-CHAR-006": "scarline",
+    # Cut from approved pose sheets; imported canon has no alpha set for him.
+    "MZ-CHAR-LILDEVIL": "lildevil",
 }
 
 #: Characters named in the script with no approved alpha layers. Recorded and
-#: skipped - never substituted with someone else's art.
-NO_LAYERS = {"MZ-CHAR-LILDEVIL": "Lil Devil"}
+#: skipped - never substituted with someone else's art. Lil Devil was the only
+#: entry until his 31 layers were cut from the approved sheets.
+NO_LAYERS: dict[str, str] = {}
 
 #: Ground-plane ESTIMATES, as a fraction of plate height, per camera shot.
 #: (horizon, foot line for a character standing at mid-depth, character height)
@@ -468,7 +474,8 @@ def pick_layer(character_id: str, panel: dict,
     if not folder:
         return None
 
-    available = sorted((LAYERS / folder).glob("*.png"))
+    root = LAYERS if (LAYERS / folder).is_dir() else DERIVED
+    available = sorted((root / folder).glob("*.png"))
     if not available:
         return None
 

@@ -6,7 +6,7 @@ Everything the script asks for that does not exist yet.
 
 ## Blockers
 
-- **Lil Devil has no true-alpha layer set.** Appears in 17 panels: ISSUE001-P03-02, ISSUE001-P03-03, ISSUE001-P08-04, ISSUE001-P08-05, ISSUE001-P12-01, ISSUE001-P12-04 and others. Approved character art exists and must be background-removed.
+- None.
 
 ## New assets the script requires
 

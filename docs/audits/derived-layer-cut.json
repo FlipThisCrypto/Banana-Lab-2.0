@@ -1,0 +1,389 @@
+[
+  {
+    "character_id": "MZ-CHAR-LILDEVIL",
+    "slug": "lildevil",
+    "source": "source_material/imported_canon/approved_characters/lil devil",
+    "output": "characters/working/derived_layers/lildevil",
+    "status": "CANDIDATE - derived, not approved",
+    "sheets": 31,
+    "transparent_share": {
+      "min": 0.4964,
+      "median": 0.6886,
+      "max": 0.7467
+    },
+    "rows": [
+      {
+        "field_rgb": [
+          193,
+          193,
+          193
+        ],
+        "transparent_share": 0.6927,
+        "enclosed_removed_px": 2104,
+        "enclosed_kept_as_art_px": 2454,
+        "regions": 1825,
+        "sheet": "lildevil_00_clean_base.png"
+      },
+      {
+        "field_rgb": [
+          193,
+          193,
+          193
+        ],
+        "transparent_share": 0.6927,
+        "enclosed_removed_px": 2104,
+        "enclosed_kept_as_art_px": 2454,
+        "regions": 1825,
+        "sheet": "lildevil_01_neutral.png"
+      },
+      {
+        "field_rgb": [
+          192,
+          192,
+          192
+        ],
+        "transparent_share": 0.6882,
+        "enclosed_removed_px": 2914,
+        "enclosed_kept_as_art_px": 5249,
+        "regions": 1770,
+        "sheet": "lildevil_02_threeqtr.png"
+      },
+      {
+        "field_rgb": [
+          192,
+          192,
+          192
+        ],
+        "transparent_share": 0.7335,
+        "enclosed_removed_px": 0,
+        "enclosed_kept_as_art_px": 4252,
+        "regions": 1135,
+        "sheet": "lildevil_03_profile.png"
+      },
+      {
+        "field_rgb": [
+          192,
+          192,
+          192
+        ],
+        "transparent_share": 0.7139,
+        "enclosed_removed_px": 0,
+        "enclosed_kept_as_art_px": 4503,
+        "regions": 1394,
+        "sheet": "lildevil_04_overshoulder.png"
+      },
+      {
+        "field_rgb": [
+          189,
+          189,
+          189
+        ],
+        "transparent_share": 0.4964,
+        "enclosed_removed_px": 0,
+        "enclosed_kept_as_art_px": 4088,
+        "regions": 1275,
+        "sheet": "lildevil_05_portrait.png"
+      },
+      {
+        "field_rgb": [
+          192,
+          192,
+          192
+        ],
+        "transparent_share": 0.6945,
+        "enclosed_removed_px": 1015,
+        "enclosed_kept_as_art_px": 4738,
+        "regions": 1765,
+        "sheet": "lildevil_06_angry.png"
+      },
+      {
+        "field_rgb": [
+          192,
+          192,
+          192
+        ],
+        "transparent_share": 0.6756,
+        "enclosed_removed_px": 0,
+        "enclosed_kept_as_art_px": 4988,
+        "regions": 1770,
+        "sheet": "lildevil_07_sad.png"
+      },
+      {
+        "field_rgb": [
+          191,
+          191,
+          191
+        ],
+        "transparent_share": 0.6883,
+        "enclosed_removed_px": 6171,
+        "enclosed_kept_as_art_px": 4199,
+        "regions": 1591,
+        "sheet": "lildevil_08_shocked.png"
+      },
+      {
+        "field_rgb": [
+          191,
+          192,
+          191
+        ],
+        "transparent_share": 0.6908,
+        "enclosed_removed_px": 2013,
+        "enclosed_kept_as_art_px": 4991,
+        "regions": 1713,
+        "sheet": "lildevil_09_smile.png"
+      },
+      {
+        "field_rgb": [
+          188,
+          188,
+          188
+        ],
+        "transparent_share": 0.6795,
+        "enclosed_removed_px": 2055,
+        "enclosed_kept_as_art_px": 2929,
+        "regions": 1602,
+        "sheet": "lildevil_10_walking.png"
+      },
+      {
+        "field_rgb": [
+          192,
+          192,
+          192
+        ],
+        "transparent_share": 0.6902,
+        "enclosed_removed_px": 0,
+        "enclosed_kept_as_art_px": 4158,
+        "regions": 1621,
+        "sheet": "lildevil_11_armscrossed.png"
+      },
+      {
+        "field_rgb": [
+          188,
+          190,
+          189
+        ],
+        "transparent_share": 0.6822,
+        "enclosed_removed_px": 0,
+        "enclosed_kept_as_art_px": 4316,
+        "regions": 2005,
+        "sheet": "lildevil_12_sitting.png"
+      },
+      {
+        "field_rgb": [
+          189,
+          189,
+          189
+        ],
+        "transparent_share": 0.6897,
+        "enclosed_removed_px": 2488,
+        "enclosed_kept_as_art_px": 7378,
+        "regions": 1819,
+        "sheet": "lildevil_13_pointing.png"
+      },
+      {
+        "field_rgb": [
+          192,
+          192,
+          192
+        ],
+        "transparent_share": 0.666,
+        "enclosed_removed_px": 155,
+        "enclosed_kept_as_art_px": 4561,
+        "regions": 1793,
+        "sheet": "lildevil_14_shout.png"
+      },
+      {
+        "field_rgb": [
+          192,
+          192,
+          192
+        ],
+        "transparent_share": 0.691,
+        "enclosed_removed_px": 2049,
+        "enclosed_kept_as_art_px": 4923,
+        "regions": 1706,
+        "sheet": "lildevil_15_laughing.png"
+      },
+      {
+        "field_rgb": [
+          192,
+          192,
+          192
+        ],
+        "transparent_share": 0.6948,
+        "enclosed_removed_px": 1766,
+        "enclosed_kept_as_art_px": 5644,
+        "regions": 2040,
+        "sheet": "lildevil_16_worried.png"
+      },
+      {
+        "field_rgb": [
+          192,
+          192,
+          192
+        ],
+        "transparent_share": 0.6708,
+        "enclosed_removed_px": 1285,
+        "enclosed_kept_as_art_px": 5200,
+        "regions": 2065,
+        "sheet": "lildevil_17_disgusted.png"
+      },
+      {
+        "field_rgb": [
+          193,
+          193,
+          193
+        ],
+        "transparent_share": 0.6935,
+        "enclosed_removed_px": 2028,
+        "enclosed_kept_as_art_px": 3974,
+        "regions": 1447,
+        "sheet": "lildevil_18_sleepy.png"
+      },
+      {
+        "field_rgb": [
+          192,
+          192,
+          192
+        ],
+        "transparent_share": 0.6566,
+        "enclosed_removed_px": 865,
+        "enclosed_kept_as_art_px": 6003,
+        "regions": 2165,
+        "sheet": "lildevil_19_determined.png"
+      },
+      {
+        "field_rgb": [
+          192,
+          192,
+          192
+        ],
+        "transparent_share": 0.6689,
+        "enclosed_removed_px": 3473,
+        "enclosed_kept_as_art_px": 4732,
+        "regions": 1878,
+        "sheet": "lildevil_20_confused.png"
+      },
+      {
+        "field_rgb": [
+          191,
+          192,
+          191
+        ],
+        "transparent_share": 0.7467,
+        "enclosed_removed_px": 0,
+        "enclosed_kept_as_art_px": 4918,
+        "regions": 2446,
+        "sheet": "lildevil_21_running.png"
+      },
+      {
+        "field_rgb": [
+          192,
+          192,
+          192
+        ],
+        "transparent_share": 0.6864,
+        "enclosed_removed_px": 0,
+        "enclosed_kept_as_art_px": 5599,
+        "regions": 1647,
+        "sheet": "lildevil_22_jumping.png"
+      },
+      {
+        "field_rgb": [
+          192,
+          192,
+          192
+        ],
+        "transparent_share": 0.6674,
+        "enclosed_removed_px": 6429,
+        "enclosed_kept_as_art_px": 5122,
+        "regions": 1740,
+        "sheet": "lildevil_23_waving.png"
+      },
+      {
+        "field_rgb": [
+          192,
+          192,
+          192
+        ],
+        "transparent_share": 0.6908,
+        "enclosed_removed_px": 2029,
+        "enclosed_kept_as_art_px": 4289,
+        "regions": 1727,
+        "sheet": "lildevil_24_thinking.png"
+      },
+      {
+        "field_rgb": [
+          192,
+          192,
+          192
+        ],
+        "transparent_share": 0.6609,
+        "enclosed_removed_px": 4240,
+        "enclosed_kept_as_art_px": 7351,
+        "regions": 2282,
+        "sheet": "lildevil_25_crouching.png"
+      },
+      {
+        "field_rgb": [
+          192,
+          192,
+          192
+        ],
+        "transparent_share": 0.6588,
+        "enclosed_removed_px": 0,
+        "enclosed_kept_as_art_px": 4225,
+        "regions": 1627,
+        "sheet": "lildevil_26_reaching.png"
+      },
+      {
+        "field_rgb": [
+          192,
+          192,
+          192
+        ],
+        "transparent_share": 0.7027,
+        "enclosed_removed_px": 0,
+        "enclosed_kept_as_art_px": 5078,
+        "regions": 1584,
+        "sheet": "lildevil_27_defeated.png"
+      },
+      {
+        "field_rgb": [
+          192,
+          192,
+          192
+        ],
+        "transparent_share": 0.6637,
+        "enclosed_removed_px": 8336,
+        "enclosed_kept_as_art_px": 4313,
+        "regions": 1751,
+        "sheet": "lildevil_28_celebrating.png"
+      },
+      {
+        "field_rgb": [
+          191,
+          191,
+          191
+        ],
+        "transparent_share": 0.6886,
+        "enclosed_removed_px": 2035,
+        "enclosed_kept_as_art_px": 4800,
+        "regions": 1646,
+        "sheet": "lildevil_29_lookingup.png"
+      },
+      {
+        "field_rgb": [
+          192,
+          192,
+          192
+        ],
+        "transparent_share": 0.7059,
+        "enclosed_removed_px": 717,
+        "enclosed_kept_as_art_px": 3337,
+        "regions": 1030,
+        "sheet": "lildevil_30_backview.png"
+      }
+    ]
+  }
+]
