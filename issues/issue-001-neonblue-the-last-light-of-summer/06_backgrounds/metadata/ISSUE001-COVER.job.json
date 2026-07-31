@@ -1,17 +1,17 @@
 {
   "job_id": "ISSUE001-COVER",
   "job_class": "cover_plate",
-  "workflow_version": "sample-pages-1",
-  "prompt_id": "4abbf6d8-fa1a-4499-b2c8-96d55f8167fb",
+  "workflow_version": "cover-1",
+  "prompt_id": "",
   "ok": true,
   "error": "",
-  "seconds": 54.2,
+  "seconds": 0.0,
   "outputs": [
     {
-      "path": "issues/issue-001-neonblue-the-last-light-of-summer/06_backgrounds/generated_candidates/ISSUE001-COVER_take3.png",
-      "sha256": "746b71c4dba1f358400de2743d55e58fefe5f47c96c7c24ac187988420833858",
-      "pixel_sha256": "2f00dbdc9c5f115f534e17a241e82b69a69c18ac1661b0442c20e3a184a9e44a",
-      "bytes": 1807947
+      "path": "issues/issue-001-neonblue-the-last-light-of-summer/06_backgrounds/generated_candidates/ISSUE001-COVER_take2.png",
+      "sha256": "0f43f1eeaacde8fa9d78d359296303e875cc7a5e93b525997b6190ba45d3d420",
+      "pixel_sha256": "309dd006c9e7a0d68715039b1f18a1004793457b7f853deb896322fa9115b3ae",
+      "bytes": 1603251
     }
   ],
   "graph": {
@@ -27,7 +27,7 @@
     "2": {
       "class_type": "CLIPTextEncode",
       "inputs": {
-        "text": "(flat 2d vector cartoon illustration:1.5), (thick uniform black outlines:1.4), (flat colour fills with hard cel shading:1.4), comic book background art, graphic novel panel, bold saturated palette, clear perspective. (night:1.4), (blacked out fairground:1.4), the festival grounds during a total power failure, seen wide and slightly low, ferris wheel and main stage as dark silhouettes against a starless deep blue night sky, every bulb dead and unlit, strings of dead bulbs hanging overhead, stalls and booths in cold blue shadow, (one single small warm lamp still burning at the centre of frame:1.4), a narrow pool of warm light on the ground beneath it, empty foreground path leading in toward that one light, depth: foreground path and dead bunting, midground darkened rides and stalls, background black skyline, lit only by that one small warm source at centre frame, deep amber key falling off fast into darkness, cold blue moonlight ambient fill, cover composition with clear central space for a figure and clear upper third of empty night sky for a title. (flat cartoon vector art:1.4), (bold black outlines:1.3), (cel shaded:1.3), non-photorealistic",
+        "text": "(flat 2d vector cartoon illustration:1.5), (thick uniform black outlines:1.4), (flat colour fills with hard cel shading:1.4), comic book background art, graphic novel panel, bold saturated palette, clear perspective. (night:1.45), (total blackout at a summer funfair:1.4), (one ferris wheel silhouette against a deep blue night sky:1.35), every bulb dead and unlit, dead strings of bulbs overhead, (one single small warm lamp burning low at the centre:1.45), a narrow pool of warm light on the open ground beneath it, wide empty trodden ground leading in toward that one light, (large simple flat shapes:1.35), (only three colours:1.35), (hard edged flat colour, no gradients, no airbrush:1.35), (deep black shadow in all four corners:1.3), (render crowds and rows of objects as large simple massed silhouette shapes:1.35), (not individual figures or individual objects:1.3), cover composition, generous empty centre for a figure to stand in, (clear empty upper third of night sky for a title:1.4), seen from standing eye level. (flat cartoon vector art:1.4), (bold black outlines:1.3), (cel shaded:1.3), non-photorealistic",
         "clip": [
           "1",
           1
@@ -40,7 +40,7 @@
     "3": {
       "class_type": "CLIPTextEncode",
       "inputs": {
-        "text": "(photorealistic:1.6), (photograph:1.6), (realistic lighting:1.4), (3d render:1.4), (volumetric light:1.3), (depth of field:1.3), cinematic photography, film still, octane render, unreal engine, realistic textures, reflections, bokeh, lens flare, characters, people, person, figure, animal, monkey, creature, mascot, text, letters, words, signature, watermark, logo, caption, speech bubble, panel border, frame, comic frame, white border, gutter, blurry, noisy, jpeg artifacts, low contrast mush, duplicated objects, warped architecture, broken geometry, extra limbs, aerial view, bird's eye view, isometric, top-down, map view, crowd of detailed people, hundreds of small figures, busy, cluttered, wimmelbild, densely packed stalls, repeated small objects, fine intricate detail, tiny text, signage lettering, flat evenly-lit scene, no focal point, evenly lit, bright daylight, many small objects, repeated detail, surface texture, airbrushed, soft gradient, painterly, oil painting, watercolour, blurry, out of focus photography, photographic bokeh, hazy, misty, soft focus, feathered edges, no linework",
+        "text": "(photorealistic:1.6), (photograph:1.6), (realistic lighting:1.4), (3d render:1.4), (volumetric light:1.3), (depth of field:1.3), cinematic photography, film still, octane render, unreal engine, realistic textures, reflections, bokeh, lens flare, characters, people, person, figure, animal, monkey, creature, mascot, text, letters, words, signature, watermark, logo, caption, speech bubble, panel border, frame, comic frame, white border, gutter, blurry, noisy, jpeg artifacts, low contrast mush, duplicated objects, warped architecture, broken geometry, extra limbs, aerial view, bird's eye view, isometric, top-down, crowd of detailed people, hundreds of small figures, busy, cluttered, wimmelbild, fine intricate detail, tiny text, signage lettering, evenly lit, bright daylight, airbrushed, soft gradient, painterly, blurry, photographic bokeh, no linework, people, characters, monkeys, figures",
         "clip": [
           "1",
           1
@@ -53,7 +53,7 @@
     "4": {
       "class_type": "EmptyLatentImage",
       "inputs": {
-        "width": 904,
+        "width": 896,
         "height": 1272,
         "batch_size": 1
       },
@@ -64,7 +64,7 @@
     "5": {
       "class_type": "KSampler",
       "inputs": {
-        "seed": 146420,
+        "seed": 794571,
         "steps": 30,
         "cfg": 6.0,
         "sampler_name": "dpmpp_2m",
@@ -110,7 +110,7 @@
     "7": {
       "class_type": "SaveImage",
       "inputs": {
-        "filename_prefix": "bananalab/sample/ISSUE001-COVER",
+        "filename_prefix": "bananalab/cover/ISSUE001-COVER",
         "images": [
           "6",
           0
@@ -124,17 +124,8 @@
   "review_status": "candidate",
   "reviewed_by": "",
   "review_note": "",
-  "panel_id": "ISSUE001-COVER",
-  "page": 0,
-  "prompt": "(night:1.4), (blacked out fairground:1.4), the festival grounds during a total power failure, seen wide and slightly low, ferris wheel and main stage as dark silhouettes against a starless deep blue night sky, every bulb dead and unlit, strings of dead bulbs hanging overhead, stalls and booths in cold blue shadow, (one single small warm lamp still burning at the centre of frame:1.4), a narrow pool of warm light on the ground beneath it, empty foreground path leading in toward that one light, depth: foreground path and dead bunting, midground darkened rides and stalls, background black skyline, lit only by that one small warm source at centre frame, deep amber key falling off fast into darkness, cold blue moonlight ambient fill, cover composition with clear central space for a figure and clear upper third of empty night sky for a title",
-  "seed": 130582,
-  "gen_size": [
-    904,
-    1272
-  ],
-  "print_size": [
-    2480,
-    3508
-  ],
-  "note": "SAMPLE RUN candidate. Not reviewed, not approved."
+  "prompt": "(night:1.45), (total blackout at a summer funfair:1.4), (one ferris wheel silhouette against a deep blue night sky:1.35), every bulb dead and unlit, dead strings of bulbs overhead, (one single small warm lamp burning low at the centre:1.45), a narrow pool of warm light on the open ground beneath it, wide empty trodden ground leading in toward that one light, (large simple flat shapes:1.35), (only three colours:1.35), (hard edged flat colour, no gradients, no airbrush:1.35), (deep black shadow in all four corners:1.3), (render crowds and rows of objects as large simple massed silhouette shapes:1.35), (not individual figures or individual objects:1.3), cover composition, generous empty centre for a figure to stand in, (clear empty upper third of night sky for a title:1.4), seen from standing eye level",
+  "negative": "aerial view, bird's eye view, isometric, top-down, crowd of detailed people, hundreds of small figures, busy, cluttered, wimmelbild, fine intricate detail, tiny text, signage lettering, evenly lit, bright daylight, airbrushed, soft gradient, painterly, blurry, photographic bokeh, no linework, people, characters, monkeys, figures",
+  "seed": 778733,
+  "note": "SAMPLE cover candidate."
 }
