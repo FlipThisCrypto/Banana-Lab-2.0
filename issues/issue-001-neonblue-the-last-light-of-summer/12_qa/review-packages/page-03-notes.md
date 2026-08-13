@@ -14,7 +14,7 @@ Five-question test, page as a whole:
 
 | Panel | What works | What fails |
 |---|---|---|
-| P03-01 | Wide festival at dusk | Script asked for a **food-stand interior, NeonBlue behind the counter**. Plate is another sunset establish. Figure pasted on the sky. |
+| P03-01 | After prompt fix: **food-service interior**, heat-lamp orange, counters, queue. NeonBlue on the floor in the aisle. "Two more coming up" now makes sense. Likeness 99.2. | Still in the aisle, not behind a working counter. Integration 12.7. Not a pass. |
 | P03-02 | Two figures + wheel, dialogue lands | Sticker stance. Duplicate wheels. NeonBlue likeness 95.2 FAIL. |
 | P03-03 | The gesture reads as contempt | Lil Devil 1271px in a 968px plate — cropped giant. Photoreal extras vs cel figure. |
 | P03-04 | Joke is visible | Photoreal man + cel monkey. He sits on the counter like a toy. |

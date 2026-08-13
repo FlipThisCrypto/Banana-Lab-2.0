@@ -2,7 +2,7 @@
 # MEASURED from the plate. Do not replace with a shot-type guess.
 
 panel_id: ISSUE001-P03-01
-plate: issues/issue-001-neonblue-the-last-light-of-summer/06_backgrounds/generated_candidates/ISSUE001-P03-01_take3_finished.png
+plate: issues/issue-001-neonblue-the-last-light-of-summer/06_backgrounds/generated_candidates/ISSUE001-P03-01_take2_finished.png
 plate_size:
 - 1896
 - 608
@@ -10,18 +10,18 @@ source: MEASURED
 derivation_note: Horizon from the plate's own row-wise L* profile, centre 60%. Not a camera solve. Not
   a shot-type guess. Replace only with a better measurement of THIS plate.
 horizon:
-  horizon_fraction: 0.7336
-  horizon_px: 446
-  peak_row: 446
+  horizon_fraction: 0.4424
+  horizon_px: 269
+  peak_row: 269
   method: row_wise_L_star_centre_60_max_positive_gradient
   search:
   - 0.22
   - 0.86
-  mean_L_above: 56.6
-  mean_L_below: 24.57
+  mean_L_above: 40.12
+  mean_L_below: 33.62
 ground_plane:
-  horizon_y: 446
-  horizon_fraction: 0.7336
+  horizon_y: 269
+  horizon_fraction: 0.4424
   calib_foot_y: 535
   calib_foot_fraction: 0.88
   calib_height_px: 243
