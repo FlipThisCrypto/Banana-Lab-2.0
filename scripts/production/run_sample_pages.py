@@ -1027,7 +1027,7 @@ def main() -> int:
     boxes = {p["panel_id"]: p for pg in layout["pages"] for p in pg["panels"]}
     by_page = {pg["page_number"]: pg for pg in layout["pages"]}
 
-    client = ComfyClient()
+    client = ComfyClient(timeout=1800)
     if not args.dry_run and not client.reachable():
         print("ComfyUI is not reachable - start it, or use --dry-run",
               file=sys.stderr)
