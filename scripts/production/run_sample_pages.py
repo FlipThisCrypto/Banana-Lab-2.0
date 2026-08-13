@@ -571,7 +571,7 @@ def light_from_panel(panel: dict) -> tuple[LightContract, tuple[int, int, int]]:
 
 
 def stage_panel(panel: dict, plate_path: Path, size: tuple[int, int],
-                result: PanelResult) -> Path | None:
+                result: PanelResult, layout_panel: dict | None = None) -> Path | None:
     """Composite the panel's cast onto its plate and record every measurement."""
     shot = panel["camera_shot"]
     horizon_f, foot_f, height_f = GROUND_ESTIMATES.get(
@@ -684,7 +684,9 @@ def stage_panel(panel: dict, plate_path: Path, size: tuple[int, int],
         return None
 
     panel_image, report = composite_panel(
-        plate_path, ground, light, placements, )
+        plate_path, ground, light, placements,
+        bubble_zones=(layout_panel or {}).get("bubble_zones"),
+    )
     result.placements = report.placements
     result.warnings.extend(report.warnings)
 
@@ -1049,7 +1051,9 @@ def main() -> int:
 
         panel = script_by_id.get(spec.panel_id)
         if panel:
-            composite = stage_panel(panel, spec.plate, spec.gen_size, spec)
+            composite = stage_panel(
+                panel, spec.plate, spec.gen_size, spec, boxes.get(spec.panel_id)
+            )
             if composite:
                 spec.composite = composite
                 for record in spec.placements:

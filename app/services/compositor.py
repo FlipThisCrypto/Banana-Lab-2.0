@@ -378,6 +378,7 @@ def composite_panel(
     placements: list[Placement],
     *,
     output_size: tuple[int, int] | None = None,
+    bubble_zones: list[dict] | None = None,
 ) -> tuple[Image.Image, CompositeReport]:
     """Stage every character into the plate and return the finished panel art.
 
@@ -503,6 +504,28 @@ def composite_panel(
                 f"{integration.score:.1f} - barely responds to the panel's "
                 f"light and may read as pasted on"
             )
+
+        if bubble_zones:
+            from app.services.lettering_collision import (
+                Box,
+                collisions,
+                placement_box,
+            )
+
+            body = placement_box(
+                place.centre_x,
+                place.foot_y,
+                layer.width,
+                layer.height,
+                canvas.width,
+                canvas.height,
+            )
+            zones = []
+            for zone in bubble_zones:
+                zx, zy, zw, zh = zone["zone"]
+                zones.append((zone.get("for") or "lettering", Box(zx, zy, zw, zh)))
+            for hit in collisions([(place.character_id, body)], zones):
+                report.warnings.append(f"LETTERING: {hit.reason}")
 
         prepared.append((place, layer, left, top, likeness, integration))
 
