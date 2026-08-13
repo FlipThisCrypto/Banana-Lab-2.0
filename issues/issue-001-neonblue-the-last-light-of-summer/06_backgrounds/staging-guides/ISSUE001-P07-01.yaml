@@ -1,0 +1,47 @@
+# Staging guide for ISSUE001-P07-01
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P07-01
+page_number: 7
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: Open the dense page with a fast beat - a ride stopping.
+visual_beat: A ride halting mid-turn, gondolas swinging.
+location: LOC-festival-grounds
+time: Night
+camera_shot: medium
+camera_angle: low_angle
+background_description: A fairground ride stopped at an odd angle, gondolas swinging, lights dead.
+depth_plan: Ride structure midground against night sky.
+lighting:
+  key_direction: Distant festival glow
+  key_color: Weak amber
+  fill: Night sky
+  contact_shadow: Not applicable
+  color_spill: Faint warm on the ride's near edges
+color_mood: Dark and wrong. Machinery in a state it should not be in.
+box:
+- 0.0
+- 0.0
+- 0.3557
+- 0.2017
+shape: rectangle
+actual_aspect: 1.193
+keep_empty:
+  bubble_zones: []
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters: []
+required_source_assets:
+- NEW GROUNDS plate A11 - stopped ride, low
+qa_checklist:
+- The stop angle is visibly not a resting position
+- Gondolas mid-swing
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

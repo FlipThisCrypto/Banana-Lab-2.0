@@ -1,0 +1,64 @@
+# Staging guide for ISSUE001-P09-05
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P09-05
+page_number: 9
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: NeonBlue sees it and reaches for a technical explanation.
+visual_beat: NeonBlue looking up at the fractured screen, cyan on his face.
+location: LOC-festival-grounds
+time: Night
+camera_shot: medium_close
+camera_angle: low_angle
+background_description: The screen above and behind, dark grounds around.
+depth_plan: Figure foreground, screen behind and above.
+lighting:
+  key_direction: The screen, from above and ahead
+  key_color: Hard cyan
+  fill: Almost none
+  contact_shadow: Hard shadow thrown down and back
+  color_spill: Cyan across his upturned face, catching his under-eye bags
+color_mood: Cyan on the character whose own colour is cyan. Deliberately uncomfortable.
+box:
+- 0.0
+- 0.6787
+- 0.5676
+- 0.3213
+shape: rectangle
+actual_aspect: 1.195
+keep_empty:
+  bubble_zones:
+  - zone:
+    - 0.04
+    - 0.05
+    - 0.42
+    - 0.22
+    for: MZ-CHAR-005
+    kind: speech
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-005
+  position: Centre, looking up
+  depth_plane: foreground
+  scale_note: Head fills a third of the panel
+  ground_contact: Both feet, head tilted back
+  eye_line: Up at the screen
+  hand_activity: One hand shielding his eyes from the screen
+  expression_id: EXP-005-confused
+required_source_assets:
+- PROP-public-projection-screen fractured-cyan
+- character_layers/neonblue
+qa_checklist:
+- Screen cyan and his own crown cyan must be distinguishable in hue
+- Upturned face lit from above
+- First time the system's colour is ON him
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

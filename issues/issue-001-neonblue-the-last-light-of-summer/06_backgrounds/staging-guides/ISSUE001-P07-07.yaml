@@ -1,0 +1,49 @@
+# Staging guide for ISSUE001-P07-07
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P07-07
+page_number: 7
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: Close the dense page on the scale of it.
+visual_beat: Wide across the grounds. Two dark zones have grown and nearly meet.
+location: LOC-festival-grounds
+time: Night
+camera_shot: extreme_wide
+camera_angle: high_angle
+background_description: The grounds from a raised angle. Two large dark regions with a narrowing lit corridor
+  between them.
+depth_plan: Single deep plane. Depth from light density.
+lighting:
+  key_direction: Remaining lit zones
+  key_color: Amber
+  fill: Night sky
+  contact_shadow: Not applicable at this scale
+  color_spill: Warm glow bleeding into haze above the lit band
+color_mood: A map made of light. The dark is winning and has a shape.
+box:
+- 0.0
+- 0.7377
+- 1.0
+- 0.2623
+shape: wide
+actual_aspect: 2.579
+keep_empty:
+  bubble_zones: []
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters: []
+required_source_assets:
+- NEW GROUNDS plate A12 - two dark zones nearly meeting, high wide
+qa_checklist:
+- The two zones are visibly converging
+- The lit corridor is narrow
+- Sets up page 11 - do not reveal the full pattern yet
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

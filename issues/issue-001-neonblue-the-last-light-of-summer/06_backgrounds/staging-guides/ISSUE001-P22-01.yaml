@@ -1,0 +1,49 @@
+# Staging guide for ISSUE001-P22-01
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P22-01
+page_number: 22
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: The festival continues in reduced form.
+visual_beat: The grounds, half lit, some rides dark, a smaller calmer crowd.
+location: LOC-festival-grounds
+time: Late night, after the countdown
+camera_shot: extreme_wide
+camera_angle: high_angle
+background_description: A DIFFERENT view of the grounds from page 1. Half the lights working. The ferris
+  wheel dark. A smaller, slower crowd. Litter, ended-evening texture.
+depth_plan: Single deep plane from a raised angle, warm on one side and dead on the other.
+lighting:
+  key_direction: Restored festival lights on one side only
+  key_color: Warm amber where alive, nothing where dead
+  fill: Cool night ambient
+  contact_shadow: Present under the remaining crowd
+  color_spill: Warm confined to the working half
+color_mood: Warm and cool coexisting, neither winning. Earned, imperfect.
+box:
+- 0.0
+- 0.0
+- 1.0
+- 0.1285
+shape: wide
+actual_aspect: 5.264
+keep_empty:
+  bubble_zones: []
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters: []
+required_source_assets:
+- NEW GROUNDS plate A16 - half-lit, late, different angle from page 1
+qa_checklist:
+- Visibly a DIFFERENT view of the grounds than panel 1-1 - this was the worst legacy failure
+- The half-lit state is unmistakable - dark rides visible
+- Crowd is visibly smaller and slower than page 1
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

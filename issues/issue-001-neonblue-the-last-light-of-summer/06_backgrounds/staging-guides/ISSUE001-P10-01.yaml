@@ -1,0 +1,66 @@
+# Staging guide for ISSUE001-P10-01
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P10-01
+page_number: 10
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: NeonBlue's brightness gets louder as the situation gets worse.
+visual_beat: NeonBlue herding people toward the lit section, mid-laugh, too wide.
+location: LOC-festival-grounds
+time: Night
+camera_shot: medium
+camera_angle: eye_level
+background_description: A dark stretch of the grounds, people moving past toward the still-lit areas.
+depth_plan: Dark occluding foreground, NeonBlue midground, dim grounds behind.
+lighting:
+  key_direction: Remaining festival lights frame left
+  key_color: Warm amber, thin
+  fill: Cool ambient night
+  contact_shadow: Present but weakening
+  color_spill: Amber on his left side only
+color_mood: The warmth is running out. His performance is brighter than the light on him.
+box:
+- 0.0
+- 0.0
+- 0.5676
+- 0.3732
+shape: rectangle
+actual_aspect: 1.029
+keep_empty:
+  bubble_zones:
+  - zone:
+    - 0.54
+    - 0.05
+    - 0.42
+    - 0.22
+    for: MZ-CHAR-005
+    kind: speech
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-005
+  position: Centre midground, arms wide
+  depth_plane: midground
+  scale_note: Head roughly a quarter of panel height
+  ground_contact: Both feet, weight up on the balls, leaning into the gesture
+  eye_line: At the crowd, who are not returning it
+  hand_activity: Both arms wide, herding
+  occlusion: Foreground crowd silhouettes cross his lower body
+  expression_id: EXP-005-laughing
+required_source_assets:
+- GROUNDS plate A8 variant
+- character_layers/neonblue
+- NEW crowd silhouette set
+qa_checklist:
+- No crowd figure is looking at him
+- Foreground occlusion is genuine, not a pasted overlay
+- Effortful brightness, never foolishness
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

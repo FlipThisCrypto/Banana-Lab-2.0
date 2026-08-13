@@ -1,0 +1,88 @@
+# Staging guide for ISSUE001-P22-02
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P22-02
+page_number: 22
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: He does not oversell it. The best line in the issue.
+visual_beat: NeonBlue sitting on a low barrier with Moodz, Lil Devil standing nearby and unusually still.
+location: LOC-festival-grounds
+time: Late night, after the countdown
+camera_shot: wide
+camera_angle: eye_level
+background_description: A low barrier at the edge of the half-lit grounds, dark rides behind, warm light
+  from frame left.
+depth_plan: Barrier and seated pair midground, standing figure behind, half-lit grounds beyond.
+lighting:
+  key_direction: Restored festival lights from frame left, frame right stays dead
+  key_color: Warm amber left, nothing right
+  fill: Cool night ambient
+  contact_shadow: Present under all three, including under the seated feet
+  rim: Warm on the left edges of all three
+  color_spill: Amber on left-facing surfaces, the right half of the panel stays cold
+color_mood: Warm and cool coexisting. Earned, imperfect.
+box:
+- 0.0
+- 0.1405
+- 0.6323
+- 0.2892
+shape: wide
+actual_aspect: 1.479
+keep_empty:
+  bubble_zones:
+  - zone:
+    - 0.04
+    - 0.05
+    - 0.42
+    - 0.11
+    for: MZ-CHAR-005
+    kind: speech
+  - zone:
+    - 0.04
+    - 0.18
+    - 0.42
+    - 0.11
+    for: MZ-CHAR-005
+    kind: speech
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-005
+  position: Centre-left, seated on a low barrier
+  depth_plane: midground
+  scale_note: Seated - measured against the barrier height
+  ground_contact: Seated, both feet flat on the ground, forearms on knees
+  eye_line: Out across the grounds, unfocused
+  hand_activity: Hands loose between his knees
+  expression_id: EXP-005-sleepy
+- character_id: MZ-CHAR-001
+  position: Beside him on the same barrier, slightly further from camera
+  depth_plane: midground
+  scale_note: 6 percent smaller - marginally further
+  ground_contact: Seated, one foot up on the barrier
+  eye_line: Same direction as NeonBlue
+  hand_activity: Hands in pockets
+- character_id: MZ-CHAR-LILDEVIL
+  position: Frame right, standing, further back, unusually still
+  depth_plane: background
+  scale_note: Clearly set back from the seated pair
+  ground_contact: Both feet, weight even, standing quietly
+  eye_line: Out across the grounds
+  hand_activity: Arms at sides
+required_source_assets:
+- NEW GROUNDS plate A16 barrier detail
+- character_layers neonblue seated, moodz seated
+- NEW Lil Devil alpha layer set - does not exist yet - standing still
+qa_checklist:
+- Seated figures have correct contact shadows UNDER THEIR FEET, not under the barrier
+- Lil Devil is still and quiet, which is new for him
+- The warm-left cold-right split is unmistakable
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

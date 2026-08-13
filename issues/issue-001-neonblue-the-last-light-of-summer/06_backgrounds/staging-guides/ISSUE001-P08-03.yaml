@@ -1,0 +1,77 @@
+# Staging guide for ISSUE001-P08-03
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P08-03
+page_number: 8
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: NeonBlue reaches for the comforting reading.
+visual_beat: NeonBlue at TwoTone's shoulder, looking at the board.
+location: LOC-festival-grounds
+time: Night
+camera_shot: two_shot
+camera_angle: eye_level
+background_description: The board from behind and to one side, its glow on both faces.
+depth_plan: Two-plane, both lit by the board.
+lighting:
+  key_direction: The board, frontal on both
+  key_color: Cool white
+  fill: None
+  contact_shadow: Both shadows thrown back away from the board
+  color_spill: Cool white on both faces, nothing behind
+color_mood: Cool and shared. Two people looking at the same fact.
+box:
+- 0.0
+- 0.3852
+- 0.494
+- 0.3732
+shape: rectangle
+actual_aspect: 0.895
+keep_empty:
+  bubble_zones:
+  - zone:
+    - 0.04
+    - 0.05
+    - 0.42
+    - 0.22
+    for: MZ-CHAR-005
+    kind: speech
+  - zone:
+    - 0.54
+    - 0.05
+    - 0.42
+    - 0.22
+    for: MZ-CHAR-002
+    kind: speech
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-005
+  position: Frame right, nearer camera
+  depth_plane: foreground
+  scale_note: 8 percent larger
+  ground_contact: Both feet, leaning in
+  eye_line: At the board
+  hand_activity: One hand on the board frame
+  expression_id: EXP-005-thinking
+- character_id: MZ-CHAR-002
+  position: Frame left, at the board
+  depth_plane: midground
+  scale_note: Reference figure
+  ground_contact: Both feet, weight forward
+  eye_line: At the board
+  hand_activity: Fingers still on the map
+required_source_assets:
+- NEW festival map board prop
+- character_layers neonblue, twotone
+qa_checklist:
+- Both faces lit identically by one source
+- NeonBlue's reading is hopeful and wrong
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

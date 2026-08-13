@@ -1,0 +1,49 @@
+# Staging guide for ISSUE001-P04-05
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P04-05
+page_number: 4
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: End the page on the fault about to arrive, with nobody watching it.
+visual_beat: The festival backup panel on a stanchion, indicators green, nobody near it.
+location: LOC-festival-grounds
+time: Night
+camera_shot: insert
+camera_angle: eye_level
+background_description: The backup panel, weathered, green indicators steady, a service sticker peeling.
+depth_plan: Flat. One object, crowd defocused far behind.
+lighting:
+  key_direction: Nearest booth, frame right
+  key_color: Amber
+  fill: Panel indicator glow
+  contact_shadow: Hard shadow under the panel housing
+  color_spill: Weak green from the indicators onto the housing
+color_mood: Warm, ordinary, ignored. The object NeonBlue will guarantee.
+box:
+- 0.552
+- 0.7904
+- 0.448
+- 0.2096
+shape: rectangle
+actual_aspect: 1.446
+keep_empty:
+  bubble_zones: []
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters: []
+required_source_assets:
+- PROP-festival-backup-panel healthy state
+- GROUNDS plate A8 defocused
+qa_checklist:
+- All indicators green - it must look capable so its failure lands
+- Nobody is looking at it
+- Green indicators are NOT cyan
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

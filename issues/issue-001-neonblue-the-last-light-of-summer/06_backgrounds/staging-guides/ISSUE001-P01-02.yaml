@@ -1,0 +1,101 @@
+# Staging guide for ISSUE001-P01-02
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P01-02
+page_number: 1
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: Bring the cast in at ground level as a group who arrive together.
+visual_beat: The six enter through the main gate in a loose cluster, not a line.
+location: LOC-festival-grounds
+time: Dusk, sun low
+camera_shot: wide
+camera_angle: low_angle
+background_description: The main gate arch strung with lights, crowd flowing both ways, booth row beyond.
+depth_plan: Gate upright foreground, cast midground through the arch, festival beyond.
+lighting:
+  key_direction: Warm gate lights overhead and behind
+  key_color: Amber and warm white
+  fill: Cool dusk sky
+  contact_shadow: Tight under each foot on packed earth
+  rim: Warm top rim on every head
+  color_spill: Amber on upward surfaces
+color_mood: Warm and busy. A good evening starting.
+box:
+- 0.0
+- 0.3806
+- 1.0
+- 0.2268
+shape: wide
+actual_aspect: 2.982
+keep_empty:
+  bubble_zones:
+  - zone:
+    - 0.54
+    - 0.05
+    - 0.42
+    - 0.22
+    for: MZ-CHAR-003
+    kind: speech
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-005
+  position: Front of the cluster, left of centre
+  depth_plane: midground
+  scale_note: Reference figure. Gate arch is 2.4 character heights
+  ground_contact: Both feet mid-stride, weight forward
+  eye_line: Ahead into the festival
+  hand_activity: One arm already raised, pointing
+- character_id: MZ-CHAR-001
+  position: Half a step behind NeonBlue
+  depth_plane: midground
+  scale_note: 6 percent smaller
+  ground_contact: Both feet walking
+  eye_line: Ahead, level
+  hand_activity: Hands in pockets
+- character_id: MZ-CHAR-003
+  position: Right of the cluster, slightly apart
+  depth_plane: midground
+  scale_note: 10 percent smaller
+  ground_contact: Both feet, hesitating half a step
+  eye_line: Up and off, listening
+  hand_activity: One hand near his ear
+- character_id: MZ-CHAR-002
+  position: Centre rear
+  depth_plane: midground
+  scale_note: 12 percent smaller
+  ground_contact: Both feet walking
+  eye_line: Scanning the layout
+  hand_activity: Neutral at sides
+- character_id: MZ-CHAR-006
+  position: Left rear
+  depth_plane: background
+  scale_note: 16 percent smaller
+  ground_contact: Both feet, unhurried
+  eye_line: Reading the crowd, not the rides
+  hand_activity: Neutral at sides
+- character_id: MZ-CHAR-004
+  position: Rearmost, trailing
+  depth_plane: background
+  scale_note: 20 percent smaller
+  ground_contact: Both feet, slowest pace
+  eye_line: Down at the ground
+  hand_activity: Hands in hoodie pocket
+required_source_assets:
+- NEW GROUNDS plate A2 - gate arch, low
+- character_layers all six
+- NEW crowd silhouette set
+qa_checklist:
+- All six identifiable
+- Six distinct depths
+- Static already slightly apart
+- Every figure has a contact shadow
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

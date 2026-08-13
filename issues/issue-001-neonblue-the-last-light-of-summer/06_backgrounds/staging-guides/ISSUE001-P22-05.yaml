@@ -1,0 +1,75 @@
+# Staging guide for ISSUE001-P22-05
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P22-05
+page_number: 22
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: The reader knows something the character does not.
+visual_beat: NeonBlue looking up at the tower - at the wrong part of it. Ash nearby, also looking up.
+location: LOC-festival-grounds
+time: Late night, after the countdown
+camera_shot: medium_wide
+camera_angle: low_angle
+background_description: The junction tower rising against a night sky, with the lit cyan segment visible
+  to the reader high on its flank. Warm half-lit festival glow along the bottom edge.
+depth_plan: Two small figures on the ground plane, tower rising through the midground, deep night sky
+  behind.
+lighting:
+  key_direction: Warm restored festival light from below and behind camera
+  key_color: Warm amber below, cold blue-black above
+  fill: Faint moonlight
+  contact_shadow: Present under both, thrown away from the festival lights
+  rim: Warm rim along both characters' lower silhouettes
+  color_spill: Amber up to about waist height, everything above goes cold
+color_mood: Warm ground, cold sky, one cyan point. The last light of summer, and something else beginning.
+box:
+- 0.6924
+- 0.4417
+- 0.3076
+- 0.3374
+shape: tall
+actual_aspect: 0.617
+keep_empty:
+  bubble_zones:
+  - zone:
+    - 0.04
+    - 0.05
+    - 0.42
+    - 0.22
+    for: MZ-CHAR-005
+    kind: speech
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-005
+  position: Lower-left, small, seen from behind and below, looking up
+  depth_plane: midground
+  scale_note: Roughly a quarter of panel height - dwarfed by tower and sky
+  ground_contact: Both feet flat, head tilted back
+  eye_line: Up at the tower, but at the WRONG section - away from the lit segment
+  hand_activity: Hands at sides
+- character_id: MZ-CHAR-004
+  position: Lower-right, small, also looking up, slightly further back
+  depth_plane: midground
+  scale_note: Marginally smaller than NeonBlue
+  ground_contact: Both feet, still
+  eye_line: Up - ambiguous whether toward the lit segment or not
+  hand_activity: Hands in hoodie pocket
+required_source_assets:
+- NEW GROUNDS plate A17 - junction tower, night sky, low angle
+- character_layers neonblue back view, ash back view
+- PROP-echo-symbol single-segment-lit state, distant
+qa_checklist:
+- The lit segment is visible to the READER
+- NeonBlue is demonstrably looking at a DIFFERENT part of the tower
+- Both characters identifiable from behind - spike crown and silver fringe
+- Warm-to-cold vertical gradient is present
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

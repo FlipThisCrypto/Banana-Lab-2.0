@@ -1,0 +1,107 @@
+# Staging guide for ISSUE001-P20-01
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P20-01
+page_number: 20
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: Hope that admits risk. Leadership without a guarantee.
+visual_beat: NeonBlue with the team around him, not smiling, pointing at the shutter hinge.
+location: LOC-festival-service-corridor
+time: Night
+camera_shot: medium_wide
+camera_angle: low_angle
+background_description: The corridor at the shutter. Torches propped on the floor throwing light upward.
+  Tools and a route diagram scattered.
+depth_plan: Crouched foreground figure, standing midground pair, two background figures, shutter beyond.
+  Four depth steps.
+lighting:
+  key_direction: Torches on the floor, throwing light upward
+  key_color: Warm working white
+  fill: Weak red from the corridor practical
+  contact_shadow: Hard and tight - the sources are close and low
+  rim: Warm underlight rim on every chin and forearm
+  cast_shadow: All five shadows thrown UP the walls and ceiling, radiating from the floor torches
+  color_spill: Warm on undersides, red residue on backs
+color_mood: Warmth returning, but working warmth - torchlight, not festival light.
+box:
+- 0.0
+- 0.0
+- 1.0
+- 0.3057
+shape: wide
+actual_aspect: 2.213
+keep_empty:
+  bubble_zones:
+  - zone:
+    - 0.04
+    - 0.05
+    - 0.42
+    - 0.11
+    for: MZ-CHAR-005
+    kind: speech
+  - zone:
+    - 0.04
+    - 0.18
+    - 0.42
+    - 0.11
+    for: MZ-CHAR-005
+    kind: speech
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-005
+  position: Centre-left, standing, arm extended toward the hinge
+  depth_plane: midground
+  scale_note: Reference figure for the panel, measured against the shutter
+  ground_contact: Both feet planted, weight forward
+  eye_line: At the team, not at the hinge
+  hand_activity: One arm fully extended, index finger marking the hinge
+  expression_id: EXP-005-determined
+- character_id: MZ-CHAR-LILDEVIL
+  position: Right of NeonBlue, closest to the shutter, already leaning in
+  depth_plane: midground
+  scale_note: Same ground plane, slightly nearer camera
+  ground_contact: Both feet braced, weight forward
+  eye_line: At the hinge
+  hand_activity: Flexing both hands
+- character_id: MZ-CHAR-002
+  position: Foreground left, crouched over a route diagram, back partly to camera
+  depth_plane: foreground
+  scale_note: Largest in frame because he is nearest and crouched forward
+  ground_contact: Crouched - one knee down, one foot flat
+  eye_line: Down at the diagram
+  hand_activity: Both hands on the diagram
+- character_id: MZ-CHAR-003
+  position: Background right, half-turned away, hand near the wall
+  depth_plane: background
+  scale_note: Smallest - clearly furthest back
+  ground_contact: Both feet, weight shifting
+  eye_line: Away, down the corridor, listening to something else
+  hand_activity: One hand flat on the wall
+- character_id: MZ-CHAR-004
+  position: Background left, still, mostly silhouette
+  depth_plane: background
+  scale_note: Small, set back
+  ground_contact: Standing still
+  eye_line: At NeonBlue
+  hand_activity: Hands in hoodie pocket
+required_source_assets:
+- NEW CORRIDOR plate C variant - torch-lit
+- character_layers neonblue, twotone, static, ash
+- NEW Lil Devil alpha layer set - does not exist yet
+qa_checklist:
+- Five characters at five distinct depths - measure and confirm
+- No two characters at the same apparent scale
+- At least one crouched and one turned away
+- All shadows radiate UPWARD from floor-level sources
+- NeonBlue is NOT smiling
+- Blocking reads as a working team, not a group portrait
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

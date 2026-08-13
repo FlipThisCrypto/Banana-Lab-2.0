@@ -1,0 +1,48 @@
+# Staging guide for ISSUE001-P09-04
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P09-04
+page_number: 9
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: Confirm Static is right by showing a second screen doing the same thing.
+visual_beat: A smaller screen elsewhere showing the identical cyan shards.
+location: LOC-festival-grounds
+time: Night
+camera_shot: insert
+camera_angle: low_angle
+background_description: A smaller information screen on a stanchion, carrying the identical cyan shard
+  pattern.
+depth_plan: Flat and tight.
+lighting:
+  key_direction: The screen
+  key_color: Hard cyan
+  fill: None
+  contact_shadow: Not applicable
+  color_spill: Cyan on the stanchion housing
+color_mood: Cyan, identical, repeated. It is a pattern, not a fault.
+box:
+- 0.5455
+- 0.3453
+- 0.4545
+- 0.3213
+shape: inset
+actual_aspect: 0.957
+keep_empty:
+  bubble_zones: []
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters: []
+required_source_assets:
+- PROP-public-projection-screen fractured-cyan, small variant
+qa_checklist:
+- The shard pattern is IDENTICAL to the previous panel - that is the point
+- Six countable elements again
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

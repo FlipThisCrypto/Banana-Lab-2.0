@@ -1,0 +1,47 @@
+# Staging guide for ISSUE001-P18-01
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P18-01
+page_number: 18
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: The countdown begins. The pull toward the visible thing.
+visual_beat: The countdown board on the main stage lighting up, numbers starting.
+location: LOC-festival-main-stage
+time: Night
+camera_shot: insert
+camera_angle: low_angle
+background_description: The countdown board, numbers illuminated and starting to fall.
+depth_plan: Flat and tight.
+lighting:
+  key_direction: The board itself
+  key_color: Hard white
+  fill: None
+  contact_shadow: Not applicable
+  color_spill: White bleeding into the haze around the board
+color_mood: The brightest thing left in the festival.
+box:
+- 0.0
+- 0.0
+- 1.0
+- 0.0822
+shape: wide
+actual_aspect: 8.229
+keep_empty:
+  bubble_zones: []
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters: []
+required_source_assets:
+- NEW STAGE plate C - countdown board insert
+qa_checklist:
+- Numbers legible
+- Brightest element on the page
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

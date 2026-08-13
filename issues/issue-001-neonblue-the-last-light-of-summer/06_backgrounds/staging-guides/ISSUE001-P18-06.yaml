@@ -1,0 +1,79 @@
+# Staging guide for ISSUE001-P18-06
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P18-06
+page_number: 18
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: The stakes get faces. Established here so page 21 has someone in it.
+visual_beat: Three young festival-goers behind a jammed emergency shutter. Small, distinct, frightened,
+  not hurt.
+location: LOC-festival-service-corridor
+time: Night
+camera_shot: wide
+camera_angle: low_angle
+background_description: A jammed emergency shutter, half lowered, heavy grating. Beyond it a dark holding
+  space with three young festival-goers - individually distinct in silhouette and readable in the face.
+  One red corridor practical is the only strong light.
+depth_plan: Cast foreground, grating as a hard midground plane, trapped figures beyond. Occlusion by the
+  grating is essential.
+lighting:
+  key_direction: Single red practical, corridor side, frame right
+  key_color: Deep red
+  fill: Very faint light from beyond the shutter
+  contact_shadow: Hard under Static and Scarline on the corridor floor
+  cast_shadow: Grating shadow striping across the corridor floor
+  color_spill: Red on the cast, the trapped three lit only by weak spill and reading cooler
+color_mood: Near-black with one red source. The darkest panel in the issue.
+box:
+- 0.0
+- 0.6308
+- 1.0
+- 0.2137
+shape: wide
+actual_aspect: 3.165
+keep_empty:
+  bubble_zones:
+  - zone:
+    - 0.04
+    - 0.05
+    - 0.42
+    - 0.22
+    for: MZ-CHAR-003
+    kind: speech
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-003
+  position: Foreground left, hand flat against the shutter, partly silhouetted
+  depth_plane: foreground
+  scale_note: Largest figure, measured against the shutter frame
+  ground_contact: Both feet, weight forward into the shutter
+  eye_line: Through the grating at the three
+  hand_activity: One flat palm pressed on the metal
+  expression_id: EXP-003-shocked
+- character_id: MZ-CHAR-006
+  position: Foreground right, a step back, watching
+  depth_plane: foreground
+  scale_note: Slightly smaller than Static, further from the shutter
+  ground_contact: Both feet, weight settled
+  eye_line: Through the grating
+  hand_activity: Arms at sides
+required_source_assets:
+- NEW CORRIDOR plate C - shutter, low angle
+- character_layers static, scarline
+- NEW three trapped festival-goer figures
+qa_checklist:
+- All three trapped figures individually distinct in silhouette
+- Their faces are readable - they are people, not shapes
+- NONE of them is injured
+- Grating occlusion is genuine, passing in front of them
+- Grating shadow stripes the floor consistently with the red source
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

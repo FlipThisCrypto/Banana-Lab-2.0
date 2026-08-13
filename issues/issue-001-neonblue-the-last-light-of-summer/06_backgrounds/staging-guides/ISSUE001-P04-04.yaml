@@ -1,0 +1,78 @@
+# Staging guide for ISSUE001-P04-04
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P04-04
+page_number: 4
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: Static tries to tell someone and cannot make it land.
+visual_beat: Static beside Scarline, talking too fast, hands moving.
+location: LOC-festival-grounds
+time: Night
+camera_shot: two_shot
+camera_angle: eye_level
+background_description: Path edge, crowd passing behind, booth glow.
+depth_plan: Two-plane with crowd behind.
+lighting:
+  key_direction: Booth lights frame left
+  key_color: Amber
+  fill: Cool ambient
+  contact_shadow: Present under both
+  color_spill: Amber on their left sides
+color_mood: Warm. The disagreement is not hostile.
+box:
+- 0.552
+- 0.4431
+- 0.448
+- 0.3353
+shape: rectangle
+actual_aspect: 0.904
+keep_empty:
+  bubble_zones:
+  - zone:
+    - 0.04
+    - 0.05
+    - 0.42
+    - 0.22
+    for: MZ-CHAR-003
+    kind: speech
+  - zone:
+    - 0.54
+    - 0.05
+    - 0.42
+    - 0.22
+    for: MZ-CHAR-006
+    kind: speech
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-003
+  position: Frame left, animated
+  depth_plane: midground
+  scale_note: Reference figure
+  ground_contact: Both feet, weight shifting rapidly
+  eye_line: At Scarline, away, back
+  hand_activity: Both hands moving, describing a shape
+  expression_id: EXP-003-determined
+- character_id: MZ-CHAR-006
+  position: Frame right, still, half a step back
+  depth_plane: midground
+  scale_note: 8 percent smaller
+  ground_contact: Both feet, weight settled
+  eye_line: Level at Static
+  hand_activity: Arms at sides
+required_source_assets:
+- GROUNDS plate A8 path edge
+- character_layers static, scarline
+- NEW crowd silhouette set
+qa_checklist:
+- Static animated and Scarline still - the contrast is the point
+- She is listening, not dismissing him
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

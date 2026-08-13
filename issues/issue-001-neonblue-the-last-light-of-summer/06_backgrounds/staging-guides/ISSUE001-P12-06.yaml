@@ -1,0 +1,72 @@
+# Staging guide for ISSUE001-P12-06
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P12-06
+page_number: 12
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: Close on the moment before the consequence arrives.
+visual_beat: The gate hanging open, the dark service corridor beyond it, nobody moving yet.
+location: LOC-festival-grounds
+time: Night
+camera_shot: wide
+camera_angle: eye_level
+background_description: The forced gate hanging open. Beyond it, a dark service way. The three standing
+  back from it.
+depth_plan: Figures foreground and midground, the dark opening as the background focal point.
+lighting:
+  key_direction: Gate worklight above and behind the figures
+  key_color: Cold cyan-white
+  fill: Nothing from inside the opening
+  contact_shadow: Hard beneath all three, thrown toward the opening
+  color_spill: Cyan on their backs, nothing on their faces
+color_mood: A hole in the world. The dark beyond the gate is total.
+box:
+- 0.0
+- 0.8023
+- 1.0
+- 0.1977
+shape: wide
+actual_aspect: 3.421
+keep_empty:
+  bubble_zones: []
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-LILDEVIL
+  position: Frame right, closest to the opening
+  depth_plane: midground
+  scale_note: Reference figure
+  ground_contact: Both feet, weight back on his heels now
+  eye_line: Into the dark
+  hand_activity: Hands lowered
+- character_id: MZ-CHAR-005
+  position: Centre
+  depth_plane: midground
+  scale_note: Level with Lil Devil
+  ground_contact: Both feet, still
+  eye_line: Into the dark
+  hand_activity: Arms at sides
+- character_id: MZ-CHAR-006
+  position: Frame left, furthest back
+  depth_plane: midground
+  scale_note: 12 percent smaller
+  ground_contact: Both feet, unmoved
+  eye_line: At the other two
+  hand_activity: Arms at sides
+required_source_assets:
+- GROUNDS plate A15 gate-open state
+- character_layers neonblue, scarline
+- NEW Lil Devil alpha layer set - does not exist yet
+qa_checklist:
+- The opening is genuinely black - resist filling it with detail
+- All three shadows point into the opening
+- Silent - page-turn setup
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

@@ -1,0 +1,78 @@
+# Staging guide for ISSUE001-P21-02
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P21-02
+page_number: 21
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: The shutter moves. Everyone's hands are on it.
+visual_beat: Four pairs of hands hauling the shutter upward together.
+location: LOC-festival-service-corridor
+time: Night
+camera_shot: medium_close
+camera_angle: low_angle
+background_description: The shutter's lower edge, four sets of hands gripping it, metal grinding upward.
+depth_plan: Shallow. Hands, shutter edge, dark beyond.
+lighting:
+  key_direction: Floor torches from below
+  key_color: Warm working white
+  fill: Faint red
+  contact_shadow: Hard shadows of the hands on the shutter face
+  color_spill: Warm underlight on every forearm
+color_mood: Warm, gritty, collective.
+box:
+- 0.0
+- 0.2786
+- 1.0
+- 0.1641
+shape: wide
+actual_aspect: 4.122
+keep_empty:
+  bubble_zones: []
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-005
+  position: Centre-left hands
+  depth_plane: foreground
+  scale_note: Hands near life scale
+  ground_contact: Out of frame
+  eye_line: Not visible
+  hand_activity: Both hands under the shutter edge, hauling
+- character_id: MZ-CHAR-LILDEVIL
+  position: Frame right hands
+  depth_plane: foreground
+  scale_note: Slightly nearer camera
+  ground_contact: Out of frame
+  eye_line: Not visible
+  hand_activity: Both hands under the shutter edge
+- character_id: MZ-CHAR-002
+  position: Centre-right hands
+  depth_plane: midground
+  scale_note: Slightly further
+  ground_contact: Out of frame
+  eye_line: Not visible
+  hand_activity: Both hands on the shutter
+- character_id: MZ-CHAR-004
+  position: Frame left hands
+  depth_plane: midground
+  scale_note: Furthest
+  ground_contact: Out of frame
+  eye_line: Not visible
+  hand_activity: One hand on the shutter, one bracing the frame
+required_source_assets:
+- PROP-service-gate shutter detail
+- character_layers hands detail - neonblue, twotone, static, ash
+- NEW Lil Devil alpha layer set - does not exist yet
+qa_checklist:
+- Four DISTINCT pairs of hands, each identifiable by colour and detail
+- Hand anatomy correct on all four - highest anatomy risk in the issue
+- Shutter is visibly moving upward
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

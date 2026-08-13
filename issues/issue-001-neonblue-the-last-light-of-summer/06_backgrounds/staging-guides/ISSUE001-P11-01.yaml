@@ -1,0 +1,56 @@
+# Staging guide for ISSUE001-P11-01
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P11-01
+page_number: 11
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: The page-turn reveal. Give the reader the whole pattern at once, before any character
+  has it.
+visual_beat: The entire festival from high above. Two vast dark arms curve in from opposite edges, closing
+  toward a single lit point at the centre - the main stage.
+location: LOC-festival-grounds
+time: Night
+camera_shot: extreme_wide
+camera_angle: birds_eye
+background_description: The whole festival site from directly above. Lit areas warm and dense. Two dark
+  corridors of failure curve in from opposite edges toward the centre, leaving only the main stage and
+  its crowd lit. The shape is unmistakably deliberate.
+depth_plan: Single deep plane from above. Depth read through light density and atmospheric haze, not overlap.
+lighting:
+  key_direction: Self-lit from the festival below
+  key_color: Warm amber where alive, nothing where dead
+  fill: Faint cool moonlight across everything
+  contact_shadow: Not applicable at this scale
+  cast_shadow: None readable from directly above
+  color_spill: Warm glow bleeding up from lit zones into low haze
+color_mood: A map made of light. The dark is the subject and it has intent.
+box:
+- 0.0
+- 0.0
+- 1.0
+- 1.0
+shape: splash
+actual_aspect: 0.676
+keep_empty:
+  bubble_zones: []
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters: []
+required_source_assets:
+- NEW GROUNDS plate A14 - full site, birds eye, two dark arms - THE SPLASH PLATE
+qa_checklist:
+- SPLASH PAGE - the single most important background in the issue
+- The two dark arms read as deliberate, not as random failure
+- The main stage is the only substantial lit area left
+- No character is identifiable
+- Reads at print size without any caption explaining it
+- Silent - no dialogue, no caption, no SFX
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

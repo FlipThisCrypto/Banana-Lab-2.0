@@ -1,0 +1,57 @@
+# Staging guide for ISSUE001-P10-02
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P10-02
+page_number: 10
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: Moodz sees it. Silent, and it sets up page 16.
+visual_beat: Moodz watching NeonBlue work, saying nothing.
+location: LOC-festival-grounds
+time: Night
+camera_shot: close
+camera_angle: eye_level
+background_description: NeonBlue bright and heavily defocused behind, recognisable only by his cyan crown.
+depth_plan: Sharp foreground face, strongly defocused background.
+lighting:
+  key_direction: Weak amber from frame right
+  key_color: Amber
+  fill: Cool night ambient
+  contact_shadow: Not applicable
+  color_spill: Faint amber on his cheek from NeonBlue's direction
+color_mood: Quiet and dim. A held moment.
+box:
+- 0.5796
+- 0.0
+- 0.4204
+- 0.3732
+shape: square
+actual_aspect: 0.762
+keep_empty:
+  bubble_zones: []
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-001
+  position: Centre, close
+  depth_plane: foreground
+  scale_note: Head fills half the panel
+  ground_contact: Standing still, feet out of frame
+  eye_line: Level, off frame right, at NeonBlue
+  hand_activity: Not visible
+  expression_id: EXP-001-neutral
+required_source_assets:
+- character_layers/moodz close-crop
+- GROUNDS plate A8 defocused
+qa_checklist:
+- Black fringe over one eye and blue accent correct
+- Silent - no caption added later
+- Defocus is optical, not a uniform blur
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

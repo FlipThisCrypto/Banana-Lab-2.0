@@ -1,0 +1,71 @@
+# Staging guide for ISSUE001-P06-03
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P06-03
+page_number: 6
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: The team can work without NeonBlue directing.
+visual_beat: TwoTone hauling a stall barrier open while Scarline waves people through.
+location: LOC-festival-grounds
+time: Night
+camera_shot: medium_wide
+camera_angle: eye_level
+background_description: A stall barrier swung open, crowd starting to move through the new gap.
+depth_plan: Crowd foreground, the two working midground, jam relieving behind.
+lighting:
+  key_direction: Phone lights and one stall emergency lamp
+  key_color: Cool white and weak amber
+  fill: None
+  contact_shadow: Present under both
+  color_spill: Mixed and weak
+color_mood: Dark and practical. Work being done.
+box:
+- 0.0
+- 0.5559
+- 1.0
+- 0.2659
+shape: wide
+actual_aspect: 2.544
+keep_empty:
+  bubble_zones:
+  - zone:
+    - 0.54
+    - 0.05
+    - 0.42
+    - 0.22
+    for: MZ-CHAR-002
+    kind: speech
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-002
+  position: Frame left, hauling the barrier
+  depth_plane: midground
+  scale_note: Reference figure
+  ground_contact: Both feet braced, weight pulling backward
+  eye_line: At the barrier hinge
+  hand_activity: Both hands on the barrier rail
+- character_id: MZ-CHAR-006
+  position: Frame right, at the new gap
+  depth_plane: midground
+  scale_note: Level with TwoTone
+  ground_contact: Both feet, weight even
+  eye_line: At the oncoming crowd
+  hand_activity: One arm extended, directing flow
+required_source_assets:
+- GROUNDS plate A9 barrier
+- character_layers twotone, scarline
+- NEW crowd silhouette set
+qa_checklist:
+- Both are physically working, not standing
+- The barrier movement is believable
+- Crowd responds to the new gap
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

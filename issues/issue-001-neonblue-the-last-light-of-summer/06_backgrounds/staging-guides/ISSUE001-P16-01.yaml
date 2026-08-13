@@ -1,0 +1,63 @@
+# Staging guide for ISSUE001-P16-01
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P16-01
+page_number: 16
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: Moodz arrives without being called.
+visual_beat: Moodz entering the corridor behind him, stopping at a distance.
+location: LOC-festival-service-corridor
+time: Night
+camera_shot: wide
+camera_angle: eye_level
+background_description: The corridor, NeonBlue at the marker, Moodz entering from the far end.
+depth_plan: NeonBlue midground, Moodz background, corridor connecting them.
+lighting:
+  key_direction: Overhead red practical between them
+  key_color: Deep red-orange
+  fill: Faint cyan bounce from the corridor's far end
+  contact_shadow: Hard contact shadows under both on the grating
+  color_spill: Red on their upper surfaces, cyan on their far sides
+color_mood: Warm red and cold cyan meeting in a dark corridor.
+box:
+- 0.0
+- 0.0
+- 1.0
+- 0.2296
+shape: wide
+actual_aspect: 2.946
+keep_empty:
+  bubble_zones: []
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-005
+  position: Frame left, at the wall, side-on
+  depth_plane: midground
+  scale_note: Corridor door frame is roughly 1.5 character heights
+  ground_contact: Both feet flat on the grating, weight settled back
+  eye_line: At the wall
+  hand_activity: One hand still against the wall
+- character_id: MZ-CHAR-001
+  position: Frame right, far down the corridor, stopped
+  depth_plane: background
+  scale_note: Roughly 60 percent of NeonBlue's apparent height
+  ground_contact: Both feet flat, weight even, stopped
+  eye_line: At NeonBlue
+  hand_activity: Hands in pockets
+required_source_assets:
+- CORRIDOR plate A
+- character_layers neonblue, moodz
+qa_checklist:
+- The depth gap between them is the content - do not close it
+- Contact shadows follow the grating pattern, not generic ellipses
+- Moodz stops rather than approaching
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

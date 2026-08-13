@@ -1,0 +1,69 @@
+# Staging guide for ISSUE001-P16-04
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P16-04
+page_number: 16
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: Close the page with Moodz saying the smallest useful thing and leaving.
+visual_beat: Moodz turning to go, having said what he came to say.
+location: LOC-festival-service-corridor
+time: Night
+camera_shot: medium_wide
+camera_angle: eye_level
+background_description: The corridor, Moodz walking back toward the far end.
+depth_plan: NeonBlue midground still, Moodz moving into background.
+lighting:
+  key_direction: Overhead red practical
+  key_color: Deep red-orange
+  fill: Cyan from the far end
+  contact_shadow: Both figures have grating-patterned contact shadows
+  color_spill: Red above, cyan ahead of Moodz as he walks toward it
+color_mood: He walks toward the cold end. It is not ominous, just the way out.
+box:
+- 0.0
+- 0.7704
+- 1.0
+- 0.2296
+shape: wide
+actual_aspect: 2.946
+keep_empty:
+  bubble_zones:
+  - zone:
+    - 0.04
+    - 0.05
+    - 0.42
+    - 0.22
+    for: MZ-CHAR-001
+    kind: speech
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-001
+  position: Centre, walking away from camera
+  depth_plane: midground
+  scale_note: Reference figure
+  ground_contact: Both feet, walking, unhurried
+  eye_line: Ahead down the corridor
+  hand_activity: Hands in pockets
+- character_id: MZ-CHAR-005
+  position: Frame left, still at the wall
+  depth_plane: midground
+  scale_note: Level with Moodz
+  ground_contact: Both feet flat, still
+  eye_line: At Moodz's back
+  hand_activity: Arms at sides
+required_source_assets:
+- CORRIDOR plate A
+- character_layers neonblue, moodz
+qa_checklist:
+- Moodz does not wait for a response - that is the point
+- Both contact shadows follow the grating
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

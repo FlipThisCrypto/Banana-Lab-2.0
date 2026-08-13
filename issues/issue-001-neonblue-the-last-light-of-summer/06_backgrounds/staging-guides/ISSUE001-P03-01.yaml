@@ -1,0 +1,66 @@
+# Staging guide for ISSUE001-P03-01
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P03-01
+page_number: 3
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: Show the festival functioning so its failure has something to fail from.
+visual_beat: The food stand at full tilt, NeonBlue behind the counter, genuinely helping.
+location: LOC-festival-grounds
+time: Dusk, sun low
+camera_shot: medium_wide
+camera_angle: eye_level
+background_description: A busy food stand interior, heat lamps, steam, a queue pressing at the counter.
+depth_plan: Queue silhouettes foreground, counter and NeonBlue midground, stand interior behind.
+lighting:
+  key_direction: Heat lamps above the counter
+  key_color: Hot orange
+  fill: Warm ambient
+  contact_shadow: Under the counter edge and his feet
+  color_spill: Orange on his face and forearms
+color_mood: Hot, busy, cheerful.
+box:
+- 0.0
+- 0.0
+- 1.0
+- 0.2268
+shape: wide
+actual_aspect: 2.982
+keep_empty:
+  bubble_zones:
+  - zone:
+    - 0.54
+    - 0.05
+    - 0.42
+    - 0.22
+    for: MZ-CHAR-005
+    kind: speech
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-005
+  position: Centre behind the counter
+  depth_plane: midground
+  scale_note: Counter is at his chest height
+  ground_contact: Both feet, weight shifting between them, working
+  eye_line: Down at what his hands are doing
+  hand_activity: Both hands busy with an order
+  occlusion: Counter and queue heads cross his lower body
+  expression_id: EXP-005-smile
+required_source_assets:
+- NEW GROUNDS plate A6 - food stand interior
+- character_layers/neonblue
+- NEW crowd silhouette set
+qa_checklist:
+- He is actually working, not posing
+- Steam and heat haze present
+- Queue reads as individual people
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

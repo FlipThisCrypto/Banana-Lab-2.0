@@ -1,0 +1,49 @@
+# Staging guide for ISSUE001-P05-03
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P05-03
+page_number: 5
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: The backup does not come. The promise fails in public.
+visual_beat: Total dark on the booth row. Nothing happens.
+location: LOC-festival-grounds
+time: Night
+camera_shot: wide
+camera_angle: eye_level
+background_description: The booth row, dark. Shapes only. A few phone lights coming up in the crowd.
+depth_plan: Silhouette foreground, dark midground, distant lit festival behind.
+lighting:
+  key_direction: Distant festival glow only
+  key_color: Cool residual
+  fill: None
+  contact_shadow: Not readable in this light
+  color_spill: Faint cool edge on the nearest shapes
+color_mood: The first genuinely dark panel. The contrast with page 3 panel 5 should hurt.
+box:
+- 0.0
+- 0.4289
+- 0.6323
+- 0.2506
+shape: wide
+actual_aspect: 1.707
+keep_empty:
+  bubble_zones: []
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters: []
+required_source_assets:
+- GROUNDS plate A8 blackout state
+- NEW crowd silhouette set
+qa_checklist:
+- Genuinely dark - do not lift exposure to make it readable
+- Phone lights coming up in the crowd
+- Silent
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

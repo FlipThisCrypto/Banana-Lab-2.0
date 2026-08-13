@@ -1,0 +1,65 @@
+# Staging guide for ISSUE001-P05-06
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P05-06
+page_number: 5
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: Close on NeonBlue committing to fix it - his strength and his flaw at once.
+visual_beat: NeonBlue turning and moving, decisive, in the wrong direction.
+location: LOC-festival-grounds
+time: Night
+camera_shot: medium_wide
+camera_angle: low_angle
+background_description: Dark grounds, NeonBlue moving toward the distant lit section.
+depth_plan: Figure midground moving away, dark crowd foreground, lit festival far behind.
+lighting:
+  key_direction: Distant lit section ahead of him
+  key_color: Warm amber, far
+  fill: Cool residual
+  contact_shadow: Faint under his feet
+  rim: Warm rim on his front edge
+  color_spill: Warm ahead, cold behind
+color_mood: He is walking toward the light. The story is in the other direction.
+box:
+- 0.3677
+- 0.6915
+- 0.6323
+- 0.3085
+shape: wide
+actual_aspect: 1.386
+keep_empty:
+  bubble_zones:
+  - zone:
+    - 0.54
+    - 0.05
+    - 0.42
+    - 0.22
+    for: MZ-CHAR-005
+    kind: speech
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-005
+  position: Centre, moving away from camera
+  depth_plane: midground
+  scale_note: Mid-scale
+  ground_contact: Both feet, purposeful stride
+  eye_line: Ahead at the lit section
+  hand_activity: Arms swinging, moving fast
+  expression_id: EXP-005-determined
+required_source_assets:
+- GROUNDS plate A8 blackout wide
+- character_layers/neonblue
+- NEW crowd silhouette set
+qa_checklist:
+- He moves toward the LIT part - thematically wrong, deliberately
+- Warm ahead and cold behind must both read
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

@@ -1,0 +1,63 @@
+# Staging guide for ISSUE001-P22-03
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P22-03
+page_number: 22
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: A small beat confirming the change in him is real.
+visual_beat: Moodz glancing sideways at NeonBlue. NeonBlue is not performing.
+location: LOC-festival-grounds
+time: Late night, after the countdown
+camera_shot: close
+camera_angle: eye_level
+background_description: Half-lit grounds heavily defocused behind.
+depth_plan: Shallow, warm bokeh behind.
+lighting:
+  key_direction: Warm from frame left
+  key_color: Warm amber
+  fill: Cool night
+  contact_shadow: Not applicable
+  color_spill: Warm on their left profiles
+color_mood: Warm and quiet.
+box:
+- 0.6443
+- 0.1405
+- 0.3557
+- 0.2892
+shape: rectangle
+actual_aspect: 0.832
+keep_empty:
+  bubble_zones: []
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-001
+  position: Frame left, nearer camera, glancing sideways
+  depth_plane: foreground
+  scale_note: Head fills a third of the panel
+  ground_contact: Seated, out of frame
+  eye_line: Sideways at NeonBlue
+  hand_activity: Not visible
+- character_id: MZ-CHAR-005
+  position: Frame right, slightly further
+  depth_plane: midground
+  scale_note: Marginally smaller
+  ground_contact: Seated, out of frame
+  eye_line: Out across the grounds, unfocused
+  hand_activity: Not visible
+  expression_id: EXP-005-neutral
+required_source_assets:
+- character_layers moodz, neonblue close-crop
+qa_checklist:
+- NeonBlue's expression is settled, not bright - the arc has landed
+- Silent
+- Moodz does not say anything, and does not need to
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

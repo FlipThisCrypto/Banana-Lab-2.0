@@ -1,0 +1,62 @@
+# Staging guide for ISSUE001-P08-01
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P08-01
+page_number: 8
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: TwoTone starts working the problem the way only he does.
+visual_beat: TwoTone at a festival map board, hand flat on it.
+location: LOC-festival-grounds
+time: Night
+camera_shot: medium
+camera_angle: eye_level
+background_description: A backlit festival map board, one of the few things still powered.
+depth_plan: Figure and board midground, dark grounds behind.
+lighting:
+  key_direction: The board itself, frontal
+  key_color: Cool white
+  fill: None
+  contact_shadow: His shadow thrown back onto the ground behind him
+  color_spill: Cool white on his front, nothing on his back
+color_mood: Clinical. The only clean light in several pages.
+box:
+- 0.0
+- 0.0
+- 0.494
+- 0.3732
+shape: rectangle
+actual_aspect: 0.895
+keep_empty:
+  bubble_zones:
+  - zone:
+    - 0.54
+    - 0.05
+    - 0.42
+    - 0.22
+    for: MZ-CHAR-002
+    kind: speech
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-002
+  position: Frame left, side-on to the board
+  depth_plane: midground
+  scale_note: Board is roughly 1.4 character heights
+  ground_contact: Both feet, weight forward onto the board
+  eye_line: At the board
+  hand_activity: One hand flat against the map
+required_source_assets:
+- NEW festival map board prop
+- character_layers/twotone
+qa_checklist:
+- Lit from the front by the board, dark behind - strong silhouette read
+- Half-black half-white hair works with the frontal light
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

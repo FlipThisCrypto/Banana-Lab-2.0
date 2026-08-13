@@ -1,0 +1,48 @@
+# Staging guide for ISSUE001-P04-02
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P04-02
+page_number: 4
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: Nobody registers anything. His problem is being followed, not being right.
+visual_beat: The crowd streams past, entirely unbothered.
+location: LOC-festival-grounds
+time: Night
+camera_shot: wide
+camera_angle: eye_level
+background_description: The booth row from Static's eyeline. People eating, queueing, laughing. Ordinary.
+depth_plan: Three crowd depths, booth lights behind.
+lighting:
+  key_direction: Booth lights
+  key_color: Amber
+  fill: Cool ambient
+  contact_shadow: Overlapping crowd shadows
+  color_spill: Warm on all faces
+color_mood: Warm and oblivious.
+box:
+- 0.552
+- 0.0
+- 0.448
+- 0.2096
+shape: wide
+actual_aspect: 1.446
+keep_empty:
+  bubble_zones: []
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters: []
+required_source_assets:
+- GROUNDS plate A8 wide
+- NEW crowd silhouette set
+qa_checklist:
+- Nobody in frame is reacting
+- Deliberately unremarkable
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

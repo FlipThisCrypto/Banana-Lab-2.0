@@ -1,0 +1,64 @@
+# Staging guide for ISSUE001-P14-01
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P14-01
+page_number: 14
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: NeonBlue reaches for the ordinary explanation.
+visual_beat: NeonBlue looking at the dark box, already explaining it away.
+location: LOC-festival-control-node
+time: Night
+camera_shot: medium_close
+camera_angle: eye_level
+background_description: Dark control-node wall, faint residual cyan from frame left.
+depth_plan: Shallow. Figure against a dark near wall.
+lighting:
+  key_direction: Residual cyan from frame left
+  key_color: Cyan, weak
+  fill: Almost none - the unlit side falls to black
+  contact_shadow: Not applicable
+  color_spill: Cyan across the left half of his face, catching his under-eye shadows
+color_mood: Split lighting. The visual argument of the scene.
+box:
+- 0.0
+- 0.0
+- 0.494
+- 0.2871
+shape: rectangle
+actual_aspect: 1.164
+keep_empty:
+  bubble_zones:
+  - zone:
+    - 0.54
+    - 0.05
+    - 0.42
+    - 0.22
+    for: MZ-CHAR-005
+    kind: speech
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-005
+  position: Centre, three-quarter
+  depth_plane: foreground
+  scale_note: Head fills roughly two fifths of panel height
+  ground_contact: Standing, feet out of frame
+  eye_line: At the control box, off frame left
+  hand_activity: One hand half-raised, uncommitted
+  expression_id: EXP-005-worried
+required_source_assets:
+- NODE plate B - close wall
+- character_layers/neonblue close-crop
+qa_checklist:
+- Split lighting hard-edged, matching house-style cel shading
+- Under-eye bags read - required canon
+- Expression is denial, not fear
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

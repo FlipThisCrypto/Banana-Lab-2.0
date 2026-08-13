@@ -1,0 +1,71 @@
+# Staging guide for ISSUE001-P21-03
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P21-03
+page_number: 21
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: The payoff. The rescued are the subject.
+visual_beat: The shutter is up. The three come out. NeonBlue is at the side, counting them past.
+location: LOC-festival-service-corridor
+time: Night
+camera_shot: wide
+camera_angle: eye_level
+background_description: The raised shutter. The three young festival-goers stepping through into warm
+  light spilling from the grounds beyond. Corridor behind them.
+depth_plan: The three walking from background darkness through the midground shutter into foreground warm
+  light. Movement carries the depth.
+lighting:
+  key_direction: Warm light spilling in from the grounds, frame left, ahead of the three
+  key_color: Warm amber - the first restored festival light in several pages
+  fill: Fading red from the corridor behind
+  contact_shadow: All four figures have contact shadows on the corridor floor
+  rim: Warm rim on the three as they step into it
+  cast_shadow: Shadows thrown back into the corridor, away from the warm source
+  color_spill: Amber on the three, NeonBlue still half in the red
+color_mood: Warmth returns, and it returns on the rescued rather than on the rescuer.
+box:
+- 0.0
+- 0.4547
+- 1.0
+- 0.2666
+shape: wide
+actual_aspect: 2.537
+keep_empty:
+  bubble_zones:
+  - zone:
+    - 0.54
+    - 0.05
+    - 0.42
+    - 0.22
+    for: MZ-CHAR-005
+    kind: speech
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-005
+  position: Frame right, side-on, secondary to the three rescued figures
+  depth_plane: midground
+  scale_note: Same ground plane as the three, measured against the shutter frame
+  ground_contact: Both feet flat, weight settled, still
+  eye_line: At each of the three in turn as they pass
+  hand_activity: One hand out, palm up, counting them past
+  expression_id: EXP-005-neutral
+required_source_assets:
+- NEW CORRIDOR plate C - shutter open
+- character_layers/neonblue
+- NEW three trapped festival-goer figures - walking poses
+qa_checklist:
+- The three rescued figures are the visual SUBJECT, not NeonBlue
+- All three are the same individuals established in panel 18-6
+- NeonBlue is at the frame edge, not centred
+- All four figures have correct contact shadows on one floor
+- Warm light falls on the three BEFORE it falls on him
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

@@ -1,0 +1,65 @@
+# Staging guide for ISSUE001-P07-06
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P07-06
+page_number: 7
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: NeonBlue starts making promises to strangers.
+visual_beat: NeonBlue crouched to a worried festival-goer's height, reassuring.
+location: LOC-festival-grounds
+time: Night
+camera_shot: medium_close
+camera_angle: eye_level
+background_description: Dark path edge, a food stall emergency lamp behind.
+depth_plan: Two figures midground, dark beyond.
+lighting:
+  key_direction: A single emergency lamp frame right
+  key_color: Weak amber
+  fill: Cool ambient
+  contact_shadow: Present under both, hard-edged
+  color_spill: Amber on their right sides
+color_mood: One small warm source in a lot of dark.
+box:
+- 0.506
+- 0.4515
+- 0.494
+- 0.2623
+shape: rectangle
+actual_aspect: 1.274
+keep_empty:
+  bubble_zones:
+  - zone:
+    - 0.04
+    - 0.05
+    - 0.42
+    - 0.22
+    for: MZ-CHAR-005
+    kind: speech
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-005
+  position: Frame left, crouched
+  depth_plane: midground
+  scale_note: Crouched to match the extra's eyeline
+  ground_contact: One knee down, one foot flat
+  eye_line: Level at the festival-goer
+  hand_activity: One hand on his own knee, one gesturing
+  expression_id: EXP-005-smile
+required_source_assets:
+- GROUNDS plate A8 path edge
+- character_layers/neonblue
+- NEW crowd silhouette set - worried adult figure
+qa_checklist:
+- Crouching to match height reads as kindness, and it is
+- The promise he makes is one he cannot keep
+- Contact shadows on both, from one hard source
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

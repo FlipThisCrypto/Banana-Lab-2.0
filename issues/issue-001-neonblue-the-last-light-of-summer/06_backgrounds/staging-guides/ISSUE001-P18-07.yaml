@@ -1,0 +1,51 @@
+# Staging guide for ISSUE001-P18-07
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P18-07
+page_number: 18
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: Close the dense page on the two things happening at once.
+visual_beat: Split composition - the countdown glow at one edge of frame, the red shutter at the other,
+  and the dark between them.
+location: LOC-festival-service-corridor
+time: Night
+camera_shot: extreme_wide
+camera_angle: eye_level
+background_description: The junction where the corridor meets the grounds. Countdown white spilling in
+  from one edge, red shutter light at the other, a wide band of nothing between them.
+depth_plan: Two lit edges, one dark centre. Depth from the falloff on both sides.
+lighting:
+  key_direction: Two competing sources at opposite frame edges
+  key_color: Cool white at one edge, deep red at the other
+  fill: Neither reaches the centre
+  contact_shadow: Not applicable - no figures
+  color_spill: Each colour falls off toward the centre and dies
+color_mood: Two colours, one dark gap. The choice, stated as a composition before anyone makes it.
+box:
+- 0.0
+- 0.8685
+- 1.0
+- 0.1315
+shape: wide
+actual_aspect: 5.144
+keep_empty:
+  bubble_zones: []
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters: []
+required_source_assets:
+- NEW CORRIDOR plate D - junction, dual light, empty
+qa_checklist:
+- Both light sources visible at opposite edges
+- The dark band between them is genuinely dark
+- Silent - this is the page-turn into the decision
+- No character present - the next page puts one here
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

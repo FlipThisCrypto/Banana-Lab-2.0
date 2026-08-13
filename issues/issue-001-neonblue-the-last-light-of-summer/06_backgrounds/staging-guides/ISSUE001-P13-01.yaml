@@ -1,0 +1,90 @@
+# Staging guide for ISSUE001-P13-01
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P13-01
+page_number: 13
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: The system responds to the interference. The discovery, and Lil Devil caused it.
+visual_beat: Inside the control node. The control box amber status light dies and cyan floods out through
+  the panel seams.
+location: LOC-festival-control-node
+time: Night
+camera_shot: wide
+camera_angle: low_angle
+background_description: The control node interior. The forced gate hanging open frame left. The control
+  box on the far wall, amber indicator dark, cyan light escaping through the panel seams and running along
+  a floor conduit.
+depth_plan: Gate frame foreground, Lil Devil midground, control box and glowing seams background. Three
+  planes, one floor.
+lighting:
+  key_direction: From below, out of the control box seams
+  key_color: Hard cyan
+  fill: Residual warm worklight from the corridor behind camera
+  contact_shadow: Hard and tight on the concrete floor
+  rim: Cyan rim along the top of Lil Devil's horns and shoulders
+  cast_shadow: Lil Devil's shadow thrown UP the wall behind him by the low source
+  color_spill: Cyan on all upward-facing surfaces, warm on the two foreground backs
+color_mood: Cyan takes over the panel. First time it dominates a scene rather than sitting in it.
+box:
+- 0.0
+- 0.0
+- 1.0
+- 0.488
+shape: wide
+actual_aspect: 1.386
+keep_empty:
+  bubble_zones:
+  - zone:
+    - 0.54
+    - 0.05
+    - 0.42
+    - 0.22
+    for: MZ-CHAR-LILDEVIL
+    kind: speech
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-LILDEVIL
+  position: Centre midground, turned away from camera toward the box
+  depth_plane: midground
+  scale_note: Control box is roughly 1.2 character heights
+  ground_contact: Both feet, weight back on his heels - recoiling slightly
+  eye_line: At the cyan seam light
+  hand_activity: Both hands open and lowered, deliberately not touching anything
+- character_id: MZ-CHAR-005
+  position: Foreground left, entering frame
+  depth_plane: foreground
+  scale_note: Larger than Lil Devil, nearer camera, cropped at the knee
+  ground_contact: Mid-stride entering
+  eye_line: At the control box, past Lil Devil
+  hand_activity: One hand on the gate frame
+  occlusion: The open gate frame crosses in front of him
+- character_id: MZ-CHAR-004
+  position: Foreground left behind NeonBlue, mostly silhouette
+  depth_plane: foreground
+  scale_note: Slightly behind and smaller than NeonBlue
+  ground_contact: Standing, still
+  eye_line: At the control box
+  hand_activity: Hands in hoodie pocket
+required_source_assets:
+- NODE plate A - wide, low, gate open
+- NEW Lil Devil alpha layer set - does not exist yet
+- character_layers neonblue, ash
+- PROP-service-gate forced state
+- PROP-control-box cyan-seam state
+qa_checklist:
+- Lil Devil is clearly the cause - the gate is forced and he is nearest it
+- Cyan source is BELOW and every shadow agrees
+- Cast shadow travels UP the wall, consistent with an underlight
+- The reaction is ambiguous, not a triumphant flare
+- Amber status indicator visibly dead
+- CONFLICT C-01 and C-02 - depends on owner ruling
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

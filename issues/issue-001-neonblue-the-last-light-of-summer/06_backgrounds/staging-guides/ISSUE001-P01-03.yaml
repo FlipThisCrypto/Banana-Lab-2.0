@@ -1,0 +1,50 @@
+# Staging guide for ISSUE001-P01-03
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P01-03
+page_number: 1
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: Establish the main stage as the place everyone will be looking, before it matters.
+visual_beat: The main stage across the grounds, countdown board lit above it.
+location: LOC-festival-main-stage
+time: Dusk, sun low
+camera_shot: wide
+camera_angle: low_angle
+background_description: The stage seen across the grounds. Countdown board showing a long time remaining.
+  Speaker stacks, scaffolding, early crowd.
+depth_plan: Compressed by the long lens so the stage reads large while remaining far.
+lighting:
+  key_direction: The stage rig itself
+  key_color: Cool white and magenta
+  fill: Warm ambient from the grounds
+  contact_shadow: Crowd shadows at the stage base
+  color_spill: Magenta on the nearest crowd
+color_mood: The cool stage against the warm grounds. Two colour worlds established early.
+box:
+- 0.0
+- 0.6194
+- 1.0
+- 0.1418
+shape: wide
+actual_aspect: 4.77
+keep_empty:
+  bubble_zones: []
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters: []
+required_source_assets:
+- NEW STAGE plate A - distant establishing
+- NEW crowd silhouette set
+qa_checklist:
+- Countdown board legible
+- Stage reads as the centre of attention
+- No cast member present
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

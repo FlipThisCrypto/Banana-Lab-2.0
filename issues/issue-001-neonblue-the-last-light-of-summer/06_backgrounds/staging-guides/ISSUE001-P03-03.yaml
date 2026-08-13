@@ -1,0 +1,62 @@
+# Staging guide for ISSUE001-P03-03
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P03-03
+page_number: 3
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: Lil Devil states his worldview once, comically, so it can cost something later.
+visual_beat: Lil Devil gestures at the queue with contempt.
+location: LOC-festival-grounds
+time: Dusk, sun low
+camera_shot: medium_close
+camera_angle: low_angle
+background_description: Festival lights behind him, queue out of focus.
+depth_plan: Shallow, with the queue softly behind.
+lighting:
+  key_direction: Festival lights behind and above
+  key_color: Warm magenta
+  fill: Weak
+  contact_shadow: Not applicable
+  rim: Magenta rim on horns and shoulders
+  color_spill: Magenta on his upper edges
+color_mood: Hot red against magenta. He is enjoying himself.
+box:
+- 0.0
+- 0.4776
+- 0.494
+- 0.2835
+shape: rectangle
+actual_aspect: 1.179
+keep_empty:
+  bubble_zones:
+  - zone:
+    - 0.04
+    - 0.05
+    - 0.42
+    - 0.22
+    for: MZ-CHAR-LILDEVIL
+    kind: speech
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-LILDEVIL
+  position: Centre, low angle
+  depth_plane: foreground
+  scale_note: Head fills a third of the panel
+  ground_contact: Standing, feet out of frame
+  eye_line: Off at the queue
+  hand_activity: One hand thrown toward the queue
+required_source_assets:
+- NEW Lil Devil alpha layer set - does not exist yet
+qa_checklist:
+- Low angle does not distort him off-model
+- Expression is amused, not cruel
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

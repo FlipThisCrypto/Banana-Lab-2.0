@@ -1,0 +1,71 @@
+# Staging guide for ISSUE001-P14-03
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P14-03
+page_number: 14
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: NeonBlue pushes back harder, which is how the reader knows he is frightened.
+visual_beat: NeonBlue turning away, dismissing it with a gesture.
+location: LOC-festival-control-node
+time: Night
+camera_shot: medium
+camera_angle: eye_level
+background_description: The dark node, the dead box behind them.
+depth_plan: Two-plane, both dim.
+lighting:
+  key_direction: Weak corridor spill from behind camera
+  key_color: Warm, weak
+  fill: None
+  contact_shadow: Faint under both
+  color_spill: Weak warm on their near edges
+color_mood: Almost no light. Two people arguing in the dark.
+box:
+- 0.0
+- 0.2991
+- 1.0
+- 0.2296
+shape: rectangle
+actual_aspect: 2.946
+keep_empty:
+  bubble_zones:
+  - zone:
+    - 0.28
+    - 0.05
+    - 0.42
+    - 0.22
+    for: MZ-CHAR-005
+    kind: speech
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-005
+  position: Frame left, turning away from Lil Devil
+  depth_plane: midground
+  scale_note: Reference figure
+  ground_contact: Both feet, pivoting away
+  eye_line: Away, toward the corridor exit
+  hand_activity: One hand waving it off
+  expression_id: EXP-005-angry
+- character_id: MZ-CHAR-LILDEVIL
+  position: Frame right, not moving
+  depth_plane: midground
+  scale_note: Level with NeonBlue
+  ground_contact: Both feet, weight settled
+  eye_line: At NeonBlue's back
+  hand_activity: Arms at sides
+required_source_assets:
+- NODE plate A
+- character_layers/neonblue
+- NEW Lil Devil alpha layer set - does not exist yet
+qa_checklist:
+- Turning away is the tell - his voice is up but he is retreating
+- Both figures on the same floor plane with contact shadows
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

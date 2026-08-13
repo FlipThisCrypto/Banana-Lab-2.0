@@ -1,0 +1,56 @@
+# Staging guide for ISSUE001-P12-05
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P12-05
+page_number: 12
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: The gate gives. The consequence is his.
+visual_beat: The gate tears open, the lock housing shearing.
+location: LOC-festival-grounds
+time: Night
+camera_shot: medium_close
+camera_angle: low_angle
+background_description: The lock housing shearing from the gate frame, metal deforming, the gate swinging.
+depth_plan: Shallow. Hardware detail foreground, gate beyond.
+lighting:
+  key_direction: Gate worklight above
+  key_color: Cold cyan-white
+  fill: None
+  contact_shadow: Hard shadow of the lock housing on the gate face
+  color_spill: Cyan on torn metal edges
+color_mood: Cold, hard, metallic.
+box:
+- 0.506
+- 0.4689
+- 0.494
+- 0.3213
+shape: rectangle
+actual_aspect: 1.04
+keep_empty:
+  bubble_zones: []
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-LILDEVIL
+  position: Hands and forearms entering from frame right
+  depth_plane: foreground
+  scale_note: Hands near life scale against the lock housing
+  ground_contact: Out of frame
+  eye_line: Not visible
+  hand_activity: Both hands on the gate as it gives
+required_source_assets:
+- PROP-service-gate forced state
+- NEW Lil Devil alpha layer set - does not exist yet - hands detail
+qa_checklist:
+- Full house-style SFX - large, coloured, angled, may overlap the panel border
+- Torn metal is believable
+- Hands are visible and correct
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

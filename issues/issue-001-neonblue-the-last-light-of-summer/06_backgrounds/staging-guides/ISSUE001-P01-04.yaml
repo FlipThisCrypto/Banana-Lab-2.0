@@ -1,0 +1,66 @@
+# Staging guide for ISSUE001-P01-04
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P01-04
+page_number: 1
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: End the page on NeonBlue taking in everything at once - the character in one image.
+visual_beat: NeonBlue stopped, turning on the spot, delighted.
+location: LOC-festival-grounds
+time: Dusk, sun low
+camera_shot: medium
+camera_angle: low_angle
+background_description: Light strings converging overhead, festival glow behind, dusk sky above.
+depth_plan: Figure midground, light strings foreground crossing above, sky behind.
+lighting:
+  key_direction: Warm string lights above and around
+  key_color: Amber
+  fill: Cool sky
+  contact_shadow: Tight below, softened by multiple sources
+  rim: Warm top rim
+  cast_shadow: Short radial shadows from several overhead sources
+  color_spill: Amber on every upward surface
+color_mood: Golden and generous. His baseline.
+box:
+- 0.0
+- 0.7732
+- 1.0
+- 0.2268
+shape: rectangle
+actual_aspect: 2.982
+keep_empty:
+  bubble_zones:
+  - zone:
+    - 0.04
+    - 0.05
+    - 0.42
+    - 0.22
+    for: MZ-CHAR-005
+    kind: speech
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-005
+  position: Centre, seen from below, turning
+  depth_plane: midground
+  scale_note: Head roughly one third panel height
+  ground_contact: Both feet pivoting, weight on the ball of one foot
+  eye_line: Up and around, not at anything specific
+  hand_activity: Arms slightly out for balance
+  expression_id: EXP-005-celebrating
+required_source_assets:
+- NEW GROUNDS plate A3 - upward, light strings
+- character_layers/neonblue
+qa_checklist:
+- Cyan crown reads as HIS colour, not the system's
+- Multiple overhead sources give multiple soft shadows
+- Delight is genuine, not manic
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

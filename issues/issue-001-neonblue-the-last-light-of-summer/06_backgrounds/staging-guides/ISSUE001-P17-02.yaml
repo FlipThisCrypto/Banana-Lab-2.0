@@ -1,0 +1,50 @@
+# Staging guide for ISSUE001-P17-02
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P17-02
+page_number: 17
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: One panel of pure held time before the crisis page.
+visual_beat: Insert on the relay marker alone, his hand gone. The cyan stamp still faintly lit.
+location: LOC-festival-service-corridor
+time: Night
+camera_shot: extreme_close
+camera_angle: eye_level
+background_description: The relay marker on the conduit. Nobody touching it. The stamped frequency still
+  faintly cyan.
+depth_plan: Flat and tight. One object.
+lighting:
+  key_direction: The marker's own faint cyan
+  key_color: Faint cyan
+  fill: Almost none
+  contact_shadow: Not applicable
+  color_spill: Faint cyan on the surrounding conduit
+color_mood: One small cold light and nothing else.
+box:
+- 0.0
+- 0.5664
+- 1.0
+- 0.4336
+shape: inset
+actual_aspect: 1.56
+keep_empty:
+  bubble_zones: []
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters: []
+required_source_assets:
+- PROP-cyan-relay-marker close-detail state
+qa_checklist:
+- Silent
+- Nobody is present
+- The marker is unchanged from panel 15-2
+- No numerals or text that would date the system
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

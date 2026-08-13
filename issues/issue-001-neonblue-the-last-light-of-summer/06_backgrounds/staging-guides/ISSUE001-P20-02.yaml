@@ -1,0 +1,64 @@
+# Staging guide for ISSUE001-P20-02
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P20-02
+page_number: 20
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: TwoTone contributes at the climax.
+visual_beat: Insert on TwoTone's hand tracing a route under a marked conduit.
+location: LOC-festival-service-corridor
+time: Night
+camera_shot: insert
+camera_angle: high_angle
+background_description: A hand-marked route diagram on paper, torch-lit, a conduit run marked in heavy
+  line.
+depth_plan: Shallow. This is detail, not space.
+lighting:
+  key_direction: Torchlight from below-left
+  key_color: Warm working white
+  fill: Faint red
+  contact_shadow: Hand shadow falling across the diagram
+  color_spill: Warm underlight on his hand
+color_mood: Warm and tight.
+box:
+- 0.0
+- 0.3177
+- 0.494
+- 0.2351
+shape: inset
+actual_aspect: 1.421
+keep_empty:
+  bubble_zones:
+  - zone:
+    - 0.54
+    - 0.05
+    - 0.42
+    - 0.22
+    for: MZ-CHAR-002
+    kind: speech
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-002
+  position: Hand entering from frame bottom
+  depth_plane: foreground
+  scale_note: Hand near life scale on the diagram
+  ground_contact: Crouched, out of frame
+  eye_line: Not visible
+  hand_activity: One finger tracing a route under a marked conduit
+required_source_assets:
+- NEW route diagram prop
+- character_layers/twotone hand detail
+qa_checklist:
+- No full figure
+- The route diagram is legible as a diagram without readable text
+- Hand shadow lands correctly on the paper
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

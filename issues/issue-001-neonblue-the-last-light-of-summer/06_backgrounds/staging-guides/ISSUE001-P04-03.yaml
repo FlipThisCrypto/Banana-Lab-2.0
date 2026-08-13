@@ -1,0 +1,48 @@
+# Staging guide for ISSUE001-P04-03
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P04-03
+page_number: 4
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: Give the reader the evidence Static hears, before anyone believes him.
+visual_beat: Insert on a string of festival bulbs. One dims out of rhythm with the rest.
+location: LOC-festival-grounds
+time: Night
+camera_shot: insert
+camera_angle: low_angle
+background_description: A run of festival bulbs against dark sky. All steady except one, fading.
+depth_plan: Flat and tight. One surface, one anomaly.
+lighting:
+  key_direction: The bulbs themselves
+  key_color: Warm amber, one fading
+  fill: None - dark sky behind
+  contact_shadow: Not applicable
+  color_spill: Warm falloff around each live bulb
+color_mood: Warm and almost normal. The anomaly is small enough to miss.
+box:
+- 0.552
+- 0.2216
+- 0.448
+- 0.2096
+shape: inset
+actual_aspect: 1.446
+keep_empty:
+  bubble_zones: []
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters: []
+required_source_assets:
+- NEW festival bulb string detail plate
+qa_checklist:
+- Exactly one bulb out of rhythm
+- Subtle enough a reader could miss it
+- The dimming bulb is warm, not cyan - the system has not shown itself
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

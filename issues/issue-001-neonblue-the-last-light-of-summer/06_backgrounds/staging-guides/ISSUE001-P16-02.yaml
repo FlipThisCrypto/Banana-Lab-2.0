@@ -1,0 +1,89 @@
+# Staging guide for ISSUE001-P16-02
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P16-02
+page_number: 16
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: Moodz removes the obligation rather than issuing an instruction.
+visual_beat: Moodz closer now, still not touching him.
+location: LOC-festival-service-corridor
+time: Night
+camera_shot: medium
+camera_angle: eye_level
+background_description: Service corridor running away from camera. Pipework along one wall, a red practical
+  overhead midway, floor grating underfoot.
+depth_plan: NeonBlue nearer, Moodz further, corridor continuing past both to darkness. Depth read through
+  scale, light falloff and floor perspective.
+lighting:
+  key_direction: Overhead red practical, between and slightly behind them
+  key_color: Deep red-orange
+  fill: Faint cyan bounce from the corridor's far end
+  contact_shadow: Hard contact shadow under both, on grating - shadow shape must follow the grating pattern
+  rim: Red rim on the inner shoulder of each figure
+  cast_shadow: Both throw short shadows toward camera from the overhead source
+  color_spill: Red on upward and inward-facing surfaces, cool cyan on the far side of each figure
+color_mood: Warm red and cold cyan meeting. Two people, two colours, one floor.
+box:
+- 0.0
+- 0.2416
+- 0.494
+- 0.5167
+shape: rectangle
+actual_aspect: 0.647
+keep_empty:
+  bubble_zones:
+  - zone:
+    - 0.28
+    - 0.05
+    - 0.42
+    - 0.11
+    for: MZ-CHAR-001
+    kind: speech
+  - zone:
+    - 0.28
+    - 0.18
+    - 0.42
+    - 0.11
+    for: MZ-CHAR-001
+    kind: speech
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-005
+  position: Frame left, side-on to camera, back near the wall
+  depth_plane: midground
+  scale_note: Measured against the corridor door frame, roughly 1.5 character heights
+  ground_contact: Both feet flat on the corridor floor, weight settled back
+  eye_line: At Moodz
+  hand_activity: One hand still against the wall
+  expression_id: EXP-005-sad
+- character_id: MZ-CHAR-001
+  position: Frame right, a clear step further from camera, facing NeonBlue
+  depth_plane: midground
+  scale_note: 8 percent smaller than NeonBlue - measurably further down the corridor
+  ground_contact: Both feet flat, weight even, standing still
+  eye_line: Level at NeonBlue
+  hand_activity: Hands at his sides - deliberately not reaching out
+  expression_id: EXP-001-neutral
+required_source_assets:
+- CORRIDOR plate A - deep one-point
+- character_layers neonblue, moodz
+qa_checklist:
+- CONTROLLED TEST PANEL - method gate before any bulk generation
+- Both characters recognisable against approved reference
+- Feet meet the grating with correct perspective
+- Contact shadow follows the grating pattern, not a generic ellipse
+- Key light direction matches the overhead practical on both figures
+- No matte halo at any character edge
+- Relative scale consistent with the door frame reference
+- Moodz is visibly not reaching toward NeonBlue
+- Reads as house style beside an Edition Two panel
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

@@ -1,0 +1,66 @@
+# Staging guide for ISSUE001-P15-02
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P15-02
+page_number: 15
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: The midpoint. The danger becomes personal through an object, not a flashback.
+visual_beat: NeonBlue's hand stops on an old relay marker. A worn frequency stamp glows faintly cyan.
+location: LOC-festival-service-corridor
+time: Night
+camera_shot: extreme_close
+camera_angle: eye_level
+background_description: Old service corridor wall. A small worn metal relay marker bolted to conduit,
+  its stamped frequency faintly luminous cyan. One practical far down the corridor behind.
+depth_plan: Very shallow foreground on the marker, corridor falling away to a distant point of light behind.
+lighting:
+  key_direction: The marker's own faint cyan, plus a distant corridor practical
+  key_color: Faint cyan close, warm sodium far
+  fill: Almost none
+  contact_shadow: His hand casts a soft shadow on the wall plate
+  color_spill: Cyan on his palm and fingers, warm rim on his hair from the far light
+color_mood: Nearly black with two small light sources. The most intimate panel in the issue.
+box:
+- 0.552
+- 0.0
+- 0.448
+- 0.6116
+shape: tall
+actual_aspect: 0.495
+keep_empty:
+  bubble_zones:
+  - zone:
+    - 0.04
+    - 0.74
+    - 0.42
+    - 0.22
+    for: MZ-CHAR-005
+    kind: speech
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-005
+  position: Hand upper-centre on the marker, face entering only at the bottom edge
+  depth_plane: foreground
+  scale_note: Hand at near-life scale against the marker plate
+  ground_contact: Standing, feet out of frame
+  eye_line: At the marker, very close to it
+  hand_activity: One flat hand resting on the marker plate, stopped
+required_source_assets:
+- CORRIDOR plate B - close wall detail
+- PROP-cyan-relay-marker close-detail state
+- character_layers/neonblue hand and partial face
+qa_checklist:
+- The marker reads as old without being dated - no numerals implying an age
+- The stamped frequency is visible but not readable as specific text
+- His hand has stopped - no motion implied
+- Patch is named exactly ONCE in the whole issue
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

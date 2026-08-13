@@ -1,0 +1,48 @@
+# Staging guide for ISSUE001-P07-02
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P07-02
+page_number: 7
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: A fast reaction beat from the public.
+visual_beat: Faces in the ride queue looking up.
+location: LOC-festival-grounds
+time: Night
+camera_shot: medium_wide
+camera_angle: low_angle
+background_description: A queue of festival-goers looking up at the stopped ride, lit by their own phones.
+depth_plan: Shallow. One row of faces.
+lighting:
+  key_direction: Phone screens from below
+  key_color: Cool white
+  fill: None
+  contact_shadow: Not applicable
+  color_spill: Hard cool underlight on every face
+color_mood: Cold underlight on a row of ordinary faces.
+box:
+- 0.3677
+- 0.0
+- 0.6323
+- 0.2017
+shape: wide
+actual_aspect: 2.12
+keep_empty:
+  bubble_zones: []
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters: []
+required_source_assets:
+- NEW crowd silhouette set - upward-looking faces variant
+qa_checklist:
+- Faces read as individuals
+- Underlight consistent across all of them
+- Nobody is panicking yet
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

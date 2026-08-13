@@ -1,0 +1,60 @@
+# Staging guide for ISSUE001-P01-01
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P01-01
+page_number: 1
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: Open on the festival at its best, so the reader knows what is about to be lost.
+visual_beat: The whole site at golden hour, lights coming on and losing to daylight.
+location: LOC-festival-grounds
+time: Dusk, sun low
+camera_shot: extreme_wide
+camera_angle: high_angle
+background_description: The festival site from a raised angle. Ferris wheel, main stage, booth rows, bunting,
+  dense warm crowd. Nothing is wrong yet.
+depth_plan: Foreground bunting, midground rides and stalls, background skyline and low sun.
+lighting:
+  key_direction: Low sun from frame right
+  key_color: Deep amber
+  fill: Cool sky bounce
+  contact_shadow: Long ground shadows from every structure
+  rim: Warm edge on every vertical
+  cast_shadow: Rides throw long shadows toward camera
+  color_spill: Amber on all right-facing surfaces
+color_mood: Maximum warmth. The reference image for everything the issue takes away.
+box:
+- 0.0
+- 0.0
+- 1.0
+- 0.3686
+shape: wide
+actual_aspect: 1.835
+keep_empty:
+  bubble_zones:
+  - zone:
+    - 0.04
+    - 0.05
+    - 0.42
+    - 0.22
+    for: caption
+    kind: caption
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters: []
+required_source_assets:
+- NEW GROUNDS plate A1 - high wide, golden hour
+- NEW crowd silhouette set
+qa_checklist:
+- No cyan anywhere
+- Crowd reads as people not texture
+- Ferris wheel and stage both legible
+- Warmest panel in the issue
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

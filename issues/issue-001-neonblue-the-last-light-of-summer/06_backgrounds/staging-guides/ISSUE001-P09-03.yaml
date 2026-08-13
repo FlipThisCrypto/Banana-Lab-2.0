@@ -1,0 +1,66 @@
+# Staging guide for ISSUE001-P09-03
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P09-03
+page_number: 9
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: The cyan fracture. Seed the six tones and put the reveal on the page.
+visual_beat: The screen has fractured into hard cyan geometric shards. Static's reflection in the glass.
+location: LOC-festival-grounds
+time: Night
+camera_shot: insert
+camera_angle: eye_level
+background_description: The projection screen fills the frame. Its image has broken into hard-edged cyan
+  geometric shards with dark gaps between them.
+depth_plan: Flat by design - screen surface, with the reflection as one shallow depth cue.
+lighting:
+  key_direction: The screen is the light source
+  key_color: Hard cyan
+  fill: None
+  contact_shadow: Not applicable
+  color_spill: Cyan on the reflected figure
+color_mood: Cyan dominant and cold. First time cyan is the loudest thing in a panel.
+box:
+- 0.0
+- 0.3453
+- 0.5335
+- 0.3213
+shape: rectangle
+actual_aspect: 1.123
+keep_empty:
+  bubble_zones:
+  - zone:
+    - 0.54
+    - 0.74
+    - 0.42
+    - 0.22
+    for: MZ-CHAR-003
+    kind: speech
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-003
+  position: Visible only as a reflection in the screen glass, lower left
+  depth_plane: foreground
+  scale_note: Reflection at half the apparent size of the screen content
+  ground_contact: Not visible - reflection only
+  eye_line: Up at the screen
+  hand_activity: Not visible
+  occlusion: Screen content overlays his reflection
+required_source_assets:
+- PROP-public-projection-screen fractured-cyan state
+- character_layers/static reflection
+qa_checklist:
+- The cyan fracture is unmistakably present in the artwork
+- SIX discrete elements are countable in the shard arrangement
+- The reflection reads as a reflection, not a composited figure
+- Screen shows no readable text
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

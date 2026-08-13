@@ -1,0 +1,58 @@
+# Staging guide for ISSUE001-P19-02
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P19-02
+page_number: 19
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: He moves. One panel, no dialogue, no caption.
+visual_beat: NeonBlue walking into the red, away from the white, seen from behind.
+location: LOC-festival-service-corridor
+time: Night
+camera_shot: medium_wide
+camera_angle: eye_level
+background_description: The corridor mouth, red ahead, the countdown white falling away behind.
+depth_plan: Figure midground moving away, red ahead, white behind.
+lighting:
+  key_direction: Red practical ahead, countdown white behind
+  key_color: Deep red ahead, cool white behind
+  fill: Neither fills
+  contact_shadow: Present, thrown back toward the white
+  rim: Red rim on his front edge, white rim on his back
+  color_spill: Red ahead, white behind, meeting on him
+color_mood: He walks into the red. The warm public light is behind him now.
+box:
+- 0.0
+- 0.506
+- 1.0
+- 0.494
+shape: wide
+actual_aspect: 1.369
+keep_empty:
+  bubble_zones: []
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-005
+  position: Centre, walking away from camera into the red
+  depth_plane: midground
+  scale_note: Mid-scale, diminishing
+  ground_contact: Both feet, committed stride
+  eye_line: Ahead into the corridor
+  hand_activity: Arms swinging, moving with purpose
+required_source_assets:
+- NEW CORRIDOR plate D - junction, dual light
+- character_layers/neonblue back view
+qa_checklist:
+- Silent - the decision is not narrated
+- He is moving INTO the red and AWAY from the white
+- Back-view silhouette identifiable by the spike crown
+- Both rim colours present on the same figure
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

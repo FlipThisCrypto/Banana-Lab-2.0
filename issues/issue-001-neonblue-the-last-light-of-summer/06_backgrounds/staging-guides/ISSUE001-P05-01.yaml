@@ -1,0 +1,78 @@
+# Staging guide for ISSUE001-P05-01
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P05-01
+page_number: 5
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: Static reaches NeonBlue, and NeonBlue answers before hearing it.
+visual_beat: Static arriving at the food stand, NeonBlue already reassuring him.
+location: LOC-festival-grounds
+time: Night
+camera_shot: medium
+camera_angle: eye_level
+background_description: The food stand counter, quieter now, heat lamps still on.
+depth_plan: Counter divides two planes.
+lighting:
+  key_direction: Heat lamps above the counter
+  key_color: Hot orange
+  fill: Cool ambient outside
+  contact_shadow: Present on both
+  color_spill: Orange on NeonBlue, cooler on Static
+color_mood: Warm inside, cooling outside.
+box:
+- 0.0
+- 0.0
+- 1.0
+- 0.1542
+shape: wide
+actual_aspect: 4.387
+keep_empty:
+  bubble_zones:
+  - zone:
+    - 0.28
+    - 0.05
+    - 0.42
+    - 0.11
+    for: MZ-CHAR-003
+    kind: speech
+  - zone:
+    - 0.28
+    - 0.18
+    - 0.42
+    - 0.11
+    for: MZ-CHAR-005
+    kind: speech
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-003
+  position: Frame left at the counter
+  depth_plane: foreground
+  scale_note: Nearer camera
+  ground_contact: Both feet, leaning in over the counter
+  eye_line: At NeonBlue
+  hand_activity: Both hands flat on the counter
+  expression_id: EXP-003-worried
+- character_id: MZ-CHAR-005
+  position: Frame right, behind the counter
+  depth_plane: midground
+  scale_note: Set back
+  ground_contact: Both feet, still working
+  eye_line: At Static, warm
+  hand_activity: Still holding an order
+  expression_id: EXP-005-smile
+required_source_assets:
+- GROUNDS plate A6 counter
+- character_layers neonblue, static
+qa_checklist:
+- NeonBlue answers before Static finishes - readable in the body language
+- Static's urgency is genuine
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

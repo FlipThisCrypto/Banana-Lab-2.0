@@ -1,0 +1,64 @@
+# Staging guide for ISSUE001-P12-03
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P12-03
+page_number: 12
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: NeonBlue hesitates - the closest he comes to being decisive so far.
+visual_beat: NeonBlue caught between them, saying the wrong careful thing.
+location: LOC-festival-grounds
+time: Night
+camera_shot: close
+camera_angle: eye_level
+background_description: Dark, with the gate light hard from frame right.
+depth_plan: Shallow.
+lighting:
+  key_direction: Gate worklight, hard from frame right
+  key_color: Cold cyan-white
+  fill: Almost none
+  contact_shadow: Not applicable
+  color_spill: Hard cyan on his right half, near-black on his left
+color_mood: Hard split. He is half-lit by the thing he does not want to look at.
+box:
+- 0.506
+- 0.2097
+- 0.494
+- 0.2472
+shape: rectangle
+actual_aspect: 1.352
+keep_empty:
+  bubble_zones:
+  - zone:
+    - 0.04
+    - 0.05
+    - 0.42
+    - 0.22
+    for: MZ-CHAR-005
+    kind: speech
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-005
+  position: Centre, three-quarter
+  depth_plane: foreground
+  scale_note: Head fills roughly half the panel
+  ground_contact: Not visible
+  eye_line: At the gate, avoiding Scarline
+  hand_activity: One hand half-raised
+  expression_id: EXP-005-worried
+required_source_assets:
+- character_layers/neonblue close-crop
+- GROUNDS plate A15
+qa_checklist:
+- Split is hard-edged, matching house-style cel shading
+- Indecision, not fear
+- Under-eye bags read in the dark half
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

@@ -1,0 +1,73 @@
+# Staging guide for ISSUE001-P14-04
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P14-04
+page_number: 14
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: Ash's one line in the issue, at the exact point of denial.
+visual_beat: Ash, half-lidded, not looking at NeonBlue, saying five words.
+location: LOC-festival-control-node
+time: Night
+camera_shot: close
+camera_angle: eye_level
+background_description: Dark control-node interior, faint cyan behind them.
+depth_plan: Two heads at clearly different distances, background falling to dark.
+lighting:
+  key_direction: Faint cyan from behind and left
+  key_color: Cyan
+  fill: Very low warm
+  contact_shadow: Not applicable
+  rim: Cyan rim on both silhouettes
+  color_spill: Cyan edge light along Ash's silver-white fringe
+color_mood: Dark and close. The quietest panel on the page carries its weight.
+box:
+- 0.0
+- 0.5407
+- 0.494
+- 0.4593
+shape: rectangle
+actual_aspect: 0.728
+keep_empty:
+  bubble_zones:
+  - zone:
+    - 0.28
+    - 0.05
+    - 0.42
+    - 0.22
+    for: MZ-CHAR-004
+    kind: speech
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-004
+  position: Foreground right, turned away, three-quarter rear
+  depth_plane: foreground
+  scale_note: Larger, nearer, partly cropped by the frame edge
+  ground_contact: Standing, feet out of frame
+  eye_line: Straight ahead at the control box, deliberately not at NeonBlue
+  hand_activity: Not visible
+- character_id: MZ-CHAR-005
+  position: Midground left, facing toward Ash
+  depth_plane: midground
+  scale_note: Smaller, further, fully visible head
+  ground_contact: Standing, feet out of frame
+  eye_line: At Ash
+  hand_activity: Not visible
+  expression_id: EXP-005-confused
+required_source_assets:
+- NODE plate B
+- character_layers ash, neonblue close-crop
+qa_checklist:
+- Ash's silver-white fringe and half-lidded eyes read
+- Ash is visibly NOT looking at NeonBlue
+- Line is exactly the season bible wording
+- This is Ash's ONLY line in the issue
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

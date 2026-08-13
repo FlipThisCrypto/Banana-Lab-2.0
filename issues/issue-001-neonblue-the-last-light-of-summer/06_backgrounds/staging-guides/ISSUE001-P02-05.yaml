@@ -1,0 +1,55 @@
+# Staging guide for ISSUE001-P02-05
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P02-05
+page_number: 2
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: Ash gets one wordless beat establishing that he is present and paying attention.
+visual_beat: Ash at the back, stopped walking, watching NeonBlue rather than the festival.
+location: LOC-festival-grounds
+time: Dusk, sun low
+camera_shot: medium_close
+camera_angle: eye_level
+background_description: Defocused festival warmth behind.
+depth_plan: Shallow.
+lighting:
+  key_direction: Warm from frame right
+  key_color: Amber
+  fill: Cool ambient
+  contact_shadow: Not applicable
+  color_spill: Warm rim on his silver-white fringe
+color_mood: Warm but quiet.
+box:
+- 0.506
+- 0.4472
+- 0.494
+- 0.2351
+shape: rectangle
+actual_aspect: 1.421
+keep_empty:
+  bubble_zones: []
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-004
+  position: Centre, half-turned
+  depth_plane: foreground
+  scale_note: Head fills a third of the panel
+  ground_contact: Standing still, feet out of frame
+  eye_line: At NeonBlue off frame right, half-lidded
+  hand_activity: Hands in hoodie pocket
+required_source_assets:
+- character_layers/ash close-crop
+qa_checklist:
+- Silver-white fringe and half-lidded eyes correct
+- Silent panel
+- He is watching NeonBlue, not the festival
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

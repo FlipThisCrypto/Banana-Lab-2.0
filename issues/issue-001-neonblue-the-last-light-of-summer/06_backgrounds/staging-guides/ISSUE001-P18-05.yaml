@@ -1,0 +1,47 @@
+# Staging guide for ISSUE001-P18-05
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P18-05
+page_number: 18
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: The corridor. Everything the countdown is not.
+visual_beat: The service corridor, dark, one red practical, silent.
+location: LOC-festival-service-corridor
+time: Night
+camera_shot: wide
+camera_angle: eye_level
+background_description: The service corridor, empty, one red practical, the countdown audible but far.
+depth_plan: Deep, empty.
+lighting:
+  key_direction: One red practical overhead
+  key_color: Deep red
+  fill: None
+  contact_shadow: Not applicable - nobody present
+  color_spill: Red on the pipework directly beneath the practical
+color_mood: Silent, red, and empty. The opposite of the previous panels.
+box:
+- 0.506
+- 0.3932
+- 0.494
+- 0.2137
+shape: wide
+actual_aspect: 1.564
+keep_empty:
+  bubble_zones: []
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters: []
+required_source_assets:
+- CORRIDOR plate A
+qa_checklist:
+- Empty of people
+- The contrast with the crowd panels is the point
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

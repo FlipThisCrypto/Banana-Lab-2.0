@@ -212,6 +212,22 @@ def test_dense_pages_use_a_wider_row_gutter():
     assert by_number[7]["row_gap"] == by_number[7]["col_gap"] * 2
 
 
+def test_every_panel_has_a_staging_guide(script):
+    guides = ISSUE_DIR / "06_backgrounds" / "staging-guides"
+    if not guides.is_dir():
+        pytest.skip("staging guides not built")
+    missing = []
+    for panel in script["panels"]:
+        path = guides / f"{panel['panel_id']}.yaml"
+        if not path.is_file():
+            missing.append(panel["panel_id"])
+            continue
+        data = yaml.safe_load(path.read_text(encoding="utf-8"))
+        assert "keep_empty" in data, panel["panel_id"]
+        assert "lighting" in data, panel["panel_id"]
+    assert not missing, missing[:10]
+
+
 def test_lettering_font_is_locked():
     from app.services.lettering import DIALOGUE_FONT
 

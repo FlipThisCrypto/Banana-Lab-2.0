@@ -1,0 +1,58 @@
+# Staging guide for ISSUE001-P22-06
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P22-06
+page_number: 22
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: Close the issue and open the season.
+visual_beat: Very wide, very far back. The two figures tiny, the tower small, the dark festival huge around
+  them, and one cyan point.
+location: LOC-festival-grounds
+time: Late night, after the countdown
+camera_shot: extreme_wide
+camera_angle: high_angle
+background_description: The whole half-lit festival from far back and above. The junction tower a small
+  vertical among many. One cyan point on it, tiny but findable. The two figures beneath it barely readable.
+depth_plan: Deep and wide. Depth from light density and haze.
+lighting:
+  key_direction: Half the festival's restored lights
+  key_color: Warm amber where alive
+  fill: Cool night across everything
+  contact_shadow: Not readable at this scale
+  color_spill: Warm haze over the working half, cold over the dead half
+color_mood: Warm and cold, and one cyan point that the reader has to look for.
+box:
+- 0.0
+- 0.7911
+- 1.0
+- 0.2089
+shape: wide
+actual_aspect: 3.238
+keep_empty:
+  bubble_zones:
+  - zone:
+    - 0.54
+    - 0.74
+    - 0.42
+    - 0.22
+    for: caption
+    kind: caption
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters: []
+required_source_assets:
+- NEW GROUNDS plate A18 - final wide, half-lit, tower with lit segment
+qa_checklist:
+- The cyan point is findable but small - the reader should have to look
+- Deliberate rhyme with panel 1-1 and the page 11 splash - same site, three states
+- Final panel of the issue - the strongest image on the page
+- Exactly one segment still
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

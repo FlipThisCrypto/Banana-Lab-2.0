@@ -1,0 +1,65 @@
+# Staging guide for ISSUE001-P18-03
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P18-03
+page_number: 18
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: Static hears something the countdown is drowning out.
+visual_beat: Static turning away from the stage, toward the dark.
+location: LOC-festival-main-stage
+time: Night
+camera_shot: medium
+camera_angle: eye_level
+background_description: The back of the crowd, stage light from behind, dark service side ahead.
+depth_plan: Crowd behind him lit, Static midground turning, dark ahead.
+lighting:
+  key_direction: Stage from behind him
+  key_color: Hard white
+  fill: Nothing ahead
+  contact_shadow: Present, thrown forward into the dark
+  rim: Hard white rim on his back and shoulders
+  color_spill: White on his back, nothing on his face
+color_mood: Backlit. His face is the only dark thing pointed at the dark.
+box:
+- 0.6443
+- 0.1062
+- 0.3557
+- 0.263
+shape: rectangle
+actual_aspect: 0.915
+keep_empty:
+  bubble_zones:
+  - zone:
+    - 0.54
+    - 0.05
+    - 0.42
+    - 0.22
+    for: MZ-CHAR-003
+    kind: speech
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-003
+  position: Centre, turning away from the stage toward camera-left
+  depth_plane: midground
+  scale_note: Reference figure
+  ground_contact: Both feet, pivoting
+  eye_line: Off into the dark service side
+  hand_activity: One hand near his ear
+  expression_id: EXP-003-worried
+required_source_assets:
+- NEW STAGE plate B
+- character_layers/static
+- NEW crowd silhouette set
+qa_checklist:
+- He is the only figure facing away from the stage
+- Face unlit and back rim-lit - strong silhouette read
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

@@ -1,0 +1,88 @@
+# Staging guide for ISSUE001-P12-01
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P12-01
+page_number: 12
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: Arrive at the locked gate, the last obstacle before the control node.
+visual_beat: The service gate, locked, a cyan-white worklight above it.
+location: LOC-festival-grounds
+time: Night
+camera_shot: wide
+camera_angle: eye_level
+background_description: A service gate set into a fence line, cyan-white worklight above it, dead festival
+  ground beyond.
+depth_plan: Fence leads the eye from foreground left to the gate at midground right.
+lighting:
+  key_direction: Cyan-white gate worklight, high and frame right
+  key_color: Cold cyan-white
+  fill: Residual warm from the distant lit section
+  contact_shadow: Hard-edged under the nearest figure, softer on those further
+  cast_shadow: Hard shadows thrown left along the fence
+  color_spill: Cyan on upward-facing surfaces
+color_mood: Cold cyan pool against warm residue. The cyan must NOT look important yet.
+box:
+- 0.0
+- 0.0
+- 1.0
+- 0.1977
+shape: wide
+actual_aspect: 3.421
+keep_empty:
+  bubble_zones:
+  - zone:
+    - 0.04
+    - 0.05
+    - 0.42
+    - 0.22
+    for: MZ-CHAR-LILDEVIL
+    kind: speech
+  - zone:
+    - 0.54
+    - 0.05
+    - 0.42
+    - 0.22
+    for: MZ-CHAR-005
+    kind: speech
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-LILDEVIL
+  position: Frame right at the gate, side-on
+  depth_plane: midground
+  scale_note: Gate frame is roughly 1.6 character heights
+  ground_contact: Both feet braced, weight forward into the gate
+  eye_line: At the gate mechanism
+  hand_activity: Both hands gripping the bars
+- character_id: MZ-CHAR-005
+  position: Centre, between the other two
+  depth_plane: midground
+  scale_note: Same ground plane, slightly nearer camera
+  ground_contact: Both feet, weight neutral, caught
+  eye_line: Toward Lil Devil, glancing back at Scarline
+  hand_activity: Half-raised, indecisive
+- character_id: MZ-CHAR-006
+  position: Frame left, several steps back, still
+  depth_plane: midground
+  scale_note: 10 percent smaller - further away
+  ground_contact: Both feet, weight settled, deliberately not advancing
+  eye_line: Level at NeonBlue, not at Lil Devil
+  hand_activity: Arms at sides, unhurried
+required_source_assets:
+- GROUNDS plate A15 - service gate
+- character_layers neonblue, scarline
+- NEW Lil Devil alpha layer set - does not exist yet
+- PROP-service-gate intact state
+qa_checklist:
+- Three distinct depths, no row staging
+- Cyan spill present but reads as ordinary worklight
+- The gate is visibly locked
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

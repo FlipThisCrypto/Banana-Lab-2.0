@@ -1,0 +1,59 @@
+# Staging guide for ISSUE001-P09-02
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P09-02
+page_number: 9
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: Static arrives at the screen, drawn by what he can hear.
+visual_beat: Static walking toward the screen, others walking away from it.
+location: LOC-festival-grounds
+time: Night
+camera_shot: medium_wide
+camera_angle: eye_level
+background_description: The screen ahead, crowd moving past him in the opposite direction.
+depth_plan: Crowd foreground moving one way, Static midground moving the other, screen behind.
+lighting:
+  key_direction: The screen ahead of him
+  key_color: Cool white
+  fill: Scattered phone light
+  contact_shadow: Present under him and the nearest crowd
+  rim: Cool rim on his front edge
+  color_spill: Cool ahead, nothing behind
+color_mood: Cold, and he is the only one going toward it.
+box:
+- 0.0
+- 0.1356
+- 1.0
+- 0.1977
+shape: wide
+actual_aspect: 3.421
+keep_empty:
+  bubble_zones: []
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-003
+  position: Centre, moving away from camera toward the screen
+  depth_plane: midground
+  scale_note: Mid-scale
+  ground_contact: Both feet, walking steadily
+  eye_line: At the screen
+  hand_activity: One hand near his ear
+  occlusion: Crowd silhouettes cross in front of him
+  expression_id: EXP-003-determined
+required_source_assets:
+- PROP-public-projection-screen
+- character_layers/static
+- NEW crowd silhouette set
+qa_checklist:
+- He moves against the crowd current - the composition must make that obvious
+- Lit from ahead, dark behind
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

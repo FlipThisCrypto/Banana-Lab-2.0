@@ -1,0 +1,67 @@
+# Staging guide for ISSUE001-P04-01
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P04-01
+page_number: 4
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: Static perceives the fault before any instrument does.
+visual_beat: Static stopped dead in a moving crowd, head tilted.
+location: LOC-festival-grounds
+time: Night
+camera_shot: medium_close
+camera_angle: eye_level
+background_description: Booth row still lit and warm, crowd flowing past in soft silhouette.
+depth_plan: Soft moving foreground crowd, Static sharp midground, warm bokeh behind.
+lighting:
+  key_direction: Warm booth lights behind and right
+  key_color: Amber
+  fill: Weak cool ambient
+  contact_shadow: Tight under both feet
+  rim: Warm edge on hair and shoulder
+  color_spill: Amber on his back
+color_mood: Still warm, but the warmth is behind him rather than on him.
+box:
+- 0.0
+- 0.0
+- 0.54
+- 1.0
+shape: tall
+actual_aspect: 0.365
+keep_empty:
+  bubble_zones:
+  - zone:
+    - 0.1
+    - 0.04
+    - 0.8
+    - 0.22
+    for: MZ-CHAR-003
+    kind: speech
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-003
+  position: Low and centred, empty space above him
+  depth_plane: midground
+  scale_note: Occupies only the lower third of a tall panel
+  ground_contact: Both feet, stopped mid-step, weight forward
+  eye_line: Unfocused, angled up and off - listening not looking
+  hand_activity: One hand half-raised toward his ear, not touching it
+  occlusion: A passing crowd silhouette clips his lower edge
+  expression_id: EXP-003-worried
+required_source_assets:
+- GROUNDS plate A8 - booth row
+- character_layers/static
+- NEW crowd silhouette set
+qa_checklist:
+- Widow-peak hair and heavy grey eye rings legible
+- He reads as listening, not frightened
+- Crowd motion contrasts his stillness
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

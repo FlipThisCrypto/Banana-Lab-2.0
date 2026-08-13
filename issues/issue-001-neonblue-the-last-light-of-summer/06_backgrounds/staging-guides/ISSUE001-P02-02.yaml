@@ -1,0 +1,61 @@
+# Staging guide for ISSUE001-P02-02
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P02-02
+page_number: 2
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: TwoTone registers the problem with volunteering people who have not agreed.
+visual_beat: TwoTone, dry, not breaking stride.
+location: LOC-festival-grounds
+time: Dusk, sun low
+camera_shot: medium_close
+camera_angle: eye_level
+background_description: Defocused stall lights behind.
+depth_plan: Sharp figure, soft bokeh background.
+lighting:
+  key_direction: Warm from frame left
+  key_color: Amber
+  fill: Cool ambient
+  contact_shadow: Not applicable - feet out of frame
+  color_spill: Amber on his left half
+color_mood: Warm, flat, unbothered.
+box:
+- 0.0
+- 0.2001
+- 0.5676
+- 0.2351
+shape: rectangle
+actual_aspect: 1.633
+keep_empty:
+  bubble_zones:
+  - zone:
+    - 0.54
+    - 0.05
+    - 0.42
+    - 0.22
+    for: MZ-CHAR-002
+    kind: speech
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-002
+  position: Centre, three-quarter
+  depth_plane: foreground
+  scale_note: Head fills a third of the panel
+  ground_contact: Walking, feet out of frame
+  eye_line: Level ahead, not at NeonBlue
+  hand_activity: Not visible
+required_source_assets:
+- character_layers/twotone close-crop
+qa_checklist:
+- Centred half-black half-white hair correct
+- Delivery is dry, not hostile
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

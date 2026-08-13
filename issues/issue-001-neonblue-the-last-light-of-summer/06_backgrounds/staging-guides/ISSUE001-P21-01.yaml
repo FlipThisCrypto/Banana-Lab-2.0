@@ -1,0 +1,69 @@
+# Staging guide for ISSUE001-P21-01
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P21-01
+page_number: 21
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: Directed force works. Lil Devil's growth is visible, not stated.
+visual_beat: Lil Devil hits the hinge exactly where NeonBlue chalked it. Sparks. The shutter gives.
+location: LOC-festival-service-corridor
+time: Night
+camera_shot: medium
+camera_angle: low_angle
+background_description: The shutter and its hinge, the chalk mark visible at the impact point. Sparks
+  bursting outward, small debris thrown.
+depth_plan: Debris foreground, figure midground, shutter background. The impact connects all three.
+lighting:
+  key_direction: The impact flash itself, at the hinge
+  key_color: Hot white-orange
+  fill: Warm torchlight from below
+  contact_shadow: Hard under the planted foot
+  rim: Hard impact rim on his leading arm and horns
+  cast_shadow: Sharp shadow thrown back and up by the impact flash
+  color_spill: Orange flash across his front, red residue behind
+color_mood: The hottest panel in the issue. Full impact treatment.
+box:
+- 0.0
+- 0.0
+- 1.0
+- 0.2666
+shape: rectangle
+actual_aspect: 2.537
+keep_empty:
+  bubble_zones:
+  - zone:
+    - 0.04
+    - 0.74
+    - 0.42
+    - 0.22
+    for: MZ-CHAR-LILDEVIL
+    kind: speech
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-LILDEVIL
+  position: Centre-right, mid-strike, body extended into the blow
+  depth_plane: midground
+  scale_note: Measured against the shutter frame
+  ground_contact: One foot planted hard, the other trailing - weight fully committed forward
+  eye_line: At the hinge, locked on the chalk mark
+  hand_activity: Both hands driving into the hinge
+required_source_assets:
+- NEW CORRIDOR plate C - shutter hinge close
+- NEW Lil Devil alpha layer set - does not exist yet - action pose
+- PROP-service-gate struck state
+qa_checklist:
+- SFX is full house style - large, coloured, angled, overlapping the panel border
+- The hinge he strikes is the point NeonBlue chalked in panel 20-4
+- Weight and follow-through are believable
+- Impact flash lights the scene and every shadow agrees
+- His devil tail follows the motion arc
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

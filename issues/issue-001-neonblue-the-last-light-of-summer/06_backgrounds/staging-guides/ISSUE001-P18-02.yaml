@@ -1,0 +1,50 @@
+# Staging guide for ISSUE001-P18-02
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P18-02
+page_number: 18
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: The whole festival turns one way.
+visual_beat: The crowd massed at the stage, seen from within and below, every face pointed the same way.
+location: LOC-festival-main-stage
+time: Night
+camera_shot: extreme_wide
+camera_angle: low_angle
+background_description: The stage from within the crowd and below. Countdown board lit above. Crowd heads
+  and raised arms filling the lower frame in silhouette.
+depth_plan: Dense silhouette foreground, crowd mass midground, lit stage background.
+lighting:
+  key_direction: From the stage, ahead and above
+  key_color: Hard white and magenta stage wash
+  fill: None - everything not lit by the stage is black
+  contact_shadow: Not applicable
+  color_spill: Stage light rimming the tops of hundreds of heads
+color_mood: Blinding stage light against total crowd silhouette. Maximum contrast in the issue.
+box:
+- 0.0
+- 0.1062
+- 0.6323
+- 0.263
+shape: wide
+actual_aspect: 1.626
+keep_empty:
+  bubble_zones: []
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters: []
+required_source_assets:
+- NEW STAGE plate B - low angle from crowd
+- NEW crowd silhouette set - dense
+qa_checklist:
+- No Emo Monkey identifiable in the crowd
+- Crowd silhouettes read as individual people, not a texture
+- The pull of this panel is felt - it should look like the right place to be
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

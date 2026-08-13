@@ -1,0 +1,86 @@
+# Staging guide for ISSUE001-P20-06
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P20-06
+page_number: 20
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: Close the page on the team ready and the countdown still running.
+visual_beat: The five in position, the shutter ahead, the countdown audible off-panel.
+location: LOC-festival-service-corridor
+time: Night
+camera_shot: wide
+camera_angle: eye_level
+background_description: The corridor at the shutter, torches on the floor, everyone in position.
+depth_plan: Five depth steps toward the shutter.
+lighting:
+  key_direction: Floor torches
+  key_color: Warm working white
+  fill: Weak red
+  contact_shadow: Hard, tight, upward-throwing on all five
+  cast_shadow: Five shadows up the walls, radiating from the floor
+  color_spill: Warm undersides throughout
+color_mood: Warm working light. A team about to do something difficult.
+box:
+- 0.0
+- 0.8119
+- 1.0
+- 0.1881
+shape: wide
+actual_aspect: 3.596
+keep_empty:
+  bubble_zones: []
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-LILDEVIL
+  position: Frame right, nearest the shutter
+  depth_plane: midground
+  scale_note: Reference figure
+  ground_contact: Both feet braced
+  eye_line: At the chalk mark
+  hand_activity: Both hands ready
+- character_id: MZ-CHAR-005
+  position: Centre-right, behind Lil Devil
+  depth_plane: midground
+  scale_note: 8 percent smaller
+  ground_contact: Both feet, weight forward
+  eye_line: At the chalk mark
+  hand_activity: One hand raised, holding
+- character_id: MZ-CHAR-002
+  position: Centre-left
+  depth_plane: midground
+  scale_note: 12 percent smaller
+  ground_contact: Both feet
+  eye_line: At the conduit above
+  hand_activity: One hand pointing up at the live conduit
+- character_id: MZ-CHAR-003
+  position: Frame left, back to the wall
+  depth_plane: background
+  scale_note: Smaller
+  ground_contact: Both feet, back against the wall
+  eye_line: Unfocused, counting
+  hand_activity: One hand raised, counting
+- character_id: MZ-CHAR-004
+  position: Far frame left, torch out
+  depth_plane: background
+  scale_note: Smallest
+  ground_contact: Both feet, steady
+  eye_line: At the hinge
+  hand_activity: Torch held out
+required_source_assets:
+- CORRIDOR plate C torch-lit
+- character_layers neonblue, twotone, static, ash
+- NEW Lil Devil alpha layer set - does not exist yet
+qa_checklist:
+- Five distinct depths again, different from panel 20-1
+- All five oriented toward the shutter
+- Nobody is centred
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

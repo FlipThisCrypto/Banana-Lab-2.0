@@ -1,0 +1,57 @@
+# Staging guide for ISSUE001-P20-05
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P20-05
+page_number: 20
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: Ash is present and useful without speaking again.
+visual_beat: Ash holding a torch steady so NeonBlue can see the hinge.
+location: LOC-festival-service-corridor
+time: Night
+camera_shot: medium
+camera_angle: eye_level
+background_description: The corridor, Ash's torch as a visible practical, the shutter behind.
+depth_plan: Ash midground with the torch, shutter background.
+lighting:
+  key_direction: The torch Ash is holding, in frame
+  key_color: Warm working white
+  fill: Weak red
+  contact_shadow: Present under him
+  rim: Warm rim on his forearm and the torch body
+  color_spill: Warm cone from the torch across the frame
+color_mood: One person holding a light steady. Unglamorous and necessary.
+box:
+- 0.4665
+- 0.5648
+- 0.5335
+- 0.2351
+shape: rectangle
+actual_aspect: 1.535
+keep_empty:
+  bubble_zones: []
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-004
+  position: Frame right, arm extended holding a torch
+  depth_plane: midground
+  scale_note: Reference figure
+  ground_contact: Both feet, weight even, steady
+  eye_line: At what the torch is lighting
+  hand_activity: One hand holding a torch steady
+required_source_assets:
+- CORRIDOR plate C torch-lit
+- character_layers/ash
+qa_checklist:
+- He does not speak again - one line per issue
+- The torch beam direction matches the lighting in the neighbouring panels
+- Silent
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

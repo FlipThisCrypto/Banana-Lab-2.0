@@ -1,0 +1,79 @@
+# Staging guide for ISSUE001-P13-03
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P13-03
+page_number: 13
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: Close on the pulse stopping the moment they step back.
+visual_beat: The three watching. The cyan fades. The amber indicator does not come back.
+location: LOC-festival-control-node
+time: Night
+camera_shot: medium_wide
+camera_angle: eye_level
+background_description: The control node, cyan fading out of the seams, leaving the room almost dark.
+depth_plan: Three figures midground and foreground, the box beyond, all falling to dark.
+lighting:
+  key_direction: The dying cyan from the box
+  key_color: Cyan, fading to nothing
+  fill: Weak warm from the corridor behind
+  contact_shadow: Fading as the key dies
+  color_spill: Cyan draining off every surface during the panel
+color_mood: Light leaving the room. The opposite of the previous panel.
+box:
+- 0.0
+- 0.6997
+- 1.0
+- 0.3003
+shape: wide
+actual_aspect: 2.252
+keep_empty:
+  bubble_zones:
+  - zone:
+    - 0.54
+    - 0.05
+    - 0.42
+    - 0.22
+    for: MZ-CHAR-005
+    kind: speech
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-005
+  position: Centre
+  depth_plane: midground
+  scale_note: Reference figure
+  ground_contact: Both feet, weight even, still
+  eye_line: At the box
+  hand_activity: Arms at sides
+- character_id: MZ-CHAR-LILDEVIL
+  position: Frame right
+  depth_plane: midground
+  scale_note: Level with NeonBlue
+  ground_contact: Both feet, weight back
+  eye_line: At the box
+  hand_activity: Hands lowered
+- character_id: MZ-CHAR-004
+  position: Frame left, furthest back
+  depth_plane: background
+  scale_note: Smaller, set back
+  ground_contact: Standing still
+  eye_line: At NeonBlue rather than the box
+  hand_activity: Hands in pocket
+required_source_assets:
+- NODE plate A
+- NEW Lil Devil alpha layer set - does not exist yet
+- character_layers neonblue, ash
+- PROP-control-box fading state
+qa_checklist:
+- The cyan is visibly fading, not already gone
+- Amber indicator stays dead - the system did not repair itself
+- All three are still
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

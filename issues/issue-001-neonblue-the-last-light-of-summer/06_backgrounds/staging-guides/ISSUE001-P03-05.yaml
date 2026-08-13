@@ -1,0 +1,50 @@
+# Staging guide for ISSUE001-P03-05
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P03-05
+page_number: 3
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: End the page with the festival at its loudest, immediately before the first fault.
+visual_beat: Wide across the busiest stretch of the grounds, everything working.
+location: LOC-festival-grounds
+time: Dusk, last light gone
+camera_shot: extreme_wide
+camera_angle: eye_level
+background_description: The busiest stretch of the grounds. Every booth lit, rides turning, crowd shoulder
+  to shoulder.
+depth_plan: Deep. Crowd foreground, booths midground, ferris wheel and sky behind.
+lighting:
+  key_direction: Every booth and ride
+  key_color: Amber, magenta, warm white
+  fill: None needed - saturated
+  contact_shadow: Dense overlapping crowd shadows
+  color_spill: Every surface carries several colours
+color_mood: The busiest, brightest panel in the issue. Peak festival.
+box:
+- 0.0
+- 0.7732
+- 1.0
+- 0.2268
+shape: wide
+actual_aspect: 2.982
+keep_empty:
+  bubble_zones: []
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters: []
+required_source_assets:
+- NEW GROUNDS plate A7 - busiest stretch, full night lighting
+- NEW crowd silhouette set
+qa_checklist:
+- Peak brightness in the issue - later pages measure against this
+- No cyan in the festival palette
+- Crowd reads as individuals at print size
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

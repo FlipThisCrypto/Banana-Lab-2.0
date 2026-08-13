@@ -1,0 +1,55 @@
+# Staging guide for ISSUE001-P10-04
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P10-04
+page_number: 10
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: Ash registers it without speaking, banking his one line for later.
+visual_beat: Ash at the frame edge, looking at NeonBlue, then away.
+location: LOC-festival-grounds
+time: Night
+camera_shot: medium_close
+camera_angle: eye_level
+background_description: Dark path, a sliver of the failing row behind.
+depth_plan: Shallow.
+lighting:
+  key_direction: Dying amber from behind
+  key_color: Weak amber
+  fill: Cool ambient
+  contact_shadow: Faint below
+  color_spill: Weak warm rim on his fringe
+color_mood: Dim. Waiting.
+box:
+- 0.0
+- 0.6268
+- 0.7133
+- 0.3732
+shape: rectangle
+actual_aspect: 1.293
+keep_empty:
+  bubble_zones: []
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-004
+  position: Far frame left, mostly at the edge
+  depth_plane: midground
+  scale_note: Small, deliberately marginal
+  ground_contact: Both feet, still
+  eye_line: At NeonBlue, then down
+  hand_activity: Hands in hoodie pocket
+required_source_assets:
+- character_layers/ash
+- GROUNDS plate A8 dark
+qa_checklist:
+- Deliberately positioned at the frame edge - he is not the subject yet
+- Silent - his line is on page 14
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

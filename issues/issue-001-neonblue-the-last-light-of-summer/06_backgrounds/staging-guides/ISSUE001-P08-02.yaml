@@ -1,0 +1,64 @@
+# Staging guide for ISSUE001-P08-02
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P08-02
+page_number: 8
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: The insert that carries the page's information.
+visual_beat: Close on the board. Two fingers tracing two separate paths.
+location: LOC-festival-grounds
+time: Night
+camera_shot: insert
+camera_angle: high_angle
+background_description: The festival map, two areas visibly marked dark, two fingers tracing curving paths
+  toward the centre.
+depth_plan: Shallow. Board surface and hands.
+lighting:
+  key_direction: The board, from within
+  key_color: Cool white
+  fill: None
+  contact_shadow: Hand shadows falling on the board face
+  color_spill: Cool on his palms
+color_mood: Cool and diagrammatic.
+box:
+- 0.506
+- 0.0
+- 0.494
+- 0.3732
+shape: rectangle
+actual_aspect: 0.895
+keep_empty:
+  bubble_zones:
+  - zone:
+    - 0.54
+    - 0.05
+    - 0.42
+    - 0.22
+    for: MZ-CHAR-002
+    kind: speech
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-002
+  position: Hands only, entering from frame bottom
+  depth_plane: foreground
+  scale_note: Hands near life scale on the board
+  ground_contact: Standing, out of frame
+  eye_line: Not visible
+  hand_activity: Two fingers tracing two separate curving paths
+required_source_assets:
+- NEW festival map board prop, marked-dark state
+- character_layers/twotone hands
+qa_checklist:
+- The two traced paths are legible and clearly converging
+- Hand shadows land correctly on the board surface
+- Board carries no readable text
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

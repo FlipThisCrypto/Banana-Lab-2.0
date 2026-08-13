@@ -1,0 +1,58 @@
+# Staging guide for ISSUE001-P17-01
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P17-01
+page_number: 17
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: Let the midpoint land. Deliberate negative space, borrowed from Edition Three.
+visual_beat: NeonBlue alone in the corridor, facing away, the corridor running off into dark.
+location: LOC-festival-service-corridor
+time: Night
+camera_shot: extreme_wide
+camera_angle: eye_level
+background_description: The service corridor stretching away, mostly empty. Pipework, grating, one distant
+  light. Nothing happening.
+depth_plan: Deep one-point perspective. The vanishing point is the emotional subject.
+lighting:
+  key_direction: Distant practical far down the corridor, ahead of him
+  key_color: Cool sodium-white
+  fill: Faint red spill from behind
+  contact_shadow: Long soft shadow thrown back toward camera
+  color_spill: Cool light on his front edge, warm red on his back
+color_mood: Almost monochrome. Quiet.
+box:
+- 0.0
+- 0.0
+- 1.0
+- 0.5544
+shape: wide
+actual_aspect: 1.22
+keep_empty:
+  bubble_zones: []
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-005
+  position: Small, low, frame left, facing away from camera
+  depth_plane: midground
+  scale_note: Roughly one sixth of panel height - dwarfed by the corridor
+  ground_contact: Both feet flat, weight settled, still
+  eye_line: Away, down the corridor
+  hand_activity: One hand still resting on the wall
+required_source_assets:
+- CORRIDOR plate A
+- character_layers/neonblue back view
+qa_checklist:
+- Silent, and stays silent - no caption added later
+- At least 70 percent of the frame is empty corridor
+- Back-view silhouette identifiable by the spike crown
+- Perspective converges on one vanishing point
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

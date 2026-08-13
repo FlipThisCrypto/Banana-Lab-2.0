@@ -1,0 +1,49 @@
+# Staging guide for ISSUE001-P13-02
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P13-02
+page_number: 13
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: Hold on the object so the reader can study what the characters cannot.
+visual_beat: Hard insert on the control box seams, cyan pulsing through in a slow rhythm.
+location: LOC-festival-control-node
+time: Night
+camera_shot: extreme_close
+camera_angle: eye_level
+background_description: The control box panel face. Cyan light escaping through the seams in a slow regular
+  pulse. The dead amber indicator beside it.
+depth_plan: Flat and tight. One surface.
+lighting:
+  key_direction: From within the box
+  key_color: Hard cyan
+  fill: None
+  contact_shadow: Not applicable
+  color_spill: Cyan bleeding along every seam and screw head
+color_mood: Cyan on dark metal. Beautiful and wrong.
+box:
+- 0.0
+- 0.5
+- 1.0
+- 0.1877
+shape: inset
+actual_aspect: 3.604
+keep_empty:
+  bubble_zones: []
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters: []
+required_source_assets:
+- PROP-control-box cyan-seam state, extreme close
+qa_checklist:
+- The pulse rhythm is implied by the light falloff
+- Dead amber indicator visible for contrast
+- No readable text or numerals - nothing that dates the system
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

@@ -1,0 +1,80 @@
+# Staging guide for ISSUE001-P19-01
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P19-01
+page_number: 19
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: The decision. The emotional centre of the issue.
+visual_beat: NeonBlue at the junction, lit from one side by the countdown and the other by the red corridor,
+  with nobody telling him anything.
+location: LOC-festival-service-corridor
+time: Night
+camera_shot: medium
+camera_angle: low_angle
+background_description: The junction where the corridor meets the open grounds. Countdown light spilling
+  in from the grounds side, red corridor practical from the other.
+depth_plan: NeonBlue midground on the junction floor, Scarline background, two competing light sources
+  beyond each.
+lighting:
+  key_direction: Two competing keys - cool white countdown from frame left, deep red corridor from frame
+    right
+  key_color: Cool white left, deep red right
+  fill: Neither source fills the other's shadow - the centre of his face is the darkest part
+  contact_shadow: TWO contact shadows under him, one per source, falling in opposite directions
+  rim: Cool rim on his left silhouette, red rim on his right
+  cast_shadow: Two overlapping cast shadows, one cool-edged and one warm-edged
+  color_spill: Cool white on his left, red on his right, meeting down the centre line of his face
+color_mood: Two colours, two directions, one figure. The whole issue in one lighting setup.
+box:
+- 0.0
+- 0.0
+- 1.0
+- 0.494
+shape: rectangle
+actual_aspect: 1.369
+keep_empty:
+  bubble_zones:
+  - zone:
+    - 0.54
+    - 0.05
+    - 0.42
+    - 0.22
+    for: MZ-CHAR-006
+    kind: speech
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-005
+  position: Centre but pushed toward the corridor side of frame before he has moved
+  depth_plane: midground
+  scale_note: Head roughly a third of panel height, measured against the junction door frame
+  ground_contact: Both feet flat, weight subtly shifted onto the corridor-side foot
+  eye_line: Not at either light - middle distance, deciding
+  hand_activity: Hands loose at his sides, open
+  expression_id: EXP-005-determined
+- character_id: MZ-CHAR-006
+  position: Background right at the frame edge, small, still
+  depth_plane: background
+  scale_note: Roughly half NeonBlue's apparent height - clearly set back
+  ground_contact: Both feet, weight settled, deliberately not advancing
+  eye_line: At NeonBlue
+  hand_activity: Arms at sides, not reaching
+required_source_assets:
+- NEW CORRIDOR plate D - junction, dual light
+- character_layers neonblue, scarline
+qa_checklist:
+- Two distinct light sources produce TWO distinct contact shadows
+- The cool and red spills meet down the centre of his face
+- He is off-centre toward the corridor side BEFORE he has moved
+- Scarline is visibly not intervening and not reaching
+- Her line validates without instructing
+- The emotional centre - the strongest image on the page
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

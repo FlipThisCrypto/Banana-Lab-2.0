@@ -1,0 +1,99 @@
+# Staging guide for ISSUE001-P02-06
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P02-06
+page_number: 2
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: Close the page on the group splitting up, which is what makes the blackout dangerous.
+visual_beat: The six moving apart into the crowd along diverging paths.
+location: LOC-festival-grounds
+time: Dusk, sun low
+camera_shot: wide
+camera_angle: high_angle
+background_description: A wide path junction from above, crowd dense, paths leading to different zones.
+depth_plan: Single deep ground plane from above. Depth from scale and crowd density.
+lighting:
+  key_direction: Overhead strings throughout
+  key_color: Amber
+  fill: Dusk sky
+  contact_shadow: Short shadows directly below each figure
+  color_spill: Warm on all upward surfaces
+color_mood: Warm, wide, slightly lonely already.
+box:
+- 0.0
+- 0.6943
+- 1.0
+- 0.3057
+shape: wide
+actual_aspect: 2.213
+keep_empty:
+  bubble_zones:
+  - zone:
+    - 0.54
+    - 0.74
+    - 0.42
+    - 0.22
+    for: caption
+    kind: caption
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-005
+  position: Centre, moving away from camera
+  depth_plane: midground
+  scale_note: Mid-scale
+  ground_contact: Both feet walking away
+  eye_line: Ahead
+  hand_activity: One hand raised in parting
+- character_id: MZ-CHAR-001
+  position: Frame left, diverging
+  depth_plane: midground
+  scale_note: Similar to NeonBlue
+  ground_contact: Both feet walking
+  eye_line: Ahead
+  hand_activity: Hands in pockets
+- character_id: MZ-CHAR-002
+  position: Frame right, diverging
+  depth_plane: midground
+  scale_note: Similar to NeonBlue
+  ground_contact: Both feet walking
+  eye_line: Ahead
+  hand_activity: Neutral at sides
+- character_id: MZ-CHAR-003
+  position: Frame right rear
+  depth_plane: background
+  scale_note: Smaller
+  ground_contact: Both feet, slower
+  eye_line: Back over his shoulder
+  hand_activity: One hand near his ear
+- character_id: MZ-CHAR-006
+  position: Frame left rear
+  depth_plane: background
+  scale_note: Smaller
+  ground_contact: Both feet walking
+  eye_line: Ahead
+  hand_activity: Neutral at sides
+- character_id: MZ-CHAR-004
+  position: Centre rear, slowest
+  depth_plane: background
+  scale_note: Smallest
+  ground_contact: Both feet, slow
+  eye_line: Down
+  hand_activity: Hands in hoodie pocket
+required_source_assets:
+- NEW GROUNDS plate A5 - path junction from above
+- character_layers all six
+- NEW crowd silhouette set
+qa_checklist:
+- Six diverging directions readable
+- Static looking back is visible
+- The issue's only piece of retrospective narration
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

@@ -1,0 +1,54 @@
+# Staging guide for ISSUE001-P22-04
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P22-04
+page_number: 22
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: The Echo answers the choice, after the choice. One segment only.
+visual_beat: A hard insert on a dark junction-tower panel where one segment of a larger shape has come
+  alive in cyan.
+location: LOC-festival-grounds
+time: Late night, after the countdown
+camera_shot: extreme_close
+camera_angle: low_angle
+background_description: A dark weathered panel high on a junction tower. One segment of a larger geometric
+  shape is lit cyan. The rest is dark and incomplete, and the frame deliberately crops before the shape's
+  full extent.
+depth_plan: Flat and tight. A single surface.
+lighting:
+  key_direction: The lit segment is the only source
+  key_color: Cyan
+  fill: None
+  contact_shadow: Not applicable
+  color_spill: Faint cyan on the surrounding weathered metal
+color_mood: One small cyan light in near-total black. The quietest and most important image in the issue.
+box:
+- 0.0
+- 0.4417
+- 0.6804
+- 0.3374
+shape: inset
+actual_aspect: 1.364
+keep_empty:
+  bubble_zones: []
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters: []
+required_source_assets:
+- PROP-echo-symbol single-segment-lit state
+- NEW junction tower panel plate
+qa_checklist:
+- EXACTLY ONE segment is lit - hard season constraint
+- The full symbol is NEVER visible, and the frame crops before its extent
+- The lit segment is partial and off-centre
+- It does not read as a logo or a complete emblem
+- CONFLICT C-01 - depends on owner ruling
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

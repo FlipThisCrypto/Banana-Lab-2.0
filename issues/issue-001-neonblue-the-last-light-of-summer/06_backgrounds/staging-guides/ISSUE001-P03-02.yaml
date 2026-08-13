@@ -1,0 +1,73 @@
+# Staging guide for ISSUE001-P03-02
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P03-02
+page_number: 3
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: Introduce Lil Devil by having him arrive where he was not invited.
+visual_beat: Lil Devil leaning on the counter from the customer side, already bored.
+location: LOC-festival-grounds
+time: Dusk, sun low
+camera_shot: two_shot
+camera_angle: eye_level
+background_description: The counter from a side angle, stand lights behind NeonBlue, festival dark beyond
+  Lil Devil.
+depth_plan: Two-plane. The counter is the dividing line.
+lighting:
+  key_direction: Stand lamps from behind NeonBlue
+  key_color: Hot orange
+  fill: Cool festival ambient
+  contact_shadow: Present on both, differing in hardness
+  rim: Orange rim on Lil Devil's horns from behind the counter
+  color_spill: Orange on NeonBlue, cooler on Lil Devil
+color_mood: Warm inside the stand, cooler outside it. Lil Devil's red is the hottest note.
+box:
+- 0.0
+- 0.2388
+- 1.0
+- 0.2268
+shape: rectangle
+actual_aspect: 2.982
+keep_empty:
+  bubble_zones:
+  - zone:
+    - 0.28
+    - 0.05
+    - 0.42
+    - 0.22
+    for: MZ-CHAR-LILDEVIL
+    kind: speech
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-LILDEVIL
+  position: Frame right, leaning on the counter
+  depth_plane: foreground
+  scale_note: Nearer camera, 8 percent larger than NeonBlue
+  ground_contact: Both feet, weight on the counter through his forearms
+  eye_line: Sideways at NeonBlue
+  hand_activity: Both forearms flat on the counter
+- character_id: MZ-CHAR-005
+  position: Frame left, behind the counter
+  depth_plane: midground
+  scale_note: Set back by the counter depth
+  ground_contact: Both feet, working
+  eye_line: At Lil Devil
+  hand_activity: One hand still holding an order
+required_source_assets:
+- GROUNDS plate A6 side angle
+- character_layers/neonblue
+- NEW Lil Devil alpha layer set - does not exist yet
+qa_checklist:
+- Lil Devil matches approved canon - red horns, red outfit, purple eyeshadow, tail
+- The counter genuinely separates them in depth
+- Devil tail does not clip the edge
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated

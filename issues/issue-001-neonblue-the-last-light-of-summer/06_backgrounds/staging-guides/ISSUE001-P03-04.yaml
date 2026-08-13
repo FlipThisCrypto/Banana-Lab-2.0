@@ -1,0 +1,63 @@
+# Staging guide for ISSUE001-P03-04
+# GENERATED - do not hand-edit.
+# python scripts/production/build_staging_guides.py <issue-slug>
+
+panel_id: ISSUE001-P03-04
+page_number: 3
+generated_from:
+- 03_script/panel-script.yaml
+- 05_layouts/layout-spec.yaml
+narrative_purpose: NeonBlue's answer shows his optimism is a working method, not naivety.
+visual_beat: NeonBlue passing an order over the counter without looking up.
+location: LOC-festival-grounds
+time: Dusk, sun low
+camera_shot: medium_close
+camera_angle: eye_level
+background_description: Counter surface, order in transit, warm lamp above.
+depth_plan: Shallow. Hands and counter foreground, his face midground.
+lighting:
+  key_direction: Heat lamp directly above
+  key_color: Hot orange
+  fill: Warm bounce off the counter
+  contact_shadow: Hard shadow under the order on the counter
+  color_spill: Orange on the tops of his hands and head
+color_mood: Hot and close.
+box:
+- 0.506
+- 0.4776
+- 0.494
+- 0.2835
+shape: rectangle
+actual_aspect: 1.179
+keep_empty:
+  bubble_zones:
+  - zone:
+    - 0.54
+    - 0.05
+    - 0.42
+    - 0.22
+    for: MZ-CHAR-005
+    kind: speech
+  reason: Lettering is placed in space the artwork reserves. Do not put faces, hands, or story objects
+    here.
+characters:
+- character_id: MZ-CHAR-005
+  position: Frame left, hands extended across the counter
+  depth_plane: midground
+  scale_note: Hands near life scale against the order
+  ground_contact: Both feet, leaning forward from the hips
+  eye_line: Down at his hands
+  hand_activity: Both hands passing an order across
+  expression_id: EXP-005-neutral
+required_source_assets:
+- GROUNDS plate A6 counter detail
+- character_layers/neonblue
+qa_checklist:
+- Hands are the focus and must be believable - highest anatomy risk on the page
+- Overhead lamp casts a hard shadow under the order
+visual_review_must_answer:
+- eye goes where the story wants
+- characters belong in this space
+- readable without dialogue
+- connected to neighbours
+- nothing accidentally generated
