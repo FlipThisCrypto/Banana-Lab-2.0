@@ -333,7 +333,21 @@ def plate_prompt(panel: dict) -> str:
         "(render crowds and rows of objects as large simple massed silhouette "
         "shapes:1.35), (not individual figures or individual objects:1.3)"
     )
-    parts.append(FOCAL_BACKGROUND)
+    interior = any(
+        token in description.lower()
+        for token in ("interior", "inside", "counter", "corridor", "room", "booth")
+    )
+    if interior or panel["camera_shot"] in TIGHT_SHOTS:
+        # FOCAL_BACKGROUND demands an outdoor ground plane and empty mid-frame.
+        # That turned P03-01 (food-stand interior, NeonBlue behind the counter)
+        # into another sunset establishing shot with a figure pasted on the sky.
+        parts.append(
+            "(dramatic single source lighting:1.4), "
+            "(hard edged flat colour, no gradients, no airbrush:1.35), "
+            "(large simple flat shapes:1.3), (very few objects:1.25)"
+        )
+    else:
+        parts.append(FOCAL_BACKGROUND)
     return ", ".join(p for p in parts if p)
 
 
@@ -458,6 +472,9 @@ def blocking_for(panel: dict) -> dict[str, dict]:
                 record.get("hand_activity") or "",
                 record.get("eye_line") or "",
             ]).lower(),
+            "scale_note": note,
+            "occlusion": (record.get("occlusion") or "").lower(),
+            "position": position,
         }
     return out
 
@@ -658,6 +675,16 @@ def stage_panel(panel: dict, plate_path: Path, size: tuple[int, int],
         if slots == 1:
             rung = 1.0
 
+        waist_crop = any(
+            token in f"{direction.get('scale_note','')} {direction.get('occlusion','')} {direction.get('position','')}"
+            for token in (
+                "chest height", "behind the counter", "lower body",
+                "cropped at the waist", "waist",
+            )
+        )
+        if waist_crop:
+            direction["feet_in_frame"] = False
+
         foot = foot_f - span * (1.0 - rung)
         foot_y = int(height * min(0.995, foot))
 
@@ -669,6 +696,10 @@ def stage_panel(panel: dict, plate_path: Path, size: tuple[int, int],
         share *= DEPTH_FALLOFF + (1.0 - DEPTH_FALLOFF) * rung
         # The script's own relative scale, e.g. "20 percent smaller".
         share *= direction.get("scale", 1.0)
+        # House style: 25-70% of panel. A medium_close must not become a
+        # cropped giant; page 3 panel 3 rendered Lil Devil at 1271px in a
+        # 968px plate.
+        share = min(0.70, max(0.25, share))
         desired_h = share * height
         try:
             natural_h = ground.character_height_at(foot_y)
@@ -1011,6 +1042,8 @@ def main() -> int:
         description=__doc__,
         formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--pages", type=int, nargs="*", default=[1, 2])
+    ap.add_argument("--panel-ids", nargs="*", default=[],
+                    help="generate only these panel ids (still need --pages)")
     ap.add_argument("--cover", action="store_true")
     ap.add_argument("--pdf", action="store_true")
     ap.add_argument("--seed", type=int, default=880101)
@@ -1047,6 +1080,8 @@ def main() -> int:
     for page_number in args.pages:
         for panel in [p for p in script["panels"]
                       if p["page_number"] == page_number]:
+            if args.panel_ids and panel["panel_id"] not in args.panel_ids:
+                continue
             box = boxes[panel["panel_id"]]["box"]
             pw = int(round(box[2] * page_width))
             ph = int(round(box[3] * page_height))
