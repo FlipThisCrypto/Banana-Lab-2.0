@@ -220,24 +220,50 @@ def main() -> int:
     for asset, count in new_assets.most_common():
         missing.append(f"| {asset} | {count} |")
 
+    calib_dir = issue_dir / "06_backgrounds" / "calibrations"
+    measured = sorted(p.stem for p in calib_dir.glob("*.yaml")) if calib_dir.is_dir() else []
+    if measured:
+        calib_lines = [
+            f"{len(measured)} festival plates have a MEASURED ground-plane calibration",
+            "in `06_backgrounds/calibrations/`. Staging uses those instead of the",
+            "shot-type guess table. Remaining story plates still need a plate before",
+            "they can be measured.",
+            "",
+            "Measured: " + ", ".join(measured) + ".",
+        ]
+        order = [
+            "1. Generate remaining story plates, then measure each.",
+            "2. Human-select plates into approved_candidates/.",
+            "3. Trapped festival-goer figures and crowd silhouettes.",
+            "4. Prop state variants.",
+            "5. Composite remaining pages against measured planes.",
+        ]
+    else:
+        calib_lines = [
+            "No festival location plate has a ground-plane calibration. Four calibrations",
+            "exist in `source_material/imported_canon/plate_calibrations/`, all for",
+            "non-festival locations. Every festival plate needs one before any character",
+            "can be staged with a defensible scale.",
+        ]
+        order = [
+            "1. Festival plate calibrations (unblocked, do first).",
+            "2. Lil Devil alpha layer set (unblocked, do first).",
+            "3. Background plates, in page order.",
+            "4. Trapped festival-goer figures and crowd silhouettes.",
+            "5. Prop state variants.",
+            "6. Per-panel staging plans.",
+        ]
+
     missing += [
         "", f"**{len(new_assets)} distinct new assets** across {sum(new_assets.values())} panel requirements.",
         "",
         "## Calibration gap",
         "",
-        "No festival location plate has a ground-plane calibration. Four calibrations",
-        "exist in `source_material/imported_canon/plate_calibrations/`, all for",
-        "non-festival locations. Every festival plate needs one before any character",
-        "can be staged with a defensible scale.",
+        *calib_lines,
         "",
         "## Production order",
         "",
-        "1. Festival plate calibrations (unblocked, do first).",
-        "2. Lil Devil alpha layer set (unblocked, do first).",
-        "3. Background plates, in page order.",
-        "4. Trapped festival-goer figures and crowd silhouettes.",
-        "5. Prop state variants.",
-        "6. Per-panel staging plans.",
+        *order,
     ]
     (out_dir / "missing-assets.md").write_text("\n".join(missing) + "\n", encoding="utf-8")
 

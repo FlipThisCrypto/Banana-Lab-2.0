@@ -64,16 +64,17 @@ Everything the script asks for that does not exist yet.
 
 ## Calibration gap
 
-No festival location plate has a ground-plane calibration. Four calibrations
-exist in `source_material/imported_canon/plate_calibrations/`, all for
-non-festival locations. Every festival plate needs one before any character
-can be staged with a defensible scale.
+11 festival plates have a MEASURED ground-plane calibration
+in `06_backgrounds/calibrations/`. Staging uses those instead of the
+shot-type guess table. Remaining story plates still need a plate before
+they can be measured.
+
+Measured: ISSUE001-COVER, ISSUE001-P01-01, ISSUE001-P01-02, ISSUE001-P01-03, ISSUE001-P01-04, ISSUE001-P02-01, ISSUE001-P02-02, ISSUE001-P02-03, ISSUE001-P02-04, ISSUE001-P02-05, ISSUE001-P02-06.
 
 ## Production order
 
-1. Festival plate calibrations (unblocked, do first).
-2. Lil Devil alpha layer set (unblocked, do first).
-3. Background plates, in page order.
-4. Trapped festival-goer figures and crowd silhouettes.
-5. Prop state variants.
-6. Per-panel staging plans.
+1. Generate remaining story plates, then measure each.
+2. Human-select plates into approved_candidates/.
+3. Trapped festival-goer figures and crowd silhouettes.
+4. Prop state variants.
+5. Composite remaining pages against measured planes.

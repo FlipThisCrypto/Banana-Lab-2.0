@@ -212,6 +212,17 @@ def test_dense_pages_use_a_wider_row_gutter():
     assert by_number[7]["row_gap"] == by_number[7]["col_gap"] * 2
 
 
+def test_coverage_report_does_not_claim_zero_calibrations():
+    path = ISSUE_DIR / "07_character_staging" / "missing-assets.md"
+    if not path.is_file():
+        pytest.skip("coverage not built")
+    text = path.read_text(encoding="utf-8")
+    calibs = list((ISSUE_DIR / "06_backgrounds" / "calibrations").glob("*.yaml"))
+    if calibs:
+        assert "No festival location plate has a ground-plane calibration" not in text
+        assert "MEASURED" in text
+
+
 def test_existing_finished_plates_have_measured_calibrations():
     plates = ISSUE_DIR / "06_backgrounds" / "generated_candidates"
     calibs = ISSUE_DIR / "06_backgrounds" / "calibrations"
