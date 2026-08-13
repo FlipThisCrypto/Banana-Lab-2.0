@@ -219,7 +219,9 @@ canon_conflicts:
       Follow the season bible. Page 4 carries an ambiguous flicker triggered by
       Lil Devil's interference; the true activation lands on page 8 after the
       rescue.
-    requires_owner_decision: true
+    requires_owner_decision: false
+    owner_ruling: >-
+      Confirmed 2026-08-13 with Gate 2 approval. Follow the season bible.
   - conflict_id: C-02
     description: >-
       Season bible gives Lil Devil the accidental discovery. The legacy script
@@ -231,7 +233,9 @@ canon_conflicts:
     resolution: >-
       Restore the bible. Lil Devil forces the gate against advice and the
       system's response to that interference exposes the pattern.
-    requires_owner_decision: true
+    requires_owner_decision: false
+    owner_ruling: >-
+      Confirmed 2026-08-13 with Gate 2 approval. Restore the guest function.
   - conflict_id: C-03
     description: Ash's line drifted from "Hope can read warnings." to "Hope reads warnings first."
     sources: ["SEASON-BIBLE.md §7", "legacy issue_script.md panel 4.1"]
@@ -267,4 +271,4 @@ canon_conflicts:
       page before the rescue. No new named character and no new canon.
     requires_owner_decision: false
 
-approval_status: draft
+approval_status: approved

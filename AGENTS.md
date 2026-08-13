@@ -134,9 +134,9 @@ Precedence, highest first:
 5. **Older published issues** — supporting evidence
 6. **Legacy production records** — evidence of what was attempted, never authority
 
-Record the conflict. Do not silently invent a resolution. Two conflicts in Issue
-001 (`C-01`, `C-02`) are open and need an owner ruling; both are recorded in
-`01_research/CANON_CONFLICTS.md` and in the issue bible.
+Record the conflict. Do not silently invent a resolution. Issue 001 conflicts
+`C-01` and `C-02` were owner-confirmed on 2026-08-13 (follow the season bible
+in both cases). Recorded in `01_research/CANON_CONFLICTS.md` and the issue bible.
 
 ## Useful commands
 

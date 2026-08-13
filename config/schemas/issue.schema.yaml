@@ -74,6 +74,7 @@ fields:
       sources: {type: list, required: true, item_type: string, description: Documents in conflict.}
       resolution: {type: string, required: true, description: How it was resolved, or UNRESOLVED.}
       requires_owner_decision: {type: boolean, required: true, description: Whether a human must rule on it.}
+      owner_ruling: {type: string, required: false, description: The owner's recorded decision, once given.}
     description: >-
       Conflicts are recorded, never silently resolved. An empty list is a claim
       that none were found, not a claim that none exist.

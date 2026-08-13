@@ -172,6 +172,57 @@ def test_panel_shapes_and_shots_are_varied(script):
     assert len(angles) >= 4, angles
 
 
+def test_layout_has_no_hard_shape_mismatches():
+    from app.services.layout_geometry import classify_shape
+
+    path = ISSUE_DIR / "05_layouts" / "layout-spec.yaml"
+    if not path.is_file():
+        pytest.skip("layout spec not present")
+    spec = yaml.safe_load(path.read_text(encoding="utf-8"))
+    assert spec.get("hard_shape_mismatches") in (None, [])
+    hard = []
+    for page in spec["pages"]:
+        for panel in page["panels"]:
+            verdict = classify_shape(panel["shape"], panel["actual_aspect"])
+            if verdict.severity == "hard":
+                hard.append((panel["panel_id"], verdict.reason))
+    assert not hard, hard
+
+
+def test_page_11_turn_lock_holds():
+    path = ISSUE_DIR / "05_layouts" / "layout-spec.yaml"
+    if not path.is_file():
+        pytest.skip("layout spec not present")
+    spec = yaml.safe_load(path.read_text(encoding="utf-8"))
+    locks = spec["book_assembly"]["page_turn_locks"]
+    splash = next(lock for lock in locks if lock["story_page"] == 11)
+    assert splash["must_be"] == "recto"
+    assert splash["holds"] is True
+    assert splash["actual_side"] == "recto"
+
+
+def test_dense_pages_use_a_wider_row_gutter():
+    path = ISSUE_DIR / "05_layouts" / "layout-spec.yaml"
+    if not path.is_file():
+        pytest.skip("layout spec not present")
+    spec = yaml.safe_load(path.read_text(encoding="utf-8"))
+    by_number = {p["page_number"]: p for p in spec["pages"]}
+    assert by_number[7]["row_gap"] > by_number[1]["col_gap"]
+    assert by_number[18]["row_gap"] > by_number[1]["col_gap"]
+    assert by_number[7]["row_gap"] == by_number[7]["col_gap"] * 2
+
+
+def test_lettering_font_is_locked():
+    from app.services.lettering import DIALOGUE_FONT
+
+    path = ISSUE_DIR / "05_layouts" / "layout-spec.yaml"
+    if not path.is_file():
+        pytest.skip("layout spec not present")
+    spec = yaml.safe_load(path.read_text(encoding="utf-8"))
+    assert spec["lettering"]["dialogue_font_file"] == DIALOGUE_FONT
+    assert spec["lettering"]["dialogue_pt_floor"] == 6.5
+
+
 def test_the_issue_contains_silent_panels(script):
     silent = [p for p in script["panels"] if not p.get("dialogue")]
     assert len(silent) >= 10, f"only {len(silent)} silent panels"
@@ -210,18 +261,30 @@ def test_repository_hygiene_is_clean():
 
 # --- approval --------------------------------------------------------------
 
-def test_no_stage_is_approved_yet():
-    """Nothing in this run may have approved anything."""
+def test_stage_approvals_are_well_formed():
+    """Owner may approve bible/script/layouts. The machine may not approve the issue."""
     record = ISSUE_DIR / "13_approved" / "approval-record.yaml"
     if not record.is_file():
         return
     data = yaml.safe_load(record.read_text(encoding="utf-8")) or {}
-    approved = [k for k, v in (data.get("approvals") or {}).items() if v.get("approved")]
-    assert not approved, f"unexpected approvals: {approved}"
+    approvals = data.get("approvals") or {}
+    allowed = {"issue_bible", "script", "layouts"}
+    approved = {k for k, v in approvals.items() if v.get("approved")}
+    assert approved <= allowed, f"stages a machine must not approve: {approved - allowed}"
+    assert "approval" not in approved
+    for key in approved:
+        entry = approvals[key]
+        assert entry.get("actor"), key
+        assert entry.get("date"), key
+        assert entry.get("evidence_hash"), key
 
 
 def test_open_canon_conflicts_are_recorded(bible):
-    blocking = [
-        c for c in bible.get("canon_conflicts", []) if c.get("requires_owner_decision")
+    conflicts = {c["conflict_id"]: c for c in bible.get("canon_conflicts", [])}
+    assert "C-01" in conflicts and "C-02" in conflicts
+    remaining = [
+        c["conflict_id"]
+        for c in bible.get("canon_conflicts", [])
+        if c.get("requires_owner_decision")
     ]
-    assert len(blocking) == 2, [c["conflict_id"] for c in blocking]
+    assert remaining == [], remaining

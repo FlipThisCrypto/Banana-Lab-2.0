@@ -62,23 +62,32 @@ as a row boundary.
 
 ## Gutters and the row-boundary rule
 
-The generator uses a uniform 1.2 percent gutter. Where a row boundary must be
-unmistakable — pages 7 and 18 especially — the reviewer should consider
-increasing the horizontal gutter between rows relative to the vertical gutter
-within a row. A wider gap between rows than between panels in a row is the
-standard cue and it should be applied on the dense pages.
+The generator uses a 1.2 percent within-row gutter. On pages 7 and 18 the
+between-row gutter is **2.4 percent** — twice the within-row gap — so row
+boundaries read as groups rather than as one dense field.
 
-**This is a layout-approval decision, recorded here as an open item.**
+**Owner ruling, 2026-08-13:** apply the denser-row treatment on pages 7 and 18
+only. Not issue-wide.
 
 ## Page-turn integrity
 
 Every page ends on a panel that motivates the turn. Verified against the script:
 no page ends mid-exchange, and no balloon runs across a page boundary.
 
-## Open items for layout approval
+## Page-11 turn lock
 
-1. Row-boundary gutter adjustment on pages 7 and 18.
-2. Human read-through of pages 2, 3, 7 and 18 at final print size.
-3. Confirmation that the page 11 splash is a right-hand page in the final book,
-   so the turn from page 10 delivers it. **This depends on the front-matter page
-   count and must be checked against the assembled 28-page book.**
+The 28-page book is: cover (1, recto), inside front (2, verso), story pages
+3–24. Story page N is physical page N+2. Odd physical pages are recto.
+
+Story page 11 is physical page 13, **recto**. Page 10 is verso. The splash
+arrives after the turn.
+
+This is a hard validation rule (`book_assembly.page_turn_locks`). Adding or
+removing a front-matter page fails `validate`. That is the approval
+requirement: the reveal cannot silently move onto a left-hand page.
+
+## Open items
+
+1. Human read-through of pages 2, 3, 7 and 18 **at final print size**. The
+   validator identifies these; geometry cannot judge whether a gutter *reads*
+   as a row boundary. Thumbnails were regenerated with the new grids.

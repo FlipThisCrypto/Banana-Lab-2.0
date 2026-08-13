@@ -29,12 +29,11 @@ Complete. Evidence: `01_research/`.
 - [x] Continuity map lists what is inherited, established and left open
 - [x] Character arc map assigns every beat to a page
 - [x] Location and prop requirements enumerated with gaps named
-- [ ] **Owner ruling on C-01** — Echo reveal timing
-- [ ] **Owner ruling on C-02** — Lil Devil's guest function
-- [ ] Owner approves the issue bible
+- [x] **Owner ruling on C-01** — Echo reveal timing (season bible; 2026-08-13)
+- [x] **Owner ruling on C-02** — Lil Devil's guest function (season bible; 2026-08-13)
+- [x] Owner approves the issue bible
 
-**Status: awaiting owner.** Two conflicts are resolved in favour of the season
-bible and need confirmation.
+**Status: approved 2026-08-13.** C-01 and C-02 confirmed as the bible already applied them.
 
 ---
 
@@ -50,7 +49,7 @@ bible and need confirmation.
 - [ ] Echo fires only after the choice
 - [ ] `panel-script.yaml` validates against the panel schema
 - [ ] Panel IDs unique
-- [ ] Owner approves the script
+- [x] Owner approves the script (2026-08-13)
 
 ---
 
@@ -68,13 +67,16 @@ bible and need confirmation.
 
 ## Gate 5 — Layouts **(owner approval required)**
 
-- [ ] `layout-spec.yaml` complete for all 8 pages
-- [ ] Reading order validated and documented
-- [ ] Lettering safe zones defined for every panel
-- [ ] No two consecutive pages share a grid
-- [ ] Gutters, margins and bleed specified
-- [ ] Balloon zones do not cover faces or hands
-- [ ] Owner approves layouts
+- [x] `layout-spec.yaml` complete for all 22 story pages
+- [x] Reading order validated and documented
+- [x] Lettering safe zones defined for every panel, sized against the locked font
+- [x] No two consecutive pages share a grid
+- [x] Gutters, margins and bleed specified
+- [x] Pages 7 and 18 use a wider between-row gutter
+- [x] Hard orientation/aspect bands enforced (script wins)
+- [x] Page 11 locked to recto in the 28-page book
+- [x] Balloon zones do not cover faces or hands
+- [x] Owner approves layouts (2026-08-13, after Gate 5 geometry fixes)
 
 **No final artwork may be approved before this gate passes.**
 

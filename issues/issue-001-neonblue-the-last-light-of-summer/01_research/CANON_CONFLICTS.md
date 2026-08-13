@@ -22,7 +22,7 @@ settle the question, the conflict is marked `UNRESOLVED` and escalated.
 
 ---
 
-## C-01 — Echo reveal timing *(BLOCKING — owner decision required)*
+## C-01 — Echo reveal timing *(OWNER CONFIRMED 2026-08-13)*
 
 **Sources in conflict**
 - Season bible §7 "Echo reveal": *"The relay activates **only after** NeonBlue
@@ -41,12 +41,12 @@ ambiguous* reaction — a flicker that could be coincidence, that Lil Devil's
 interference triggers — and the true cyan activation lands after the rescue on
 page 8.
 
-**Status** Recommended resolution applied to the rebuilt bible and script,
-flagged for owner confirmation. Reversing it changes pages 4, 7 and 8.
+**Status** Owner confirmed 2026-08-13 with Gate 2 approval. Follow the season
+bible. Reversing it would still change pages 4, 7 and 8.
 
 ---
 
-## C-02 — Lil Devil's guest function *(BLOCKING — owner decision required)*
+## C-02 — Lil Devil's guest function *(OWNER CONFIRMED 2026-08-13)*
 
 **Sources in conflict**
 - Season bible §7: *"Lil Devil's impatience accidentally reveals that the
@@ -65,7 +65,8 @@ without restraint and have it *teach the team something*.
 service gate early against advice; the system's reaction to that interference —
 not to NeonBlue's presence — is what exposes the pattern.
 
-**Status** Recommended resolution applied, flagged for owner confirmation.
+**Status** Owner confirmed 2026-08-13 with Gate 2 approval. Restore the guest
+function.
 
 ---
 
@@ -214,8 +215,8 @@ that would carry it.
 
 | ID | Conflict | Status | Owner decision |
 |---|---|---|---|
-| C-01 | Echo reveal timing | Recommended resolution applied | **Required** |
-| C-02 | Lil Devil's guest function | Recommended resolution applied | **Required** |
+| C-01 | Echo reveal timing | Owner confirmed: follow season bible | Done |
+| C-02 | Lil Devil's guest function | Owner confirmed: restore guest function | Done |
 | C-03 | Ash's line wording | Resolved | No |
 | C-04 | "Thirteen-year-old system" | Resolved | No |
 | C-05 | Panel count 19 vs 24 | Resolved | No |
@@ -223,8 +224,6 @@ that would carry it.
 | C-07 | Identity of the trapped group | Resolved | No |
 | C-08 | 27 panels vs the recommended 20 | Resolved as a recorded deviation | No |
 
-**Two conflicts require an owner ruling before art production begins.** Both are
-recorded in the rebuilt issue bible under `canon_conflicts` with
-`requires_owner_decision: true`. Work on research, bible, script, layouts and
-background production can proceed while they are open; character staging for
-pages 4, 7 and 8 cannot be finalised until they are settled.
+**C-01 and C-02 are closed.** Both rulings follow the season bible and are
+recorded in the issue bible under `canon_conflicts` with
+`requires_owner_decision: false` and an `owner_ruling` dated 2026-08-13.

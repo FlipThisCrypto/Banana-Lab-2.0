@@ -124,11 +124,27 @@ SFX are artwork, not lettering, and are placed at the effects stage.
 
 ---
 
-## Open items for layout approval
+## Locked lettering font
 
-1. Balloon colour assignment per speaker — owner decision.
-2. Lettering font — not yet specified anywhere in the project, including the
-   published editions' records. Needs to be chosen and recorded in the house
-   style.
-3. Caption box treatment — rectangular with a black border is proposed from the
+**Owner requirement, 2026-08-13:** choose the face before final artwork and
+validate safe zones against its real metrics.
+
+| Role | Face | File | Size |
+|---|---|---|---|
+| Dialogue | Comic Sans MS Bold | `comicbd.ttf` | 7.5 pt target, 6.5 pt floor |
+| Captions | Comic Sans MS Regular | `comic.ttf` | same |
+| SFX | Impact | `impact.ttf` | display, not balloon-budgeted |
+
+The published editions do not record their lettering font. This is a category
+lock, not a claim of a match. Zones in `layout-spec.yaml` are grown until the
+actual `comicbd.ttf` metrics fit at the floor size. `validate` fails a panel
+whose dialogue does not fit its zone.
+
+A later licensed comic-lettering face is a regenerate-and-revalidate, not a
+drop-in.
+
+## Remaining lettering decisions (not Gate 5 blockers)
+
+1. Balloon colour assignment per speaker — still an owner decision.
+2. Caption box treatment — rectangular with a black border is proposed from the
    published editions; confirm.

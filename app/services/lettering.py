@@ -30,14 +30,35 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
-#: Comic Sans Bold for dialogue and Impact for sound effects. Neither is the
-#: studio's actual lettering font - that is not in the repository - but both are
-#: the right CATEGORY: a rounded informal hand for speech, a heavy condensed
-#: display face for impact. Recorded as a substitution, not a match.
+#: Locked 2026-08-13 as the Issue 001 production lettering face.
+#:
+#: The published editions do not record their lettering font. Comic Sans MS
+#: Bold is the locked SUBSTITUTE: a rounded informal hand in the same category
+#: as a comic-lettering face. It is not a match for a licensed Blambot or
+#: Comicraft cut. Safe zones are measured against this file so a later font
+#: swap has to re-run the metric gate rather than inherit a guessed footprint.
 _FONT_DIRS = [Path("C:/Windows/Fonts"), Path("/usr/share/fonts")]
 DIALOGUE_FONT = "comicbd.ttf"
+DIALOGUE_FONT_NAME = "Comic Sans MS Bold"
 CAPTION_FONT = "comic.ttf"
+CAPTION_FONT_NAME = "Comic Sans MS"
 SFX_FONT = "impact.ttf"
+SFX_FONT_NAME = "Impact"
+PRINT_DPI = 300
+DIALOGUE_PT_FLOOR = 6.5
+DIALOGUE_PT_TARGET = 7.5
+LIVE_W_PX = 2149
+LIVE_H_PX = 3177
+
+_CORNER_PRESETS = {
+    "upper left": (0.04, 0.05),
+    "upper right": (0.54, 0.05),
+    "upper centre": (0.28, 0.05),
+    "upper band": (0.04, 0.05),
+    "upper third": (0.10, 0.04),
+    "lower left": (0.04, 0.74),
+    "lower right": (0.54, 0.74),
+}
 
 #: Speaker -> balloon fill. Edition two gives major speakers their own colour;
 #: this assignment is a PLACEHOLDER pending the owner ruling recorded as an open
@@ -50,6 +71,94 @@ BALLOON_FILL = {
 DEFAULT_FILL = (255, 255, 255)
 BALLOON_OUTLINE = (16, 16, 20)
 CAPTION_FILL = (252, 250, 244)
+
+
+def pt_to_px(pt: float, dpi: int = PRINT_DPI) -> int:
+    return max(8, int(round(pt / 72.0 * dpi)))
+
+
+def balloon_fits(
+    text: str,
+    zone_w_px: int,
+    zone_h_px: int,
+    font_name: str = DIALOGUE_FONT,
+    floor_pt: float = DIALOGUE_PT_FLOOR,
+) -> dict:
+    """Whether `text` fits the zone at the locked floor size."""
+    dummy = Image.new("RGB", (8, 8))
+    draw = ImageDraw.Draw(dummy)
+    size = pt_to_px(floor_pt)
+    font = _font(font_name, size)
+    inner_w = max(8, int(zone_w_px * 0.86))
+    lines = _wrap(draw, text or " ", font, inner_w) if text else [""]
+    needed_h = max(1, len(lines)) * (size * 1.22)
+    fits = needed_h <= zone_h_px * 0.86
+    return {
+        "fits": fits,
+        "font_px": size,
+        "lines": lines,
+        "needed_h_px": needed_h,
+        "zone_w_px": zone_w_px,
+        "zone_h_px": zone_h_px,
+    }
+
+
+def zone_for_balloon(
+    text: str,
+    panel_box: list[float],
+    corner: str = "upper left",
+    stack_index: int = 0,
+    stack_count: int = 1,
+    kind: str = "speech",
+) -> list[float]:
+    """A panel-fraction zone large enough for `text` at the locked floor size.
+
+    Starts from the script's corner and grows until the real font fits, without
+    leaving the panel. Two stacked balloons share the vertical budget.
+    """
+    _, _, pw, ph = panel_box
+    panel_w_px = max(8, int(pw * LIVE_W_PX))
+    panel_h_px = max(8, int(ph * LIVE_H_PX))
+
+    origin_x, origin_y = _CORNER_PRESETS.get(corner, (0.04, 0.05))
+    if corner in {"upper band", "upper third"}:
+        width_frac = 0.92 if corner == "upper band" else 0.80
+    elif "right" in corner:
+        width_frac = 0.42
+    else:
+        width_frac = 0.42
+
+    # Two stacked balloons split the height; each still has to fit its own line.
+    height_frac = 0.22 / max(1, stack_count)
+    if stack_count > 1:
+        origin_y = origin_y + stack_index * (height_frac + 0.02)
+
+    font_name = CAPTION_FONT if kind == "caption" else DIALOGUE_FONT
+    dummy = Image.new("RGB", (8, 8))
+    draw = ImageDraw.Draw(dummy)
+    size = pt_to_px(DIALOGUE_PT_FLOOR)
+    font = _font(font_name, size)
+
+    for _ in range(8):
+        zone_w_px = int(width_frac * panel_w_px)
+        zone_h_px = int(height_frac * panel_h_px)
+        result = balloon_fits(text, zone_w_px, zone_h_px, font_name=font_name)
+        if result["fits"] or not text:
+            break
+        # Grow width first (wrapping less), then height.
+        if width_frac < 0.90:
+            width_frac = min(0.90, width_frac + 0.10)
+            if "right" in corner:
+                origin_x = max(0.04, 1.0 - width_frac - 0.04)
+        else:
+            height_frac = min(0.40, height_frac + 0.06)
+
+    # Keep the zone inside the panel.
+    if origin_x + width_frac > 0.96:
+        origin_x = max(0.03, 0.96 - width_frac)
+    if origin_y + height_frac > 0.96:
+        origin_y = max(0.03, 0.96 - height_frac)
+    return [origin_x, origin_y, width_frac, height_frac]
 
 
 def _font(name: str, size: int) -> ImageFont.FreeTypeFont:

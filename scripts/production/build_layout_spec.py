@@ -13,20 +13,30 @@ Regenerate after any script change:
 from __future__ import annotations
 
 import argparse
-import math
 import sys
 from pathlib import Path
 
 import yaml
 
+from app.services.layout_geometry import (
+    DENSE_PAGES,
+    FRONT_MATTER_PAGES,
+    PAGE_TURN_LOCKS,
+    TOTAL_BOOK_PAGES,
+    layout_page,
+    page_side,
+    physical_page,
+)
+from app.services.lettering import (
+    CAPTION_FONT,
+    DIALOGUE_FONT,
+    DIALOGUE_PT_FLOOR,
+    DIALOGUE_PT_TARGET,
+    SFX_FONT,
+    zone_for_balloon,
+)
+
 REPO_ROOT = Path(__file__).resolve().parents[2]
-
-#: Aspect of the live area (inside the margins) on an A4 page at 300 dpi.
-#: 2149 x 3177 px -> 0.6765. Used to convert fractional boxes into real aspects.
-LIVE_ASPECT = 2149 / 3177
-
-# Relative weight each declared size contributes when dividing a page.
-SIZE_WEIGHT = {"xs": 0.6, "small": 1.0, "medium": 1.6, "large": 2.6, "xl": 3.4, "full_page": 8.0}
 
 # Page frame colours, tracking the light progression in the issue bible.
 FRAME_COLORS = {
@@ -91,178 +101,61 @@ def published_board(hex_colour: str) -> str:
     return "#%02X%02X%02X" % tuple(int(round(v)) for v in out)
 
 
-def template_name(count: int, index: int) -> str:
-    """A grid family name per panel count, varied so neighbours differ."""
-    families = {
-        1: ["full-page-splash"],
-        2: ["tall-pair", "stacked-wides"],
-        3: ["large-over-twin", "tall-left-stacked-right", "triple-stack"],
-        4: ["wide-anchor-over-trio", "quad-asymmetric", "two-by-two-offset"],
-        5: ["four-small-over-wide", "wide-over-quad", "tall-left-quad-right"],
-        6: ["twin-wides-over-quad", "six-irregular", "large-over-five"],
-        7: ["dense-seven-a", "dense-seven-b"],
-    }
-    options = families.get(count, [f"grid-{count}"])
-    return options[index % len(options)]
+def _corner_preset(zone_text: str) -> str:
+    text = (zone_text or "").lower()
+    for key in (
+        "upper left",
+        "upper right",
+        "upper centre",
+        "upper center",
+        "upper band",
+        "upper third",
+        "lower left",
+        "lower right",
+    ):
+        if key in text:
+            return key.replace("center", "centre")
+    return "upper left"
 
 
-#: The aspect each declared panel_shape is asking for. Row grouping is chosen to
-#: get as close to these as possible.
-#:
-#: Without this, row packing honoured only relative_panel_size and 52 of 103
-#: panels ended up with a box that contradicted their declared shape - a panel
-#: written as a wide establishing shot got a portrait box. Since plate
-#: generation takes its dimensions from the box, that would have produced the
-#: wrong image for half the issue.
-TARGET_ASPECT = {
-    "wide": 2.40,
-    "tall": 0.52,
-    "square": 1.00,
-    "rectangle": 1.35,
-    "inset": 1.15,
-    "borderless": 1.50,
-    "bleed": 1.50,
-    "irregular": 1.30,
-    "splash": 0.68,
-}
-
-#: Never put more than this many panels in one row - beyond it, reading order
-#: gets ambiguous regardless of how well the aspects fit.
-MAX_PER_ROW = 3
-
-
-def _row_partitions(count: int, max_per_row: int = MAX_PER_ROW) -> list[list[list[int]]]:
-    """Every contiguous, order-preserving way to split panels into rows.
-
-    Order preserving is not negotiable: reading order is the story order.
-    """
-    if count == 0:
-        return [[]]
-    results: list[list[list[int]]] = []
-
-    def walk(start: int, acc: list[list[int]]) -> None:
-        if start == count:
-            results.append([row[:] for row in acc])
-            return
-        for size in range(1, min(max_per_row, count - start) + 1):
-            acc.append(list(range(start, start + size)))
-            walk(start + size, acc)
-            acc.pop()
-
-    walk(0, [])
-    return results
-
-
-def _score_partition(
-    plan: list[list[int]], panels: list[dict], weights: list[float], gap: float
-) -> float:
-    """Total squared log-aspect error against each panel's declared shape.
-
-    Log space so that being 2x too wide and 2x too tall cost the same.
-    """
-    row_weights = [sum(weights[i] for i in row) for row in plan]
-    total = sum(row_weights) or 1.0
-    usable_h = 1.0 - gap * (len(plan) - 1)
-
-    error = 0.0
-    for row, row_weight in zip(plan, row_weights):
-        h = usable_h * (row_weight / total)
-        if h <= 0:
-            return float("inf")
-        row_total = sum(weights[i] for i in row) or 1.0
-        usable_w = 1.0 - gap * (len(row) - 1)
-        for i in row:
-            w = usable_w * (weights[i] / row_total)
-            # Aspect in page terms; the live area is taller than it is wide.
-            aspect = (w * LIVE_ASPECT) / h
-            target = TARGET_ASPECT.get(panels[i].get("panel_shape", "rectangle"), 1.35)
-            error += (math.log(aspect / target)) ** 2
-    return error
-
-
-def layout_page(page_number: int, panels: list[dict], template: str) -> list[dict]:
-    """Divide the live area into boxes that honour both size AND declared shape.
-
-    Row height still follows relative_panel_size, so narrative weight drives
-    area. Row *grouping* is chosen by search to best satisfy each panel's
-    declared shape.
-    """
-    weights = [SIZE_WEIGHT.get(p.get("relative_panel_size", "medium"), 1.6) for p in panels]
-    count = len(panels)
-
-    # Row grouping is chosen by SEARCH, not from a fixed table. Enumerate every
-    # contiguous, order-preserving partition (at most 2^(n-1), n <= 9) and take
-    # the one whose resulting boxes best match each panel's declared shape.
-    #
-    # Order preserving is not negotiable: reading order is story order. Variety
-    # comes from how rows are grouped, never from resequencing panels.
-    gap = 0.012
-    scored = sorted(
-        ((_score_partition(p, panels, weights, gap), p) for p in _row_partitions(count)),
-        key=lambda pair: pair[0],
-    )
-    plan = scored[0][1] if scored else [[i] for i in range(count)]
-
-    # Neighbouring pages with the same panel count would otherwise get the same
-    # grouping. When a variant is requested, take the runner-up - but only if it
-    # is not appreciably worse at honouring the declared shapes.
-    use_alternate = template.endswith("-b") or template in {
-        "quad-asymmetric", "wide-over-quad", "six-irregular", "stacked-wides",
-        "tall-left-stacked-right", "triple-stack", "two-by-two-offset",
-        "tall-left-quad-right", "large-over-five",
-    }
-    if use_alternate and len(scored) > 1 and scored[1][0] <= scored[0][0] * 2.0 + 0.25:
-        plan = scored[1][1]
-
-    row_weights = [sum(weights[i] for i in row) for row in plan]
-    total = sum(row_weights) or 1.0
-
-    boxes: list[dict] = []
-    y = 0.0
-    usable_h = 1.0 - gap * (len(plan) - 1)
-
-    for row, row_weight in zip(plan, row_weights):
-        h = usable_h * (row_weight / total)
-        x = 0.0
-        row_total = sum(weights[i] for i in row) or 1.0
-        usable_w = 1.0 - gap * (len(row) - 1)
-        for i in row:
-            w = usable_w * (weights[i] / row_total)
-            panel = panels[i]
-            boxes.append(
-                {
-                    "panel_id": panel["panel_id"],
-                    "box": [round(x, 4), round(y, 4), round(w, 4), round(h, 4)],
-                    "area_share": round(w * h, 4),
-                    "shape": panel.get("panel_shape", "rectangle"),
-                    "silent": not panel.get("dialogue"),
-                    "anchor": panel.get("relative_panel_size") in ("large", "xl", "full_page"),
-                    "bubble_zones": _bubble_zones(panel),
-                }
-            )
-            x += w + gap
-        y += h + gap
-    return boxes
-
-
-def _bubble_zones(panel: dict) -> list[dict]:
-    """Reserve lettering space in the zone the script names."""
+def _bubble_zones(panel: dict, panel_box: list[float]) -> list[dict]:
+    """Reserve lettering space, sized against the locked font's real metrics."""
     zone_text = (panel.get("bubble_placement_zone") or "").lower()
-    if "none" in zone_text:
+    dialogue = panel.get("dialogue") or []
+    if "none" in zone_text and not dialogue:
         return []
-    presets = {
-        "upper left": [0.04, 0.05, 0.42, 0.20],
-        "upper right": [0.54, 0.05, 0.42, 0.20],
-        "upper centre": [0.28, 0.05, 0.44, 0.20],
-        "upper band": [0.04, 0.05, 0.92, 0.18],
-        "upper third": [0.10, 0.04, 0.80, 0.26],
-        "lower left": [0.04, 0.74, 0.42, 0.20],
-        "lower right": [0.54, 0.74, 0.42, 0.20],
-    }
-    for key, box in presets.items():
-        if key in zone_text:
-            return [{"zone": box, "for": panel.get("speaker") or "caption"}]
-    return [{"zone": [0.04, 0.05, 0.44, 0.20], "for": panel.get("speaker") or "caption"}]
+
+    balloons: list[tuple[str, str, str]] = []
+    for entry in dialogue:
+        balloons.append((entry.get("text") or "", entry.get("speaker") or "caption", "speech"))
+    if not balloons and "caption" in zone_text:
+        balloons.append(("", "caption", "caption"))
+    if not balloons:
+        return []
+
+    stacked = "stack" in zone_text or (
+        len(balloons) == 2 and "left" not in zone_text and "right" not in zone_text
+    )
+    split_lr = len(balloons) == 2 and "left" in zone_text and "right" in zone_text
+
+    zones: list[dict] = []
+    for index, (text, speaker, kind) in enumerate(balloons):
+        if split_lr:
+            corner = "upper left" if index == 0 else "upper right"
+        elif stacked:
+            corner = _corner_preset(zone_text)
+        else:
+            corner = _corner_preset(zone_text)
+        box = zone_for_balloon(
+            text,
+            panel_box,
+            corner=corner,
+            stack_index=index if stacked else 0,
+            stack_count=len(balloons) if stacked else 1,
+            kind=kind,
+        )
+        zones.append({"zone": [round(v, 4) for v in box], "for": speaker, "kind": kind})
+    return zones
 
 
 def main() -> int:
@@ -282,54 +175,56 @@ def main() -> int:
         by_page.setdefault(panel["page_number"], []).append(panel)
 
     pages = []
-    shape_mismatches: list[dict] = []
-    previous_template = ""
-    variant = 0
+    hard_mismatches: list[dict] = []
+    soft_mismatches: list[dict] = []
+    previous_structure = ""
     for page_number in sorted(by_page):
         panels = by_page[page_number]
-        template = template_name(len(panels), variant)
-        if template == previous_template:
-            variant += 1
-            template = template_name(len(panels), variant)
-        previous_template = template
-        variant += 1
-
         color, note = FRAME_COLORS.get(page_number, ("#556677", ""))
         color = published_board(color)
-        boxes = layout_page(page_number, panels, template)
+        result = layout_page(page_number, panels, prefer_different_from=previous_structure)
+        previous_structure = result.structure_name
 
-        # A page must tile completely, so a set of declared shapes can be
-        # collectively unsatisfiable. Where the box a panel actually gets
-        # contradicts its declared shape, say so in the spec rather than let
-        # the disagreement sit there silently - plate generation reads its
-        # dimensions from the BOX, so a hidden mismatch produces the wrong image.
-        for panel, box in zip(panels, boxes):
-            _, _, w, h = box["box"]
-            aspect = (w * LIVE_ASPECT) / h if h else 0.0
-            declared = panel.get("panel_shape", "rectangle")
-            target = TARGET_ASPECT.get(declared, 1.35)
-            box["actual_aspect"] = round(aspect, 3)
-            if aspect and not (0.62 <= aspect / target <= 1.62):
-                box["shape_mismatch"] = (
-                    f"script declares '{declared}' (target aspect {target}) but the "
-                    f"page can only give this panel {aspect:.2f}. Generate the plate "
-                    f"at the ACTUAL aspect, and consider revising the declared shape."
+        for panel, box in zip(panels, result.boxes):
+            box["bubble_zones"] = _bubble_zones(panel, box["box"])
+            if box.get("shape_verdict") == "hard":
+                hard_mismatches.append(
+                    {
+                        "panel_id": panel["panel_id"],
+                        "declared": box["shape"],
+                        "target_aspect": box.get("actual_aspect"),
+                        "actual_aspect": box.get("actual_aspect"),
+                        "page": page_number,
+                        "severity": "hard",
+                        "reason": box.get("shape_mismatch"),
+                    }
                 )
-                shape_mismatches.append(
-                    {"panel_id": panel["panel_id"], "declared": declared,
-                     "target_aspect": target, "actual_aspect": round(aspect, 3),
-                     "page": page_number}
+            elif box.get("shape_verdict") == "soft":
+                soft_mismatches.append(
+                    {
+                        "panel_id": panel["panel_id"],
+                        "declared": box["shape"],
+                        "actual_aspect": box.get("actual_aspect"),
+                        "page": page_number,
+                        "severity": "soft",
+                        "reason": box.get("shape_mismatch"),
+                    }
                 )
 
         pages.append(
             {
                 "page_number": page_number,
+                "physical_page": physical_page(page_number),
+                "page_side": page_side(page_number),
                 "purpose": panels[0].get("narrative_purpose", "")[:70],
-                "grid_name": f"p{page_number:02d}-{template}",
+                "grid_name": f"p{page_number:02d}-{result.structure_name}",
+                "structure": result.structure_name,
+                "row_gap": result.row_gap,
+                "col_gap": result.col_gap,
                 "frame_color": color,
                 "frame_note": note,
                 "panel_count": len(panels),
-                "panels": boxes,
+                "panels": result.boxes,
             }
         )
 
@@ -368,8 +263,56 @@ def main() -> int:
             "Reading order must be unambiguous without arrows or numbers.",
             "Balloon zones never overlap a face or a hand.",
             "Panel art is frameless and textless.",
+            "A declared wide must stay clearly landscape; a declared tall must stay clearly portrait.",
+            "The generator may not flip a panel's orientation to make the grid work.",
         ],
-        "shape_mismatches": shape_mismatches,
+        "shape_policy": {
+            "hard_mismatch_is_illegal": True,
+            "soft_mismatch_is_recorded": True,
+            "bands": "app.services.layout_geometry.SHAPE_BANDS",
+        },
+        "hard_shape_mismatches": hard_mismatches,
+        "soft_shape_mismatches": soft_mismatches,
+        "book_assembly": {
+            "total_pages": TOTAL_BOOK_PAGES,
+            "front_matter_pages": FRONT_MATTER_PAGES,
+            "story_start_physical_page": FRONT_MATTER_PAGES + 1,
+            "page_1_is": "recto",
+            "page_turn_locks": [
+                {
+                    **lock,
+                    "physical_page": physical_page(lock["story_page"]),
+                    "actual_side": page_side(lock["story_page"]),
+                    "holds": page_side(lock["story_page"]) == lock["must_be"],
+                }
+                for lock in PAGE_TURN_LOCKS
+            ],
+        },
+        "lettering": {
+            "dialogue_font_file": DIALOGUE_FONT,
+            "dialogue_font_name": "Comic Sans MS Bold",
+            "caption_font_file": CAPTION_FONT,
+            "caption_font_name": "Comic Sans MS",
+            "sfx_font_file": SFX_FONT,
+            "sfx_font_name": "Impact",
+            "dialogue_pt_floor": DIALOGUE_PT_FLOOR,
+            "dialogue_pt_target": DIALOGUE_PT_TARGET,
+            "print_dpi": 300,
+            "note": (
+                "Locked 2026-08-13. Comic Sans MS Bold is the production dialogue "
+                "face until a licensed comic-lettering font is purchased. Safe "
+                "zones are sized from this file's real metrics, not an assumed footprint."
+            ),
+        },
+        "dense_page_gutters": {
+            "pages": sorted(DENSE_PAGES),
+            "row_gap": 0.024,
+            "col_gap": 0.012,
+            "reason": (
+                "Seven-panel pages. Wider between-row gutter than within-row "
+                "gutter is the grouping cue so row boundaries stay readable."
+            ),
+        },
         "pages": pages,
         "cover": {
             "required_elements": [
@@ -382,10 +325,7 @@ def main() -> int:
                 "Vertical spine text along the left edge",
             ],
             "cover_concept_source": "SEASON-BIBLE.md section 19, August",
-            "open_question": (
-                "Edition number for the stamp. Published editions are One, Two and Three. "
-                "Requires an owner decision."
-            ),
+            "edition_stamp": "EDITION FOUR",
         },
     }
 
@@ -405,17 +345,19 @@ def main() -> int:
     print(f"wrote {out.relative_to(REPO_ROOT).as_posix()}")
     print(f"  pages   : {len(pages)}")
     print(f"  grids   : {len({p['grid_name'] for p in pages})} distinct")
-    if shape_mismatches:
-        print(f"  shape mismatches: {len(shape_mismatches)} of {spec['panel_count']} panels")
-        print("    the page cannot give these panels the aspect the script declares;")
-        print("    generate plates at the ACTUAL aspect and consider revising the script")
-        for m in shape_mismatches[:8]:
-            print(f"      p{m['page']:02d} {m['panel_id']}: declared {m['declared']} "
-                  f"(target {m['target_aspect']}) -> actual {m['actual_aspect']}")
-        if len(shape_mismatches) > 8:
-            print(f"      ... and {len(shape_mismatches) - 8} more; see layout-spec.yaml")
-    else:
-        print("  shape mismatches: none")
+    print(f"  hard shape mismatches: {len(hard_mismatches)}")
+    print(f"  soft shape mismatches: {len(soft_mismatches)}")
+    for lock in spec["book_assembly"]["page_turn_locks"]:
+        flag = "OK" if lock["holds"] else "FAIL"
+        print(
+            f"  page-turn lock p{lock['story_page']:02d} "
+            f"-> physical {lock['physical_page']} {lock['actual_side']} [{flag}]"
+        )
+    if hard_mismatches:
+        print("HARD mismatches (illegal — the script lost):")
+        for item in hard_mismatches:
+            print(f"    p{item['page']:02d} {item['panel_id']}: {item['reason']}")
+        return 1
     return 0
 
 

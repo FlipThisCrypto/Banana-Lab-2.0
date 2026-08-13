@@ -171,8 +171,9 @@ None of these requires new generation capability. They require the layout,
 lettering and assembly stages to exist as separate steps operating on frameless,
 textless panel art — which is exactly how the pipeline is structured.
 
-**Open question for the owner:** the published editions are One, Two and Three.
-Issue 001 of the Emo Monkeys season needs an edition number for its stamp.
+**RESOLVED 2026-07-31 by owner ruling:** the published editions are One, Two
+and Three, so Issue 001 of the Emo Monkeys season carries **EDITION FOUR** on
+its stamp.
 
 ---
 

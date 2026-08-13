@@ -40,231 +40,236 @@ rules:
 - Reading order must be unambiguous without arrows or numbers.
 - Balloon zones never overlap a face or a hand.
 - Panel art is frameless and textless.
-shape_mismatches:
+- A declared wide must stay clearly landscape; a declared tall must stay clearly portrait.
+- The generator may not flip a panel's orientation to make the grid work.
+shape_policy:
+  hard_mismatch_is_illegal: true
+  soft_mismatch_is_recorded: true
+  bands: app.services.layout_geometry.SHAPE_BANDS
+hard_shape_mismatches: []
+soft_shape_mismatches:
 - panel_id: ISSUE001-P01-03
   declared: wide
-  target_aspect: 2.4
   actual_aspect: 4.77
   page: 1
+  severity: soft
+  reason: "declared wide (target 2.4) generated 4.77:1 \u2014 orientation holds, ratio is bent"
 - panel_id: ISSUE001-P01-04
   declared: rectangle
-  target_aspect: 1.35
   actual_aspect: 2.982
   page: 1
-- panel_id: ISSUE001-P03-03
+  severity: soft
+  reason: "declared rectangle (target 1.35) generated 2.98:1 \u2014 orientation holds, ratio is bent"
+- panel_id: ISSUE001-P03-02
   declared: rectangle
-  target_aspect: 1.35
-  actual_aspect: 0.689
+  actual_aspect: 2.982
   page: 3
-- panel_id: ISSUE001-P03-04
-  declared: rectangle
-  target_aspect: 1.35
-  actual_aspect: 0.689
-  page: 3
-- panel_id: ISSUE001-P03-05
-  declared: wide
-  target_aspect: 2.4
-  actual_aspect: 1.102
-  page: 3
-- panel_id: ISSUE001-P04-01
-  declared: tall
-  target_aspect: 0.52
-  actual_aspect: 0.959
-  page: 4
+  severity: soft
+  reason: "declared rectangle (target 1.35) generated 2.98:1 \u2014 orientation holds, ratio is bent"
 - panel_id: ISSUE001-P04-02
   declared: wide
-  target_aspect: 2.4
-  actual_aspect: 0.959
+  actual_aspect: 1.446
   page: 4
-- panel_id: ISSUE001-P04-03
-  declared: inset
-  target_aspect: 1.15
-  actual_aspect: 0.567
-  page: 4
-- panel_id: ISSUE001-P04-05
-  declared: rectangle
-  target_aspect: 1.35
-  actual_aspect: 3.881
-  page: 4
+  severity: soft
+  reason: "declared wide (target 2.4) generated 1.45:1 \u2014 orientation holds, ratio is bent"
 - panel_id: ISSUE001-P05-01
   declared: wide
-  target_aspect: 2.4
   actual_aspect: 4.387
   page: 5
+  severity: soft
+  reason: "declared wide (target 2.4) generated 4.39:1 \u2014 orientation holds, ratio is bent"
 - panel_id: ISSUE001-P05-06
   declared: wide
-  target_aspect: 2.4
-  actual_aspect: 1.083
+  actual_aspect: 1.386
   page: 5
+  severity: soft
+  reason: "declared wide (target 2.4) generated 1.39:1 \u2014 orientation holds, ratio is bent"
 - panel_id: ISSUE001-P06-02
   declared: rectangle
-  target_aspect: 1.35
   actual_aspect: 2.544
   page: 6
+  severity: soft
+  reason: "declared rectangle (target 1.35) generated 2.54:1 \u2014 orientation holds, ratio is bent"
 - panel_id: ISSUE001-P06-04
   declared: wide
-  target_aspect: 2.4
   actual_aspect: 4.07
   page: 6
-- panel_id: ISSUE001-P08-01
-  declared: rectangle
-  target_aspect: 1.35
-  actual_aspect: 2.946
-  page: 8
-- panel_id: ISSUE001-P08-02
-  declared: rectangle
-  target_aspect: 1.35
-  actual_aspect: 0.689
-  page: 8
-- panel_id: ISSUE001-P08-04
-  declared: rectangle
-  target_aspect: 1.35
-  actual_aspect: 0.689
-  page: 8
-- panel_id: ISSUE001-P08-05
-  declared: wide
-  target_aspect: 2.4
-  actual_aspect: 1.102
-  page: 8
+  severity: soft
+  reason: "declared wide (target 2.4) generated 4.07:1 \u2014 orientation holds, ratio is bent"
+- panel_id: ISSUE001-P07-03
+  declared: square
+  actual_aspect: 1.41
+  page: 7
+  severity: soft
+  reason: "declared square (target 1.0) generated 1.41:1 \u2014 orientation holds, ratio is bent"
 - panel_id: ISSUE001-P09-01
   declared: wide
-  target_aspect: 2.4
-  actual_aspect: 0.79
+  actual_aspect: 5.473
   page: 9
-- panel_id: ISSUE001-P09-02
-  declared: wide
-  target_aspect: 2.4
-  actual_aspect: 1.264
-  page: 9
-- panel_id: ISSUE001-P10-04
-  declared: rectangle
-  target_aspect: 1.35
-  actual_aspect: 0.689
+  severity: soft
+  reason: "declared wide (target 2.4) generated 5.47:1 \u2014 orientation holds, ratio is bent"
+- panel_id: ISSUE001-P10-02
+  declared: square
+  actual_aspect: 0.762
   page: 10
-- panel_id: ISSUE001-P10-05
-  declared: tall
-  target_aspect: 0.52
-  actual_aspect: 1.102
-  page: 10
-- panel_id: ISSUE001-P12-05
-  declared: rectangle
-  target_aspect: 1.35
-  actual_aspect: 0.8
-  page: 12
+  severity: soft
+  reason: "declared square (target 1.0) generated 0.76:1 \u2014 orientation holds, ratio is bent"
 - panel_id: ISSUE001-P13-01
   declared: wide
-  target_aspect: 2.4
   actual_aspect: 1.386
   page: 13
+  severity: soft
+  reason: "declared wide (target 2.4) generated 1.39:1 \u2014 orientation holds, ratio is bent"
 - panel_id: ISSUE001-P13-02
   declared: inset
-  target_aspect: 1.15
   actual_aspect: 3.604
   page: 13
+  severity: soft
+  reason: "declared inset (target 1.15) generated 3.60:1 \u2014 orientation holds, ratio is bent"
 - panel_id: ISSUE001-P14-03
   declared: rectangle
-  target_aspect: 1.35
-  actual_aspect: 0.728
-  page: 14
-- panel_id: ISSUE001-P14-04
-  declared: rectangle
-  target_aspect: 1.35
-  actual_aspect: 0.728
-  page: 14
-- panel_id: ISSUE001-P14-05
-  declared: rectangle
-  target_aspect: 1.35
   actual_aspect: 2.946
   page: 14
+  severity: soft
+  reason: "declared rectangle (target 1.35) generated 2.95:1 \u2014 orientation holds, ratio is bent"
+- panel_id: ISSUE001-P14-04
+  declared: rectangle
+  actual_aspect: 0.728
+  page: 14
+  severity: soft
+  reason: "declared rectangle (target 1.35) generated 0.73:1 \u2014 orientation holds, ratio is bent"
+- panel_id: ISSUE001-P14-05
+  declared: rectangle
+  actual_aspect: 0.728
+  page: 14
+  severity: soft
+  reason: "declared rectangle (target 1.35) generated 0.73:1 \u2014 orientation holds, ratio is bent"
 - panel_id: ISSUE001-P15-03
   declared: square
-  target_aspect: 1.0
-  actual_aspect: 2.481
+  actual_aspect: 0.805
   page: 15
+  severity: soft
+  reason: "declared square (target 1.0) generated 0.81:1 \u2014 orientation holds, ratio is bent"
+- panel_id: ISSUE001-P16-02
+  declared: rectangle
+  actual_aspect: 0.647
+  page: 16
+  severity: soft
+  reason: "declared rectangle (target 1.35) generated 0.65:1 \u2014 orientation holds, ratio is bent"
 - panel_id: ISSUE001-P16-03
   declared: rectangle
-  target_aspect: 1.35
-  actual_aspect: 0.689
+  actual_aspect: 0.647
   page: 16
-- panel_id: ISSUE001-P16-04
-  declared: wide
-  target_aspect: 2.4
-  actual_aspect: 1.102
-  page: 16
+  severity: soft
+  reason: "declared rectangle (target 1.35) generated 0.65:1 \u2014 orientation holds, ratio is bent"
 - panel_id: ISSUE001-P17-01
   declared: wide
-  target_aspect: 2.4
-  actual_aspect: 1.106
+  actual_aspect: 1.22
   page: 17
+  severity: soft
+  reason: "declared wide (target 2.4) generated 1.22:1 \u2014 orientation holds, ratio is bent"
 - panel_id: ISSUE001-P18-01
   declared: wide
-  target_aspect: 2.4
-  actual_aspect: 1.142
+  actual_aspect: 8.229
   page: 18
+  severity: soft
+  reason: "declared wide (target 2.4) generated 8.23:1 \u2014 orientation holds, ratio is bent"
 - panel_id: ISSUE001-P18-04
   declared: wide
-  target_aspect: 2.4
-  actual_aspect: 1.207
+  actual_aspect: 1.564
   page: 18
+  severity: soft
+  reason: "declared wide (target 2.4) generated 1.56:1 \u2014 orientation holds, ratio is bent"
 - panel_id: ISSUE001-P18-05
   declared: wide
-  target_aspect: 2.4
-  actual_aspect: 7.82
+  actual_aspect: 1.564
   page: 18
+  severity: soft
+  reason: "declared wide (target 2.4) generated 1.56:1 \u2014 orientation holds, ratio is bent"
 - panel_id: ISSUE001-P18-07
   declared: wide
-  target_aspect: 2.4
-  actual_aspect: 4.884
+  actual_aspect: 5.144
   page: 18
+  severity: soft
+  reason: "declared wide (target 2.4) generated 5.14:1 \u2014 orientation holds, ratio is bent"
 - panel_id: ISSUE001-P19-02
   declared: wide
-  target_aspect: 2.4
   actual_aspect: 1.369
   page: 19
+  severity: soft
+  reason: "declared wide (target 2.4) generated 1.37:1 \u2014 orientation holds, ratio is bent"
 - panel_id: ISSUE001-P21-01
   declared: rectangle
-  target_aspect: 1.35
   actual_aspect: 2.537
   page: 21
+  severity: soft
+  reason: "declared rectangle (target 1.35) generated 2.54:1 \u2014 orientation holds, ratio is bent"
 - panel_id: ISSUE001-P21-02
   declared: wide
-  target_aspect: 2.4
   actual_aspect: 4.122
   page: 21
-- panel_id: ISSUE001-P21-03
-  declared: wide
-  target_aspect: 2.4
-  actual_aspect: 1.307
-  page: 21
+  severity: soft
+  reason: "declared wide (target 2.4) generated 4.12:1 \u2014 orientation holds, ratio is bent"
 - panel_id: ISSUE001-P21-04
   declared: square
-  target_aspect: 1.0
-  actual_aspect: 0.503
+  actual_aspect: 0.737
   page: 21
-- panel_id: ISSUE001-P21-05
-  declared: wide
-  target_aspect: 2.4
-  actual_aspect: 4.122
-  page: 21
+  severity: soft
+  reason: "declared square (target 1.0) generated 0.74:1 \u2014 orientation holds, ratio is bent"
 - panel_id: ISSUE001-P22-01
   declared: wide
-  target_aspect: 2.4
   actual_aspect: 5.264
   page: 22
-- panel_id: ISSUE001-P22-03
-  declared: rectangle
-  target_aspect: 1.35
-  actual_aspect: 0.642
+  severity: soft
+  reason: "declared wide (target 2.4) generated 5.26:1 \u2014 orientation holds, ratio is bent"
+- panel_id: ISSUE001-P22-02
+  declared: wide
+  actual_aspect: 1.479
   page: 22
-- panel_id: ISSUE001-P22-05
-  declared: tall
-  target_aspect: 0.52
-  actual_aspect: 1.226
-  page: 22
+  severity: soft
+  reason: "declared wide (target 2.4) generated 1.48:1 \u2014 orientation holds, ratio is bent"
+book_assembly:
+  total_pages: 28
+  front_matter_pages: 2
+  story_start_physical_page: 3
+  page_1_is: recto
+  page_turn_locks:
+  - story_page: 11
+    must_be: recto
+    reason: Splash reveal of the dark's shape. Power depends on page 10 -> TURN -> splash. A verso 11
+      would sit beside 10.
+    physical_page: 13
+    actual_side: recto
+    holds: true
+lettering:
+  dialogue_font_file: comicbd.ttf
+  dialogue_font_name: Comic Sans MS Bold
+  caption_font_file: comic.ttf
+  caption_font_name: Comic Sans MS
+  sfx_font_file: impact.ttf
+  sfx_font_name: Impact
+  dialogue_pt_floor: 6.5
+  dialogue_pt_target: 7.5
+  print_dpi: 300
+  note: Locked 2026-08-13. Comic Sans MS Bold is the production dialogue face until a licensed comic-lettering
+    font is purchased. Safe zones are sized from this file's real metrics, not an assumed footprint.
+dense_page_gutters:
+  pages:
+  - 7
+  - 18
+  row_gap: 0.024
+  col_gap: 0.012
+  reason: Seven-panel pages. Wider between-row gutter than within-row gutter is the grouping cue so row
+    boundaries stay readable.
 pages:
 - page_number: 1
+  physical_page: 3
+  page_side: recto
   purpose: Open on the festival at its best, so the reader knows what is about to
-  grid_name: p01-wide-anchor-over-trio
+  grid_name: p01-r1+r1+r1+r1
+  structure: r1+r1+r1+r1
+  row_gap: 0.012
+  col_gap: 0.012
   frame_color: '#B68F64'
   frame_note: Warm amber. The good version of the evening.
   panel_count: 4
@@ -283,10 +288,12 @@ pages:
     - zone:
       - 0.04
       - 0.05
-      - 0.44
-      - 0.2
+      - 0.42
+      - 0.22
       for: caption
+      kind: caption
     actual_aspect: 1.835
+    shape_verdict: ok
   - panel_id: ISSUE001-P01-02
     box:
     - 0.0
@@ -302,9 +309,11 @@ pages:
       - 0.54
       - 0.05
       - 0.42
-      - 0.2
+      - 0.22
       for: MZ-CHAR-003
+      kind: speech
     actual_aspect: 2.982
+    shape_verdict: ok
   - panel_id: ISSUE001-P01-03
     box:
     - 0.0
@@ -317,8 +326,8 @@ pages:
     anchor: false
     bubble_zones: []
     actual_aspect: 4.77
-    shape_mismatch: script declares 'wide' (target aspect 2.4) but the page can only give this panel 4.77.
-      Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
+    shape_verdict: soft
+    shape_mismatch: "declared wide (target 2.4) generated 4.77:1 \u2014 orientation holds, ratio is bent"
   - panel_id: ISSUE001-P01-04
     box:
     - 0.0
@@ -334,14 +343,21 @@ pages:
       - 0.04
       - 0.05
       - 0.42
-      - 0.2
+      - 0.22
       for: MZ-CHAR-005
+      kind: speech
     actual_aspect: 2.982
-    shape_mismatch: script declares 'rectangle' (target aspect 1.35) but the page can only give this panel
-      2.98. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
+    shape_verdict: soft
+    shape_mismatch: "declared rectangle (target 1.35) generated 2.98:1 \u2014 orientation holds, ratio\
+      \ is bent"
 - page_number: 2
+  physical_page: 4
+  page_side: verso
   purpose: NeonBlue volunteers the group before anyone agrees. The first characte
-  grid_name: p02-six-irregular
+  grid_name: p02-r1+r2+r2+r1
+  structure: r1+r2+r2+r1
+  row_gap: 0.012
+  col_gap: 0.012
   frame_color: '#B2906B'
   frame_note: Warm amber, holding.
   panel_count: 6
@@ -361,16 +377,25 @@ pages:
       - 0.54
       - 0.05
       - 0.42
-      - 0.2
+      - 0.11
       for: MZ-CHAR-005
+      kind: speech
+    - zone:
+      - 0.54
+      - 0.18
+      - 0.42
+      - 0.11
+      for: MZ-CHAR-005
+      kind: speech
     actual_aspect: 3.596
+    shape_verdict: ok
   - panel_id: ISSUE001-P02-02
     box:
     - 0.0
     - 0.2001
-    - 0.494
+    - 0.5676
     - 0.2351
-    area_share: 0.1162
+    area_share: 0.1334
     shape: rectangle
     silent: false
     anchor: false
@@ -379,16 +404,18 @@ pages:
       - 0.54
       - 0.05
       - 0.42
-      - 0.2
+      - 0.22
       for: MZ-CHAR-002
-    actual_aspect: 1.421
+      kind: speech
+    actual_aspect: 1.633
+    shape_verdict: ok
   - panel_id: ISSUE001-P02-03
     box:
-    - 0.506
+    - 0.5796
     - 0.2001
-    - 0.494
+    - 0.4204
     - 0.2351
-    area_share: 0.1162
+    area_share: 0.0988
     shape: square
     silent: false
     anchor: false
@@ -397,33 +424,37 @@ pages:
       - 0.04
       - 0.05
       - 0.42
-      - 0.2
+      - 0.22
       for: MZ-CHAR-005
-    actual_aspect: 1.421
+      kind: speech
+    actual_aspect: 1.21
+    shape_verdict: ok
   - panel_id: ISSUE001-P02-04
     box:
     - 0.0
     - 0.4472
     - 0.494
     - 0.2351
-    area_share: 0.1162
+    area_share: 0.1161
     shape: rectangle
     silent: true
     anchor: false
     bubble_zones: []
     actual_aspect: 1.421
+    shape_verdict: ok
   - panel_id: ISSUE001-P02-05
     box:
     - 0.506
     - 0.4472
     - 0.494
     - 0.2351
-    area_share: 0.1162
+    area_share: 0.1161
     shape: rectangle
     silent: true
     anchor: false
     bubble_zones: []
     actual_aspect: 1.421
+    shape_verdict: ok
   - panel_id: ISSUE001-P02-06
     box:
     - 0.0
@@ -439,12 +470,19 @@ pages:
       - 0.54
       - 0.74
       - 0.42
-      - 0.2
+      - 0.22
       for: caption
+      kind: caption
     actual_aspect: 2.213
+    shape_verdict: ok
 - page_number: 3
+  physical_page: 5
+  page_side: recto
   purpose: Show the festival functioning so its failure has something to fail fro
-  grid_name: p03-tall-left-quad-right
+  grid_name: p03-r1+r1+r2+r1
+  structure: r1+r1+r2+r1
+  row_gap: 0.012
+  col_gap: 0.012
   frame_color: '#B28F70'
   frame_note: Warm gold. Peak festival.
   panel_count: 5
@@ -454,8 +492,8 @@ pages:
     - 0.0
     - 0.0
     - 1.0
-    - 0.2296
-    area_share: 0.2296
+    - 0.2268
+    area_share: 0.2268
     shape: wide
     silent: false
     anchor: false
@@ -464,16 +502,18 @@ pages:
       - 0.54
       - 0.05
       - 0.42
-      - 0.2
+      - 0.22
       for: MZ-CHAR-005
-    actual_aspect: 2.946
+      kind: speech
+    actual_aspect: 2.982
+    shape_verdict: ok
   - panel_id: ISSUE001-P03-02
     box:
     - 0.0
-    - 0.2416
-    - 0.608
-    - 0.3732
-    area_share: 0.2269
+    - 0.2388
+    - 1.0
+    - 0.2268
+    area_share: 0.2268
     shape: rectangle
     silent: false
     anchor: false
@@ -481,17 +521,21 @@ pages:
     - zone:
       - 0.28
       - 0.05
-      - 0.44
-      - 0.2
+      - 0.42
+      - 0.22
       for: MZ-CHAR-LILDEVIL
-    actual_aspect: 1.102
+      kind: speech
+    actual_aspect: 2.982
+    shape_verdict: soft
+    shape_mismatch: "declared rectangle (target 1.35) generated 2.98:1 \u2014 orientation holds, ratio\
+      \ is bent"
   - panel_id: ISSUE001-P03-03
     box:
-    - 0.62
-    - 0.2416
-    - 0.38
-    - 0.3732
-    area_share: 0.1418
+    - 0.0
+    - 0.4776
+    - 0.494
+    - 0.2835
+    area_share: 0.14
     shape: rectangle
     silent: false
     anchor: false
@@ -500,18 +544,18 @@ pages:
       - 0.04
       - 0.05
       - 0.42
-      - 0.2
+      - 0.22
       for: MZ-CHAR-LILDEVIL
-    actual_aspect: 0.689
-    shape_mismatch: script declares 'rectangle' (target aspect 1.35) but the page can only give this panel
-      0.69. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
+      kind: speech
+    actual_aspect: 1.179
+    shape_verdict: ok
   - panel_id: ISSUE001-P03-04
     box:
-    - 0.0
-    - 0.6268
-    - 0.38
-    - 0.3732
-    area_share: 0.1418
+    - 0.506
+    - 0.4776
+    - 0.494
+    - 0.2835
+    area_share: 0.14
     shape: rectangle
     silent: false
     anchor: false
@@ -520,28 +564,32 @@ pages:
       - 0.54
       - 0.05
       - 0.42
-      - 0.2
+      - 0.22
       for: MZ-CHAR-005
-    actual_aspect: 0.689
-    shape_mismatch: script declares 'rectangle' (target aspect 1.35) but the page can only give this panel
-      0.69. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
+      kind: speech
+    actual_aspect: 1.179
+    shape_verdict: ok
   - panel_id: ISSUE001-P03-05
     box:
-    - 0.392
-    - 0.6268
-    - 0.608
-    - 0.3732
-    area_share: 0.2269
+    - 0.0
+    - 0.7732
+    - 1.0
+    - 0.2268
+    area_share: 0.2268
     shape: wide
     silent: true
     anchor: false
     bubble_zones: []
-    actual_aspect: 1.102
-    shape_mismatch: script declares 'wide' (target aspect 2.4) but the page can only give this panel 1.10.
-      Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
+    actual_aspect: 2.982
+    shape_verdict: ok
 - page_number: 4
+  physical_page: 6
+  page_side: verso
   purpose: Static perceives the fault before any instrument does.
-  grid_name: p04-four-small-over-wide
+  grid_name: p04-spine5
+  structure: spine5
+  row_gap: 0.012
+  col_gap: 0.012
   frame_color: '#AE907C'
   frame_note: Cooling gold. Something is off.
   panel_count: 5
@@ -550,9 +598,9 @@ pages:
     box:
     - 0.0
     - 0.0
-    - 0.494
-    - 0.3486
-    area_share: 0.1722
+    - 0.54
+    - 1.0
+    area_share: 0.54
     shape: tall
     silent: false
     anchor: false
@@ -561,46 +609,45 @@ pages:
       - 0.1
       - 0.04
       - 0.8
-      - 0.26
+      - 0.22
       for: MZ-CHAR-003
-    actual_aspect: 0.959
-    shape_mismatch: script declares 'tall' (target aspect 0.52) but the page can only give this panel
-      0.96. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
+      kind: speech
+    actual_aspect: 0.365
+    shape_verdict: ok
   - panel_id: ISSUE001-P04-02
     box:
-    - 0.506
+    - 0.552
     - 0.0
-    - 0.494
-    - 0.3486
-    area_share: 0.1722
+    - 0.448
+    - 0.2096
+    area_share: 0.0939
     shape: wide
     silent: true
     anchor: false
     bubble_zones: []
-    actual_aspect: 0.959
-    shape_mismatch: script declares 'wide' (target aspect 2.4) but the page can only give this panel 0.96.
-      Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
+    actual_aspect: 1.446
+    shape_verdict: soft
+    shape_mismatch: "declared wide (target 2.4) generated 1.45:1 \u2014 orientation holds, ratio is bent"
   - panel_id: ISSUE001-P04-03
     box:
-    - 0.0
-    - 0.3606
-    - 0.38
-    - 0.4531
-    area_share: 0.1722
+    - 0.552
+    - 0.2216
+    - 0.448
+    - 0.2096
+    area_share: 0.0939
     shape: inset
     silent: true
     anchor: false
     bubble_zones: []
-    actual_aspect: 0.567
-    shape_mismatch: script declares 'inset' (target aspect 1.15) but the page can only give this panel
-      0.57. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
+    actual_aspect: 1.446
+    shape_verdict: ok
   - panel_id: ISSUE001-P04-04
     box:
-    - 0.392
-    - 0.3606
-    - 0.608
-    - 0.4531
-    area_share: 0.2755
+    - 0.552
+    - 0.4431
+    - 0.448
+    - 0.3353
+    area_share: 0.1502
     shape: rectangle
     silent: false
     anchor: false
@@ -609,26 +656,39 @@ pages:
       - 0.04
       - 0.05
       - 0.42
-      - 0.2
+      - 0.22
       for: MZ-CHAR-003
-    actual_aspect: 0.908
+      kind: speech
+    - zone:
+      - 0.54
+      - 0.05
+      - 0.42
+      - 0.22
+      for: MZ-CHAR-006
+      kind: speech
+    actual_aspect: 0.904
+    shape_verdict: ok
   - panel_id: ISSUE001-P04-05
     box:
-    - 0.0
-    - 0.8257
-    - 1.0
-    - 0.1743
-    area_share: 0.1743
+    - 0.552
+    - 0.7904
+    - 0.448
+    - 0.2096
+    area_share: 0.0939
     shape: rectangle
     silent: true
     anchor: false
     bubble_zones: []
-    actual_aspect: 3.881
-    shape_mismatch: script declares 'rectangle' (target aspect 1.35) but the page can only give this panel
-      3.88. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
+    actual_aspect: 1.446
+    shape_verdict: ok
 - page_number: 5
+  physical_page: 7
+  page_side: recto
   purpose: Static reaches NeonBlue, and NeonBlue answers before hearing it.
-  grid_name: p05-six-irregular
+  grid_name: p05-r1+r1+r2+r2
+  structure: r1+r1+r2+r2
+  row_gap: 0.012
+  col_gap: 0.012
   frame_color: '#976579'
   frame_note: Magenta. The first failure.
   panel_count: 6
@@ -647,12 +707,20 @@ pages:
     - zone:
       - 0.28
       - 0.05
-      - 0.44
-      - 0.2
+      - 0.42
+      - 0.11
       for: MZ-CHAR-003
+      kind: speech
+    - zone:
+      - 0.28
+      - 0.18
+      - 0.42
+      - 0.11
+      for: MZ-CHAR-005
+      kind: speech
     actual_aspect: 4.387
-    shape_mismatch: script declares 'wide' (target aspect 2.4) but the page can only give this panel 4.39.
-      Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
+    shape_verdict: soft
+    shape_mismatch: "declared wide (target 2.4) generated 4.39:1 \u2014 orientation holds, ratio is bent"
   - panel_id: ISSUE001-P05-02
     box:
     - 0.0
@@ -668,28 +736,31 @@ pages:
       - 0.04
       - 0.05
       - 0.42
-      - 0.2
+      - 0.22
       for: MZ-CHAR-005
+      kind: speech
     actual_aspect: 2.699
+    shape_verdict: ok
   - panel_id: ISSUE001-P05-03
     box:
     - 0.0
     - 0.4289
-    - 0.608
+    - 0.6323
     - 0.2506
-    area_share: 0.1524
+    area_share: 0.1585
     shape: wide
     silent: true
     anchor: false
     bubble_zones: []
-    actual_aspect: 1.641
+    actual_aspect: 1.707
+    shape_verdict: ok
   - panel_id: ISSUE001-P05-04
     box:
-    - 0.62
+    - 0.6443
     - 0.4289
-    - 0.38
+    - 0.3557
     - 0.2506
-    area_share: 0.0952
+    area_share: 0.0891
     shape: rectangle
     silent: false
     anchor: false
@@ -698,16 +769,18 @@ pages:
       - 0.54
       - 0.05
       - 0.42
-      - 0.2
+      - 0.22
       for: MZ-CHAR-005
-    actual_aspect: 1.026
+      kind: speech
+    actual_aspect: 0.96
+    shape_verdict: ok
   - panel_id: ISSUE001-P05-05
     box:
     - 0.0
     - 0.6915
-    - 0.494
+    - 0.3557
     - 0.3085
-    area_share: 0.1524
+    area_share: 0.1097
     shape: rectangle
     silent: false
     anchor: false
@@ -715,17 +788,19 @@ pages:
     - zone:
       - 0.28
       - 0.05
-      - 0.44
-      - 0.2
+      - 0.42
+      - 0.22
       for: MZ-CHAR-001
-    actual_aspect: 1.083
+      kind: speech
+    actual_aspect: 0.78
+    shape_verdict: ok
   - panel_id: ISSUE001-P05-06
     box:
-    - 0.506
+    - 0.3677
     - 0.6915
-    - 0.494
+    - 0.6323
     - 0.3085
-    area_share: 0.1524
+    area_share: 0.1951
     shape: wide
     silent: false
     anchor: false
@@ -734,14 +809,20 @@ pages:
       - 0.54
       - 0.05
       - 0.42
-      - 0.2
+      - 0.22
       for: MZ-CHAR-005
-    actual_aspect: 1.083
-    shape_mismatch: script declares 'wide' (target aspect 2.4) but the page can only give this panel 1.08.
-      Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
+      kind: speech
+    actual_aspect: 1.386
+    shape_verdict: soft
+    shape_mismatch: "declared wide (target 2.4) generated 1.39:1 \u2014 orientation holds, ratio is bent"
 - page_number: 6
+  physical_page: 8
+  page_side: verso
   purpose: Show the crowd's reaction as the actual developing hazard.
-  grid_name: p06-two-by-two-offset
+  grid_name: p06-r1+r1+r1+r1
+  structure: r1+r1+r1+r1
+  row_gap: 0.012
+  col_gap: 0.012
   frame_color: '#895D74'
   frame_note: Magenta, deepening.
   panel_count: 4
@@ -758,6 +839,7 @@ pages:
     anchor: false
     bubble_zones: []
     actual_aspect: 2.544
+    shape_verdict: ok
   - panel_id: ISSUE001-P06-02
     box:
     - 0.0
@@ -773,11 +855,13 @@ pages:
       - 0.04
       - 0.05
       - 0.42
-      - 0.2
+      - 0.22
       for: MZ-CHAR-006
+      kind: speech
     actual_aspect: 2.544
-    shape_mismatch: script declares 'rectangle' (target aspect 1.35) but the page can only give this panel
-      2.54. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
+    shape_verdict: soft
+    shape_mismatch: "declared rectangle (target 1.35) generated 2.54:1 \u2014 orientation holds, ratio\
+      \ is bent"
   - panel_id: ISSUE001-P06-03
     box:
     - 0.0
@@ -793,9 +877,11 @@ pages:
       - 0.54
       - 0.05
       - 0.42
-      - 0.2
+      - 0.22
       for: MZ-CHAR-002
+      kind: speech
     actual_aspect: 2.544
+    shape_verdict: ok
   - panel_id: ISSUE001-P06-04
     box:
     - 0.0
@@ -808,11 +894,16 @@ pages:
     anchor: false
     bubble_zones: []
     actual_aspect: 4.07
-    shape_mismatch: script declares 'wide' (target aspect 2.4) but the page can only give this panel 4.07.
-      Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
+    shape_verdict: soft
+    shape_mismatch: "declared wide (target 2.4) generated 4.07:1 \u2014 orientation holds, ratio is bent"
 - page_number: 7
+  physical_page: 9
+  page_side: recto
   purpose: Open the dense page with a fast beat - a ride stopping.
-  grid_name: p07-dense-seven-a
+  grid_name: p07-r2+r2+r2+r1
+  structure: r2+r2+r2+r1
+  row_gap: 0.024
+  col_gap: 0.012
   frame_color: '#785875'
   frame_note: Cool magenta. It is spreading.
   panel_count: 7
@@ -821,39 +912,35 @@ pages:
     box:
     - 0.0
     - 0.0
-    - 0.494
-    - 0.2096
-    area_share: 0.1035
+    - 0.3557
+    - 0.2017
+    area_share: 0.0717
     shape: rectangle
     silent: true
     anchor: false
-    bubble_zones:
-    - zone:
-      - 0.54
-      - 0.05
-      - 0.42
-      - 0.2
-      for: caption
-    actual_aspect: 1.594
+    bubble_zones: []
+    actual_aspect: 1.193
+    shape_verdict: ok
   - panel_id: ISSUE001-P07-02
     box:
-    - 0.506
+    - 0.3677
     - 0.0
-    - 0.494
-    - 0.2096
-    area_share: 0.1035
+    - 0.6323
+    - 0.2017
+    area_share: 0.1275
     shape: wide
     silent: true
     anchor: false
     bubble_zones: []
-    actual_aspect: 1.594
+    actual_aspect: 2.12
+    shape_verdict: ok
   - panel_id: ISSUE001-P07-03
     box:
     - 0.0
-    - 0.2216
-    - 0.494
-    - 0.2096
-    area_share: 0.1035
+    - 0.2257
+    - 0.4204
+    - 0.2017
+    area_share: 0.0848
     shape: square
     silent: false
     anchor: false
@@ -862,40 +949,46 @@ pages:
       - 0.04
       - 0.05
       - 0.42
-      - 0.2
+      - 0.22
       for: MZ-CHAR-003
-    actual_aspect: 1.594
+      kind: speech
+    actual_aspect: 1.41
+    shape_verdict: soft
+    shape_mismatch: "declared square (target 1.0) generated 1.41:1 \u2014 orientation holds, ratio is\
+      \ bent"
   - panel_id: ISSUE001-P07-04
     box:
-    - 0.506
-    - 0.2216
-    - 0.494
-    - 0.2096
-    area_share: 0.1035
+    - 0.4324
+    - 0.2257
+    - 0.5676
+    - 0.2017
+    area_share: 0.1145
     shape: rectangle
     silent: true
     anchor: false
     bubble_zones: []
-    actual_aspect: 1.594
+    actual_aspect: 1.904
+    shape_verdict: ok
   - panel_id: ISSUE001-P07-05
     box:
     - 0.0
-    - 0.4431
-    - 0.38
-    - 0.2724
-    area_share: 0.1035
+    - 0.4515
+    - 0.494
+    - 0.2623
+    area_share: 0.1296
     shape: rectangle
     silent: true
     anchor: false
     bubble_zones: []
-    actual_aspect: 0.944
+    actual_aspect: 1.274
+    shape_verdict: ok
   - panel_id: ISSUE001-P07-06
     box:
-    - 0.392
-    - 0.4431
-    - 0.608
-    - 0.2724
-    area_share: 0.1656
+    - 0.506
+    - 0.4515
+    - 0.494
+    - 0.2623
+    area_share: 0.1296
     shape: rectangle
     silent: false
     anchor: false
@@ -904,24 +997,32 @@ pages:
       - 0.04
       - 0.05
       - 0.42
-      - 0.2
+      - 0.22
       for: MZ-CHAR-005
-    actual_aspect: 1.51
+      kind: speech
+    actual_aspect: 1.274
+    shape_verdict: ok
   - panel_id: ISSUE001-P07-07
     box:
     - 0.0
-    - 0.7276
+    - 0.7377
     - 1.0
-    - 0.2724
-    area_share: 0.2724
+    - 0.2623
+    area_share: 0.2623
     shape: wide
     silent: true
     anchor: true
     bubble_zones: []
-    actual_aspect: 2.483
+    actual_aspect: 2.579
+    shape_verdict: ok
 - page_number: 8
+  physical_page: 10
+  page_side: verso
   purpose: TwoTone starts working the problem the way only he does.
-  grid_name: p08-wide-over-quad
+  grid_name: p08-r2+r2+r1
+  structure: r2+r2+r1
+  row_gap: 0.012
+  col_gap: 0.012
   frame_color: '#665476'
   frame_note: Violet. The pattern.
   panel_count: 5
@@ -930,9 +1031,9 @@ pages:
     box:
     - 0.0
     - 0.0
-    - 1.0
-    - 0.2296
-    area_share: 0.2296
+    - 0.494
+    - 0.3732
+    area_share: 0.1844
     shape: rectangle
     silent: false
     anchor: false
@@ -941,18 +1042,18 @@ pages:
       - 0.54
       - 0.05
       - 0.42
-      - 0.2
+      - 0.22
       for: MZ-CHAR-002
-    actual_aspect: 2.946
-    shape_mismatch: script declares 'rectangle' (target aspect 1.35) but the page can only give this panel
-      2.95. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
+      kind: speech
+    actual_aspect: 0.895
+    shape_verdict: ok
   - panel_id: ISSUE001-P08-02
     box:
+    - 0.506
     - 0.0
-    - 0.2416
-    - 0.38
+    - 0.494
     - 0.3732
-    area_share: 0.1418
+    area_share: 0.1844
     shape: rectangle
     silent: false
     anchor: false
@@ -961,18 +1062,18 @@ pages:
       - 0.54
       - 0.05
       - 0.42
-      - 0.2
+      - 0.22
       for: MZ-CHAR-002
-    actual_aspect: 0.689
-    shape_mismatch: script declares 'rectangle' (target aspect 1.35) but the page can only give this panel
-      0.69. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
+      kind: speech
+    actual_aspect: 0.895
+    shape_verdict: ok
   - panel_id: ISSUE001-P08-03
     box:
-    - 0.392
-    - 0.2416
-    - 0.608
+    - 0.0
+    - 0.3852
+    - 0.494
     - 0.3732
-    area_share: 0.2269
+    area_share: 0.1844
     shape: rectangle
     silent: false
     anchor: false
@@ -981,16 +1082,25 @@ pages:
       - 0.04
       - 0.05
       - 0.42
-      - 0.2
+      - 0.22
       for: MZ-CHAR-005
-    actual_aspect: 1.102
+      kind: speech
+    - zone:
+      - 0.54
+      - 0.05
+      - 0.42
+      - 0.22
+      for: MZ-CHAR-002
+      kind: speech
+    actual_aspect: 0.895
+    shape_verdict: ok
   - panel_id: ISSUE001-P08-04
     box:
-    - 0.0
-    - 0.6268
-    - 0.38
+    - 0.506
+    - 0.3852
+    - 0.494
     - 0.3732
-    area_share: 0.1418
+    area_share: 0.1844
     shape: rectangle
     silent: false
     anchor: false
@@ -999,18 +1109,18 @@ pages:
       - 0.54
       - 0.05
       - 0.42
-      - 0.2
+      - 0.22
       for: MZ-CHAR-LILDEVIL
-    actual_aspect: 0.689
-    shape_mismatch: script declares 'rectangle' (target aspect 1.35) but the page can only give this panel
-      0.69. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
+      kind: speech
+    actual_aspect: 0.895
+    shape_verdict: ok
   - panel_id: ISSUE001-P08-05
     box:
-    - 0.392
-    - 0.6268
-    - 0.608
-    - 0.3732
-    area_share: 0.2269
+    - 0.0
+    - 0.7704
+    - 1.0
+    - 0.2296
+    area_share: 0.2296
     shape: wide
     silent: false
     anchor: false
@@ -1019,14 +1129,19 @@ pages:
       - 0.04
       - 0.05
       - 0.42
-      - 0.2
+      - 0.22
       for: MZ-CHAR-005
-    actual_aspect: 1.102
-    shape_mismatch: script declares 'wide' (target aspect 2.4) but the page can only give this panel 1.10.
-      Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
+      kind: speech
+    actual_aspect: 2.946
+    shape_verdict: ok
 - page_number: 9
+  physical_page: 11
+  page_side: recto
   purpose: Static's perception becomes something the reader can see.
-  grid_name: p09-large-over-five
+  grid_name: p09-r1+r1+r2+r2
+  structure: r1+r1+r2+r2
+  row_gap: 0.012
+  col_gap: 0.012
   frame_color: '#5C5076'
   frame_note: Violet, cooling toward cyan.
   panel_count: 6
@@ -1035,43 +1150,36 @@ pages:
     box:
     - 0.0
     - 0.0
-    - 0.38
-    - 0.3253
+    - 1.0
+    - 0.1236
     area_share: 0.1236
     shape: wide
     silent: true
     anchor: false
     bubble_zones: []
-    actual_aspect: 0.79
-    shape_mismatch: script declares 'wide' (target aspect 2.4) but the page can only give this panel 0.79.
-      Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
+    actual_aspect: 5.473
+    shape_verdict: soft
+    shape_mismatch: "declared wide (target 2.4) generated 5.47:1 \u2014 orientation holds, ratio is bent"
   - panel_id: ISSUE001-P09-02
     box:
-    - 0.392
     - 0.0
-    - 0.608
-    - 0.3253
-    area_share: 0.1978
+    - 0.1356
+    - 1.0
+    - 0.1977
+    area_share: 0.1977
     shape: wide
     silent: true
     anchor: false
-    bubble_zones:
-    - zone:
-      - 0.54
-      - 0.05
-      - 0.42
-      - 0.2
-      for: caption
-    actual_aspect: 1.264
-    shape_mismatch: script declares 'wide' (target aspect 2.4) but the page can only give this panel 1.26.
-      Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
+    bubble_zones: []
+    actual_aspect: 3.421
+    shape_verdict: ok
   - panel_id: ISSUE001-P09-03
     box:
     - 0.0
-    - 0.3373
-    - 0.608
-    - 0.3253
-    area_share: 0.1978
+    - 0.3453
+    - 0.5335
+    - 0.3213
+    area_share: 0.1714
     shape: rectangle
     silent: false
     anchor: false
@@ -1080,28 +1188,31 @@ pages:
       - 0.54
       - 0.74
       - 0.42
-      - 0.2
+      - 0.22
       for: MZ-CHAR-003
-    actual_aspect: 1.264
+      kind: speech
+    actual_aspect: 1.123
+    shape_verdict: ok
   - panel_id: ISSUE001-P09-04
     box:
-    - 0.62
-    - 0.3373
-    - 0.38
-    - 0.3253
-    area_share: 0.1236
+    - 0.5455
+    - 0.3453
+    - 0.4545
+    - 0.3213
+    area_share: 0.146
     shape: inset
     silent: true
     anchor: false
     bubble_zones: []
-    actual_aspect: 0.79
+    actual_aspect: 0.957
+    shape_verdict: ok
   - panel_id: ISSUE001-P09-05
     box:
     - 0.0
-    - 0.6747
-    - 0.608
-    - 0.3253
-    area_share: 0.1978
+    - 0.6787
+    - 0.5676
+    - 0.3213
+    area_share: 0.1824
     shape: rectangle
     silent: false
     anchor: false
@@ -1110,16 +1221,18 @@ pages:
       - 0.04
       - 0.05
       - 0.42
-      - 0.2
+      - 0.22
       for: MZ-CHAR-005
-    actual_aspect: 1.264
+      kind: speech
+    actual_aspect: 1.195
+    shape_verdict: ok
   - panel_id: ISSUE001-P09-06
     box:
-    - 0.62
-    - 0.6747
-    - 0.38
-    - 0.3253
-    area_share: 0.1236
+    - 0.5796
+    - 0.6787
+    - 0.4204
+    - 0.3213
+    area_share: 0.1351
     shape: square
     silent: false
     anchor: false
@@ -1128,12 +1241,19 @@ pages:
       - 0.54
       - 0.05
       - 0.42
-      - 0.2
+      - 0.22
       for: MZ-CHAR-003
-    actual_aspect: 0.79
+      kind: speech
+    actual_aspect: 0.885
+    shape_verdict: ok
 - page_number: 10
+  physical_page: 12
+  page_side: verso
   purpose: NeonBlue's brightness gets louder as the situation gets worse.
-  grid_name: p10-four-small-over-wide
+  grid_name: p10-r2+r1+r2
+  structure: r2+r1+r2
+  row_gap: 0.012
+  col_gap: 0.012
   frame_color: '#534D72'
   frame_note: Deep violet. The crack.
   panel_count: 5
@@ -1142,9 +1262,9 @@ pages:
     box:
     - 0.0
     - 0.0
-    - 0.608
+    - 0.5676
     - 0.3732
-    area_share: 0.2269
+    area_share: 0.2118
     shape: rectangle
     silent: false
     anchor: false
@@ -1153,21 +1273,26 @@ pages:
       - 0.54
       - 0.05
       - 0.42
-      - 0.2
+      - 0.22
       for: MZ-CHAR-005
-    actual_aspect: 1.102
+      kind: speech
+    actual_aspect: 1.029
+    shape_verdict: ok
   - panel_id: ISSUE001-P10-02
     box:
-    - 0.62
+    - 0.5796
     - 0.0
-    - 0.38
+    - 0.4204
     - 0.3732
-    area_share: 0.1418
+    area_share: 0.1569
     shape: square
     silent: true
     anchor: false
     bubble_zones: []
-    actual_aspect: 0.689
+    actual_aspect: 0.762
+    shape_verdict: soft
+    shape_mismatch: "declared square (target 1.0) generated 0.76:1 \u2014 orientation holds, ratio is\
+      \ bent"
   - panel_id: ISSUE001-P10-03
     box:
     - 0.0
@@ -1183,40 +1308,45 @@ pages:
       - 0.04
       - 0.05
       - 0.42
-      - 0.2
+      - 0.22
       for: MZ-CHAR-005
+      kind: speech
     actual_aspect: 2.946
+    shape_verdict: ok
   - panel_id: ISSUE001-P10-04
     box:
     - 0.0
     - 0.6268
-    - 0.38
+    - 0.7133
     - 0.3732
-    area_share: 0.1418
+    area_share: 0.2662
     shape: rectangle
     silent: true
     anchor: false
     bubble_zones: []
-    actual_aspect: 0.689
-    shape_mismatch: script declares 'rectangle' (target aspect 1.35) but the page can only give this panel
-      0.69. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
+    actual_aspect: 1.293
+    shape_verdict: ok
   - panel_id: ISSUE001-P10-05
     box:
-    - 0.392
+    - 0.7253
     - 0.6268
-    - 0.608
+    - 0.2747
     - 0.3732
-    area_share: 0.2269
+    area_share: 0.1025
     shape: tall
     silent: true
     anchor: false
     bubble_zones: []
-    actual_aspect: 1.102
-    shape_mismatch: script declares 'tall' (target aspect 0.52) but the page can only give this panel
-      1.10. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
+    actual_aspect: 0.498
+    shape_verdict: ok
 - page_number: 11
+  physical_page: 13
+  page_side: recto
   purpose: The page-turn reveal. Give the reader the whole pattern at once, befor
-  grid_name: p11-full-page-splash
+  grid_name: p11-r1
+  structure: r1
+  row_gap: 0.012
+  col_gap: 0.012
   frame_color: '#4B5D75'
   frame_note: Violet-cyan. The splash.
   panel_count: 1
@@ -1233,9 +1363,15 @@ pages:
     anchor: true
     bubble_zones: []
     actual_aspect: 0.676
+    shape_verdict: ok
 - page_number: 12
+  physical_page: 14
+  page_side: verso
   purpose: Arrive at the locked gate, the last obstacle before the control node.
-  grid_name: p12-large-over-five
+  grid_name: p12-r1+r2+r2+r1
+  structure: r1+r2+r2+r1
+  row_gap: 0.012
+  col_gap: 0.012
   frame_color: '#4B6A74'
   frame_note: Cyan. The gate.
   panel_count: 6
@@ -1254,10 +1390,19 @@ pages:
     - zone:
       - 0.04
       - 0.05
-      - 0.92
-      - 0.18
+      - 0.42
+      - 0.22
       for: MZ-CHAR-LILDEVIL
+      kind: speech
+    - zone:
+      - 0.54
+      - 0.05
+      - 0.42
+      - 0.22
+      for: MZ-CHAR-005
+      kind: speech
     actual_aspect: 3.421
+    shape_verdict: ok
   - panel_id: ISSUE001-P12-02
     box:
     - 0.0
@@ -1273,9 +1418,11 @@ pages:
       - 0.04
       - 0.05
       - 0.42
-      - 0.2
+      - 0.22
       for: MZ-CHAR-006
+      kind: speech
     actual_aspect: 1.352
+    shape_verdict: ok
   - panel_id: ISSUE001-P12-03
     box:
     - 0.506
@@ -1291,16 +1438,18 @@ pages:
       - 0.04
       - 0.05
       - 0.42
-      - 0.2
+      - 0.22
       for: MZ-CHAR-005
+      kind: speech
     actual_aspect: 1.352
+    shape_verdict: ok
   - panel_id: ISSUE001-P12-04
     box:
     - 0.0
     - 0.4689
-    - 0.608
+    - 0.494
     - 0.3213
-    area_share: 0.1954
+    area_share: 0.1587
     shape: rectangle
     silent: false
     anchor: false
@@ -1309,29 +1458,24 @@ pages:
       - 0.54
       - 0.05
       - 0.42
-      - 0.2
+      - 0.22
       for: MZ-CHAR-LILDEVIL
-    actual_aspect: 1.28
+      kind: speech
+    actual_aspect: 1.04
+    shape_verdict: ok
   - panel_id: ISSUE001-P12-05
     box:
-    - 0.62
+    - 0.506
     - 0.4689
-    - 0.38
+    - 0.494
     - 0.3213
-    area_share: 0.1221
+    area_share: 0.1587
     shape: rectangle
     silent: true
     anchor: false
-    bubble_zones:
-    - zone:
-      - 0.04
-      - 0.74
-      - 0.42
-      - 0.2
-      for: caption
-    actual_aspect: 0.8
-    shape_mismatch: script declares 'rectangle' (target aspect 1.35) but the page can only give this panel
-      0.80. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
+    bubble_zones: []
+    actual_aspect: 1.04
+    shape_verdict: ok
   - panel_id: ISSUE001-P12-06
     box:
     - 0.0
@@ -1344,9 +1488,15 @@ pages:
     anchor: false
     bubble_zones: []
     actual_aspect: 3.421
+    shape_verdict: ok
 - page_number: 13
+  physical_page: 15
+  page_side: recto
   purpose: 'The system responds to the interference. The discovery, and Lil Devil '
-  grid_name: p13-large-over-twin
+  grid_name: p13-r1+r1+r1
+  structure: r1+r1+r1
+  row_gap: 0.012
+  col_gap: 0.012
   frame_color: '#425F68'
   frame_note: Deep cyan. The answer.
   panel_count: 3
@@ -1366,11 +1516,12 @@ pages:
       - 0.54
       - 0.05
       - 0.42
-      - 0.2
+      - 0.22
       for: MZ-CHAR-LILDEVIL
+      kind: speech
     actual_aspect: 1.386
-    shape_mismatch: script declares 'wide' (target aspect 2.4) but the page can only give this panel 1.39.
-      Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
+    shape_verdict: soft
+    shape_mismatch: "declared wide (target 2.4) generated 1.39:1 \u2014 orientation holds, ratio is bent"
   - panel_id: ISSUE001-P13-02
     box:
     - 0.0
@@ -1383,8 +1534,9 @@ pages:
     anchor: false
     bubble_zones: []
     actual_aspect: 3.604
-    shape_mismatch: script declares 'inset' (target aspect 1.15) but the page can only give this panel
-      3.60. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
+    shape_verdict: soft
+    shape_mismatch: "declared inset (target 1.15) generated 3.60:1 \u2014 orientation holds, ratio is\
+      \ bent"
   - panel_id: ISSUE001-P13-03
     box:
     - 0.0
@@ -1400,12 +1552,19 @@ pages:
       - 0.54
       - 0.05
       - 0.42
-      - 0.2
+      - 0.22
       for: MZ-CHAR-005
+      kind: speech
     actual_aspect: 2.252
+    shape_verdict: ok
 - page_number: 14
+  physical_page: 16
+  page_side: verso
   purpose: NeonBlue reaches for the ordinary explanation.
-  grid_name: p14-wide-over-quad
+  grid_name: p14-r2+r1+r2
+  structure: r2+r1+r2
+  row_gap: 0.012
+  col_gap: 0.012
   frame_color: '#39525A'
   frame_note: Deep cyan, darkening.
   panel_count: 5
@@ -1425,9 +1584,11 @@ pages:
       - 0.54
       - 0.05
       - 0.42
-      - 0.2
+      - 0.22
       for: MZ-CHAR-005
+      kind: speech
     actual_aspect: 1.164
+    shape_verdict: ok
   - panel_id: ISSUE001-P14-02
     box:
     - 0.506
@@ -1443,66 +1604,78 @@ pages:
       - 0.04
       - 0.05
       - 0.42
-      - 0.2
+      - 0.22
       for: MZ-CHAR-LILDEVIL
+      kind: speech
     actual_aspect: 1.164
+    shape_verdict: ok
   - panel_id: ISSUE001-P14-03
     box:
     - 0.0
     - 0.2991
-    - 0.494
-    - 0.4593
-    area_share: 0.2269
-    shape: rectangle
-    silent: false
-    anchor: false
-    bubble_zones:
-    - zone:
-      - 0.28
-      - 0.05
-      - 0.44
-      - 0.2
-      for: MZ-CHAR-005
-    actual_aspect: 0.728
-    shape_mismatch: script declares 'rectangle' (target aspect 1.35) but the page can only give this panel
-      0.73. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
-  - panel_id: ISSUE001-P14-04
-    box:
-    - 0.506
-    - 0.2991
-    - 0.494
-    - 0.4593
-    area_share: 0.2269
-    shape: rectangle
-    silent: false
-    anchor: false
-    bubble_zones:
-    - zone:
-      - 0.28
-      - 0.05
-      - 0.44
-      - 0.2
-      for: MZ-CHAR-004
-    actual_aspect: 0.728
-    shape_mismatch: script declares 'rectangle' (target aspect 1.35) but the page can only give this panel
-      0.73. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
-  - panel_id: ISSUE001-P14-05
-    box:
-    - 0.0
-    - 0.7704
     - 1.0
     - 0.2296
     area_share: 0.2296
     shape: rectangle
+    silent: false
+    anchor: false
+    bubble_zones:
+    - zone:
+      - 0.28
+      - 0.05
+      - 0.42
+      - 0.22
+      for: MZ-CHAR-005
+      kind: speech
+    actual_aspect: 2.946
+    shape_verdict: soft
+    shape_mismatch: "declared rectangle (target 1.35) generated 2.95:1 \u2014 orientation holds, ratio\
+      \ is bent"
+  - panel_id: ISSUE001-P14-04
+    box:
+    - 0.0
+    - 0.5407
+    - 0.494
+    - 0.4593
+    area_share: 0.2269
+    shape: rectangle
+    silent: false
+    anchor: false
+    bubble_zones:
+    - zone:
+      - 0.28
+      - 0.05
+      - 0.42
+      - 0.22
+      for: MZ-CHAR-004
+      kind: speech
+    actual_aspect: 0.728
+    shape_verdict: soft
+    shape_mismatch: "declared rectangle (target 1.35) generated 0.73:1 \u2014 orientation holds, ratio\
+      \ is bent"
+  - panel_id: ISSUE001-P14-05
+    box:
+    - 0.506
+    - 0.5407
+    - 0.494
+    - 0.4593
+    area_share: 0.2269
+    shape: rectangle
     silent: true
     anchor: false
     bubble_zones: []
-    actual_aspect: 2.946
-    shape_mismatch: script declares 'rectangle' (target aspect 1.35) but the page can only give this panel
-      2.95. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
+    actual_aspect: 0.728
+    shape_verdict: soft
+    shape_mismatch: "declared rectangle (target 1.35) generated 0.73:1 \u2014 orientation holds, ratio\
+      \ is bent"
 - page_number: 15
+  physical_page: 17
+  page_side: recto
   purpose: Move into the corridor. Change the world of the issue.
-  grid_name: p15-triple-stack
+  grid_name: p15-spine3
+  structure: spine3
+  row_gap: 0.012
+  col_gap: 0.012
   frame_color: '#363940'
   frame_note: Near-black. The wound.
   panel_count: 3
@@ -1511,21 +1684,22 @@ pages:
     box:
     - 0.0
     - 0.0
-    - 0.3764
-    - 0.7154
-    area_share: 0.2693
+    - 0.54
+    - 1.0
+    area_share: 0.54
     shape: tall
     silent: true
     anchor: false
     bubble_zones: []
-    actual_aspect: 0.356
+    actual_aspect: 0.365
+    shape_verdict: ok
   - panel_id: ISSUE001-P15-02
     box:
-    - 0.3884
+    - 0.552
     - 0.0
+    - 0.448
     - 0.6116
-    - 0.7154
-    area_share: 0.4376
+    area_share: 0.274
     shape: tall
     silent: false
     anchor: true
@@ -1534,26 +1708,34 @@ pages:
       - 0.04
       - 0.74
       - 0.42
-      - 0.2
+      - 0.22
       for: MZ-CHAR-005
-    actual_aspect: 0.578
+      kind: speech
+    actual_aspect: 0.495
+    shape_verdict: ok
   - panel_id: ISSUE001-P15-03
     box:
-    - 0.0
-    - 0.7274
-    - 1.0
-    - 0.2726
-    area_share: 0.2726
+    - 0.552
+    - 0.6236
+    - 0.448
+    - 0.3764
+    area_share: 0.1686
     shape: square
     silent: true
     anchor: false
     bubble_zones: []
-    actual_aspect: 2.481
-    shape_mismatch: script declares 'square' (target aspect 1.0) but the page can only give this panel
-      2.48. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
+    actual_aspect: 0.805
+    shape_verdict: soft
+    shape_mismatch: "declared square (target 1.0) generated 0.81:1 \u2014 orientation holds, ratio is\
+      \ bent"
 - page_number: 16
+  physical_page: 18
+  page_side: verso
   purpose: Moodz arrives without being called.
-  grid_name: p16-wide-anchor-over-trio
+  grid_name: p16-r1+r2+r1
+  structure: r1+r2+r1
+  row_gap: 0.012
+  col_gap: 0.012
   frame_color: '#363940'
   frame_note: Near-black. Permission.
   panel_count: 4
@@ -1570,13 +1752,14 @@ pages:
     anchor: false
     bubble_zones: []
     actual_aspect: 2.946
+    shape_verdict: ok
   - panel_id: ISSUE001-P16-02
     box:
     - 0.0
     - 0.2416
-    - 1.0
-    - 0.3732
-    area_share: 0.3732
+    - 0.494
+    - 0.5167
+    area_share: 0.2552
     shape: rectangle
     silent: false
     anchor: true
@@ -1584,31 +1767,43 @@ pages:
     - zone:
       - 0.28
       - 0.05
-      - 0.44
-      - 0.2
+      - 0.42
+      - 0.11
       for: MZ-CHAR-001
-    actual_aspect: 1.812
+      kind: speech
+    - zone:
+      - 0.28
+      - 0.18
+      - 0.42
+      - 0.11
+      for: MZ-CHAR-001
+      kind: speech
+    actual_aspect: 0.647
+    shape_verdict: soft
+    shape_mismatch: "declared rectangle (target 1.35) generated 0.65:1 \u2014 orientation holds, ratio\
+      \ is bent"
   - panel_id: ISSUE001-P16-03
     box:
-    - 0.0
-    - 0.6268
-    - 0.38
-    - 0.3732
-    area_share: 0.1418
+    - 0.506
+    - 0.2416
+    - 0.494
+    - 0.5167
+    area_share: 0.2552
     shape: rectangle
     silent: true
     anchor: false
     bubble_zones: []
-    actual_aspect: 0.689
-    shape_mismatch: script declares 'rectangle' (target aspect 1.35) but the page can only give this panel
-      0.69. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
+    actual_aspect: 0.647
+    shape_verdict: soft
+    shape_mismatch: "declared rectangle (target 1.35) generated 0.65:1 \u2014 orientation holds, ratio\
+      \ is bent"
   - panel_id: ISSUE001-P16-04
     box:
-    - 0.392
-    - 0.6268
-    - 0.608
-    - 0.3732
-    area_share: 0.2269
+    - 0.0
+    - 0.7704
+    - 1.0
+    - 0.2296
+    area_share: 0.2296
     shape: wide
     silent: false
     anchor: false
@@ -1617,14 +1812,19 @@ pages:
       - 0.04
       - 0.05
       - 0.42
-      - 0.2
+      - 0.22
       for: MZ-CHAR-001
-    actual_aspect: 1.102
-    shape_mismatch: script declares 'wide' (target aspect 2.4) but the page can only give this panel 1.10.
-      Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
+      kind: speech
+    actual_aspect: 2.946
+    shape_verdict: ok
 - page_number: 17
+  physical_page: 19
+  page_side: recto
   purpose: Let the midpoint land. Deliberate negative space, borrowed from Editio
-  grid_name: p17-tall-pair
+  grid_name: p17-r1+r1
+  structure: r1+r1
+  row_gap: 0.012
+  col_gap: 0.012
   frame_color: '#37393E'
   frame_note: Darkest page ground in the issue.
   panel_count: 2
@@ -1634,30 +1834,36 @@ pages:
     - 0.0
     - 0.0
     - 1.0
-    - 0.6116
-    area_share: 0.6116
+    - 0.5544
+    area_share: 0.5544
     shape: wide
     silent: true
     anchor: true
     bubble_zones: []
-    actual_aspect: 1.106
-    shape_mismatch: script declares 'wide' (target aspect 2.4) but the page can only give this panel 1.11.
-      Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
+    actual_aspect: 1.22
+    shape_verdict: soft
+    shape_mismatch: "declared wide (target 2.4) generated 1.22:1 \u2014 orientation holds, ratio is bent"
   - panel_id: ISSUE001-P17-02
     box:
     - 0.0
-    - 0.6236
+    - 0.5664
     - 1.0
-    - 0.3764
-    area_share: 0.3764
+    - 0.4336
+    area_share: 0.4336
     shape: inset
     silent: true
     anchor: false
     bubble_zones: []
-    actual_aspect: 1.797
+    actual_aspect: 1.56
+    shape_verdict: ok
 - page_number: 18
+  physical_page: 20
+  page_side: verso
   purpose: The countdown begins. The pull toward the visible thing.
-  grid_name: p18-dense-seven-b
+  grid_name: p18-r1+r2+r2+r1+r1
+  structure: r1+r2+r2+r1+r1
+  row_gap: 0.024
+  col_gap: 0.012
   frame_color: '#4D3234'
   frame_note: Red-black. The countdown and the three.
   panel_count: 7
@@ -1666,47 +1872,36 @@ pages:
     box:
     - 0.0
     - 0.0
-    - 0.38
-    - 0.225
-    area_share: 0.0855
+    - 1.0
+    - 0.0822
+    area_share: 0.0822
     shape: wide
     silent: true
     anchor: false
-    bubble_zones:
-    - zone:
-      - 0.04
-      - 0.05
-      - 0.42
-      - 0.2
-      for: caption
-    actual_aspect: 1.142
-    shape_mismatch: script declares 'wide' (target aspect 2.4) but the page can only give this panel 1.14.
-      Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
+    bubble_zones: []
+    actual_aspect: 8.229
+    shape_verdict: soft
+    shape_mismatch: "declared wide (target 2.4) generated 8.23:1 \u2014 orientation holds, ratio is bent"
   - panel_id: ISSUE001-P18-02
     box:
-    - 0.392
     - 0.0
-    - 0.608
-    - 0.225
-    area_share: 0.1368
+    - 0.1062
+    - 0.6323
+    - 0.263
+    area_share: 0.1663
     shape: wide
     silent: true
     anchor: false
-    bubble_zones:
-    - zone:
-      - 0.04
-      - 0.05
-      - 0.42
-      - 0.2
-      for: caption
-    actual_aspect: 1.828
+    bubble_zones: []
+    actual_aspect: 1.626
+    shape_verdict: ok
   - panel_id: ISSUE001-P18-03
     box:
-    - 0.0
-    - 0.237
-    - 0.494
-    - 0.2769
-    area_share: 0.1368
+    - 0.6443
+    - 0.1062
+    - 0.3557
+    - 0.263
+    area_share: 0.0935
     shape: rectangle
     silent: false
     anchor: false
@@ -1715,50 +1910,46 @@ pages:
       - 0.54
       - 0.05
       - 0.42
-      - 0.2
+      - 0.22
       for: MZ-CHAR-003
-    actual_aspect: 1.207
+      kind: speech
+    actual_aspect: 0.915
+    shape_verdict: ok
   - panel_id: ISSUE001-P18-04
     box:
-    - 0.506
-    - 0.237
-    - 0.494
-    - 0.2769
-    area_share: 0.1368
-    shape: wide
-    silent: true
-    anchor: false
-    bubble_zones:
-    - zone:
-      - 0.04
-      - 0.05
-      - 0.42
-      - 0.2
-      for: caption
-    actual_aspect: 1.207
-    shape_mismatch: script declares 'wide' (target aspect 2.4) but the page can only give this panel 1.21.
-      Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
-  - panel_id: ISSUE001-P18-05
-    box:
     - 0.0
-    - 0.526
-    - 1.0
-    - 0.0865
-    area_share: 0.0865
+    - 0.3932
+    - 0.494
+    - 0.2137
+    area_share: 0.1056
     shape: wide
     silent: true
     anchor: false
     bubble_zones: []
-    actual_aspect: 7.82
-    shape_mismatch: script declares 'wide' (target aspect 2.4) but the page can only give this panel 7.82.
-      Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
+    actual_aspect: 1.564
+    shape_verdict: soft
+    shape_mismatch: "declared wide (target 2.4) generated 1.56:1 \u2014 orientation holds, ratio is bent"
+  - panel_id: ISSUE001-P18-05
+    box:
+    - 0.506
+    - 0.3932
+    - 0.494
+    - 0.2137
+    area_share: 0.1056
+    shape: wide
+    silent: true
+    anchor: false
+    bubble_zones: []
+    actual_aspect: 1.564
+    shape_verdict: soft
+    shape_mismatch: "declared wide (target 2.4) generated 1.56:1 \u2014 orientation holds, ratio is bent"
   - panel_id: ISSUE001-P18-06
     box:
     - 0.0
-    - 0.6245
+    - 0.6308
     - 1.0
-    - 0.225
-    area_share: 0.225
+    - 0.2137
+    area_share: 0.2137
     shape: wide
     silent: false
     anchor: true
@@ -1767,26 +1958,33 @@ pages:
       - 0.04
       - 0.05
       - 0.42
-      - 0.2
+      - 0.22
       for: MZ-CHAR-003
-    actual_aspect: 3.006
+      kind: speech
+    actual_aspect: 3.165
+    shape_verdict: ok
   - panel_id: ISSUE001-P18-07
     box:
     - 0.0
-    - 0.8615
+    - 0.8685
     - 1.0
-    - 0.1385
-    area_share: 0.1385
+    - 0.1315
+    area_share: 0.1315
     shape: wide
     silent: true
     anchor: false
     bubble_zones: []
-    actual_aspect: 4.884
-    shape_mismatch: script declares 'wide' (target aspect 2.4) but the page can only give this panel 4.88.
-      Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
+    actual_aspect: 5.144
+    shape_verdict: soft
+    shape_mismatch: "declared wide (target 2.4) generated 5.14:1 \u2014 orientation holds, ratio is bent"
 - page_number: 19
+  physical_page: 21
+  page_side: recto
   purpose: The decision. The emotional centre of the issue.
-  grid_name: p19-tall-pair
+  grid_name: p19-r1+r1
+  structure: r1+r1
+  row_gap: 0.012
+  col_gap: 0.012
   frame_color: '#623330'
   frame_note: Deep red. The decision.
   panel_count: 2
@@ -1806,9 +2004,11 @@ pages:
       - 0.54
       - 0.05
       - 0.42
-      - 0.2
+      - 0.22
       for: MZ-CHAR-006
+      kind: speech
     actual_aspect: 1.369
+    shape_verdict: ok
   - panel_id: ISSUE001-P19-02
     box:
     - 0.0
@@ -1821,11 +2021,16 @@ pages:
     anchor: true
     bubble_zones: []
     actual_aspect: 1.369
-    shape_mismatch: script declares 'wide' (target aspect 2.4) but the page can only give this panel 1.37.
-      Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
+    shape_verdict: soft
+    shape_mismatch: "declared wide (target 2.4) generated 1.37:1 \u2014 orientation holds, ratio is bent"
 - page_number: 20
+  physical_page: 22
+  page_side: verso
   purpose: Hope that admits risk. Leadership without a guarantee.
-  grid_name: p20-six-irregular
+  grid_name: p20-r1+r2+r2+r1
+  structure: r1+r2+r2+r1
+  row_gap: 0.012
+  col_gap: 0.012
   frame_color: '#936B4F'
   frame_note: Working amber. Torchlight.
   panel_count: 6
@@ -1845,16 +2050,25 @@ pages:
       - 0.04
       - 0.05
       - 0.42
-      - 0.2
+      - 0.11
       for: MZ-CHAR-005
+      kind: speech
+    - zone:
+      - 0.04
+      - 0.18
+      - 0.42
+      - 0.11
+      for: MZ-CHAR-005
+      kind: speech
     actual_aspect: 2.213
+    shape_verdict: ok
   - panel_id: ISSUE001-P20-02
     box:
     - 0.0
     - 0.3177
     - 0.494
     - 0.2351
-    area_share: 0.1162
+    area_share: 0.1161
     shape: inset
     silent: false
     anchor: false
@@ -1863,16 +2077,18 @@ pages:
       - 0.54
       - 0.05
       - 0.42
-      - 0.2
+      - 0.22
       for: MZ-CHAR-002
+      kind: speech
     actual_aspect: 1.421
+    shape_verdict: ok
   - panel_id: ISSUE001-P20-03
     box:
     - 0.506
     - 0.3177
     - 0.494
     - 0.2351
-    area_share: 0.1162
+    area_share: 0.1161
     shape: inset
     silent: false
     anchor: false
@@ -1881,33 +2097,37 @@ pages:
       - 0.04
       - 0.05
       - 0.42
-      - 0.2
+      - 0.22
       for: MZ-CHAR-003
+      kind: speech
     actual_aspect: 1.421
+    shape_verdict: ok
   - panel_id: ISSUE001-P20-04
     box:
     - 0.0
     - 0.5648
-    - 0.494
+    - 0.4545
     - 0.2351
-    area_share: 0.1162
+    area_share: 0.1069
     shape: inset
     silent: true
     anchor: false
     bubble_zones: []
-    actual_aspect: 1.421
+    actual_aspect: 1.308
+    shape_verdict: ok
   - panel_id: ISSUE001-P20-05
     box:
-    - 0.506
+    - 0.4665
     - 0.5648
-    - 0.494
+    - 0.5335
     - 0.2351
-    area_share: 0.1162
+    area_share: 0.1254
     shape: rectangle
     silent: true
     anchor: false
     bubble_zones: []
-    actual_aspect: 1.421
+    actual_aspect: 1.535
+    shape_verdict: ok
   - panel_id: ISSUE001-P20-06
     box:
     - 0.0
@@ -1918,17 +2138,17 @@ pages:
     shape: wide
     silent: true
     anchor: false
-    bubble_zones:
-    - zone:
-      - 0.54
-      - 0.05
-      - 0.42
-      - 0.2
-      for: caption
+    bubble_zones: []
     actual_aspect: 3.596
+    shape_verdict: ok
 - page_number: 21
+  physical_page: 23
+  page_side: recto
   purpose: Directed force works. Lil Devil's growth is visible, not stated.
-  grid_name: p21-tall-left-quad-right
+  grid_name: p21-r1+r1+r1+r2
+  structure: r1+r1+r1+r2
+  row_gap: 0.012
+  col_gap: 0.012
   frame_color: '#B0825D'
   frame_note: Working amber, brighter.
   panel_count: 5
@@ -1948,11 +2168,13 @@ pages:
       - 0.04
       - 0.74
       - 0.42
-      - 0.2
+      - 0.22
       for: MZ-CHAR-LILDEVIL
+      kind: speech
     actual_aspect: 2.537
-    shape_mismatch: script declares 'rectangle' (target aspect 1.35) but the page can only give this panel
-      2.54. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
+    shape_verdict: soft
+    shape_mismatch: "declared rectangle (target 1.35) generated 2.54:1 \u2014 orientation holds, ratio\
+      \ is bent"
   - panel_id: ISSUE001-P21-02
     box:
     - 0.0
@@ -1965,15 +2187,15 @@ pages:
     anchor: false
     bubble_zones: []
     actual_aspect: 4.122
-    shape_mismatch: script declares 'wide' (target aspect 2.4) but the page can only give this panel 4.12.
-      Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
+    shape_verdict: soft
+    shape_mismatch: "declared wide (target 2.4) generated 4.12:1 \u2014 orientation holds, ratio is bent"
   - panel_id: ISSUE001-P21-03
     box:
     - 0.0
     - 0.4547
-    - 0.7136
-    - 0.3692
-    area_share: 0.2634
+    - 1.0
+    - 0.2666
+    area_share: 0.2666
     shape: wide
     silent: false
     anchor: true
@@ -1982,42 +2204,47 @@ pages:
       - 0.54
       - 0.05
       - 0.42
-      - 0.2
+      - 0.22
       for: MZ-CHAR-005
-    actual_aspect: 1.307
-    shape_mismatch: script declares 'wide' (target aspect 2.4) but the page can only give this panel 1.31.
-      Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
+      kind: speech
+    actual_aspect: 2.537
+    shape_verdict: ok
   - panel_id: ISSUE001-P21-04
     box:
-    - 0.7256
-    - 0.4547
-    - 0.2744
-    - 0.3692
-    area_share: 0.1013
+    - 0.0
+    - 0.7334
+    - 0.2906
+    - 0.2666
+    area_share: 0.0775
     shape: square
     silent: true
     anchor: false
     bubble_zones: []
-    actual_aspect: 0.503
-    shape_mismatch: script declares 'square' (target aspect 1.0) but the page can only give this panel
-      0.50. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
+    actual_aspect: 0.737
+    shape_verdict: soft
+    shape_mismatch: "declared square (target 1.0) generated 0.74:1 \u2014 orientation holds, ratio is\
+      \ bent"
   - panel_id: ISSUE001-P21-05
     box:
-    - 0.0
-    - 0.8359
-    - 1.0
-    - 0.1641
-    area_share: 0.1641
+    - 0.3026
+    - 0.7334
+    - 0.6974
+    - 0.2666
+    area_share: 0.1859
     shape: wide
     silent: true
     anchor: false
     bubble_zones: []
-    actual_aspect: 4.122
-    shape_mismatch: script declares 'wide' (target aspect 2.4) but the page can only give this panel 4.12.
-      Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
+    actual_aspect: 1.769
+    shape_verdict: ok
 - page_number: 22
+  physical_page: 24
+  page_side: verso
   purpose: The festival continues in reduced form.
-  grid_name: p22-twin-wides-over-quad
+  grid_name: p22-r1+r2+r2+r1
+  structure: r1+r2+r2+r1
+  row_gap: 0.012
+  col_gap: 0.012
   frame_color: '#4D5A6A'
   frame_note: Warm and cold together. Neither wins.
   panel_count: 6
@@ -2034,15 +2261,15 @@ pages:
     anchor: false
     bubble_zones: []
     actual_aspect: 5.264
-    shape_mismatch: script declares 'wide' (target aspect 2.4) but the page can only give this panel 5.26.
-      Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
+    shape_verdict: soft
+    shape_mismatch: "declared wide (target 2.4) generated 5.26:1 \u2014 orientation holds, ratio is bent"
   - panel_id: ISSUE001-P22-02
     box:
     - 0.0
     - 0.1405
-    - 0.7136
+    - 0.6323
     - 0.2892
-    area_share: 0.2064
+    area_share: 0.1829
     shape: wide
     silent: false
     anchor: true
@@ -2051,42 +2278,52 @@ pages:
       - 0.04
       - 0.05
       - 0.42
-      - 0.2
+      - 0.11
       for: MZ-CHAR-005
-    actual_aspect: 1.669
+      kind: speech
+    - zone:
+      - 0.04
+      - 0.18
+      - 0.42
+      - 0.11
+      for: MZ-CHAR-005
+      kind: speech
+    actual_aspect: 1.479
+    shape_verdict: soft
+    shape_mismatch: "declared wide (target 2.4) generated 1.48:1 \u2014 orientation holds, ratio is bent"
   - panel_id: ISSUE001-P22-03
     box:
-    - 0.7256
+    - 0.6443
     - 0.1405
-    - 0.2744
+    - 0.3557
     - 0.2892
-    area_share: 0.0794
+    area_share: 0.1029
     shape: rectangle
     silent: true
     anchor: false
     bubble_zones: []
-    actual_aspect: 0.642
-    shape_mismatch: script declares 'rectangle' (target aspect 1.35) but the page can only give this panel
-      0.64. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
+    actual_aspect: 0.832
+    shape_verdict: ok
   - panel_id: ISSUE001-P22-04
     box:
     - 0.0
     - 0.4417
-    - 0.3764
+    - 0.6804
     - 0.3374
-    area_share: 0.127
+    area_share: 0.2296
     shape: inset
     silent: true
     anchor: false
     bubble_zones: []
-    actual_aspect: 0.755
+    actual_aspect: 1.364
+    shape_verdict: ok
   - panel_id: ISSUE001-P22-05
     box:
-    - 0.3884
+    - 0.6924
     - 0.4417
-    - 0.6116
+    - 0.3076
     - 0.3374
-    area_share: 0.2064
+    area_share: 0.1038
     shape: tall
     silent: false
     anchor: true
@@ -2095,11 +2332,11 @@ pages:
       - 0.04
       - 0.05
       - 0.42
-      - 0.2
+      - 0.22
       for: MZ-CHAR-005
-    actual_aspect: 1.226
-    shape_mismatch: script declares 'tall' (target aspect 0.52) but the page can only give this panel
-      1.23. Generate the plate at the ACTUAL aspect, and consider revising the declared shape.
+      kind: speech
+    actual_aspect: 0.617
+    shape_verdict: ok
   - panel_id: ISSUE001-P22-06
     box:
     - 0.0
@@ -2115,9 +2352,11 @@ pages:
       - 0.54
       - 0.74
       - 0.42
-      - 0.2
+      - 0.22
       for: caption
+      kind: caption
     actual_aspect: 3.238
+    shape_verdict: ok
 cover:
   required_elements:
   - Stylised title logo, house style, heavy comic lettering
@@ -2128,5 +2367,4 @@ cover:
   - Fiend Studios collectible stamp
   - Vertical spine text along the left edge
   cover_concept_source: SEASON-BIBLE.md section 19, August
-  open_question: Edition number for the stamp. Published editions are One, Two and Three. Requires an
-    owner decision.
+  edition_stamp: EDITION FOUR

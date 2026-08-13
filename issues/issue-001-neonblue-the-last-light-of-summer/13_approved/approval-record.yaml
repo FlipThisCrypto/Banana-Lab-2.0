@@ -1,0 +1,39 @@
+# Human approval record. Nothing in this repository writes this file except
+# a human decision being recorded. The pipeline only reads it.
+#
+# Final issue approval is NOT given here. Gates 2, 3 and 5 only.
+
+issue_id: issue-001
+approvals:
+  issue_bible:
+    approved: true
+    actor: FlipThisCrypto
+    date: 2026-08-13
+    evidence_hash: e33330bc38311b2141d64973b2785b3de67627e686ab02750201744fe5ad75d4
+    note: >-
+      Gate 2. Story 97-99. C-01 and C-02 confirmed as the bible already applied
+      them (season bible wins on Echo timing and Lil Devil's guest function).
+  script:
+    approved: true
+    actor: FlipThisCrypto
+    date: 2026-08-13
+    evidence_hash: a643014b1d730c3ad20c58400fc3862596ca9d7aa1cfbc8831ac39e7a05139d8
+    note: >-
+      Gate 3. No remaining story problems. 15-word balloon ceiling and two-balloon
+      cap hold.
+  layouts:
+    approved: true
+    actor: FlipThisCrypto
+    date: 2026-08-13
+    evidence_hash: fff919893d8b60b4a34ccae9385a3c9d532caaa78607a5e423402a716cb44bdd
+    note: >-
+      Gate 5 after the four required fixes: hard orientation bands (script wins),
+      denser between-row gutters on pages 7 and 18, page 11 locked to recto in
+      the 28-page book, lettering font locked and safe zones measured against
+      comicbd.ttf at 6.5pt floor. Pages 2, 3, 7 and 18 still want a print-size
+      look before artwork is treated as final.
+  approval:
+    approved: false
+    actor: ""
+    date: ""
+    note: Final issue approval is not given. Controlled generation test is next.

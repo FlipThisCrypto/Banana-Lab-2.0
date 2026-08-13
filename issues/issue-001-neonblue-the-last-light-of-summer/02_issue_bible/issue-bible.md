@@ -78,7 +78,8 @@ From Edition Three: the courage to give a panel to an empty space. Issue 001
 needs that for the corridor.
 
 Every cover carries the **Fiend Studios collectible stamp**. The edition number
-for this issue is an open question for the owner.
+for this issue is **FOUR** — owner ruling of 2026-07-31, this being the fourth
+MonkeyZoo comic after published editions One, Two and Three.
 
 ---
 
@@ -132,7 +133,7 @@ could explain. Page 8 gets the real thing. The reader should be able to
 reinterpret page 4 after page 8, which is a better experience than being told
 twice.
 
-Recorded as conflict **C-01**, and it needs an owner ruling.
+Recorded as conflict **C-01**. Owner confirmed 2026-08-13: follow the season bible.
 
 ---
 
@@ -148,7 +149,7 @@ in a way nobody expected. In the second, he uses force with direction and it
 works. Without the first half he is a tool, not a character, and the discovery
 has no author.
 
-Recorded as conflict **C-02**, and it needs an owner ruling.
+Recorded as conflict **C-02**. Owner confirmed 2026-08-13: restore the guest function.
 
 ---
 
@@ -187,17 +188,16 @@ to carry exposition, and that Scarline delivers one clear sentence, once.
 
 ---
 
-## Open decisions
+## Owner rulings
 
-Two conflicts require an owner ruling before art production begins:
+Both previously blocking conflicts were confirmed 2026-08-13 with Gate 2
+approval. The bible's existing answers stand.
 
-| ID | Question |
+| ID | Ruling |
 |---|---|
-| **C-01** | Does the Echo activate after the choice (season bible) or at the midpoint (legacy script)? |
-| **C-02** | Does Lil Devil's interference cause the discovery (season bible) or does the system react to NeonBlue directly (legacy script)? |
+| **C-01** | Echo activates after the choice. Page 4 is an ambiguous flicker; page 8 is the real activation. |
+| **C-02** | Lil Devil's interference causes the discovery. Restore the guest function. |
 
-Both are answered in this bible in favour of the season bible. Reversing either
-changes pages 4, 7 and 8. Everything up to and including layout can proceed
-while they are open.
+Reversing either still changes pages 4, 7 and 8.
 
 Full detail: `../01_research/CANON_CONFLICTS.md`.

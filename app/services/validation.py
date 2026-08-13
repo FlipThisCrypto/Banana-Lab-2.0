@@ -331,6 +331,8 @@ def validate_issue_format(issue_dir: Path) -> ValidationResult:
         )
 
     result.findings.extend(_check_rhythm(standards.get("rhythm") or {}, per_page, issue_dir))
+    result.findings.extend(_check_layout_geometry(issue_dir))
+    result.findings.extend(_check_lettering_metrics(issue_dir, script))
     return result
 
 
@@ -387,6 +389,136 @@ def _check_rhythm(rules: dict, per_page: dict[int, int], issue_dir: Path) -> lis
                             "error",
                             "rhythm",
                             f"pages {i} and {i + 1} share grid {grids[i]!r}",
+                        )
+                    )
+    return findings
+
+
+def _check_layout_geometry(issue_dir: Path) -> list[Finding]:
+    """Hard shape mismatches and page-turn locks. Soft mismatches are recorded, not failed."""
+    from app.services.layout_geometry import (
+        check_page_turn_locks,
+        classify_shape,
+    )
+
+    findings: list[Finding] = []
+    spec_path = issue_dir / "05_layouts" / "layout-spec.yaml"
+    if not spec_path.is_file():
+        return findings
+    try:
+        spec = yaml.safe_load(spec_path.read_text(encoding="utf-8")) or {}
+    except yaml.YAMLError as exc:
+        return [Finding("error", "layout-spec.yaml", f"YAML parse error: {exc}")]
+
+    recorded_hard = spec.get("hard_shape_mismatches") or []
+    for item in recorded_hard:
+        findings.append(
+            Finding(
+                "error",
+                item.get("panel_id", "panel"),
+                item.get("reason")
+                or (
+                    f"hard shape mismatch: declared {item.get('declared')} "
+                    f"generated {item.get('actual_aspect')}"
+                ),
+            )
+        )
+
+    for page in spec.get("pages") or []:
+        for panel in page.get("panels") or []:
+            verdict = classify_shape(
+                panel.get("shape", "rectangle"),
+                float(panel.get("actual_aspect") or 0.0),
+            )
+            if verdict.severity == "hard":
+                findings.append(
+                    Finding("error", panel.get("panel_id", "panel"), verdict.reason)
+                )
+
+    assembly = spec.get("book_assembly") or {}
+    front = assembly.get("front_matter_pages")
+    if isinstance(front, int):
+        for problem in check_page_turn_locks(front_matter=front):
+            findings.append(Finding("error", "page_turn_lock", problem))
+        for lock in assembly.get("page_turn_locks") or []:
+            if lock.get("holds") is False:
+                findings.append(
+                    Finding(
+                        "error",
+                        f"page {lock.get('story_page')}",
+                        f"page-turn lock failed: lands {lock.get('actual_side')} "
+                        f"but must be {lock.get('must_be')}",
+                    )
+                )
+    return findings
+
+
+def _check_lettering_metrics(issue_dir: Path, script: dict) -> list[Finding]:
+    """Safe zones must fit their dialogue at the locked font's floor size."""
+    from app.services.lettering import (
+        DIALOGUE_FONT,
+        DIALOGUE_PT_FLOOR,
+        LIVE_H_PX,
+        LIVE_W_PX,
+        balloon_fits,
+    )
+
+    findings: list[Finding] = []
+    spec_path = issue_dir / "05_layouts" / "layout-spec.yaml"
+    if not spec_path.is_file():
+        return findings
+    try:
+        spec = yaml.safe_load(spec_path.read_text(encoding="utf-8")) or {}
+    except yaml.YAMLError:
+        return findings
+
+    lettering = spec.get("lettering") or {}
+    if lettering.get("dialogue_font_file") != DIALOGUE_FONT:
+        findings.append(
+            Finding(
+                "error",
+                "lettering.dialogue_font_file",
+                f"layout spec font {lettering.get('dialogue_font_file')!r} "
+                f"does not match the locked face {DIALOGUE_FONT!r}",
+            )
+        )
+
+    by_id = {p["panel_id"]: p for p in (script.get("panels") or []) if isinstance(p, dict)}
+    for page in spec.get("pages") or []:
+        for panel in page.get("panels") or []:
+            source = by_id.get(panel.get("panel_id")) or {}
+            dialogue = source.get("dialogue") or []
+            if not dialogue:
+                continue
+            zones = panel.get("bubble_zones") or []
+            if len(zones) < len(dialogue):
+                findings.append(
+                    Finding(
+                        "error",
+                        panel.get("panel_id", "panel"),
+                        f"{len(dialogue)} balloons but only {len(zones)} reserved zones",
+                    )
+                )
+                continue
+            _, _, pw, ph = panel["box"]
+            for balloon, zone in zip(dialogue, zones):
+                zx, zy, zw, zh = zone["zone"]
+                result = balloon_fits(
+                    balloon.get("text") or "",
+                    int(zw * pw * LIVE_W_PX),
+                    int(zh * ph * LIVE_H_PX),
+                    font_name=DIALOGUE_FONT,
+                    floor_pt=DIALOGUE_PT_FLOOR,
+                )
+                if not result["fits"]:
+                    findings.append(
+                        Finding(
+                            "error",
+                            panel.get("panel_id", "panel"),
+                            f"dialogue does not fit the reserved zone at "
+                            f"{DIALOGUE_PT_FLOOR}pt {DIALOGUE_FONT}: "
+                            f"need {result['needed_h_px']:.0f}px, "
+                            f"zone is {result['zone_h_px']}px tall",
                         )
                     )
     return findings

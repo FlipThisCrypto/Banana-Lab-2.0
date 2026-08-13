@@ -104,6 +104,24 @@ in-house work, and it is the single biggest upgrade Issue 001 needs.
 - Caption boxes are rectangular with a black border, distinct from balloons.
 - Body lettering is comic-style: mostly upper case, with full stops. Mixed case
   appears in Edition One.
+
+### Locked production faces (Issue 001, 2026-08-13)
+
+The published editions do not record their lettering font. Until a licensed
+comic-lettering cut (Blambot / Comicraft class) is purchased, Issue 001 is
+locked to faces that exist on the production machine and sit in the right
+category:
+
+| Role | Face | File |
+|---|---|---|
+| Dialogue | Comic Sans MS Bold | `comicbd.ttf` |
+| Captions | Comic Sans MS Regular | `comic.ttf` |
+| SFX | Impact | `impact.ttf` |
+
+This is a **category lock**, not a claim that Edition Two was lettered in Comic
+Sans. Safe zones in `layout-spec.yaml` are measured against these files at
+6.5 pt floor / 7.5 pt target, 300 dpi. Changing the face requires regenerating
+the layout spec and re-running `validate` — the old zones are not portable.
 - **SFX are large, stylised and integrated into the scene** — "KRA-KOOOM!",
   "SMASH!", "FZZZZT!", "WOOSH!", "ZAP!", "POW!!". Coloured fills with contrasting
   outlines, angled, often overlapping panel borders or passing behind
@@ -133,8 +151,16 @@ and a green-and-purple demon head in the middle.
 Source: `source_material/visual_references/published_editions/_stamps/`.
 
 **Required on every issue cover.** The edition number changes; nothing else
-does. Issue 001 of the new season needs its own edition number assigned by the
-owner — this is an open question, recorded below.
+does.
+
+**OWNER RULING, 2026-07-31 — Issue 001 carries `EDITION FOUR`.** The published
+editions are One, Two and Three, so this is the fourth MonkeyZoo comic. This
+closes what was an open question.
+
+The stamp asset in `_stamps/` reads `EDITION TWO`. `app.services.cover
+.restamp_edition` resets that one line and nothing else: the rings, the four
+stars, `COLLECTIBLE`, the demon head and `FIEND STUDIOS` are untouched. The
+edition number is the part of the mark that is *supposed* to change.
 
 ---
 
