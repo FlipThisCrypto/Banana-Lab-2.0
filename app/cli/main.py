@@ -5,6 +5,7 @@
     bananalab schemas            list available schemas
     bananalab comfy              probe the local ComfyUI and report capability
     bananalab dashboard [--out]  write the static HTML production dashboard
+    bananalab visual <issue>     human visual-review state (cannot pass a review)
 
 The CLI is a view. It reads the filesystem and reports. It does not move work
 forward, and it cannot approve anything.
@@ -173,6 +174,43 @@ def cmd_comfy(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_visual(args: argparse.Namespace) -> int:
+    """Report visual-review state. This command cannot pass a review."""
+    from app.services.visual_review import (
+        check_review,
+        final_approval_requested,
+        load_review,
+        review_path,
+    )
+
+    issue = paths.ISSUES / args.issue
+    if not issue.is_dir():
+        print(f"no such issue: {args.issue}", file=sys.stderr)
+        return 1
+    data = load_review(issue)
+    path = review_path(issue)
+    print(f"record: {path.relative_to(paths.REPO_ROOT).as_posix()}")
+    if data is None:
+        print("verdict: missing — not reviewed")
+        print("automated PASS is not a visual pass")
+        return 0
+    print(f"verdict: {data.get('verdict')}")
+    print(f"actor:   {data.get('actor') or '(none)'}")
+    print(f"print:   {data.get('viewed_at_print_size')}")
+    questions = data.get("five_questions") or {}
+    for key, value in questions.items():
+        print(f"  {key}: {value}")
+    findings = check_review(issue, final_approval_requested=final_approval_requested(issue))
+    if findings:
+        print("rejects:")
+        for finding in findings:
+            print(f"  {finding}")
+        return 1
+    if data.get("verdict") != "human_pass":
+        print("not a pass. A named human must write human_pass at print size.")
+    return 0
+
+
 def cmd_dashboard(args: argparse.Namespace) -> int:
     from app.ui.dashboard import write_dashboard
 
@@ -205,6 +243,13 @@ def build_parser() -> argparse.ArgumentParser:
     p_dash = sub.add_parser("dashboard", help="write the static HTML dashboard")
     p_dash.add_argument("--out", help="output path")
     p_dash.set_defaults(func=cmd_dashboard)
+
+    p_visual = sub.add_parser(
+        "visual",
+        help="report human visual-review state (cannot pass a review)",
+    )
+    p_visual.add_argument("issue", help="issue directory name")
+    p_visual.set_defaults(func=cmd_visual)
 
     return parser
 
