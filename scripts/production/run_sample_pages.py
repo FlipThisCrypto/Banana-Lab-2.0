@@ -51,6 +51,10 @@ from app.services.compositor import (  # noqa: E402
 )
 from app.services.lettering import Balloon, draw_balloon, draw_sfx  # noqa: E402
 from app.services.plate_finish import finish_plate  # noqa: E402
+from app.services.plate_calibration import (  # noqa: E402
+    ground_from_calibration,
+    load_calibration,
+)
 
 ISSUE = Path("issues/issue-001-neonblue-the-last-light-of-summer")
 LAYERS = Path("source_material/imported_canon/character_layers")
@@ -577,15 +581,27 @@ def stage_panel(panel: dict, plate_path: Path, size: tuple[int, int],
     horizon_f, foot_f, height_f = GROUND_ESTIMATES.get(
         shot, GROUND_ESTIMATES["medium"])
     width, height = size
-    result.ground_estimate = (
-        f"{shot}: horizon {horizon_f:.2f}H, foot {foot_f:.2f}H, "
-        f"character {height_f:.2f}H (ESTIMATE, no festival calibration exists)"
-    )
-    ground = GroundPlane(
-        horizon_y=horizon_f * height,
-        calib_foot_y=foot_f * height,
-        calib_height_px=height_f * height,
-    )
+    measured = load_calibration(ISSUE, panel["panel_id"])
+    if measured:
+        gp = measured["ground_plane"]
+        horizon_f = gp["horizon_fraction"]
+        foot_f = gp["calib_foot_fraction"]
+        height_f = gp["calib_height_fraction"]
+        result.ground_estimate = (
+            f"{shot}: horizon {horizon_f:.2f}H MEASURED from this plate "
+            f"(was a shot-type guess)"
+        )
+        ground = ground_from_calibration(measured, size)
+    else:
+        result.ground_estimate = (
+            f"{shot}: horizon {horizon_f:.2f}H, foot {foot_f:.2f}H, "
+            f"character {height_f:.2f}H (ESTIMATE, no plate calibration yet)"
+        )
+        ground = GroundPlane(
+            horizon_y=horizon_f * height,
+            calib_foot_y=foot_f * height,
+            calib_height_px=height_f * height,
+        )
 
     present = [c for c in (panel.get("characters_present") or [])]
     for character_id in present:

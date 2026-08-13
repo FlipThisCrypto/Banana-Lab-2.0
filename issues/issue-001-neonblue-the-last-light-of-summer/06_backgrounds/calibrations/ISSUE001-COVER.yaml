@@ -1,0 +1,30 @@
+# Ground-plane calibration for ISSUE001-COVER
+# MEASURED from the plate. Do not replace with a shot-type guess.
+
+panel_id: ISSUE001-COVER
+plate: R:/BananaLab2.0/issues/issue-001-neonblue-the-last-light-of-summer/06_backgrounds/generated_candidates/ISSUE001-COVER_finished.png
+plate_size:
+- 904
+- 1272
+source: MEASURED
+derivation_note: Horizon from the plate's own row-wise L* profile, centre 60%. Not a camera solve. Not
+  a shot-type guess. Replace only with a better measurement of THIS plate.
+horizon:
+  horizon_fraction: 0.7783
+  horizon_px: 990
+  peak_row: 990
+  method: row_wise_L_star_centre_60_max_positive_gradient
+  search:
+  - 0.22
+  - 0.86
+  mean_L_above: 24.21
+  mean_L_below: 34.76
+ground_plane:
+  horizon_y: 990
+  horizon_fraction: 0.7783
+  calib_foot_y: 1143
+  calib_foot_fraction: 0.8983
+  calib_height_px: 509
+  calib_height_fraction: 0.4
+  calib_height_in_characters: 1.0
+  calib_object: measured standing depth on this plate

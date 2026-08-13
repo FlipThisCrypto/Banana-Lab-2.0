@@ -212,6 +212,29 @@ def test_dense_pages_use_a_wider_row_gutter():
     assert by_number[7]["row_gap"] == by_number[7]["col_gap"] * 2
 
 
+def test_existing_finished_plates_have_measured_calibrations():
+    plates = ISSUE_DIR / "06_backgrounds" / "generated_candidates"
+    calibs = ISSUE_DIR / "06_backgrounds" / "calibrations"
+    if not plates.is_dir():
+        pytest.skip("no generated plates")
+    finished = [
+        p for p in plates.glob("*_finished.png") if "_take" not in p.stem
+    ]
+    if not finished:
+        pytest.skip("no chosen finished plates on disk")
+    missing = []
+    for plate in finished:
+        panel_id = plate.stem.replace("_finished", "")
+        path = calibs / f"{panel_id}.yaml"
+        if not path.is_file():
+            missing.append(panel_id)
+            continue
+        data = yaml.safe_load(path.read_text(encoding="utf-8"))
+        assert data["source"] == "MEASURED", panel_id
+        assert data["ground_plane"]["calib_foot_fraction"] > data["ground_plane"]["horizon_fraction"]
+    assert not missing, missing
+
+
 def test_every_panel_has_a_staging_guide(script):
     guides = ISSUE_DIR / "06_backgrounds" / "staging-guides"
     if not guides.is_dir():

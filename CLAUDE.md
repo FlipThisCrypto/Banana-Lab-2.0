@@ -97,6 +97,7 @@ These are built from a source and will be overwritten:
 | `04_storyboards/page-thumbnails/` | `scripts/production/render_layout_thumbnails.py` |
 | `07_character_staging/*` | `scripts/production/build_character_coverage.py` |
 | `06_backgrounds/staging-guides/` | `scripts/production/build_staging_guides.py` |
+| `06_backgrounds/calibrations/` | `scripts/production/measure_plate_calibrations.py` |
 | `source_material/manifests/*` | `scripts/migration/import_source_material.py` |
 
 Edit the source, then regenerate.

@@ -1,0 +1,30 @@
+# Ground-plane calibration for ISSUE001-P01-04
+# MEASURED from the plate. Do not replace with a shot-type guess.
+
+panel_id: ISSUE001-P01-04
+plate: R:/BananaLab2.0/issues/issue-001-neonblue-the-last-light-of-summer/06_backgrounds/generated_candidates/ISSUE001-P01-04_finished.png
+plate_size:
+- 1896
+- 608
+source: MEASURED
+derivation_note: Horizon from the plate's own row-wise L* profile, centre 60%. Not a camera solve. Not
+  a shot-type guess. Replace only with a better measurement of THIS plate.
+horizon:
+  horizon_fraction: 0.8503
+  horizon_px: 517
+  peak_row: 517
+  method: row_wise_L_star_centre_60_max_positive_gradient
+  search:
+  - 0.22
+  - 0.86
+  mean_L_above: 39.91
+  mean_L_below: 17.37
+ground_plane:
+  horizon_y: 517
+  horizon_fraction: 0.8503
+  calib_foot_y: 590
+  calib_foot_fraction: 0.97
+  calib_height_px: 243
+  calib_height_fraction: 0.4
+  calib_height_in_characters: 1.0
+  calib_object: measured standing depth on this plate
