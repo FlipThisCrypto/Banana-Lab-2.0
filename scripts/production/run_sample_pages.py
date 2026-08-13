@@ -300,6 +300,15 @@ def plate_prompt(panel: dict) -> str:
     parts = [f"({shot} shot:1.4), ({angle}:1.2)"]
     parts.append(SHOT_FRAMING.get(panel["camera_shot"], ""))
 
+    interior = any(
+        token in description.lower()
+        for token in ("interior", "inside", "counter", "corridor", "room", "booth")
+    )
+    if interior:
+        # A location-wide "funfair + ferris wheel + open ground" anchor beats
+        # "food stand interior" every time. P03-01 proved it twice.
+        anchor = ""
+
     if anchor and len(description) < THIN_DESCRIPTION:
         # Anchor after the framing, so the setting fills in the shot rather than
         # replacing it. Whole-site language ahead of the shot term is what turned
@@ -332,10 +341,6 @@ def plate_prompt(panel: dict) -> str:
     parts.append(
         "(render crowds and rows of objects as large simple massed silhouette "
         "shapes:1.35), (not individual figures or individual objects:1.3)"
-    )
-    interior = any(
-        token in description.lower()
-        for token in ("interior", "inside", "counter", "corridor", "room", "booth")
     )
     if interior or panel["camera_shot"] in TIGHT_SHOTS:
         # FOCAL_BACKGROUND demands an outdoor ground plane and empty mid-frame.
@@ -1132,6 +1137,18 @@ def main() -> int:
                     print(f"    SKIPPED {skipped}")
 
     art = {s.panel_id: (s.composite or s.plate) for s in specs if s.plate}
+    # A one-panel rerun must not blank the rest of the page.
+    for panel_id, box in boxes.items():
+        if panel_id in art:
+            continue
+        existing = OUT_COMPOSITES / f"{panel_id}_composite.png"
+        if not existing.is_file():
+            existing = OUT_PLATES / f"{panel_id}_finished.png"
+        if not existing.is_file():
+            takes = sorted(OUT_PLATES.glob(f"{panel_id}_take*_finished.png"))
+            existing = takes[-1] if takes else None
+        if existing and existing.is_file():
+            art[panel_id] = existing
 
     OUT_PAGES.mkdir(parents=True, exist_ok=True)
     rendered: list[tuple[str, Path]] = []
