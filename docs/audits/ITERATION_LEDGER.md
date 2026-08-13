@@ -14,4 +14,5 @@ after the previous commit exists.
 | 2 | complete | Generate per-panel staging guides from script + layout | 02f5399 |
 | 3 | complete | Reject composites whose cast sits in reserved lettering space | 2f28fb4 |
 | 4 | complete | CLI visual command reports review state and cannot pass it | 46cb20c |
-| 5 | complete | Measure festival plate horizons from the plates themselves | (this commit) |
+| 5 | complete | Measure festival plate horizons from the plates themselves | 11ad431 |
+| 6 | complete | Calibration records are repo-relative measured files | (this commit) |

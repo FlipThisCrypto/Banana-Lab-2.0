@@ -2,7 +2,7 @@
 # MEASURED from the plate. Do not replace with a shot-type guess.
 
 panel_id: ISSUE001-P02-02
-plate: R:/BananaLab2.0/issues/issue-001-neonblue-the-last-light-of-summer/06_backgrounds/generated_candidates/ISSUE001-P02-02_finished.png
+plate: issues/issue-001-neonblue-the-last-light-of-summer/06_backgrounds/generated_candidates/ISSUE001-P02-02_finished.png
 plate_size:
 - 1304
 - 880

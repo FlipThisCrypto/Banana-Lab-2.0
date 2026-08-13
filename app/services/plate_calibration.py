@@ -18,6 +18,7 @@ import numpy as np
 import yaml
 from PIL import Image
 
+from app.core import paths
 from app.services.compositor import GroundPlane
 from app.services.likeness import srgb_to_lab
 
@@ -98,9 +99,13 @@ def build_calibration(
     # Standing depth: well below the measured horizon, short of the footer.
     foot_f = min(0.97, max(horizon_f + 0.12, 0.88))
     height_f = character_share
+    try:
+        plate_ref = plate.resolve().relative_to(paths.REPO_ROOT).as_posix()
+    except ValueError:
+        plate_ref = plate.as_posix()
     return {
         "panel_id": panel_id or plate.stem.replace("_finished", ""),
-        "plate": plate.as_posix(),
+        "plate": plate_ref,
         "plate_size": [width, height],
         "source": "MEASURED",
         "derivation_note": (

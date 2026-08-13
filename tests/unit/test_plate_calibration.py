@@ -24,6 +24,25 @@ def test_horizon_is_read_from_the_picture_not_guessed():
     assert measured["mean_L_below"] > measured["mean_L_above"]
 
 
+def test_existing_cover_calibration_is_repo_relative():
+    from app.core import paths
+
+    path = (
+        paths.ISSUES
+        / "issue-001-neonblue-the-last-light-of-summer"
+        / "06_backgrounds"
+        / "calibrations"
+        / "ISSUE001-COVER.yaml"
+    )
+    if not path.is_file():
+        return
+    import yaml
+
+    data = yaml.safe_load(path.read_text(encoding="utf-8"))
+    assert not data["plate"].startswith("R:")
+    assert data["plate"].startswith("issues/")
+
+
 def test_feet_sit_below_the_measured_horizon(tmp_path):
     plate = tmp_path / "ISSUE001-P01-01_finished.png"
     image = _sky_over_ground()
