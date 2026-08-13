@@ -796,6 +796,8 @@ PLATE_TOLERANCES = {
 
 def _outside(name: str, value: float) -> float:
     """How far outside its tolerance a property sits, 0 when inside."""
+    if value is None:
+        value = 0.0
     operator, low, high = PLATE_TOLERANCES[name]
     if operator == "<=":
         return max(0.0, value - low) / max(low, 1e-6)
