@@ -1,0 +1,80 @@
+schema_id: visual_review
+version: 1.0.0
+title: Visual Quality Review
+description: >-
+  Human art-direction review of generated panels and assembled pages.
+  A machine may write not_started, in_progress, or changes_required.
+  Only a named human may write human_pass. Automated PASS is never sufficient.
+identity_field: issue_id
+
+fields:
+  issue_id:
+    type: string
+    required: true
+    pattern: "^issue-[0-9]{3}$"
+    description: Issue this review belongs to.
+  standard:
+    type: string
+    required: true
+    description: Path to the written review standard this record follows.
+  verdict:
+    type: string
+    required: true
+    enum: [not_started, in_progress, changes_required, human_pass]
+    description: >-
+      human_pass is a human act. validate rejects it when the actor is a
+      machine identity or when the five questions are not all yes.
+  actor:
+    type: string
+    required: true
+    description: Person who reviewed. Empty or a machine name cannot pass.
+  date:
+    type: string
+    required: true
+    description: ISO date of the review. Empty until a human writes one.
+  viewed_at_print_size:
+    type: boolean
+    required: true
+    description: The reviewer looked at final print size, not only thumbnails.
+  evidence_hash:
+    type: string
+    required: false
+    description: SHA-256 of the reviewed page set. Required for human_pass.
+  five_questions:
+    type: map
+    required: true
+    description: The five-question final test. Machine may not answer yes.
+    fields:
+      eye_goes_where_story_wants:
+        type: string
+        required: true
+        enum: [unanswered, yes, no]
+        description: Does the eye go where the story wants.
+      characters_belong_in_the_space:
+        type: string
+        required: true
+        enum: [unanswered, yes, no]
+        description: Do the characters physically belong in the scene.
+      readable_without_dialogue:
+        type: string
+        required: true
+        enum: [unanswered, yes, no]
+        description: Is the action or emotion readable without dialogue.
+      connected_to_neighbours:
+        type: string
+        required: true
+        enum: [unanswered, yes, no]
+        description: Does the panel connect to the panels before and after.
+      nothing_accidentally_generated:
+        type: string
+        required: true
+        enum: [unanswered, yes, no]
+        description: Is anything accidentally AI-generated, pasted, or impossible.
+  notes:
+    type: string
+    required: false
+    description: What the reviewer saw. Required when verdict is changes_required.
+  panels:
+    type: list
+    required: false
+    description: Optional per-panel notes. Page-level verdict is authoritative.

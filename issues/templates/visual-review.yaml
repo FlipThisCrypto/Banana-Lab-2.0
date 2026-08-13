@@ -1,0 +1,17 @@
+# Copy to issues/<issue>/12_qa/visual-review.yaml and fill by hand.
+# No script writes human_pass. See docs/quality/VISUAL_QUALITY_REVIEW.md.
+
+issue_id: issue-001
+standard: docs/quality/VISUAL_QUALITY_REVIEW.md
+verdict: not_started
+actor: ""
+date: ""
+viewed_at_print_size: false
+evidence_hash: ""
+five_questions:
+  eye_goes_where_story_wants: unanswered
+  characters_belong_in_the_space: unanswered
+  readable_without_dialogue: unanswered
+  connected_to_neighbours: unanswered
+  nothing_accidentally_generated: unanswered
+notes: ""

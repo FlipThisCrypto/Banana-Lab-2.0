@@ -79,9 +79,9 @@ A panel may be approved only when **all three** of the following hold.
 |---|---|
 | A | Score is **95 or above** |
 | B | **No open BLOCKER, CRITICAL or MAJOR defect.** A defect that has been formally accepted under `APPROVAL_WORKFLOW.md` §3, with a recorded reason, is not open |
-| C | All four hard gates pass |
+| C | All five hard gates pass |
 
-### The four hard gates
+### The five hard gates
 
 Each gate is binary. Points are irrelevant to it.
 
@@ -91,6 +91,7 @@ Each gate is binary. Points are irrelevant to it.
 | **Anatomy** | Correct limb, digit and feature count and structure on every character; no merged, duplicated or malformed parts |
 | **Natural placement** | Every character makes the declared ground contact, has a contact shadow, sits at the correct height for its position on the ground plane, and has no cut-out edge or matte halo |
 | **Story intent** | The panel's `narrative_purpose` and `visual_beat` are legible from the image alone, with the balloons removed |
+| **Visual quality** | A human answers yes to all five questions in `VISUAL_QUALITY_REVIEW.md` at print size. An 8/8 scorecard is not this gate |
 
 ### The score never overrides a blocker
 

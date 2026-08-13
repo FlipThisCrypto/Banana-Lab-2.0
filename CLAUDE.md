@@ -49,6 +49,10 @@ You may run validation. You may report failures. You may not write
 `issues/*/13_approved/approval-record.yaml`, set `approval_status: approved`, or
 move a file into `approved/`. See ADR-005.
 
+Automated PASS does not authorize production. You may not write `human_pass`
+into `12_qa/visual-review.yaml`. Visual review is a human art-direction gate
+(`docs/quality/VISUAL_QUALITY_REVIEW.md`).
+
 ### Never declare completion without evidence
 
 A stage is complete when its files exist and are non-empty — see

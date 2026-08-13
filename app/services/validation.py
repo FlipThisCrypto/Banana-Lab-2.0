@@ -35,6 +35,7 @@ DOCUMENT_BINDINGS: tuple[tuple[str, str], ...] = (
     # installed, a LoRA that does not exist, a missing seed - fails at `validate`
     # instead of at submission time on a shared GPU.
     ("issues/*/03_script/panel-jobs/*.yaml", "panel_job"),
+    ("issues/*/12_qa/visual-review.yaml", "visual_review"),
 )
 
 #: Files above this size are flagged before they can be committed by accident.
@@ -333,6 +334,7 @@ def validate_issue_format(issue_dir: Path) -> ValidationResult:
     result.findings.extend(_check_rhythm(standards.get("rhythm") or {}, per_page, issue_dir))
     result.findings.extend(_check_layout_geometry(issue_dir))
     result.findings.extend(_check_lettering_metrics(issue_dir, script))
+    result.findings.extend(_check_visual_review(issue_dir))
     return result
 
 
@@ -522,6 +524,13 @@ def _check_lettering_metrics(issue_dir: Path, script: dict) -> list[Finding]:
                         )
                     )
     return findings
+
+
+def _check_visual_review(issue_dir: Path) -> list[Finding]:
+    """Automated PASS is not a visual pass. Final approval without a human review fails."""
+    from app.services.visual_review import check_review, final_approval_requested
+
+    return check_review(issue_dir, final_approval_requested=final_approval_requested(issue_dir))
 
 
 def validate_manifest(repo: Path | None = None) -> tuple[int, list[str]]:

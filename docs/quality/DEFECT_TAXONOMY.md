@@ -78,6 +78,20 @@ The defect class this system exists to catch.
 | `INTEG-CUTOUT-EDGE` | Hard cut-out edge; the character reads as pasted | CRITICAL |
 | `INTEG-MATTE-HALO` | Light or dark fringe from imperfect background removal | MAJOR |
 | `INTEG-LIGHT-COLOR` | Light colour on the character disagrees with the scene | MAJOR |
+| `INTEG-STICKER-POSE` | Character could be lifted onto another plate unchanged | MAJOR |
+| `INTEG-NO-DEPTH` | Shot needs space; no readable FG/MG/BG relationship | MAJOR |
+
+---
+
+## VISUAL — the picture fails as a comic even if the metrics pass
+
+| Code | Defect | Default severity |
+|---|---|---|
+| `VISUAL-NO-FOCUS` | The eye does not go where the story wants | MAJOR |
+| `VISUAL-NEEDS-TEXT` | Emotion or action is unreadable without dialogue | MAJOR |
+| `VISUAL-AI-TELL` | Accidentally generated, merged, duplicated, or physically impossible | CRITICAL |
+| `VISUAL-PAGE-FLAT` | Page has no rhythm; every panel same size/distance/arrangement | MAJOR |
+| `VISUAL-LETTER-COLLISION` | Reserved balloon space is occupied by a face, hand, or story object | CRITICAL |
 | `INTEG-NO-CAST-SHADOW` | Cast shadow absent where the light demands one | MAJOR |
 | `INTEG-NO-COLOR-SPILL` | No environmental colour on the character where declared | MAJOR |
 | `INTEG-OCCLUSION` | Declared occlusion missing or wrong | MAJOR |

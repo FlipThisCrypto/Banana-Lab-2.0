@@ -61,7 +61,13 @@ means not approved. There is no default-approve path.
 | Script | Every panel has a job, dialogue is final |
 | Layouts | Page geometry and reading order. **No final art before this.** |
 | Controlled generation test | The production method preserves identity and integrates scenes |
+| **Visual quality review** | A human, at print size, says the pictures work as a comic |
 | Final approval | The issue is releasable |
+
+**Automated PASS does not authorize production.** Likeness, scorecard, geometry,
+and `validate` may only reject. Final approval without
+`12_qa/visual-review.yaml` at `human_pass` is illegal. See
+`VISUAL_QUALITY_REVIEW.md`.
 
 Research, backgrounds, staging, rendering, compositing, lettering, effects and
 QA are gated on **evidence**, not approval — their files must exist and be

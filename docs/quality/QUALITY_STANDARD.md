@@ -17,6 +17,11 @@ passes that test. So do five off-model pink figures. Both shipped.
 Everything below follows from that. Automated checks find defects. A human
 decides whether an issue is good.
 
+**Automated PASS does not authorize production.** After the measurable gates,
+a human visual review must also pass. That review judges whether the panel
+*works visually* as a comic, not whether it matches one reference crop or
+clears a scorecard. Standard: `VISUAL_QUALITY_REVIEW.md`.
+
 ---
 
 ## Severity
