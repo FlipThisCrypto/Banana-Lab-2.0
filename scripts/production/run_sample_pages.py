@@ -52,8 +52,10 @@ from app.services.compositor import (  # noqa: E402
 from app.services.lettering import Balloon, draw_balloon, draw_sfx  # noqa: E402
 from app.services.plate_finish import finish_plate  # noqa: E402
 from app.services.plate_calibration import (  # noqa: E402
+    build_calibration,
     ground_from_calibration,
     load_calibration,
+    write_calibration,
 )
 
 ISSUE = Path("issues/issue-001-neonblue-the-last-light-of-summer")
@@ -839,6 +841,19 @@ def generate_plate(client: ComfyClient, spec: PanelResult, job_class: str,
 
     spec.plate = best_finished
     spec.raw_plate = best_raw
+    try:
+        with Image.open(best_finished) as measured_plate:
+            calib = build_calibration(
+                best_finished, measured_plate.convert("RGB"),
+                panel_id=spec.panel_id,
+            )
+        dest = write_calibration(ISSUE, calib)
+        spec.ground_estimate = (
+            f"MEASURED horizon {calib['ground_plane']['horizon_fraction']:.3f}H "
+            f"from {dest.name}"
+        )
+    except Exception as exc:  # measurement must not kill a successful plate
+        spec.warnings.append(f"calibration measure failed: {exc}")
     write_job_manifest(
         OUT_MANIFESTS / f"{spec.panel_id}.job.json",
         job_id=spec.panel_id, job_class=job_class,

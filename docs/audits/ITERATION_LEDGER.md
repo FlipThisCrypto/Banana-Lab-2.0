@@ -16,4 +16,5 @@ after the previous commit exists.
 | 4 | complete | CLI visual command reports review state and cannot pass it | 46cb20c |
 | 5 | complete | Measure festival plate horizons from the plates themselves | 11ad431 |
 | 6 | complete | Calibration records are repo-relative measured files | 47ac7e0 |
-| 7 | complete | Coverage report tells the truth about measured festival planes | (this commit) |
+| 7 | complete | Coverage report tells the truth about measured festival planes | 0c96020 |
+| 8 | complete | Every newly generated plate writes a measured calibration | (this commit) |
