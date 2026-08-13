@@ -870,8 +870,8 @@ def generate_plate(client: ComfyClient, spec: PanelResult, job_class: str,
     _, best_raw, best_finished, best_scores, best_seed = takes[0]
     spec.candidates = [
         {"seed": s, "raw": r.as_posix(), "finished": f.as_posix(),
-         **{k: round(sc.get(k, 0.0), 3) for k in PLATE_TOLERANCES},
-         "C_p95": round(sc.get("C_p95", 0.0), 1),
+         **{k: round(sc.get(k) or 0.0, 3) for k in PLATE_TOLERANCES},
+         "C_p95": round(sc.get("C_p95") or 0.0, 1),
          "chosen": f == best_finished}
         for _, r, f, sc, s in takes
     ]
