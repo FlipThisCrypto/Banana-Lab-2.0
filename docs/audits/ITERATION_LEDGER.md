@@ -17,4 +17,5 @@ after the previous commit exists.
 | 5 | complete | Measure festival plate horizons from the plates themselves | 11ad431 |
 | 6 | complete | Calibration records are repo-relative measured files | 47ac7e0 |
 | 7 | complete | Coverage report tells the truth about measured festival planes | 0c96020 |
-| 8 | complete | Every newly generated plate writes a measured calibration | (this commit) |
+| 8 | complete | Every newly generated plate writes a measured calibration | 5ca5953 |
+| 9 | complete | Comfy client timeout 1800s so contended plates finish | e9aa2a9 |
