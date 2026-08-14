@@ -11,6 +11,14 @@ from app.services.layout_geometry import (
 )
 
 
+def test_strip_panels_do_not_get_medium_figure_share():
+    from scripts.production.run_sample_pages import figure_share
+
+    # 1896x608 is the page-1/2/3 wide strip. Crowd-scale, not 34%.
+    assert figure_share("wide", 1896, 608) <= 0.20
+    assert figure_share("medium_close", 1192, 968) >= 0.50
+
+
 def test_wide_staying_landscape_is_ok_or_soft():
     assert classify_shape("wide", 2.4).severity == "ok"
     assert classify_shape("wide", 1.7).severity == "ok"

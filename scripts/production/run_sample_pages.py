@@ -262,19 +262,35 @@ FOCAL_NEGATIVE = (
 #:
 #: The ground plane still decides WHERE the feet go and how depth ranks the
 #: cast; this decides HOW BIG they are once placed.
+#: Target character height as a share of PANEL height, per declared shot.
+#:
+#: The 25-70% band is for MEDIUM comic panels. On a 3:1 strip it is a lie:
+#: 34% of a 608 px-tall wide is a giant standing on the skyline, while the
+#: plate's own crowd is 8-15% of the same height. That is why the sample
+#: pages look like stickers. Share follows SHOT and PANEL ASPECT.
 CHARACTER_SHARE = {
-    "extreme_wide": 0.26,
-    "wide": 0.34,
-    "medium_wide": 0.45,
-    "medium": 0.58,
-    "medium_close": 0.68,
-    "close": 0.70,
+    "extreme_wide": 0.11,
+    "wide": 0.16,
+    "medium_wide": 0.28,
+    "medium": 0.48,
+    "medium_close": 0.58,
+    "close": 0.66,
 }
 
-#: How much smaller the furthest figure is than the nearest, as a multiplier on
-#: CHARACTER_SHARE. Keeps real depth separation without returning anyone to the
-#: 2-7% band - the deepest figure in a six-up still clears the 25% floor.
-DEPTH_FALLOFF = 0.74
+#: Extra shrink when the panel itself is a cinematic strip. Aspect = w/h.
+STRIP_ASPECT = 2.05
+STRIP_SHARE_CAP = 0.20
+
+#: How much smaller the furthest figure is than the nearest.
+DEPTH_FALLOFF = 0.78
+
+
+def figure_share(shot: str, width: int, height: int) -> float:
+    """How tall a figure may be in THIS box. Strip panels stay crowd-scale."""
+    share = CHARACTER_SHARE.get(shot, 0.28)
+    if height > 0 and (width / height) >= STRIP_ASPECT:
+        return min(share, STRIP_SHARE_CAP)
+    return share
 
 
 def plate_prompt(panel: dict) -> str:
@@ -663,7 +679,30 @@ def stage_panel(panel: dict, plate_path: Path, size: tuple[int, int],
     for n, cid in enumerate(unplaced):
         fallback_x[cid] = (n + 1) / (len(unplaced) + 1)
 
-    span = max(0.0, foot_f - horizon_f) * 0.62
+    aspect = width / max(height, 1)
+    strip = aspect >= STRIP_ASPECT
+    # Walkable ground on these festival plates is the BOTTOM band, not the
+    # skyline the L* horizon often picks. On a strip, feet live in the last
+    # fifth of the frame with the crowd.
+    if strip:
+        ground_top = max(horizon_f + 0.06, 0.80)
+        ground_bot = 0.97
+    else:
+        ground_top = max(horizon_f + 0.04, 0.58)
+        ground_bot = 0.96
+    span = max(0.04, ground_bot - ground_top)
+
+    cluster = any(
+        "cluster" in (directed.get(c, {}).get("position") or "")
+        for c in stageable
+    ) or (slots >= 4 and strip)
+    if cluster:
+        # A cluster is a GROUP, not a lineup across the whole panel.
+        left, right = 0.28, 0.62
+        for n, cid in enumerate(unplaced):
+            fallback_x[cid] = left + (right - left) * (
+                (n + 0.5) / max(1, len(unplaced))
+            )
 
     for index, character_id in enumerate(stageable):
         direction = directed.get(character_id, {})
@@ -690,27 +729,21 @@ def stage_panel(panel: dict, plate_path: Path, size: tuple[int, int],
         if waist_crop:
             direction["feet_in_frame"] = False
 
-        foot = foot_f - span * (1.0 - rung)
-        foot_y = int(height * min(0.995, foot))
+        foot = ground_bot - span * (1.0 - rung) * 0.65
+        foot_y = int(height * min(0.985, max(ground_top, foot)))
 
-        # Size to a share of PANEL height, then solve the multiplier that gets
-        # there. Deriving height from the uncalibrated ground plane alone gave
-        # 68-231 px figures on a 3508 px page; the owner brief and the published
-        # editions both put a character at 25-70% of the panel.
-        share = CHARACTER_SHARE.get(shot, 0.5)
+        share = figure_share(shot, width, height)
         share *= DEPTH_FALLOFF + (1.0 - DEPTH_FALLOFF) * rung
-        # The script's own relative scale, e.g. "20 percent smaller".
         share *= direction.get("scale", 1.0)
-        # House style: 25-70% of panel. A medium_close must not become a
-        # cropped giant; page 3 panel 3 rendered Lil Devil at 1271px in a
-        # 968px plate.
-        share = min(0.70, max(0.25, share))
+        if strip:
+            share = min(STRIP_SHARE_CAP, max(0.08, share))
+        elif shot in {"medium", "medium_wide"}:
+            # These plates are still full environments with extras. A 58%
+            # figure becomes a sticker in a street.
+            share = min(0.36, max(0.16, share))
+        else:
+            share = min(0.62, max(0.20, share))
         desired_h = share * height
-        try:
-            natural_h = ground.character_height_at(foot_y)
-        except ValueError:
-            natural_h = desired_h
-        multiplier = desired_h / natural_h if natural_h > 0 else 1.0
 
         x_frac = direction.get("x")
         if x_frac is None:
@@ -722,13 +755,18 @@ def stage_panel(panel: dict, plate_path: Path, size: tuple[int, int],
         # A figure the script says is cropped at the waist must not be given a
         # contact shadow on a ground line it never touches.
         feet_in_frame = direction.get("feet_in_frame", True)
+        place_foot = foot_y if feet_in_frame else int(height * 1.04)
+        try:
+            natural_h = ground.character_height_at(place_foot)
+        except ValueError:
+            natural_h = desired_h
+        multiplier = desired_h / natural_h if natural_h > 0 else 1.0
 
         placements.append(Placement(
             character_id=character_id,
             layer_path=layer,
             centre_x=int(width * x_frac),
-            foot_y=foot_y if feet_in_frame else int(height * 1.04),
-            scale_multiplier=multiplier,
+            foot_y=place_foot,
             depth_plane=plane,
             identity_critical=identity,
             notes=direction.get("pose_words", "")[:120],
@@ -1056,6 +1094,8 @@ def main() -> int:
     ap.add_argument("--seed", type=int, default=880101)
     ap.add_argument("--dry-run", action="store_true",
                     help="derive and print the specs without generating")
+    ap.add_argument("--restage", action="store_true",
+                    help="reuse existing finished plates; do not call Comfy")
     args = ap.parse_args()
 
     script = yaml.safe_load((ISSUE / "03_script/panel-script.yaml")
@@ -1068,7 +1108,7 @@ def main() -> int:
     by_page = {pg["page_number"]: pg for pg in layout["pages"]}
 
     client = ComfyClient(timeout=1800)
-    if not args.dry_run and not client.reachable():
+    if not args.dry_run and not args.restage and not client.reachable():
         print("ComfyUI is not reachable - start it, or use --dry-run",
               file=sys.stderr)
         return 2
@@ -1114,9 +1154,25 @@ def main() -> int:
 
     for spec in specs:
         job_class = "cover_plate" if spec.page == 0 else "background_plate"
-        print(f"\n[{spec.panel_id}] generating {spec.gen_size[0]}x"
-              f"{spec.gen_size[1]} ...", flush=True)
-        generate_plate(client, spec, job_class, dry_run=False)
+        existing = None
+        if args.restage:
+            measured = load_calibration(ISSUE, spec.panel_id)
+            if measured and measured.get("plate"):
+                candidate = Path(measured["plate"])
+                if candidate.is_file():
+                    existing = candidate
+            if existing is None:
+                existing = OUT_PLATES / f"{spec.panel_id}_finished.png"
+            if existing is None or not existing.is_file():
+                takes = list(OUT_PLATES.glob(f"{spec.panel_id}_take*_finished.png"))
+                existing = max(takes, key=lambda p: p.stat().st_mtime) if takes else None
+        if args.restage and existing and existing.is_file():
+            spec.plate = existing
+            print(f"\n[{spec.panel_id}] restage {existing.name}", flush=True)
+        else:
+            print(f"\n[{spec.panel_id}] generating {spec.gen_size[0]}x"
+                  f"{spec.gen_size[1]} ...", flush=True)
+            generate_plate(client, spec, job_class, dry_run=False)
         if spec.error:
             print(f"  FAILED: {spec.error}")
             continue

@@ -20,4 +20,5 @@ after the previous commit exists.
 | 8 | complete | Every newly generated plate writes a measured calibration | 5ca5953 |
 | 9 | complete | Comfy client timeout 1800s so contended plates finish | e9aa2a9 |
 | 10 | complete | Interiors keep their place; waist crops and 70% height cap | c203474 |
-| 11 | complete | Interior plates drop the site-wide ferris-wheel anchor; partial regen keeps the page | (this commit) |
+| 11 | complete | Interior plates drop the site-wide ferris-wheel anchor; partial regen keeps the page | a6de03a |
+| 13 | complete | Strip panels stage at crowd scale on the ground band, not 34% giants | (this commit) |
